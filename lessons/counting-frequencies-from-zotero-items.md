@@ -3,8 +3,11 @@ title: Counting Frequencies from Zotero Items
 authors:
 - Spencer Roberts
 date: 2013-04-01
-reviewers: Fred Gibbs
+editors:
+- Fred Gibbs
 layout: default
+prev: creating-new-items-in-zotero
+difficulty: 1
 ---
 
 Lesson Goals
@@ -232,5 +235,5 @@ Word Frequencies
 ```
 
   [Counting Frequencies]: ../lessons/counting-frequencies
-  [zip]: ../assets/programming-historian3.zip
+  [zip]: ../assets/python-lessons5.zip
   [Lesson on the Zotero API]: ../lessons/intro-to-the-zotero-api

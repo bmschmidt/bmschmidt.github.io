@@ -3,12 +3,29 @@ title: Downloading Multiple Records Using Query Strings
 authors:
 - Adam Crymble
 date: 2012-11-11
-reviewers: Fred Gibbs, Luke Bergmann, Sharon Howard
+reviewers:
+- Luke Bergmann
+- Sharon Howard
+editors:
+- Fred Gibbs
 layout: default
+previous: output-keywords-in-context-in-html-file
+difficulty: 2
 ---
 
-Module Goals
-------------
+## WARNING - Technical issues with Old Bailey Online website
+
+As of August 2016, the Old Bailey Online experienced some issues that are currently being resolved
+by their project team. One of those issues includes the temporary suspension of
+the advanced search features which are used as the basis of this tutorial.
+
+While those fixes are underway the example in this tutorial will not work properly.
+
+You can still read through to build an understanding of how this process works, without actually
+running the working code. We apologise for this problem. If you notice that it has been rectified and we
+have not yet updated this tutorial or removed this notice, [please let us know!](http://programminghistorian.org/feedback)
+
+## Module Goals
 
 Downloading a single record from a website is easy, but downloading many
 records at a time – an increasingly frequent need for a historian – is
@@ -20,8 +37,7 @@ and manipulating URL *Query Strings*. In this case, the tutorial will seek
 to download sources that contain references to people of African descent
 that were published in the *Old Bailey Proceedings* between 1700 and 1750.
 
-For Whom is this Useful?
-------------------------
+## For Whom is this Useful?
 
 Automating the process of downloading records from an online database
 will be useful for anyone who works with historical sources that are
@@ -42,8 +58,7 @@ keep a backup copy so you can access them without Internet access.
 
 This lesson is for intermediate Python users. If you have not already tried the [Python Programming Basics][] lessons, you may find that a useful starting point.
 
-Applying our Historical Knowledge
----------------------------------
+## Applying our Historical Knowledge
 
 In this lesson, we are trying to create our own corpus of cases related
 to people of African descent. From [Benjamin Bowsey’s case][] at the Old Bailey in 1780, we might note that “black” can be a useful keyword for us to use for locating other
@@ -61,9 +76,9 @@ target demographic. If we try these two terms in separate simple
 searches on the Old Bailey website, we get results like in these
 screenshots:
 
-{% include figure.html src="../images/SearchResultsNegro.png" caption="Search results for 'negro' in the Old Bailey Online" %}
+{% include figure.html filename="SearchResultsNegro.png" caption="Search results for 'negro' in the Old Bailey Online" %}
 
-{% include figure.html src="../images/SearchResultsMulatto.png" caption="Search results for 'mulatto' in the Old Bailey Online" %}
+{% include figure.html filename="SearchResultsMulatto.png" caption="Search results for 'mulatto' in the Old Bailey Online" %}
 
 After glancing through these search results, it seems clear that these
 are references to people, rather than horses or cloth or other things
@@ -71,8 +86,7 @@ that may be black. We want to download them all to use in our analysis.
 We could, of course, download them one at a time, manually. But let’s
 find a programmatic way to automate this task.
 
-The Advanced Search on OBO
---------------------------
+## The Advanced Search on OBO
 
 Every website’s search features work differently. While searches work
 similarly, the intricacies of database searches may not be entirely
@@ -84,9 +98,7 @@ attention. The Old Bailey Online’s [advanced search form][] lets you
 refine your searches based on ten different fields including simple
 keywords, a date range, and a crime type. As each website’s search
 feature is different it always pays to take a moment or two to play with
-and read about the search options available. In this case, read over the
-short explanation of the “Advanced” features by clicking on the “what’s
-this?” link, which will explain how to refine your search further. Since
+and read about the search options available. Since
 we have already done the simple searches for “negro” and “mulatto”, we
 know there will be results. However, let’s use the advanced search to
 limit our results to records published in the Old Bailey Proceedings
@@ -96,7 +108,7 @@ Perform the search shown in the image below. Make sure you tick the
 “Advanced” radio button and include the `*` wildcards to include
 pluralized entries or those with an extra “e” on the end.
 
-{% include figure.html src="../images/AdvancedSearchExample.png" caption="Old Bailey Advanced Search Example" %}
+{% include figure.html filename="AdvancedSearchExample.png" caption="Old Bailey Advanced Search Example" %}
 
 Execute the search and then click on the “[Calculate Total][]” link to
 see how many entries there are. We now have 13 results (if you have a
@@ -111,8 +123,7 @@ becomes that much more valuable. To automate the download process, we
 need to step back and learn how the search URLs are created on the Old
 Bailey website, a method common to many online databases and websites.
 
-Understanding URL Queries
--------------------------
+## Understanding URL Queries
 
 Take a look at the URL produced with the last search results page. It
 should look like this:
@@ -187,8 +198,7 @@ which entry should be shown at the top of the search results list. We
 should be able to use this knowledge to create a series of URLs that
 will allow us to download all 13 files. Let’s turn to that now.
 
-Systematically Downloading Files
---------------------------------
+## Systematically Downloading Files
 
 In [Working with Webpages][] we learned that Python can download a
 webpage as long as we have the URL. In that lesson we used the URL to
@@ -318,7 +328,7 @@ on, we will use the word Terminal to refer to this program).
 ``` python
 entries = 13
 pageCount = entries / 10
-print pageCount
+print(pageCount)
 -> 1
 ```
 
@@ -354,7 +364,7 @@ tab so that it is all enclosed in the for loop:
 
 ``` python
 for pages in range(1, pageCount+1):
-    print pages
+    print(pages)
 ```
 
 Since this is a for loop, all of the code we want to run repeatedly
@@ -374,7 +384,7 @@ writing for loops, you can open your Terminal and play around.
 ``` python
 pageCount = 2
 for pages in range(1, pageCount+1):
-    print pages
+    print(pages)
 
 -> 1
 -> 2
@@ -724,7 +734,7 @@ def getIndivTrials(query):
     cleanQuery = re.sub(r'\W+', '', query)
     searchResults = os.listdir(cleanQuery)
 
-    print searchResults
+    print(searchResults)
 ```
 
 Create and run a new program called `extract-trial-ids.py` with the
@@ -778,7 +788,7 @@ that will download the desired trials.
                     #isolate the id
                     urls.append(words[words.find("id=") +3: words.find("&")])
 
-    print urls
+    print(urls)
 ```
 
 That last line of the for loop may look tricky, but make sure you
@@ -1168,8 +1178,7 @@ def newDir(newDir):
         os.makedirs(dir)
 ```
 
-Further Reading
----------------
+## Further Reading
 
 For more advanced users, or to become a more advanced user, you may find
 it worthwhile to read about achieving this same process using
@@ -1189,10 +1198,7 @@ helpful:
   [Old Bailey Online]: http://www.oldbaileyonline.org/
   [Automated Downloading with WGET]: ../lessons/automated-downloading-with-wget
   [Benjamin Bowsey’s case]: http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33
-  []: ../images/SearchResultsNegro.png "SearchResultsNegro"
-  [1]: ../images/SearchResultsMulatto.png "SearchResultsMulatto"
   [advanced search form]: http://www.oldbaileyonline.org/forms/formMain.jsp
-  [2]: ../images/AdvancedSearchExample.png "AdvancedSearchExample"
   [Calculate Total]: http://www.oldbaileyonline.org/search.jsp?foo=bar&form=searchHomePage&_divs_fulltext=mulatto*+negro*&kwparse=advanced&_divs_div0Type_div1Type=sessionsPaper%7CtrialAccount&fromYear=1700&fromMonth=00&toYear=1750&toMonth=99&start=0&count=0
   [Viewing HTML Files]: ../lessons/viewing-html-files
   [Working with Webpages]: ../lessons/working-with-web-pages
@@ -1202,5 +1208,5 @@ helpful:
   [regular expressions]: http://docs.python.org/2/library/re.html
   [Counting Frequencies]: ../lessons/counting-frequencies
   [time out]: http://www.checkupdown.com/status/E408.html
+  [Python Programming Basics]: http://programminghistorian.org/lessons/introduction-and-installation
   [try / except]: http://docs.python.org/tutorial/errors.html
-  [Python Programming Basics]: ../lessons

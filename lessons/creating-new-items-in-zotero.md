@@ -3,9 +3,13 @@ title: Creating New Items in Zotero
 authors:
 - Amanda Morton
 date: 2013-04-01
-reviewers: Fred Gibbs
+editors:
+- Fred Gibbs
 layout: default
 categories: [zotero, api]
+next: counting-frequencies-from-zotero-items
+prev: intro-to-the-zotero-api
+difficulty: 1
 ---
 
 Using Python to Create an New Zotero Item
@@ -29,7 +33,6 @@ Your first step is to import the python modules that you will need for
 this program.
 
 ``` python
-import obo
 from libZotero import zotero
 import urllib2
 import datetime
@@ -124,8 +127,29 @@ Created new item <Python Lesson Document> with new tag <python lesson>
 
 You can also check your Zotero library to find the document that you
 made using Python. The title, abstract, and date should be filled out,
-and the tag should appear also. By editing the program above, you can
-create items with different types (such as books, journal articles, or
-newspapers) and specify more precise titles, creation dates, and tags.
+and the tag should appear also.
+
+By editing the program above, you can create items with different types
+(such as books, journal articles, or newspapers) and specify more precise titles,
+creation dates, and tags. To see a list of all the Item Types available
+in the Zotero API, use your browser to navigate to this URL:
+
+    https://api.zotero.org/itemTypes
+
+You can then see the fields available in each Item Type template by
+navigating to the following URL, replacing `document` with the key for the
+Item Type that interests you:
+
+    https://api.zotero.org/items/new?itemType=document
+
+For example, the list of Item Types returned by the first URL shows a type called `videoRecording`. 
+In our code above, you could request a template for that type by changing the
+`document` argument in our `getItemTemplate()` function with `videoRecording`. To 
+see which fields are available in this template, you could navigate in your browser to the 
+appropriate URL:
+
+    https://api.zotero.org/items/new?itemType=videoRecording
+    
+For more details, see the documentation on write requests for the [Zotero API](https://www.zotero.org/support/dev/web_api/v3/write_requests).
 
   [Intro to the Zotero API]: ../lessons/intro-to-the-zotero-api

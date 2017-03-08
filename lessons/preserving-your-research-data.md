@@ -3,8 +3,14 @@ title: Preserving Your Research Data
 authors:
 - James Baker
 date: 2014-04-30
-reviewers: Jane Winters, Sharon Howard, William J. Turkel, Adam Crymble
+reviewers:
+- Jane Winters
+- Sharon Howard
+- William J. Turkel
+editors:
+- Adam Crymble
 layout: default
+difficulty: 1
 ---
 
 #### Background
@@ -124,7 +130,7 @@ values) or .tsv (tab-seperated values) for tabulated data. These plain
 text formats are preferable to the proprietary formats used as defaults
 by Microsoft Office or iWork because they can be opened by many software
 packages and have a strong chance of remaining viewable and editable in
-the future. Most standard office suits include the option to save files
+the future. Most standard office suites include the option to save files
 in .txt, .csv and .tsv formats, meaning you can continue to work with
 familiar software and still take appropriate action to make your work
 accessible. Compared to .doc or .xls these formats have the additional

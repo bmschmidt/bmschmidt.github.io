@@ -3,7 +3,7 @@ title: Installing Python Modules with pip
 authors:
 - Fred Gibbs
 date: 2013-05-06
-reviewers: 
+reviewers:
 - Ben Hurwitz
 - Amanda Morton
 layout: default
@@ -14,7 +14,7 @@ Lesson Goals
 
 This lesson shows you how to download and install Python modules. There
 are many ways to install external modules, but for the purposes of this
-lesson, we’re going to use a program called [pip][].
+lesson, we’re going to use a program called [pip][]. As of Python 2.7.9 and newer, pip is installed by default. This tutorial will be helpful for anyone using older versions of Python (which are still quite common).
 
 Introducing Modules
 -------------------
@@ -57,7 +57,7 @@ line by using the [curl command][], which downloads the pip installation
 perl script.
 
 ``` bash
-curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+curl -O https://bootstrap.pypa.io/get-pip.py
 ```
 
 once you’ve downloaded the get-pip.py file, you need to execute it with
@@ -122,7 +122,7 @@ pip install simplekml
 ```
 
 Remember, for the same reasons explained above, you will probably need
-to run pip with sudo, like
+to run pip with sudo on Mac or Linux systems (but not Windows), like
 
 ``` bash
 sudo pip install requests
@@ -130,7 +130,7 @@ sudo pip install requests
 
 Happy installing!
 
-  [pip]: http://www.pip-installer.org/en/latest/
+  [pip]: https://pip.pypa.io/en/stable/
   [curl command]: http://www.thegeekstuff.com/2012/04/curl-examples/
-  [here]: https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+  [here]: https://bootstrap.pypa.io/get-pip.py
   [StackOverflow page]: http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows

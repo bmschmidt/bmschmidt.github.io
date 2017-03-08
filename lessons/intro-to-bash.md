@@ -4,8 +4,15 @@ authors:
 - Ian Milligan
 - James Baker
 date: 2014-09-20
-reviewers: Melodee Beals, Allison Hegel, Charlotte Tupman, Adam Crymble
+reviewers:
+- Melodee Beals
+- Allison Hegel
+- Charlotte Tupman
+editors:
+- Adam Crymble
 layout: default
+next: research-data-with-unix
+difficulty: 1
 ---
 
 # Introduction to the Bash Command Line
@@ -14,7 +21,7 @@ layout: default
 
 Many of the lessons at the *Programming Historian* require you to enter commands through a **Command-Line Interface**. The usual way that computer users today interact with their system is through a **Graphical-User Interface**, or GUI. This means that when you go into a folder, you click on a picture of a file folder; when you run a program, you click on it; and when you browse the web, you use your mouse to interact with various elements on a webpage. Before the rise of GUIs in the late 1980s, however, the primary way to interact with a computer was through a command-line interface.
 
-{% include figure.html src="../images/GUI.png" caption="GUI of Ian Milligan's Computer" %}
+{% include figure.html filename="GUI.png" caption="GUI of Ian Milligan's Computer" %}
 
 Command-line interfaces have advantages for computer users who need more precision in their work -- such as digital historians. They allow for more detail when running some programs, as you can add modifiers to specify *exactly* how you want your program to run. Furthermore, they can be easily automated through [scripts](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/chap_01.html), which are essentially recipes of text-based commands.
 
@@ -24,7 +31,7 @@ This lesson uses a **[Unix shell](http://en.wikipedia.org/wiki/Unix_shell)**, wh
 
 ## Windows Only: Installing Git Bash
 
-For those on OS X, and most Linux installations, you're in luck — you already have a bash shell installed. For those of you on Windows, you'll need to take one extra step and install Git Bash. This can be installed by downloading the most recent 'Full installer' at the the [msysgit featured downloads list](https://github.com/msysgit/msysgit/releases/). Instructions for installation are available at [Open Hatch](https://openhatch.org/missions/windows-setup/install-git-bash).
+For those on OS X, and most Linux installations, you're in luck — you already have a bash shell installed. For those of you on Windows, you'll need to take one extra step and install Git Bash. This can be installed by downloading the most recent 'Full installer' at [this page](https://git-for-windows.github.io/). Instructions for installation are available at [Open Hatch](https://openhatch.org/missions/windows-setup/install-git-bash).
 
 ## Opening Your Shell
 
@@ -32,15 +39,15 @@ Let's start up the shell. In Windows, run Git Bash from the directory that you i
 
 `Applications -> Utilities -> Terminal` 
 
-{% include figure.html src="../images/Terminal.png" caption="The Terminal.app program on OS X" %}
+{% include figure.html filename="Terminal.png" caption="The Terminal.app program on OS X" %}
 
 When you run it, you will see this window. 
 
-{% include figure.html src="../images/Blank-Terminal.png" caption="A blank terminal screen on our OS X workstation" %}
+{% include figure.html filename="Blank-Terminal.png" caption="A blank terminal screen on our OS X workstation" %}
 
-You might want to change the default visual appearance of the terminal, as eyes can strain at repeatedly looking at black text on a white background. In the default OS X application, you can open the 'Settings' menu in 'Preferences' under Terminal. Click on the 'Settings' tab and change it to a new colour scheme. We personally prefer something with a bit less contrast between background and foreground, as you'll be staring at this a great deal. 'Novel' is a soothing one one as is the popular [Solarized](http://ethanschoonover.com/solarized) suite of colour palettes. For Windows users, a similar effect can be achieved using the Git Bash `Properties` tab. To reach this, right-click anywhere in the top bar and select `Properties`.
+You might want to change the default visual appearance of the terminal, as eyes can strain at repeatedly looking at black text on a white background. In the default OS X application, you can open the 'Settings' menu in 'Preferences' under Terminal. Click on the 'Settings' tab and change it to a new colour scheme. We personally prefer something with a bit less contrast between background and foreground, as you'll be staring at this a great deal. 'Novel' is a soothing one as is the popular [Solarized](http://ethanschoonover.com/solarized) suite of colour palettes. For Windows users, a similar effect can be achieved using the Git Bash `Properties` tab. To reach this, right-click anywhere in the top bar and select `Properties`.
 
-{% include figure.html src="../images/Settings.png" caption="The Settings Screen on the OS X Terminal Shell Application" %}
+{% include figure.html filename="Settings.png" caption="The Settings Screen on the OS X Terminal Shell Application" %}
 
 Once you are happy with the interface, let's get started.
 
@@ -68,7 +75,7 @@ You may want more information than just a list of files. You can do this by spec
 
 `man ls`
 
-{% include figure.html src="../images/man-ls.png" caption="The Manual page for the LS command" %}
+{% include figure.html filename="man-ls.png" caption="The Manual page for the LS command" %}
 
 Here, you see a listing of the name of the command, the way that you can format this command and what it does. **Many of these will not make sense at this stage, but don't worry; over time you will become more familiar with them.** You can explore this page in a variety of ways: the spacebar moves down a page, or you can arrow down and arrow up throughout the document. 
 
@@ -116,7 +123,7 @@ When you want to use two flags, you can just run them together. So, by typing
 
 you receive output in a human-readable format; you learn that that 6020 bits is also 5.9KB, that another file is 1 megabyte, and so forth. 
 
-These options are *very* important. In other lessons within the *Programming Historian*, you'll see them. [Wget](http://programminghistorian.org/lessons/applied-archival-downloading-with-wget), [MALLET](http://programminghistorian.org/lessons/topic-modeling-and-mallet), and [Pandoc](http://programminghistorian.org/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) all use the same syntax. Luckily, you do not need to memorize syntax; instead, keep these lessons handy so you can take a quick peek if you need to tweak something. These lessons can all be done in any order.
+These options are *very* important. In other lessons within the *Programming Historian*, you'll see them. [Wget](/lessons/applied-archival-downloading-with-wget), [MALLET](/lessons/topic-modeling-and-mallet), and [Pandoc](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown) all use the same syntax. Luckily, you do not need to memorize syntax; instead, keep these lessons handy so you can take a quick peek if you need to tweak something. These lessons can all be done in any order.
 
 You've now spent a great deal of time in your home directory. Let's go somewhere else. You can do that through the `cd` or Change Directory command. 
 
@@ -150,7 +157,7 @@ or, on Windows, something like
 
 `cd c:\mallet-2.0.7\`
 
-and be brought to our MALLET directory for [topic modeling](lessons/topic-modeling-and-mallet).
+and be brought to our MALLET directory for [topic modeling](/lessons/topic-modeling-and-mallet).
 
 Finally, try
 
@@ -172,13 +179,13 @@ First, you can create a new directory so you can engage with text files. We will
 
 `mkdir ProgHist-Text`
 
-This creates a directory named, you guessed it, 'ProgHist-Text.' You can look at your desktop to verify it has worked. Now, move into that directory (remember, that would be `cd ProgHist-Text`).
+This creates a directory named, you guessed it, 'ProgHist-Text.' In general, it's good to avoid putting spaces in your filenames and directories when using the command line (there are workarounds, of course, but this approach is simpler). You can look at your desktop to verify it has worked. Now, move into that directory (remember, that would be `cd ProgHist-Text`).
 
 But wait! There's a trick to make things a bit quicker. Go up one directory (`cd ..` - which will take you back to the Desktop). To navigate to the `ProgHist-Text` directory you could type `cd ProgHist-Text`. Alternatively, you could type `cd Prog` and then hit tab. You will notice that the interface completes the line to `cd ProgHist-Text`. **Hitting tab at any time within the shell will prompt it to attempt to auto-complete the line based on the files or sub-directories in the current directory. This is case sensitive, however (i.e. in the previous example, `cd prog` would not auto complete to `ProgHist-Text`. Where two or more files have the same characters, the auto-complete will only fill up to the first point of difference. We would encourage using this method throughout the lesson to see how it behaves.**
 
-Now you need to find a basic text file to help us with the example. Why don't you use a book that you know is long, such as Leo Tolstoy's epic *War and Peace*. The text file is availiable via [Project Gutenberg](http://www.gutenberg.org/cache/epub/2600/pg2600.txt). If you have already installed [wget](lessons/applied-archival-downloading-with-wget), you can just type
+Now you need to find a basic text file to help us with the example. Why don't you use a book that you know is long, such as Leo Tolstoy's epic *War and Peace*. The text file is availiable via [Project Gutenberg](http://www.gutenberg.org/files/2600/2600-0.txt). If you have already installed [wget](/lessons/applied-archival-downloading-with-wget), you can just type
 
-`wget http://www.gutenberg.org/cache/epub/2600/pg2600.txt`
+`wget http://www.gutenberg.org/files/2600/2600-0.txt`
 
 If you do not have wget installed, download the text itself using your browser. Go to the link above, and, in your browser, use the 'Save Page as..' command in your 'file menu.' Save it in your new 'ProgHist-Text directory.' Now, when you type
 
@@ -212,7 +219,7 @@ Provides a view of the first ten lines, whereas
 
 `tail pg2600.txt`
 
-provides a perspective on the last few lines. This is a good way to quickly determine the contents of the file.
+provides a perspective on the last ten lines. This is a good way to quickly determine the contents of the file. You could add a command to change the amount of lines displayed: `head -20 pg2600.txt`, for example, would show the first twenty lines.
 
 You may also want to change the file name to something more descriptive. You can 'move' it to a new name by typing
 
@@ -254,7 +261,7 @@ Type
 
 You should see vim come to life before you, a command-line based text editor.
 
-{% include figure.html src="../images/vim.png" caption="Vim" %}
+{% include figure.html filename="vim.png" caption="Vim" %}
 
 If you really want to get into Vim, there is a [good Vim guide](http://vimdoc.sourceforge.net/htmldoc/quickref.html) available. 
 
@@ -268,7 +275,7 @@ If you want to rapidly move to the end of a line, you can press: `$` and to move
 
 Let's scroll to the top and do a minor change, such as adding a `Reader` field in the heading. Move your cursor in between **Author:** and **Translators:**, like so:
 
-{% include figure.html src="../images/about-to-insert.png" caption="About to Insert a Field" %}
+{% include figure.html filename="about-to-insert.png" caption="About to Insert a Field" %}
 
 If you just start typing, you'll get an error message or the cursor will begin jumping around. This is because you have to specify that you want to do an edit. Press the letter
 
@@ -288,11 +295,11 @@ To leave vim or to make saves, you have to enter a series of commands. Press `:`
 
 >> "tolstoy.txt" [dos] 65009L, 3291681C written
 
-{% include figure.html src="../images/after-writing.png" caption="After Writing the File, with Our Minor Change" %}
+{% include figure.html filename="after-writing.png" caption="After Writing the File, with Our Minor Change" %}
 
 If you want to quit, type `:` again and then `q`. It will return you to the command line. As with the rest of bash, you could have also combined the two commands. Pressing `:` and then typing `wq` would have written the file and then quit. Or, if you wanted to exit **without** saving, `q!` would have quit vim and overriden the default preference to save your changes.
 
-Vim is different than you are likely used to and will require more work and practice to become fluent with it. But if you are tweaking minor things in files, it is a good way to get started. As you become more comfortable, you might even find yourself writing term papers with it, by harnessing the [footnoting and formatting power of Pandoc and Markdown](lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
+Vim is different than you are likely used to and will require more work and practice to become fluent with it. But if you are tweaking minor things in files, it is a good way to get started. As you become more comfortable, you might even find yourself writing term papers with it, by harnessing the [footnoting and formatting power of Pandoc and Markdown](/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown).
 
 ## Moving, Copying, and Deleting Files
 

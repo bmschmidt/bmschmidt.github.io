@@ -1,12 +1,17 @@
 ---
-title: Code Reuse and Modularity
+title: Code Reuse and Modularity in Python
 authors:
 - William J. Turkel
 - Adam Crymble
 date: 2012-07-17
-reviewers: Miriam Posner, Jim Clifford
+reviewers:
+- Jim Clifford
+editors:
+- Miriam Posner
 layout: default
 categories: [lessons, original-ph, python]
+next: working-with-web-pages
+previous: working-with-text-files
 ---
 
 Lesson Goals
@@ -34,7 +39,7 @@ function definition into Komodo Edit and save it as `greet.py`.
 # greet.py
 
 def greetEntity (x):
-    print "hello " + x
+    print("hello " + x)
 
 greetEntity("Everybody")
 greetEntity("Programming Historian")
@@ -77,10 +82,10 @@ finished, your `greet.py` file should look like this:
 # greet.py
 
 def greetEntity (x):
-    print "hello " + x
+    print("hello " + x)
 ```
 
-### Modularity
+## Modularity
 
 When programs are small like the above example, they are typically
 stored in a single file. When you want to run one of your programs, you

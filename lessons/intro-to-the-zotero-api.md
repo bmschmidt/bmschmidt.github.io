@@ -3,9 +3,12 @@ title: Intro to the Zotero API
 authors:
 - Amanda Morton
 date: 2013-04-01
-reviewers: Fred Gibbs
+editors:
+- Fred Gibbs
 layout: default
 categories: [lessons, api]
+next: creating-new-items-in-zotero
+difficulty: 1
 ---
 
 Lesson Goals
@@ -180,6 +183,6 @@ library.
   [Quick Start Guide]: https://www.zotero.org/support/quick_start_guide
   [libZotero GitHub library]: https://github.com/fcheslack/libZotero
   [Installing Python Modules with pip]: ../lessons/installing-python-modules-pip
-  [pip]: http://www.pip-installer.org/en/latest/
+  [pip]: https://pip.pypa.io/en/stable/
   [Programming Historian 2]: https://www.zotero.org/groups/programming_historian_2
   [account settings]: https://www.zotero.org/settings/keys

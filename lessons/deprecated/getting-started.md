@@ -5,6 +5,7 @@ authors:
 - Adam Crymble
 date: 2013-05-27
 reviewers: Miriam Posner, Jim Clifford
+deprecated: true
 layout: default
 ---
 
@@ -526,7 +527,6 @@ introductory texts and websites which you can find online.
 
 -   [Python for Non-programmers][]
 -   [W3 Schools HTML Tutorial][W3 Schools HTML tutorial]
--   [W3 Schools HTML5 Tutorial][]
 
 As you proceed (or if you already have some programming experience)
 you’ll probably prefer more general references like:
@@ -604,7 +604,6 @@ file to make sure you have the correct code.
   [Jungle Disk]: https://www.jungledisk.com/
   [Dropbox]: https://www.dropbox.com/home
   [Python for Non-programmers]: http://wiki.python.org/moin/BeginnersGuide/NonProgrammers
-  [W3 Schools HTML5 Tutorial]: http://www.w3schools.com/html5/default.asp
   [Python for Programmers]: http://wiki.python.org/moin/BeginnersGuide/Programmers
   [Python documentation page]: http://docs.python.org/
   [Python tutorial]: http://docs.python.org/tut/tut.html

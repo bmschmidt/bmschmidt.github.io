@@ -1,23 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ page.lang }}">
 
-	{% include header.html %}
+  {% include header.html %}
 
   <body>
 
     <header role="banner">
+
     <h1><a href="{{ site.url }}">The Programming Historian</a></h1>
 
-	{% include menu.html %}
+    {% include menu.html %}
+
 	</header>
 
-	<div role="main">
+    <div role="main">
+        <article>
 
-	{{content}}
+	    {{content}}
 
+        </article>
     </div>
 
     {% include footer.html %}
 
-    </body>
+  </body>
+
 </html>

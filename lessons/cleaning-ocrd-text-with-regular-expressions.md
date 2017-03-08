@@ -2,9 +2,11 @@
 title: Cleaning OCR’d text with Regular Expressions
 authors:
 - Laura Turner O'Hara
-reviewer: Fred Gibbs
+editors:
+- Fred Gibbs
 date: 2013-05-22
 layout: default
+difficulty: 2
 ---
 
 Optical Character Recognition (OCR)—the conversion of scanned images to
@@ -16,12 +18,12 @@ OCR. Take for example, this page from the *Congressional Directory* from
 the 50th Congress (1887). The PDF scan downloaded from [HeinOnline][]
 looks organized:
 
-{% include figure.html src="../images/cd_pdf.png" caption="This is a screenshot of the PDF page." %}
+{% include figure.html filename="cd_pdf.png" caption="This is a screenshot of the PDF page." %}
 
 However, the OCR layer (downloaded as a text file\*) shows that the
 machine-encoded text is not nearly as neat:
 
-{% include figure.html src="../images/cd_txt.png" caption="This is a screenshot of the OCR." %}
+{% include figure.html filename="cd_txt.png" caption="This is a screenshot of the OCR." %}
 
 > Note: If you do not have the option to download a text file, you can
 use the [pdfminer][] module to extract text from the pdf.
@@ -137,9 +139,7 @@ of luck with the [Patterns App][] (Mac Store \$2.99), which allowed me
 to see what the regular expressions were doing in real time. It also
 comes with a built-in cheat sheet for the symbols, but I actually found
 this generic (meaning it works across languages) [cheat sheet][] more
-comprehensive. For PC users (or people who don’t want to pay or download
-software), I also found [another tester tool][] that was fairly
-transparent.
+comprehensive.
 
 Python and Regex
 ----------------

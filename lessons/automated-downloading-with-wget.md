@@ -3,8 +3,13 @@ title: Automated Downloading with Wget
 authors:
 - Ian Milligan
 date: 2012-06-27
-reviewers: Aurélien Berra, Adam Crymble
+reviewers:
+- Aurélien Berra
+editors:
+- Adam Crymble
 layout: default
+next: applied-archival-downloading-with-wget
+difficulty: 1
 ---
 
 Editor's Note
@@ -12,7 +17,8 @@ Editor's Note
 
 This lesson requires you to use the command line. If you have no
 previous experience using the command line you may find it helpful to
-work through the Scholar's Lab [Command Line Bootcamp][] tutorial.
+work through the _Programming Historian's_ [Introduction to the Bash 
+Programming Language](http://programminghistorian.org/lessons/intro-to-bash).
 
 Lesson Goals
 ------------
@@ -23,7 +29,7 @@ users should be able to follow along.
 Wget is a useful program, run through your computer's command line, for
 retrieving online material.
 
-{% include figure.html src="../images/Terminal-on-mac2.png" caption="The Mac Command Line, Terminal" %}
+{% include figure.html filename="Terminal-on-mac2.png" caption="The Mac Command Line, Terminal" %}
 
 It can be useful in the following situations:
 
@@ -90,30 +96,15 @@ to install a package manager and use it to automatically install wget.
 There is a second method, discussed below, that involves compiling it.
 
 Both, however, require that you install Apple's 'Command Line Tools' to
-use properly. This requires downloading XCode. If you have the 'App
-Store', you should be able to just [download XCode via this link][].  If
-not, the following instructions will work.
+use properly. You will need to download this from Apple, using your Apple ID 
+and password (which you probably use throughout your Mac). Visit 
+<http://developer.apple.com/downloads/index.action>, log in with your credentials, 
+and search for "Command Line Tools" in the search bar in the upper left. 
 
-To download this, go to the [Apple Developer website][], register as a
-developer, and then in the [downloads for Apple developers][Apple Developer website] section you will need to find the correct version. If
-you are on the most recent version, Lion as of July 2012, you can use
-the main link. If not, you will need to click on the link: "Looking for
-additional developer tools? [View Downloads][]."
-
-After logging in with your free developer credentials, you will see a
-long list. Type xcode in the search bar and find a version that is
-compatible with your operating system version. This may take some
-clicking around to find the right version for you. For example, Xcode
-3.2 is the version for OS X 10.6 Snow Leopard, 3.0 is the version for OS
-X 10.5 Leopard, etc.
-
-It is a big download, and will take some time. Once you have the file,
-install it.
-
-You will need to install the '**Command Line Tools**' kit in XCode. Open
-up the 'Preferences' tab, click on 'Downloads,' and then click 'Install'
-next to Command Line Tools. We are now ready to install a package
-manager.
+Find the package appropriate to your version of Mac OS X. If you are unsure of
+your XCode verison, just download the most recent one. Once you download the
+file, open it up and double-click on the installation package. Follow the prompts 
+and once you are finished, you are now ready to install a package mangaer.
 
 The easiest package manager to install is *Homebrew*. Go to
 <http://mxcl.github.io/homebrew/> and review the instructions. There are
@@ -232,9 +223,11 @@ You should now have wget installed.
 
 ### Windows Instructions
 
-The easiest way is to download a working version. To do so, visit the
-[ugent website][] and, download `wget.exe`. If you place `wget.exe` in
-your `C:Windows` directory, you can then use wget from anywhere on your
+The easiest way is to download a working version. To do so, visit
+[this website](https://eternallybored.org/misc/wget/) and, download `wget.exe` (as of writing it is version 1.17.1, and you should download the 32-bit binary). The file is the second link in the 32-bit binary column, entitled just `wget.exe`.
+
+If you place `wget.exe` in
+your `C:\Windows` directory, you can then use wget from anywhere on your
 computer. This will make your life easier as you will not have to worry
 about always running wget from only one place on your system. If it is
 in this directory, Windows will know that the command can be used
@@ -361,7 +354,7 @@ is a critical command for delineating your search.
 
 Here is a graphical representation:
 
-{% include figure.html src="../images/active-history-chart_edited-1.jpg" caption="A graphical representation of how 'no-parent' works with wget" %}
+{% include figure.html filename="active-history-chart_edited-1.jpg" caption="A graphical representation of how 'no-parent' works with wget" %}
 
 Finally, if you do want to go outside of a hierarchy, it is best to be
 specific about how far you want to go. The default is to follow each
@@ -471,7 +464,7 @@ files, backups, etc.
 I've only given a snapshot of some of wget's functionalities. For more,
 please visit the [wget manual][GNU wget manual].
 
-  [Command Line Bootcamp]: http://praxis.scholarslab.org/tutorials/bash/
+  [Command Line Bootcamp]: http://praxis.scholarslab.org/scratchpad/bash/
   [download XCode via this link]: https://itunes.apple.com/en/app/xcode/id497799835?mt=12
   [Apple Developer website]: https://developer.apple.com/xcode/
   [View Downloads]: https://developer.apple.com/downloads/

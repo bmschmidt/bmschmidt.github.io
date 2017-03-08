@@ -5,8 +5,13 @@ authors:
 - Scott Weingart
 - Ian Milligan
 date: 2012-09-02
-reviewers: John Fink, Alan MacEachern and Adam Crymble
+reviewers:
+- John Fink
+- Alan MacEachern
+editors:
+- Adam Crymble
 layout: default
+difficulty: 2
 ---
 
 Editor's Note
@@ -14,7 +19,7 @@ Editor's Note
 
 This lesson requires you to use the command line. If you have no
 previous experience using the command line you may find it helpful to
-work through the Scholars' Lab [Command Line Bootcamp][] tutorial.
+work through the Programming Historian [Bash Command Line][] lesson.
 
 Lesson Goals
 ------------
@@ -135,15 +140,19 @@ a sample distribution, to create its topic models. MALLET requires
 using the command line – we'll talk about that more in a moment,
 although you typically use the same few commands over and over.
 
+**While there is currently a preview release of MALLET 2.0.8 available, this
+lesson uses the official release of MALLET 2.0.7. If you are following
+along with our instructions, please be sure to download the correct version.**
+
 The installation instructions are different for Windows and Mac. Follow
 the instructions appropriate for you below:
 
-{% include figure.html src="../images/windows-150x150.png" caption="" %}
+{% include figure.html filename="windows-150x150.png" caption="" %}
 
 ### Windows Instructions
 
 1.  Go to the [MALLET][] project page, and [`download MALLET`][]. (As
-    of this writing, we are working with version 2.0.7.)
+    of this writing, remember, we are working with version 2.0.7.)
 2.  You will also need the [Java developer's kit][] – that is, not the
     regular Java that's on every computer, but the one that lets you
     program things. Install this on your computer.
@@ -170,11 +179,11 @@ MALLET in the variable value, e.g., `c:\mallet`.
 
 To see if you have been successful, please read on to the next section.
 
-{% include figure.html src="../images/fig1-advanced-system-settings.png" caption="Figure 1: Advanced System Settings on Windows" %}
+{% include figure.html filename="fig1-advanced-system-settings.png" caption="Figure 1: Advanced System Settings on Windows" %}
 
-{% include figure.html src="../images/fig2-environment-variables-location.png" caption="Figure 2: Environment Variables Location" %}
+{% include figure.html filename="fig2-environment-variables-location.png" caption="Figure 2: Environment Variables Location" %}
 
-{% include figure.html src="../images/fig3-environment-variable.png" caption="Figure 3: Environment Variable" %}
+{% include figure.html filename="fig3-environment-variable.png" caption="Figure 3: Environment Variable" %}
 
 #### Running MALLET using the Command Line
 
@@ -183,7 +192,7 @@ MALLET is run from the command line, also known as *Command Prompt*
 computer Terminal, this will be familiar. The command line is where you
 can type commands directly, rather than clicking on icons and menus.
 
-{% include figure.html src="../images/fig-4-command-prompt-window.png" caption="Figure 4: Command Prompt on Windows" %}
+{% include figure.html filename="fig-4-command-prompt-window.png" caption="Figure 4: Command Prompt on Windows" %}
 
 1.  Click on your
     `Start Menu -> All Programs -> Accessories -> Command Prompt`.\
@@ -193,7 +202,7 @@ can type commands directly, rather than clicking on icons and menus.
     directory*. Keep doing this until you're at the `C:\` . (as in
     Figure 5)
 
-{% include figure.html src="../images/fig-5-command-prompt-window-getting-to-c.png" caption="Figure 5: Navigating to the C:\ Directory in Command Prompt" %}
+{% include figure.html filename="fig-5-command-prompt-window-getting-to-c.png" caption="Figure 5: Navigating to the C:\ Directory in Command Prompt" %}
 
 1.  Then type `cd mallet `and you are in the MALLETdirectory. Anything
     you type in the command prompt window is a *command*. There are
@@ -209,18 +218,18 @@ can type commands directly, rather than clicking on icons and menus.
     slash? Did you set up the environment variable correctly? Is
     MALLET located at `C:\mallet` ?
 
-{% include figure.html src="../images/fig-6command-prompt-mallet-installed.png" caption="Figure 6: Command Prompt MALLET Installed" %}
+{% include figure.html filename="fig-6command-prompt-mallet-installed.png" caption="Figure 6: Command Prompt MALLET Installed" %}
 
 You are now ready to skip ahead to the next section.
 
-{% include figure.html src="../images/apple-150x150.png" caption="" %}
+{% include figure.html filename="apple-150x150.png" caption="" %}
 
 ### Mac Instructions
 
 Many of the instructions for OS X installation are similar to Windows,
 with a few differences. In fact, it is a bit easier.
 
-1.  Download and [install MALLET (*mallet-2.0.7.tar.gaz*as of Summer
+1.  Download and [install MALLET 2.0.7 (*mallet-2.0.7.tar.gaz* as of Summer
     2012).][`download MALLET`]
 2.  Download the [Java Development Kit][Java developer's kit].
 
@@ -254,7 +263,7 @@ installed it correctly!
 Typing in MALLET Commands
 -------------------------
 
-Now that you ahve MALLET installed, it is time to learn what commands
+Now that you have MALLET installed, it is time to learn what commands
 are available to use with the program. There are nine MALLET commands
 you can use (see Figure 6 above). Sometimes you can combine multiple
 instructions. At the Command Prompt or Terminal (depending on your
@@ -281,7 +290,7 @@ further down. After that, we successfully called up the help file, which
 told us what `import-dir` does, and it listed all of the potential
 *parameters* you can set for this tool.
 
-{% include figure.html src="../images/fig-7-command-prompt-typing-help.png" caption="Figure 7: The Help Menu in MALLET" %}
+{% include figure.html filename="fig-7-command-prompt-typing-help.png" caption="Figure 7: The Help Menu in MALLET" %}
 
 Note: there is a difference in MALLET commands between a single hyphen
 and a double hyphen. A single hyphen is simply part of the name; it
@@ -338,11 +347,10 @@ below import the directory, turn it into a MALLET file, keep the
 original texts in the order in which they were listed, and strip out the
 *stop words* (words such as *and*, *the*, *but*, and *if* that occur in
 such frequencies that they obstruct analysis) using the default English
-`stop-words` dictionary. Try the following (swapping in the correct
-pathway to the sample data).
+`stop-words` dictionary. Try the following, which will use sample data.
 
 ``` 
-bin\mallet import-dir --input pathway\to\the\directory\with\the\files --output tutorial.mallet --keep-sequence --remove-stopwords
+bin\mallet import-dir --input sample-data\web\en --output tutorial.mallet --keep-sequence --remove-stopwords
 ```
 
 If you type `dir` now (or `ls` for Mac), you will find a file called
@@ -350,6 +358,16 @@ If you type `dir` now (or `ls` for Mac), you will find a file called
 up key on your keyboard to recall the last command you typed, and look
 carefully for typos). This file now contains all of your data, in a
 format that MALLET can work with.
+
+Try running it again now with different data. For example, let's imagine we wanted to use the German sample data instead. We would use:
+
+``` 
+bin\mallet import-dir --input sample-data\web\de --output tutorial.mallet --keep-sequence --remove-stopwords
+```
+
+And then finally, you could use your own data. Change `sample-data\web\de` to a directory that contains your own research files. Good luck!
+
+If you are unsure how directories work, we suggest the *Programming Historian* lesson ["Introduction to the Bash Command Line"](http://programminghistorian.org/lessons/intro-to-bash). 
 
 ### For Mac
 
@@ -379,8 +397,9 @@ If your system has more memory, you can try increasing the memory
 allocated to your *Java virtual machine*. To do so, you need to edit the
 code in the `mallet` file found in the `bin` subdirectory of your
 MALLET folder. Using Komodo Edit, (See [Mac][],
-[Windows,][Mac][Linux][Mac] for installation instructions), open the
-`Mallet.bat` file (`C:\Mallet\bin\mallet.bat`).
+[Windows][], [Linux][] for installation instructions), open the
+`Mallet.bat` file (`C:\Mallet\bin\mallet.bat`) if you are using Windows,
+or the `mallet` file (`~/Mallet/bin/mallet`) if you are using Linux or OS X.
 
 Find the following line:
 
@@ -408,7 +427,7 @@ the routine, trying to find the best division of words into topics, your
 command prompt window will fill with output from each run. When it is
 done, you can scroll up to see what it was outputting (as in Figure 8).
 
-{% include figure.html src="../images/fig-8-basic-topic-model-output.png" caption="Figure 8: Basic Topic Model Output" %}
+{% include figure.html filename="fig-8-basic-topic-model-output.png" caption="Figure 8: Basic Topic Model Output" %}
 
 The computer is printing out the key words, the words that help define a
 statistically significant topic, per the routine. In Figure 8, the first
@@ -466,7 +485,7 @@ the topic. This is related to an option which we did not run, and so its
 default value was used (this is why every topic in this file has the
 number 2.5).
 
-{% include figure.html src="../images/fig-9-tutorial-key-words-in-Word.png" caption="Figure 9: Keywords Shown in a Word Processor" %}
+{% include figure.html filename="fig-9-tutorial-key-words-in-Word.png" caption="Figure 9: Keywords Shown in a Word Processor" %}
 
 If when you ran the topic model routine you had included
 
@@ -499,7 +518,7 @@ etc). You will have a spreadsheet with a \#doc, source, topic,
 proportion columns. All subsequent columns run topic, proportion, topic,
 proportion, etc., as in figure 10.
 
-{% include figure.html src="../images/fig-10-topic-composition.png" caption="Figure 10: Topic Composition" %}
+{% include figure.html filename="fig-10-topic-composition.png" caption="Figure 10: Topic Composition" %}
 
 You can see that doc\# 0 (ie, the first document loaded into MALLET),
 `elizabeth_needham.txt` has topic 2 as its principal topic, at about
@@ -573,7 +592,7 @@ report.
     'Methods' section is especially important, in that it discusses
     preparing text for this sort of analysis.
 
-  [Command Line Bootcamp]: http://praxis.scholarslab.org/tutorials/bash/
+  [Bash Command Line]: http://programminghistorian.org/lessons/intro-to-bash
   [discussion list]: http://mallet.cs.umass.edu/mailinglist.php
   [Distant Reading]: http://www.cs.umbc.edu/~hillol/NGDM07/abstracts/talks/MKirschenbaum.pdf
   [Reading Machines]: http://www.worldcat.org/title/reading-machines-toward-an-algorithmic-criticism/oclc/708761605&referer=brief_results
@@ -585,7 +604,7 @@ report.
   [Topic Modeling Martha Ballard's Diary]: http://historying.org/2010/04/01/topic-modeling-martha-ballards-diary/
   [MALLET]: http://mallet.cs.umass.edu/index.php
   [*Gibbs sampling*]: http://en.wikipedia.org/wiki/Gibbs_sampling
-  [`download MALLET`]: http://mallet.cs.umass.edu/download.php
+  [`download MALLET`]: http://mallet.cs.umass.edu/dist/mallet-2.0.7.tar.gz
   [Java developer's kit]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
   [automate this process]: http://electricarchaeology.ca/2012/07/09/mining-a-day-of-archaeology/
   [Mining the Open Web with Looted Heritage Draft]: http://electricarchaeology.ca/2012/06/08/mining-the-open-web-with-looted-heritage-draft/
@@ -597,3 +616,6 @@ report.
   [Latent dirichlet allocation]: http://dl.acm.org/citation.cfm?id=944937
   [bibliography of topic modeling articles]: http://mimno.infosci.cornell.edu/topics.html
   [Computational Historiography]: http://www.perseus.tufts.edu/publications/02-jocch-mimno.pdf
+  [Windows]: /lessons/windows-installation
+  [Mac]: /lessons/mac-installation
+  [Linux]: /lessons/linux-installation
