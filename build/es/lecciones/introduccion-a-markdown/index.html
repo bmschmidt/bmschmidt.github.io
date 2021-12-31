@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/es/lecciones/introduccion-a-markdown"),
+					params: {lang:"es",lessons:"lecciones",slug:"introduccion-a-markdown"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the es edition.
+
+<h1>Introducción a Markdown
+</h1>
+
+<!-- HTML_TAG_START --><h2 id="introducción-a-markdown">Introducción a Markdown</h2>
+<h3 id="objetivos-de-la-lección">Objetivos de la lección</h3>
+<p>En esta lección se ofrece una introducción a Markdown, un lenguaje de marcado con sintaxis en texto plano para generar textos con formato. Descubrirás el porqué se utiliza, cómo dar formato a los archivos de Markdown y cómo obtener una vista previa en la web de los documentos formados con Markdown.</p>
+<p>Dado que las lecciones de <em>The Programming Historian en español</em> deben ser enviadas como archivos Markdown, hemos incluido ejemplos específicos de <em>PH</em> en la medida de lo posible. Espero que esta guía sea útil si estás considerando contribuir con una lección en este sitio.</p>
+<h3 id="¿qué-es-markdown">¿Qué es Markdown?</h3>
+<p>Markdown fue desarrollado en 2004 por <a href="http://daringfireball.net/projects/markdown/">John Gruber</a>, y se refiere tanto a (1) una manera de formar archivos de texto, como a (2) una utilidad del lenguaje de programación Perl para convertir archivos Markdown en HTML. En esta lección nos centraremos en la primera acepción y aprenderemos a escribir archivos utilizando la sintaxis de Markdown.</p>
+<p>Los archivos de texto plano tienen muchas ventajas sobre otro tipo de formato. Por un lado, se pueden leer prácticamente en todos los dispositivos. También han resistido la prueba del paso del tiempo mejor que otro tipo de archivos -si alguna vez has intentado abrir un documento guardado en un formato de <a href="https://es.wikipedia.org/wiki/Sistema_heredado">procesador de textos heredado</a>, estarás familiarizado con los problemas de compatibilidad que implican-.</p>
+<p>Al utilizar la sintaxis de Markdown, serás capaz de producir archivos que pueden ser legibles como texto plano y que a la vez están listos para ser formados en otras plataformas. Muchos generadores de bitácoras y de sitios estáticos, así como sitios como GitHub, también aceptan Markdown y traducen estos archivos a HTML para su visualización en la web. Además, herramientas como Pandoc pueden convertir archivos en o desde Markdown. Para más información sobre Pandoc puedes consultar la lección sobre <a href="/es/lecciones/escritura-sostenible-usando-pandoc-y-markdown">Escritura sostenible utilizando Pandoc y Markdown</a> de Dennise Tenen y Grant Wythoff.</p>
+<h3 id="sintaxis-en-markdown">Sintaxis en Markdown</h3>
+<p>Los archivos en Markdown se guardan con la extensión <code>.md</code> y se pueden abrir en un editor de texto como TextEdit, Notepad, Sublime Text o Vim. Muchos sitios web o plataformas de publicación también ofrecen editores basados en la web y/o extensiones para introducir texto utilizando la sintaxis de Markdown.</p>
+<p>En este tutorial vamos a practicar la sintaxis de Markdown en el navegador usando <a href="https://stackedit.io/">StackEdit</a>. Podrás introducir texto formado en Markdown a la izquierda e inmediatamente ver la versión traducida junto a él a la derecha.</p>
+<p>Dado que todas las lecciones de <em>The Programming Historian</em> están escritas en Markdown, también podemos examinar sus archivos en StackEdit. Copia el texto en formato markdown de la lección <a href="/es/lecciones/introduccion-a-bash">Introducción a la línea de comandos en Bash</a> en el siguiente enlace: </p>
+<pre><code>https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/es/lecciones/introduccion-a-bash.md
+</code></pre>
+<p>Accede al <a href="https://stackedit.io/">editor de StackEdit</a> haciendo click en &quot;start writing&quot; (empezar a escribir) en la parte superior de la página y pega el texto de la lección.</p>
+<p>Verás que mientras que el panel de la derecha cuenta con una presentación más elegante del texto, el archivo de Markdown a la izquierda es aún bastante legible.</p>
+<p>Vamos a sumergirnos ahora en la lección escribiendo nuestra propia sintaxis de Markdown. Crea un nuevo documento en StackEdit haciendo click en el ícono de la carpeta en la esquina superior derecha seleccionando &quot;New document&quot;. Debes ponerle nombre al documento en la caja de texto en la parte superior de la página.</p>
+<h4 id="encabezados">Encabezados</h4>
+<p>Markdown dispone de cuatro niveles de encabezados definidos por el número de <code>#</code> antes del texto del encabezado. Pega los siguientes ejemplos en la caja de texto de la izquierda:</p>
+<pre><code># Primer nivel de encabezado
+## Segundo nivel de encabezado
+### Tercer nivel de encabezado
+#### Cuarto nivel de encabezado
+</code></pre>
+<p>El primer y segundo nivel de encabezado también se pueden escribir como sigue:</p>
+<pre><code>Primer nivel de encabezado
+==========================
+
+Segundo nivel de encabeado
+--------------------------
+</code></pre>
+<p>Estos se representarán como:</p>
+<h1 id="primer-nivel-de-encabezado">Primer nivel de encabezado</h1>
+<h2 id="segundo-nivel-de-encabezado">Segundo nivel de encabezado</h2>
+<h3 id="tercer-nivel-de-encabezado">Tercer nivel de encabezado</h3>
+<h4 id="cuarto-nivel-de-encabezado">Cuarto nivel de encabezado</h4>
+<h1 id="primer-nivel-de-encabezado-1">Primer nivel de encabezado</h1>
+<h2 id="segundo-nivel-de-encabeado">Segundo nivel de encabeado</h2>
+<p>Observa que la sintaxis de Markdown sigue siendo comprensible aún en la versión de texto plano.</p>
+<h4 id="párrafos-y-saltos-de-línea">Párrafos y saltos de línea</h4>
+<p>Escribe la siguiente frase en la caja de texto:</p>
+<pre><code>¡Bienvenidos a *The Programming Historian en español*!
+
+Hoy aprenderemos la sintaxis de Mardown.
+Esta frase está separada de la anterior por un solo salto de línea.
+</code></pre>
+<p><strong>Esto queda representado como:</strong></p>
+<p>¡Bienvenidos a <em>The Programming Historian en español</em>!</p>
+<p>Hoy aprenderemos la sintaxis de Markdown.
+Ésta frase esta separada de la anterior por un solo salto de línea.</p>
+<p>Los párrafos deben estar separados por una línea vacía. Deja una línea entre la que contiene <code>Markdown.</code> y <code>Ésta</code> para que veas cómo trabaja. Los saltos de línea sencillos deben indicarse con dos espacios en blanco en algunas implementaciones de Markdown. Esto no es necesario en la variente de <a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a>, que es la que utiliza por defecto StackEdit.</p>
+<h4 id="añadir-énfasis">Añadir énfasis</h4>
+<p>El texto se puede poner en cursivas encerrándolo entre los símbolos <code>*</code> o <code>-</code>. De la misma forma, el texto en negritas se escribe encerrando la palabra entre <code>**</code>o <code>__</code>.</p>
+<p>Añade énfasis a una frase utilizando estos métodos:</p>
+<pre><code>¡Estoy **muy** entusiasmado con los tutoriales de _The Programming Historian en español_!
+</code></pre>
+<p>Lo cual queda representado así:</p>
+<p>¡Estoy <strong>muy</strong> entusiasmado con los tutoriales de <em>The Programming Historian en español</em>!</p>
+<h4 id="listados">Listados</h4>
+<p>Markdown soporta la creación de listas ordenadas y sin ordenar. Escribe la siguiente lista dentro de la caja de texto:</p>
+<pre><code>Lista de compras
+---------------
+* Frutas
+  * Manzanas
+  * Naranjas
+  * Uvas
+* Lácteos
+  * Leche
+  * Queso
+</code></pre>
+<p>Poner sangría al <code>*</code> te permite crear listas anidadas.</p>
+<p><strong>Esto se depliega así:</strong></p>
+<h2 id="lista-de-compras">Lista de compras</h2>
+<ul>
+<li>Frutas<ul>
+<li>Manzanas</li>
+<li>Naranjas</li>
+<li>Uvas</li>
+</ul>
+</li>
+<li>Lácteos<ul>
+<li>Leche</li>
+<li>Queso</li>
+</ul>
+</li>
+</ul>
+<p>Las listas ordenadas se escriben numerando cada línea. Una vez más, el objetivo de Markdown es producir documentos que sean legibles como texto plano y que a la vez puedan traducirse a otros formatos.</p>
+<pre><code>Lista de pendientes
+------------------
+1. Terminar el tutorial de Markdown
+2. Ir a la tienda de abarrotes
+3. Preparar el almuerzo
+</code></pre>
+<p>Lo cual se visualiza de la siguiente manera:</p>
+<h2 id="lista-de-pendientes">Lista de pendientes</h2>
+<ol>
+<li>Terminar el tutorial de Markdown</li>
+<li>Ir a la tienda de abarrotes</li>
+<li>Preparar el almuerzo</li>
+</ol>
+<h4 id="fragmentos-de-código-snippets">Fragmentos de código (<em>snippets</em>)</h4>
+<p>Representar fragmentos de código en forma distinta al resto del documento es una buena práctica que lo hace más legible. La escritura de código se representa generalmente a espacio sencillo. Dado que Markdown no distingue las tipografías involucradas, representamos los fragmentos de código encerrados entre dos signos de acento grave <code>`</code>. Por ejemplo: <code>`&lt;br/&gt;`</code>. Cuando queremos representar un bloque completo de código lo debemos encerrar entre dos líneas de tres acentos graves. En la ventana de vista previa de StackEdit esto se representará como una caja de texto sombreada y escrita a espacio seguido.</p>
+<p>Escribe lo siguiente en la caja de texto:</p>
+<pre><code>```html
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Título del sitio Web&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+```
+</code></pre>
+<p><strong>Y se representará así:</strong></p>
+<pre><code>    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Título del sitio Web&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+<p>Observa cómo el bloque de código se representa a renglón seguido.</p>
+<h4 id="bloque-de-citas">Bloque de citas</h4>
+<p>Escribe el siguiente texto en la caja de texto:</p>
+<pre><code>&gt; Hola. Éste es un párrafo de texto incluido en un bloque de cita. Fíjate que tengo una sangría con respecto al margen izquierdo.
+</code></pre>
+<p>Lo cual se representará:</p>
+<blockquote>
+<p>Hola. Éste es un párrafo de texto incluido como un bloque de cita textual. Fíjate que tengo una sangría con respecto al margen izquierdo.</p>
+</blockquote>
+<h4 id="enlaces-de-internet">Enlaces de Internet</h4>
+<p>Los enlaces de Internet se pueden escribir de dos maneras.</p>
+<p>El título del enlace se encierra primero entre corchetes y después se incluye la dirección completa del URL entre paréntesis.</p>
+<p><code>Para más tutoriales visita la página [The Programming Historian en español](/es).</code></p>
+<p><strong>Lo cual se representa así:</strong></p>
+<p>Para más tutoriales visita la página <a href="/es">The Programming Historian en español</a>.</p>
+<p>Los enlaces también se utilizan para crear notas a pie de página y son útiles porque, además, ayudan a mantener más ordenado tu documento en texto plano. Las notas a pie se escriben con un par adicional de corchetes con el número de referencia para establecer el vínculo que identifique la etiqueta.</p>
+<p><code>Un ejemplo es el sitio *[The Programming Historian en español][1]*</code></p>
+<p>Entonces puedes incluir el URL en otra parte del documento:</p>
+<p><code>[1]: http://programminghistorian.org/</code></p>
+<p>Lo cual se despliega de la siguiente manera:</p>
+<p>Un ejemplo es el sitio <em><a href="http://programminghistorian.org/">The Programming Historian en español</a></em></p>
+<h4 id="imágenes">Imágenes</h4>
+<p>Se pueden referir las imágenes mediante el uso de <code>!</code>, seguido de un texto alternativo entre corchetes, seguido a su vez por el URL de la imagen y un título opcional entre comillas. Esto no se representará como texto en tu documento pero te permitirá incluir la imagen en la visualización de una página en HTML.</p>
+<p><code>![Logo de Wikipedia](https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg &quot;Wikipedia logo&quot;)</code></p>
+<p><strong>Esto aparece como:</strong></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="Logo de Wikipedia" title="Wikipedia logo"></p>
+<h4 id="reglas-y-líneas-horizontales">Reglas y líneas horizontales</h4>
+<p>Puedes incluir líneas horizontales si escribes en una misma línea cualquiera de los siguientes tres signos: <code>-</code>. <code>*</code> o <code>_</code>, sin importar los espacios que dejes entre ellos. Cualquiera de estas combinaciones generarán una línea horizontal:</p>
+<pre><code>___
+* * *
+- - - - - -
+</code></pre>
+<p>Es decir:</p>
+<hr>
+<hr>
+<hr>
+<h4 id="tablas">Tablas</h4>
+<p>La versión básica de Markdown no incluye tablas; sin embargo, algunos sitios web y aplicaciones usan variantes de Markdown que pueden incluir tablas y otras características especiales. <a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a> es una de estas variantes y es utilizado para visualizar archivos <code>.md</code> en el navegador del sitio de GitHub.</p>
+<p>Para crear una tabla en GitHub, usa barras verticales <code>|</code>para separar columnas y guiones entre los encabezados y el resto del contenido de la tabla. Dado que las barras verticales son sólo estrictamente necesarias entre columnas, puedes usarlas en los extremos de la tabla para darle una vista más acabada. Las celdas pueden tener contenido de cualquier extensión, y no es necesario que las barras verticales estén alineadas verticalmente entre sí.</p>
+<pre><code>| Encabezado 1 | Encabezado 2 | Encabezado 3 |
+| --------- | --------- | --------- |
+| renglón 1, columna 1 | renglón 1, columna 2 | renglón 1, columna 3|
+| renglón 2, columna 1 | renglón 2, columna 2 | renglón 2, columna 3|
+| renglón 3, columna 1 | renglón 3, columna 2 | renglón 3, columna 3|
+</code></pre>
+<p><strong>Esto se visualiza así:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Encabezado 1</th>
+<th>Encabezado 2</th>
+<th>Encabezado 3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>renglón 1, columna 1</td>
+<td>renglón 1, columna 2</td>
+<td>renglón 1, columna 3</td>
+</tr>
+<tr>
+<td>renglón 2, columna 1</td>
+<td>renglón 2, columna 2</td>
+<td>renglón 2, columna 3</td>
+</tr>
+<tr>
+<td>renglón 3, columna 1</td>
+<td>renglón 3, columna 2</td>
+<td>renglón 3, columna 3</td>
+</tr>
+</tbody></table>
+<p>Para especificar la alineación del contenido de cada columna se pueden agregar dos puntos <code>:</code>al renglón de los encabezados como sigue:</p>
+<pre><code>| Alineado-izquierda | Centrado | Alineado-derecha |
+| :-------- | :-------: | --------: |
+| Manzanas | rojo | 5000 |
+| Plátanos | amarillo | 75 |
+</code></pre>
+<p>Lo cual se representa de este modo:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Alineado-izquierda</th>
+<th align="center">Centrado</th>
+<th align="right">Alineado-derecha</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Manzanas</td>
+<td align="center">rojo</td>
+<td align="right">5000</td>
+</tr>
+<tr>
+<td align="left">Plátanos</td>
+<td align="center">amarillo</td>
+<td align="right">75</td>
+</tr>
+</tbody></table>
+<h3 id="limitaciones-de-markdown">Limitaciones de Markdown</h3>
+<p>Aunque Markdown se está haciendo cada vez más popular, particularmente para los documentos con formato que se pueden ver en la web, muchas persones y editores siguen solicitando archivos tradicionales en Word, PDF y otros formatos. Esto puede arreglarse en parte utilizando herramientas de conversión en línea como <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>. No obstante, algunas características de los procesadores de texto, como la de control de cambios, no tienen soporte aún. Por favor, visita la lección de Programming Historian en español sobre <a href="/es/lecciones/escritura-sostenible-usando-pandoc-y-markdown">Escritura sostenible en texto plano usando Pandoc y Markdown</a> para mayor información sobre Pandoc.</p>
+<h3 id="conclusiones">Conclusiones</h3>
+<p>Markdown es un término medio muy útil entre los archivos de texto plano sin estilo y los documentos de procesadores de texto heredados. Su sintaxis simple se aprende rápidamente y es altamente legible en el mismo documento y cuando se transforma en HTML u otro tipo de documentos. En conclusión, escribir tus documentos en Markdown significa que serán capaces de ser utilizados y leídos a largo plazo.</p>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="introduccion-a-markdown/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Introducción a Markdown\\n\",\"authors\":[\"Sarah Simpkin\"],\"date\":\"2015-11-13T00:00:00.000Z\",\"translation_date\":\"2017-07-31T00:00:00.000Z\",\"editors\":[\"Ian Milligan\"],\"reviewers\":[\"John Fink\",\"Nancy Lemay\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Maria José Afanador-Llach\"],\"translation-reviewer\":[\"Juan Cobo\",\"Maria José Afanador-Llach\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F56\",\"difficulty\":1,\"activity\":\"presenting\",\"layout\":\"lesson\",\"topics\":[\"data-management\"],\"abstract\":\"En esta lección se ofrece una introducción a Markdown, un lenguaje de marcado con sintaxis en texto plano para generar textos con formato. Descubrirás el porqué se utiliza, cómo dar formato a los archivos de Markdown y cómo obtener una vista previa en la web de los documentos formados con Markdown.\",\"original\":\"getting-started-with-markdown\",\"avatar_alt\":\"Tipografía de varias consonantes\",\"doi\":\"10.46430\u002Fphes0014\"},\"html_body\":\"\u003Ch2 id=\\\"introducción-a-markdown\\\"\u003EIntroducción a Markdown\u003C\u002Fh2\u003E\\n\u003Ch3 id=\\\"objetivos-de-la-lección\\\"\u003EObjetivos de la lección\u003C\u002Fh3\u003E\\n\u003Cp\u003EEn esta lección se ofrece una introducción a Markdown, un lenguaje de marcado con sintaxis en texto plano para generar textos con formato. Descubrirás el porqué se utiliza, cómo dar formato a los archivos de Markdown y cómo obtener una vista previa en la web de los documentos formados con Markdown.\u003C\u002Fp\u003E\\n\u003Cp\u003EDado que las lecciones de \u003Cem\u003EThe Programming Historian en español\u003C\u002Fem\u003E deben ser enviadas como archivos Markdown, hemos incluido ejemplos específicos de \u003Cem\u003EPH\u003C\u002Fem\u003E en la medida de lo posible. Espero que esta guía sea útil si estás considerando contribuir con una lección en este sitio.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"¿qué-es-markdown\\\"\u003E¿Qué es Markdown?\u003C\u002Fh3\u003E\\n\u003Cp\u003EMarkdown fue desarrollado en 2004 por \u003Ca href=\\\"http:\u002F\u002Fdaringfireball.net\u002Fprojects\u002Fmarkdown\u002F\\\"\u003EJohn Gruber\u003C\u002Fa\u003E, y se refiere tanto a (1) una manera de formar archivos de texto, como a (2) una utilidad del lenguaje de programación Perl para convertir archivos Markdown en HTML. En esta lección nos centraremos en la primera acepción y aprenderemos a escribir archivos utilizando la sintaxis de Markdown.\u003C\u002Fp\u003E\\n\u003Cp\u003ELos archivos de texto plano tienen muchas ventajas sobre otro tipo de formato. Por un lado, se pueden leer prácticamente en todos los dispositivos. También han resistido la prueba del paso del tiempo mejor que otro tipo de archivos -si alguna vez has intentado abrir un documento guardado en un formato de \u003Ca href=\\\"https:\u002F\u002Fes.wikipedia.org\u002Fwiki\u002FSistema_heredado\\\"\u003Eprocesador de textos heredado\u003C\u002Fa\u003E, estarás familiarizado con los problemas de compatibilidad que implican-.\u003C\u002Fp\u003E\\n\u003Cp\u003EAl utilizar la sintaxis de Markdown, serás capaz de producir archivos que pueden ser legibles como texto plano y que a la vez están listos para ser formados en otras plataformas. Muchos generadores de bitácoras y de sitios estáticos, así como sitios como GitHub, también aceptan Markdown y traducen estos archivos a HTML para su visualización en la web. Además, herramientas como Pandoc pueden convertir archivos en o desde Markdown. Para más información sobre Pandoc puedes consultar la lección sobre \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fescritura-sostenible-usando-pandoc-y-markdown\\\"\u003EEscritura sostenible utilizando Pandoc y Markdown\u003C\u002Fa\u003E de Dennise Tenen y Grant Wythoff.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"sintaxis-en-markdown\\\"\u003ESintaxis en Markdown\u003C\u002Fh3\u003E\\n\u003Cp\u003ELos archivos en Markdown se guardan con la extensión \u003Ccode\u003E.md\u003C\u002Fcode\u003E y se pueden abrir en un editor de texto como TextEdit, Notepad, Sublime Text o Vim. Muchos sitios web o plataformas de publicación también ofrecen editores basados en la web y\u002Fo extensiones para introducir texto utilizando la sintaxis de Markdown.\u003C\u002Fp\u003E\\n\u003Cp\u003EEn este tutorial vamos a practicar la sintaxis de Markdown en el navegador usando \u003Ca href=\\\"https:\u002F\u002Fstackedit.io\u002F\\\"\u003EStackEdit\u003C\u002Fa\u003E. Podrás introducir texto formado en Markdown a la izquierda e inmediatamente ver la versión traducida junto a él a la derecha.\u003C\u002Fp\u003E\\n\u003Cp\u003EDado que todas las lecciones de \u003Cem\u003EThe Programming Historian\u003C\u002Fem\u003E están escritas en Markdown, también podemos examinar sus archivos en StackEdit. Copia el texto en formato markdown de la lección \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fintroduccion-a-bash\\\"\u003EIntroducción a la línea de comandos en Bash\u003C\u002Fa\u003E en el siguiente enlace: \u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ehttps:\u002F\u002Fraw.githubusercontent.com\u002Fprogramminghistorian\u002Fjekyll\u002Fgh-pages\u002Fes\u002Flecciones\u002Fintroduccion-a-bash.md\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAccede al \u003Ca href=\\\"https:\u002F\u002Fstackedit.io\u002F\\\"\u003Eeditor de StackEdit\u003C\u002Fa\u003E haciendo click en &quot;start writing&quot; (empezar a escribir) en la parte superior de la página y pega el texto de la lección.\u003C\u002Fp\u003E\\n\u003Cp\u003EVerás que mientras que el panel de la derecha cuenta con una presentación más elegante del texto, el archivo de Markdown a la izquierda es aún bastante legible.\u003C\u002Fp\u003E\\n\u003Cp\u003EVamos a sumergirnos ahora en la lección escribiendo nuestra propia sintaxis de Markdown. Crea un nuevo documento en StackEdit haciendo click en el ícono de la carpeta en la esquina superior derecha seleccionando &quot;New document&quot;. Debes ponerle nombre al documento en la caja de texto en la parte superior de la página.\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"encabezados\\\"\u003EEncabezados\u003C\u002Fh4\u003E\\n\u003Cp\u003EMarkdown dispone de cuatro niveles de encabezados definidos por el número de \u003Ccode\u003E#\u003C\u002Fcode\u003E antes del texto del encabezado. Pega los siguientes ejemplos en la caja de texto de la izquierda:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Primer nivel de encabezado\\n## Segundo nivel de encabezado\\n### Tercer nivel de encabezado\\n#### Cuarto nivel de encabezado\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEl primer y segundo nivel de encabezado también se pueden escribir como sigue:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EPrimer nivel de encabezado\\n==========================\\n\\nSegundo nivel de encabeado\\n--------------------------\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEstos se representarán como:\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"primer-nivel-de-encabezado\\\"\u003EPrimer nivel de encabezado\u003C\u002Fh1\u003E\\n\u003Ch2 id=\\\"segundo-nivel-de-encabezado\\\"\u003ESegundo nivel de encabezado\u003C\u002Fh2\u003E\\n\u003Ch3 id=\\\"tercer-nivel-de-encabezado\\\"\u003ETercer nivel de encabezado\u003C\u002Fh3\u003E\\n\u003Ch4 id=\\\"cuarto-nivel-de-encabezado\\\"\u003ECuarto nivel de encabezado\u003C\u002Fh4\u003E\\n\u003Ch1 id=\\\"primer-nivel-de-encabezado-1\\\"\u003EPrimer nivel de encabezado\u003C\u002Fh1\u003E\\n\u003Ch2 id=\\\"segundo-nivel-de-encabeado\\\"\u003ESegundo nivel de encabeado\u003C\u002Fh2\u003E\\n\u003Cp\u003EObserva que la sintaxis de Markdown sigue siendo comprensible aún en la versión de texto plano.\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"párrafos-y-saltos-de-línea\\\"\u003EPárrafos y saltos de línea\u003C\u002Fh4\u003E\\n\u003Cp\u003EEscribe la siguiente frase en la caja de texto:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E¡Bienvenidos a *The Programming Historian en español*!\\n\\nHoy aprenderemos la sintaxis de Mardown.\\nEsta frase está separada de la anterior por un solo salto de línea.\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EEsto queda representado como:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E¡Bienvenidos a \u003Cem\u003EThe Programming Historian en español\u003C\u002Fem\u003E!\u003C\u002Fp\u003E\\n\u003Cp\u003EHoy aprenderemos la sintaxis de Markdown.\\nÉsta frase esta separada de la anterior por un solo salto de línea.\u003C\u002Fp\u003E\\n\u003Cp\u003ELos párrafos deben estar separados por una línea vacía. Deja una línea entre la que contiene \u003Ccode\u003EMarkdown.\u003C\u002Fcode\u003E y \u003Ccode\u003EÉsta\u003C\u002Fcode\u003E para que veas cómo trabaja. Los saltos de línea sencillos deben indicarse con dos espacios en blanco en algunas implementaciones de Markdown. Esto no es necesario en la variente de \u003Ca href=\\\"https:\u002F\u002Fhelp.github.com\u002Farticles\u002Fgithub-flavored-markdown\u002F\\\"\u003EGitHub Flavored Markdown\u003C\u002Fa\u003E, que es la que utiliza por defecto StackEdit.\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"añadir-énfasis\\\"\u003EAñadir énfasis\u003C\u002Fh4\u003E\\n\u003Cp\u003EEl texto se puede poner en cursivas encerrándolo entre los símbolos \u003Ccode\u003E*\u003C\u002Fcode\u003E o \u003Ccode\u003E-\u003C\u002Fcode\u003E. De la misma forma, el texto en negritas se escribe encerrando la palabra entre \u003Ccode\u003E**\u003C\u002Fcode\u003Eo \u003Ccode\u003E__\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EAñade énfasis a una frase utilizando estos métodos:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E¡Estoy **muy** entusiasmado con los tutoriales de _The Programming Historian en español_!\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELo cual queda representado así:\u003C\u002Fp\u003E\\n\u003Cp\u003E¡Estoy \u003Cstrong\u003Emuy\u003C\u002Fstrong\u003E entusiasmado con los tutoriales de \u003Cem\u003EThe Programming Historian en español\u003C\u002Fem\u003E!\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"listados\\\"\u003EListados\u003C\u002Fh4\u003E\\n\u003Cp\u003EMarkdown soporta la creación de listas ordenadas y sin ordenar. Escribe la siguiente lista dentro de la caja de texto:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003ELista de compras\\n---------------\\n* Frutas\\n  * Manzanas\\n  * Naranjas\\n  * Uvas\\n* Lácteos\\n  * Leche\\n  * Queso\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EPoner sangría al \u003Ccode\u003E*\u003C\u002Fcode\u003E te permite crear listas anidadas.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cstrong\u003EEsto se depliega así:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lista-de-compras\\\"\u003ELista de compras\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EFrutas\u003Cul\u003E\\n\u003Cli\u003EManzanas\u003C\u002Fli\u003E\\n\u003Cli\u003ENaranjas\u003C\u002Fli\u003E\\n\u003Cli\u003EUvas\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003ELácteos\u003Cul\u003E\\n\u003Cli\u003ELeche\u003C\u002Fli\u003E\\n\u003Cli\u003EQueso\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003ELas listas ordenadas se escriben numerando cada línea. Una vez más, el objetivo de Markdown es producir documentos que sean legibles como texto plano y que a la vez puedan traducirse a otros formatos.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003ELista de pendientes\\n------------------\\n1. Terminar el tutorial de Markdown\\n2. Ir a la tienda de abarrotes\\n3. Preparar el almuerzo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELo cual se visualiza de la siguiente manera:\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lista-de-pendientes\\\"\u003ELista de pendientes\u003C\u002Fh2\u003E\\n\u003Col\u003E\\n\u003Cli\u003ETerminar el tutorial de Markdown\u003C\u002Fli\u003E\\n\u003Cli\u003EIr a la tienda de abarrotes\u003C\u002Fli\u003E\\n\u003Cli\u003EPreparar el almuerzo\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Ch4 id=\\\"fragmentos-de-código-snippets\\\"\u003EFragmentos de código (\u003Cem\u003Esnippets\u003C\u002Fem\u003E)\u003C\u002Fh4\u003E\\n\u003Cp\u003ERepresentar fragmentos de código en forma distinta al resto del documento es una buena práctica que lo hace más legible. La escritura de código se representa generalmente a espacio sencillo. Dado que Markdown no distingue las tipografías involucradas, representamos los fragmentos de código encerrados entre dos signos de acento grave \u003Ccode\u003E`\u003C\u002Fcode\u003E. Por ejemplo: \u003Ccode\u003E`&lt;br\u002F&gt;`\u003C\u002Fcode\u003E. Cuando queremos representar un bloque completo de código lo debemos encerrar entre dos líneas de tres acentos graves. En la ventana de vista previa de StackEdit esto se representará como una caja de texto sombreada y escrita a espacio seguido.\u003C\u002Fp\u003E\\n\u003Cp\u003EEscribe lo siguiente en la caja de texto:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E```html\\n&lt;html&gt;\\n    &lt;head&gt;\\n        &lt;title&gt;Título del sitio Web&lt;\u002Ftitle&gt;\\n    &lt;\u002Fhead&gt;\\n    &lt;body&gt;\\n    &lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;\\n```\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EY se representará así:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E    &lt;html&gt;\\n        &lt;head&gt;\\n            &lt;title&gt;Título del sitio Web&lt;\u002Ftitle&gt;\\n        &lt;\u002Fhead&gt;\\n        &lt;body&gt;\\n        &lt;\u002Fbody&gt;\\n    &lt;\u002Fhtml&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EObserva cómo el bloque de código se representa a renglón seguido.\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"bloque-de-citas\\\"\u003EBloque de citas\u003C\u002Fh4\u003E\\n\u003Cp\u003EEscribe el siguiente texto en la caja de texto:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E&gt; Hola. Éste es un párrafo de texto incluido en un bloque de cita. Fíjate que tengo una sangría con respecto al margen izquierdo.\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELo cual se representará:\u003C\u002Fp\u003E\\n\u003Cblockquote\u003E\\n\u003Cp\u003EHola. Éste es un párrafo de texto incluido como un bloque de cita textual. Fíjate que tengo una sangría con respecto al margen izquierdo.\u003C\u002Fp\u003E\\n\u003C\u002Fblockquote\u003E\\n\u003Ch4 id=\\\"enlaces-de-internet\\\"\u003EEnlaces de Internet\u003C\u002Fh4\u003E\\n\u003Cp\u003ELos enlaces de Internet se pueden escribir de dos maneras.\u003C\u002Fp\u003E\\n\u003Cp\u003EEl título del enlace se encierra primero entre corchetes y después se incluye la dirección completa del URL entre paréntesis.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003EPara más tutoriales visita la página [The Programming Historian en español](\u002Fes).\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cstrong\u003ELo cual se representa así:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EPara más tutoriales visita la página \u003Ca href=\\\"\u002Fes\\\"\u003EThe Programming Historian en español\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003ELos enlaces también se utilizan para crear notas a pie de página y son útiles porque, además, ayudan a mantener más ordenado tu documento en texto plano. Las notas a pie se escriben con un par adicional de corchetes con el número de referencia para establecer el vínculo que identifique la etiqueta.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003EUn ejemplo es el sitio *[The Programming Historian en español][1]*\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EEntonces puedes incluir el URL en otra parte del documento:\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003E[1]: http:\u002F\u002Fprogramminghistorian.org\u002F\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003ELo cual se despliega de la siguiente manera:\u003C\u002Fp\u003E\\n\u003Cp\u003EUn ejemplo es el sitio \u003Cem\u003E\u003Ca href=\\\"http:\u002F\u002Fprogramminghistorian.org\u002F\\\"\u003EThe Programming Historian en español\u003C\u002Fa\u003E\u003C\u002Fem\u003E\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"imágenes\\\"\u003EImágenes\u003C\u002Fh4\u003E\\n\u003Cp\u003ESe pueden referir las imágenes mediante el uso de \u003Ccode\u003E!\u003C\u002Fcode\u003E, seguido de un texto alternativo entre corchetes, seguido a su vez por el URL de la imagen y un título opcional entre comillas. Esto no se representará como texto en tu documento pero te permitirá incluir la imagen en la visualización de una página en HTML.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003E![Logo de Wikipedia](https:\u002F\u002Fupload.wikimedia.org\u002Fwikipedia\u002Fen\u002F8\u002F80\u002FWikipedia-logo-v2.svg &quot;Wikipedia logo&quot;)\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cstrong\u003EEsto aparece como:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cimg src=\\\"https:\u002F\u002Fupload.wikimedia.org\u002Fwikipedia\u002Fen\u002F8\u002F80\u002FWikipedia-logo-v2.svg\\\" alt=\\\"Logo de Wikipedia\\\" title=\\\"Wikipedia logo\\\"\u003E\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"reglas-y-líneas-horizontales\\\"\u003EReglas y líneas horizontales\u003C\u002Fh4\u003E\\n\u003Cp\u003EPuedes incluir líneas horizontales si escribes en una misma línea cualquiera de los siguientes tres signos: \u003Ccode\u003E-\u003C\u002Fcode\u003E. \u003Ccode\u003E*\u003C\u002Fcode\u003E o \u003Ccode\u003E_\u003C\u002Fcode\u003E, sin importar los espacios que dejes entre ellos. Cualquiera de estas combinaciones generarán una línea horizontal:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E___\\n* * *\\n- - - - - -\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEs decir:\u003C\u002Fp\u003E\\n\u003Chr\u003E\\n\u003Chr\u003E\\n\u003Chr\u003E\\n\u003Ch4 id=\\\"tablas\\\"\u003ETablas\u003C\u002Fh4\u003E\\n\u003Cp\u003ELa versión básica de Markdown no incluye tablas; sin embargo, algunos sitios web y aplicaciones usan variantes de Markdown que pueden incluir tablas y otras características especiales. \u003Ca href=\\\"https:\u002F\u002Fhelp.github.com\u002Farticles\u002Fgithub-flavored-markdown\u002F\\\"\u003EGitHub Flavored Markdown\u003C\u002Fa\u003E es una de estas variantes y es utilizado para visualizar archivos \u003Ccode\u003E.md\u003C\u002Fcode\u003E en el navegador del sitio de GitHub.\u003C\u002Fp\u003E\\n\u003Cp\u003EPara crear una tabla en GitHub, usa barras verticales \u003Ccode\u003E|\u003C\u002Fcode\u003Epara separar columnas y guiones entre los encabezados y el resto del contenido de la tabla. Dado que las barras verticales son sólo estrictamente necesarias entre columnas, puedes usarlas en los extremos de la tabla para darle una vista más acabada. Las celdas pueden tener contenido de cualquier extensión, y no es necesario que las barras verticales estén alineadas verticalmente entre sí.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E| Encabezado 1 | Encabezado 2 | Encabezado 3 |\\n| --------- | --------- | --------- |\\n| renglón 1, columna 1 | renglón 1, columna 2 | renglón 1, columna 3|\\n| renglón 2, columna 1 | renglón 2, columna 2 | renglón 2, columna 3|\\n| renglón 3, columna 1 | renglón 3, columna 2 | renglón 3, columna 3|\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EEsto se visualiza así:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Ctable\u003E\\n\u003Cthead\u003E\\n\u003Ctr\u003E\\n\u003Cth\u003EEncabezado 1\u003C\u002Fth\u003E\\n\u003Cth\u003EEncabezado 2\u003C\u002Fth\u003E\\n\u003Cth\u003EEncabezado 3\u003C\u002Fth\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Fthead\u003E\\n\u003Ctbody\u003E\u003Ctr\u003E\\n\u003Ctd\u003Erenglón 1, columna 1\u003C\u002Ftd\u003E\\n\u003Ctd\u003Erenglón 1, columna 2\u003C\u002Ftd\u003E\\n\u003Ctd\u003Erenglón 1, columna 3\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003Erenglón 2, columna 1\u003C\u002Ftd\u003E\\n\u003Ctd\u003Erenglón 2, columna 2\u003C\u002Ftd\u003E\\n\u003Ctd\u003Erenglón 2, columna 3\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003Erenglón 3, columna 1\u003C\u002Ftd\u003E\\n\u003Ctd\u003Erenglón 3, columna 2\u003C\u002Ftd\u003E\\n\u003Ctd\u003Erenglón 3, columna 3\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Ftbody\u003E\u003C\u002Ftable\u003E\\n\u003Cp\u003EPara especificar la alineación del contenido de cada columna se pueden agregar dos puntos \u003Ccode\u003E:\u003C\u002Fcode\u003Eal renglón de los encabezados como sigue:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E| Alineado-izquierda | Centrado | Alineado-derecha |\\n| :-------- | :-------: | --------: |\\n| Manzanas | rojo | 5000 |\\n| Plátanos | amarillo | 75 |\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELo cual se representa de este modo:\u003C\u002Fp\u003E\\n\u003Ctable\u003E\\n\u003Cthead\u003E\\n\u003Ctr\u003E\\n\u003Cth align=\\\"left\\\"\u003EAlineado-izquierda\u003C\u002Fth\u003E\\n\u003Cth align=\\\"center\\\"\u003ECentrado\u003C\u002Fth\u003E\\n\u003Cth align=\\\"right\\\"\u003EAlineado-derecha\u003C\u002Fth\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Fthead\u003E\\n\u003Ctbody\u003E\u003Ctr\u003E\\n\u003Ctd align=\\\"left\\\"\u003EManzanas\u003C\u002Ftd\u003E\\n\u003Ctd align=\\\"center\\\"\u003Erojo\u003C\u002Ftd\u003E\\n\u003Ctd align=\\\"right\\\"\u003E5000\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd align=\\\"left\\\"\u003EPlátanos\u003C\u002Ftd\u003E\\n\u003Ctd align=\\\"center\\\"\u003Eamarillo\u003C\u002Ftd\u003E\\n\u003Ctd align=\\\"right\\\"\u003E75\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Ftbody\u003E\u003C\u002Ftable\u003E\\n\u003Ch3 id=\\\"limitaciones-de-markdown\\\"\u003ELimitaciones de Markdown\u003C\u002Fh3\u003E\\n\u003Cp\u003EAunque Markdown se está haciendo cada vez más popular, particularmente para los documentos con formato que se pueden ver en la web, muchas persones y editores siguen solicitando archivos tradicionales en Word, PDF y otros formatos. Esto puede arreglarse en parte utilizando herramientas de conversión en línea como \u003Ca href=\\\"http:\u002F\u002Fjohnmacfarlane.net\u002Fpandoc\u002F\\\"\u003EPandoc\u003C\u002Fa\u003E. No obstante, algunas características de los procesadores de texto, como la de control de cambios, no tienen soporte aún. Por favor, visita la lección de Programming Historian en español sobre \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fescritura-sostenible-usando-pandoc-y-markdown\\\"\u003EEscritura sostenible en texto plano usando Pandoc y Markdown\u003C\u002Fa\u003E para mayor información sobre Pandoc.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"conclusiones\\\"\u003EConclusiones\u003C\u002Fh3\u003E\\n\u003Cp\u003EMarkdown es un término medio muy útil entre los archivos de texto plano sin estilo y los documentos de procesadores de texto heredados. Su sintaxis simple se aprende rápidamente y es altamente legible en el mismo documento y cuando se transforma en HTML u otro tipo de documentos. En conclusión, escribir tus documentos en Markdown significa que serán capaces de ser utilizados y leídos a largo plazo.\u003C\u002Fp\u003E\\n\"}"}</script></div>
+	</body>
+</html>

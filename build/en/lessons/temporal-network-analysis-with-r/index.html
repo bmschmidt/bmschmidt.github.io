@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/temporal-network-analysis-with-r"),
+					params: {lang:"en",lessons:"lessons",slug:"temporal-network-analysis-with-r"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Temporal Network Analysis with R
+</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="introduction">Introduction</h2>
+<p>If you are reading this tutorial, you might already have some experience modeling humanities data as a network. Perhaps you are a historian of religion researching Quaker correspondence networks, in which the nodes represent writers and recipients of letters, and the edges of a network represent epistolary exchanges. Or perhaps you are a historian of art studying a network made up of print designers and engravers, with connections derived from their collaborations on prints. You have probably visualized your static network, and analyzed it, but you may still feel that something is missing or not quite right. Perhaps the network looks larger and more robust than it felt to you as you were piecing it together from your archival sources, or perhaps the centrality measurements of your nodes don&#39;t make much sense when you think about the actual historical circumstances in which they existed.</p>
+<p>The reality is that most historical networks change over time. At certain points they may grow, or shrink, or dissolve completely. Actors or objects enter and exit these networks over the course of their existence. People or things may occupy highly central roles for a brief period of time – perhaps a day, a year, or a decade – but they rarely begin or end their existence within a network in such positions. Wouldn&#39;t it be great if you could reflect these changes and developments in your visualization and analysis of a network?</p>
+<p>Temporal Network Analysis, also known as Temporal Social Network Analysis (TSNA), or Dynamic Network Analysis (DNA), might be just what you&#39;re looking for.</p>
+<p>Temporal Network Analysis is still a pretty new approach in fields outside epidemiology and social network analysis. This tutorial introduces methods for visualizing and analyzing temporal networks using several libraries written for the statistical programming language R. With the rate at which network analysis is developing, there will soon be more user friendly ways to produce similar visualizations and analyses, as well as entirely new metrics of interest. For these reasons, this tutorial focuses as much on the principles behind creating, visualizing, and analyzing temporal networks (the &quot;why&quot;) as it does on the particular technical means by which we achieve these goals (the &quot;how&quot;). It also highlights some of the unhappy oversimplifications that historians may have to make when preparing their data for temporal network analysis, an area where our discipline may actually suggest new directions for temporal network analysis research.</p>
+<p>One of the most basic forms of historical argument is to identify, describe, and analyze changes in a phenomenon or set of phenomena as they occur over a period of time. The premise of this tutorial is that when historians study networks, we should, insofar as it is possible, also be acknowledging and investigating how networks change over time.</p>
+<h2 id="lesson-goals">Lesson Goals</h2>
+<p>In this tutorial you will learn:</p>
+<ul>
+<li><p>The types of data necessary to model a temporal network</p>
+</li>
+<li><p>How to visualize a temporal network using the NDTV package in R</p>
+</li>
+<li><p>How to quantify and visualize some important network-level and node-level metrics that describe temporal networks using the TSNA package in R</p>
+</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This tutorial assumes that you have:</p>
+<ul>
+<li><p>a basic familiarity with static network visualization and analysis, which you can get from excellent tutorials on the Programming Historian such as <a href="/en/lessons/creating-network-diagrams-from-historical-sources">From Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources</a> and <a href="/en/lessons/exploring-and-analyzing-network-data-with-python">Exploring and Analyzing Network Data with Python</a></p>
+</li>
+<li><p>RStudio with R version 3.0 or higher</p>
+</li>
+<li><p>A basic understanding of how R can be used to modify data. You may want to review the excellent tutorial on <a href="/en/lessons/r-basics-with-tabular-data">R Basics with Tabular Data</a>.</p>
+</li>
+</ul>
+<h2 id="packages-for-temporal-network-analysis">Packages for Temporal Network analysis</h2>
+<p>As you follow along with the tutorial, I recommend entering your code into a new R script, which you can save and edit as you work. You can run the current line or selection from this script using a keyboard shortcut (Ctrl+Enter on Windows and Linux, Command+Enter on a Mac).</p>
+<p>In this tutorial we&#39;ll make use of two packages for temporal network analysis. The first, and most important of these, is the <strong>tsna</strong> package. Short for Tools for Temporal Social Network Analysis, <strong>tsna</strong> extends the tools of the <strong>sna</strong> package for for modeling and analyzing longitudinal (a fancy for temporal) networks.</p>
+<p>The second package, <strong>ndtv</strong>, was built to visualize temporal networks. Short for Network Dynamic Temporal Visualizations, <strong>ndtv</strong> renders temporal network data as movies, interactive animations, or other representations of changing relational structures and attributes.</p>
+<p>Both of these packages extend and depend on the <strong>networkDynamic</strong> package, which provides a robust data structure for storing and manipulating temporal network data. It will be automatically installed when you install one of the other two packages, so don&#39;t worry about installing it individually. Mac users take note: to properly install these packages, you may need to install the Xcode command line developer tools if you haven&#39;t already.</p>
+<p>Use the <code>install.packages()</code> function as so:</p>
+<pre><code class="language-r">install.packages(&quot;sna&quot;)
+install.packages(&quot;tsna&quot;)
+install.packages(&quot;ndtv&quot;)
+</code></pre>
+<p>To make sure these packages are installed and loaded when you run your R script, use the <code>library()</code> function at the top of your script:</p>
+<pre><code class="language-r">library(sna)
+library(tsna)
+library(ndtv)
+</code></pre>
+<h2 id="obtaining-your-data">Obtaining Your Data</h2>
+<h3 id="starting-static">Starting Static</h3>
+<p>Let&#39;s say you already have a static network based on an archive of epistolary exchanges or artistic collaborations or enrollment in nineteenth century culinary school courses. Whatever the content of your static network is, we can think of its core data as consisting of two parts:</p>
+<ol>
+<li><p>a node list, which contains every node (or vertex – terms that I will use interchangeably throughout this tutorial)</p>
+</li>
+<li><p>an edge list, which contains every edge between the nodes[^1]</p>
+</li>
+</ol>
+<p>In order to keep this tutorial from getting too abstract, I&#39;ll follow a concrete example from start to finish. This sample data describes collaborations between French Gothic illuminated manuscript workshops between 1260 and 1320.[^2] The node list for this data is just a big list of workshops. The names of these workshops aren&#39;t too important. In a few cases a colophon (a bit of text at the end of a manuscript briefly describing the circumstances of its production) mentions the name of the illuminator. Most of the time, however, they are assigned by modern scholars based on the city or region where a workshop was active, or a famous manuscript that it produced.</p>
+<p>All of the R libraries in this tutorial assume that your network is unimodal – that is, that all of the nodes are the same type of thing, and all of the edges are too. As <a href="http://www.scottbot.net/HIAL/index.html@p=41158.html">Scott Weingart has pointed out</a>, historians frequently begin with multimodal or bimodal data. If you want to produce meaningful quantitative measurements of your network using most available tools, you will have to convert (or &quot;project&quot;) a bimodal network into unimodal data. The sample data for this tutorial is no exception. It started out as list of workshops and the manuscripts to which they contributed. First, I modeled this data as a bimodal network consisting of workshops and manuscripts. Then I projected that bimodal network into a unimodal network, in which each node represents an illuminator or workshop.[^3] Each edge was produced from a manuscript or group of manuscripts to which two or more workshops contributed. For this reason, sometimes one manuscript can appear as multiple edges, and one edge can represent multiple manuscripts.</p>
+<p>The difference between a static network and a temporal one is the amount of information contained in the node and edge lists. In order to convert this static network into a temporal one, you need to add <em>temporal information</em> to these two lists. Basically, we need to supply a span of time that represents the period in which each edge and each node exists.</p>
+<h4 id="edge-lists">Edge Lists</h4>
+<p>An undirected edge list must contain three columns of data: a unique identifier for the edge, a source node (one of the workshops involved), and a target node (another workshop involved) for each edge. Something like this:</p>
+<table>
+<thead>
+<tr>
+<th>edge.id</th>
+<th>tail</th>
+<th>head</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>12</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>17</td>
+</tr>
+<tr>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>142</td>
+<td>97</td>
+<td>73</td>
+</tr>
+</tbody></table>
+<p>In addition to these three pieces of information, a temporal edge list must contain at the very minimum two additional pieces of information: when a link comes into existence, also known as the <code>onset</code> of the edge, and when the edge disappears, or the <code>terminus</code>. The NDTV and TSNA libraries that we are using throughout this tutorial will expect your data to include an onset, terminus, tail, head, and edge id. Depending on how you conceptualize your network, the onset and terminus might be relatively close together, representing the time span of a single event that connects two nodes, or quite far apart, representing the beginning and end of a series of events that represent a relationship. For our manuscript workshops, the temporal edge list looks like this:</p>
+<table>
+<thead>
+<tr>
+<th>onset</th>
+<th>terminus</th>
+<th>tail</th>
+<th>head</th>
+<th>onset.censored</th>
+<th>terminus.censored</th>
+<th>duration</th>
+<th>edge.id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1300.0</td>
+<td>1301.0</td>
+<td>10</td>
+<td>11</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1300.0</td>
+<td>1301.0</td>
+<td>10</td>
+<td>12</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1320.0</td>
+<td>1321.0</td>
+<td>10</td>
+<td>30</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>1319.0</td>
+<td>1320.0</td>
+<td>99</td>
+<td>100</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>1</td>
+<td>108</td>
+</tr>
+</tbody></table>
+<p>The first collaboration in the list took place between workshops 10 and 11 between 1300 and 1301, and lasted one year (we don&#39;t really know how long it took these two workshops to produce this manuscript together, this is an approximation), and so on. You might be scratching your head about the <code>onset.censored</code> and <code>terminus.censored</code> columns here.  In temporal network analysis, <strong>censoring</strong> is a way of ignoring the start or end of a given edge or node. This ability to ignore the onset or terminus can be useful for modeling specific types of temporal networks, creating cumulative visualizations, or debugging your code, among other things, but for this tutorial we won&#39;t be censoring anything.</p>
+<h4 id="node-lists">Node Lists</h4>
+<p>In most static network analysis, a node list is just a simple list of all of the things that are connected. It is a simple list of the identification numbers for each node.</p>
+<table>
+<thead>
+<tr>
+<th>node.id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+</tr>
+<tr>
+<td>.</td>
+</tr>
+<tr>
+<td>106</td>
+</tr>
+</tbody></table>
+<p>In a temporal network, however, actors and objects enter and exit the network over time. Our workshops of illuminators might be churning out beautiful books for two, five, or even thirty two and a half years. In order to reflect the emergence and dispersal of these workshops, we need a <code>onset</code> (starting point), <code>terminus</code> (end point), and <code>duration</code> for each of them. The R packages that we are using will expect that data to look like this:</p>
+<table>
+<thead>
+<tr>
+<th>onset</th>
+<th>terminus</th>
+<th>vertex.id</th>
+<th>onset.censored</th>
+<th>terminus.censored</th>
+<th>duration</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1280.0</td>
+<td>1311.0</td>
+<td>1</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>31</td>
+</tr>
+<tr>
+<td>1288.5</td>
+<td>1311.0</td>
+<td>2</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>22.5</td>
+</tr>
+<tr>
+<td>1257.5</td>
+<td>1290.0</td>
+<td>3</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>32.5</td>
+</tr>
+<tr>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+</tr>
+<tr>
+<td>1267.0</td>
+<td>1277.0</td>
+<td>106</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>10.0</td>
+</tr>
+</tbody></table>
+<p>Here, the second workshop becomes active around 1288, and ceases to collaborate around the year 1311, giving them a &quot;life span&quot; of about 22.5 years. Because we don&#39;t have archival records that document when each workshop was formed or dispersed, all three of these numbers are approximations based on the dates associated with their earliest and latest collaborative manuscripts.</p>
+<h3 id="making-the-hard-choices-translating-historical-data-into-tna-data">Making the Hard Choices: Translating Historical Data into TNA Data</h3>
+<p>Modeling medieval manuscript production as a temporal network involves a lot of approximations. In this respect, it&#39;s actually pretty typical of the kinds of choices that historians have to make when modeling historical events or processes as dynamic networks. Scholars must make a series of choices to mold even relatively straightforward historical data into a form that temporal network analysis tools can take as input.</p>
+<p>If you are studying a correspondence network, you will need to decide whether the onset and terminus should represent the beginning and end of a series of exchanges between two people, or the beginning and end of a single exchange. If you are interested in individual letters, the onset could theoretically represent the moment a letter was begun, completed, or sent, while the terminus could represent the moment it was received or read. You may only have information about the date on which a letter was written, which would have to serve as both the onset and terminus.</p>
+<p>As historians, we can only be as specific and consistent as our sources allow. A temporal network may more closely reflect the historical processes revealed in your sources than a static network, but in the big picture both are imperfect models. You will have to make considered choices about how to collapse some of the complexity and uncertainty inherent in your historical data. As you make these choices, you probably want keep notes about your decisions and reasoning to use in a methodology section, appendix, or footnote when presenting your conclusions.</p>
+<p>Illuminated medieval manuscripts are about as messy as historical data gets. In a few cases the manuscripts are dateable to a single year by a colophon (a short note at the beginning or end of the text about the production of the manuscript). Art historians who have dedicated their entire careers to the study of these manuscripts may only feel certain enough to date these manuscripts to decade (for example, the 1290s) or even a span of several decades (ca. 1275-1300). For the purposes of this tutorial I created temporal data by averaging each of these time ranges and using that as the onset of each collaboration, and set the terminus of each collaboration for one year after the onset. This is not an ideal solution, but neither is it a totally arbitrary or unjustifiable choice.[^4]</p>
+<h2 id="static-visualizations">Static Visualizations</h2>
+<p>Now that we have a sense of where this temporal network data comes from and how it is structured, we can start to visualize and analyze it. First lets load up our network as a static edge list, which I&#39;ll call <code>PHStaticEdges</code> with its associated vertex attributes, here called <code>PHVertexAttributes</code>. Download the <a href="/assets/temporal-network-analysis-with-r/TNAWR_StaticEdgelist.csv" download>static edgelist</a>
+ and load it into R using the <code>read.csv()</code> call. Instead of remembering the path to the file, you can open a finder window that will let you visually navigate to the file using the <code>file.choose()</code> function:</p>
+<pre><code class="language-r"># Import Static Network Data
+PHStaticEdges &lt;- read.csv(file.choose())
+</code></pre>
+<p>Then use the same function to load the <a href="/assets/temporal-network-analysis-with-r/TNAWR_VertexAttributes.csv" download>vertex attributes</a> into R.</p>
+<pre><code class="language-r">PHVertexAttributes &lt;- read.csv(
+  file.choose(),
+  stringsAsFactors = FALSE
+)
+</code></pre>
+<p>Now that we&#39;ve got our basic data into R, we can take a look at the network:</p>
+<pre><code class="language-r"># Make and visualize our static network
+thenetwork &lt;- network(
+  PHStaticEdges,
+  vertex.attr = PHVertexAttributes,
+  vertex.attrnames = c(&quot;vertex.id&quot;, &quot;name&quot;, &quot;region&quot;),
+  directed = FALSE,
+  bipartite = FALSE
+)
+plot(thenetwork)
+</code></pre>
+<p>This should produce something like the following image – a tangle of nodes and edges that shows every workshop and collaboration from the sixty year period captured by our manuscript data:</p>
+<p>{% include figure.html filename=&quot;tna_with_r_1.png&quot; caption=&quot;A static visualization of the network&quot; %}</p>
+<p>Now let&#39;s make our network dynamic. First, we have to import the temporal data associated with the <a href="/assets/temporal-network-analysis-with-r/TNAWR_DynamicEdges.csv" download>dynamic edges</a> and <a href="/assets/temporal-network-analysis-with-r/TNAWR_DynamicNodes.csv" download>dynamic nodes</a>.</p>
+<pre><code class="language-r"># Import Temporal Network Data
+PHDynamicNodes &lt;- read.csv(file.choose())
+PHDynamicEdges &lt;- read.csv(file.choose())
+</code></pre>
+<p>Once we have imported this temporal data, we can add it to the static network we created above to form a dynamic network, using the <code>networkDynamic()</code> function:</p>
+<pre><code class="language-r"># Make the temporal network
+dynamicCollabs &lt;- networkDynamic(
+  thenetwork,
+  edge.spells = PHDynamicEdges,
+  vertex.spells = PHDynamicNodes
+)
+</code></pre>
+<p>The <code>networkDynamic()</code> function takes as its first input the static network that we created above, and appends the temporal data for the vertices and nodes. It&#39;s probably a good idea to check the dynamic network to make sure everything looks right using the <code>network.dynamic.check()</code> function.</p>
+<pre><code class="language-r"># Check the temporal network
+network.dynamic.check(dynamicCollabs)
+</code></pre>
+<p>If all went well, this will return as series of checks, all of which have the value <code>TRUE</code>.</p>
+<p>Now that we have created a dynamic network, we can plot it to see how it looks!</p>
+<pre><code class="language-r"># Plot network dynamic object as a static image
+plot(dynamicCollabs)
+</code></pre>
+<p>This produces... something that looks disappointingly like the plot of our static network above.</p>
+<p>{% include figure.html filename=&quot;tna_with_r_2.png&quot; caption=&quot;An anticlimactic visualization of the dynamic network&quot; %}</p>
+<p>That&#39;s because the <code>plot()</code> function produces a static image of the entire dynamic network. In order to see the actual temporal transformations within the network, we need to use a different visualization that breaks this network up into successive temporal slices. One way to do this is to use the <code>filmstrip()</code> function.</p>
+<pre><code class="language-r"># Plot our dynamic network as a filmstrip
+filmstrip(dynamicCollabs, displaylabels = FALSE)
+</code></pre>
+<p>Now we&#39;re getting somewhere! This gives us a view of the network as it develops over time, taking snapshots at a few key moments over the course of its timespan.</p>
+<p>{% include figure.html filename=&quot;tna_with_r_3.png&quot; caption=&quot;A filmstrip visualization of the dynamic network&quot; %}</p>
+<p>Because collaborations between workshops are pretty rare, relatively speaking, this filmstrip view is too sparse to give us a good sense of how networks of collaborations emerge and change over time. To really see these changes, we&#39;ll use an animation that shows a sliding interval of the sixty year period, and aggregates all of the collaborations within that interval.</p>
+<h3 id="getting-animated">Getting Animated</h3>
+<p>Although the historical phenomenon that we are modeling is continuous, most approaches to visualizing and analyzing temporal networks convert this continuous dynamic network into a series of many static networks, known as network slices, which represent the accumulated state of the network over a given span of time – 10 years, or 1 year, or 1 day. These slices can be connected together sequentially, like frames in a film.</p>
+<p>Making an animation like this is a little complicated, so the NDTV package actually breaks up the math-y calculations behind the animation from the rendering of the animation itself. First, it computes the animation given a set of parameters that tell it when to start, stop, how much to incrementally advance between frames, and how much time we want each interval to aggregate. Depending on how large your network is, this function may take a long time to run.</p>
+<pre><code class="language-r"># Calculate how to plot an animated version of the dynamic network
+compute.animation(
+  dynamicCollabs,
+  animation.mode = &quot;kamadakawai&quot;,
+  slice.par = list(
+    start = 1260,
+    end = 1300,
+    interval = 1,
+    aggregate.dur = 20,
+    rule = &quot;any&quot;
+  )
+)
+</code></pre>
+<p>Let&#39;s break these settings down. There are a few different ways to it to compute the layout for our animation, so we have chosen a force-directed algorithm known as Kamada Kawai.[^5] We set the start and end times to the years 1260 and 1320, and the interval between animation frames at 1 year. Because the collaborations between workshops are infrequent and of relatively short durations (at least in our approximations), we aggregated the edges shown in each frame over a sizable chunk of time, in this case 20 years.</p>
+<p>Once NDTV has computed the animation, it can generate a webpage with a rendering of this animation using the <code>render.d3movie()</code> function. As with the <code>compute.animation()</code> function above, this step can take a long time to finish processing depending on the size of the network.</p>
+<pre><code class="language-r"># Render the animation and open it in a web brower
+render.d3movie(
+  dynamicCollabs,
+  displaylabels = FALSE,
+  # This slice function makes the labels work
+  vertex.tooltip = function(slice) {
+    paste(
+      &quot;&lt;b&gt;Name:&lt;/b&gt;&quot;, (slice %v% &quot;name&quot;),
+      &quot;&lt;br&gt;&quot;,
+      &quot;&lt;b&gt;Region:&lt;/b&gt;&quot;, (slice %v% &quot;region&quot;)
+    )
+  }
+)
+</code></pre>
+<p>This should generate a website with an interactive visualization of your temporal network and open it in your default browser. The RStudio console might show a bunch of warnings, but those just specify that if multiple values were present for vertex attributes, the <code>render.d3movie()</code> function used the earliest attribute for each vertex. If all went well, it looks like this:</p>
+<iframe src="/images/temporal-network-analysis-with-r/tna_with_r_dynamic_visualization.html" width="720" height="500"></iframe>
+
+<p>The default labels are simply the identification number for each vertex, so we have turned those off. The <code>vertex.tooltip</code> parameter of this function might look a little scary, but basically it supplies each frame or &quot;slice&quot; of the animation with the correct tooltip information so we can see the name and region of each vertex if we click on it.</p>
+<h2 id="beyond-the-hairball-dynamic-network-metrics">Beyond the Hairball: Dynamic Network Metrics</h2>
+<p>This animation works splendidly for our network of manuscript workshops because it&#39;s small and collaborations at any given moment are pretty sparse. To compare different moments, however, quantifiable metrics for the network or for individual nodes may be more useful than animated visualizations.</p>
+<p>We might want to know when collaborations between workshops appear over the duration of the data.</p>
+<pre><code class="language-r"># Plot formation of edges over time
+plot(tEdgeFormation(dynamicCollabs, time.interval = .25))
+</code></pre>
+<p>The graph should look like this:</p>
+<p>{% include figure.html filename=&quot;tna_with_r_4.png&quot; caption=&quot;Edge Formation in the Workshop Network, 1260-1320&quot; %}</p>
+<p>Our animation might give us an intuitive sense of that most edges are formed somewhere between 1280 and 1300, but this plot of the edge formation provides more concrete insights. By setting the interval of samples to every 6 months (0.5 years), we can see exactly when and how many collaborations occurred between workshops.</p>
+<h3 id="changing-centrality">Changing Centrality</h3>
+<p>While not everything you can do with static network analysis is currently possible with the R packages for temporal network analysis, most of the common measurements of network properties are possible. Just like you can analyze centrality at the node level or network level in static network analysis, you can analyze how centrality changes over time with temporal network analysis. Rather than looking at the centrality of a workshop or illuminator over the sixty year period of our data, it might make sense to look at how the network level centralization changes year by year, or if your data is sparse like the manuscript data, within a twenty year rolling window of time.</p>
+<pre><code class="language-r"># Calculate and graph the rolling betweenness centralization of the network
+dynamicBetweenness &lt;- tSnaStats(
+  dynamicCollabs,
+  snafun = &quot;centralization&quot;,
+  start = 1260,
+  end = 1320,
+  time.interval = 1,
+  aggregate.dur = 20,
+  FUN = &quot;betweenness&quot;
+)
+plot(dynamicBetweenness)
+</code></pre>
+<p>This will produce a graph of the rolling aggregated centralization of the network, showing how the betweenness centralization of the collaborative manuscript network peaks around the year 1280, and drops off around 1300.</p>
+<p>{% include figure.html filename=&quot;tna_with_r_5.png&quot; caption=&quot;Betweenness Centralization of the Workshop Network, 1260-1320&quot; %}</p>
+<p>It is also possible to calculate and graph node-level metrics as they change over time using the <code>tSnaStats()</code> function, but this is very computationally intensive and will produce errors if nodes are appearing and disappearing from the network.</p>
+<h3 id="thinking-temporally-forward-reachable-sets">Thinking Temporally: Forward Reachable Sets</h3>
+<p>Adding a chronological component to static network measurements might be enough to convince you that temporal network analysis is worth the extra effort for your project. But temporal network analysis also allows us to analyze properties that <em>only</em> occur in temporal networks.</p>
+<p>In a temporal network, because nodes and edges are popping in and out of existence all the time, it can be useful to know not only how many nodes can be reached from a given node at any specific time, but also how many nodes were or will be connected to a given node over the course of the network&#39;s existence. These past and future groups are known as <strong>backward reachable sets</strong> and <strong>forward reachable sets</strong>, respectively.</p>
+<p>The size of these sets adds important nuance to measurements of centrality – depending on whether a workshop came to occupy a central position in the network near the beginning or end of the period we&#39;re observing, the actual impact it could have had on the larger community is completely different. It can be useful to think of this in epidemiological terms: someone who is infected with a disease relatively early in an epidemic could have a much bigger impact on its spread than someone who is infected relatively late.</p>
+<p>For the purpose of analyzing our illuminated network workshops, we can ask which workshops could have had the largest impact on trends in manuscript production as a consequence of their own collaborations and the collaborations of the illuminators and workshops who collaborated with them, and so on. This group of all of the workshops and illuminators that they touched both directly and indirectly is known as a the forward reachable set of a node.</p>
+<p>To calculate the size of the forward reachable sets of each node, we can use the <code>tReach()</code> function on our entire network. This function defaults to calculating the size of the forward reachable set of a given node, but to calculate the backward reachable set we simply specify <code>direction = &quot;bkwd&quot;</code> instead.</p>
+<pre><code class="language-r"># Calculate and store the sizes of
+# forward and backward reachable sets for each node
+fwd_reach &lt;- tReach(dynamicCollabs)
+bkwd_reach &lt;- tReach(dynamicCollabs, direction = &quot;bkwd&quot;)
+plot(fwd_reach, bkwd_reach)
+</code></pre>
+<p>This produces a graph of the sizes of the forward and backward reachable sets for each workshop or illuminator. From this graph, we can get a sense of who was in a position to have the biggest impact on the network based on their forward reach, and who was well connected to their predecessors based on their collaborations.</p>
+<p>{% include figure.html filename=&quot;tna_with_r_6.png&quot; caption=&quot;Size of forward and backward reachable sets for workshops/illuminators &quot; %}</p>
+<p>We can also visualize these sets using the <code>tPath()</code> function to find the path that connects a given node to its forward or backward reachable set, and the <code>plotPaths()</code> function to graph it over a representation of the entire network. In the example below, we&#39;ll choose a single workshop – that of the Hospitaller Master, selected by his vertex id number 3 – and visualize its forward reachable set.</p>
+<pre><code class="language-r"># Calculate and plot the forward reachable paths
+# of node number 3 (the Hospitaller Master)
+HospitallerFwdPath &lt;- tPath(
+  dynamicCollabs,
+  v = 3,
+  direction = &quot;fwd&quot;
+)
+plotPaths(
+  dynamicCollabs,
+  HospitallerFwdPath,
+  displaylabels = FALSE,
+  vertex.col = &quot;white&quot;
+)
+</code></pre>
+<p>This produces a visualization of the forward reach of the Hospitaller Master and his workshop based on the chronology of their collaborations.</p>
+<p>{% include figure.html filename=&quot;tna_with_r_7.png&quot; caption=&quot;The forward reachable path of the Hospitaller Master, with elapsed time labels for edges&quot; %}</p>
+<p>We can see that the Hospitaller Master was favorably positioned to have a sizable impact on the future of manuscript illumination in the region of Paris through his collaborative work. This potential for impact was due not only to his position within the network, but also to the chronology of the network&#39;s development,</p>
+<p>If the numeric labels that show the elapsed time of each collaboration bug you, you can make them transparent by adding <code>edge.label.col = rgb(0,0,0,0),</code> to the <code>plotPaths()</code> function call.</p>
+<p>{% include figure.html filename=&quot;tna_with_r_8.png&quot; caption=&quot;The forward reachable paths of the Hospitaller Master, without elapsed time labels for edges&quot; %}</p>
+<p>If, on the other hand, we are interested in the network of collaborations between workshops that set the stage for the emergence of the Hospitaller Master, we can look at his backward reachable set. Using <code>tpath(</code> again, we&#39;ll use <code>direction = &quot;bkwd&quot;</code>, and <code>type = &quot;latest.depart&quot;</code> to find the paths formed by earlier collaborative manuscripts. To visually distinguish this from his forward reach, we&#39;ll use the <code>path.col</code> property to make the paths that trace his backward reach blue instead of red.</p>
+<pre><code class="language-r"># Calculate and plot the backward reachable paths
+# of node number 3 (the Hospitaller Master)
+HospitallerBkwdPath &lt;- tPath(
+  dynamicCollabs,
+  v = 3,
+  direction = &quot;bkwd&quot;,
+  type = &#39;latest.depart&#39;
+)
+plotPaths(
+  dynamicCollabs,
+  HospitallerBkwdPath,
+  path.col = rgb(0, 97, 255, max=255, alpha=166),
+  displaylabels = FALSE,
+  edge.label.col = rgb(0,0,0,0),
+  vertex.col = &quot;white&quot;
+)
+</code></pre>
+<p>The result should be something like this:</p>
+<p>{% include figure.html filename=&quot;tna_with_r_9.png&quot; caption=&quot;The backward reachable paths of the Hospitaller Master&quot; %}</p>
+<p>We might note that the Hospitaller Master&#39;s backward reachable set was a group at the heart of the Parisian workshop community. Because this workshop was actively participating in collaborative productions from around 1260 to 1290, during the first half of the period under observation, it may not be entirely surprising that their forward reach is larger than their backward reach. Given the Hospitaller Master&#39;s high centrality score, however, both of these sets may be smaller than expected.</p>
+<p>Like the temporally inflected network metrics above, these forward and backward paths provide a counterpoint to static network metrics. In the case of medieval French illuminators, we might note that some workshops with relatively high centralities have small forward reachable sets but very large backward reachable sets. These illuminators were actively collaborating with other workshops during the last third of the period in question. This insight can help us contextualize any conclusions that we draw from their centrality.</p>
+<p>If we had already observed certain features within the manuscripts produced by the Hospitaller Master and his collaborators, these sets might help us formulate and answer new questions about whether he was the source of innovative ideas or techniques, or played an important role in disseminating them. As always, it&#39;s important to keep in mind that network metrics like measurements of centralization and reach represent potential for the transmission of ideas and concepts rather than transmission as such.[^6]</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Let&#39;s take a step back and reflect on what we&#39;ve learned. At this point, we have a sense of how temporal network data is structured and what kinds of decisions go into producing it. We&#39;ve learned how to make both animated and static visualizations that show change in a network over time. We know how static network metrics like reach take on different properties in the context of temporal networks. We can graph the size of the forward and backward reach of each node, and visualize the paths through which these sets are constituted.</p>
+<p>If there is one thing that I hope you will take away from this tutorial, it is the idea that adding temporal data to nodes and edges transforms a general social science tool into a powerful method for historical argument. Comparing network structures and metrics from one timeslice to another gives them historical significance that can be difficult, if not impossible, to discern in conventional static social network analysis.</p>
+<p>This tutorial introduced only a few of the many tools and techniques made possible by temporal network analysis. One especially exciting area of this field is in dynamic simulations that model the transmission of something, for example a disease or an idea, among individuals within a given temporal network. If that sounds interesting, take a look at the <a href="http://www.epimodel.org/">EpiModel</a> package or other tools created by epidemiologists to model diffusion within dynamic networks.</p>
+<p>Depending on the historical data that you&#39;re working with, temporal network analysis may offer important insights into how the properties of nodes, edges, and the overall network change over time. Whether or not you decide to make the leap to temporal network analysis, it is helpful to remember that networks of all kinds are complex historical phenomena that emerge, develop, transform beyond recognition, and disappear over the course of time.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Maybe you made it through this tutorial but you are still more comfortable with a Graphical User Interface than a programming environment like RStudio. There are a few Gephi tutorials that introduce some of the same basic concepts:</p>
+<ul>
+<li><p><a href="https://seinecle.github.io/gephi-tutorials/generated-html/creating-a-simple-dynamic-network.html">Creating a simple dynamic network</a> by Clément Levallois</p>
+</li>
+<li><p><a href="https://seinecle.github.io/gephi-tutorials/generated-html/converting-a-network-with-dates-into-dynamic.html">Converting a network with dates into a dynamic network</a> by Clément Levallois</p>
+</li>
+<li><p>Ken Cherven has a good overview of Dynamic Network Analysis with Gephi in his book <em>Mastering Gephi Network Visualization</em> (2015)</p>
+</li>
+</ul>
+<p>If you are hungry for more temporal network analysis with R, <a href="https://web.archive.org/web/20180423112846/http://statnet.csde.washington.edu/workshops/SUNBELT/current/ndtv/ndtv_workshop.html">this tutorial</a> by Skye Bender-deMoll explains additional functions and features of the packages used here. It served as my own guide to learning about temporal network analysis and formed the inspiration for the tutorial above.</p>
+<p>You can also dive deeper into the documentation to learn more about the <a href="https://cran.r-project.org/web/packages/networkDynamic/index.html">networkDynamic package</a>, the <a href="https://cran.r-project.org/web/packages/tsna/index.html">TSNA package</a>, and the <a href="https://cran.r-project.org/web/packages/networkDynamic/index.html">NDTV package</a>.</p>
+<p>Finally, if Python is your preferred scripting language, you may want to look into <a href="https://dynetx.readthedocs.io/en/latest/">DyNetx</a> and <a href="https://networkx.github.io/documentation/stable/">NetworkX</a>.</p>
+<h2 id="references">References</h2>
+<p>[^1]: This same data can also be represented in other formats (an adjacency matrix, for example, or an adjacency list) but for the purpose of transforming static networks into dynamic ones, it can be easier to conceptualize and manipulate network data with node and edge lists.</p>
+<p>[^2]: This data forms the core of an ongoing project that I&#39;m working on with my colleague Maeve Doyle, who has helped shape and refine my thinking about temporal network analysis. It comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. <em>Gothic manuscripts: 1260-1320.</em> London: Harvey Miller Publishers.</p>
+<p>[^3]: Because you need to preserve temporal data associated with each edge, projecting a bimodal network into a unimodal one for temporal analysis is a little more complicated than static projection of a bimodal network.</p>
+<p>[^4]: There are ways to figure out just how much variation in different network metrics will be lost as a consequence of this decision, although they are a bit complex to get into here.</p>
+<p>[^5]: I am grateful to Rachel Starry for this reference, as well as her comments on a preliminary draft of this tutorial. Kamada, T., and S. Kawai. 1989. &quot;An Algorithm for Drawing General Undirected Graphs.&quot; <em>Information Processing Letters</em> 31.1: 7-15.</p>
+<p>[^6]: I recommend Marten Düring&#39;s excellent essay &quot;How Reliable are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study,&quot; which neatly demonstrates that historical actors who occupied central positions in social networks had the potential to use their connections or their control over the connections of others in unique ways, but they did not always have the motivation to do so. Düring, Marten. &quot;How Reliable Are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study.&quot; In <em>The Connected Past. Challenges to Network Studies in Archaeology and History,</em> edited by Tom Brughmans, Anna Collar, and Fiona Coward, 85–102. Oxford: Oxford Publishing, 2016.</p>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="temporal-network-analysis-with-r/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Temporal Network Analysis with R\\n\",\"authors\":[\"Alex Brey\"],\"date\":\"2018-11-04T00:00:00.000Z\",\"reviewers\":[\"Zoe LeBlanc\",\"Ryan Deschamps\"],\"difficulty\":3,\"activity\":\"analyzing\",\"topics\":[\"network-analysis\"],\"editors\":[\"Matthew Lincoln\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F179\",\"layout\":\"lesson\",\"abstract\":\"Learn how to use R to analyze networks that change over time.\\n\",\"avatar_alt\":\"A sundial\",\"doi\":\"10.46430\u002Fphen0080\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"introduction\\\"\u003EIntroduction\u003C\u002Fh2\u003E\\n\u003Cp\u003EIf you are reading this tutorial, you might already have some experience modeling humanities data as a network. Perhaps you are a historian of religion researching Quaker correspondence networks, in which the nodes represent writers and recipients of letters, and the edges of a network represent epistolary exchanges. Or perhaps you are a historian of art studying a network made up of print designers and engravers, with connections derived from their collaborations on prints. You have probably visualized your static network, and analyzed it, but you may still feel that something is missing or not quite right. Perhaps the network looks larger and more robust than it felt to you as you were piecing it together from your archival sources, or perhaps the centrality measurements of your nodes don&#39;t make much sense when you think about the actual historical circumstances in which they existed.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe reality is that most historical networks change over time. At certain points they may grow, or shrink, or dissolve completely. Actors or objects enter and exit these networks over the course of their existence. People or things may occupy highly central roles for a brief period of time – perhaps a day, a year, or a decade – but they rarely begin or end their existence within a network in such positions. Wouldn&#39;t it be great if you could reflect these changes and developments in your visualization and analysis of a network?\u003C\u002Fp\u003E\\n\u003Cp\u003ETemporal Network Analysis, also known as Temporal Social Network Analysis (TSNA), or Dynamic Network Analysis (DNA), might be just what you&#39;re looking for.\u003C\u002Fp\u003E\\n\u003Cp\u003ETemporal Network Analysis is still a pretty new approach in fields outside epidemiology and social network analysis. This tutorial introduces methods for visualizing and analyzing temporal networks using several libraries written for the statistical programming language R. With the rate at which network analysis is developing, there will soon be more user friendly ways to produce similar visualizations and analyses, as well as entirely new metrics of interest. For these reasons, this tutorial focuses as much on the principles behind creating, visualizing, and analyzing temporal networks (the &quot;why&quot;) as it does on the particular technical means by which we achieve these goals (the &quot;how&quot;). It also highlights some of the unhappy oversimplifications that historians may have to make when preparing their data for temporal network analysis, an area where our discipline may actually suggest new directions for temporal network analysis research.\u003C\u002Fp\u003E\\n\u003Cp\u003EOne of the most basic forms of historical argument is to identify, describe, and analyze changes in a phenomenon or set of phenomena as they occur over a period of time. The premise of this tutorial is that when historians study networks, we should, insofar as it is possible, also be acknowledging and investigating how networks change over time.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn this tutorial you will learn:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003EThe types of data necessary to model a temporal network\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EHow to visualize a temporal network using the NDTV package in R\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EHow to quantify and visualize some important network-level and node-level metrics that describe temporal networks using the TSNA package in R\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch2 id=\\\"prerequisites\\\"\u003EPrerequisites\u003C\u002Fh2\u003E\\n\u003Cp\u003EThis tutorial assumes that you have:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003Ea basic familiarity with static network visualization and analysis, which you can get from excellent tutorials on the Programming Historian such as \u003Ca href=\\\"\u002Fen\u002Flessons\u002Fcreating-network-diagrams-from-historical-sources\\\"\u003EFrom Hermeneutics to Data to Networks: Data Extraction and Network Visualization of Historical Sources\u003C\u002Fa\u003E and \u003Ca href=\\\"\u002Fen\u002Flessons\u002Fexploring-and-analyzing-network-data-with-python\\\"\u003EExploring and Analyzing Network Data with Python\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003ERStudio with R version 3.0 or higher\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EA basic understanding of how R can be used to modify data. You may want to review the excellent tutorial on \u003Ca href=\\\"\u002Fen\u002Flessons\u002Fr-basics-with-tabular-data\\\"\u003ER Basics with Tabular Data\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch2 id=\\\"packages-for-temporal-network-analysis\\\"\u003EPackages for Temporal Network analysis\u003C\u002Fh2\u003E\\n\u003Cp\u003EAs you follow along with the tutorial, I recommend entering your code into a new R script, which you can save and edit as you work. You can run the current line or selection from this script using a keyboard shortcut (Ctrl+Enter on Windows and Linux, Command+Enter on a Mac).\u003C\u002Fp\u003E\\n\u003Cp\u003EIn this tutorial we&#39;ll make use of two packages for temporal network analysis. The first, and most important of these, is the \u003Cstrong\u003Etsna\u003C\u002Fstrong\u003E package. Short for Tools for Temporal Social Network Analysis, \u003Cstrong\u003Etsna\u003C\u002Fstrong\u003E extends the tools of the \u003Cstrong\u003Esna\u003C\u002Fstrong\u003E package for for modeling and analyzing longitudinal (a fancy for temporal) networks.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe second package, \u003Cstrong\u003Endtv\u003C\u002Fstrong\u003E, was built to visualize temporal networks. Short for Network Dynamic Temporal Visualizations, \u003Cstrong\u003Endtv\u003C\u002Fstrong\u003E renders temporal network data as movies, interactive animations, or other representations of changing relational structures and attributes.\u003C\u002Fp\u003E\\n\u003Cp\u003EBoth of these packages extend and depend on the \u003Cstrong\u003EnetworkDynamic\u003C\u002Fstrong\u003E package, which provides a robust data structure for storing and manipulating temporal network data. It will be automatically installed when you install one of the other two packages, so don&#39;t worry about installing it individually. Mac users take note: to properly install these packages, you may need to install the Xcode command line developer tools if you haven&#39;t already.\u003C\u002Fp\u003E\\n\u003Cp\u003EUse the \u003Ccode\u003Einstall.packages()\u003C\u002Fcode\u003E function as so:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003Einstall.packages(&quot;sna&quot;)\\ninstall.packages(&quot;tsna&quot;)\\ninstall.packages(&quot;ndtv&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ETo make sure these packages are installed and loaded when you run your R script, use the \u003Ccode\u003Elibrary()\u003C\u002Fcode\u003E function at the top of your script:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003Elibrary(sna)\\nlibrary(tsna)\\nlibrary(ndtv)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"obtaining-your-data\\\"\u003EObtaining Your Data\u003C\u002Fh2\u003E\\n\u003Ch3 id=\\\"starting-static\\\"\u003EStarting Static\u003C\u002Fh3\u003E\\n\u003Cp\u003ELet&#39;s say you already have a static network based on an archive of epistolary exchanges or artistic collaborations or enrollment in nineteenth century culinary school courses. Whatever the content of your static network is, we can think of its core data as consisting of two parts:\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003E\u003Cp\u003Ea node list, which contains every node (or vertex – terms that I will use interchangeably throughout this tutorial)\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003Ean edge list, which contains every edge between the nodes[^1]\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003EIn order to keep this tutorial from getting too abstract, I&#39;ll follow a concrete example from start to finish. This sample data describes collaborations between French Gothic illuminated manuscript workshops between 1260 and 1320.[^2] The node list for this data is just a big list of workshops. The names of these workshops aren&#39;t too important. In a few cases a colophon (a bit of text at the end of a manuscript briefly describing the circumstances of its production) mentions the name of the illuminator. Most of the time, however, they are assigned by modern scholars based on the city or region where a workshop was active, or a famous manuscript that it produced.\u003C\u002Fp\u003E\\n\u003Cp\u003EAll of the R libraries in this tutorial assume that your network is unimodal – that is, that all of the nodes are the same type of thing, and all of the edges are too. As \u003Ca href=\\\"http:\u002F\u002Fwww.scottbot.net\u002FHIAL\u002Findex.html@p=41158.html\\\"\u003EScott Weingart has pointed out\u003C\u002Fa\u003E, historians frequently begin with multimodal or bimodal data. If you want to produce meaningful quantitative measurements of your network using most available tools, you will have to convert (or &quot;project&quot;) a bimodal network into unimodal data. The sample data for this tutorial is no exception. It started out as list of workshops and the manuscripts to which they contributed. First, I modeled this data as a bimodal network consisting of workshops and manuscripts. Then I projected that bimodal network into a unimodal network, in which each node represents an illuminator or workshop.[^3] Each edge was produced from a manuscript or group of manuscripts to which two or more workshops contributed. For this reason, sometimes one manuscript can appear as multiple edges, and one edge can represent multiple manuscripts.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe difference between a static network and a temporal one is the amount of information contained in the node and edge lists. In order to convert this static network into a temporal one, you need to add \u003Cem\u003Etemporal information\u003C\u002Fem\u003E to these two lists. Basically, we need to supply a span of time that represents the period in which each edge and each node exists.\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"edge-lists\\\"\u003EEdge Lists\u003C\u002Fh4\u003E\\n\u003Cp\u003EAn undirected edge list must contain three columns of data: a unique identifier for the edge, a source node (one of the workshops involved), and a target node (another workshop involved) for each edge. Something like this:\u003C\u002Fp\u003E\\n\u003Ctable\u003E\\n\u003Cthead\u003E\\n\u003Ctr\u003E\\n\u003Cth\u003Eedge.id\u003C\u002Fth\u003E\\n\u003Cth\u003Etail\u003C\u002Fth\u003E\\n\u003Cth\u003Ehead\u003C\u002Fth\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Fthead\u003E\\n\u003Ctbody\u003E\u003Ctr\u003E\\n\u003Ctd\u003E1\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1\u003C\u002Ftd\u003E\\n\u003Ctd\u003E12\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E2\u003C\u002Ftd\u003E\\n\u003Ctd\u003E2\u003C\u002Ftd\u003E\\n\u003Ctd\u003E5\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E3\u003C\u002Ftd\u003E\\n\u003Ctd\u003E2\u003C\u002Ftd\u003E\\n\u003Ctd\u003E17\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E142\u003C\u002Ftd\u003E\\n\u003Ctd\u003E97\u003C\u002Ftd\u003E\\n\u003Ctd\u003E73\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Ftbody\u003E\u003C\u002Ftable\u003E\\n\u003Cp\u003EIn addition to these three pieces of information, a temporal edge list must contain at the very minimum two additional pieces of information: when a link comes into existence, also known as the \u003Ccode\u003Eonset\u003C\u002Fcode\u003E of the edge, and when the edge disappears, or the \u003Ccode\u003Eterminus\u003C\u002Fcode\u003E. The NDTV and TSNA libraries that we are using throughout this tutorial will expect your data to include an onset, terminus, tail, head, and edge id. Depending on how you conceptualize your network, the onset and terminus might be relatively close together, representing the time span of a single event that connects two nodes, or quite far apart, representing the beginning and end of a series of events that represent a relationship. For our manuscript workshops, the temporal edge list looks like this:\u003C\u002Fp\u003E\\n\u003Ctable\u003E\\n\u003Cthead\u003E\\n\u003Ctr\u003E\\n\u003Cth\u003Eonset\u003C\u002Fth\u003E\\n\u003Cth\u003Eterminus\u003C\u002Fth\u003E\\n\u003Cth\u003Etail\u003C\u002Fth\u003E\\n\u003Cth\u003Ehead\u003C\u002Fth\u003E\\n\u003Cth\u003Eonset.censored\u003C\u002Fth\u003E\\n\u003Cth\u003Eterminus.censored\u003C\u002Fth\u003E\\n\u003Cth\u003Eduration\u003C\u002Fth\u003E\\n\u003Cth\u003Eedge.id\u003C\u002Fth\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Fthead\u003E\\n\u003Ctbody\u003E\u003Ctr\u003E\\n\u003Ctd\u003E1300.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1301.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E10\u003C\u002Ftd\u003E\\n\u003Ctd\u003E11\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E1300.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1301.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E10\u003C\u002Ftd\u003E\\n\u003Ctd\u003E12\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1\u003C\u002Ftd\u003E\\n\u003Ctd\u003E2\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E1320.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1321.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E10\u003C\u002Ftd\u003E\\n\u003Ctd\u003E30\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1\u003C\u002Ftd\u003E\\n\u003Ctd\u003E3\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E1319.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1320.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E99\u003C\u002Ftd\u003E\\n\u003Ctd\u003E100\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1\u003C\u002Ftd\u003E\\n\u003Ctd\u003E108\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Ftbody\u003E\u003C\u002Ftable\u003E\\n\u003Cp\u003EThe first collaboration in the list took place between workshops 10 and 11 between 1300 and 1301, and lasted one year (we don&#39;t really know how long it took these two workshops to produce this manuscript together, this is an approximation), and so on. You might be scratching your head about the \u003Ccode\u003Eonset.censored\u003C\u002Fcode\u003E and \u003Ccode\u003Eterminus.censored\u003C\u002Fcode\u003E columns here.  In temporal network analysis, \u003Cstrong\u003Ecensoring\u003C\u002Fstrong\u003E is a way of ignoring the start or end of a given edge or node. This ability to ignore the onset or terminus can be useful for modeling specific types of temporal networks, creating cumulative visualizations, or debugging your code, among other things, but for this tutorial we won&#39;t be censoring anything.\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"node-lists\\\"\u003ENode Lists\u003C\u002Fh4\u003E\\n\u003Cp\u003EIn most static network analysis, a node list is just a simple list of all of the things that are connected. It is a simple list of the identification numbers for each node.\u003C\u002Fp\u003E\\n\u003Ctable\u003E\\n\u003Cthead\u003E\\n\u003Ctr\u003E\\n\u003Cth\u003Enode.id\u003C\u002Fth\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Fthead\u003E\\n\u003Ctbody\u003E\u003Ctr\u003E\\n\u003Ctd\u003E1\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E2\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E3\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E106\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Ftbody\u003E\u003C\u002Ftable\u003E\\n\u003Cp\u003EIn a temporal network, however, actors and objects enter and exit the network over time. Our workshops of illuminators might be churning out beautiful books for two, five, or even thirty two and a half years. In order to reflect the emergence and dispersal of these workshops, we need a \u003Ccode\u003Eonset\u003C\u002Fcode\u003E (starting point), \u003Ccode\u003Eterminus\u003C\u002Fcode\u003E (end point), and \u003Ccode\u003Eduration\u003C\u002Fcode\u003E for each of them. The R packages that we are using will expect that data to look like this:\u003C\u002Fp\u003E\\n\u003Ctable\u003E\\n\u003Cthead\u003E\\n\u003Ctr\u003E\\n\u003Cth\u003Eonset\u003C\u002Fth\u003E\\n\u003Cth\u003Eterminus\u003C\u002Fth\u003E\\n\u003Cth\u003Evertex.id\u003C\u002Fth\u003E\\n\u003Cth\u003Eonset.censored\u003C\u002Fth\u003E\\n\u003Cth\u003Eterminus.censored\u003C\u002Fth\u003E\\n\u003Cth\u003Eduration\u003C\u002Fth\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Fthead\u003E\\n\u003Ctbody\u003E\u003Ctr\u003E\\n\u003Ctd\u003E1280.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1311.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003E31\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E1288.5\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1311.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E2\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003E22.5\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E1257.5\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1290.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E3\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003E32.5\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003Ctd\u003E.\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003E1267.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E1277.0\u003C\u002Ftd\u003E\\n\u003Ctd\u003E106\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003EFALSE\u003C\u002Ftd\u003E\\n\u003Ctd\u003E10.0\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Ftbody\u003E\u003C\u002Ftable\u003E\\n\u003Cp\u003EHere, the second workshop becomes active around 1288, and ceases to collaborate around the year 1311, giving them a &quot;life span&quot; of about 22.5 years. Because we don&#39;t have archival records that document when each workshop was formed or dispersed, all three of these numbers are approximations based on the dates associated with their earliest and latest collaborative manuscripts.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"making-the-hard-choices-translating-historical-data-into-tna-data\\\"\u003EMaking the Hard Choices: Translating Historical Data into TNA Data\u003C\u002Fh3\u003E\\n\u003Cp\u003EModeling medieval manuscript production as a temporal network involves a lot of approximations. In this respect, it&#39;s actually pretty typical of the kinds of choices that historians have to make when modeling historical events or processes as dynamic networks. Scholars must make a series of choices to mold even relatively straightforward historical data into a form that temporal network analysis tools can take as input.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you are studying a correspondence network, you will need to decide whether the onset and terminus should represent the beginning and end of a series of exchanges between two people, or the beginning and end of a single exchange. If you are interested in individual letters, the onset could theoretically represent the moment a letter was begun, completed, or sent, while the terminus could represent the moment it was received or read. You may only have information about the date on which a letter was written, which would have to serve as both the onset and terminus.\u003C\u002Fp\u003E\\n\u003Cp\u003EAs historians, we can only be as specific and consistent as our sources allow. A temporal network may more closely reflect the historical processes revealed in your sources than a static network, but in the big picture both are imperfect models. You will have to make considered choices about how to collapse some of the complexity and uncertainty inherent in your historical data. As you make these choices, you probably want keep notes about your decisions and reasoning to use in a methodology section, appendix, or footnote when presenting your conclusions.\u003C\u002Fp\u003E\\n\u003Cp\u003EIlluminated medieval manuscripts are about as messy as historical data gets. In a few cases the manuscripts are dateable to a single year by a colophon (a short note at the beginning or end of the text about the production of the manuscript). Art historians who have dedicated their entire careers to the study of these manuscripts may only feel certain enough to date these manuscripts to decade (for example, the 1290s) or even a span of several decades (ca. 1275-1300). For the purposes of this tutorial I created temporal data by averaging each of these time ranges and using that as the onset of each collaboration, and set the terminus of each collaboration for one year after the onset. This is not an ideal solution, but neither is it a totally arbitrary or unjustifiable choice.[^4]\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"static-visualizations\\\"\u003EStatic Visualizations\u003C\u002Fh2\u003E\\n\u003Cp\u003ENow that we have a sense of where this temporal network data comes from and how it is structured, we can start to visualize and analyze it. First lets load up our network as a static edge list, which I&#39;ll call \u003Ccode\u003EPHStaticEdges\u003C\u002Fcode\u003E with its associated vertex attributes, here called \u003Ccode\u003EPHVertexAttributes\u003C\u002Fcode\u003E. Download the \u003Ca href=\\\"\u002Fassets\u002Ftemporal-network-analysis-with-r\u002FTNAWR_StaticEdgelist.csv\\\" download\u003Estatic edgelist\u003C\u002Fa\u003E\\n and load it into R using the \u003Ccode\u003Eread.csv()\u003C\u002Fcode\u003E call. Instead of remembering the path to the file, you can open a finder window that will let you visually navigate to the file using the \u003Ccode\u003Efile.choose()\u003C\u002Fcode\u003E function:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Import Static Network Data\\nPHStaticEdges &lt;- read.csv(file.choose())\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThen use the same function to load the \u003Ca href=\\\"\u002Fassets\u002Ftemporal-network-analysis-with-r\u002FTNAWR_VertexAttributes.csv\\\" download\u003Evertex attributes\u003C\u002Fa\u003E into R.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003EPHVertexAttributes &lt;- read.csv(\\n  file.choose(),\\n  stringsAsFactors = FALSE\\n)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow that we&#39;ve got our basic data into R, we can take a look at the network:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Make and visualize our static network\\nthenetwork &lt;- network(\\n  PHStaticEdges,\\n  vertex.attr = PHVertexAttributes,\\n  vertex.attrnames = c(&quot;vertex.id&quot;, &quot;name&quot;, &quot;region&quot;),\\n  directed = FALSE,\\n  bipartite = FALSE\\n)\\nplot(thenetwork)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis should produce something like the following image – a tangle of nodes and edges that shows every workshop and collaboration from the sixty year period captured by our manuscript data:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;tna_with_r_1.png&quot; caption=&quot;A static visualization of the network&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ENow let&#39;s make our network dynamic. First, we have to import the temporal data associated with the \u003Ca href=\\\"\u002Fassets\u002Ftemporal-network-analysis-with-r\u002FTNAWR_DynamicEdges.csv\\\" download\u003Edynamic edges\u003C\u002Fa\u003E and \u003Ca href=\\\"\u002Fassets\u002Ftemporal-network-analysis-with-r\u002FTNAWR_DynamicNodes.csv\\\" download\u003Edynamic nodes\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Import Temporal Network Data\\nPHDynamicNodes &lt;- read.csv(file.choose())\\nPHDynamicEdges &lt;- read.csv(file.choose())\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EOnce we have imported this temporal data, we can add it to the static network we created above to form a dynamic network, using the \u003Ccode\u003EnetworkDynamic()\u003C\u002Fcode\u003E function:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Make the temporal network\\ndynamicCollabs &lt;- networkDynamic(\\n  thenetwork,\\n  edge.spells = PHDynamicEdges,\\n  vertex.spells = PHDynamicNodes\\n)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe \u003Ccode\u003EnetworkDynamic()\u003C\u002Fcode\u003E function takes as its first input the static network that we created above, and appends the temporal data for the vertices and nodes. It&#39;s probably a good idea to check the dynamic network to make sure everything looks right using the \u003Ccode\u003Enetwork.dynamic.check()\u003C\u002Fcode\u003E function.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Check the temporal network\\nnetwork.dynamic.check(dynamicCollabs)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf all went well, this will return as series of checks, all of which have the value \u003Ccode\u003ETRUE\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003ENow that we have created a dynamic network, we can plot it to see how it looks!\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Plot network dynamic object as a static image\\nplot(dynamicCollabs)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis produces... something that looks disappointingly like the plot of our static network above.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;tna_with_r_2.png&quot; caption=&quot;An anticlimactic visualization of the dynamic network&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EThat&#39;s because the \u003Ccode\u003Eplot()\u003C\u002Fcode\u003E function produces a static image of the entire dynamic network. In order to see the actual temporal transformations within the network, we need to use a different visualization that breaks this network up into successive temporal slices. One way to do this is to use the \u003Ccode\u003Efilmstrip()\u003C\u002Fcode\u003E function.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Plot our dynamic network as a filmstrip\\nfilmstrip(dynamicCollabs, displaylabels = FALSE)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow we&#39;re getting somewhere! This gives us a view of the network as it develops over time, taking snapshots at a few key moments over the course of its timespan.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;tna_with_r_3.png&quot; caption=&quot;A filmstrip visualization of the dynamic network&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EBecause collaborations between workshops are pretty rare, relatively speaking, this filmstrip view is too sparse to give us a good sense of how networks of collaborations emerge and change over time. To really see these changes, we&#39;ll use an animation that shows a sliding interval of the sixty year period, and aggregates all of the collaborations within that interval.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"getting-animated\\\"\u003EGetting Animated\u003C\u002Fh3\u003E\\n\u003Cp\u003EAlthough the historical phenomenon that we are modeling is continuous, most approaches to visualizing and analyzing temporal networks convert this continuous dynamic network into a series of many static networks, known as network slices, which represent the accumulated state of the network over a given span of time – 10 years, or 1 year, or 1 day. These slices can be connected together sequentially, like frames in a film.\u003C\u002Fp\u003E\\n\u003Cp\u003EMaking an animation like this is a little complicated, so the NDTV package actually breaks up the math-y calculations behind the animation from the rendering of the animation itself. First, it computes the animation given a set of parameters that tell it when to start, stop, how much to incrementally advance between frames, and how much time we want each interval to aggregate. Depending on how large your network is, this function may take a long time to run.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Calculate how to plot an animated version of the dynamic network\\ncompute.animation(\\n  dynamicCollabs,\\n  animation.mode = &quot;kamadakawai&quot;,\\n  slice.par = list(\\n    start = 1260,\\n    end = 1300,\\n    interval = 1,\\n    aggregate.dur = 20,\\n    rule = &quot;any&quot;\\n  )\\n)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELet&#39;s break these settings down. There are a few different ways to it to compute the layout for our animation, so we have chosen a force-directed algorithm known as Kamada Kawai.[^5] We set the start and end times to the years 1260 and 1320, and the interval between animation frames at 1 year. Because the collaborations between workshops are infrequent and of relatively short durations (at least in our approximations), we aggregated the edges shown in each frame over a sizable chunk of time, in this case 20 years.\u003C\u002Fp\u003E\\n\u003Cp\u003EOnce NDTV has computed the animation, it can generate a webpage with a rendering of this animation using the \u003Ccode\u003Erender.d3movie()\u003C\u002Fcode\u003E function. As with the \u003Ccode\u003Ecompute.animation()\u003C\u002Fcode\u003E function above, this step can take a long time to finish processing depending on the size of the network.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Render the animation and open it in a web brower\\nrender.d3movie(\\n  dynamicCollabs,\\n  displaylabels = FALSE,\\n  # This slice function makes the labels work\\n  vertex.tooltip = function(slice) {\\n    paste(\\n      &quot;&lt;b&gt;Name:&lt;\u002Fb&gt;&quot;, (slice %v% &quot;name&quot;),\\n      &quot;&lt;br&gt;&quot;,\\n      &quot;&lt;b&gt;Region:&lt;\u002Fb&gt;&quot;, (slice %v% &quot;region&quot;)\\n    )\\n  }\\n)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis should generate a website with an interactive visualization of your temporal network and open it in your default browser. The RStudio console might show a bunch of warnings, but those just specify that if multiple values were present for vertex attributes, the \u003Ccode\u003Erender.d3movie()\u003C\u002Fcode\u003E function used the earliest attribute for each vertex. If all went well, it looks like this:\u003C\u002Fp\u003E\\n\u003Ciframe src=\\\"\u002Fimages\u002Ftemporal-network-analysis-with-r\u002Ftna_with_r_dynamic_visualization.html\\\" width=\\\"720\\\" height=\\\"500\\\"\u003E\u003C\u002Fiframe\u003E\\n\\n\u003Cp\u003EThe default labels are simply the identification number for each vertex, so we have turned those off. The \u003Ccode\u003Evertex.tooltip\u003C\u002Fcode\u003E parameter of this function might look a little scary, but basically it supplies each frame or &quot;slice&quot; of the animation with the correct tooltip information so we can see the name and region of each vertex if we click on it.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"beyond-the-hairball-dynamic-network-metrics\\\"\u003EBeyond the Hairball: Dynamic Network Metrics\u003C\u002Fh2\u003E\\n\u003Cp\u003EThis animation works splendidly for our network of manuscript workshops because it&#39;s small and collaborations at any given moment are pretty sparse. To compare different moments, however, quantifiable metrics for the network or for individual nodes may be more useful than animated visualizations.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe might want to know when collaborations between workshops appear over the duration of the data.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Plot formation of edges over time\\nplot(tEdgeFormation(dynamicCollabs, time.interval = .25))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe graph should look like this:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;tna_with_r_4.png&quot; caption=&quot;Edge Formation in the Workshop Network, 1260-1320&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EOur animation might give us an intuitive sense of that most edges are formed somewhere between 1280 and 1300, but this plot of the edge formation provides more concrete insights. By setting the interval of samples to every 6 months (0.5 years), we can see exactly when and how many collaborations occurred between workshops.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"changing-centrality\\\"\u003EChanging Centrality\u003C\u002Fh3\u003E\\n\u003Cp\u003EWhile not everything you can do with static network analysis is currently possible with the R packages for temporal network analysis, most of the common measurements of network properties are possible. Just like you can analyze centrality at the node level or network level in static network analysis, you can analyze how centrality changes over time with temporal network analysis. Rather than looking at the centrality of a workshop or illuminator over the sixty year period of our data, it might make sense to look at how the network level centralization changes year by year, or if your data is sparse like the manuscript data, within a twenty year rolling window of time.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Calculate and graph the rolling betweenness centralization of the network\\ndynamicBetweenness &lt;- tSnaStats(\\n  dynamicCollabs,\\n  snafun = &quot;centralization&quot;,\\n  start = 1260,\\n  end = 1320,\\n  time.interval = 1,\\n  aggregate.dur = 20,\\n  FUN = &quot;betweenness&quot;\\n)\\nplot(dynamicBetweenness)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis will produce a graph of the rolling aggregated centralization of the network, showing how the betweenness centralization of the collaborative manuscript network peaks around the year 1280, and drops off around 1300.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;tna_with_r_5.png&quot; caption=&quot;Betweenness Centralization of the Workshop Network, 1260-1320&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EIt is also possible to calculate and graph node-level metrics as they change over time using the \u003Ccode\u003EtSnaStats()\u003C\u002Fcode\u003E function, but this is very computationally intensive and will produce errors if nodes are appearing and disappearing from the network.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"thinking-temporally-forward-reachable-sets\\\"\u003EThinking Temporally: Forward Reachable Sets\u003C\u002Fh3\u003E\\n\u003Cp\u003EAdding a chronological component to static network measurements might be enough to convince you that temporal network analysis is worth the extra effort for your project. But temporal network analysis also allows us to analyze properties that \u003Cem\u003Eonly\u003C\u002Fem\u003E occur in temporal networks.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn a temporal network, because nodes and edges are popping in and out of existence all the time, it can be useful to know not only how many nodes can be reached from a given node at any specific time, but also how many nodes were or will be connected to a given node over the course of the network&#39;s existence. These past and future groups are known as \u003Cstrong\u003Ebackward reachable sets\u003C\u002Fstrong\u003E and \u003Cstrong\u003Eforward reachable sets\u003C\u002Fstrong\u003E, respectively.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe size of these sets adds important nuance to measurements of centrality – depending on whether a workshop came to occupy a central position in the network near the beginning or end of the period we&#39;re observing, the actual impact it could have had on the larger community is completely different. It can be useful to think of this in epidemiological terms: someone who is infected with a disease relatively early in an epidemic could have a much bigger impact on its spread than someone who is infected relatively late.\u003C\u002Fp\u003E\\n\u003Cp\u003EFor the purpose of analyzing our illuminated network workshops, we can ask which workshops could have had the largest impact on trends in manuscript production as a consequence of their own collaborations and the collaborations of the illuminators and workshops who collaborated with them, and so on. This group of all of the workshops and illuminators that they touched both directly and indirectly is known as a the forward reachable set of a node.\u003C\u002Fp\u003E\\n\u003Cp\u003ETo calculate the size of the forward reachable sets of each node, we can use the \u003Ccode\u003EtReach()\u003C\u002Fcode\u003E function on our entire network. This function defaults to calculating the size of the forward reachable set of a given node, but to calculate the backward reachable set we simply specify \u003Ccode\u003Edirection = &quot;bkwd&quot;\u003C\u002Fcode\u003E instead.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Calculate and store the sizes of\\n# forward and backward reachable sets for each node\\nfwd_reach &lt;- tReach(dynamicCollabs)\\nbkwd_reach &lt;- tReach(dynamicCollabs, direction = &quot;bkwd&quot;)\\nplot(fwd_reach, bkwd_reach)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis produces a graph of the sizes of the forward and backward reachable sets for each workshop or illuminator. From this graph, we can get a sense of who was in a position to have the biggest impact on the network based on their forward reach, and who was well connected to their predecessors based on their collaborations.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;tna_with_r_6.png&quot; caption=&quot;Size of forward and backward reachable sets for workshops\u002Filluminators &quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EWe can also visualize these sets using the \u003Ccode\u003EtPath()\u003C\u002Fcode\u003E function to find the path that connects a given node to its forward or backward reachable set, and the \u003Ccode\u003EplotPaths()\u003C\u002Fcode\u003E function to graph it over a representation of the entire network. In the example below, we&#39;ll choose a single workshop – that of the Hospitaller Master, selected by his vertex id number 3 – and visualize its forward reachable set.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Calculate and plot the forward reachable paths\\n# of node number 3 (the Hospitaller Master)\\nHospitallerFwdPath &lt;- tPath(\\n  dynamicCollabs,\\n  v = 3,\\n  direction = &quot;fwd&quot;\\n)\\nplotPaths(\\n  dynamicCollabs,\\n  HospitallerFwdPath,\\n  displaylabels = FALSE,\\n  vertex.col = &quot;white&quot;\\n)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis produces a visualization of the forward reach of the Hospitaller Master and his workshop based on the chronology of their collaborations.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;tna_with_r_7.png&quot; caption=&quot;The forward reachable path of the Hospitaller Master, with elapsed time labels for edges&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EWe can see that the Hospitaller Master was favorably positioned to have a sizable impact on the future of manuscript illumination in the region of Paris through his collaborative work. This potential for impact was due not only to his position within the network, but also to the chronology of the network&#39;s development,\u003C\u002Fp\u003E\\n\u003Cp\u003EIf the numeric labels that show the elapsed time of each collaboration bug you, you can make them transparent by adding \u003Ccode\u003Eedge.label.col = rgb(0,0,0,0),\u003C\u002Fcode\u003E to the \u003Ccode\u003EplotPaths()\u003C\u002Fcode\u003E function call.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;tna_with_r_8.png&quot; caption=&quot;The forward reachable paths of the Hospitaller Master, without elapsed time labels for edges&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EIf, on the other hand, we are interested in the network of collaborations between workshops that set the stage for the emergence of the Hospitaller Master, we can look at his backward reachable set. Using \u003Ccode\u003Etpath(\u003C\u002Fcode\u003E again, we&#39;ll use \u003Ccode\u003Edirection = &quot;bkwd&quot;\u003C\u002Fcode\u003E, and \u003Ccode\u003Etype = &quot;latest.depart&quot;\u003C\u002Fcode\u003E to find the paths formed by earlier collaborative manuscripts. To visually distinguish this from his forward reach, we&#39;ll use the \u003Ccode\u003Epath.col\u003C\u002Fcode\u003E property to make the paths that trace his backward reach blue instead of red.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-r\\\"\u003E# Calculate and plot the backward reachable paths\\n# of node number 3 (the Hospitaller Master)\\nHospitallerBkwdPath &lt;- tPath(\\n  dynamicCollabs,\\n  v = 3,\\n  direction = &quot;bkwd&quot;,\\n  type = &#39;latest.depart&#39;\\n)\\nplotPaths(\\n  dynamicCollabs,\\n  HospitallerBkwdPath,\\n  path.col = rgb(0, 97, 255, max=255, alpha=166),\\n  displaylabels = FALSE,\\n  edge.label.col = rgb(0,0,0,0),\\n  vertex.col = &quot;white&quot;\\n)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe result should be something like this:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;tna_with_r_9.png&quot; caption=&quot;The backward reachable paths of the Hospitaller Master&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EWe might note that the Hospitaller Master&#39;s backward reachable set was a group at the heart of the Parisian workshop community. Because this workshop was actively participating in collaborative productions from around 1260 to 1290, during the first half of the period under observation, it may not be entirely surprising that their forward reach is larger than their backward reach. Given the Hospitaller Master&#39;s high centrality score, however, both of these sets may be smaller than expected.\u003C\u002Fp\u003E\\n\u003Cp\u003ELike the temporally inflected network metrics above, these forward and backward paths provide a counterpoint to static network metrics. In the case of medieval French illuminators, we might note that some workshops with relatively high centralities have small forward reachable sets but very large backward reachable sets. These illuminators were actively collaborating with other workshops during the last third of the period in question. This insight can help us contextualize any conclusions that we draw from their centrality.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf we had already observed certain features within the manuscripts produced by the Hospitaller Master and his collaborators, these sets might help us formulate and answer new questions about whether he was the source of innovative ideas or techniques, or played an important role in disseminating them. As always, it&#39;s important to keep in mind that network metrics like measurements of centralization and reach represent potential for the transmission of ideas and concepts rather than transmission as such.[^6]\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"conclusion\\\"\u003EConclusion\u003C\u002Fh2\u003E\\n\u003Cp\u003ELet&#39;s take a step back and reflect on what we&#39;ve learned. At this point, we have a sense of how temporal network data is structured and what kinds of decisions go into producing it. We&#39;ve learned how to make both animated and static visualizations that show change in a network over time. We know how static network metrics like reach take on different properties in the context of temporal networks. We can graph the size of the forward and backward reach of each node, and visualize the paths through which these sets are constituted.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf there is one thing that I hope you will take away from this tutorial, it is the idea that adding temporal data to nodes and edges transforms a general social science tool into a powerful method for historical argument. Comparing network structures and metrics from one timeslice to another gives them historical significance that can be difficult, if not impossible, to discern in conventional static social network analysis.\u003C\u002Fp\u003E\\n\u003Cp\u003EThis tutorial introduced only a few of the many tools and techniques made possible by temporal network analysis. One especially exciting area of this field is in dynamic simulations that model the transmission of something, for example a disease or an idea, among individuals within a given temporal network. If that sounds interesting, take a look at the \u003Ca href=\\\"http:\u002F\u002Fwww.epimodel.org\u002F\\\"\u003EEpiModel\u003C\u002Fa\u003E package or other tools created by epidemiologists to model diffusion within dynamic networks.\u003C\u002Fp\u003E\\n\u003Cp\u003EDepending on the historical data that you&#39;re working with, temporal network analysis may offer important insights into how the properties of nodes, edges, and the overall network change over time. Whether or not you decide to make the leap to temporal network analysis, it is helpful to remember that networks of all kinds are complex historical phenomena that emerge, develop, transform beyond recognition, and disappear over the course of time.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"further-reading\\\"\u003EFurther reading\u003C\u002Fh2\u003E\\n\u003Cp\u003EMaybe you made it through this tutorial but you are still more comfortable with a Graphical User Interface than a programming environment like RStudio. There are a few Gephi tutorials that introduce some of the same basic concepts:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003E\u003Ca href=\\\"https:\u002F\u002Fseinecle.github.io\u002Fgephi-tutorials\u002Fgenerated-html\u002Fcreating-a-simple-dynamic-network.html\\\"\u003ECreating a simple dynamic network\u003C\u002Fa\u003E by Clément Levallois\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003E\u003Ca href=\\\"https:\u002F\u002Fseinecle.github.io\u002Fgephi-tutorials\u002Fgenerated-html\u002Fconverting-a-network-with-dates-into-dynamic.html\\\"\u003EConverting a network with dates into a dynamic network\u003C\u002Fa\u003E by Clément Levallois\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EKen Cherven has a good overview of Dynamic Network Analysis with Gephi in his book \u003Cem\u003EMastering Gephi Network Visualization\u003C\u002Fem\u003E (2015)\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EIf you are hungry for more temporal network analysis with R, \u003Ca href=\\\"https:\u002F\u002Fweb.archive.org\u002Fweb\u002F20180423112846\u002Fhttp:\u002F\u002Fstatnet.csde.washington.edu\u002Fworkshops\u002FSUNBELT\u002Fcurrent\u002Fndtv\u002Fndtv_workshop.html\\\"\u003Ethis tutorial\u003C\u002Fa\u003E by Skye Bender-deMoll explains additional functions and features of the packages used here. It served as my own guide to learning about temporal network analysis and formed the inspiration for the tutorial above.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou can also dive deeper into the documentation to learn more about the \u003Ca href=\\\"https:\u002F\u002Fcran.r-project.org\u002Fweb\u002Fpackages\u002FnetworkDynamic\u002Findex.html\\\"\u003EnetworkDynamic package\u003C\u002Fa\u003E, the \u003Ca href=\\\"https:\u002F\u002Fcran.r-project.org\u002Fweb\u002Fpackages\u002Ftsna\u002Findex.html\\\"\u003ETSNA package\u003C\u002Fa\u003E, and the \u003Ca href=\\\"https:\u002F\u002Fcran.r-project.org\u002Fweb\u002Fpackages\u002FnetworkDynamic\u002Findex.html\\\"\u003ENDTV package\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EFinally, if Python is your preferred scripting language, you may want to look into \u003Ca href=\\\"https:\u002F\u002Fdynetx.readthedocs.io\u002Fen\u002Flatest\u002F\\\"\u003EDyNetx\u003C\u002Fa\u003E and \u003Ca href=\\\"https:\u002F\u002Fnetworkx.github.io\u002Fdocumentation\u002Fstable\u002F\\\"\u003ENetworkX\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"references\\\"\u003EReferences\u003C\u002Fh2\u003E\\n\u003Cp\u003E[^1]: This same data can also be represented in other formats (an adjacency matrix, for example, or an adjacency list) but for the purpose of transforming static networks into dynamic ones, it can be easier to conceptualize and manipulate network data with node and edge lists.\u003C\u002Fp\u003E\\n\u003Cp\u003E[^2]: This data forms the core of an ongoing project that I&#39;m working on with my colleague Maeve Doyle, who has helped shape and refine my thinking about temporal network analysis. It comes from a magnificent multivolume catalog of French Gothic Manuscripts written by Alison Stones. Stones, Alison. 2013. \u003Cem\u003EGothic manuscripts: 1260-1320.\u003C\u002Fem\u003E London: Harvey Miller Publishers.\u003C\u002Fp\u003E\\n\u003Cp\u003E[^3]: Because you need to preserve temporal data associated with each edge, projecting a bimodal network into a unimodal one for temporal analysis is a little more complicated than static projection of a bimodal network.\u003C\u002Fp\u003E\\n\u003Cp\u003E[^4]: There are ways to figure out just how much variation in different network metrics will be lost as a consequence of this decision, although they are a bit complex to get into here.\u003C\u002Fp\u003E\\n\u003Cp\u003E[^5]: I am grateful to Rachel Starry for this reference, as well as her comments on a preliminary draft of this tutorial. Kamada, T., and S. Kawai. 1989. &quot;An Algorithm for Drawing General Undirected Graphs.&quot; \u003Cem\u003EInformation Processing Letters\u003C\u002Fem\u003E 31.1: 7-15.\u003C\u002Fp\u003E\\n\u003Cp\u003E[^6]: I recommend Marten Düring&#39;s excellent essay &quot;How Reliable are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study,&quot; which neatly demonstrates that historical actors who occupied central positions in social networks had the potential to use their connections or their control over the connections of others in unique ways, but they did not always have the motivation to do so. Düring, Marten. &quot;How Reliable Are Centrality Measures for Data Collected from Fragmentary and Heterogeneous Historical Sources? A Case Study.&quot; In \u003Cem\u003EThe Connected Past. Challenges to Network Studies in Archaeology and History,\u003C\u002Fem\u003E edited by Tom Brughmans, Anna Collar, and Fiona Coward, 85–102. Oxford: Oxford Publishing, 2016.\u003C\u002Fp\u003E\\n\"}"}</script></div>
+	</body>
+</html>

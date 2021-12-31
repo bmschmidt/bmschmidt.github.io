@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/viewing-html-files"),
+					params: {lang:"en",lessons:"lessons",slug:"viewing-html-files"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Understanding Web Pages and HTML</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="hello-world-in-html">&quot;Hello World&quot; in HTML</h2>
+<h2 id="viewing-html-files">Viewing HTML files</h2>
+<p>When you are working with online sources, much of the time you will be
+using files that have been marked up with HTML (Hyper Text Markup
+Language). Your browser already knows how to interpret HTML, which is
+handy for human readers. Most browsers also let you see the HTML <em>source code</em>
+for any page that you visit. The two images below show a typical web
+page (from the <em>Old Bailey Online</em>) and the HTML source used to generate
+that page, which you can see with the
+<code>Tools -&gt; Web Developer -&gt; Page Source</code> menu item in Firefox.</p>
+<p>When you&#39;re working in the browser, you typically don&#39;t want or need to
+see the source for a web page. If you are writing a page of your own,
+however, it can be very useful to see how other people accomplished a
+particular effect. You will also want to study HTML source as you write
+programs to manipulate web pages or automatically extract information
+from them.</p>
+<p>{% include figure.html filename=&quot;obo.png&quot; caption=&quot;Old Bailey Online screenshot&quot; %}</p>
+<p>{% include figure.html filename=&quot;obo-page-source.png&quot; caption=&quot;HTML Source for Old Bailey Online Web Page&quot; %}</p>
+<p>(To learn more about HTML, you may find it useful at this point to work
+through the <a href="http://www.w3schools.com/html/default.asp">W3 Schools HTML tutorial</a>. Detailed knowledge of HTML
+isn&#39;t immediately necessary to continue reading, but any time that you
+spend learning HTML will be amply rewarded in your work as a digital
+historian or digital humanist.)</p>
+<h2 id="hello-world-in-html-1">&quot;Hello World&quot; in HTML</h2>
+<p>HTML is what is known as a <em>markup</em> language. In other words, HTML is
+text that has been &quot;marked up&quot; with <em>tags</em> that provide information for
+the interpreter (which is often a web browser). Suppose you are
+formatting a bibliographic entry and you want to indicate the title of a
+work by italicizing it. In HTML you use <code>em</code> tags (&quot;em&quot; stands for
+emphasis). So part of your HTML file might look like this</p>
+<pre><code class="language-xml">... in Cohen and Rosenzweig&#39;s &lt;em&gt;Digital History&lt;/em&gt;, for example ...
+</code></pre>
+<p>The simplest HTML file consists of tags which indicate the beginning and
+end of the whole document, and tags which identify a <code>head</code> and a <code>body</code>
+within that document. Information about the file usually goes into the
+head, whereas information that will be displayed on the screen usually
+goes into the body.</p>
+<pre><code class="language-xml">&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;Hello World!&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>You can try creating some HTML code. In your text editor, create
+a new file. Copy the code below into the editor. The first line tells
+the browser what kind of file it is. The <code>html</code> tag has the text direction
+set to <code>ltr</code> (left to right) and the <code>lang</code> (language) set to US English.
+The <code>title</code> tag in the head of the HTML document contains material that is
+usually displayed in the top bar of a window when the page is being
+viewed, and in Firefox tabs.</p>
+<pre><code class="language-xml">&lt;!doctype html&gt;
+&lt;html dir=&quot;ltr&quot; lang=&quot;en-US&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;&lt;!-- Insert your title here --&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;!-- Insert your content here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Change both</p>
+<pre><code class="language-xml">&lt;!-- Insert your title here --&gt;
+</code></pre>
+<p>and</p>
+<pre><code class="language-xml">&lt;!-- Insert your content here --&gt;
+</code></pre>
+<p>to</p>
+<pre><code class="language-xml">Hello World!
+</code></pre>
+<p>Save the file to your <code>programming-historian</code> directory as
+<code>hello-world.html</code>. Now go to Firefox and choose <code>File -&gt; New Tab</code> and
+then <code>File -&gt; Open File</code>. Choose <code>hello-world.html</code>. Depending on your
+text editor you may have a &#39;view page in browser&#39; or &#39;open in browser&#39;
+option. Once you have opened the file, your message should appear in the
+browser. Note the difference between opening an HTML file with a browser
+like Firefox (which interprets it) and opening the same file with your
+text editor (which does not).</p>
+<h2 id="suggested-readings-for-learning-html">Suggested readings for learning HTML</h2>
+<ul>
+<li><a href="http://www.w3schools.com/html/default.asp">W3 Schools HTML Tutorial</a></li>
+<li><a href="http://www.w3schools.com/html/html5_intro.asp">W3 Schools HTML5 Tutorial</a></li>
+</ul>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="viewing-html-files/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Understanding Web Pages and HTML\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\",\"Amanda Morton\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"presenting\",\"topics\":[\"python\"],\"abstract\":\"This lesson introduces you to HTML and the web pages it structures.\",\"next\":\"working-with-text-files\",\"previous\":\"introduction-and-installation\",\"series_total\":\"15 lessons\",\"sequence\":2,\"redirect_from\":\"\u002Flessons\u002Fviewing-html-files\",\"avatar_alt\":\"A woman listening to a man through an ear trumpet\",\"doi\":\"10.46430\u002Fphen0018\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"hello-world-in-html\\\"\u003E&quot;Hello World&quot; in HTML\u003C\u002Fh2\u003E\\n\u003Ch2 id=\\\"viewing-html-files\\\"\u003EViewing HTML files\u003C\u002Fh2\u003E\\n\u003Cp\u003EWhen you are working with online sources, much of the time you will be\\nusing files that have been marked up with HTML (Hyper Text Markup\\nLanguage). Your browser already knows how to interpret HTML, which is\\nhandy for human readers. Most browsers also let you see the HTML \u003Cem\u003Esource code\u003C\u002Fem\u003E\\nfor any page that you visit. The two images below show a typical web\\npage (from the \u003Cem\u003EOld Bailey Online\u003C\u002Fem\u003E) and the HTML source used to generate\\nthat page, which you can see with the\\n\u003Ccode\u003ETools -&gt; Web Developer -&gt; Page Source\u003C\u002Fcode\u003E menu item in Firefox.\u003C\u002Fp\u003E\\n\u003Cp\u003EWhen you&#39;re working in the browser, you typically don&#39;t want or need to\\nsee the source for a web page. If you are writing a page of your own,\\nhowever, it can be very useful to see how other people accomplished a\\nparticular effect. You will also want to study HTML source as you write\\nprograms to manipulate web pages or automatically extract information\\nfrom them.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;obo.png&quot; caption=&quot;Old Bailey Online screenshot&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;obo-page-source.png&quot; caption=&quot;HTML Source for Old Bailey Online Web Page&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E(To learn more about HTML, you may find it useful at this point to work\\nthrough the \u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Fhtml\u002Fdefault.asp\\\"\u003EW3 Schools HTML tutorial\u003C\u002Fa\u003E. Detailed knowledge of HTML\\nisn&#39;t immediately necessary to continue reading, but any time that you\\nspend learning HTML will be amply rewarded in your work as a digital\\nhistorian or digital humanist.)\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"hello-world-in-html-1\\\"\u003E&quot;Hello World&quot; in HTML\u003C\u002Fh2\u003E\\n\u003Cp\u003EHTML is what is known as a \u003Cem\u003Emarkup\u003C\u002Fem\u003E language. In other words, HTML is\\ntext that has been &quot;marked up&quot; with \u003Cem\u003Etags\u003C\u002Fem\u003E that provide information for\\nthe interpreter (which is often a web browser). Suppose you are\\nformatting a bibliographic entry and you want to indicate the title of a\\nwork by italicizing it. In HTML you use \u003Ccode\u003Eem\u003C\u002Fcode\u003E tags (&quot;em&quot; stands for\\nemphasis). So part of your HTML file might look like this\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E... in Cohen and Rosenzweig&#39;s &lt;em&gt;Digital History&lt;\u002Fem&gt;, for example ...\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe simplest HTML file consists of tags which indicate the beginning and\\nend of the whole document, and tags which identify a \u003Ccode\u003Ehead\u003C\u002Fcode\u003E and a \u003Ccode\u003Ebody\u003C\u002Fcode\u003E\\nwithin that document. Information about the file usually goes into the\\nhead, whereas information that will be displayed on the screen usually\\ngoes into the body.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E&lt;html&gt;\\n&lt;head&gt;&lt;\u002Fhead&gt;\\n&lt;body&gt;Hello World!&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou can try creating some HTML code. In your text editor, create\\na new file. Copy the code below into the editor. The first line tells\\nthe browser what kind of file it is. The \u003Ccode\u003Ehtml\u003C\u002Fcode\u003E tag has the text direction\\nset to \u003Ccode\u003Eltr\u003C\u002Fcode\u003E (left to right) and the \u003Ccode\u003Elang\u003C\u002Fcode\u003E (language) set to US English.\\nThe \u003Ccode\u003Etitle\u003C\u002Fcode\u003E tag in the head of the HTML document contains material that is\\nusually displayed in the top bar of a window when the page is being\\nviewed, and in Firefox tabs.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E&lt;!doctype html&gt;\\n&lt;html dir=&quot;ltr&quot; lang=&quot;en-US&quot;&gt;\\n\\n&lt;head&gt;\\n    &lt;title&gt;&lt;!-- Insert your title here --&gt;&lt;\u002Ftitle&gt;\\n&lt;\u002Fhead&gt;\\n\\n&lt;body&gt;\\n    &lt;!-- Insert your content here --&gt;\\n&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EChange both\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E&lt;!-- Insert your title here --&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Eand\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E&lt;!-- Insert your content here --&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Eto\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003EHello World!\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESave the file to your \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E directory as\\n\u003Ccode\u003Ehello-world.html\u003C\u002Fcode\u003E. Now go to Firefox and choose \u003Ccode\u003EFile -&gt; New Tab\u003C\u002Fcode\u003E and\\nthen \u003Ccode\u003EFile -&gt; Open File\u003C\u002Fcode\u003E. Choose \u003Ccode\u003Ehello-world.html\u003C\u002Fcode\u003E. Depending on your\\ntext editor you may have a &#39;view page in browser&#39; or &#39;open in browser&#39;\\noption. Once you have opened the file, your message should appear in the\\nbrowser. Note the difference between opening an HTML file with a browser\\nlike Firefox (which interprets it) and opening the same file with your\\ntext editor (which does not).\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"suggested-readings-for-learning-html\\\"\u003ESuggested readings for learning HTML\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Fhtml\u002Fdefault.asp\\\"\u003EW3 Schools HTML Tutorial\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Fhtml\u002Fhtml5_intro.asp\\\"\u003EW3 Schools HTML5 Tutorial\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+	</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/es/lecciones/salida-de-datos-como-archivo-html"),
+					params: {lang:"es",lessons:"lecciones",slug:"salida-de-datos-como-archivo-html"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the es edition.
+
+<h1>Salida de datos como archivo HTML con Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="objetivo-de-la-lección">Objetivo de la lección</h2>
+<p>Esta lección toma los pares de frecuencia creados en <a href="/es/lecciones/contar-frecuencias">Contar frecuencias de palabras con Python</a> y crea una salida de datos a un archivo HTML.</p>
+<p>Aquí aprenderás a crear esta salida de datos como archivo HTML utilizando Python. También aprenderás acerca del formato de cadenas. El resultado final es un archivo HTML que muestra las palabras clave encontradas en la fuente original en orden de frecuencia descendente junto con el número de veces que aparece cada palabra clave.</p>
+<h2 id="archivos-necesarios-para-esta-lección">Archivos necesarios para esta lección</h2>
+<ul>
+<li><code>obo.py</code></li>
+</ul>
+<p>Si no tienes estos archivos de las lecciones anteriores, puedes descargar python-es-lecciones6, un <a href="/assets/python-es-lecciones6.zip">archivo zip de las lecciones anteriores</a>.</p>
+<h2 id="construcción-de-un-contenedor-de-html">Construcción de un contenedor de HTML</h2>
+<p>En la lección anterior aprendiste cómo etiquetar el mensaje &quot;Hola Mundo&quot; en HTML, escribir el resultado en un archivo y abrirlo automáticamente en el navegador. Un programa que pone códigos de formato alrededor de algo para que pueda ser usado por otro programa es llamado a veces &quot;contenedor&quot; (<em>wrapper</em>). Lo que vamos a hacer ahora es desarrollar un contenedor de HTML para la salida de nuestro código que computa frecuencias de palabras. También añadiremos algunos <em>metadatos</em> dinámicos útiles para complementar los datos de frecuencia recogidos en <a href="/es/lecciones/contar-frecuencias">Contar frecuencias</a>.</p>
+<h2 id="metadatos">Metadatos</h2>
+<p>La distinción entre datos y metadatos es crucial en las ciencias de la información. Los metadatos son datos acerca de datos. Este concepto ya te debe ser familiar incluso si no has escuchado antes el término. Considera un libro tradicional. Si tomamos el texto del libro como los datos, hay un número de otras características que están asociadas con el texto pero que pueden o no estar impresas en el libro de manera explícita. El título del libro, el autor, el editor y el lugar y fecha de la publicación son metadatos y generalmente están impresos en el trabajo. El lugar y fecha del escrito, el nombre del corrector de estilo, los datos de catalogación de la Biblioteca del Congreso y el nombre del tipo de fuente utilizado para la composición tipográfica, a veces están impresas en él. La persona que compra una copia particular puede escribir o no su nombre en el libro. Si el libro pertenece a la colección de una biblioteca, esa biblioteca mantendrá metadatos adicionales, pero solamente algunos de ellos estarán unidos físicamente al libro. El registro de los préstamos, por ejemplo, se mantiene generalmente en una especie de base de datos y se vincula al libro con un identificador único. Bibliotecas, archivos y museos tienen complejos sistemas para generar y mantener un registro de metadatos.</p>
+<p>Cuando trabajas con datos digitales es buena idea incorporar metadatos en tus propios archivos siempre que sea posible. Ahora vamos a desarrollar algunas estrategias básicas para hacer que nuestros archivos de datos sean <em>auto-documentados</em>. En nuestro contenedor queremos incluir información dinámica acerca del archivo, tales como la hora y fecha en el que fue creado así como un título HTML que es relevante para el archivo. En este caso podríamos darle un nombre nosotros mismos, pero cuando empecemos a trabajar con múltiples archivos, crear automáticamente archivos autodocumentados nos ahorrará mucho tiempo, así que lo practicaremos ahora. Y para ello tendremos que aprender algunas opciones más potentes de formato de cadenas de texto.</p>
+<h2 id="formato-de-cadenas-de-texto-en-python">Formato de cadenas de texto en Python</h2>
+<p>Python incluye un operador especial para formato que te permite insertar una cadena dentro de otra. Está representado por un signo de porcentaje seguido por una &quot;s&quot;. Abre el <em>shell</em> de Python e intenta los ejemplos siguientes:</p>
+<pre><code class="language-python">
+formula = &#39;Esta fruta es una %s&#39;
+print(formula)
+-&gt; Esta fruta es una %s
+
+print(formula % &#39;banana&#39;)
+-&gt; Esta fruta es una banana
+
+print(formula % &#39;pera&#39;)
+-&gt; Esta fruta es una pera
+</code></pre>
+<p>También hay una manera que te permite interpolar una lista de cadenas dentro de otra.</p>
+<pre><code class="language-python">formula2 = &#39;Éstas son %s, aquellas son %s&#39;
+print(formula2)
+-&gt; Éstas son %s, aquellas son %s
+
+print(formula2 % (&#39;bananas&#39;, &#39;peras&#39;))
+-&gt; Éstas son bananas, aquellas son peras
+</code></pre>
+<p>En estos ejemplos, un <code>%s</code> en una cadena indica que otra cadena será incrustada en ese punto. Hay una serie de otros códigos de formato de cadenas, la mayoría de los cuales permiten introducir números en las cadenas con varios formatos como <code>%i</code> para enteros (i.e. 1, 2, 3), <code>%f</code> para punto decimal flotante (por ejemplo: 3.023, 4.59, 1.0) y demás. Al utilizar este método podemos introducir información que es única para ese archivo.</p>
+<h2 id="archivo-de-datos-auto-documentado">Archivo de datos auto-documentado</h2>
+<p>Vamos a convertir en funciones algo del código que ya hemos escrito. Uno de ellos descargará el contenido de un URL y nos regresará una cadena de texto en minúsculas de la página Web. Copia este código en el módulo <code>obo.py</code>.</p>
+<pre><code class="language-python"># Dado un URL, regresa una cadena de texto en mínusculas de una página.
+
+def paginaWebATexto(url):
+    import urllib.request, urllib.error, urllib.parse
+    respuesta = urllib.request.urlopen(url)
+    html = respuesta.read().decode(&#39;UTF-8&#39;)
+    texto = quitarEtiquetas(html).lower()
+    return texto
+</code></pre>
+<p>También queremos una función que tome una cadena de texto en cualquier orden y la haga el cuerpo de un archivo HTML que se abra automáticamente en Firefox. Esta función debe incluir algunos metadatos básicos, como la hora y la fecha en la que se creó y el nombre del programa que lo creó. Estudia el siguiente código con atención y luego cópialo en el módulo <code>obo.py</code>.</p>
+<h3 id="instrucciones-para-mac">Instrucciones para Mac</h3>
+<p>Si estás usado una Mac asegúrate de incluir la variable de la ruta de nombre de archivo adecuada en la segunda línea del último párrafo del código para reflejar en dónde estás guardando tus archivos.</p>
+<pre><code class="language-python"># Dado el nombre de un programa de llamada, un url y una cadena a envolver,
+# crea una cadena en body de html con metadatos basicos y abrela en Firefox.
+
+def envuelveCadenaenHTMLMac(programa, url, body):
+    import datetime
+    from webbrowser import open_new_tab
+
+    ahora = datetime.datetime.today().strftime(&quot;%Y%m%d-%H%M%S&quot;)
+    nombreArchivo = programa + &#39;.html&#39;
+    f = open(nombreArchivo,&#39;w&#39;)
+
+    wrapper = &quot;&quot;&quot;&lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;%s output - %s&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;p&gt;URL: &lt;a href=\&quot;%s\&quot;&gt;%s&lt;/a&gt;&lt;/p&gt;&lt;p&gt;%s&lt;/p&gt;&lt;/body&gt;
+    &lt;/html&gt;&quot;&quot;&quot;
+
+    todo = wrapper % (programa, ahora, url, url, body)
+    f.write(todo)
+    f.close()
+
+    #Cambia la ruta de la variable siguiente para que coincida la localizacion en tu directorio
+    nombreArchivo = &#39;file:///Users/username/Desktop/programming-historian/&#39; + nombreArchivo
+
+    open_new_tab(nombreArchivo)
+</code></pre>
+<h3 id="instrucciones-para-windows">Instrucciones para Windows</h3>
+<pre><code class="language-python"># Dado el nombre de un programa de llamada, un url y una cadena a envolver,
+# crea una cadena en body de html con metadatos basicos y abrela en Firefox.
+
+def envuelveCadenaenHTMLWindows(programa, url, body):
+    import datetime
+    from webbrowser import open_new_tab
+
+    ahora = datetime.datetime.today().strftime(&quot;%Y%m%d-%H%M%S&quot;)
+
+    nombreArchivo = programa + &#39;.html&#39;
+    f = open(nombreArchivo,&#39;w&#39;)
+
+    wrapper = &quot;&quot;&quot;&lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;%s output - %s&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;p&gt;URL: &lt;a href=\&quot;%s\&quot;&gt;%s&lt;/a&gt;&lt;/p&gt;&lt;p&gt;%s&lt;/p&gt;&lt;/body&gt;
+    &lt;/html&gt;&quot;&quot;&quot;
+
+    todo = wrapper % (programa, ahora, url, url, body)
+    f.write(todo)
+    f.close()
+
+    open_new_tab(nombreArchivo)
+</code></pre>
+<p>***</p>
+<p>Ten en cuenta que esta función utiliza el operador de formato de cadenas que apenas aprendimos. Si aún tienes problema con esta idea, echa una mirada al archivo HTML que se abrió en la nueva pestaña de tu Firefox y podrás ver cómo funcionó. Si aún estás atascado en esta parte, échale un ojo a:</p>
+<pre><code>URL: http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33
+</code></pre>
+<p>en el archivo HTML y rastrea cómo el programa sabe poner ahí el valor del URL.</p>
+<p>La función también convoca una biblioteca <code>datetime</code> de Python para determinar la hora y fecha actuales. Como el operador de formato de cadena <code>%s</code>, esta biblioteca utiliza el <code>%</code> como reemplazo de valores. En este caso, <code>%Y %m %d %H %M %S</code> representan año, mes, día, hora, minutos y segundos respectivamente. A diferencia de <code>%s</code>, el programa determinará para ti el valor de estas variables utilizando el reloj de tu computadora. Es importante que entiendas esta diferencia.</p>
+<p>Estos metadatos de fecha junto con el nombre del programa que llamó a la función, se guarda en la etiqueta de título del HTML. El archivo HTML que es creado tiene el mismo nombre que el programa de Python que lo creó pero con la extensión <code>.html</code> en vez de <code>.py</code>.</p>
+<h2 id="ensamblar-todo">Ensamblar todo</h2>
+<p>Ahora podemos crear otra versión de nuestro programa para computar frecuencias. En vez de enviar su salida de datos a un archivo de texto o a una ventana de salida, envía la salida de datos a un archivo HTML que será abierto en una nueva pestaña de Firefox. De ahí, la salida de datos del programa puede agregarse fácilmente como una entrada bibliográfica a Zotero. Escribe o copia el código siguiente en tu editor de texto, guárdalo como <code>html-a-frec-3.py</code> y ejecútalo para confirmar que trabaja como se espera.</p>
+<p>Utiliza lo más apropiado para tu sistema: <code>obo.envuelveCadenaenHTMLMac()</code> u <code>obo.envuelveCadenaenHTMLWindows()</code>.</p>
+<pre><code class="language-python"># html-a-frec-3.py
+import obo
+
+# crea un diccionario ordenado de pares de frecuencia de palabras
+url = &#39;http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;
+texto = obo.paginaWebATexto(url)
+listaPalabrasCompleta = obo.quitaNoAlfaNum(texto)
+listaPalabras = obo.quitarPalabrasvac(listaPalabrasCompleta, obo.palabrasvac)
+diccionario = obo.listaPalabrasDicFrec(listaPalabras)
+diccOrdenado = obo.ordenaDicFrec(diccionario)
+
+# compila el diccionario en una cadena y envuelve con HTML
+salidaCadena = &quot;&quot;
+for s in diccOrdenado:
+    salidaCadena += str(s)
+    salidaCadena += &quot;&lt;br /&gt;&quot;
+obo.envuelveCadenaenHTMLMac(&quot;html-a-frec-3&quot;, url, salidaCadena)
+</code></pre>
+<p>Observa que intercalamos nuestros pares de frecuencia de palabras con la etiqueta de salto <code>&lt;br\&gt;</code> de HTML, la cual actúa como una <em>nueva línea</em>. Si todo va bien, deberías ver las mismas frecuencias de palabras que computamos en la última sección pero esta vez en la ventana de tu navegador.</p>
+<h3 id="leturas-sugeridas">Leturas sugeridas</h3>
+<ul>
+<li>Lutz, Learning Python<ul>
+<li>Re-read and review Chs. 1-17</li>
+</ul>
+</li>
+</ul>
+<h3 id="sincronización-de-código">Sincronización de código</h3>
+<p>Para seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto. Si estás trabajando con la versión Mac o Linux de las lecciones deberás abrir el archivo <code>obo.py</code> y cambiar &quot;file:///Users/username/Desktop/programming-historian/&quot; a la ruta del directorio de tu propia computadora.</p>
+<ul>
+<li>python-es-lecciones7.zip <a href="/assets/python-es-lecciones7.zip">zip sync</a></li>
+</ul>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="salida-de-datos-como-archivo-html/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Salida de datos como archivo HTML con Python\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"date\":\"2012-07-17T00:00:00.000Z\",\"translation_date\":\"2017-03-15T00:00:00.000Z\",\"editors\":[\"Miriam Posner\"],\"reviewers\":[\"Jim Clifford\",\"Frederik Elwert\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Adam Crymble\"],\"translation-reviewer\":[\"Jairo A. Melo\",\"Maria José Afanador-Llach\",\"Antonio Rojas Castro\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F49\",\"layout\":\"lesson\",\"next\":\"palabras-clave-en-contexto-n-grams\",\"previous\":\"crear-y-ver-archivos-html-con-python\",\"original\":\"output-data-as-html-file\",\"python_warning\":false,\"difficulty\":2,\"activity\":\"transforming\",\"topics\":[\"python\",\"website\"],\"abstract\":\"Esta lección toma los pares de frecuencia creados en 'Contar frecuencias de palabras con Python' y crea una salida de datos a un archivo HTML.\",\"avatar_alt\":\"Grabado de mujer y dos niños.\",\"doi\":\"10.46430\u002Fphes0025\",\"sequence\":12,\"series_total\":14},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"objetivo-de-la-lección\\\"\u003EObjetivo de la lección\u003C\u002Fh2\u003E\\n\u003Cp\u003EEsta lección toma los pares de frecuencia creados en \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fcontar-frecuencias\\\"\u003EContar frecuencias de palabras con Python\u003C\u002Fa\u003E y crea una salida de datos a un archivo HTML.\u003C\u002Fp\u003E\\n\u003Cp\u003EAquí aprenderás a crear esta salida de datos como archivo HTML utilizando Python. También aprenderás acerca del formato de cadenas. El resultado final es un archivo HTML que muestra las palabras clave encontradas en la fuente original en orden de frecuencia descendente junto con el número de veces que aparece cada palabra clave.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"archivos-necesarios-para-esta-lección\\\"\u003EArchivos necesarios para esta lección\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003ESi no tienes estos archivos de las lecciones anteriores, puedes descargar python-es-lecciones6, un \u003Ca href=\\\"\u002Fassets\u002Fpython-es-lecciones6.zip\\\"\u003Earchivo zip de las lecciones anteriores\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"construcción-de-un-contenedor-de-html\\\"\u003EConstrucción de un contenedor de HTML\u003C\u002Fh2\u003E\\n\u003Cp\u003EEn la lección anterior aprendiste cómo etiquetar el mensaje &quot;Hola Mundo&quot; en HTML, escribir el resultado en un archivo y abrirlo automáticamente en el navegador. Un programa que pone códigos de formato alrededor de algo para que pueda ser usado por otro programa es llamado a veces &quot;contenedor&quot; (\u003Cem\u003Ewrapper\u003C\u002Fem\u003E). Lo que vamos a hacer ahora es desarrollar un contenedor de HTML para la salida de nuestro código que computa frecuencias de palabras. También añadiremos algunos \u003Cem\u003Emetadatos\u003C\u002Fem\u003E dinámicos útiles para complementar los datos de frecuencia recogidos en \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fcontar-frecuencias\\\"\u003EContar frecuencias\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"metadatos\\\"\u003EMetadatos\u003C\u002Fh2\u003E\\n\u003Cp\u003ELa distinción entre datos y metadatos es crucial en las ciencias de la información. Los metadatos son datos acerca de datos. Este concepto ya te debe ser familiar incluso si no has escuchado antes el término. Considera un libro tradicional. Si tomamos el texto del libro como los datos, hay un número de otras características que están asociadas con el texto pero que pueden o no estar impresas en el libro de manera explícita. El título del libro, el autor, el editor y el lugar y fecha de la publicación son metadatos y generalmente están impresos en el trabajo. El lugar y fecha del escrito, el nombre del corrector de estilo, los datos de catalogación de la Biblioteca del Congreso y el nombre del tipo de fuente utilizado para la composición tipográfica, a veces están impresas en él. La persona que compra una copia particular puede escribir o no su nombre en el libro. Si el libro pertenece a la colección de una biblioteca, esa biblioteca mantendrá metadatos adicionales, pero solamente algunos de ellos estarán unidos físicamente al libro. El registro de los préstamos, por ejemplo, se mantiene generalmente en una especie de base de datos y se vincula al libro con un identificador único. Bibliotecas, archivos y museos tienen complejos sistemas para generar y mantener un registro de metadatos.\u003C\u002Fp\u003E\\n\u003Cp\u003ECuando trabajas con datos digitales es buena idea incorporar metadatos en tus propios archivos siempre que sea posible. Ahora vamos a desarrollar algunas estrategias básicas para hacer que nuestros archivos de datos sean \u003Cem\u003Eauto-documentados\u003C\u002Fem\u003E. En nuestro contenedor queremos incluir información dinámica acerca del archivo, tales como la hora y fecha en el que fue creado así como un título HTML que es relevante para el archivo. En este caso podríamos darle un nombre nosotros mismos, pero cuando empecemos a trabajar con múltiples archivos, crear automáticamente archivos autodocumentados nos ahorrará mucho tiempo, así que lo practicaremos ahora. Y para ello tendremos que aprender algunas opciones más potentes de formato de cadenas de texto.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"formato-de-cadenas-de-texto-en-python\\\"\u003EFormato de cadenas de texto en Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EPython incluye un operador especial para formato que te permite insertar una cadena dentro de otra. Está representado por un signo de porcentaje seguido por una &quot;s&quot;. Abre el \u003Cem\u003Eshell\u003C\u002Fem\u003E de Python e intenta los ejemplos siguientes:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E\\nformula = &#39;Esta fruta es una %s&#39;\\nprint(formula)\\n-&gt; Esta fruta es una %s\\n\\nprint(formula % &#39;banana&#39;)\\n-&gt; Esta fruta es una banana\\n\\nprint(formula % &#39;pera&#39;)\\n-&gt; Esta fruta es una pera\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ETambién hay una manera que te permite interpolar una lista de cadenas dentro de otra.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eformula2 = &#39;Éstas son %s, aquellas son %s&#39;\\nprint(formula2)\\n-&gt; Éstas son %s, aquellas son %s\\n\\nprint(formula2 % (&#39;bananas&#39;, &#39;peras&#39;))\\n-&gt; Éstas son bananas, aquellas son peras\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEn estos ejemplos, un \u003Ccode\u003E%s\u003C\u002Fcode\u003E en una cadena indica que otra cadena será incrustada en ese punto. Hay una serie de otros códigos de formato de cadenas, la mayoría de los cuales permiten introducir números en las cadenas con varios formatos como \u003Ccode\u003E%i\u003C\u002Fcode\u003E para enteros (i.e. 1, 2, 3), \u003Ccode\u003E%f\u003C\u002Fcode\u003E para punto decimal flotante (por ejemplo: 3.023, 4.59, 1.0) y demás. Al utilizar este método podemos introducir información que es única para ese archivo.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"archivo-de-datos-auto-documentado\\\"\u003EArchivo de datos auto-documentado\u003C\u002Fh2\u003E\\n\u003Cp\u003EVamos a convertir en funciones algo del código que ya hemos escrito. Uno de ellos descargará el contenido de un URL y nos regresará una cadena de texto en minúsculas de la página Web. Copia este código en el módulo \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Dado un URL, regresa una cadena de texto en mínusculas de una página.\\n\\ndef paginaWebATexto(url):\\n    import urllib.request, urllib.error, urllib.parse\\n    respuesta = urllib.request.urlopen(url)\\n    html = respuesta.read().decode(&#39;UTF-8&#39;)\\n    texto = quitarEtiquetas(html).lower()\\n    return texto\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ETambién queremos una función que tome una cadena de texto en cualquier orden y la haga el cuerpo de un archivo HTML que se abra automáticamente en Firefox. Esta función debe incluir algunos metadatos básicos, como la hora y la fecha en la que se creó y el nombre del programa que lo creó. Estudia el siguiente código con atención y luego cópialo en el módulo \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"instrucciones-para-mac\\\"\u003EInstrucciones para Mac\u003C\u002Fh3\u003E\\n\u003Cp\u003ESi estás usado una Mac asegúrate de incluir la variable de la ruta de nombre de archivo adecuada en la segunda línea del último párrafo del código para reflejar en dónde estás guardando tus archivos.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Dado el nombre de un programa de llamada, un url y una cadena a envolver,\\n# crea una cadena en body de html con metadatos basicos y abrela en Firefox.\\n\\ndef envuelveCadenaenHTMLMac(programa, url, body):\\n    import datetime\\n    from webbrowser import open_new_tab\\n\\n    ahora = datetime.datetime.today().strftime(&quot;%Y%m%d-%H%M%S&quot;)\\n    nombreArchivo = programa + &#39;.html&#39;\\n    f = open(nombreArchivo,&#39;w&#39;)\\n\\n    wrapper = &quot;&quot;&quot;&lt;html&gt;\\n    &lt;head&gt;\\n    &lt;title&gt;%s output - %s&lt;\u002Ftitle&gt;\\n    &lt;\u002Fhead&gt;\\n    &lt;body&gt;&lt;p&gt;URL: &lt;a href=\\\\&quot;%s\\\\&quot;&gt;%s&lt;\u002Fa&gt;&lt;\u002Fp&gt;&lt;p&gt;%s&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n    &lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\n    todo = wrapper % (programa, ahora, url, url, body)\\n    f.write(todo)\\n    f.close()\\n\\n    #Cambia la ruta de la variable siguiente para que coincida la localizacion en tu directorio\\n    nombreArchivo = &#39;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&#39; + nombreArchivo\\n\\n    open_new_tab(nombreArchivo)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"instrucciones-para-windows\\\"\u003EInstrucciones para Windows\u003C\u002Fh3\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Dado el nombre de un programa de llamada, un url y una cadena a envolver,\\n# crea una cadena en body de html con metadatos basicos y abrela en Firefox.\\n\\ndef envuelveCadenaenHTMLWindows(programa, url, body):\\n    import datetime\\n    from webbrowser import open_new_tab\\n\\n    ahora = datetime.datetime.today().strftime(&quot;%Y%m%d-%H%M%S&quot;)\\n\\n    nombreArchivo = programa + &#39;.html&#39;\\n    f = open(nombreArchivo,&#39;w&#39;)\\n\\n    wrapper = &quot;&quot;&quot;&lt;html&gt;\\n    &lt;head&gt;\\n    &lt;title&gt;%s output - %s&lt;\u002Ftitle&gt;\\n    &lt;\u002Fhead&gt;\\n    &lt;body&gt;&lt;p&gt;URL: &lt;a href=\\\\&quot;%s\\\\&quot;&gt;%s&lt;\u002Fa&gt;&lt;\u002Fp&gt;&lt;p&gt;%s&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n    &lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\n    todo = wrapper % (programa, ahora, url, url, body)\\n    f.write(todo)\\n    f.close()\\n\\n    open_new_tab(nombreArchivo)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E***\u003C\u002Fp\u003E\\n\u003Cp\u003ETen en cuenta que esta función utiliza el operador de formato de cadenas que apenas aprendimos. Si aún tienes problema con esta idea, echa una mirada al archivo HTML que se abrió en la nueva pestaña de tu Firefox y podrás ver cómo funcionó. Si aún estás atascado en esta parte, échale un ojo a:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EURL: http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Een el archivo HTML y rastrea cómo el programa sabe poner ahí el valor del URL.\u003C\u002Fp\u003E\\n\u003Cp\u003ELa función también convoca una biblioteca \u003Ccode\u003Edatetime\u003C\u002Fcode\u003E de Python para determinar la hora y fecha actuales. Como el operador de formato de cadena \u003Ccode\u003E%s\u003C\u002Fcode\u003E, esta biblioteca utiliza el \u003Ccode\u003E%\u003C\u002Fcode\u003E como reemplazo de valores. En este caso, \u003Ccode\u003E%Y %m %d %H %M %S\u003C\u002Fcode\u003E representan año, mes, día, hora, minutos y segundos respectivamente. A diferencia de \u003Ccode\u003E%s\u003C\u002Fcode\u003E, el programa determinará para ti el valor de estas variables utilizando el reloj de tu computadora. Es importante que entiendas esta diferencia.\u003C\u002Fp\u003E\\n\u003Cp\u003EEstos metadatos de fecha junto con el nombre del programa que llamó a la función, se guarda en la etiqueta de título del HTML. El archivo HTML que es creado tiene el mismo nombre que el programa de Python que lo creó pero con la extensión \u003Ccode\u003E.html\u003C\u002Fcode\u003E en vez de \u003Ccode\u003E.py\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"ensamblar-todo\\\"\u003EEnsamblar todo\u003C\u002Fh2\u003E\\n\u003Cp\u003EAhora podemos crear otra versión de nuestro programa para computar frecuencias. En vez de enviar su salida de datos a un archivo de texto o a una ventana de salida, envía la salida de datos a un archivo HTML que será abierto en una nueva pestaña de Firefox. De ahí, la salida de datos del programa puede agregarse fácilmente como una entrada bibliográfica a Zotero. Escribe o copia el código siguiente en tu editor de texto, guárdalo como \u003Ccode\u003Ehtml-a-frec-3.py\u003C\u002Fcode\u003E y ejecútalo para confirmar que trabaja como se espera.\u003C\u002Fp\u003E\\n\u003Cp\u003EUtiliza lo más apropiado para tu sistema: \u003Ccode\u003Eobo.envuelveCadenaenHTMLMac()\u003C\u002Fcode\u003E u \u003Ccode\u003Eobo.envuelveCadenaenHTMLWindows()\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# html-a-frec-3.py\\nimport obo\\n\\n# crea un diccionario ordenado de pares de frecuencia de palabras\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;\\ntexto = obo.paginaWebATexto(url)\\nlistaPalabrasCompleta = obo.quitaNoAlfaNum(texto)\\nlistaPalabras = obo.quitarPalabrasvac(listaPalabrasCompleta, obo.palabrasvac)\\ndiccionario = obo.listaPalabrasDicFrec(listaPalabras)\\ndiccOrdenado = obo.ordenaDicFrec(diccionario)\\n\\n# compila el diccionario en una cadena y envuelve con HTML\\nsalidaCadena = &quot;&quot;\\nfor s in diccOrdenado:\\n    salidaCadena += str(s)\\n    salidaCadena += &quot;&lt;br \u002F&gt;&quot;\\nobo.envuelveCadenaenHTMLMac(&quot;html-a-frec-3&quot;, url, salidaCadena)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EObserva que intercalamos nuestros pares de frecuencia de palabras con la etiqueta de salto \u003Ccode\u003E&lt;br\\\\&gt;\u003C\u002Fcode\u003E de HTML, la cual actúa como una \u003Cem\u003Enueva línea\u003C\u002Fem\u003E. Si todo va bien, deberías ver las mismas frecuencias de palabras que computamos en la última sección pero esta vez en la ventana de tu navegador.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"leturas-sugeridas\\\"\u003ELeturas sugeridas\u003C\u002Fh3\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELutz, Learning Python\u003Cul\u003E\\n\u003Cli\u003ERe-read and review Chs. 1-17\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"sincronización-de-código\\\"\u003ESincronización de código\u003C\u002Fh3\u003E\\n\u003Cp\u003EPara seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto. Si estás trabajando con la versión Mac o Linux de las lecciones deberás abrir el archivo \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E y cambiar &quot;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&quot; a la ruta del directorio de tu propia computadora.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-es-lecciones7.zip \u003Ca href=\\\"\u002Fassets\u002Fpython-es-lecciones7.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+	</body>
+</html>

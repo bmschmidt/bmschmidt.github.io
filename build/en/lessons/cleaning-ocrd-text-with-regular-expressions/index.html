@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/cleaning-ocrd-text-with-regular-expressions"),
+					params: {lang:"en",lessons:"lessons",slug:"cleaning-ocrd-text-with-regular-expressions"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Cleaning OCR’d text with Regular Expressions</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="introduction">Introduction</h2>
+<p>Optical Character Recognition (OCR)—the conversion of scanned images to
+machine-encoded text—has proven a godsend for historical research. This
+process allows texts to be searchable on one hand and more easily parsed
+and mined on the other. But we’ve all noticed that the OCR for historic
+texts is far from perfect. Old type faces and formats make for unique
+OCR. Take for example, this page from the <em>Congressional Directory</em> from
+the 50th Congress (1887). The PDF scan downloaded from <a href="http://home.heinonline.org/" title="Source for Legal and Government-based documents">HeinOnline</a>
+looks organized:</p>
+<p>{% include figure.html filename=&quot;cd_pdf.png&quot; caption=&quot;This is a screenshot of the PDF page.&quot; %}</p>
+<p>However, the OCR layer (downloaded as a text file*) shows that the
+machine-encoded text is not nearly as neat:</p>
+<p>{% include figure.html filename=&quot;cd_txt.png&quot; caption=&quot;This is a screenshot of the OCR.&quot; %}</p>
+<blockquote>
+<p>Note: If you do not have the option to download a text file, you can
+use the <a href="http://www.unixuser.org/~euske/python/pdfminer/index.html" title="PDF Miner Module">pdfminer</a> module to extract text from the pdf.</p>
+</blockquote>
+<p>Since I want to use this to map the Washington residences for Members of
+these late 19th-century Congresses, how might I make this data more
+useable?</p>
+<p>The answer is Regular Expressions or “regex.” Here’s what regex did for
+me. Though this is not a “real” CSV file (the commas are not quite
+right), it can be easily viewed in Excel and prepped for geocoding. Much
+better than the text file from above, right?</p>
+<pre><code class="language-text">Aldrich, N. W,Providence, R. I
+Allison, William B, Dubuque, Iowa,24Vermont avenue,
+Bate, William,Nashville, Ten, Ebbitt House
+Beck, James B,Lexington, Ky
+Berry, James I, Bentonville, Ark, National Hotel,
+Blair, I lenry \V, Manchester, N. H,2o East Capitol stree_._&#39;
+Blodgett, Rufus,Long Branch, N. J
+Bowen, Thomas M,Del Norte, Colo
+Brown, Joseph E, Atlanta, Ga, Woodmont Flats,
+Butler, M. C,Edgefield, S. C, 1751 P street NW
+Call, Wilkinson, Jacksonville, Fla, 1903 N street NW
+Cameron, J. D,Harrisburg, Pa, 21 Lafayette Square,
+Chace, Jonathan,Providence, R, I
+Chandler, William E, Concord, N. H, 1421 I street NW
+Cockrell, Francis M,Warrensburgh,Mo, I518 R street NW
+Coke, Richard,Waco, Tex, 419 Sixth street NW
+Colquitt, Alfred I I,Atlanta, Ga, 920 New York avenue
+Cullom, Shelby M,Springfield, Ill, 1402 Massachusetts avenue
+Daniel, John W,,Lynchburgh, Va, I7OO Nineteenth st. NW
+Davis, Cushman K, Saint Paul, Minn, 17oo Fifteenth street NW
+Dawes, Henry L,Pittsfield, Mass, 1632Rhode Island avenue.
+Dolph, Joseph N,Portland, Oregon, 8 Lafayette Square,
+Edmunds, George F, Burlington, Vt, 2111 Massachusetts avenue
+Eustis, James B,,New Orleans, La, 1761 N street NW
+Evarts, William M,New York, N. Y, i6oi K street NW
+Farwell, Charles B, Chicago, Ill,
+Faulkner, Charles James, Martinsburgh, W. Va,
+Frye, William P,Lewiston, Me, Hamilton House,
+George, James Z,Jackson, Miss, Metropolitan Hotel
+Gibson, Randall Lee, New Orleans, La, 1723 Rhode Island avenue.
+Gorman, Arthur P, Laurel, Md .,1403 K street NW
+Gray, George,Wilmington, Del,
+Hale, Eugene,Ellsworth, Me, 917 Sixthteenth st. NW
+Hampton, Wade, Columbia, S. C,
+Harris, Isham G, Memphis,Tenn, 13 First street NE
+Hawley, Joseph R,Hartford, Corn, 1514 K street NW
+Hearst, George,San Francisco, Cal,
+Hiscock, Frank, Syracuse, N. Y, Arlington Hotel
+Hoar, George F, Worcester, Mass, 1325 K street NW
+Ingalls, John James, Atchison, Kans, I B street NW
+Jones, James K,Washington, Ark, 915 M street NW
+Jones, John P,Gold Hill, Nev
+Kenna, John E,Charleston, W. Va, 14o B street NW
+McPherson, John ,Jersey City, N. J, 1014 Vermont avenue,
+Manderson, CharlesF. Omaha, Nebr,The Portland
+Morgan, John T,.Selma, Ala,I 13 First street NE
+Morrill, Justin S, Stratford, Vt, x Thomas Circle
+</code></pre>
+<h2 id="regular-expressions-regex">Regular Expressions (Regex)</h2>
+<p>Regex is not a programming language. Rather it follows a syntax used in
+many different languages, employing a series of characters to find
+and/or replace precise patterns in texts. For example, using this sample
+text:</p>
+<pre><code>Let&#39;s get all this bad OCR and $tuff. Gr8!
+</code></pre>
+<p>1. You could isolate all the capital letters (L, O, C, R, G) with this
+regex:</p>
+<pre><code>[A-Z]
+</code></pre>
+<p>2. You could isolate the first capital letter (L) with this regex:</p>
+<pre><code>^[A-Z]
+</code></pre>
+<p>3. You could isolate all characters BUT the capital letters with this
+regex:</p>
+<pre><code>[^A-Z]
+</code></pre>
+<p>4. You could isolate the acronym “OCR” with this regex:</p>
+<pre><code>[A-Z]{3}
+</code></pre>
+<p>5. You could isolate the punctuation using this regex:</p>
+<pre><code>[[:punct:]]
+</code></pre>
+<p>6. You could isolate all the punctuation, spaces, and numbers this way:</p>
+<pre><code>[[:punct:], ,0-9]
+</code></pre>
+<p>The character set is not that large, but the patterns can get
+complicated. Moreover, different characters can mean different things
+depending on their placement. Take for example, the difference between
+example 2 and example 3 above. In example 2, the caret (^) means
+isolate the pattern at the beginning of the line or document. However,
+when you put the caret inside the character class (demarcated by <code>[]</code>) it
+means “except” these sets of characters.</p>
+<p>The best way to understand Regular Expressions is to learn what the
+characters do in different positions and practice, practice, practice.
+And since experimentation is best way to learn, I suggest using a regex
+tester tool and experiment with the syntax. For Mac users, I had a lot
+of luck with the <a href="http://krillapps.com/patterns/" title="Patterns App for RegEx Experimentation">Patterns App</a> (Mac Store $2.99), which allowed me
+to see what the regular expressions were doing in real time. It also
+comes with a built-in cheat sheet for the symbols, but I actually found
+this generic (meaning it works across languages) <a href="https://cheatography.com/davechild/cheat-sheets/regular-expressions/" title="Reg Ex Cheat Sheet">cheat sheet</a> more
+comprehensive.</p>
+<h2 id="python-and-regex">Python and Regex</h2>
+<p>In this tutorial, I use the Regular Expressions Python module to extract
+a “cleaner” version of the <em>Congressional Directory</em> text file. Though
+the <a href="http://docs.python.org/2/library/re.html" title="Re Module Documentation">documentation</a> for this module is fairly comprehensive, beginners
+will have more luck with the simpler <a href="http://docs.python.org/2/howto/regex.html#regex-howto" title="Reuglar Expressions HOWTO">Regular Expression HOWTO
+documentation</a>.</p>
+<h3 id="two-things-to-note-before-you-get-started">Two things to note before you get started</h3>
+<ul>
+<li>From what I’ve observed, Python is <em>not</em> the most efficient way to
+use Regular Expressions if you have to clean a single document.
+Command Line programs like <a href="http://www.gnu.org/software/sed/" title="GNU&#39;s sed editor">sed</a> or <a href="http://www.gnu.org/software/grep/" title="GNU&#39;s grep editor">grep</a> appear to be more
+efficient for this process. (I will leave it to the better grep/sed
+users to create tutorials on those tools.) I use Python for several
+reasons: 1) I understand the syntax best; 2) I appreciate seeing
+each step written out in a single file so I can easily backtrack
+mistakes; and 3) I want a program I could use over and over again,
+since I am cleaning multiple pages from the <em>Congressional
+Directory</em>.</li>
+<li>The OCR in this document is far from consistent (within a single
+page or across multiple pages). Thus, the results of this cleaning
+tutorial are not perfect. <strong>My goal is to let regex do the heavy
+lifting and export a document in my chosen format that is <em>more</em>
+organized than the document with which I started.</strong> This
+significantly reduces, but does not eliminate, any hand-cleaning I
+might need to do before geocoding the address data.</li>
+</ul>
+<h3 id="my-example-python-file">My example Python File</h3>
+<p>Here’s the Python file that I used to created to clean my document:</p>
+<pre><code class="language-python">#cdocr.py
+#strip the punctuation and extra information from HeinOnline text document
+
+#import re module
+import re
+
+#Open the text file, and read the text file into a list
+with open(&#39;../../data/txt/50-1-p1.txt&#39;) as ocr:
+    Text = ocr.readlines()
+
+#Create an empty list to fill with lines of corrected text
+CleanText = []
+
+# checks each line in the imported text file for all the following patterns
+for line in Text:
+    #lines with multi-dashes contain data - searches for those lines
+    # -- does not isolate intro text lines with one dash.
+    dashes = re.search(&#39;(--+)&#39;, line)
+
+    #isolates lines with dashes and cleans
+    if dashes:
+        #replaces dashes with my chosen delimiter
+        nodash = re.sub(&#39;.(-+)&#39;, &#39;,&#39;, line)
+        #strikes multiple periods
+        nodots = re.sub(&#39;.(\.\.+)&#39;, &#39;&#39;, nodash)
+        #strikes extra spaces
+        nospaces = re.sub(&#39;(  +)&#39;, &#39;,&#39;, nodots)
+        #strikes *
+        nostar = re.sub(&#39;.[*]&#39;, &#39;&#39;, nospaces)
+        #strikes new line and comma at the beginning of the line
+        flushleft = re.sub(&#39;^\W&#39;, &#39;&#39;, nostar)
+        #getting rid of double commas (i.e. - Evarts)
+        comma = re.sub(&#39;,{2,3}&#39;, &#39;,&#39;, flushleft)
+        #cleaning up some words that are stuck together (i.e. -  Dawes, Manderson)
+        #skips double OO that was put in place of 00 in address
+        caps = re.sub(&#39;[A-N|P-Z]{2,}&#39;, &#39;,&#39;, comma)
+        #Clean up NE and NW quadrant indicators by removing periods
+        ne = re.sub(&#39;(\,*? N\. ?E.)&#39;, &#39; NE&#39;, caps)
+        nw = re.sub(&#39;(\,*? N\. ?W[\.\,]*?_?)$&#39;, &#39; NW&#39;, ne) #MAKE VERBOSE
+        #Replace periods with commas between last and first names (i.e. - Chace, Cockrell)
+        match = re.search(&#39;^([A-Z][a-z]+\. )&#39;, nw) #MAKE VERBOSE
+        if match:
+            names = re.sub(&#39;\.&#39;, &#39;,&#39;, nw)
+        else:
+            names = nw
+           #Append each line to CleanText list while it loops through
+        CleanText.append(names)
+
+#Saving into a &#39;fake&#39; csv file
+with open(&#39;cdocr2/50-1p1.csv&#39;, &#39;w&#39;) as fcsv:
+    #Write each line in CleanText to a file
+    for line in CleanText:
+        fcsv.write(line)
+</code></pre>
+<p>I’ve commented it pretty extensively, so I will explain why I structured
+the code the way I did. I will also demonstrate a different way to
+format long regular expressions for better legibility.</p>
+<ul>
+<li><strong>Lines 16-22</strong> – Notice in my original text file that my data is
+all on lines with multiple dashes. This code effectively isolates
+those lines. I use the <a href="http://docs.python.org/2/library/re.html#re.search" title="Explanation of re.search() function">re.search()</a> function to find all lines
+with multiple dashes. The “if” statement on line 20 only works with
+the lines with dashes in the rest of the code. (This eliminates all
+introductory text and the rows of page numbers that follow the data
+I want.)</li>
+<li><strong>Lines 23-40</strong> – This is the long process by which I eliminate all
+of the extraneous punctuation and put the pieces of my data (last
+name, first name, home post office, washington address) into
+different fields for a csv document. I use the <a href="http://docs.python.org/2/library/re.html#re.sub" title="Explanation of re.sub() function">re.sub()</a>
+function, which substitutes pattern with another character. I
+comment extensively here, so you can see what each piece does. This
+may not be the most efficient way of doing this, but by doing this
+piece by piece, I could check my work as I went. As I built loop, I
+checked each step by printing the variable in the command line. So,
+for example, after line 24 (when I eliminate the dashes), I would
+add “print nodash” (inside the if loop) before I ran the file in the
+command line. I checked each step to make sure my patterns were only
+changing the things I wanted and not changing things I did <em>not</em>
+want changed.</li>
+<li><strong>Lines 41-46</strong> - I used a slightly different method here. The OCR
+in the text file separated some names with a period (for example,
+Chace.Jonathan vs. Chase,Jonathan). I wanted to isolate the periods
+that came up in this pattern and change those periods to commas. So
+I searched for the pattern <code>^([A-Z][a-z]+\.)</code>, which looks at the
+beginning of a line (^) and finds a pattern with one capital
+letter, multiple lowercase letters and a period. After I had
+isolated that pattern, I substitute the period those lines that fit
+the pattern with a comma.</li>
+</ul>
+<h3 id="using-verbose-mode">Using Verbose Mode</h3>
+<p>Most regular expressions are difficult to read. But lines 39 and 40 look
+<em>especially</em> bad. How might you clarify these patterns for people who
+might look at your code (or for yourself when you are staring at them at
+2:00 AM someday)? You can use the module’s <a href="http://docs.python.org/2/library/re.html#re.VERBOSE" title="Explanation of re.verbose mode">verbose mode</a>. By putting
+your patterns in verbose mode, python ignores white space and the #
+character, so you can split the patterns across multiple lines and
+comment each piece. <em><strong>Keep in mind that, because it ignores spaces, if
+spaces are part of your pattern, you need to escape them with a
+backslash (\). Also note that re.VERBOSE and re.X are the same
+thing.</strong></em></p>
+<p>Here are lines 39 and 40 in verbose mode:</p>
+<pre><code class="language-python">#This is the same as (\,*? N\. ?E.)
+#All spaces need to be escaped in verbose mode.
+ne_pattern = re.compile(r&#39;&#39;&#39;
+    (               #start group
+        \,*?        #look for comma (escaped); *? = 0 or more commas with fewest results
+        \ N\.?      #look for (escaped) space + N that might have an (escaped) period after it
+        \ ?E        #look for an E that may or may not have an space in front of it
+        .           #the E might be followed by another character.
+    )               #close group
+    $               #ONLY look at the end of a line
+&#39;&#39;&#39;, re.VERBOSE)
+
+#This is the same as (\,*? N\. ?W[\.\,]*?_?)$
+nw_pattern = re.compile(r&#39;&#39;&#39;
+    (                   #start group
+        \,*?            #look for comma (escaped); *? = 0 or more commas with fewest results
+        \ N\.?          #look for (escaped) space + N that might have an (escaped) period after it
+        \ ?W            #look for an W that may or may not have an space in front of it
+        [\.\,]*?        #look for commas or periods (both escaped) that might come after W
+        _?              #look for underscore that comes after one of these NW quadrant indicators
+    )                   #close group
+    $                   #ONLY look at the end of a line
+&#39;&#39;&#39;, re.X)
+</code></pre>
+<p>In above example, I use the <a href="http://docs.python.org/2/library/re.html#re.compile" title="Explanation of re.compile() function">re.compile()</a> function to save the
+pattern for future use. So, adjusting my full python code to use verbose
+mode would look like the following. Note that I define my verbose
+patterns on lines 17-39 and store them in variables (ne_pattern and
+nw_pattern). I use them in my loop on lines 65 and 66.</p>
+<pre><code class="language-python">#cdocrverbose.py
+#strip the punctuation and extra information from HeinOnline text document
+
+#import re module
+import re
+
+#Open the text file, and read the text file into a list
+with open(&#39;../../data/txt/50-1-p1.txt&#39;) as ocr:
+    Text = ocr.readlines()
+
+#Create an empty list to fill with lines of corrected text
+CleanText = []
+
+##Creating verbose patterns for the more complicated pieces that I use later on.##
+
+#This is the same as (\,*? N\. ?E.)
+#All spaces need to be escaped in verbose mode.
+ne_pattern = re.compile(r&#39;&#39;&#39;
+    (               #start group
+        \,*?        #look for comma (escaped); *? = 0 or more commas with fewest results
+        \ N\.?      #look for (escaped) space + N that might have an (escaped) period after it
+        \ ?E        #look for an E that may or may not have an space in front of it
+        .           #the E might be followed by another character.
+    )               #close group
+    $               #ONLY look at the end of a line
+&#39;&#39;&#39;, re.VERBOSE)
+
+#This is the same as (\,*? N\. ?W[\.\,]*?_?)$
+nw_pattern = re.compile(r&#39;&#39;&#39;
+    (                   #start group
+        \,*?            #look for comma (escaped); *? = 0 or more commas with fewest results
+        \ N\.?          #look for (escaped) space + N that might have an (escaped) period after it
+        \ ?W            #look for an W that may or may not have an space in front of it
+        [\.\,]*?        #look for commas or periods (both escaped) that might come after W
+        _?              #look for underscore that comes after one of these NW quadrant indicators
+    )                   #close group
+    $                   #ONLY look at the end of a line
+&#39;&#39;&#39;, re.VERBOSE)
+
+# checks each line in the imported text file for all the following patterns
+for line in Text:
+    #lines with multi-dashes contain data - searches for those lines
+    # -- does not isolate intro text lines with one dash.
+    dashes = re.search(&#39;(--+)&#39;, line)
+
+    #isolates lines with dashes and cleans
+    if dashes:
+        #replaces dashes with my chosen delimiter
+        nodash = re.sub(&#39;.(-+)&#39;, &#39;,&#39;, line)
+        #strikes multiple periods
+        nodots = re.sub(&#39;.(\.\.+)&#39;, &#39;&#39;, nodash)
+        #strikes extra spaces
+        nospaces = re.sub(&#39;(  +)&#39;, &#39;,&#39;, nodots)
+        #strikes *
+        nostar = re.sub(&#39;.[*]&#39;, &#39;&#39;, nospaces)
+        #strikes new line and comma at the beginning of the line
+        flushleft = re.sub(&#39;^\W&#39;, &#39;&#39;, nostar)
+        #getting rid of double commas (i.e. - Evarts)
+        comma = re.sub(&#39;,{2,3}&#39;, &#39;,&#39;, flushleft)
+        #cleaning up some words that are stuck together (i.e. -  Dawes, Manderson)
+        #skips double OO that was put in place of 00 in address
+        caps = re.sub(&#39;[A-N|P-Z]{2,}&#39;, &#39;,&#39;, comma)
+        #Clean up NE and NW quadrant indicators by removing periods (using Verbose regex defined above)
+        ne = re.sub(ne_pattern, &#39; NE&#39;, caps)
+        nw = re.sub(nw_pattern, &#39; NW&#39;, ne)
+        #Replace periods with commas between last and first names (i.e. - Chace, Cockrell)
+        match = re.search(&#39;^([A-Z][a-z]+\.)&#39;, nw)
+        if match:
+            names = re.sub(&#39;\.&#39;, &#39;,&#39;, nw)
+        else:
+            names = nw
+         #Append each line to CleanText list while it loops through
+        CleanText.append(names)
+
+#Saving into a &#39;fake&#39; csv file
+with open(&#39;cdocr2/50-1p1.csv&#39;, &#39;w&#39;) as fcsv:
+    #Write each line in CleanText to a file
+    for line in CleanText:
+        fcsv.write(line)
+</code></pre>
+<p>In conclusion, I will note that this is not for the faint of heart.
+Regular Expressions are powerful. Yes, they are powerful enough to
+completely destroy your data. So practice on copies and take it one itty
+bitty step at a time.</p>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="cleaning-ocrd-text-with-regular-expressions/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Cleaning OCR’d text with Regular Expressions\",\"layout\":\"lesson\",\"date\":\"2013-05-22T00:00:00.000Z\",\"authors\":[\"Laura Turner O'Hara\"],\"editors\":[\"Fred Gibbs\"],\"difficulty\":2,\"activity\":\"transforming\",\"topics\":[\"data-manipulation\"],\"abstract\":\"Optical Character Recognition (OCR)—the conversion of scanned images to machine-encoded text—has proven a godsend for historical research. This lesson will help you clean up OCR'd text to make it more usable.\",\"exclude_from_check\":[\"reviewers\",\"review-ticket\"],\"redirect_from\":\"\u002Flessons\u002Fcleaning-ocrd-text-with-regular-expressions\",\"avatar_alt\":\"A typesetter and inker at work on a printing press\",\"doi\":\"10.46430\u002Fphen0024\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"introduction\\\"\u003EIntroduction\u003C\u002Fh2\u003E\\n\u003Cp\u003EOptical Character Recognition (OCR)—the conversion of scanned images to\\nmachine-encoded text—has proven a godsend for historical research. This\\nprocess allows texts to be searchable on one hand and more easily parsed\\nand mined on the other. But we’ve all noticed that the OCR for historic\\ntexts is far from perfect. Old type faces and formats make for unique\\nOCR. Take for example, this page from the \u003Cem\u003ECongressional Directory\u003C\u002Fem\u003E from\\nthe 50th Congress (1887). The PDF scan downloaded from \u003Ca href=\\\"http:\u002F\u002Fhome.heinonline.org\u002F\\\" title=\\\"Source for Legal and Government-based documents\\\"\u003EHeinOnline\u003C\u002Fa\u003E\\nlooks organized:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;cd_pdf.png&quot; caption=&quot;This is a screenshot of the PDF page.&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EHowever, the OCR layer (downloaded as a text file*) shows that the\\nmachine-encoded text is not nearly as neat:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;cd_txt.png&quot; caption=&quot;This is a screenshot of the OCR.&quot; %}\u003C\u002Fp\u003E\\n\u003Cblockquote\u003E\\n\u003Cp\u003ENote: If you do not have the option to download a text file, you can\\nuse the \u003Ca href=\\\"http:\u002F\u002Fwww.unixuser.org\u002F~euske\u002Fpython\u002Fpdfminer\u002Findex.html\\\" title=\\\"PDF Miner Module\\\"\u003Epdfminer\u003C\u002Fa\u003E module to extract text from the pdf.\u003C\u002Fp\u003E\\n\u003C\u002Fblockquote\u003E\\n\u003Cp\u003ESince I want to use this to map the Washington residences for Members of\\nthese late 19th-century Congresses, how might I make this data more\\nuseable?\u003C\u002Fp\u003E\\n\u003Cp\u003EThe answer is Regular Expressions or “regex.” Here’s what regex did for\\nme. Though this is not a “real” CSV file (the commas are not quite\\nright), it can be easily viewed in Excel and prepped for geocoding. Much\\nbetter than the text file from above, right?\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-text\\\"\u003EAldrich, N. W,Providence, R. I\\nAllison, William B, Dubuque, Iowa,24Vermont avenue,\\nBate, William,Nashville, Ten, Ebbitt House\\nBeck, James B,Lexington, Ky\\nBerry, James I, Bentonville, Ark, National Hotel,\\nBlair, I lenry \\\\V, Manchester, N. H,2o East Capitol stree_._&#39;\\nBlodgett, Rufus,Long Branch, N. J\\nBowen, Thomas M,Del Norte, Colo\\nBrown, Joseph E, Atlanta, Ga, Woodmont Flats,\\nButler, M. C,Edgefield, S. C, 1751 P street NW\\nCall, Wilkinson, Jacksonville, Fla, 1903 N street NW\\nCameron, J. D,Harrisburg, Pa, 21 Lafayette Square,\\nChace, Jonathan,Providence, R, I\\nChandler, William E, Concord, N. H, 1421 I street NW\\nCockrell, Francis M,Warrensburgh,Mo, I518 R street NW\\nCoke, Richard,Waco, Tex, 419 Sixth street NW\\nColquitt, Alfred I I,Atlanta, Ga, 920 New York avenue\\nCullom, Shelby M,Springfield, Ill, 1402 Massachusetts avenue\\nDaniel, John W,,Lynchburgh, Va, I7OO Nineteenth st. NW\\nDavis, Cushman K, Saint Paul, Minn, 17oo Fifteenth street NW\\nDawes, Henry L,Pittsfield, Mass, 1632Rhode Island avenue.\\nDolph, Joseph N,Portland, Oregon, 8 Lafayette Square,\\nEdmunds, George F, Burlington, Vt, 2111 Massachusetts avenue\\nEustis, James B,,New Orleans, La, 1761 N street NW\\nEvarts, William M,New York, N. Y, i6oi K street NW\\nFarwell, Charles B, Chicago, Ill,\\nFaulkner, Charles James, Martinsburgh, W. Va,\\nFrye, William P,Lewiston, Me, Hamilton House,\\nGeorge, James Z,Jackson, Miss, Metropolitan Hotel\\nGibson, Randall Lee, New Orleans, La, 1723 Rhode Island avenue.\\nGorman, Arthur P, Laurel, Md .,1403 K street NW\\nGray, George,Wilmington, Del,\\nHale, Eugene,Ellsworth, Me, 917 Sixthteenth st. NW\\nHampton, Wade, Columbia, S. C,\\nHarris, Isham G, Memphis,Tenn, 13 First street NE\\nHawley, Joseph R,Hartford, Corn, 1514 K street NW\\nHearst, George,San Francisco, Cal,\\nHiscock, Frank, Syracuse, N. Y, Arlington Hotel\\nHoar, George F, Worcester, Mass, 1325 K street NW\\nIngalls, John James, Atchison, Kans, I B street NW\\nJones, James K,Washington, Ark, 915 M street NW\\nJones, John P,Gold Hill, Nev\\nKenna, John E,Charleston, W. Va, 14o B street NW\\nMcPherson, John ,Jersey City, N. J, 1014 Vermont avenue,\\nManderson, CharlesF. Omaha, Nebr,The Portland\\nMorgan, John T,.Selma, Ala,I 13 First street NE\\nMorrill, Justin S, Stratford, Vt, x Thomas Circle\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"regular-expressions-regex\\\"\u003ERegular Expressions (Regex)\u003C\u002Fh2\u003E\\n\u003Cp\u003ERegex is not a programming language. Rather it follows a syntax used in\\nmany different languages, employing a series of characters to find\\nand\u002For replace precise patterns in texts. For example, using this sample\\ntext:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003ELet&#39;s get all this bad OCR and $tuff. Gr8!\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E1. You could isolate all the capital letters (L, O, C, R, G) with this\\nregex:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E[A-Z]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E2. You could isolate the first capital letter (L) with this regex:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E^[A-Z]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E3. You could isolate all characters BUT the capital letters with this\\nregex:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E[^A-Z]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E4. You could isolate the acronym “OCR” with this regex:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E[A-Z]{3}\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E5. You could isolate the punctuation using this regex:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E[[:punct:]]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E6. You could isolate all the punctuation, spaces, and numbers this way:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E[[:punct:], ,0-9]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe character set is not that large, but the patterns can get\\ncomplicated. Moreover, different characters can mean different things\\ndepending on their placement. Take for example, the difference between\\nexample 2 and example 3 above. In example 2, the caret (^) means\\nisolate the pattern at the beginning of the line or document. However,\\nwhen you put the caret inside the character class (demarcated by \u003Ccode\u003E[]\u003C\u002Fcode\u003E) it\\nmeans “except” these sets of characters.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe best way to understand Regular Expressions is to learn what the\\ncharacters do in different positions and practice, practice, practice.\\nAnd since experimentation is best way to learn, I suggest using a regex\\ntester tool and experiment with the syntax. For Mac users, I had a lot\\nof luck with the \u003Ca href=\\\"http:\u002F\u002Fkrillapps.com\u002Fpatterns\u002F\\\" title=\\\"Patterns App for RegEx Experimentation\\\"\u003EPatterns App\u003C\u002Fa\u003E (Mac Store $2.99), which allowed me\\nto see what the regular expressions were doing in real time. It also\\ncomes with a built-in cheat sheet for the symbols, but I actually found\\nthis generic (meaning it works across languages) \u003Ca href=\\\"https:\u002F\u002Fcheatography.com\u002Fdavechild\u002Fcheat-sheets\u002Fregular-expressions\u002F\\\" title=\\\"Reg Ex Cheat Sheet\\\"\u003Echeat sheet\u003C\u002Fa\u003E more\\ncomprehensive.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"python-and-regex\\\"\u003EPython and Regex\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn this tutorial, I use the Regular Expressions Python module to extract\\na “cleaner” version of the \u003Cem\u003ECongressional Directory\u003C\u002Fem\u003E text file. Though\\nthe \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F2\u002Flibrary\u002Fre.html\\\" title=\\\"Re Module Documentation\\\"\u003Edocumentation\u003C\u002Fa\u003E for this module is fairly comprehensive, beginners\\nwill have more luck with the simpler \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F2\u002Fhowto\u002Fregex.html#regex-howto\\\" title=\\\"Reuglar Expressions HOWTO\\\"\u003ERegular Expression HOWTO\\ndocumentation\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"two-things-to-note-before-you-get-started\\\"\u003ETwo things to note before you get started\u003C\u002Fh3\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EFrom what I’ve observed, Python is \u003Cem\u003Enot\u003C\u002Fem\u003E the most efficient way to\\nuse Regular Expressions if you have to clean a single document.\\nCommand Line programs like \u003Ca href=\\\"http:\u002F\u002Fwww.gnu.org\u002Fsoftware\u002Fsed\u002F\\\" title=\\\"GNU&#39;s sed editor\\\"\u003Esed\u003C\u002Fa\u003E or \u003Ca href=\\\"http:\u002F\u002Fwww.gnu.org\u002Fsoftware\u002Fgrep\u002F\\\" title=\\\"GNU&#39;s grep editor\\\"\u003Egrep\u003C\u002Fa\u003E appear to be more\\nefficient for this process. (I will leave it to the better grep\u002Fsed\\nusers to create tutorials on those tools.) I use Python for several\\nreasons: 1) I understand the syntax best; 2) I appreciate seeing\\neach step written out in a single file so I can easily backtrack\\nmistakes; and 3) I want a program I could use over and over again,\\nsince I am cleaning multiple pages from the \u003Cem\u003ECongressional\\nDirectory\u003C\u002Fem\u003E.\u003C\u002Fli\u003E\\n\u003Cli\u003EThe OCR in this document is far from consistent (within a single\\npage or across multiple pages). Thus, the results of this cleaning\\ntutorial are not perfect. \u003Cstrong\u003EMy goal is to let regex do the heavy\\nlifting and export a document in my chosen format that is \u003Cem\u003Emore\u003C\u002Fem\u003E\\norganized than the document with which I started.\u003C\u002Fstrong\u003E This\\nsignificantly reduces, but does not eliminate, any hand-cleaning I\\nmight need to do before geocoding the address data.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"my-example-python-file\\\"\u003EMy example Python File\u003C\u002Fh3\u003E\\n\u003Cp\u003EHere’s the Python file that I used to created to clean my document:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#cdocr.py\\n#strip the punctuation and extra information from HeinOnline text document\\n\\n#import re module\\nimport re\\n\\n#Open the text file, and read the text file into a list\\nwith open(&#39;..\u002F..\u002Fdata\u002Ftxt\u002F50-1-p1.txt&#39;) as ocr:\\n    Text = ocr.readlines()\\n\\n#Create an empty list to fill with lines of corrected text\\nCleanText = []\\n\\n# checks each line in the imported text file for all the following patterns\\nfor line in Text:\\n    #lines with multi-dashes contain data - searches for those lines\\n    # -- does not isolate intro text lines with one dash.\\n    dashes = re.search(&#39;(--+)&#39;, line)\\n\\n    #isolates lines with dashes and cleans\\n    if dashes:\\n        #replaces dashes with my chosen delimiter\\n        nodash = re.sub(&#39;.(-+)&#39;, &#39;,&#39;, line)\\n        #strikes multiple periods\\n        nodots = re.sub(&#39;.(\\\\.\\\\.+)&#39;, &#39;&#39;, nodash)\\n        #strikes extra spaces\\n        nospaces = re.sub(&#39;(  +)&#39;, &#39;,&#39;, nodots)\\n        #strikes *\\n        nostar = re.sub(&#39;.[*]&#39;, &#39;&#39;, nospaces)\\n        #strikes new line and comma at the beginning of the line\\n        flushleft = re.sub(&#39;^\\\\W&#39;, &#39;&#39;, nostar)\\n        #getting rid of double commas (i.e. - Evarts)\\n        comma = re.sub(&#39;,{2,3}&#39;, &#39;,&#39;, flushleft)\\n        #cleaning up some words that are stuck together (i.e. -  Dawes, Manderson)\\n        #skips double OO that was put in place of 00 in address\\n        caps = re.sub(&#39;[A-N|P-Z]{2,}&#39;, &#39;,&#39;, comma)\\n        #Clean up NE and NW quadrant indicators by removing periods\\n        ne = re.sub(&#39;(\\\\,*? N\\\\. ?E.)&#39;, &#39; NE&#39;, caps)\\n        nw = re.sub(&#39;(\\\\,*? N\\\\. ?W[\\\\.\\\\,]*?_?)$&#39;, &#39; NW&#39;, ne) #MAKE VERBOSE\\n        #Replace periods with commas between last and first names (i.e. - Chace, Cockrell)\\n        match = re.search(&#39;^([A-Z][a-z]+\\\\. )&#39;, nw) #MAKE VERBOSE\\n        if match:\\n            names = re.sub(&#39;\\\\.&#39;, &#39;,&#39;, nw)\\n        else:\\n            names = nw\\n           #Append each line to CleanText list while it loops through\\n        CleanText.append(names)\\n\\n#Saving into a &#39;fake&#39; csv file\\nwith open(&#39;cdocr2\u002F50-1p1.csv&#39;, &#39;w&#39;) as fcsv:\\n    #Write each line in CleanText to a file\\n    for line in CleanText:\\n        fcsv.write(line)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EI’ve commented it pretty extensively, so I will explain why I structured\\nthe code the way I did. I will also demonstrate a different way to\\nformat long regular expressions for better legibility.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cstrong\u003ELines 16-22\u003C\u002Fstrong\u003E – Notice in my original text file that my data is\\nall on lines with multiple dashes. This code effectively isolates\\nthose lines. I use the \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F2\u002Flibrary\u002Fre.html#re.search\\\" title=\\\"Explanation of re.search() function\\\"\u003Ere.search()\u003C\u002Fa\u003E function to find all lines\\nwith multiple dashes. The “if” statement on line 20 only works with\\nthe lines with dashes in the rest of the code. (This eliminates all\\nintroductory text and the rows of page numbers that follow the data\\nI want.)\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cstrong\u003ELines 23-40\u003C\u002Fstrong\u003E – This is the long process by which I eliminate all\\nof the extraneous punctuation and put the pieces of my data (last\\nname, first name, home post office, washington address) into\\ndifferent fields for a csv document. I use the \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F2\u002Flibrary\u002Fre.html#re.sub\\\" title=\\\"Explanation of re.sub() function\\\"\u003Ere.sub()\u003C\u002Fa\u003E\\nfunction, which substitutes pattern with another character. I\\ncomment extensively here, so you can see what each piece does. This\\nmay not be the most efficient way of doing this, but by doing this\\npiece by piece, I could check my work as I went. As I built loop, I\\nchecked each step by printing the variable in the command line. So,\\nfor example, after line 24 (when I eliminate the dashes), I would\\nadd “print nodash” (inside the if loop) before I ran the file in the\\ncommand line. I checked each step to make sure my patterns were only\\nchanging the things I wanted and not changing things I did \u003Cem\u003Enot\u003C\u002Fem\u003E\\nwant changed.\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cstrong\u003ELines 41-46\u003C\u002Fstrong\u003E - I used a slightly different method here. The OCR\\nin the text file separated some names with a period (for example,\\nChace.Jonathan vs. Chase,Jonathan). I wanted to isolate the periods\\nthat came up in this pattern and change those periods to commas. So\\nI searched for the pattern \u003Ccode\u003E^([A-Z][a-z]+\\\\.)\u003C\u002Fcode\u003E, which looks at the\\nbeginning of a line (^) and finds a pattern with one capital\\nletter, multiple lowercase letters and a period. After I had\\nisolated that pattern, I substitute the period those lines that fit\\nthe pattern with a comma.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"using-verbose-mode\\\"\u003EUsing Verbose Mode\u003C\u002Fh3\u003E\\n\u003Cp\u003EMost regular expressions are difficult to read. But lines 39 and 40 look\\n\u003Cem\u003Eespecially\u003C\u002Fem\u003E bad. How might you clarify these patterns for people who\\nmight look at your code (or for yourself when you are staring at them at\\n2:00 AM someday)? You can use the module’s \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F2\u002Flibrary\u002Fre.html#re.VERBOSE\\\" title=\\\"Explanation of re.verbose mode\\\"\u003Everbose mode\u003C\u002Fa\u003E. By putting\\nyour patterns in verbose mode, python ignores white space and the #\\ncharacter, so you can split the patterns across multiple lines and\\ncomment each piece. \u003Cem\u003E\u003Cstrong\u003EKeep in mind that, because it ignores spaces, if\\nspaces are part of your pattern, you need to escape them with a\\nbackslash (\\\\). Also note that re.VERBOSE and re.X are the same\\nthing.\u003C\u002Fstrong\u003E\u003C\u002Fem\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EHere are lines 39 and 40 in verbose mode:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#This is the same as (\\\\,*? N\\\\. ?E.)\\n#All spaces need to be escaped in verbose mode.\\nne_pattern = re.compile(r&#39;&#39;&#39;\\n    (               #start group\\n        \\\\,*?        #look for comma (escaped); *? = 0 or more commas with fewest results\\n        \\\\ N\\\\.?      #look for (escaped) space + N that might have an (escaped) period after it\\n        \\\\ ?E        #look for an E that may or may not have an space in front of it\\n        .           #the E might be followed by another character.\\n    )               #close group\\n    $               #ONLY look at the end of a line\\n&#39;&#39;&#39;, re.VERBOSE)\\n\\n#This is the same as (\\\\,*? N\\\\. ?W[\\\\.\\\\,]*?_?)$\\nnw_pattern = re.compile(r&#39;&#39;&#39;\\n    (                   #start group\\n        \\\\,*?            #look for comma (escaped); *? = 0 or more commas with fewest results\\n        \\\\ N\\\\.?          #look for (escaped) space + N that might have an (escaped) period after it\\n        \\\\ ?W            #look for an W that may or may not have an space in front of it\\n        [\\\\.\\\\,]*?        #look for commas or periods (both escaped) that might come after W\\n        _?              #look for underscore that comes after one of these NW quadrant indicators\\n    )                   #close group\\n    $                   #ONLY look at the end of a line\\n&#39;&#39;&#39;, re.X)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIn above example, I use the \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F2\u002Flibrary\u002Fre.html#re.compile\\\" title=\\\"Explanation of re.compile() function\\\"\u003Ere.compile()\u003C\u002Fa\u003E function to save the\\npattern for future use. So, adjusting my full python code to use verbose\\nmode would look like the following. Note that I define my verbose\\npatterns on lines 17-39 and store them in variables (ne_pattern and\\nnw_pattern). I use them in my loop on lines 65 and 66.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#cdocrverbose.py\\n#strip the punctuation and extra information from HeinOnline text document\\n\\n#import re module\\nimport re\\n\\n#Open the text file, and read the text file into a list\\nwith open(&#39;..\u002F..\u002Fdata\u002Ftxt\u002F50-1-p1.txt&#39;) as ocr:\\n    Text = ocr.readlines()\\n\\n#Create an empty list to fill with lines of corrected text\\nCleanText = []\\n\\n##Creating verbose patterns for the more complicated pieces that I use later on.##\\n\\n#This is the same as (\\\\,*? N\\\\. ?E.)\\n#All spaces need to be escaped in verbose mode.\\nne_pattern = re.compile(r&#39;&#39;&#39;\\n    (               #start group\\n        \\\\,*?        #look for comma (escaped); *? = 0 or more commas with fewest results\\n        \\\\ N\\\\.?      #look for (escaped) space + N that might have an (escaped) period after it\\n        \\\\ ?E        #look for an E that may or may not have an space in front of it\\n        .           #the E might be followed by another character.\\n    )               #close group\\n    $               #ONLY look at the end of a line\\n&#39;&#39;&#39;, re.VERBOSE)\\n\\n#This is the same as (\\\\,*? N\\\\. ?W[\\\\.\\\\,]*?_?)$\\nnw_pattern = re.compile(r&#39;&#39;&#39;\\n    (                   #start group\\n        \\\\,*?            #look for comma (escaped); *? = 0 or more commas with fewest results\\n        \\\\ N\\\\.?          #look for (escaped) space + N that might have an (escaped) period after it\\n        \\\\ ?W            #look for an W that may or may not have an space in front of it\\n        [\\\\.\\\\,]*?        #look for commas or periods (both escaped) that might come after W\\n        _?              #look for underscore that comes after one of these NW quadrant indicators\\n    )                   #close group\\n    $                   #ONLY look at the end of a line\\n&#39;&#39;&#39;, re.VERBOSE)\\n\\n# checks each line in the imported text file for all the following patterns\\nfor line in Text:\\n    #lines with multi-dashes contain data - searches for those lines\\n    # -- does not isolate intro text lines with one dash.\\n    dashes = re.search(&#39;(--+)&#39;, line)\\n\\n    #isolates lines with dashes and cleans\\n    if dashes:\\n        #replaces dashes with my chosen delimiter\\n        nodash = re.sub(&#39;.(-+)&#39;, &#39;,&#39;, line)\\n        #strikes multiple periods\\n        nodots = re.sub(&#39;.(\\\\.\\\\.+)&#39;, &#39;&#39;, nodash)\\n        #strikes extra spaces\\n        nospaces = re.sub(&#39;(  +)&#39;, &#39;,&#39;, nodots)\\n        #strikes *\\n        nostar = re.sub(&#39;.[*]&#39;, &#39;&#39;, nospaces)\\n        #strikes new line and comma at the beginning of the line\\n        flushleft = re.sub(&#39;^\\\\W&#39;, &#39;&#39;, nostar)\\n        #getting rid of double commas (i.e. - Evarts)\\n        comma = re.sub(&#39;,{2,3}&#39;, &#39;,&#39;, flushleft)\\n        #cleaning up some words that are stuck together (i.e. -  Dawes, Manderson)\\n        #skips double OO that was put in place of 00 in address\\n        caps = re.sub(&#39;[A-N|P-Z]{2,}&#39;, &#39;,&#39;, comma)\\n        #Clean up NE and NW quadrant indicators by removing periods (using Verbose regex defined above)\\n        ne = re.sub(ne_pattern, &#39; NE&#39;, caps)\\n        nw = re.sub(nw_pattern, &#39; NW&#39;, ne)\\n        #Replace periods with commas between last and first names (i.e. - Chace, Cockrell)\\n        match = re.search(&#39;^([A-Z][a-z]+\\\\.)&#39;, nw)\\n        if match:\\n            names = re.sub(&#39;\\\\.&#39;, &#39;,&#39;, nw)\\n        else:\\n            names = nw\\n         #Append each line to CleanText list while it loops through\\n        CleanText.append(names)\\n\\n#Saving into a &#39;fake&#39; csv file\\nwith open(&#39;cdocr2\u002F50-1p1.csv&#39;, &#39;w&#39;) as fcsv:\\n    #Write each line in CleanText to a file\\n    for line in CleanText:\\n        fcsv.write(line)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIn conclusion, I will note that this is not for the faint of heart.\\nRegular Expressions are powerful. Yes, they are powerful enough to\\ncompletely destroy your data. So practice on copies and take it one itty\\nbitty step at a time.\u003C\u002Fp\u003E\\n\"}"}</script></div>
+	</body>
+</html>

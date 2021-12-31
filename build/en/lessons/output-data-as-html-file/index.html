@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/output-data-as-html-file"),
+					params: {lang:"en",lessons:"lessons",slug:"output-data-as-html-file"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Output Data as an HTML File with Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="lesson-goals">Lesson Goals</h2>
+<p>This lesson takes the frequency pairs created in <a href="/lessons/counting-frequencies">Counting
+Frequencies</a> and outputs them to an HTML file.</p>
+<p>Here you will learn how to output data as an HTML file using Python. You
+will also learn about string formatting. The final result is an HTML
+file that shows the keywords found in the original source in order of
+descending frequency, along with the number of times that each keyword
+appears.</p>
+<h2 id="files-needed-for-this-lesson">Files Needed For This Lesson</h2>
+<ul>
+<li><code>obo.py</code></li>
+</ul>
+<p>If you do not have these files from the previous lesson, you can
+download programming-historian-6, a <a href="/assets/python-lessons6.zip">zip file from the previous lesson</a></p>
+<h2 id="building-an-html-wrapper">Building an HTML wrapper</h2>
+<p>In the previous lesson, you learned how to embed the message &quot;Hello
+World!&quot; in HTML tags, write the result to a file and open it
+automatically in the browser. A program that puts formatting codes
+around something so that it can be used by another program is sometimes
+called a <em>wrapper</em>. What we&#39;re going to do now is develop an HTML wrapper
+for the output of our code that computes word frequencies. We&#39;re also
+going to add some helpful, dynamic <em>metadata</em> to supplement the frequency
+data collected in <a href="/lessons/counting-frequencies">Counting Frequencies</a>.</p>
+<h2 id="metadata">Metadata</h2>
+<p>The distinction between data and metadata is crucial to information
+science. Metadata are data about data. This concept should already be
+very familiar to you, even if you haven&#39;t heard the term before.
+Consider a traditional book. If we take the text of the book to be the
+data, there are a number of other characteristics which are associated
+with that text, but which may or may not be explicitly printed in the
+book. The title of the work, the author, the publisher, and the place
+and date of publication are metadata that are typically printed in the
+work. The place and date of writing, the name of the copy editor,
+Library of Congress cataloging data, and the name of the font used to
+typeset the book are sometimes printed in it. The person who purchased a
+particular copy may or may not write their name in the book. If the book
+belongs in the collection of a library, that library will keep
+additional metadata, only some of which will be physically attached to
+the book. The record of borrowing, for example, is usually kept in some
+kind of database and linked to the book by a unique identifier.
+Libraries, archives and museums all have elaborate systems to generate
+and keep track of metadata.</p>
+<p>When you&#39;re working with digital data, it is a good idea to incorporate
+metadata into your own files whenever possible. We will now develop a
+few basic strategies for making our data files <em>self-documenting</em>. In our
+wrapper, we want to include dynamic information about the file, such as
+the time and date it was created, as well as an HTML title that is
+relevant to the file. In this case we could just give it a name
+ourselves, but when we start working with multiple files, automatically
+creating self-documenting files will save a lot of time, so we’ll
+practice now. And for that, we&#39;ll have to learn to take advantage of a
+few more powerful string formatting options.</p>
+<h2 id="python-string-formatting">Python string formatting</h2>
+<p>Python includes a special formatting operator that allows you to insert
+one string into another one. It is represented by a percent sign
+followed by an &quot;s&quot;. Open a Python shell and try the following examples.</p>
+<pre><code class="language-python">
+frame = &#39;This fruit is a %s&#39;
+print(frame)
+-&gt; This fruit is a %s
+
+print(frame % &#39;banana&#39;)
+-&gt; This fruit is a banana
+
+print(frame % &#39;pear&#39;)
+-&gt; This fruit is a pear
+</code></pre>
+<p>There is also a form which allows you to interpolate a list of strings
+into another one.</p>
+<pre><code class="language-python">
+frame2 = &#39;These are %s, those are %s&#39;
+print(frame2)
+-&gt; These are %s, those are %s
+
+print(frame2 % (&#39;bananas&#39;, &#39;pears&#39;))
+-&gt; These are bananas, those are pears
+</code></pre>
+<p>In these examples, a <code>%s</code> in one string indicates that another string is
+going to be embedded at that point. There are a range of other string
+formatting codes, most of which allow you to embed numbers in strings in
+various formats, like <code>%i</code> for integer (eg. 1, 2, 3), <code>%f</code> for
+floating-point decimal (eg. 3.023, 4.59, 1.0), and so on. Using this
+method we can input information that is unique to the file.</p>
+<h2 id="self-documenting-data-file">Self-documenting data file</h2>
+<p>Let&#39;s bundle some of the code that we&#39;ve already written into functions.
+One of these will take a URL and return a string of lowercase text from
+the web page. Copy this code into the <code>obo.py</code> module.</p>
+<pre><code class="language-python"># Given a URL, return string of lowercase text from page.
+
+def webPageToText(url):
+    import urllib.request, urllib.error, urllib.parse
+    response = urllib.request.urlopen(url)
+    html = response.read().decode(&#39;UTF-8&#39;)
+    text = stripTags(html).lower()
+    return text
+</code></pre>
+<p>We&#39;re also going to want a function that takes a string of any sort and
+makes it the body of an HTML file which is opened automatically in
+Firefox. This function should include some basic metadata, like the time
+and date that it was created and the name of the program that created
+it. Study the following code carefully, then copy it into the <code>obo.py</code>
+module.</p>
+<h3 id="mac-instructions">Mac Instructions</h3>
+<p>If you are using a Mac, make sure you include the proper file path in
+the filename variable on the 2nd last line to reflect where you&#39;re
+saving your files.</p>
+<pre><code class="language-python"># Given name of calling program, a url and a string to wrap,
+# output string in html body with basic metadata and open in Firefox tab.
+
+def wrapStringInHTMLMac(program, url, body):
+    import datetime
+    from webbrowser import open_new_tab
+
+    now = datetime.datetime.today().strftime(&quot;%Y%m%d-%H%M%S&quot;)
+    filename = program + &#39;.html&#39;
+    f = open(filename,&#39;w&#39;)
+
+    wrapper = &quot;&quot;&quot;&lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;%s output - %s&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;p&gt;URL: &lt;a href=\&quot;%s\&quot;&gt;%s&lt;/a&gt;&lt;/p&gt;&lt;p&gt;%s&lt;/p&gt;&lt;/body&gt;
+    &lt;/html&gt;&quot;&quot;&quot;
+
+    whole = wrapper % (program, now, url, url, body)
+    f.write(whole)
+    f.close()
+
+    #Change the filepath variable below to match the location of your directory
+    filename = &#39;file:///Users/username/Desktop/programming-historian/&#39; + filename
+
+    open_new_tab(filename)
+</code></pre>
+<h3 id="windows-instructions">Windows Instructions</h3>
+<pre><code class="language-python"># Given name of calling program, a url and a string to wrap,
+# output string in html body with basic metadata
+# and open in Firefox tab.
+
+def wrapStringInHTMLWindows(program, url, body):
+    import datetime
+    from webbrowser import open_new_tab
+
+    now = datetime.datetime.today().strftime(&quot;%Y%m%d-%H%M%S&quot;)
+
+    filename = program + &#39;.html&#39;
+    f = open(filename,&#39;w&#39;)
+
+    wrapper = &quot;&quot;&quot;&lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;%s output - %s&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;p&gt;URL: &lt;a href=\&quot;%s\&quot;&gt;%s&lt;/a&gt;&lt;/p&gt;&lt;p&gt;%s&lt;/p&gt;&lt;/body&gt;
+    &lt;/html&gt;&quot;&quot;&quot;
+
+    whole = wrapper % (program, now, url, url, body)
+    f.write(whole)
+    f.close()
+
+    open_new_tab(filename)
+</code></pre>
+<p>***</p>
+<p>Note that this function makes use of the string formatting operator
+about which we just learned. If you are still having trouble with this
+idea, take a look at the HTML file that opened in your new Firefox tab
+and you should see how this worked. If you&#39;re still stuck, take a look
+at the</p>
+<pre><code>URL: http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33
+</code></pre>
+<p>in the HTML file and trace back how the program knew to put the URL value
+there.</p>
+<p>The function also calls the Python <code>datetime</code> library to determine the
+current time and date. Like the string formatting operator <code>%s</code>, this
+library uses the <code>%</code> as replacements for values. In this case, the <code>%Y %m %d %H %M %S</code> represents year, month, date, hour, minute and second
+respectively. Unlike the <code>%s</code>, the program will determine the value of
+these variables for you using your computer&#39;s clock. It is important to
+recognize this difference.</p>
+<p>This date metadata, along with the name of the program that called the
+function, is stored in the HTML title tag. The HTML file that is created
+has the same name as the Python program that creates it, but with a
+<code>.html</code> extension rather than a <code>.py</code> one.</p>
+<h2 id="putting-it-all-together">Putting it all together</h2>
+<p>Now we can create another version of our program to compute frequencies.
+Instead of sending its output to a text file or an output window, it
+sends the output to an HTML file which is opened in a new Firefox tab.
+From there, the program&#39;s output can be added easily as bibliographic
+entries to Zotero. Type or copy the following code into your text
+editor, save it as <code>html-to-freq-3.py</code> and execute it, to confirm that
+it works as expected.</p>
+<p>Use either obo.wrapStringInHTMLMac() or obo.wrapStringInHTMLWindows() as appropriate
+for your system.</p>
+<pre><code class="language-python"># html-to-freq-3.py
+import obo
+
+# create sorted dictionary of word-frequency pairs
+url = &#39;http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;
+text = obo.webPageToText(url)
+fullwordlist = obo.stripNonAlphaNum(text)
+wordlist = obo.removeStopwords(fullwordlist, obo.stopwords)
+dictionary = obo.wordListToFreqDict(wordlist)
+sorteddict = obo.sortFreqDict(dictionary)
+
+# compile dictionary into string and wrap with HTML
+outstring = &quot;&quot;
+for s in sorteddict:
+    outstring += str(s)
+    outstring += &quot;&lt;br /&gt;&quot;
+obo.wrapStringInHTMLMac(&quot;html-to-freq-3&quot;, url, outstring)
+</code></pre>
+<p>Note that we interspersed our word-frequency pairs with the HTML break
+tag <code>&lt;br\&gt;</code>, which acts as a <em>newline</em>. If all went well, you should see
+the same word frequencies that you computed in the last section, this
+time in your browser window.</p>
+<h3 id="suggested-readings">Suggested Readings</h3>
+<ul>
+<li>Lutz, Learning Python<ul>
+<li>Re-read and review Chs. 1-17</li>
+</ul>
+</li>
+</ul>
+<h3 id="code-syncing">Code Syncing</h3>
+<p>To follow along with future lessons it is important that you have the
+right files and programs in your &quot;programming-historian&quot; directory. At
+the end of each chapter you can download the &quot;programming-historian&quot; zip
+file to make sure you have the correct code. If you are following along
+with the Mac / Linux version you may have to open the <code>obo.py</code> file and
+change &quot;file:///Users/username/Desktop/programming-historian/&quot; to the
+path to the directory on your own computer.</p>
+<ul>
+<li>python-lessons7.zip <a href="/assets/python-lessons7.zip">zip sync</a></li>
+</ul>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="output-data-as-html-file/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Output Data as an HTML File with Python\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\",\"Frederik Elwert\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"transforming\",\"topics\":[\"python\",\"website\"],\"abstract\":\"This lesson takes the frequency pairs created in the 'Counting Frequencies' lesson and outputs them to an HTML file.\",\"next\":\"keywords-in-context-using-n-grams\",\"previous\":\"creating-and-viewing-html-files-with-python\",\"series_total\":\"15 lessons\",\"sequence\":12,\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Foutput-data-as-html-file\",\"avatar_alt\":\"A woman wearing an elaborate dress accompanied by two putti\",\"doi\":\"10.46430\u002Fphen0015\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EThis lesson takes the frequency pairs created in \u003Ca href=\\\"\u002Flessons\u002Fcounting-frequencies\\\"\u003ECounting\\nFrequencies\u003C\u002Fa\u003E and outputs them to an HTML file.\u003C\u002Fp\u003E\\n\u003Cp\u003EHere you will learn how to output data as an HTML file using Python. You\\nwill also learn about string formatting. The final result is an HTML\\nfile that shows the keywords found in the original source in order of\\ndescending frequency, along with the number of times that each keyword\\nappears.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"files-needed-for-this-lesson\\\"\u003EFiles Needed For This Lesson\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EIf you do not have these files from the previous lesson, you can\\ndownload programming-historian-6, a \u003Ca href=\\\"\u002Fassets\u002Fpython-lessons6.zip\\\"\u003Ezip file from the previous lesson\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"building-an-html-wrapper\\\"\u003EBuilding an HTML wrapper\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn the previous lesson, you learned how to embed the message &quot;Hello\\nWorld!&quot; in HTML tags, write the result to a file and open it\\nautomatically in the browser. A program that puts formatting codes\\naround something so that it can be used by another program is sometimes\\ncalled a \u003Cem\u003Ewrapper\u003C\u002Fem\u003E. What we&#39;re going to do now is develop an HTML wrapper\\nfor the output of our code that computes word frequencies. We&#39;re also\\ngoing to add some helpful, dynamic \u003Cem\u003Emetadata\u003C\u002Fem\u003E to supplement the frequency\\ndata collected in \u003Ca href=\\\"\u002Flessons\u002Fcounting-frequencies\\\"\u003ECounting Frequencies\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"metadata\\\"\u003EMetadata\u003C\u002Fh2\u003E\\n\u003Cp\u003EThe distinction between data and metadata is crucial to information\\nscience. Metadata are data about data. This concept should already be\\nvery familiar to you, even if you haven&#39;t heard the term before.\\nConsider a traditional book. If we take the text of the book to be the\\ndata, there are a number of other characteristics which are associated\\nwith that text, but which may or may not be explicitly printed in the\\nbook. The title of the work, the author, the publisher, and the place\\nand date of publication are metadata that are typically printed in the\\nwork. The place and date of writing, the name of the copy editor,\\nLibrary of Congress cataloging data, and the name of the font used to\\ntypeset the book are sometimes printed in it. The person who purchased a\\nparticular copy may or may not write their name in the book. If the book\\nbelongs in the collection of a library, that library will keep\\nadditional metadata, only some of which will be physically attached to\\nthe book. The record of borrowing, for example, is usually kept in some\\nkind of database and linked to the book by a unique identifier.\\nLibraries, archives and museums all have elaborate systems to generate\\nand keep track of metadata.\u003C\u002Fp\u003E\\n\u003Cp\u003EWhen you&#39;re working with digital data, it is a good idea to incorporate\\nmetadata into your own files whenever possible. We will now develop a\\nfew basic strategies for making our data files \u003Cem\u003Eself-documenting\u003C\u002Fem\u003E. In our\\nwrapper, we want to include dynamic information about the file, such as\\nthe time and date it was created, as well as an HTML title that is\\nrelevant to the file. In this case we could just give it a name\\nourselves, but when we start working with multiple files, automatically\\ncreating self-documenting files will save a lot of time, so we’ll\\npractice now. And for that, we&#39;ll have to learn to take advantage of a\\nfew more powerful string formatting options.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"python-string-formatting\\\"\u003EPython string formatting\u003C\u002Fh2\u003E\\n\u003Cp\u003EPython includes a special formatting operator that allows you to insert\\none string into another one. It is represented by a percent sign\\nfollowed by an &quot;s&quot;. Open a Python shell and try the following examples.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E\\nframe = &#39;This fruit is a %s&#39;\\nprint(frame)\\n-&gt; This fruit is a %s\\n\\nprint(frame % &#39;banana&#39;)\\n-&gt; This fruit is a banana\\n\\nprint(frame % &#39;pear&#39;)\\n-&gt; This fruit is a pear\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThere is also a form which allows you to interpolate a list of strings\\ninto another one.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E\\nframe2 = &#39;These are %s, those are %s&#39;\\nprint(frame2)\\n-&gt; These are %s, those are %s\\n\\nprint(frame2 % (&#39;bananas&#39;, &#39;pears&#39;))\\n-&gt; These are bananas, those are pears\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIn these examples, a \u003Ccode\u003E%s\u003C\u002Fcode\u003E in one string indicates that another string is\\ngoing to be embedded at that point. There are a range of other string\\nformatting codes, most of which allow you to embed numbers in strings in\\nvarious formats, like \u003Ccode\u003E%i\u003C\u002Fcode\u003E for integer (eg. 1, 2, 3), \u003Ccode\u003E%f\u003C\u002Fcode\u003E for\\nfloating-point decimal (eg. 3.023, 4.59, 1.0), and so on. Using this\\nmethod we can input information that is unique to the file.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"self-documenting-data-file\\\"\u003ESelf-documenting data file\u003C\u002Fh2\u003E\\n\u003Cp\u003ELet&#39;s bundle some of the code that we&#39;ve already written into functions.\\nOne of these will take a URL and return a string of lowercase text from\\nthe web page. Copy this code into the \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E module.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Given a URL, return string of lowercase text from page.\\n\\ndef webPageToText(url):\\n    import urllib.request, urllib.error, urllib.parse\\n    response = urllib.request.urlopen(url)\\n    html = response.read().decode(&#39;UTF-8&#39;)\\n    text = stripTags(html).lower()\\n    return text\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWe&#39;re also going to want a function that takes a string of any sort and\\nmakes it the body of an HTML file which is opened automatically in\\nFirefox. This function should include some basic metadata, like the time\\nand date that it was created and the name of the program that created\\nit. Study the following code carefully, then copy it into the \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E\\nmodule.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"mac-instructions\\\"\u003EMac Instructions\u003C\u002Fh3\u003E\\n\u003Cp\u003EIf you are using a Mac, make sure you include the proper file path in\\nthe filename variable on the 2nd last line to reflect where you&#39;re\\nsaving your files.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Given name of calling program, a url and a string to wrap,\\n# output string in html body with basic metadata and open in Firefox tab.\\n\\ndef wrapStringInHTMLMac(program, url, body):\\n    import datetime\\n    from webbrowser import open_new_tab\\n\\n    now = datetime.datetime.today().strftime(&quot;%Y%m%d-%H%M%S&quot;)\\n    filename = program + &#39;.html&#39;\\n    f = open(filename,&#39;w&#39;)\\n\\n    wrapper = &quot;&quot;&quot;&lt;html&gt;\\n    &lt;head&gt;\\n    &lt;title&gt;%s output - %s&lt;\u002Ftitle&gt;\\n    &lt;\u002Fhead&gt;\\n    &lt;body&gt;&lt;p&gt;URL: &lt;a href=\\\\&quot;%s\\\\&quot;&gt;%s&lt;\u002Fa&gt;&lt;\u002Fp&gt;&lt;p&gt;%s&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n    &lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\n    whole = wrapper % (program, now, url, url, body)\\n    f.write(whole)\\n    f.close()\\n\\n    #Change the filepath variable below to match the location of your directory\\n    filename = &#39;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&#39; + filename\\n\\n    open_new_tab(filename)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"windows-instructions\\\"\u003EWindows Instructions\u003C\u002Fh3\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Given name of calling program, a url and a string to wrap,\\n# output string in html body with basic metadata\\n# and open in Firefox tab.\\n\\ndef wrapStringInHTMLWindows(program, url, body):\\n    import datetime\\n    from webbrowser import open_new_tab\\n\\n    now = datetime.datetime.today().strftime(&quot;%Y%m%d-%H%M%S&quot;)\\n\\n    filename = program + &#39;.html&#39;\\n    f = open(filename,&#39;w&#39;)\\n\\n    wrapper = &quot;&quot;&quot;&lt;html&gt;\\n    &lt;head&gt;\\n    &lt;title&gt;%s output - %s&lt;\u002Ftitle&gt;\\n    &lt;\u002Fhead&gt;\\n    &lt;body&gt;&lt;p&gt;URL: &lt;a href=\\\\&quot;%s\\\\&quot;&gt;%s&lt;\u002Fa&gt;&lt;\u002Fp&gt;&lt;p&gt;%s&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n    &lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\n    whole = wrapper % (program, now, url, url, body)\\n    f.write(whole)\\n    f.close()\\n\\n    open_new_tab(filename)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E***\u003C\u002Fp\u003E\\n\u003Cp\u003ENote that this function makes use of the string formatting operator\\nabout which we just learned. If you are still having trouble with this\\nidea, take a look at the HTML file that opened in your new Firefox tab\\nand you should see how this worked. If you&#39;re still stuck, take a look\\nat the\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EURL: http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Ein the HTML file and trace back how the program knew to put the URL value\\nthere.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe function also calls the Python \u003Ccode\u003Edatetime\u003C\u002Fcode\u003E library to determine the\\ncurrent time and date. Like the string formatting operator \u003Ccode\u003E%s\u003C\u002Fcode\u003E, this\\nlibrary uses the \u003Ccode\u003E%\u003C\u002Fcode\u003E as replacements for values. In this case, the \u003Ccode\u003E%Y %m %d %H %M %S\u003C\u002Fcode\u003E represents year, month, date, hour, minute and second\\nrespectively. Unlike the \u003Ccode\u003E%s\u003C\u002Fcode\u003E, the program will determine the value of\\nthese variables for you using your computer&#39;s clock. It is important to\\nrecognize this difference.\u003C\u002Fp\u003E\\n\u003Cp\u003EThis date metadata, along with the name of the program that called the\\nfunction, is stored in the HTML title tag. The HTML file that is created\\nhas the same name as the Python program that creates it, but with a\\n\u003Ccode\u003E.html\u003C\u002Fcode\u003E extension rather than a \u003Ccode\u003E.py\u003C\u002Fcode\u003E one.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"putting-it-all-together\\\"\u003EPutting it all together\u003C\u002Fh2\u003E\\n\u003Cp\u003ENow we can create another version of our program to compute frequencies.\\nInstead of sending its output to a text file or an output window, it\\nsends the output to an HTML file which is opened in a new Firefox tab.\\nFrom there, the program&#39;s output can be added easily as bibliographic\\nentries to Zotero. Type or copy the following code into your text\\neditor, save it as \u003Ccode\u003Ehtml-to-freq-3.py\u003C\u002Fcode\u003E and execute it, to confirm that\\nit works as expected.\u003C\u002Fp\u003E\\n\u003Cp\u003EUse either obo.wrapStringInHTMLMac() or obo.wrapStringInHTMLWindows() as appropriate\\nfor your system.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# html-to-freq-3.py\\nimport obo\\n\\n# create sorted dictionary of word-frequency pairs\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;\\ntext = obo.webPageToText(url)\\nfullwordlist = obo.stripNonAlphaNum(text)\\nwordlist = obo.removeStopwords(fullwordlist, obo.stopwords)\\ndictionary = obo.wordListToFreqDict(wordlist)\\nsorteddict = obo.sortFreqDict(dictionary)\\n\\n# compile dictionary into string and wrap with HTML\\noutstring = &quot;&quot;\\nfor s in sorteddict:\\n    outstring += str(s)\\n    outstring += &quot;&lt;br \u002F&gt;&quot;\\nobo.wrapStringInHTMLMac(&quot;html-to-freq-3&quot;, url, outstring)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENote that we interspersed our word-frequency pairs with the HTML break\\ntag \u003Ccode\u003E&lt;br\\\\&gt;\u003C\u002Fcode\u003E, which acts as a \u003Cem\u003Enewline\u003C\u002Fem\u003E. If all went well, you should see\\nthe same word frequencies that you computed in the last section, this\\ntime in your browser window.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"suggested-readings\\\"\u003ESuggested Readings\u003C\u002Fh3\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELutz, Learning Python\u003Cul\u003E\\n\u003Cli\u003ERe-read and review Chs. 1-17\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"code-syncing\\\"\u003ECode Syncing\u003C\u002Fh3\u003E\\n\u003Cp\u003ETo follow along with future lessons it is important that you have the\\nright files and programs in your &quot;programming-historian&quot; directory. At\\nthe end of each chapter you can download the &quot;programming-historian&quot; zip\\nfile to make sure you have the correct code. If you are following along\\nwith the Mac \u002F Linux version you may have to open the \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E file and\\nchange &quot;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&quot; to the\\npath to the directory on your own computer.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-lessons7.zip \u003Ca href=\\\"\u002Fassets\u002Fpython-lessons7.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+	</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/windows-installation"),
+					params: {lang:"en",lessons:"lessons",slug:"windows-installation"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Setting Up an Integrated Development Environment for Python (Windows)</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="back-up-your-computer">Back up your computer</h2>
+<p>It is always important to make sure you have regular and recent backups
+of your computer. This is just good advice for life, and is not limited
+to times when you are engaged in programming.</p>
+<h2 id="install-python-v3">Install Python v.3</h2>
+<p>Go to the <a href="http://www.python.org/">Python website</a>, download the latest stable release of the
+Python programming language (Version 3.8 as of November 2019) and install
+it by following the instructions on the Python website.</p>
+<h2 id="create-a-directory">Create a Directory</h2>
+<p>To stay organized, it’s best to have a dedicated directory (folder) on
+your computer where you will keep your Python programs (e.g.,
+<code>programming-historian</code>) and save it anywhere you like on your hard
+drive.</p>
+<h2 id="install-komodo-edit">Install Komodo Edit</h2>
+<p>Komodo Edit is a free and open source code editor, but you have many
+<a href="http://wiki.python.org/moin/PythonEditors/">other text editing options</a> if you want to use another programme. You can
+download a copy from the <a href="http://www.activestate.com/komodo-edit">Komodo Edit website</a>.</p>
+<h2 id="start-komodo-edit">Start Komodo Edit</h2>
+<p>It should look something like this:</p>
+<p>{% include figure.html filename=&quot;komodo-edit11-windows-main.png&quot; caption=&quot;Komodo Edit on Windows&quot; %}</p>
+<p>If you don’t see the Toolbox pane on the right hand side, choose
+<code>View -&gt; Tabs -&gt; Toolbox</code>. It doesn’t matter if the Project pane is open
+or not. Take some time to familiarize yourself with the layout of the
+Komodo editor. The Help file is quite good.</p>
+<h3 id="configure-komodo-edit">Configure Komodo Edit</h3>
+<p>Now you need to set up the editor so that you can run Python programs.</p>
+<p>Choose <code>Edit -&gt; Preferences -&gt; Languages -&gt; Python 3</code> and then select <code>Browse</code>. Now select    <code>C:\Users\YourUserName\AppData\Local\Programs\Python\Python38-32</code>)
+     If it looks like this, click OK:</p>
+<p>{% include figure.html caption=&quot;Set the Default Python Interpreter
+&quot; filename=&quot;komodo-edit11-windows-interpreter.png&quot; %}</p>
+<p>Next, in the Preferences section select <em>Internationalization</em>.
+    Select <em>Python</em> from the drop-down menu titled <em>Language-specific
+    Default Encoding</em> and make sure that <a href="http://en.wikipedia.org/wiki/UTF-8">UTF-8</a> is selected as the
+    default encoding method.</p>
+<p>{% include figure.html caption=&quot;Set the Language to UTF-8&quot; filename=&quot;komodo-edit11-windows-utf-set.png&quot; %}</p>
+<p>Next choose <code>Toolbox-&gt;Add-&gt;New Command</code>. This will open a new dialog
+window. Rename your command to <code>‘Run Python’</code>. Under <code>‘Command’</code>, type:</p>
+<pre><code class="language-python">%(python3) %f
+</code></pre>
+<p>If you forget this command, Python will hang mysteriously because it
+isn&#39;t receiving a program as input.</p>
+<p>Under <code>‘Start in’</code>, enter:</p>
+<p><code>%D</code></p>
+<p>If it looks like this, click OK:</p>
+<p>{% include figure.html filename=&quot;komodo-edit11-windows-python-command.png&quot; caption=&quot;&#39;Run Python&#39; Command&quot; %}
+{% include figure.html filename=&quot;komodo-edit11-windows-python-start.png&quot; caption=&quot;Configuring the command &#39;Run Python Start&#39;.&quot; %}</p>
+<p>Your new command should appear in the Toolbox pane. You may need to
+restart your machine after completing this step before Python will work
+with Komodo Edit.</p>
+<h2 id="step-2--hello-world-in-python">Step 2 – &#39;Hello World&#39; in Python</h2>
+<p>It is traditional to begin programming in a new language by trying to
+create a program that says &#39;hello world&#39; and terminates. We will show
+you how to do this in Python and HTML.</p>
+<p>Python is a good programming language for beginners because it is very
+high-level. It is possible, in other words, to write short programs that
+accomplish a lot. The shorter the program, the more likely it is for the
+whole thing to fit on one screen, and the easier it is to keep track of
+all of it in your mind.</p>
+<p>Python is an &#39;interpreted&#39; programming language. This means that
+there is a special computer program (known as an interpreter) that knows
+how to follow instructions written in that language. One way to use the
+interpreter is to store all of your instructions in a file, and then run
+the interpreter on the file. A file that contains programming language
+instructions is known as a program. The interpreter will execute each of
+the instructions that you gave it in your program and then stop. Let’s
+try this.</p>
+<p>In your text editor, create a new file, enter the following two-line
+program and save it to your <code>programming-historian</code> directory as
+<code>hello-world.py</code></p>
+<pre><code class="language-python"># hello-world.py
+print(&#39;hello world&#39;)
+</code></pre>
+<p>Your chosen text editor should have a “<code>Run</code>” button that will allow you
+to execute your program. If all went well, it should look something like
+this (Example as seen in Komodo Edit. Click on the image to see a
+full-size copy):</p>
+<p>{% include figure.html filename=&quot;komodo-edit11-windows-hello.png&quot; caption=&quot;&#39;Hello World&#39;&quot; %}</p>
+<h2 id="interacting-with-a-python-shell">Interacting with a Python shell</h2>
+<p>Another way to interact with an interpreter is to use what is known as a
+shell. You can type in a statement and press the Enter key, and the
+shell will respond to your command. Using a shell is a great way to test
+statements to make sure that they do what you think they should.</p>
+<p>You can run a Python Shell by double-clicking on the python.exe file. If
+you installed version 3.8 (the most recent as of November 2019), then this
+file is probably located in the <code>C:\Users\YourUserName\AppData\Local\Programs\Python\Python38-32</code> directory. In
+the shell window that opens on your screen type:</p>
+<pre><code class="language-python">print(&#39;hello world&#39;)
+</code></pre>
+<p>and press Enter. The computer will respond with</p>
+<pre><code class="language-python">hello world
+</code></pre>
+<p>When we want to represent an interaction with the shell, we will use -&gt;
+to indicate the shell’s response to your command, as shown below:</p>
+<pre><code class="language-python">print(&#39;hello world&#39;)
+-&gt; hello world
+</code></pre>
+<p>On your screen, it will look more like this:</p>
+<p>{% include figure.html caption=&quot;Python Shell in Windows&quot; filename=&quot;windows-python3-cmd.png&quot; %}</p>
+<p>Now that you and your computer are up and running, we can move onto some
+more interesting tasks. If you are working through the Python lessons in
+order, we suggest you next try ‘<a href="/lessons/viewing-html-files">Understanding Web Pages and HTML</a>‘</p>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="windows-installation/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Setting Up an Integrated Development Environment for Python (Windows)\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\",\"Amanda Morton\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":1,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"transforming\",\"topics\":[\"get-ready\",\"python\"],\"abstract\":\"This lesson will help you set up an integrated development environment for Python on a computer running the Windows operating system.\",\"redirect_from\":\"\u002Flessons\u002Fwindows-installation\",\"avatar_alt\":\"A band of three musicians\",\"doi\":\"10.46430\u002Fphen0019\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"back-up-your-computer\\\"\u003EBack up your computer\u003C\u002Fh2\u003E\\n\u003Cp\u003EIt is always important to make sure you have regular and recent backups\\nof your computer. This is just good advice for life, and is not limited\\nto times when you are engaged in programming.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"install-python-v3\\\"\u003EInstall Python v.3\u003C\u002Fh2\u003E\\n\u003Cp\u003EGo to the \u003Ca href=\\\"http:\u002F\u002Fwww.python.org\u002F\\\"\u003EPython website\u003C\u002Fa\u003E, download the latest stable release of the\\nPython programming language (Version 3.8 as of November 2019) and install\\nit by following the instructions on the Python website.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"create-a-directory\\\"\u003ECreate a Directory\u003C\u002Fh2\u003E\\n\u003Cp\u003ETo stay organized, it’s best to have a dedicated directory (folder) on\\nyour computer where you will keep your Python programs (e.g.,\\n\u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E) and save it anywhere you like on your hard\\ndrive.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"install-komodo-edit\\\"\u003EInstall Komodo Edit\u003C\u002Fh2\u003E\\n\u003Cp\u003EKomodo Edit is a free and open source code editor, but you have many\\n\u003Ca href=\\\"http:\u002F\u002Fwiki.python.org\u002Fmoin\u002FPythonEditors\u002F\\\"\u003Eother text editing options\u003C\u002Fa\u003E if you want to use another programme. You can\\ndownload a copy from the \u003Ca href=\\\"http:\u002F\u002Fwww.activestate.com\u002Fkomodo-edit\\\"\u003EKomodo Edit website\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"start-komodo-edit\\\"\u003EStart Komodo Edit\u003C\u002Fh2\u003E\\n\u003Cp\u003EIt should look something like this:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;komodo-edit11-windows-main.png&quot; caption=&quot;Komodo Edit on Windows&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you don’t see the Toolbox pane on the right hand side, choose\\n\u003Ccode\u003EView -&gt; Tabs -&gt; Toolbox\u003C\u002Fcode\u003E. It doesn’t matter if the Project pane is open\\nor not. Take some time to familiarize yourself with the layout of the\\nKomodo editor. The Help file is quite good.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"configure-komodo-edit\\\"\u003EConfigure Komodo Edit\u003C\u002Fh3\u003E\\n\u003Cp\u003ENow you need to set up the editor so that you can run Python programs.\u003C\u002Fp\u003E\\n\u003Cp\u003EChoose \u003Ccode\u003EEdit -&gt; Preferences -&gt; Languages -&gt; Python 3\u003C\u002Fcode\u003E and then select \u003Ccode\u003EBrowse\u003C\u002Fcode\u003E. Now select    \u003Ccode\u003EC:\\\\Users\\\\YourUserName\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python38-32\u003C\u002Fcode\u003E)\\n     If it looks like this, click OK:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html caption=&quot;Set the Default Python Interpreter\\n&quot; filename=&quot;komodo-edit11-windows-interpreter.png&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ENext, in the Preferences section select \u003Cem\u003EInternationalization\u003C\u002Fem\u003E.\\n    Select \u003Cem\u003EPython\u003C\u002Fem\u003E from the drop-down menu titled \u003Cem\u003ELanguage-specific\\n    Default Encoding\u003C\u002Fem\u003E and make sure that \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FUTF-8\\\"\u003EUTF-8\u003C\u002Fa\u003E is selected as the\\n    default encoding method.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html caption=&quot;Set the Language to UTF-8&quot; filename=&quot;komodo-edit11-windows-utf-set.png&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ENext choose \u003Ccode\u003EToolbox-&gt;Add-&gt;New Command\u003C\u002Fcode\u003E. This will open a new dialog\\nwindow. Rename your command to \u003Ccode\u003E‘Run Python’\u003C\u002Fcode\u003E. Under \u003Ccode\u003E‘Command’\u003C\u002Fcode\u003E, type:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E%(python3) %f\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf you forget this command, Python will hang mysteriously because it\\nisn&#39;t receiving a program as input.\u003C\u002Fp\u003E\\n\u003Cp\u003EUnder \u003Ccode\u003E‘Start in’\u003C\u002Fcode\u003E, enter:\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003E%D\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EIf it looks like this, click OK:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;komodo-edit11-windows-python-command.png&quot; caption=&quot;&#39;Run Python&#39; Command&quot; %}\\n{% include figure.html filename=&quot;komodo-edit11-windows-python-start.png&quot; caption=&quot;Configuring the command &#39;Run Python Start&#39;.&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EYour new command should appear in the Toolbox pane. You may need to\\nrestart your machine after completing this step before Python will work\\nwith Komodo Edit.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"step-2--hello-world-in-python\\\"\u003EStep 2 – &#39;Hello World&#39; in Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EIt is traditional to begin programming in a new language by trying to\\ncreate a program that says &#39;hello world&#39; and terminates. We will show\\nyou how to do this in Python and HTML.\u003C\u002Fp\u003E\\n\u003Cp\u003EPython is a good programming language for beginners because it is very\\nhigh-level. It is possible, in other words, to write short programs that\\naccomplish a lot. The shorter the program, the more likely it is for the\\nwhole thing to fit on one screen, and the easier it is to keep track of\\nall of it in your mind.\u003C\u002Fp\u003E\\n\u003Cp\u003EPython is an &#39;interpreted&#39; programming language. This means that\\nthere is a special computer program (known as an interpreter) that knows\\nhow to follow instructions written in that language. One way to use the\\ninterpreter is to store all of your instructions in a file, and then run\\nthe interpreter on the file. A file that contains programming language\\ninstructions is known as a program. The interpreter will execute each of\\nthe instructions that you gave it in your program and then stop. Let’s\\ntry this.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn your text editor, create a new file, enter the following two-line\\nprogram and save it to your \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E directory as\\n\u003Ccode\u003Ehello-world.py\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# hello-world.py\\nprint(&#39;hello world&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYour chosen text editor should have a “\u003Ccode\u003ERun\u003C\u002Fcode\u003E” button that will allow you\\nto execute your program. If all went well, it should look something like\\nthis (Example as seen in Komodo Edit. Click on the image to see a\\nfull-size copy):\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;komodo-edit11-windows-hello.png&quot; caption=&quot;&#39;Hello World&#39;&quot; %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"interacting-with-a-python-shell\\\"\u003EInteracting with a Python shell\u003C\u002Fh2\u003E\\n\u003Cp\u003EAnother way to interact with an interpreter is to use what is known as a\\nshell. You can type in a statement and press the Enter key, and the\\nshell will respond to your command. Using a shell is a great way to test\\nstatements to make sure that they do what you think they should.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou can run a Python Shell by double-clicking on the python.exe file. If\\nyou installed version 3.8 (the most recent as of November 2019), then this\\nfile is probably located in the \u003Ccode\u003EC:\\\\Users\\\\YourUserName\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python38-32\u003C\u002Fcode\u003E directory. In\\nthe shell window that opens on your screen type:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;hello world&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Eand press Enter. The computer will respond with\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Ehello world\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWhen we want to represent an interaction with the shell, we will use -&gt;\\nto indicate the shell’s response to your command, as shown below:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;hello world&#39;)\\n-&gt; hello world\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EOn your screen, it will look more like this:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html caption=&quot;Python Shell in Windows&quot; filename=&quot;windows-python3-cmd.png&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ENow that you and your computer are up and running, we can move onto some\\nmore interesting tasks. If you are working through the Python lessons in\\norder, we suggest you next try ‘\u003Ca href=\\\"\u002Flessons\u002Fviewing-html-files\\\"\u003EUnderstanding Web Pages and HTML\u003C\u002Fa\u003E‘\u003C\u002Fp\u003E\\n\"}"}</script></div>
+	</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/code-reuse-and-modularity"),
+					params: {lang:"en",lessons:"lessons",slug:"code-reuse-and-modularity"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Code Reuse and Modularity in Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="lesson-goals">Lesson Goals</h2>
+<p>Computer programs can become long, unwieldy and confusing without
+special mechanisms for managing complexity. This lesson will show you
+how to reuse parts of your code by writing <em>Functions</em> and break your
+programs into <em>Modules</em>, in order to keep everything concise and easier to
+debug. Being able to remove a single dysfunctional module can save time
+and effort.</p>
+<h3 id="functions">Functions</h3>
+<p>You will often find that you want to re-use a particular set of
+statements, usually because you have a task that you need to do over and
+over. Programs are mostly composed of routines that are powerful and
+general-purpose enough to be reused. These are known as functions, and
+Python has mechanisms that allow you to define new functions. Let’s work
+through a very simple example of a function. Suppose you want to create
+a general purpose function for greeting people. Copy the following
+function definition into Komodo Edit and save it as <code>greet.py</code>.</p>
+<pre><code class="language-python"># greet.py
+
+def greetEntity (x):
+    print(&quot;hello &quot; + x)
+
+greetEntity(&quot;Everybody&quot;)
+greetEntity(&quot;Programming Historian&quot;)
+</code></pre>
+<p>The line beginning with <code>def</code> is the function declaration. We are going
+to define (&quot;def&quot;) a function, which in this case we have named
+&quot;greetEntity&quot;. The <code>(x)</code> is the function&#39;s parameter. You should
+understand how that works in a moment. The second line contains the code
+of the function. This could be as many lines as we need, but in this
+case it is only a single line.</p>
+<p>Note that <em>indentation</em> is very important in Python. The blank space
+before the <code>print</code> statement tells the interpreter that it is part of the
+function that is being defined. You will learn more about this as we go
+along; for now, make sure to keep indentation the way we show it. Run
+the program, and you should see something like this:</p>
+<pre><code>hello Everybody
+hello Programming Historian
+</code></pre>
+<p>This example contains one function: <em>greetEntity</em>. This function is then
+&quot;called&quot; (sometimes referred to as &quot;invoked&quot;) two times. Calling or
+invoking a function just means we have told the program to execute the
+code in that function. Like giving the dog his chicken-flavoured treat
+(*woof* *woof*). In this case each time we have called the function
+we have given it a different parameter. Try editing <code>greet.py</code> so that
+it calls the <em>greetEntity</em> function a third time using your own name as a
+parameter. Run the program again. You should now be able to figure out
+what <code>(x)</code> does in the function declaration.</p>
+<p>Before moving on to the next step, edit <code>greet.py</code> to delete the
+function calls, leaving only the function declaration. You&#39;re going to
+learn how to call the function from another program. When you are
+finished, your <code>greet.py</code> file should look like this:</p>
+<pre><code class="language-python"># greet.py
+
+def greetEntity (x):
+    print(&quot;hello &quot; + x)
+</code></pre>
+<h2 id="modularity">Modularity</h2>
+<p>When programs are small like the above example, they are typically
+stored in a single file. When you want to run one of your programs, you
+can simply send the file to the interpreter. As programs become larger,
+it makes sense to split them into separate files known as modules. This
+modularity makes it easier for you to work on sections of your larger
+programs. By perfecting each section of the program before putting all
+of the sections together, you not only make it easier to reuse
+individual modules in other programs, you make it easier to fix problems
+by being able to pinpoint the source of the error. When you break a
+program into modules, you are also able to hide the details for how
+something is done within the module that does it. Other modules don’t
+need to know how something is accomplished if they are not responsible
+for doing it. This need-to-know principle is called “encapsulation“.</p>
+<p>Suppose you were building a car. You could start adding pieces willy
+nilly, but it would make more sense to start by building and testing one
+module — perhaps the engine — before moving on to others. The engine, in
+turn, could be imagined to consist of a number of other, smaller modules
+like the carburettor and ignition system, and those are comprised of
+still smaller and more basic modules. The same is true when coding. You
+try to break a problem into smaller pieces, and solve those first.</p>
+<p>You already created a module when you wrote the <code>greet.py</code> program. Now
+you are going to write a second program, <code>using-greet.py</code> which will
+<code>import</code> code from your module and make use of it. Python has a special
+<code>import</code> statement that allows one program to gain access to the contents
+of another program file. This is what you will be using.</p>
+<p>Copy this code to Komodo Edit and save it as <code>using-greet.py</code>. This file
+is your program; <code>greet.py</code> is your module.</p>
+<pre><code class="language-python"># using-greet.py
+
+import greet
+greet.greetEntity(&quot;everybody&quot;)
+greet.greetEntity(&quot;programming historian&quot;)
+</code></pre>
+<p>We have done a few things here. First, we have told Python to <code>import</code>
+(load) the <code>greet.py</code> module, which we previously created.</p>
+<p>You will also notice that whereas before we were able to run the
+function by calling only its name: <em>greetEntity(&quot;everybody&quot;)</em>, we now
+need to include the module&#39;s name followed by a dot (.) in front of the
+function name. In plain English this means: run the <em>greetEntity</em>
+function, which you should find in the <code>greet.py</code> module.</p>
+<p>You can run your <code>using-greet.py</code> program with the &quot;Run Python&quot; command
+that you created in Komodo Edit. Note that you do not have to run your
+module…just the program that calls it. If all went well, you should see
+the following in the Komodo Edit output pane:</p>
+<pre><code>hello everybody
+hello programming historian
+</code></pre>
+<p>Make sure that you understand the difference between loading a data file
+(e.g., <code>helloworld.txt</code>) and importing a program file (e.g. <code>greet.py</code>)
+before moving on.</p>
+<h2 id="suggested-readings">Suggested Readings</h2>
+<ul>
+<li><a href="https://users.astro.ufl.edu/~warner/prog/python.html">Python Basics</a></li>
+</ul>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="code-reuse-and-modularity/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Code Reuse and Modularity in Python\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"transforming\",\"topics\":[\"python\"],\"abstract\":\"Computer programs can become long, unwieldy and confusing without special mechanisms for managing complexity. This lesson will show you how to reuse parts of your code by writing functions and break your programs into modules, in order to keep everything concise and easier to debug.\",\"next\":\"working-with-web-pages\",\"previous\":\"working-with-text-files\",\"series_total\":\"15 lessons\",\"sequence\":4,\"categories\":[\"lessons\",\"original-ph\",\"python\"],\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Fcode-reuse-and-modularity\",\"avatar_alt\":\"Three caricature heads\",\"doi\":\"10.46430\u002Fphen0002\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EComputer programs can become long, unwieldy and confusing without\\nspecial mechanisms for managing complexity. This lesson will show you\\nhow to reuse parts of your code by writing \u003Cem\u003EFunctions\u003C\u002Fem\u003E and break your\\nprograms into \u003Cem\u003EModules\u003C\u002Fem\u003E, in order to keep everything concise and easier to\\ndebug. Being able to remove a single dysfunctional module can save time\\nand effort.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"functions\\\"\u003EFunctions\u003C\u002Fh3\u003E\\n\u003Cp\u003EYou will often find that you want to re-use a particular set of\\nstatements, usually because you have a task that you need to do over and\\nover. Programs are mostly composed of routines that are powerful and\\ngeneral-purpose enough to be reused. These are known as functions, and\\nPython has mechanisms that allow you to define new functions. Let’s work\\nthrough a very simple example of a function. Suppose you want to create\\na general purpose function for greeting people. Copy the following\\nfunction definition into Komodo Edit and save it as \u003Ccode\u003Egreet.py\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# greet.py\\n\\ndef greetEntity (x):\\n    print(&quot;hello &quot; + x)\\n\\ngreetEntity(&quot;Everybody&quot;)\\ngreetEntity(&quot;Programming Historian&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe line beginning with \u003Ccode\u003Edef\u003C\u002Fcode\u003E is the function declaration. We are going\\nto define (&quot;def&quot;) a function, which in this case we have named\\n&quot;greetEntity&quot;. The \u003Ccode\u003E(x)\u003C\u002Fcode\u003E is the function&#39;s parameter. You should\\nunderstand how that works in a moment. The second line contains the code\\nof the function. This could be as many lines as we need, but in this\\ncase it is only a single line.\u003C\u002Fp\u003E\\n\u003Cp\u003ENote that \u003Cem\u003Eindentation\u003C\u002Fem\u003E is very important in Python. The blank space\\nbefore the \u003Ccode\u003Eprint\u003C\u002Fcode\u003E statement tells the interpreter that it is part of the\\nfunction that is being defined. You will learn more about this as we go\\nalong; for now, make sure to keep indentation the way we show it. Run\\nthe program, and you should see something like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ehello Everybody\\nhello Programming Historian\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis example contains one function: \u003Cem\u003EgreetEntity\u003C\u002Fem\u003E. This function is then\\n&quot;called&quot; (sometimes referred to as &quot;invoked&quot;) two times. Calling or\\ninvoking a function just means we have told the program to execute the\\ncode in that function. Like giving the dog his chicken-flavoured treat\\n(*woof* *woof*). In this case each time we have called the function\\nwe have given it a different parameter. Try editing \u003Ccode\u003Egreet.py\u003C\u002Fcode\u003E so that\\nit calls the \u003Cem\u003EgreetEntity\u003C\u002Fem\u003E function a third time using your own name as a\\nparameter. Run the program again. You should now be able to figure out\\nwhat \u003Ccode\u003E(x)\u003C\u002Fcode\u003E does in the function declaration.\u003C\u002Fp\u003E\\n\u003Cp\u003EBefore moving on to the next step, edit \u003Ccode\u003Egreet.py\u003C\u002Fcode\u003E to delete the\\nfunction calls, leaving only the function declaration. You&#39;re going to\\nlearn how to call the function from another program. When you are\\nfinished, your \u003Ccode\u003Egreet.py\u003C\u002Fcode\u003E file should look like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# greet.py\\n\\ndef greetEntity (x):\\n    print(&quot;hello &quot; + x)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"modularity\\\"\u003EModularity\u003C\u002Fh2\u003E\\n\u003Cp\u003EWhen programs are small like the above example, they are typically\\nstored in a single file. When you want to run one of your programs, you\\ncan simply send the file to the interpreter. As programs become larger,\\nit makes sense to split them into separate files known as modules. This\\nmodularity makes it easier for you to work on sections of your larger\\nprograms. By perfecting each section of the program before putting all\\nof the sections together, you not only make it easier to reuse\\nindividual modules in other programs, you make it easier to fix problems\\nby being able to pinpoint the source of the error. When you break a\\nprogram into modules, you are also able to hide the details for how\\nsomething is done within the module that does it. Other modules don’t\\nneed to know how something is accomplished if they are not responsible\\nfor doing it. This need-to-know principle is called “encapsulation“.\u003C\u002Fp\u003E\\n\u003Cp\u003ESuppose you were building a car. You could start adding pieces willy\\nnilly, but it would make more sense to start by building and testing one\\nmodule — perhaps the engine — before moving on to others. The engine, in\\nturn, could be imagined to consist of a number of other, smaller modules\\nlike the carburettor and ignition system, and those are comprised of\\nstill smaller and more basic modules. The same is true when coding. You\\ntry to break a problem into smaller pieces, and solve those first.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou already created a module when you wrote the \u003Ccode\u003Egreet.py\u003C\u002Fcode\u003E program. Now\\nyou are going to write a second program, \u003Ccode\u003Eusing-greet.py\u003C\u002Fcode\u003E which will\\n\u003Ccode\u003Eimport\u003C\u002Fcode\u003E code from your module and make use of it. Python has a special\\n\u003Ccode\u003Eimport\u003C\u002Fcode\u003E statement that allows one program to gain access to the contents\\nof another program file. This is what you will be using.\u003C\u002Fp\u003E\\n\u003Cp\u003ECopy this code to Komodo Edit and save it as \u003Ccode\u003Eusing-greet.py\u003C\u002Fcode\u003E. This file\\nis your program; \u003Ccode\u003Egreet.py\u003C\u002Fcode\u003E is your module.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# using-greet.py\\n\\nimport greet\\ngreet.greetEntity(&quot;everybody&quot;)\\ngreet.greetEntity(&quot;programming historian&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWe have done a few things here. First, we have told Python to \u003Ccode\u003Eimport\u003C\u002Fcode\u003E\\n(load) the \u003Ccode\u003Egreet.py\u003C\u002Fcode\u003E module, which we previously created.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou will also notice that whereas before we were able to run the\\nfunction by calling only its name: \u003Cem\u003EgreetEntity(&quot;everybody&quot;)\u003C\u002Fem\u003E, we now\\nneed to include the module&#39;s name followed by a dot (.) in front of the\\nfunction name. In plain English this means: run the \u003Cem\u003EgreetEntity\u003C\u002Fem\u003E\\nfunction, which you should find in the \u003Ccode\u003Egreet.py\u003C\u002Fcode\u003E module.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou can run your \u003Ccode\u003Eusing-greet.py\u003C\u002Fcode\u003E program with the &quot;Run Python&quot; command\\nthat you created in Komodo Edit. Note that you do not have to run your\\nmodule…just the program that calls it. If all went well, you should see\\nthe following in the Komodo Edit output pane:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ehello everybody\\nhello programming historian\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EMake sure that you understand the difference between loading a data file\\n(e.g., \u003Ccode\u003Ehelloworld.txt\u003C\u002Fcode\u003E) and importing a program file (e.g. \u003Ccode\u003Egreet.py\u003C\u002Fcode\u003E)\\nbefore moving on.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"suggested-readings\\\"\u003ESuggested Readings\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ca href=\\\"https:\u002F\u002Fusers.astro.ufl.edu\u002F~warner\u002Fprog\u002Fpython.html\\\"\u003EPython Basics\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+	</body>
+</html>

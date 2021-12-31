@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/applied-archival-downloading-with-wget"),
+					params: {lang:"en",lessons:"lessons",slug:"applied-archival-downloading-with-wget"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Applied Archival Downloading with Wget</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="background-and-lesson-goals">Background and Lesson Goals</h2>
+<p>Now that you have learned how Wget can be used to mirror or download
+specific files from websites like <a href="http://www.activehistory.ca">ActiveHistory.ca</a> via the command
+line, it&#39;s time to expand your web-scraping skills through a few more
+lessons that focus on other uses for Wget&#39;s recursive retrieval
+function. The following tutorial provides three examples of how Wget can
+be used to download large collections of documents from archival
+websites with assistance from the Python programing language. It will
+teach you how to parse and generate a list of URLs using a simple Python
+script, and will also introduce you to a few of Wget&#39;s other useful
+features. Similar functions to the ones demonstrated in this lesson can
+be achieved using <a href="http://chronicle.com/blogs/profhacker/download-a-sequential-range-of-urls-with-curl/41055">curl</a>, an open-source software capable of
+performing automated downloads from the command line. For this lesson,
+however, we will focus on Wget and building your Python skills.</p>
+<p>Archival websites offer a wealth of resources to historians, but
+increased accessibility does not always translate into increased
+utility. In other words, while online collections often allow historians
+to access hitherto unavailable or cost-prohibitive materials, they can
+also be limited by the manner in which content is presented and
+organized. Take for example the <a href="http://www.collectionscanada.gc.ca/databases/indianaffairs/index-e.html">Indian Affairs Annual Reports
+database</a> hosted on the Library and Archives Canada [LAC] website. Say
+you wanted to download an entire report, or reports for several decades.
+The current system allows a user the option to read a plaintext version
+of each page, or click on the &quot;View a scanned page of original
+Report&quot; link, which will take the user to a page with LAC&#39;s embedded
+image viewer. This allows you to see the original document, but it is
+also cumbersome because it requires you to scroll through each
+individual page. Moreover, if you want the document for offline viewing,
+the only option is to <em>right click</em> –&gt; <em>save as</em> each image to a
+directory on your computer. If you want several decades&#39; worth of annual
+reports, you can see the limits to the current means of presentation
+pretty easily. This lesson will allow you to overcome such an obstacle.</p>
+<h2 id="recursive-retrieval-and-sequential-urls-the-library-and-archives-canada-example">Recursive Retrieval and Sequential URLs: The Library and Archives Canada Example</h2>
+<p>Let&#39;s get started. The first step involves building a script to generate
+sequential URLs using Python&#39;s ForLoop function. First, you&#39;ll need to
+identify the beginning URL in the series of documents that you want to
+download. Because of its smaller size we&#39;re going to use the online war
+diary for <a href="https://www.bac-lac.gc.ca/eng/CollectionSearch/Pages/record.aspx?app=fonandcol&amp;IdNumber=2005110&amp;new=-8585971893141232328">No. 14 Canadian General Hospital</a> as our example. The
+entire war diary is 80 pages long. The URL for page 1 is
+<a href="http://data2.archives.ca/e/e061/e001518029.jpg">http://data2.archives.ca/e/e061/e001518029.jpg</a> and the URL for page
+80 is &#39;<a href="http://data2.archives.ca/e/e061/e001518109.jpg">http://data2.archives.ca/e/e061/e001518109.jpg</a>. Note that
+they are in sequential order. We want to download the .jpeg images for
+<em>all</em> of the pages in the diary. To do this, we need to design a script
+to generate all of the URLs for the pages in between (and including) the
+first and last page of the diary.</p>
+<p>Open your preferred text editor (such as Komodo Edit) and enter the code
+below. Where it says &#39;integer 1′ type in &#39;8029′, where it says &#39;integer
+2′, type &#39;8110&#39;. The ForLoop will generate a list of numbers between
+&#39;8029&#39; and &#39;8110&#39;, but it will not print the last number in the range
+(i.e. 8110). To download all 80 pages in the diary you must add one to
+the top-value of the range because it is at this integer where the
+ForLoop is told to stop. This applies for any sequence of numbers you
+generate with this function. Additionally, the script will not properly
+execute if <a href="http://en.wikipedia.org/wiki/Leading_zero">leading zeros</a> are included in the range of integers, so
+you must exclude them by leaving them in the string (the URL). In this
+example I have parsed the URL so that only the last four digits of the
+string are being manipulated by the ForLoop.</p>
+<pre><code class="language-python">#URL-Generator.py
+
+urls = &#39;&#39;;
+f=open(&#39;urls.txt&#39;,&#39;w&#39;)
+for x in range(&#39;integer1&#39;, &#39;integer2&#39;):
+    urls = &#39;http://data2.collectionscanada.ca/e/e061/e00151%d.jpg\n&#39; % (x)
+    f.write(urls)
+f.close
+</code></pre>
+<p>Now replace &#39;integer1′ and &#39;integer2′ with the bottom and top ranges of
+URLs  you want to download. The final product should look like this:</p>
+<pre><code class="language-python">#URL-Generator.py
+
+urls = &#39;&#39;;
+f=open(&#39;urls.txt&#39;,&#39;w&#39;)
+for x in range(8029, 8110):
+    urls = &#39;http://data2.collectionscanada.ca/e/e061/e00151%d.jpg\n&#39; % (x)
+    f.write(urls)
+f.close
+</code></pre>
+<p>Save the program as a .py file, and then click run the Python script.</p>
+<p>The ForLoop will automatically generate a sequential list of URLs
+between the range of two integers that you specified in the brackets,
+and will write them to a .txt file that will be saved in your
+Programming Historian directory. The <code>%d</code> appends each sequential number
+generated by the ForLoop to the exact position you place it in the
+string. Adding <code>\n</code> to the end of the string removes line-breaks,
+allowing Wget to read the .txt file.</p>
+<p>You do not need to use all of the digits in the URL to specify the range
+– just the ones between the beginning and end of the sequence you are
+interested in. This is why only the last 4 digits of the string were
+selected and <code>00151</code> was left intact.</p>
+<p>Before moving on to the next stage of the downloading process, make sure
+you have created a directory where you would like to save your files,
+and, for ease of use, locate it in the main directory where you keep
+your documents. For both Mac and Windows users this will normally be the
+&#39;Documents&#39; folder. For this example, we&#39;ll call our folder &#39;LAC&#39;. You
+should move the urls.txt file your Python script created in to this
+directory.  To save time on future downloads, it is advisable to simply
+run the program from the directory you plan to download to. This can be
+achieved by saving the URL-Generator.py file to your &#39;LAC&#39; folder.</p>
+<p>For Mac users, under your applications list, select <em>Utilities -&gt;
+Terminal</em>. For Windows Users, you will need to open your system&#39;s
+Command Line utility.</p>
+<p>Once you have a shell open, you need to &#39;call&#39; the directory you want to
+save your downloaded .jpeg files to. Type:</p>
+<pre><code class="language-bash">cd ~/Documents
+</code></pre>
+<p>and hit enter. Then type:</p>
+<pre><code class="language-bash">cd &#39;LAC&#39;
+</code></pre>
+<p>and press enter again. You now have the directory selected and are ready
+to begin downloading.</p>
+<p>Based on what you have learned from <a href="../lessons/automated-downloading-with-wget">Ian Milligan&#39;s Wget
+lesson</a>, enter the following into
+the command line (note you can choose whatever you like for your &#39;limit rate&#39;,
+but be a responsible internet citizen and keep it under 200kb/s!):</p>
+<pre><code class="language-bash">wget -i urls.txt -r --no-parent -nd -w 2 --limit-rate=100k
+</code></pre>
+<p><em>(Note: including &#39;-nd&#39; in the command line will keep Wget from
+automatically mirroring the website&#39;s directories, making your files
+easier to access and organize).</em></p>
+<p>Within a few moments you should have all 80 pages of the war diary
+downloaded to this directory. You can copy and move them into a new
+folder as you please.</p>
+<h2 id="a-second-example-the-national-archives-of-australia">A Second Example: The National Archives of Australia</h2>
+<p>{% include alert.html text=&#39;After this lesson was originally published, the National Archvies of Australia changed their URL patterns and broke the links provided here. We are preserving the original text for reference, however you may wish to <a href="#recursive-retrieval-and-wgets-accept--a-function">skip to the next section</a>.&#39; %}</p>
+<p>Let&#39;s try one more example using this method of recursive retrieval.
+This lesson can be broadly applied to numerous archives, not just
+Canadian ones!</p>
+<p>Say you wanted to download a manuscript from the National Archives of
+Australia, which has a much more aesthetically pleasing online viewer
+than LAC, but is still limited by only being able to scroll through one
+image at a time. We&#39;ll use William Bligh&#39;s &quot;Notebook and List of
+Mutineers, 1789&quot; which provides an account of the mutiny aboard the HMS
+<em>Bounty</em>. <a href="http://www.nla.gov.au/apps/cdview/?pi=nla.ms-ms5393-1">On the viewer page</a> you&#39;ll note that there are 131 &#39;items&#39;
+(pages) to the notebook. This is somewhat misleading. Click on the first
+thumbnail in the top right to view the whole page. Now, <em>right-click -&gt;
+view image</em>. The URL should be
+&#39;<a href="http://nla.gov.au/nla.ms-ms5393-1-s1-v.jpg">http://nla.gov.au/nla.ms-ms5393-1-s1-v.jpg</a>&#39;. If you browse through
+the thumbnails, the last one is &#39;Part 127&#39;, which is located at
+&#39;<a href="http://nla.gov.au/nla.ms-ms5393-1-s127-v.jpg">http://nla.gov.au/nla.ms-ms5393-1-s127-v.jpg</a>&#39;. The discrepancy
+between the range of URLs and the total number of files means that you
+may miss a page or two in the automated download – in this case there
+are a few URLs that include a letter in the name of the .jpeg
+(&#39;s126a.v.jpg&#39; or &#39;s126b.v.jpg&#39; for example). This is going to happen
+from time to time when downloading from archives, so do not be surprised
+if you miss a page or two during an automated download.</p>
+<p>Note that a potential workaround
+could include using regular expressions to make more complicated queries if appropriate
+(for more, see the <a href="/lessons/understanding-regular-expressions">Understanding Regular Expressions</a>
+lesson).</p>
+<p>Let&#39;s run the script and Wget command once more:</p>
+<pre><code class="language-python">#Bligh.py
+
+urls = &#39;&#39;;
+f=open(&#39;urls.txt&#39;,&#39;w&#39;)
+for x in range(1, 128):
+    urls = &#39;http://www.nla.gov.au/apps/cdview/?pi=nla.ms-ms5393-1-s%d-v.jpg\n&#39; % (x)
+    f.write(urls)
+f.close
+</code></pre>
+<p>And:</p>
+<pre><code class="language-bash">wget -i urls.txt -r --no-parent -nd -w 2 --limit-rate=100k
+</code></pre>
+<p>You now have a (mostly) full copy of William Bligh&#39;s notebook. The
+missing pages can be downloaded manually using <em>right-click -&gt; save
+image as</em>.</p>
+<h2 id="recursive-retrieval-and-wgets-accept--a-function">Recursive Retrieval and Wget&#39;s &#39;Accept&#39; (-A) Function</h2>
+<p>Sometimes automated downloading requires working around coding barriers.
+It is common to encounter URLs that contain multiple sets of leading
+zeros, or URLs which may be too complex for someone with a limited
+background in coding to design a Python script for. Thankfully, Wget has
+a built-in function called &#39;Accept&#39; (expressed as &#39;-A&#39;) that allows you
+to define what type of files you would like to download from a specific
+webpage or an open directory.</p>
+<p>For this example we will use one of the many great collections available
+through the Library of Congress website: The Thomas Jefferson Papers. As
+with LAC, the viewer for these files is outdated and requires you to
+navigate page by page. We&#39;re going to download a selection from <a href="http://memory.loc.gov/cgi-bin/ampage?collId=mtj1&amp;fileName=mtj1page001.db&amp;recNum=1&amp;itemLink=/ammem/collections/jefferson_papers/mtjser1.html&amp;linkText=6">Series
+1: General Correspondence. 1651-1827</a>. Open the link and then click on
+the image (the .jpeg viewer looks awful familiar doesn&#39;t it?) The URL
+for the image also follows a similar pattern to the war diary from LAC
+that we downloaded earlier in the lesson, but the leading zeros
+complicate matters and do not permit us to easily generate URLs with the
+first script we used. Here&#39;s a workaround. Click on this
+link:</p>
+<p><a href="http://memory.loc.gov/master/mss/mtj/mtj1/001/0000/">http://memory.loc.gov/master/mss/mtj/mtj1/001/0000/</a></p>
+<p>The page you just opened is a sub-directory of the website that lists
+the .jpeg files for a selection of the Jefferson Papers. This means that
+we can use Wget&#39;s &#39;–A&#39; function to download all of the .jpeg images (100
+of them) listed on that page. But say you want to go further and
+download the whole range of files for this set of dates in Series 1 –
+that&#39;s 1487 images. For a task like this where there are relatively few
+URLs you do not actually need to write a script (although you could
+using my final example, which discusses the problem of leading zeros).
+Instead, simply manipulate the URLs in a .txt file as follows:</p>
+<p><a href="http://memory.loc.gov/master/mss/mtj/mtj1/001/0000/">http://memory.loc.gov/master/mss/mtj/mtj1/001/0000/</a></p>
+<p><a href="http://memory.loc.gov/master/mss/mtj/mtj1/001/0100/">http://memory.loc.gov/master/mss/mtj/mtj1/001/0100/</a></p>
+<p><a href="http://memory.loc.gov/master/mss/mtj/mtj1/001/0200/">http://memory.loc.gov/master/mss/mtj/mtj1/001/0200/</a></p>
+<p>... all the way up to</p>
+<p><a href="http://memory.loc.gov/master/mss/mtj/mtj1/001/1400">http://memory.loc.gov/master/mss/mtj/mtj1/001/1400</a></p>
+<p>This is the last sub-directory on the Library of Congress site for
+these dates in Series 1. This last URL contains images 1400-1487.</p>
+<p>Your completed .txt file should have 15 URLs total. Before going any
+further, save the file as &#39;Jefferson.txt&#39; in the directory you plan to
+store your downloaded files in.</p>
+<p>Now, run the following Wget command:</p>
+<pre><code class="language-bash">wget -i Jefferson.txt -r --no-parent -nd -w 2 -A .jpg, .jpeg --limit-rate=100k
+</code></pre>
+<p>Voila, after a bit of waiting, you will have 1487 pages of presidential
+papers right at your fingertips!</p>
+<h2 id="more-complicated-recursive-retrieval-a-python-script-for-leading-zeros">More Complicated Recursive Retrieval: A Python Script for Leading Zeros</h2>
+<p>The Library of Congress, like many online repositories, organizes their
+collections using a numbering system that incorporates leading zeros
+within each URL. If the directory is open, Wget&#39;s –A function is a great
+way to get around this without having to do any coding. But what if the
+directory is closed and you can only access one image at a time? This
+final example will illustrate how to use a Python script to incorporate
+leading into a list of URLs. For this example we will be using the
+<a href="http://cushing.med.yale.edu/gsdl/collect/mdposter/">Historical Medical Poster Collection</a>, available from the Harvey
+Cushing/Jack Hay Whitney Medical Library (Yale University).</p>
+<p>First, we&#39;ll need to identify the URL of the first and last files we
+want to download. We also want the high-resolution versions of each
+poster. To locate the URL for the high res image click on the first
+thumbnail (top left) then look below the poster for the link that says
+&#39;Click HERE for Full Image&#39;. If you follow the link, a high-resolution
+image with a complex URL will appear. As was the case in the Australian
+Archives example, to get the simplified URL you must <em>right-click -&gt;
+view image</em> using your web-browser. The URL for the first poster should
+be:</p>
+<p><a href="http://cushing.med.yale.edu/images/mdposter/full/poster0001.jpg">http://cushing.med.yale.edu/images/mdposter/full/poster0001.jpg</a></p>
+<p>Follow the same steps for the last poster in the gallery – the URL
+should be:</p>
+<p><a href="http://cushing.med.yale.edu/images/mdposter/full/poster0637.jpg">http://cushing.med.yale.edu/images/mdposter/full/poster0637.jpg</a>.</p>
+<p>The script we used to download from LAC will not work because the range
+function cannot comprehend leading zeros. The script below provides an
+effective workaround that runs three different ForLoops and exports the
+URLs to a .txt file in much the same way as our original script. This
+approach would also work with the Jefferson Papers, but I chose to use
+the –A function to demonstrate its utility and effectiveness as a less
+complicated alternative.</p>
+<p>In this script the poster URL is treated in much the same way as the URL
+in our LAC example. The key difference is that the leading zeros are
+included as part of the string. For each loop, the number of zeros in
+the string decreases as the digits increase from single, to double, to
+triple. The script can be expanded or shortened as needed. In this case
+we needed to repeat the process three times because we were moving from
+three leading zeros to one leading zero. To ensure that the script
+iterates properly, a &#39;+&#39; should be added to each ForLoop as in the
+example below.</p>
+<p>We do not recommend actually performing this download because of the
+size and extent of the files. This example is merely intended to
+illustrate the how to build and execute the Python script.</p>
+<pre><code class="language-python">#Leading-Zeros.py
+
+urls = &#39;&#39;;
+f=open(&#39;leading-zeros.txt&#39;,&#39;w&#39;)
+
+for x in range(1,10):
+    urls += &#39;http://cushing.med.yale.edu/images/mdposter/full/poster000%d.jpg\n&#39; % (x)
+
+for y in range(10,100):
+    urls += &#39;http://cushing.med.yale.edu/images/mdposter/full/poster00%d.jpg\n&#39; % (y)
+
+for z in range(100,638):
+    urls += &#39;http://cushing.med.yale.edu/images/mdposter/full/poster0%d.jpg\n&#39; % (z)
+
+f.write(urls)
+f.close
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>These three examples only scratch the surface of Wget&#39;s potential.
+Digital archives organize, store, and present their content in a variety
+of ways, some of which are more accessible than others. Indeed, many
+digital repositories store files using URLs that must be manipulated in
+several different ways to utilize a program like Wget. Wherever your
+downloading may take you, new challenges and opportunities await. This
+tutorial has provided you with the core skills for further work in the
+digital archive and, hopefully, will lead you to undertake your own
+experiments in an effort to add new tools to the digital historian&#39;s
+toolkit. As new methods for scraping online repositories become
+available, we will continue to update this lesson with additional
+examples of Wget&#39;s power and potential.</p>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="applied-archival-downloading-with-wget/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Applied Archival Downloading with Wget\",\"layout\":\"lesson\",\"date\":\"2013-09-13T00:00:00.000Z\",\"authors\":[\"Kellen Kurschinski\"],\"reviewers\":[\"Nick Ruest\",\"Konrad Lawson\"],\"editors\":[\"Ian Milligan\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"acquiring\",\"topics\":[\"web-scraping\"],\"abstract\":\"Now that you have learned how Wget can be used to mirror or download specific files from websites via the command line, it's time to expand your web-scraping skills through a few more lessons that focus on other uses for Wget's recursive retrieval function.\",\"previous\":\"automated-downloading-with-wget\",\"redirect_from\":\"\u002Flessons\u002Fapplied-archival-downloading-with-wget\",\"avatar_alt\":\"Diagram of a well-drilling aparatus\",\"doi\":\"10.46430\u002Fphen0022\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"background-and-lesson-goals\\\"\u003EBackground and Lesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003ENow that you have learned how Wget can be used to mirror or download\\nspecific files from websites like \u003Ca href=\\\"http:\u002F\u002Fwww.activehistory.ca\\\"\u003EActiveHistory.ca\u003C\u002Fa\u003E via the command\\nline, it&#39;s time to expand your web-scraping skills through a few more\\nlessons that focus on other uses for Wget&#39;s recursive retrieval\\nfunction. The following tutorial provides three examples of how Wget can\\nbe used to download large collections of documents from archival\\nwebsites with assistance from the Python programing language. It will\\nteach you how to parse and generate a list of URLs using a simple Python\\nscript, and will also introduce you to a few of Wget&#39;s other useful\\nfeatures. Similar functions to the ones demonstrated in this lesson can\\nbe achieved using \u003Ca href=\\\"http:\u002F\u002Fchronicle.com\u002Fblogs\u002Fprofhacker\u002Fdownload-a-sequential-range-of-urls-with-curl\u002F41055\\\"\u003Ecurl\u003C\u002Fa\u003E, an open-source software capable of\\nperforming automated downloads from the command line. For this lesson,\\nhowever, we will focus on Wget and building your Python skills.\u003C\u002Fp\u003E\\n\u003Cp\u003EArchival websites offer a wealth of resources to historians, but\\nincreased accessibility does not always translate into increased\\nutility. In other words, while online collections often allow historians\\nto access hitherto unavailable or cost-prohibitive materials, they can\\nalso be limited by the manner in which content is presented and\\norganized. Take for example the \u003Ca href=\\\"http:\u002F\u002Fwww.collectionscanada.gc.ca\u002Fdatabases\u002Findianaffairs\u002Findex-e.html\\\"\u003EIndian Affairs Annual Reports\\ndatabase\u003C\u002Fa\u003E hosted on the Library and Archives Canada [LAC] website. Say\\nyou wanted to download an entire report, or reports for several decades.\\nThe current system allows a user the option to read a plaintext version\\nof each page, or click on the &quot;View a scanned page of original\\nReport&quot; link, which will take the user to a page with LAC&#39;s embedded\\nimage viewer. This allows you to see the original document, but it is\\nalso cumbersome because it requires you to scroll through each\\nindividual page. Moreover, if you want the document for offline viewing,\\nthe only option is to \u003Cem\u003Eright click\u003C\u002Fem\u003E –&gt; \u003Cem\u003Esave as\u003C\u002Fem\u003E each image to a\\ndirectory on your computer. If you want several decades&#39; worth of annual\\nreports, you can see the limits to the current means of presentation\\npretty easily. This lesson will allow you to overcome such an obstacle.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"recursive-retrieval-and-sequential-urls-the-library-and-archives-canada-example\\\"\u003ERecursive Retrieval and Sequential URLs: The Library and Archives Canada Example\u003C\u002Fh2\u003E\\n\u003Cp\u003ELet&#39;s get started. The first step involves building a script to generate\\nsequential URLs using Python&#39;s ForLoop function. First, you&#39;ll need to\\nidentify the beginning URL in the series of documents that you want to\\ndownload. Because of its smaller size we&#39;re going to use the online war\\ndiary for \u003Ca href=\\\"https:\u002F\u002Fwww.bac-lac.gc.ca\u002Feng\u002FCollectionSearch\u002FPages\u002Frecord.aspx?app=fonandcol&amp;IdNumber=2005110&amp;new=-8585971893141232328\\\"\u003ENo. 14 Canadian General Hospital\u003C\u002Fa\u003E as our example. The\\nentire war diary is 80 pages long. The URL for page 1 is\\n\u003Ca href=\\\"http:\u002F\u002Fdata2.archives.ca\u002Fe\u002Fe061\u002Fe001518029.jpg\\\"\u003Ehttp:\u002F\u002Fdata2.archives.ca\u002Fe\u002Fe061\u002Fe001518029.jpg\u003C\u002Fa\u003E and the URL for page\\n80 is &#39;\u003Ca href=\\\"http:\u002F\u002Fdata2.archives.ca\u002Fe\u002Fe061\u002Fe001518109.jpg\\\"\u003Ehttp:\u002F\u002Fdata2.archives.ca\u002Fe\u002Fe061\u002Fe001518109.jpg\u003C\u002Fa\u003E. Note that\\nthey are in sequential order. We want to download the .jpeg images for\\n\u003Cem\u003Eall\u003C\u002Fem\u003E of the pages in the diary. To do this, we need to design a script\\nto generate all of the URLs for the pages in between (and including) the\\nfirst and last page of the diary.\u003C\u002Fp\u003E\\n\u003Cp\u003EOpen your preferred text editor (such as Komodo Edit) and enter the code\\nbelow. Where it says &#39;integer 1′ type in &#39;8029′, where it says &#39;integer\\n2′, type &#39;8110&#39;. The ForLoop will generate a list of numbers between\\n&#39;8029&#39; and &#39;8110&#39;, but it will not print the last number in the range\\n(i.e. 8110). To download all 80 pages in the diary you must add one to\\nthe top-value of the range because it is at this integer where the\\nForLoop is told to stop. This applies for any sequence of numbers you\\ngenerate with this function. Additionally, the script will not properly\\nexecute if \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FLeading_zero\\\"\u003Eleading zeros\u003C\u002Fa\u003E are included in the range of integers, so\\nyou must exclude them by leaving them in the string (the URL). In this\\nexample I have parsed the URL so that only the last four digits of the\\nstring are being manipulated by the ForLoop.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#URL-Generator.py\\n\\nurls = &#39;&#39;;\\nf=open(&#39;urls.txt&#39;,&#39;w&#39;)\\nfor x in range(&#39;integer1&#39;, &#39;integer2&#39;):\\n    urls = &#39;http:\u002F\u002Fdata2.collectionscanada.ca\u002Fe\u002Fe061\u002Fe00151%d.jpg\\\\n&#39; % (x)\\n    f.write(urls)\\nf.close\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow replace &#39;integer1′ and &#39;integer2′ with the bottom and top ranges of\\nURLs  you want to download. The final product should look like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#URL-Generator.py\\n\\nurls = &#39;&#39;;\\nf=open(&#39;urls.txt&#39;,&#39;w&#39;)\\nfor x in range(8029, 8110):\\n    urls = &#39;http:\u002F\u002Fdata2.collectionscanada.ca\u002Fe\u002Fe061\u002Fe00151%d.jpg\\\\n&#39; % (x)\\n    f.write(urls)\\nf.close\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESave the program as a .py file, and then click run the Python script.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe ForLoop will automatically generate a sequential list of URLs\\nbetween the range of two integers that you specified in the brackets,\\nand will write them to a .txt file that will be saved in your\\nProgramming Historian directory. The \u003Ccode\u003E%d\u003C\u002Fcode\u003E appends each sequential number\\ngenerated by the ForLoop to the exact position you place it in the\\nstring. Adding \u003Ccode\u003E\\\\n\u003C\u002Fcode\u003E to the end of the string removes line-breaks,\\nallowing Wget to read the .txt file.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou do not need to use all of the digits in the URL to specify the range\\n– just the ones between the beginning and end of the sequence you are\\ninterested in. This is why only the last 4 digits of the string were\\nselected and \u003Ccode\u003E00151\u003C\u002Fcode\u003E was left intact.\u003C\u002Fp\u003E\\n\u003Cp\u003EBefore moving on to the next stage of the downloading process, make sure\\nyou have created a directory where you would like to save your files,\\nand, for ease of use, locate it in the main directory where you keep\\nyour documents. For both Mac and Windows users this will normally be the\\n&#39;Documents&#39; folder. For this example, we&#39;ll call our folder &#39;LAC&#39;. You\\nshould move the urls.txt file your Python script created in to this\\ndirectory.  To save time on future downloads, it is advisable to simply\\nrun the program from the directory you plan to download to. This can be\\nachieved by saving the URL-Generator.py file to your &#39;LAC&#39; folder.\u003C\u002Fp\u003E\\n\u003Cp\u003EFor Mac users, under your applications list, select \u003Cem\u003EUtilities -&gt;\\nTerminal\u003C\u002Fem\u003E. For Windows Users, you will need to open your system&#39;s\\nCommand Line utility.\u003C\u002Fp\u003E\\n\u003Cp\u003EOnce you have a shell open, you need to &#39;call&#39; the directory you want to\\nsave your downloaded .jpeg files to. Type:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003Ecd ~\u002FDocuments\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Eand hit enter. Then type:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003Ecd &#39;LAC&#39;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Eand press enter again. You now have the directory selected and are ready\\nto begin downloading.\u003C\u002Fp\u003E\\n\u003Cp\u003EBased on what you have learned from \u003Ca href=\\\"..\u002Flessons\u002Fautomated-downloading-with-wget\\\"\u003EIan Milligan&#39;s Wget\\nlesson\u003C\u002Fa\u003E, enter the following into\\nthe command line (note you can choose whatever you like for your &#39;limit rate&#39;,\\nbut be a responsible internet citizen and keep it under 200kb\u002Fs!):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003Ewget -i urls.txt -r --no-parent -nd -w 2 --limit-rate=100k\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cem\u003E(Note: including &#39;-nd&#39; in the command line will keep Wget from\\nautomatically mirroring the website&#39;s directories, making your files\\neasier to access and organize).\u003C\u002Fem\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EWithin a few moments you should have all 80 pages of the war diary\\ndownloaded to this directory. You can copy and move them into a new\\nfolder as you please.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"a-second-example-the-national-archives-of-australia\\\"\u003EA Second Example: The National Archives of Australia\u003C\u002Fh2\u003E\\n\u003Cp\u003E{% include alert.html text=&#39;After this lesson was originally published, the National Archvies of Australia changed their URL patterns and broke the links provided here. We are preserving the original text for reference, however you may wish to \u003Ca href=\\\"#recursive-retrieval-and-wgets-accept--a-function\\\"\u003Eskip to the next section\u003C\u002Fa\u003E.&#39; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ELet&#39;s try one more example using this method of recursive retrieval.\\nThis lesson can be broadly applied to numerous archives, not just\\nCanadian ones!\u003C\u002Fp\u003E\\n\u003Cp\u003ESay you wanted to download a manuscript from the National Archives of\\nAustralia, which has a much more aesthetically pleasing online viewer\\nthan LAC, but is still limited by only being able to scroll through one\\nimage at a time. We&#39;ll use William Bligh&#39;s &quot;Notebook and List of\\nMutineers, 1789&quot; which provides an account of the mutiny aboard the HMS\\n\u003Cem\u003EBounty\u003C\u002Fem\u003E. \u003Ca href=\\\"http:\u002F\u002Fwww.nla.gov.au\u002Fapps\u002Fcdview\u002F?pi=nla.ms-ms5393-1\\\"\u003EOn the viewer page\u003C\u002Fa\u003E you&#39;ll note that there are 131 &#39;items&#39;\\n(pages) to the notebook. This is somewhat misleading. Click on the first\\nthumbnail in the top right to view the whole page. Now, \u003Cem\u003Eright-click -&gt;\\nview image\u003C\u002Fem\u003E. The URL should be\\n&#39;\u003Ca href=\\\"http:\u002F\u002Fnla.gov.au\u002Fnla.ms-ms5393-1-s1-v.jpg\\\"\u003Ehttp:\u002F\u002Fnla.gov.au\u002Fnla.ms-ms5393-1-s1-v.jpg\u003C\u002Fa\u003E&#39;. If you browse through\\nthe thumbnails, the last one is &#39;Part 127&#39;, which is located at\\n&#39;\u003Ca href=\\\"http:\u002F\u002Fnla.gov.au\u002Fnla.ms-ms5393-1-s127-v.jpg\\\"\u003Ehttp:\u002F\u002Fnla.gov.au\u002Fnla.ms-ms5393-1-s127-v.jpg\u003C\u002Fa\u003E&#39;. The discrepancy\\nbetween the range of URLs and the total number of files means that you\\nmay miss a page or two in the automated download – in this case there\\nare a few URLs that include a letter in the name of the .jpeg\\n(&#39;s126a.v.jpg&#39; or &#39;s126b.v.jpg&#39; for example). This is going to happen\\nfrom time to time when downloading from archives, so do not be surprised\\nif you miss a page or two during an automated download.\u003C\u002Fp\u003E\\n\u003Cp\u003ENote that a potential workaround\\ncould include using regular expressions to make more complicated queries if appropriate\\n(for more, see the \u003Ca href=\\\"\u002Flessons\u002Funderstanding-regular-expressions\\\"\u003EUnderstanding Regular Expressions\u003C\u002Fa\u003E\\nlesson).\u003C\u002Fp\u003E\\n\u003Cp\u003ELet&#39;s run the script and Wget command once more:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#Bligh.py\\n\\nurls = &#39;&#39;;\\nf=open(&#39;urls.txt&#39;,&#39;w&#39;)\\nfor x in range(1, 128):\\n    urls = &#39;http:\u002F\u002Fwww.nla.gov.au\u002Fapps\u002Fcdview\u002F?pi=nla.ms-ms5393-1-s%d-v.jpg\\\\n&#39; % (x)\\n    f.write(urls)\\nf.close\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAnd:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003Ewget -i urls.txt -r --no-parent -nd -w 2 --limit-rate=100k\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou now have a (mostly) full copy of William Bligh&#39;s notebook. The\\nmissing pages can be downloaded manually using \u003Cem\u003Eright-click -&gt; save\\nimage as\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"recursive-retrieval-and-wgets-accept--a-function\\\"\u003ERecursive Retrieval and Wget&#39;s &#39;Accept&#39; (-A) Function\u003C\u002Fh2\u003E\\n\u003Cp\u003ESometimes automated downloading requires working around coding barriers.\\nIt is common to encounter URLs that contain multiple sets of leading\\nzeros, or URLs which may be too complex for someone with a limited\\nbackground in coding to design a Python script for. Thankfully, Wget has\\na built-in function called &#39;Accept&#39; (expressed as &#39;-A&#39;) that allows you\\nto define what type of files you would like to download from a specific\\nwebpage or an open directory.\u003C\u002Fp\u003E\\n\u003Cp\u003EFor this example we will use one of the many great collections available\\nthrough the Library of Congress website: The Thomas Jefferson Papers. As\\nwith LAC, the viewer for these files is outdated and requires you to\\nnavigate page by page. We&#39;re going to download a selection from \u003Ca href=\\\"http:\u002F\u002Fmemory.loc.gov\u002Fcgi-bin\u002Fampage?collId=mtj1&amp;fileName=mtj1page001.db&amp;recNum=1&amp;itemLink=\u002Fammem\u002Fcollections\u002Fjefferson_papers\u002Fmtjser1.html&amp;linkText=6\\\"\u003ESeries\\n1: General Correspondence. 1651-1827\u003C\u002Fa\u003E. Open the link and then click on\\nthe image (the .jpeg viewer looks awful familiar doesn&#39;t it?) The URL\\nfor the image also follows a similar pattern to the war diary from LAC\\nthat we downloaded earlier in the lesson, but the leading zeros\\ncomplicate matters and do not permit us to easily generate URLs with the\\nfirst script we used. Here&#39;s a workaround. Click on this\\nlink:\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ca href=\\\"http:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F0000\u002F\\\"\u003Ehttp:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F0000\u002F\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EThe page you just opened is a sub-directory of the website that lists\\nthe .jpeg files for a selection of the Jefferson Papers. This means that\\nwe can use Wget&#39;s &#39;–A&#39; function to download all of the .jpeg images (100\\nof them) listed on that page. But say you want to go further and\\ndownload the whole range of files for this set of dates in Series 1 –\\nthat&#39;s 1487 images. For a task like this where there are relatively few\\nURLs you do not actually need to write a script (although you could\\nusing my final example, which discusses the problem of leading zeros).\\nInstead, simply manipulate the URLs in a .txt file as follows:\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ca href=\\\"http:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F0000\u002F\\\"\u003Ehttp:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F0000\u002F\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ca href=\\\"http:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F0100\u002F\\\"\u003Ehttp:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F0100\u002F\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ca href=\\\"http:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F0200\u002F\\\"\u003Ehttp:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F0200\u002F\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E... all the way up to\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ca href=\\\"http:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F1400\\\"\u003Ehttp:\u002F\u002Fmemory.loc.gov\u002Fmaster\u002Fmss\u002Fmtj\u002Fmtj1\u002F001\u002F1400\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EThis is the last sub-directory on the Library of Congress site for\\nthese dates in Series 1. This last URL contains images 1400-1487.\u003C\u002Fp\u003E\\n\u003Cp\u003EYour completed .txt file should have 15 URLs total. Before going any\\nfurther, save the file as &#39;Jefferson.txt&#39; in the directory you plan to\\nstore your downloaded files in.\u003C\u002Fp\u003E\\n\u003Cp\u003ENow, run the following Wget command:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003Ewget -i Jefferson.txt -r --no-parent -nd -w 2 -A .jpg, .jpeg --limit-rate=100k\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EVoila, after a bit of waiting, you will have 1487 pages of presidential\\npapers right at your fingertips!\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"more-complicated-recursive-retrieval-a-python-script-for-leading-zeros\\\"\u003EMore Complicated Recursive Retrieval: A Python Script for Leading Zeros\u003C\u002Fh2\u003E\\n\u003Cp\u003EThe Library of Congress, like many online repositories, organizes their\\ncollections using a numbering system that incorporates leading zeros\\nwithin each URL. If the directory is open, Wget&#39;s –A function is a great\\nway to get around this without having to do any coding. But what if the\\ndirectory is closed and you can only access one image at a time? This\\nfinal example will illustrate how to use a Python script to incorporate\\nleading into a list of URLs. For this example we will be using the\\n\u003Ca href=\\\"http:\u002F\u002Fcushing.med.yale.edu\u002Fgsdl\u002Fcollect\u002Fmdposter\u002F\\\"\u003EHistorical Medical Poster Collection\u003C\u002Fa\u003E, available from the Harvey\\nCushing\u002FJack Hay Whitney Medical Library (Yale University).\u003C\u002Fp\u003E\\n\u003Cp\u003EFirst, we&#39;ll need to identify the URL of the first and last files we\\nwant to download. We also want the high-resolution versions of each\\nposter. To locate the URL for the high res image click on the first\\nthumbnail (top left) then look below the poster for the link that says\\n&#39;Click HERE for Full Image&#39;. If you follow the link, a high-resolution\\nimage with a complex URL will appear. As was the case in the Australian\\nArchives example, to get the simplified URL you must \u003Cem\u003Eright-click -&gt;\\nview image\u003C\u002Fem\u003E using your web-browser. The URL for the first poster should\\nbe:\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ca href=\\\"http:\u002F\u002Fcushing.med.yale.edu\u002Fimages\u002Fmdposter\u002Ffull\u002Fposter0001.jpg\\\"\u003Ehttp:\u002F\u002Fcushing.med.yale.edu\u002Fimages\u002Fmdposter\u002Ffull\u002Fposter0001.jpg\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EFollow the same steps for the last poster in the gallery – the URL\\nshould be:\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ca href=\\\"http:\u002F\u002Fcushing.med.yale.edu\u002Fimages\u002Fmdposter\u002Ffull\u002Fposter0637.jpg\\\"\u003Ehttp:\u002F\u002Fcushing.med.yale.edu\u002Fimages\u002Fmdposter\u002Ffull\u002Fposter0637.jpg\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe script we used to download from LAC will not work because the range\\nfunction cannot comprehend leading zeros. The script below provides an\\neffective workaround that runs three different ForLoops and exports the\\nURLs to a .txt file in much the same way as our original script. This\\napproach would also work with the Jefferson Papers, but I chose to use\\nthe –A function to demonstrate its utility and effectiveness as a less\\ncomplicated alternative.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn this script the poster URL is treated in much the same way as the URL\\nin our LAC example. The key difference is that the leading zeros are\\nincluded as part of the string. For each loop, the number of zeros in\\nthe string decreases as the digits increase from single, to double, to\\ntriple. The script can be expanded or shortened as needed. In this case\\nwe needed to repeat the process three times because we were moving from\\nthree leading zeros to one leading zero. To ensure that the script\\niterates properly, a &#39;+&#39; should be added to each ForLoop as in the\\nexample below.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe do not recommend actually performing this download because of the\\nsize and extent of the files. This example is merely intended to\\nillustrate the how to build and execute the Python script.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#Leading-Zeros.py\\n\\nurls = &#39;&#39;;\\nf=open(&#39;leading-zeros.txt&#39;,&#39;w&#39;)\\n\\nfor x in range(1,10):\\n    urls += &#39;http:\u002F\u002Fcushing.med.yale.edu\u002Fimages\u002Fmdposter\u002Ffull\u002Fposter000%d.jpg\\\\n&#39; % (x)\\n\\nfor y in range(10,100):\\n    urls += &#39;http:\u002F\u002Fcushing.med.yale.edu\u002Fimages\u002Fmdposter\u002Ffull\u002Fposter00%d.jpg\\\\n&#39; % (y)\\n\\nfor z in range(100,638):\\n    urls += &#39;http:\u002F\u002Fcushing.med.yale.edu\u002Fimages\u002Fmdposter\u002Ffull\u002Fposter0%d.jpg\\\\n&#39; % (z)\\n\\nf.write(urls)\\nf.close\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"conclusion\\\"\u003EConclusion\u003C\u002Fh2\u003E\\n\u003Cp\u003EThese three examples only scratch the surface of Wget&#39;s potential.\\nDigital archives organize, store, and present their content in a variety\\nof ways, some of which are more accessible than others. Indeed, many\\ndigital repositories store files using URLs that must be manipulated in\\nseveral different ways to utilize a program like Wget. Wherever your\\ndownloading may take you, new challenges and opportunities await. This\\ntutorial has provided you with the core skills for further work in the\\ndigital archive and, hopefully, will lead you to undertake your own\\nexperiments in an effort to add new tools to the digital historian&#39;s\\ntoolkit. As new methods for scraping online repositories become\\navailable, we will continue to update this lesson with additional\\nexamples of Wget&#39;s power and potential.\u003C\u002Fp\u003E\\n\"}"}</script></div>
+	</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/es/lecciones/ver-archivos-html"),
+					params: {lang:"es",lessons:"lecciones",slug:"ver-archivos-html"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the es edition.
+
+<h1>Para entender páginas web y HTML</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="hola-mundo-en-html">“Hola Mundo” en HTML</h2>
+<h2 id="visualizar-archivos-html">Visualizar archivos HTML</h2>
+<p>Cuando trabajas con recursos en línea, la mayor parte del tiempo estás usando archivos que han sido etiquetados con HTML (Lenguaje de marcado de hípertexto): tu navegador de Internet sabe perfectamente cómo interpretar HTML, lenguaje fácil de manejar y comprender para los lectores humanos. La mayoría de los navegadores te permiten también ver el <em>código fuente</em> HTML de cada página que visitas. Las dos imágenes siguientes muestran una página web típica (en este caso la de <em>Old Bailey Online</em>, con la que trabajaremos en las siguientes lecciones), y la fuente HTML utilizada para generar dicha página y que puedes ver, en Firefox, con el menú <code>Herramientas -&gt; Desarrollador web -&gt; Código fuente de esta página</code>.</p>
+<p>Cuando estás trabajando en el navegador, generalmente no necesitas o no quieres ver el código fuente de esa página web. Pero si estás escribiendo una página para ti mismo puede ser muy útil ver cómo otras personas logran un efecto particular en la página a través de ciertos etiquetados. También resulta importante conocer el código fuente HTML mientras escribes programas para manipular páginas web o extraer automáticamente información de los sitios en la web como, por ejemplo, los repositorios de datos digitales.</p>
+<p>{% include figure.html filename=&quot;obo.png&quot; caption=&quot;Captura de pantalla de Old Bailey en línea&quot; %}</p>
+<p>{% include figure.html filename=&quot;obo-page-source.png&quot; caption=&quot;Fuente HTML de la página web de Old Bailey en línea&quot; %}</p>
+<p>(Para aprender más acerca de HTML, encontrarás muy útil en este momento estudiar el <a href="http://www.w3schools.com/html/default.asp">tutorial de HTML ofrecido por W3Schools</a>. No es necesario por ahora tener un conocimiento detallado del HTML para continuar leyendo esta lección, pero todo el tiempo que inviertas en aprender HTML va a repercutir ampliamente en tu trabajo y formación como historiador o humanista digital).</p>
+<h2 id="hola-mundo-en-html-1">“Hola Mundo” en HTML</h2>
+<p>HTML es un lenguaje de <em>etiquetado</em>; en otras palabras, HTML es, simple y sencillamente, texto &quot;marcado&quot; con &quot;etiquetas&quot; que proveen al programa intérprete (generalmente un navegador web) con la información necesaria para ejecutar comandos o representar cosas en la pantalla de la computadora. Imagina que estás editando la entrada de una ficha bibliográfica en la que quieres indicar el título de un libro mediante la aplicación de cursivas. En HTML usarás etiquetas <code>em</code> (“em” es sinónimo de “énfasis” -por &quot;emphasis&quot;). De tal manera que parte de tu archivo HTML puede verse de la siguiente manera:</p>
+<pre><code class="language-xml">... en Cohen y Rosenzweig &lt;em&gt;Digital History&lt;/em&gt;, por ejemplo
+</code></pre>
+<p>Los archivos más simples de HTML consisten en etiquetas que indican el principio y el fin del conjunto del documento, y etiquetas que identifican un encabezado <code>head</code> y un cuerpo <code>body</code> en medio de dicho documento. La información respectiva al archivo, como los formatos de tipografía y otras características, normalmente se incluyen en el encabezado <code>head</code>, mientras que la información que aparecerá en la pantalla del navegador normalmente se inserta en el cuerpo del archivo <code>body</code>.</p>
+<pre><code class="language-xml">&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;¡Hola Mundo!&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Intenta ahora crear algo de código HTML. Abre tu editor de texto y crea un nuevo archivo. Copia el código que está más abajo en tu editor. La primera línea le indica al navegador qué tipo de archivo es. La etiqueta <code>html</code>contiene la dirección del texto establecida como <code>ltr</code> (izquierda a derecha) y el idioma o <code>lang</code> establecido como español de España. La etiqueta &quot;<code>meta</code>&quot; contiene información muy importante para que el navegador despliegue correctamente las tildes y acentos en español. La etiqueta <code>title</code> (título) en el encabezado (<code>head</code>) del documento HTML contiene elementos que normalmente se muestran en la barra superior de la ventana del navegador cuando esa página está siendo vista, y en las pestañas de Firefox.</p>
+<pre><code class="language-xml">&lt;!doctype html&gt;
+&lt;html dir=&quot;ltr&quot; lang=&quot;es-ES&quot;&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;&lt;!-- Inserta aquí el título --&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;!-- Inserta aquí el contenido --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Cambia las líneas:</p>
+<pre><code class="language-xml">&lt;!-- Inserta aquí el título --&gt;
+</code></pre>
+<p>e</p>
+<pre><code class="language-xml">&lt;!-- Inserta aquí el contenido --&gt;
+</code></pre>
+<p> por:</p>
+<pre><code class="language-xml">¡Hola Mundo!
+</code></pre>
+<p>Salva el archivo en tu carpeta <code>programming-historian</code> con el nombre <code>hola-mundo.html</code>. Ahora, ve al navegador de Firefox y selecciona <code>Archivo -&gt; Nueva pestaña</code>y luego <code>Archivo -&gt; Abrir archivo</code>. Selecciona <code>hola-mundo.html</code>. Dependiendo de tu editor de texto puedes tener la opción <code>view page in browser</code> u <code>open in browser</code>. Una vez que has abierto el archivo tu mensaje deberá aparecer en el navegador. Nota la diferencia entre abrir un archivo HTML con un navegador como Firefox (que lo interpreta) y abrir el mismo archivo con tu editor de texto (que no lo interpreta).</p>
+<p>Sugerencia de lecturas para aprender HTML:</p>
+<ul>
+<li><a href="http://www.w3schools.com/html/default.asp">W3Schools HTML Tutorial</a></li>
+<li><a href="http://www.w3schools.com/html/html5_intro.asp">W3Schools HTML5 Tutorial</a></li>
+</ul>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="ver-archivos-html/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Para entender páginas web y HTML\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"date\":\"2012-07-17T00:00:00.000Z\",\"translation_date\":\"2017-03-15T00:00:00.000Z\",\"editors\":[\"Miriam Posner\"],\"reviewers\":[\"Jim Clifford\",\"Amanda Morton\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Adam Crymble\"],\"translation-reviewer\":[\"Jairo A. Melo\",\"Maria José Afanador-Llach\",\"Antonio Rojas Castro\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F39\",\"layout\":\"lesson\",\"next\":\"trabajar-con-archivos-de-texto\",\"previous\":\"introduccion-e-instalacion\",\"original\":\"viewing-html-files\",\"difficulty\":2,\"activity\":\"presenting\",\"topics\":[\"python\"],\"abstract\":\"Esta lección te introduce a las estructuras de HTML y de páginas web.\",\"avatar_alt\":\"Grabado de un hombre hablando a una mujer.\",\"doi\":\"10.46430\u002Fphes0030\",\"sequence\":2,\"series_total\":14},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"hola-mundo-en-html\\\"\u003E“Hola Mundo” en HTML\u003C\u002Fh2\u003E\\n\u003Ch2 id=\\\"visualizar-archivos-html\\\"\u003EVisualizar archivos HTML\u003C\u002Fh2\u003E\\n\u003Cp\u003ECuando trabajas con recursos en línea, la mayor parte del tiempo estás usando archivos que han sido etiquetados con HTML (Lenguaje de marcado de hípertexto): tu navegador de Internet sabe perfectamente cómo interpretar HTML, lenguaje fácil de manejar y comprender para los lectores humanos. La mayoría de los navegadores te permiten también ver el \u003Cem\u003Ecódigo fuente\u003C\u002Fem\u003E HTML de cada página que visitas. Las dos imágenes siguientes muestran una página web típica (en este caso la de \u003Cem\u003EOld Bailey Online\u003C\u002Fem\u003E, con la que trabajaremos en las siguientes lecciones), y la fuente HTML utilizada para generar dicha página y que puedes ver, en Firefox, con el menú \u003Ccode\u003EHerramientas -&gt; Desarrollador web -&gt; Código fuente de esta página\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003ECuando estás trabajando en el navegador, generalmente no necesitas o no quieres ver el código fuente de esa página web. Pero si estás escribiendo una página para ti mismo puede ser muy útil ver cómo otras personas logran un efecto particular en la página a través de ciertos etiquetados. También resulta importante conocer el código fuente HTML mientras escribes programas para manipular páginas web o extraer automáticamente información de los sitios en la web como, por ejemplo, los repositorios de datos digitales.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;obo.png&quot; caption=&quot;Captura de pantalla de Old Bailey en línea&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;obo-page-source.png&quot; caption=&quot;Fuente HTML de la página web de Old Bailey en línea&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E(Para aprender más acerca de HTML, encontrarás muy útil en este momento estudiar el \u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Fhtml\u002Fdefault.asp\\\"\u003Etutorial de HTML ofrecido por W3Schools\u003C\u002Fa\u003E. No es necesario por ahora tener un conocimiento detallado del HTML para continuar leyendo esta lección, pero todo el tiempo que inviertas en aprender HTML va a repercutir ampliamente en tu trabajo y formación como historiador o humanista digital).\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"hola-mundo-en-html-1\\\"\u003E“Hola Mundo” en HTML\u003C\u002Fh2\u003E\\n\u003Cp\u003EHTML es un lenguaje de \u003Cem\u003Eetiquetado\u003C\u002Fem\u003E; en otras palabras, HTML es, simple y sencillamente, texto &quot;marcado&quot; con &quot;etiquetas&quot; que proveen al programa intérprete (generalmente un navegador web) con la información necesaria para ejecutar comandos o representar cosas en la pantalla de la computadora. Imagina que estás editando la entrada de una ficha bibliográfica en la que quieres indicar el título de un libro mediante la aplicación de cursivas. En HTML usarás etiquetas \u003Ccode\u003Eem\u003C\u002Fcode\u003E (“em” es sinónimo de “énfasis” -por &quot;emphasis&quot;). De tal manera que parte de tu archivo HTML puede verse de la siguiente manera:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E... en Cohen y Rosenzweig &lt;em&gt;Digital History&lt;\u002Fem&gt;, por ejemplo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELos archivos más simples de HTML consisten en etiquetas que indican el principio y el fin del conjunto del documento, y etiquetas que identifican un encabezado \u003Ccode\u003Ehead\u003C\u002Fcode\u003E y un cuerpo \u003Ccode\u003Ebody\u003C\u002Fcode\u003E en medio de dicho documento. La información respectiva al archivo, como los formatos de tipografía y otras características, normalmente se incluyen en el encabezado \u003Ccode\u003Ehead\u003C\u002Fcode\u003E, mientras que la información que aparecerá en la pantalla del navegador normalmente se inserta en el cuerpo del archivo \u003Ccode\u003Ebody\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E&lt;html&gt;\\n&lt;head&gt;&lt;\u002Fhead&gt;\\n&lt;body&gt;¡Hola Mundo!&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIntenta ahora crear algo de código HTML. Abre tu editor de texto y crea un nuevo archivo. Copia el código que está más abajo en tu editor. La primera línea le indica al navegador qué tipo de archivo es. La etiqueta \u003Ccode\u003Ehtml\u003C\u002Fcode\u003Econtiene la dirección del texto establecida como \u003Ccode\u003Eltr\u003C\u002Fcode\u003E (izquierda a derecha) y el idioma o \u003Ccode\u003Elang\u003C\u002Fcode\u003E establecido como español de España. La etiqueta &quot;\u003Ccode\u003Emeta\u003C\u002Fcode\u003E&quot; contiene información muy importante para que el navegador despliegue correctamente las tildes y acentos en español. La etiqueta \u003Ccode\u003Etitle\u003C\u002Fcode\u003E (título) en el encabezado (\u003Ccode\u003Ehead\u003C\u002Fcode\u003E) del documento HTML contiene elementos que normalmente se muestran en la barra superior de la ventana del navegador cuando esa página está siendo vista, y en las pestañas de Firefox.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E&lt;!doctype html&gt;\\n&lt;html dir=&quot;ltr&quot; lang=&quot;es-ES&quot;&gt;\\n    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text\u002Fhtml; charset=utf-8&quot;&gt;\\n\\n&lt;head&gt;\\n    &lt;title&gt;&lt;!-- Inserta aquí el título --&gt;&lt;\u002Ftitle&gt;\\n&lt;\u002Fhead&gt;\\n\\n&lt;body&gt;\\n    &lt;!-- Inserta aquí el contenido --&gt;\\n&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ECambia las líneas:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E&lt;!-- Inserta aquí el título --&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Ee\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E&lt;!-- Inserta aquí el contenido --&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E por:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E¡Hola Mundo!\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESalva el archivo en tu carpeta \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E con el nombre \u003Ccode\u003Ehola-mundo.html\u003C\u002Fcode\u003E. Ahora, ve al navegador de Firefox y selecciona \u003Ccode\u003EArchivo -&gt; Nueva pestaña\u003C\u002Fcode\u003Ey luego \u003Ccode\u003EArchivo -&gt; Abrir archivo\u003C\u002Fcode\u003E. Selecciona \u003Ccode\u003Ehola-mundo.html\u003C\u002Fcode\u003E. Dependiendo de tu editor de texto puedes tener la opción \u003Ccode\u003Eview page in browser\u003C\u002Fcode\u003E u \u003Ccode\u003Eopen in browser\u003C\u002Fcode\u003E. Una vez que has abierto el archivo tu mensaje deberá aparecer en el navegador. Nota la diferencia entre abrir un archivo HTML con un navegador como Firefox (que lo interpreta) y abrir el mismo archivo con tu editor de texto (que no lo interpreta).\u003C\u002Fp\u003E\\n\u003Cp\u003ESugerencia de lecturas para aprender HTML:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Fhtml\u002Fdefault.asp\\\"\u003EW3Schools HTML Tutorial\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Fhtml\u002Fhtml5_intro.asp\\\"\u003EW3Schools HTML5 Tutorial\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+	</body>
+</html>

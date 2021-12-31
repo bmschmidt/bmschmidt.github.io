@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/googlemaps-googleearth"),
+					params: {lang:"en",lessons:"lessons",slug:"googlemaps-googleearth"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Intro to Google Maps and Google Earth</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="google-maps">Google Maps</h2>
+<p>Google My Maps and Google Earth provide an easy way to start creating
+digital maps. With a Google Account you can create and edit personal
+maps by clicking on My Places.</p>
+<p>In My Maps you can choose between several different base maps
+(including the standard satellite, terrain, or standard maps) and add
+points, lines and polygons. It is also possible to import data from a
+spreadsheet, if you have columns with geographical information (i.e.
+longitudes and latitudes or place names). This automates a formerly
+complex task known as geocoding. Not only is this one of the easiest
+ways to begin plotting your historical data on a map, but it also has
+the power of Google&#39;s search engine. As you read about unfamiliar places
+in historical documents, journal articles or books, you can search for
+them using Google Maps. It is then possible to mark numerous locations
+and explore how they relate to each other geographically. Your personal
+maps are saved by Google (in their cloud), meaning you can access them
+from any computer with an internet connection. You can keep them private
+or embed them in your website or blog. Finally, you can export your
+points, lines, and polygons as KML files and open them in Google Earth
+or Quantum GIS.</p>
+<h3 id="getting-started">Getting Started</h3>
+<ul>
+<li>Open your favorite browser</li>
+<li>Go to Google&#39;s <a href="https://www.google.com/maps/d/">MyMaps Engine Lite</a></li>
+<li>Log in to your Google Account if you aren&#39;t already logged in
+(follow the basic instructions to create an account if necessary)</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo1.png&quot; caption=&quot;Figure 1&quot; %}</p>
+<ul>
+<li>Click on the question mark at bottom right and click Take a Tour for an introduction to how
+My Maps works</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo2.png&quot; caption=&quot;Figure 2&quot; %}</p>
+<ul>
+<li>At the upper left corner, a menu box appears, titled &#39;Untitled Map&#39;.
+By clicking on the title you can rename as &#39;My test map&#39; or a title
+of your choice.</li>
+<li>Next, you can use the search bar.
+Try searching the location of your current research project. You can
+then click on the location and add it to your map by clicking &#39;add
+to map&#39;. This is the simplest method of adding points to your new
+map. Try searching for some historical place names that no longer
+exist (Ontario&#39;s Berlin or Constantinople). You will find mixed
+results, where Google often identifies the correct location, but
+also offers up incorrect alternatives. This is important to keep in
+mind when creating spreadsheet, as it is normally better to use the
+modern place names and avoid risking that Google with choose the
+wrong Constantinople.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo3.png&quot; caption=&quot;Figure 3&quot; %}</p>
+<p>{% include figure.html filename=&quot;geo4.png&quot; caption=&quot;Figure 4&quot; %}</p>
+<ul>
+<li>Next, you can Import a Dataset. Click the Import
+button under the untitled layer.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo5.png&quot; caption=&quot;Figure 5&quot; %}</p>
+<ul>
+<li>A new window will pop up and give you the option of importing a CSV
+(comma separated value), XLXS (Microsoft Excel) file, KML (Google&#39;s spatial file formate) or GPX (common GPS file formate). These are two common spreadsheet formats; CSV is simple and universal, XLXS is
+the MS Excel format. You can also work with a Google spreadsheet
+from your Drive account.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo6.png&quot; caption=&quot;Figure 6&quot; %}</p>
+<ul>
+<li>Download this sample data and located it on your computer: <a href="https://github.com/programminghistorian/jekyll/files/148984/UK.Global.Fat.Supply.1894-1896.-.Sheet1.csv.zip">UK
+Global Fat Supply CSV file</a>. If you open the file in Excel or
+another spreadsheet program, you&#39;ll find a simple two column dataset
+with a list of different kinds of fats and the associated list of
+places. This data was created using British import tables from 1896.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo7.png&quot; caption=&quot;Figure 7&quot; %}</p>
+<ul>
+<li>Drag the file into the box provided by Google Maps.</li>
+<li>You will then be promted to choose which column Google should use to
+identify a the location. Choose Place.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo8.png&quot; caption=&quot;Figure 8&quot; %}</p>
+<ul>
+<li>You will then be promoted again to choose which column should be
+used for the label. Choose &#39;Commodity&#39;.</li>
+<li>You should now have a global map of the major exporters of fat to
+Britain during the mid-1890s.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo9.png&quot; caption=&quot;Figure 9: Click to see full-size image&quot; %}</p>
+<ul>
+<li>You can now explore the data in more detail and change the Style to
+distinguish between the different types of fats.</li>
+<li>Click on the UK Global Fats Layer, then click on Style and finally
+click on Uniform Style and change it to Style by Data Column:
+Commodities. On the left hand side, the legend will show the amount
+of occurrences of each style in brackets, e.g. &#39;Flax Seeds (4)&#39;.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo10.png&quot; caption=&quot;Figure 10&quot; %}</p>
+<p>{% include figure.html filename=&quot;geo11.png&quot; caption=&quot;Figure 11&quot; %}</p>
+<ul>
+<li>Continue to play with the options.</li>
+<li>This feature provides a powerful tool to display historical
+datasets. It does have limitations, however, as Google Maps will
+only import the first 100 rows of a spreadsheet. At this point it
+only allows you to include three datasets in a map, so a maximum of
+300 features.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo12.png&quot; caption=&quot;Figure 12&quot; %}</p>
+<h3 id="creating-vector-layers">Creating Vector Layers</h3>
+<p>You can also create new map layers (known more formally
+as vector layers). Vector layers are one of the main components of
+digital mapping (including GIS). They are simply points, lines, or
+polygons used to represent geographic features. Points can be used to
+identify and label key locations, lines are often used for streets or
+railroads, and polygons allow you to represent area (fields, buildings,
+city wards, etc). They work the same in Google Maps as they do in GIS.
+The big limitation is that you can only add limited information into the
+database tables associated with the points, lines, or polygons. This is
+a problem as you scale up your digital mapping research, but it is not a
+problem when you are starting out. In Google Maps you can add a label, a
+text description, and links to a website or photo. More information
+about creating historical vectors in a full GIS is available in
+<a href="/lessons/vector-layers-qgis">Creating New Vector Layers in QGIS 2.0</a>.</p>
+<ul>
+<li>To add a layer, you can either click on the layer that has been
+created for you in the menu box, with the name &#39;Untitled Layer&#39;.
+Click on &#39;Untitled Layer&#39; and rename it &#39;Layer 1′. Or you can create
+another layer: click on the &#39;Add layer&#39; button. This will add a new
+&#39;Untitled Layer&#39; which you can name as &#39;Layer 2′. It should look
+like this:</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo13.png&quot; caption=&quot;Figure 13&quot; %}</p>
+<ul>
+<li><p>Note that to the right of Layer there is a checkbox – unchecking
+this box turns off (i.e. it doesn&#39;t appear on the map) a layer and
+its information. Uncheck the UK Global Fats layer and click on Layer</p>
+<ol>
+<li></li>
+</ol>
+</li>
+<li><p>Before adding vector layers we should consider which base map to
+use. At the bottom of the menu window, there is a line that says
+&#39;base map&#39;. A base map is a map** depicting background reference
+information such as roads, borders, landforms, etc. on top of which
+layers containing different types of spatial information can be
+placed. Google&#39;s Maps  allows you to choose from a variety of
+base maps, depending on the kind of map you want to create.
+Satellite imagery is becoming a standard form of base map, but it is
+information-rich and may detract from the other map features you are
+trying to highlight. Some simple alternatives include &#39;light
+landmass&#39;, or even &#39;light political&#39; if you require political
+boundaries.</p>
+</li>
+<li><p>Click on the arrow to the right of &#39;Base map&#39; in the window; a
+submenu appears allowing you to choose different types of base maps.
+Choose &#39;Satellite&#39;.</p>
+</li>
+<li><p>Start by adding some Placemarks (the Google equivalent of a point).
+Click on the add Markers button underneath the search bar near the
+top of the window. Click on the spot on the map where you want the
+Placemark to appear.</p>
+</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo14.png&quot; caption=&quot;Figure 14&quot; %}</p>
+<ul>
+<li>A box will pop up and give you the opportunity to label the
+Placemark and add a description into the text box. We added
+Charlottetown and included that it was founded in 1765 in the
+description box.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo15.png&quot; caption=&quot;Figure 15&quot; %}</p>
+<ul>
+<li><p>Add a few more points, including labels and descriptions.</p>
+</li>
+<li><p>You will notice that your Placemark now appears under Layer 1 on the
+left of the screen in your menu window. There is a place to change
+icon shape and icon colour if you click on the symbol just to the
+right of the Placemark name. Also, directly under the title Layer 1
+there are menus titled Style, Data, and Labels. The Style menu
+controls different aspects of the Layer&#39;s appearance, while Data
+shows you the data you added in the description box for your
+Placemark. Labels menu allows you to control whether the name or
+description of your Placemark appears besides it on the actual map.</p>
+</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo16.png&quot; caption=&quot;Figure 16&quot; %}</p>
+<ul>
+<li>Now we will add some lines and shapes (called polygons in GIS
+software). Adding lines and polygons is a very similar process. We
+will draw some lines in a new layer (different types of points,
+lines, and shapes should be in separate layers).</li>
+<li>Select Layer 2 in your menu box (you will know which layer you have
+selected because of the blue outline on the left of the box).</li>
+<li>Click the &#39;add line or shape&#39; icon box directly to the right of the
+Markers symbol:</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo17.png&quot; caption=&quot;Figure 17&quot; %}</p>
+<ul>
+<li><p>Pick a road and click with your mouse along it, tracing the route
+for a while. Hit &quot;enter&quot; when you want to finish the line.</p>
+</li>
+<li><p>Again you can add a label (i.e. name a road) and description
+information.</p>
+</li>
+<li><p>You can also change the colour and width of the line. To do this,
+find the road you have drawn in Layer 2 in the menu box, and click
+to the right of the name of the road.</p>
+</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo18.png&quot; caption=&quot;Figure 18&quot; %}</p>
+<ul>
+<li>To create a polygon (a shape) you can connect the dots of the line
+to create an enclosed formation. To do this, start drawing and
+finish by clicking on the first point in your line. You can create
+simple shapes, such as a farmer&#39;s field, or much more complex
+shapes, such as the outline of a city (see examples below). Feel
+free to experiment with creating lines and polygons.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo19.png&quot; caption=&quot;Figure 19&quot; %}</p>
+<p>{% include figure.html filename=&quot;geo20.png&quot; caption=&quot;Figure 20&quot; %}</p>
+<ul>
+<li>Like placemarks and lines, you can change the name and description
+of a polygon. You can also change the colour and line width by
+clicking on the icon to the right of your polygon name in the menu
+box. Here you can also change the transparency, which is discussed
+immediately below.</li>
+<li>Note that the area bounded (i.e. inside) a polygon is shaded the
+same colour as the polygon outline. You can change the opaqueness of
+this shading by changing the &#39;transparency&#39; which alters the extent
+to which you can clearly see the background image (your base map).</li>
+<li></li>
+</ul>
+<h3 id="share-your-custom-map">Share your custom map</h3>
+<ul>
+<li>The best way to share the map online is by using the <strong>Share</strong>
+button in the menu. This provides a link which can be
+share in an email or through social media like G+, Facebook, or
+Twitter.</li>
+<li>Another way to share a dynamic version of your map is to embed it in
+a blog or website using the &quot;embed on my website&quot; option dropdown menu to the right of the save button. Selecting this option provides an inline frame or
+&lt;iframe&gt; tag that you can then insert into an HTML site. You can
+modify the height and width of the frame by changing the numbers in
+quotation marks.</li>
+<li>Note: there is currently no way to set the
+default scale or legend options of the embedded map, but if you need
+to eliminate the legend from the map that appears on your HTML site
+you can do so by reducing the width if the &lt;iframe&gt; to 580 or
+less.</li>
+<li>You can also export the data as a KML file using the same dropdown menu. It will give you the
+option to export the whole map or to select one layer in particular.
+Try exporting the UK Global Fats layer as a KML layer. You&#39;ll be
+able to import this data into other programs, including Google Earth
+and Quantum GIS. This is an important feature, as it means you can
+start working with digital maps using Google Map and still export
+your work into a GIS database in the future.</li>
+<li>You can stop the lesson here if you think this free Google Map
+service provides all the tools you need for your research topic. Or
+you can keep going and learn about Google Earth and in lesson 2,
+Quantum GIS.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo21.png&quot; caption=&quot;Figure 21&quot; %}</p>
+<p>{% include figure.html filename=&quot;geo22.png&quot; caption=&quot;Figure 22&quot; %}</p>
+<h2 id="google-earth">Google Earth</h2>
+<p>Google Earth works in much the same way as Google Maps Engine Lite, but
+has additional features. For example, it provides 3-D maps and access to
+data from numerous third party sources, including collections of
+historical maps. Google Maps doesn&#39;t require you to install software and
+your maps are saved in the cloud. Google Earth requires software
+installation and is not cloud-based, though maps you create can be
+exported.</p>
+<ul>
+<li>Install Google Earth: <a href="http://www.google.com/earth/index.html">http://www.google.com/earth/index.html</a></li>
+<li>Open the program and familiarize yourself with the digital globe.
+Use the menu to add and remove layers of information. This is very
+similar to how more advanced GIS programs work. You can add and
+remove different kinds of geographical information including
+Political Boundaries (polygons), Roads (lines), and Places (points).
+See the red arrows in the following image for the location of these
+layers.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo23.png&quot; caption=&quot;Figure 23: Click to see full-size image&quot; %}</p>
+<ul>
+<li>Note that under the &#39;Layer&#39; heading on the lower left side of the
+window margin, Google provides a number of ready-to-go layers that
+can be turned on by selecting the corresponding checkbox.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo24.png&quot; caption=&quot;Figure 24&quot; %}</p>
+<ul>
+<li>Google Earth also contains some scanned historical maps and aerial
+photographs (in GIS these types of maps, which are made up of
+pixels, are known as raster data). Under Gallery you can find and
+click Rumsey Historical Maps. This will add icons all over the globe
+(with a concentration in the United States) of scanned maps that
+have been georeferenced (stretched and pinned to match a location)
+onto the digital globe. This previews a key methodology in
+historical GIS. (You can also find historical map layers and other
+HGIS layers in the Earth Gallery). Take some time to explore a
+number of historical maps. See if there are any maps included in the
+Rumsey Collection that might be useful for your research or
+teaching. (You can find many more digitized, but not georeferenced
+maps at <a href="http://www.davidrumsey.com/">www.davidrumsey.com</a>.)</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo25.png&quot; caption=&quot;Figure 25&quot; %}</p>
+<ul>
+<li>You might need to zoom in to see all of the Map icons. Can you find
+the World Globe from 1812?</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo26.png&quot; caption=&quot;Figure 26&quot; %}</p>
+<ul>
+<li>Once you click on an icon an information panel pops up. Click on the
+map thumbnail to see the map tacked onto the digital globe. We will
+learn to properly georeference maps in <a href="/lessons/georeferencing-qgis">Georeferencing in QGIS
+2.0</a>.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo27.png&quot; caption=&quot;Figure 27&quot; %}</p>
+<p>{% include figure.html filename=&quot;geo28.png&quot; caption=&quot;Figure 28: Click to see full-size image&quot; %}</p>
+<h2 id="kml-keyhole-markup-language-files">KML: Keyhole Markup Language files</h2>
+<ul>
+<li>Google developed a file format to save and share map data: KML. This
+stands for Keyhole Markup Language, and it is a highly portable type
+of file (i.e. a KML can be used with different types of GIS
+software) that can store many different types of GIS data, including
+vector data.</li>
+<li>Maps and images you create in Google Maps and Google Earth can be
+saved as KML files This means you can save work done in Google Maps
+or Google Earth. With KML files you can transfer data between these
+two platforms and bring your map data into Quantum GIS or ArcGIS.</li>
+<li>For example, you can import the data you created in Google Maps
+Engine Lite. If you created a map in the exercise above, it can be
+found by clicking &quot;Open Map&quot; on the <a href="https://mapsengine.google.com/map/">Maps Engine Lite</a> home page.
+Click on the folder icon on the left hand side of the legend beneath
+the map title and click &quot;export to KML&quot;. (You can also download and
+explore Dan Macfarlane&#39;s <a href="https://github.com/programminghistorian/jekyll/files/148993/seaway.zip">Seaway map</a> for this part of the
+exercise).</li>
+</ul>
+<p><strong>Bringing your KML file into Google Earth</strong></p>
+<ul>
+<li>Download the KML file from Google Maps Engine Lite (as described
+above).</li>
+<li>Double click on the KML file in your Download folder.</li>
+<li>Find the data in the Temporary Folder in Google Earth.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo29.png&quot; caption=&quot;Figure 29: Click to see full-size image&quot; %}</p>
+<ul>
+<li>You can now explore these map features in 3D, or you can add new
+lines, points and polygons using the various icons along the top
+left of your Google Earth window (see image below). This works in
+essentially the same way as it did for Google Maps, although there
+is more functionality and options. In Dan&#39;s Seaway map, the old
+canals and current Seaway route were traced in different line
+colours and widths using the line feature (this was made possible by
+overlaying historical maps, which is described below), while various
+features were marked off with appropriate Placemarks. For those so
+inclined, there is also the option of recording a tour that could be
+useful for presentations or teaching purposes (when the &quot;record a
+tour&quot; icon is selected, recording options will show up on the bottom
+left of the window).</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo30.png&quot; caption=&quot;Figure 30&quot; %}</p>
+<ul>
+<li>Try adding a new feature to Dan&#39;s Seaway data. We&#39;ve created a
+polygon (in GIS terminology a polygon is a closed shape of any type
+– a circle, hexagon, and square are all examples) of Lake St. Clair
+in the next image. Find Lake St. Clair (east of Detroit) and try
+adding a polygon.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo31.png&quot; caption=&quot;Figure 31: Click to see full-size image&quot; %}</p>
+<p>{% include figure.html filename=&quot;geo32.png&quot; caption=&quot;Figure 32&quot; %}</p>
+<ul>
+<li>Label the new feature Lake St. Clair. You can then drag the new
+feature onto Dan&#39;s Seaway data and add it to the collection. You can
+then save this expanded version of the Seaway map as a KML to share
+via email, upload into Google Maps, or to export this data into
+QGIS. Find the save option by right-clicking on the Seaway
+collection and choose Save Place As or Email.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo33.png&quot; caption=&quot;Figure 33&quot; %}</p>
+<p>{% include figure.html filename=&quot;geo34.png&quot; caption=&quot;Figure 34&quot; %}</p>
+<p>{% include figure.html filename=&quot;geo35.png&quot; caption=&quot;Figure 35&quot; %}</p>
+<h2 id="adding-scanned-historical-maps">Adding Scanned Historical Maps</h2>
+<p>Within Google Earth, you can upload a digital copy of a historical map.
+This could be a map that has been scanned, or an image obtained that is
+already in a digital format (for tips on finding historical maps online
+see: <a href="http://niche-canada.org/2011/12/14/mobile-mapping-and-historical-gis-in-the-field/" title="Mobile Mapping and Historical GIS in the Field">Mobile Mapping and Historical GIS in the Field</a>). The main
+purpose for uploading a digital map, from a historical perspective, is
+to place it over top of a Google Earth image in the browser. This is
+known as an overlay. Performing an overlay allows for useful comparisons
+of change over time.</p>
+<ul>
+<li>Start by identifying the images you want to use: the image within
+Google Earth, and the map you want to overlay with. For the map you
+want to overlay, the file can be in JPEG or TIFF format, but not
+PDF.</li>
+<li>Within Google Earth, identify the area of the map you want to
+overlay. Note that you can go back in time (i.e. look at older
+satellite photos) by clicking on the &#39;Show historical imagery&#39; icon
+on the top toolbar. and then adjusting the time-scale slider that
+will appear.</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo36.png&quot; caption=&quot;Figure 36&quot; %}</p>
+<p>{% include figure.html filename=&quot;geo37.png&quot; caption=&quot;Figure 37&quot; %}</p>
+<ul>
+<li>Once you have identified the images you plan to use, click on the
+&#39;Add Image Overlay&#39; icon on the top toolbar.\</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo38.png&quot; caption=&quot;Figure 38&quot; %}</p>
+<ul>
+<li>A new window will appear. Begin by giving it a different title if
+you wish (the default is &#39;Untitled Image Overlay&#39;).</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo39.png&quot; caption=&quot;Figure 39: Click to see full-size image&quot; %}</p>
+<ul>
+<li>To the right of the Link field, click the Browse button to select
+from your files the map you wish to be the overlaying image.</li>
+<li>Move the New Image Overlay window out of the way (don&#39;t close it or
+click &quot;Cancel&quot; or &quot;OK&quot;) so that you can see the Google Earth
+browser. The map you uploaded will now appear over top of the Google
+Earth satellite image in the Google Earth browser.</li>
+<li>There are fluorescent green markers in the middle and at the edges
+of the uploaded map. These can be used to stretch, shrink, and move
+the map so that it aligns properly with the satellite image. This is
+a simple form of georeferencing (see <a href="/lessons/georeferencing-qgis">Georeferencing in QGIS 2.0</a>).
+The image below shows the above steps using an old map of the town
+of Aultsville overlaid on top of Google satellite imagery from 2008
+in which the remains of the town&#39;s roads and building foundations in
+the St. Lawrence River are visible (Aultsville was one of the Lost
+Villages flooded out by the St. Lawrence Seaway and Power
+Project).</li>
+</ul>
+<p>{% include figure.html filename=&quot;geo40.png&quot; caption=&quot;Figure 40: Click to see full-size image&quot; %}</p>
+<ul>
+<li>Back in the New Image Overlay window, note that there are a range of
+options (Description, View, Altitude, Refresh, Location) that you
+can select. At this point, you likely don&#39;t need to worry about
+these, although you may wish to add information under the
+Description tab.</li>
+<li>Once you are satisfied with your overlay, in the New Image Overlay
+window click on OK in the bottom right corner.</li>
+<li>You will want to save your work. Under File on your computer&#39;s menu
+bar, you have two options. You can save a copy of the image (File
+-&gt; Save -&gt; Save Image…) you have created to your computer in jpg
+format, and you can also save the overlay within Google Earth so
+that it can be accessed in the future (File -&gt; Save -&gt; Save My
+Places). The latter is saved as a KML file.</li>
+<li>To share KML files simply locate the file you saved to your computer
+and upload it to your website, social media site, or send it as an
+email attachment.</li>
+</ul>
+<p><strong>You have learned how to use Google Maps and Earth. Make sure you save
+your work!</strong></p>
+<p><em>This lesson is part of the <a href="http://geospatialhistorian.wordpress.com/">Geospatial Historian</a>.</em></p>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="googlemaps-googleearth/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Intro to Google Maps and Google Earth\",\"layout\":\"lesson\",\"date\":\"2013-12-13T00:00:00.000Z\",\"authors\":[\"Jim Clifford\",\"Josh MacFadyen\",\"Daniel Macfarlane\"],\"reviewers\":[\"Finn Arne Jørgensen\",\"Sarah Simpkin\"],\"editors\":[\"Adam Crymble\"],\"difficulty\":1,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"presenting\",\"topics\":[\"mapping\"],\"abstract\":\"Google My Maps and Google Earth provide an easy way to start creating digital maps. With a Google Account you can create and edit personal maps by clicking on My Places.\",\"next\":\"qgis-layers\",\"series_total\":\"4 lessons\",\"sequence\":1,\"redirect_from\":\"\u002Flessons\u002Fgooglemaps-googleearth\",\"avatar_alt\":\"An old man consulting a large globe with a compass\",\"doi\":\"10.46430\u002Fphen0028\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"google-maps\\\"\u003EGoogle Maps\u003C\u002Fh2\u003E\\n\u003Cp\u003EGoogle My Maps and Google Earth provide an easy way to start creating\\ndigital maps. With a Google Account you can create and edit personal\\nmaps by clicking on My Places.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn My Maps you can choose between several different base maps\\n(including the standard satellite, terrain, or standard maps) and add\\npoints, lines and polygons. It is also possible to import data from a\\nspreadsheet, if you have columns with geographical information (i.e.\\nlongitudes and latitudes or place names). This automates a formerly\\ncomplex task known as geocoding. Not only is this one of the easiest\\nways to begin plotting your historical data on a map, but it also has\\nthe power of Google&#39;s search engine. As you read about unfamiliar places\\nin historical documents, journal articles or books, you can search for\\nthem using Google Maps. It is then possible to mark numerous locations\\nand explore how they relate to each other geographically. Your personal\\nmaps are saved by Google (in their cloud), meaning you can access them\\nfrom any computer with an internet connection. You can keep them private\\nor embed them in your website or blog. Finally, you can export your\\npoints, lines, and polygons as KML files and open them in Google Earth\\nor Quantum GIS.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"getting-started\\\"\u003EGetting Started\u003C\u002Fh3\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EOpen your favorite browser\u003C\u002Fli\u003E\\n\u003Cli\u003EGo to Google&#39;s \u003Ca href=\\\"https:\u002F\u002Fwww.google.com\u002Fmaps\u002Fd\u002F\\\"\u003EMyMaps Engine Lite\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003ELog in to your Google Account if you aren&#39;t already logged in\\n(follow the basic instructions to create an account if necessary)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo1.png&quot; caption=&quot;Figure 1&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EClick on the question mark at bottom right and click Take a Tour for an introduction to how\\nMy Maps works\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo2.png&quot; caption=&quot;Figure 2&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EAt the upper left corner, a menu box appears, titled &#39;Untitled Map&#39;.\\nBy clicking on the title you can rename as &#39;My test map&#39; or a title\\nof your choice.\u003C\u002Fli\u003E\\n\u003Cli\u003ENext, you can use the search bar.\\nTry searching the location of your current research project. You can\\nthen click on the location and add it to your map by clicking &#39;add\\nto map&#39;. This is the simplest method of adding points to your new\\nmap. Try searching for some historical place names that no longer\\nexist (Ontario&#39;s Berlin or Constantinople). You will find mixed\\nresults, where Google often identifies the correct location, but\\nalso offers up incorrect alternatives. This is important to keep in\\nmind when creating spreadsheet, as it is normally better to use the\\nmodern place names and avoid risking that Google with choose the\\nwrong Constantinople.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo3.png&quot; caption=&quot;Figure 3&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo4.png&quot; caption=&quot;Figure 4&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ENext, you can Import a Dataset. Click the Import\\nbutton under the untitled layer.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo5.png&quot; caption=&quot;Figure 5&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EA new window will pop up and give you the option of importing a CSV\\n(comma separated value), XLXS (Microsoft Excel) file, KML (Google&#39;s spatial file formate) or GPX (common GPS file formate). These are two common spreadsheet formats; CSV is simple and universal, XLXS is\\nthe MS Excel format. You can also work with a Google spreadsheet\\nfrom your Drive account.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo6.png&quot; caption=&quot;Figure 6&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EDownload this sample data and located it on your computer: \u003Ca href=\\\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fjekyll\u002Ffiles\u002F148984\u002FUK.Global.Fat.Supply.1894-1896.-.Sheet1.csv.zip\\\"\u003EUK\\nGlobal Fat Supply CSV file\u003C\u002Fa\u003E. If you open the file in Excel or\\nanother spreadsheet program, you&#39;ll find a simple two column dataset\\nwith a list of different kinds of fats and the associated list of\\nplaces. This data was created using British import tables from 1896.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo7.png&quot; caption=&quot;Figure 7&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EDrag the file into the box provided by Google Maps.\u003C\u002Fli\u003E\\n\u003Cli\u003EYou will then be promted to choose which column Google should use to\\nidentify a the location. Choose Place.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo8.png&quot; caption=&quot;Figure 8&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EYou will then be promoted again to choose which column should be\\nused for the label. Choose &#39;Commodity&#39;.\u003C\u002Fli\u003E\\n\u003Cli\u003EYou should now have a global map of the major exporters of fat to\\nBritain during the mid-1890s.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo9.png&quot; caption=&quot;Figure 9: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EYou can now explore the data in more detail and change the Style to\\ndistinguish between the different types of fats.\u003C\u002Fli\u003E\\n\u003Cli\u003EClick on the UK Global Fats Layer, then click on Style and finally\\nclick on Uniform Style and change it to Style by Data Column:\\nCommodities. On the left hand side, the legend will show the amount\\nof occurrences of each style in brackets, e.g. &#39;Flax Seeds (4)&#39;.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo10.png&quot; caption=&quot;Figure 10&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo11.png&quot; caption=&quot;Figure 11&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EContinue to play with the options.\u003C\u002Fli\u003E\\n\u003Cli\u003EThis feature provides a powerful tool to display historical\\ndatasets. It does have limitations, however, as Google Maps will\\nonly import the first 100 rows of a spreadsheet. At this point it\\nonly allows you to include three datasets in a map, so a maximum of\\n300 features.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo12.png&quot; caption=&quot;Figure 12&quot; %}\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"creating-vector-layers\\\"\u003ECreating Vector Layers\u003C\u002Fh3\u003E\\n\u003Cp\u003EYou can also create new map layers (known more formally\\nas vector layers). Vector layers are one of the main components of\\ndigital mapping (including GIS). They are simply points, lines, or\\npolygons used to represent geographic features. Points can be used to\\nidentify and label key locations, lines are often used for streets or\\nrailroads, and polygons allow you to represent area (fields, buildings,\\ncity wards, etc). They work the same in Google Maps as they do in GIS.\\nThe big limitation is that you can only add limited information into the\\ndatabase tables associated with the points, lines, or polygons. This is\\na problem as you scale up your digital mapping research, but it is not a\\nproblem when you are starting out. In Google Maps you can add a label, a\\ntext description, and links to a website or photo. More information\\nabout creating historical vectors in a full GIS is available in\\n\u003Ca href=\\\"\u002Flessons\u002Fvector-layers-qgis\\\"\u003ECreating New Vector Layers in QGIS 2.0\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ETo add a layer, you can either click on the layer that has been\\ncreated for you in the menu box, with the name &#39;Untitled Layer&#39;.\\nClick on &#39;Untitled Layer&#39; and rename it &#39;Layer 1′. Or you can create\\nanother layer: click on the &#39;Add layer&#39; button. This will add a new\\n&#39;Untitled Layer&#39; which you can name as &#39;Layer 2′. It should look\\nlike this:\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo13.png&quot; caption=&quot;Figure 13&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003ENote that to the right of Layer there is a checkbox – unchecking\\nthis box turns off (i.e. it doesn&#39;t appear on the map) a layer and\\nits information. Uncheck the UK Global Fats layer and click on Layer\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003E\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EBefore adding vector layers we should consider which base map to\\nuse. At the bottom of the menu window, there is a line that says\\n&#39;base map&#39;. A base map is a map** depicting background reference\\ninformation such as roads, borders, landforms, etc. on top of which\\nlayers containing different types of spatial information can be\\nplaced. Google&#39;s Maps  allows you to choose from a variety of\\nbase maps, depending on the kind of map you want to create.\\nSatellite imagery is becoming a standard form of base map, but it is\\ninformation-rich and may detract from the other map features you are\\ntrying to highlight. Some simple alternatives include &#39;light\\nlandmass&#39;, or even &#39;light political&#39; if you require political\\nboundaries.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EClick on the arrow to the right of &#39;Base map&#39; in the window; a\\nsubmenu appears allowing you to choose different types of base maps.\\nChoose &#39;Satellite&#39;.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EStart by adding some Placemarks (the Google equivalent of a point).\\nClick on the add Markers button underneath the search bar near the\\ntop of the window. Click on the spot on the map where you want the\\nPlacemark to appear.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo14.png&quot; caption=&quot;Figure 14&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EA box will pop up and give you the opportunity to label the\\nPlacemark and add a description into the text box. We added\\nCharlottetown and included that it was founded in 1765 in the\\ndescription box.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo15.png&quot; caption=&quot;Figure 15&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003EAdd a few more points, including labels and descriptions.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EYou will notice that your Placemark now appears under Layer 1 on the\\nleft of the screen in your menu window. There is a place to change\\nicon shape and icon colour if you click on the symbol just to the\\nright of the Placemark name. Also, directly under the title Layer 1\\nthere are menus titled Style, Data, and Labels. The Style menu\\ncontrols different aspects of the Layer&#39;s appearance, while Data\\nshows you the data you added in the description box for your\\nPlacemark. Labels menu allows you to control whether the name or\\ndescription of your Placemark appears besides it on the actual map.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo16.png&quot; caption=&quot;Figure 16&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ENow we will add some lines and shapes (called polygons in GIS\\nsoftware). Adding lines and polygons is a very similar process. We\\nwill draw some lines in a new layer (different types of points,\\nlines, and shapes should be in separate layers).\u003C\u002Fli\u003E\\n\u003Cli\u003ESelect Layer 2 in your menu box (you will know which layer you have\\nselected because of the blue outline on the left of the box).\u003C\u002Fli\u003E\\n\u003Cli\u003EClick the &#39;add line or shape&#39; icon box directly to the right of the\\nMarkers symbol:\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo17.png&quot; caption=&quot;Figure 17&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003EPick a road and click with your mouse along it, tracing the route\\nfor a while. Hit &quot;enter&quot; when you want to finish the line.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EAgain you can add a label (i.e. name a road) and description\\ninformation.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EYou can also change the colour and width of the line. To do this,\\nfind the road you have drawn in Layer 2 in the menu box, and click\\nto the right of the name of the road.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo18.png&quot; caption=&quot;Figure 18&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ETo create a polygon (a shape) you can connect the dots of the line\\nto create an enclosed formation. To do this, start drawing and\\nfinish by clicking on the first point in your line. You can create\\nsimple shapes, such as a farmer&#39;s field, or much more complex\\nshapes, such as the outline of a city (see examples below). Feel\\nfree to experiment with creating lines and polygons.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo19.png&quot; caption=&quot;Figure 19&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo20.png&quot; caption=&quot;Figure 20&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELike placemarks and lines, you can change the name and description\\nof a polygon. You can also change the colour and line width by\\nclicking on the icon to the right of your polygon name in the menu\\nbox. Here you can also change the transparency, which is discussed\\nimmediately below.\u003C\u002Fli\u003E\\n\u003Cli\u003ENote that the area bounded (i.e. inside) a polygon is shaded the\\nsame colour as the polygon outline. You can change the opaqueness of\\nthis shading by changing the &#39;transparency&#39; which alters the extent\\nto which you can clearly see the background image (your base map).\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"share-your-custom-map\\\"\u003EShare your custom map\u003C\u002Fh3\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EThe best way to share the map online is by using the \u003Cstrong\u003EShare\u003C\u002Fstrong\u003E\\nbutton in the menu. This provides a link which can be\\nshare in an email or through social media like G+, Facebook, or\\nTwitter.\u003C\u002Fli\u003E\\n\u003Cli\u003EAnother way to share a dynamic version of your map is to embed it in\\na blog or website using the &quot;embed on my website&quot; option dropdown menu to the right of the save button. Selecting this option provides an inline frame or\\n&lt;iframe&gt; tag that you can then insert into an HTML site. You can\\nmodify the height and width of the frame by changing the numbers in\\nquotation marks.\u003C\u002Fli\u003E\\n\u003Cli\u003ENote: there is currently no way to set the\\ndefault scale or legend options of the embedded map, but if you need\\nto eliminate the legend from the map that appears on your HTML site\\nyou can do so by reducing the width if the &lt;iframe&gt; to 580 or\\nless.\u003C\u002Fli\u003E\\n\u003Cli\u003EYou can also export the data as a KML file using the same dropdown menu. It will give you the\\noption to export the whole map or to select one layer in particular.\\nTry exporting the UK Global Fats layer as a KML layer. You&#39;ll be\\nable to import this data into other programs, including Google Earth\\nand Quantum GIS. This is an important feature, as it means you can\\nstart working with digital maps using Google Map and still export\\nyour work into a GIS database in the future.\u003C\u002Fli\u003E\\n\u003Cli\u003EYou can stop the lesson here if you think this free Google Map\\nservice provides all the tools you need for your research topic. Or\\nyou can keep going and learn about Google Earth and in lesson 2,\\nQuantum GIS.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo21.png&quot; caption=&quot;Figure 21&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo22.png&quot; caption=&quot;Figure 22&quot; %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"google-earth\\\"\u003EGoogle Earth\u003C\u002Fh2\u003E\\n\u003Cp\u003EGoogle Earth works in much the same way as Google Maps Engine Lite, but\\nhas additional features. For example, it provides 3-D maps and access to\\ndata from numerous third party sources, including collections of\\nhistorical maps. Google Maps doesn&#39;t require you to install software and\\nyour maps are saved in the cloud. Google Earth requires software\\ninstallation and is not cloud-based, though maps you create can be\\nexported.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EInstall Google Earth: \u003Ca href=\\\"http:\u002F\u002Fwww.google.com\u002Fearth\u002Findex.html\\\"\u003Ehttp:\u002F\u002Fwww.google.com\u002Fearth\u002Findex.html\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003EOpen the program and familiarize yourself with the digital globe.\\nUse the menu to add and remove layers of information. This is very\\nsimilar to how more advanced GIS programs work. You can add and\\nremove different kinds of geographical information including\\nPolitical Boundaries (polygons), Roads (lines), and Places (points).\\nSee the red arrows in the following image for the location of these\\nlayers.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo23.png&quot; caption=&quot;Figure 23: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ENote that under the &#39;Layer&#39; heading on the lower left side of the\\nwindow margin, Google provides a number of ready-to-go layers that\\ncan be turned on by selecting the corresponding checkbox.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo24.png&quot; caption=&quot;Figure 24&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EGoogle Earth also contains some scanned historical maps and aerial\\nphotographs (in GIS these types of maps, which are made up of\\npixels, are known as raster data). Under Gallery you can find and\\nclick Rumsey Historical Maps. This will add icons all over the globe\\n(with a concentration in the United States) of scanned maps that\\nhave been georeferenced (stretched and pinned to match a location)\\nonto the digital globe. This previews a key methodology in\\nhistorical GIS. (You can also find historical map layers and other\\nHGIS layers in the Earth Gallery). Take some time to explore a\\nnumber of historical maps. See if there are any maps included in the\\nRumsey Collection that might be useful for your research or\\nteaching. (You can find many more digitized, but not georeferenced\\nmaps at \u003Ca href=\\\"http:\u002F\u002Fwww.davidrumsey.com\u002F\\\"\u003Ewww.davidrumsey.com\u003C\u002Fa\u003E.)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo25.png&quot; caption=&quot;Figure 25&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EYou might need to zoom in to see all of the Map icons. Can you find\\nthe World Globe from 1812?\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo26.png&quot; caption=&quot;Figure 26&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EOnce you click on an icon an information panel pops up. Click on the\\nmap thumbnail to see the map tacked onto the digital globe. We will\\nlearn to properly georeference maps in \u003Ca href=\\\"\u002Flessons\u002Fgeoreferencing-qgis\\\"\u003EGeoreferencing in QGIS\\n2.0\u003C\u002Fa\u003E.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo27.png&quot; caption=&quot;Figure 27&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo28.png&quot; caption=&quot;Figure 28: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"kml-keyhole-markup-language-files\\\"\u003EKML: Keyhole Markup Language files\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EGoogle developed a file format to save and share map data: KML. This\\nstands for Keyhole Markup Language, and it is a highly portable type\\nof file (i.e. a KML can be used with different types of GIS\\nsoftware) that can store many different types of GIS data, including\\nvector data.\u003C\u002Fli\u003E\\n\u003Cli\u003EMaps and images you create in Google Maps and Google Earth can be\\nsaved as KML files This means you can save work done in Google Maps\\nor Google Earth. With KML files you can transfer data between these\\ntwo platforms and bring your map data into Quantum GIS or ArcGIS.\u003C\u002Fli\u003E\\n\u003Cli\u003EFor example, you can import the data you created in Google Maps\\nEngine Lite. If you created a map in the exercise above, it can be\\nfound by clicking &quot;Open Map&quot; on the \u003Ca href=\\\"https:\u002F\u002Fmapsengine.google.com\u002Fmap\u002F\\\"\u003EMaps Engine Lite\u003C\u002Fa\u003E home page.\\nClick on the folder icon on the left hand side of the legend beneath\\nthe map title and click &quot;export to KML&quot;. (You can also download and\\nexplore Dan Macfarlane&#39;s \u003Ca href=\\\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fjekyll\u002Ffiles\u002F148993\u002Fseaway.zip\\\"\u003ESeaway map\u003C\u002Fa\u003E for this part of the\\nexercise).\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E\u003Cstrong\u003EBringing your KML file into Google Earth\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EDownload the KML file from Google Maps Engine Lite (as described\\nabove).\u003C\u002Fli\u003E\\n\u003Cli\u003EDouble click on the KML file in your Download folder.\u003C\u002Fli\u003E\\n\u003Cli\u003EFind the data in the Temporary Folder in Google Earth.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo29.png&quot; caption=&quot;Figure 29: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EYou can now explore these map features in 3D, or you can add new\\nlines, points and polygons using the various icons along the top\\nleft of your Google Earth window (see image below). This works in\\nessentially the same way as it did for Google Maps, although there\\nis more functionality and options. In Dan&#39;s Seaway map, the old\\ncanals and current Seaway route were traced in different line\\ncolours and widths using the line feature (this was made possible by\\noverlaying historical maps, which is described below), while various\\nfeatures were marked off with appropriate Placemarks. For those so\\ninclined, there is also the option of recording a tour that could be\\nuseful for presentations or teaching purposes (when the &quot;record a\\ntour&quot; icon is selected, recording options will show up on the bottom\\nleft of the window).\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo30.png&quot; caption=&quot;Figure 30&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ETry adding a new feature to Dan&#39;s Seaway data. We&#39;ve created a\\npolygon (in GIS terminology a polygon is a closed shape of any type\\n– a circle, hexagon, and square are all examples) of Lake St. Clair\\nin the next image. Find Lake St. Clair (east of Detroit) and try\\nadding a polygon.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo31.png&quot; caption=&quot;Figure 31: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo32.png&quot; caption=&quot;Figure 32&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELabel the new feature Lake St. Clair. You can then drag the new\\nfeature onto Dan&#39;s Seaway data and add it to the collection. You can\\nthen save this expanded version of the Seaway map as a KML to share\\nvia email, upload into Google Maps, or to export this data into\\nQGIS. Find the save option by right-clicking on the Seaway\\ncollection and choose Save Place As or Email.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo33.png&quot; caption=&quot;Figure 33&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo34.png&quot; caption=&quot;Figure 34&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo35.png&quot; caption=&quot;Figure 35&quot; %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"adding-scanned-historical-maps\\\"\u003EAdding Scanned Historical Maps\u003C\u002Fh2\u003E\\n\u003Cp\u003EWithin Google Earth, you can upload a digital copy of a historical map.\\nThis could be a map that has been scanned, or an image obtained that is\\nalready in a digital format (for tips on finding historical maps online\\nsee: \u003Ca href=\\\"http:\u002F\u002Fniche-canada.org\u002F2011\u002F12\u002F14\u002Fmobile-mapping-and-historical-gis-in-the-field\u002F\\\" title=\\\"Mobile Mapping and Historical GIS in the Field\\\"\u003EMobile Mapping and Historical GIS in the Field\u003C\u002Fa\u003E). The main\\npurpose for uploading a digital map, from a historical perspective, is\\nto place it over top of a Google Earth image in the browser. This is\\nknown as an overlay. Performing an overlay allows for useful comparisons\\nof change over time.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EStart by identifying the images you want to use: the image within\\nGoogle Earth, and the map you want to overlay with. For the map you\\nwant to overlay, the file can be in JPEG or TIFF format, but not\\nPDF.\u003C\u002Fli\u003E\\n\u003Cli\u003EWithin Google Earth, identify the area of the map you want to\\noverlay. Note that you can go back in time (i.e. look at older\\nsatellite photos) by clicking on the &#39;Show historical imagery&#39; icon\\non the top toolbar. and then adjusting the time-scale slider that\\nwill appear.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo36.png&quot; caption=&quot;Figure 36&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo37.png&quot; caption=&quot;Figure 37&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EOnce you have identified the images you plan to use, click on the\\n&#39;Add Image Overlay&#39; icon on the top toolbar.\\\\\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo38.png&quot; caption=&quot;Figure 38&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EA new window will appear. Begin by giving it a different title if\\nyou wish (the default is &#39;Untitled Image Overlay&#39;).\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo39.png&quot; caption=&quot;Figure 39: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ETo the right of the Link field, click the Browse button to select\\nfrom your files the map you wish to be the overlaying image.\u003C\u002Fli\u003E\\n\u003Cli\u003EMove the New Image Overlay window out of the way (don&#39;t close it or\\nclick &quot;Cancel&quot; or &quot;OK&quot;) so that you can see the Google Earth\\nbrowser. The map you uploaded will now appear over top of the Google\\nEarth satellite image in the Google Earth browser.\u003C\u002Fli\u003E\\n\u003Cli\u003EThere are fluorescent green markers in the middle and at the edges\\nof the uploaded map. These can be used to stretch, shrink, and move\\nthe map so that it aligns properly with the satellite image. This is\\na simple form of georeferencing (see \u003Ca href=\\\"\u002Flessons\u002Fgeoreferencing-qgis\\\"\u003EGeoreferencing in QGIS 2.0\u003C\u002Fa\u003E).\\nThe image below shows the above steps using an old map of the town\\nof Aultsville overlaid on top of Google satellite imagery from 2008\\nin which the remains of the town&#39;s roads and building foundations in\\nthe St. Lawrence River are visible (Aultsville was one of the Lost\\nVillages flooded out by the St. Lawrence Seaway and Power\\nProject).\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;geo40.png&quot; caption=&quot;Figure 40: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EBack in the New Image Overlay window, note that there are a range of\\noptions (Description, View, Altitude, Refresh, Location) that you\\ncan select. At this point, you likely don&#39;t need to worry about\\nthese, although you may wish to add information under the\\nDescription tab.\u003C\u002Fli\u003E\\n\u003Cli\u003EOnce you are satisfied with your overlay, in the New Image Overlay\\nwindow click on OK in the bottom right corner.\u003C\u002Fli\u003E\\n\u003Cli\u003EYou will want to save your work. Under File on your computer&#39;s menu\\nbar, you have two options. You can save a copy of the image (File\\n-&gt; Save -&gt; Save Image…) you have created to your computer in jpg\\nformat, and you can also save the overlay within Google Earth so\\nthat it can be accessed in the future (File -&gt; Save -&gt; Save My\\nPlaces). The latter is saved as a KML file.\u003C\u002Fli\u003E\\n\u003Cli\u003ETo share KML files simply locate the file you saved to your computer\\nand upload it to your website, social media site, or send it as an\\nemail attachment.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E\u003Cstrong\u003EYou have learned how to use Google Maps and Earth. Make sure you save\\nyour work!\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cem\u003EThis lesson is part of the \u003Ca href=\\\"http:\u002F\u002Fgeospatialhistorian.wordpress.com\u002F\\\"\u003EGeospatial Historian\u003C\u002Fa\u003E.\u003C\u002Fem\u003E\u003C\u002Fp\u003E\\n\"}"}</script></div>
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/es/lecciones/crear-exposicion-con-omeka"),
+					params: {lang:"es",lessons:"lecciones",slug:"crear-exposicion-con-omeka"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the es edition.
+
+<h1>Crear una exposición con Omeka</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h1 id="antes-de-empezar-mapea-tu-exposición">Antes de empezar: mapea tu exposición</h1>
+<p>Es necesario pensar la exposición antes de empezar a crearla. Crearás secciones y páginas y, para esto, necesitarás pensar qué argumento plasmar y cómo piensas hacerlo. En la siguiente lección uso el simple ejemplo de mis perros. Pero ¿qué pasaría si trabajara, digamos, el cine mudo? Mis secciones podrían ser temáticas (comedias, romances, dramas), cronológicas (primeras películas de cine mudo, periodo de transición, era clásica) o de estilo (moderno, impresionista, narrativo.) Todo depende del mensaje que quiera transmitir a los visitantes del sitio. Podrías dibujar un mapa de la exposición, mostrando dónde quieres ubicar cada recurso digital.</p>
+<h1 id="agrega-tu-exposición">Agrega tu exposición</h1>
+<p>{% include figure.html filename=&quot;createoexhibit1.png&quot; caption=&quot;Crea una página de exposición&quot; %}</p>
+<p>Una colección es una simple lista de objetos. Una exposición es un recorrido guiado por tus artículos, complementado con textos descriptivos y diseños personalizados. Para crear una exposición, presiona el botón que dice <strong>Exhibit</strong> (exposición) y <strong>Add an exhibit</strong>(añadir exposición). Llena los campos de la parte superior de la página. Un <strong>slug</strong> es un nombre de tu exposición legible para una máquina y se convertirá en parte de tu URL.</p>
+<h1 id="agrega-una-página">Agrega una página</h1>
+<p>Las páginas son donde vas a pegar los artículos de tu exposición. Una exposición puede tener múltiples páginas y puedes arrastrarlas y soltarlas para reorganizar su orden e incluso hacer que ciertas páginas sean subsecciones de otras páginas.</p>
+<p>Presiona el botón verde <strong>Add Page</strong> (añadir página). En la siguiente página ingresarás cierta información y escogerás un diseño para la exposición de tu página.</p>
+<h1 id="agrega-un-bloque-de-contenido-a-tu-página">Agrega un bloque de contenido a tu página</h1>
+<p>{% include figure.html filename=&quot;createoexhibit2.png&quot; caption=&quot;Campos en &#39;añadir una página&#39;&quot; %}</p>
+<p>En la página siguiente verás la opción <strong>Page Title</strong> (título de página) y <strong>Slug</strong>. Llena dichos campos.</p>
+<p>Verás la opción <strong>New Block</strong> (nuevo bloque). Las páginas están compuestas de bloques, los cuales pueden ser archivos y texto, sólo archivos o sólo texto.</p>
+<p>Haz click en la opción <strong>File with Text</strong> (archivo con texto) y después en <strong>Add new content block</strong> (añadir un contenido de bloque nuevo).</p>
+<h1 id="agrega-contenido-a-tu-bloque-de-contenido">Agrega contenido a tu bloque de contenido</h1>
+<p>{% include figure.html filename=&quot;createoexhibit3.png&quot; caption=&quot;Añade un objeto y un archivo a tu bloque de contenido&quot; %}</p>
+<p>En <strong>Block 1 (File with Text)</strong> (Bloque 1 (Archivo con texto)) presiona el botón <strong>Add Item</strong> (añadir objeto).</p>
+<p>En la ventana que se va a abrir, haz click en tu artículo y luego presiona <strong>Select Item</strong> (seleccionar objeto). Puedes agregar un pie de foto si quieres. Presiona el botón verde <strong>Apply</strong> (aplicar). También he agregado un texto de relleno en el campo <strong>Text</strong> (texto).</p>
+<p>Cuando hayas acabado presiona el botón <strong>View Public Page</strong> para ver cómo quedó tu sitio en Omeka.</p>
+<h1 id="¡tienes-una-página-en-omeka">¡Tienes una página en Omeka!</h1>
+<p>{% include figure.html filename=&quot;createoexhibit4.png&quot; caption=&quot;El perro Bertie es un objeto en la exposición&quot; %}</p>
+<p>Ahora tu sitio tiene artículos, colecciones y una exposición – ¡todos los elementos básicos de un sitio Omeka!</p>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="crear-exposicion-con-omeka/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Crear una exposición con Omeka\",\"authors\":[\"Miriam Posner\",\"Megan R. Brett\"],\"date\":\"2016-02-24T00:00:00.000Z\",\"translation_date\":\"2018-04-23T00:00:00.000Z\",\"editors\":[\"Adam Crymble\"],\"reviewers\":[\"Sheila Brennan\"],\"translator\":[\"María José Cabra Montes\"],\"translation-editor\":[\"Jennifer Isasi\"],\"translation-reviewer\":[\"Joseba Moreno\",\"Jennifer Isasi\"],\"layout\":\"lesson\",\"original\":\"creating-an-omeka-exhibit\",\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F156\",\"difficulty\":1,\"activity\":\"presenting\",\"topics\":[\"website\"],\"abstract\":\"Ahora que has agregado los artículos a tu sitio Omeka y los agrupaste por colecciones, estás listo para el paso siguiente: llevar a tus usuarios a un tour guiado por los artículos coleccionados.\",\"avatar_alt\":\"Fotografía en blanco y negro de un salón con múltiples retratos en las paredes\",\"doi\":\"10.46430\u002Fphes0033\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"antes-de-empezar-mapea-tu-exposición\\\"\u003EAntes de empezar: mapea tu exposición\u003C\u002Fh1\u003E\\n\u003Cp\u003EEs necesario pensar la exposición antes de empezar a crearla. Crearás secciones y páginas y, para esto, necesitarás pensar qué argumento plasmar y cómo piensas hacerlo. En la siguiente lección uso el simple ejemplo de mis perros. Pero ¿qué pasaría si trabajara, digamos, el cine mudo? Mis secciones podrían ser temáticas (comedias, romances, dramas), cronológicas (primeras películas de cine mudo, periodo de transición, era clásica) o de estilo (moderno, impresionista, narrativo.) Todo depende del mensaje que quiera transmitir a los visitantes del sitio. Podrías dibujar un mapa de la exposición, mostrando dónde quieres ubicar cada recurso digital.\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"agrega-tu-exposición\\\"\u003EAgrega tu exposición\u003C\u002Fh1\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;createoexhibit1.png&quot; caption=&quot;Crea una página de exposición&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EUna colección es una simple lista de objetos. Una exposición es un recorrido guiado por tus artículos, complementado con textos descriptivos y diseños personalizados. Para crear una exposición, presiona el botón que dice \u003Cstrong\u003EExhibit\u003C\u002Fstrong\u003E (exposición) y \u003Cstrong\u003EAdd an exhibit\u003C\u002Fstrong\u003E(añadir exposición). Llena los campos de la parte superior de la página. Un \u003Cstrong\u003Eslug\u003C\u002Fstrong\u003E es un nombre de tu exposición legible para una máquina y se convertirá en parte de tu URL.\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"agrega-una-página\\\"\u003EAgrega una página\u003C\u002Fh1\u003E\\n\u003Cp\u003ELas páginas son donde vas a pegar los artículos de tu exposición. Una exposición puede tener múltiples páginas y puedes arrastrarlas y soltarlas para reorganizar su orden e incluso hacer que ciertas páginas sean subsecciones de otras páginas.\u003C\u002Fp\u003E\\n\u003Cp\u003EPresiona el botón verde \u003Cstrong\u003EAdd Page\u003C\u002Fstrong\u003E (añadir página). En la siguiente página ingresarás cierta información y escogerás un diseño para la exposición de tu página.\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"agrega-un-bloque-de-contenido-a-tu-página\\\"\u003EAgrega un bloque de contenido a tu página\u003C\u002Fh1\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;createoexhibit2.png&quot; caption=&quot;Campos en &#39;añadir una página&#39;&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EEn la página siguiente verás la opción \u003Cstrong\u003EPage Title\u003C\u002Fstrong\u003E (título de página) y \u003Cstrong\u003ESlug\u003C\u002Fstrong\u003E. Llena dichos campos.\u003C\u002Fp\u003E\\n\u003Cp\u003EVerás la opción \u003Cstrong\u003ENew Block\u003C\u002Fstrong\u003E (nuevo bloque). Las páginas están compuestas de bloques, los cuales pueden ser archivos y texto, sólo archivos o sólo texto.\u003C\u002Fp\u003E\\n\u003Cp\u003EHaz click en la opción \u003Cstrong\u003EFile with Text\u003C\u002Fstrong\u003E (archivo con texto) y después en \u003Cstrong\u003EAdd new content block\u003C\u002Fstrong\u003E (añadir un contenido de bloque nuevo).\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"agrega-contenido-a-tu-bloque-de-contenido\\\"\u003EAgrega contenido a tu bloque de contenido\u003C\u002Fh1\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;createoexhibit3.png&quot; caption=&quot;Añade un objeto y un archivo a tu bloque de contenido&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EEn \u003Cstrong\u003EBlock 1 (File with Text)\u003C\u002Fstrong\u003E (Bloque 1 (Archivo con texto)) presiona el botón \u003Cstrong\u003EAdd Item\u003C\u002Fstrong\u003E (añadir objeto).\u003C\u002Fp\u003E\\n\u003Cp\u003EEn la ventana que se va a abrir, haz click en tu artículo y luego presiona \u003Cstrong\u003ESelect Item\u003C\u002Fstrong\u003E (seleccionar objeto). Puedes agregar un pie de foto si quieres. Presiona el botón verde \u003Cstrong\u003EApply\u003C\u002Fstrong\u003E (aplicar). También he agregado un texto de relleno en el campo \u003Cstrong\u003EText\u003C\u002Fstrong\u003E (texto).\u003C\u002Fp\u003E\\n\u003Cp\u003ECuando hayas acabado presiona el botón \u003Cstrong\u003EView Public Page\u003C\u002Fstrong\u003E para ver cómo quedó tu sitio en Omeka.\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"¡tienes-una-página-en-omeka\\\"\u003E¡Tienes una página en Omeka!\u003C\u002Fh1\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;createoexhibit4.png&quot; caption=&quot;El perro Bertie es un objeto en la exposición&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EAhora tu sitio tiene artículos, colecciones y una exposición – ¡todos los elementos básicos de un sitio Omeka!\u003C\u002Fp\u003E\\n\"}"}</script></div>
+	</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/cleaning-data-with-openrefine"),
+					params: {lang:"en",lessons:"lessons",slug:"cleaning-data-with-openrefine"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Cleaning Data with OpenRefine</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="lesson-goals">Lesson goals</h2>
+<p>Don’t take your data at face value. That is the key message of this
+tutorial which focuses on how scholars can diagnose and act upon the
+accuracy of data. In this lesson, you will learn the principles and
+practice of data cleaning, as well as how <a href="http://openrefine.org" title="OpenRefine"><em>OpenRefine</em></a> can be used
+to perform four essential tasks that will help you to clean your data:</p>
+<ol>
+<li>Remove duplicate records</li>
+<li>Separate multiple values contained in the same field</li>
+<li>Analyse the distribution of values throughout a data set</li>
+<li>Group together different representations of the same reality</li>
+</ol>
+<p>These steps are illustrated with the help of a series of exercises based
+on a collection of metadata from the <a href="http://www.powerhousemuseum.com" title="Powerhouse museum">Powerhouse museum</a>,
+demonstrating how (semi-)automated methods can help you correct the
+errors in your data.</p>
+<h2 id="why-should-historians-care-about-data-quality">Why should historians care about data quality?</h2>
+<p>Duplicate records, empty values and inconsistent formats are phenomena
+we should be prepared to deal with when using historical data sets. This
+lesson will teach you how to discover inconsistencies in data contained
+within a spreadsheet or a database. As we increasingly share, aggregate
+and reuse data on the web, historians will need to respond to data
+quality issues which inevitably pop up. Using a program called
+<em>OpenRefine</em>, you will be able to easily identify systematic errors such
+as blank cells, duplicates, spelling inconsistencies, etc. <em>OpenRefine</em>
+not only allows you to quickly diagnose the accuracy of your data, but
+also to act upon certain errors in an automated manner.</p>
+<h2 id="description-of-the-tool-openrefine">Description of the tool: OpenRefine</h2>
+<p>In the past, historians had to rely on information technology
+specialists to diagnose data quality and to run cleaning tasks. This
+required custom computer programs when working with sizeable data sets.
+Luckily, the advent of Interactive Data Transformation tools (IDTs) now
+allows for rapid and inexpensive operations on large amounts of data,
+even by professionals lacking in-depth technical skills.</p>
+<p>IDTs resemble the desktop spreadsheet software we are all familiar with,
+and they share some common functionalities. You can for example use an
+application such as Microsoft Excel to sort your data based on
+numerical, alphabetical and custom-developed filters, which allows you
+to detect errors more easily. Setting up these filters in a spreadsheet
+can be cumbersome, as they are a secondary functionality. On a more
+general level, we could say that spreadsheets are designed to work on
+individual rows and cells, whereas IDTs operate on large ranges of data
+at once. These &#39;spreadsheets on steroids&#39; offer an integrated and
+user-friendly interface through which end users can detect and correct
+errors.</p>
+<p>Several general purpose tools for interactive data transformation have
+been developed in recent years, such as <a href="http://control.cs.berkeley.edu/abc/" title="Potter&#39;s Wheel ABC "><em>Potter’s Wheel ABC</em></a> and
+<a href="http://vis.stanford.edu/papers/wrangler/" title="Wrangler"><em>Wrangler</em></a>. Here we want to focus specifically on <a href="http://openrefine.org" title="OpenRefine"><em>OpenRefine</em></a>
+(formerly Freebase Gridworks and Google Refine), as in the opinion of
+the authors, it is the most user-friendly tool to efficiently process
+and clean large amounts of data in a browser-based interface.</p>
+<p>On top of <a href="http://en.wikipedia.org/wiki/Data_profiling">data profiling</a> and cleaning operations, <em>OpenRefine</em>
+extensions allow users to identify concepts in unstructured text, a
+process referred to as <a href="http://en.wikipedia.org/wiki/Named-entity_recognition">named-entity recognition</a> (NER), and can also
+reconcile their own data with existing knowledge bases. By doing so,
+<em>OpenRefine</em> can be a practical tool to link data with concepts and
+authorities which have already been declared on the Web by parties such
+as <a href="http://www.loc.gov/index.html" title="Library of Congress">Library of Congress</a> or <a href="http://www.oclc.org/home.en.html" title="OCLC">OCLC</a>. Data cleaning is a prerequisite
+to these steps; the success rate of NER and a fruitful matching process
+between your data and external authorities depends on your ability to
+make your data as coherent as possible.</p>
+<h2 id="description-of-the-exercise-powerhouse-museum">Description of the exercise: Powerhouse Museum</h2>
+<p>The Powerhouse Museum in Sydney provides a freely available metadata
+export of its collection on its <a href="http://www.powerhousemuseum.com/collection/database/download.php" title="website">website</a>. The museum is one of the
+largest science and technology museums worldwide, providing access to
+almost 90,000 objects, ranging from steam engines to fine glassware and
+from haute couture to computer chips.</p>
+<p>The Powerhouse has been very actively disclosing its collection online
+and making most of its data freely available. From the museum website, a
+tab-separated text file under the name <em>phm-collection.tsv</em> can be
+downloaded, which you can open as a spreadsheet. The unzipped file
+(58MB) contains basic metadata (17 fields) for 75,823 objects, released
+under a <a href="http://creativecommons.org/licenses/by-nc/2.5/au/">Creative Commons Attribution Share Alike (CCASA) license</a>. In
+this tutorial we will be using a copy of the data that we have archived
+for you to download (in a moment). This ensures that if the Powerhouse
+Museum updates the data, you will still be able to follow along with the
+Lesson.</p>
+<p>Throughout the data profiling and cleaning process, the case study will
+specifically focus on the <code>Categories</code> field, which is populated with
+terms from the Powerhouse museum Object Names Thesaurus (PONT). PONT
+recognizes Australian usage and spelling, and reflects in a very direct
+manner the strengths of the collection. In the collection you will find
+better representations of social history and decorative arts, and
+comparably few object names relating to fine arts and natural history.</p>
+<p>The terms in the Categories field comprise what we call a <a href="http://en.wikipedia.org/wiki/Controlled_vocabulary">Controlled
+vocabulary</a>. A controlled vocabulary consists of keywords describing
+the content of a collection using a limited number of terms, and is
+often a key entry point into data sets used by historians in libraries,
+archives and museums. That is why we will give particular attention to
+the &#39;Categories&#39; field. Once the data has been cleaned, it should be
+possible to reuse the terms in the controlled vocabulary to find
+additional information about the terms elsewhere online, which is known
+as creating <a href="http://en.wikipedia.org/wiki/Linked_data">Linked Data</a>.</p>
+<h3 id="getting-started-installing-openrefine-and-importing-data">Getting started: installing OpenRefine and importing data</h3>
+<p><a href="http://openrefine.org/#download_openrefine">Download OpenRefine</a> and follow the installation instructions.
+OpenRefine works on all platforms: Windows, Mac, and Linux. <em>OpenRefine</em>
+will open in your browser, but it is important to realise that the
+application is run locally and that your data won&#39;t be stored online.
+The data files are available on our <a href="http://data.freeyourmetadata.org/powerhouse-museum/">FreeYourMetadata website</a>, which
+will be used throughout this tutorial. Please download the
+<em>phm-collection.tsv</em> file before continuing (also archived on the
+Programming Historian site: as <a href="/assets/phm-collection.tsv">phm-collection</a>).</p>
+<p>On the <em>OpenRefine</em> start page, create a new project using the
+downloaded data file and click <strong>Next</strong>. By default, the first line will
+be correctly parsed as the name of a column, but you need to unselect
+the &#39;Quotation marks are used to enclose cells containing column
+separators&#39; checkbox, since the quotes inside the file do not have any
+meaning to <em>OpenRefine</em>. Additionally, select the &#39;Parse cell text into
+numbers, dates, ...&#39; checkbox to let OpenRefine automatically detect
+numbers. Now click on &#39;<strong>Create project</strong>&#39;. If all goes
+well, you will see 75,814 rows. Alternatively, you can download the
+<a href="http://data.freeyourmetadata.org/powerhouse-museum/phm-collection.google-refine.tar.gz">initial OpenRefine project</a> directly.</p>
+<p>The Powerhouse museum data set consists of detailed metadata on all the
+collection objects, including title, description, several categories the
+item belongs to, provenance information, and a persistent link to the
+object on the museum website. To get an idea of what object the metadata
+corresponds to, simply click the persistent link and the website will
+open.</p>
+<p>{% include figure.html filename=&quot;powerhouseScreenshot.png&quot; caption=&quot;Figure 1: Screenshot of a Sample Object on the Powerhouse Museum Website&quot; %}</p>
+<h3 id="get-to-know-your-data">Get to know your data</h3>
+<p>The first thing to do is to look around and get to know your data. You
+can inspect the different data values by displaying them in <code>facets</code>. You
+could consider a <a href="http://en.wikipedia.org/wiki/Faceted_search">facet</a> like a lense through which you view a
+specific subset of the data, based on a criterion of your choice. Click
+the triangle in front of the column name, select Facet, and create a
+facet. For instance, try a <code>Text</code> facet or a <code>Numeric</code> facet, depending
+on the nature of the values contained in the fields (numeric values are
+in green). Be warned, however, that text facets are best used on fields
+with redundant values (Categories for instance); if you run into a &#39;too
+many to display&#39; error, you can choose to raise the choice count limit
+above the 2,000 default, but too high a limit can slow down the
+application (5,000 is usually a safe choice). Numeric facets do not have
+this restriction. For more options, select Customized facets: facet by
+blank, for instance, comes handy to find out how many values were filled
+in for each field. We&#39;ll explore these further in the following
+exercises.</p>
+<h3 id="remove-blank-rows">Remove blank rows</h3>
+<p>One thing you notice when creating a numeric facet for the Record ID
+column, is that three rows are empty. You can find them by unselecting
+the Numeric checkbox, leaving only Non-numeric values. Actually, these
+values are not really blank but contain a single whitespace character,
+which can be seen by moving your cursor to where the value should have
+been and clicking the &#39;<strong>edit</strong>&#39; button that appears. To remove these rows,
+click the triangle in front of the first column called &#39;<strong>All</strong>&#39;, select
+&#39;<strong>Edit rows</strong>&#39;, and then &#39;<strong>Remove all matching rows</strong>&#39;. Close the numeric
+facet to see the remaining 75,811 rows.</p>
+<h3 id="removing-duplicates">Removing duplicates</h3>
+<p>A second step is to detect and remove duplicates. These can be spotted
+by sorting them by a unique value, such as the Record ID (in this case
+we are assuming the Record ID should in fact be unique for each entry).
+The operation can be performed by clicking the triangle left of Record
+ID, then choosing &#39;<strong>Sort</strong>&#39;… and selecting the &#39;<strong>numbers</strong>&#39; bullet. In
+<em>OpenRefine</em>, sorting is only a visual aid, unless you make the
+reordering permanent. To do this, click the Sort menu that has just
+appeared at the top and choose &#39;<strong>Reorder rows permanently</strong>&#39;. If you forget
+to do this, you will get unpredictable results later in this tutorial.</p>
+<p>Identical rows are now adjacent to each other. Next, blank the Record ID
+of rows that have the same Record ID as the row above them, marking them
+duplicates. To do this, click on the Record ID triangle, choose <strong>Edit
+cells</strong> &gt; <strong>Blank down</strong>. The status message tells you that 84 columns
+were affected (if you forgot to reorder rows permanently, you will get
+only 19; if so, undo the blank down operation in the &#39;Undo/Redo&#39; tab and
+go back to the previous paragraph to make sure that rows are reordered
+and not simply sorted). Eliminate those rows by creating a facet on
+&#39;<strong>blank cells</strong>&#39; in the Record ID column (&#39;<strong>Facet</strong>&#39; &gt; &#39;<strong>Customized facets</strong>&#39; &gt;
+&#39;<strong>Facet by blank</strong>&#39;), selecting the 84 blank rows by clicking on &#39;<strong>true</strong>&#39;,
+and removing them using the &#39;<strong>All</strong>&#39; triangle (&#39;<strong>Edit rows</strong>&#39; &gt; &#39;<strong>Remove all
+matching rows</strong>&#39;). Upon closing the facet, you see 75,727 unique rows.</p>
+<p>Be aware that special caution is needed when eliminating duplicates. In
+the above mentioned step, we assume the dataset has a field with unique
+values, indicating that the entire row represents a duplicate. This is
+not necessarily the case, and great caution should be taken to manually
+verify whether the entire row represents a duplicate or not.</p>
+<h3 id="atomization">Atomization</h3>
+<p>Once the duplicate records have been removed, we can have a closer look
+at the <em>Categories</em> field. On average each object has been attributed
+2.25 categories. These categories are contained within the same field,
+separated by a pipe character &#39;|&#39;. Record 9, for instance, contains
+three: &#39;Mineral samples|Specimens|Mineral Samples-Geological&#39;. In order
+to analyze in detail the use of the keywords, the values of the
+Categories field need to be split up into individual cells on the basis
+of the pipe character , expanding the 75,727 records into 170,167 rows.
+Choose &#39;<strong>Edit cells</strong>&#39;, &#39;<strong>Split multi-valued cells</strong>&#39;, entering &#39;<strong>|</strong>&#39; as the
+value separator. OpenRefine informs you that you now have 170,167 rows.</p>
+<p>It is important to fully understand the rows/records paradigm. Make the
+Record ID column visible to see what is going on. You can switch between
+&#39;rows&#39; and &#39;records&#39; view by clicking on the so-labelled links just
+above the column headers. In the &#39;rows view&#39;, each row represents a
+couple of Record IDs and a single Category, enabling manipulation of
+each one individually. The &#39;records view&#39; has an entry for each Record
+ID, which can have different categories on different rows (grouped
+together in grey or white), but each record is manipulated as a whole.
+Concretely, there now are 170,167 category assignments (rows), spread
+over 75,736 collection items (records). You maybe noticed that we are 9
+records up from the original 75,727, but don&#39;t worry about that for the
+time being, we will come back to this small difference later.</p>
+<h3 id="facetting-and-clustering">Facetting and clustering</h3>
+<p>Once the content of a field has been properly atomized, filters, facets,
+and clusters can be applied to give a quick and straightforward overview
+of classic metadata issues. By applying the customized facet &#39;<code>Facet by blank</code>&#39;, one can immediately identify the 461 records that do not have a
+category, representing 0.6% of the collection. Applying a text facet to
+the Categories field allows an overview of the 4,934 different
+categories used in the collection (the default limit being 2,000, you
+can click &#39;<strong>Set choice count limit</strong>&#39; to raise it to 5,000). The headings
+can be sorted alphabetically or by frequency (&#39;count&#39;), giving a list of
+the most used terms to index the collection. The top three headings are
+&#39;Numismatics&#39; (8,041), &#39;Ceramics&#39; (7,390) and &#39;Clothing and dress&#39;
+(7,279).</p>
+<p>After the application of a facet, <em>OpenRefine</em> proposes to cluster facet
+choices together based on various similarity methods. As Figure 2
+illustrates, the clustering allows you to solve issues regarding case
+inconsistencies, incoherent use of either the singular or plural form,
+and simple spelling mistakes. <em>OpenRefine</em> presents the related values
+and proposes a merge into the most recurrent value. Select values you
+wish to cluster by selecting their boxes individually or by clicking
+&#39;<strong>Select all</strong>&#39; at the bottom, then chose &#39;<strong>Merge Selected and Re-Cluster</strong>&#39;.</p>
+<p>{% include figure.html filename=&quot;overviewOfSomeClusters.png&quot; caption=&quot;Figure 2 : Overview of some clusters&quot; %}</p>
+<p>The default clustering method is not too complicated, so it does not
+find all clusters yet. Experiment with different methods to see what
+results they yield. Be careful though: some methods are too aggressive,
+so you might end up clustering values that do not belong together. Now
+that the values have been clustered individually, we can put them back
+together in a single cell. Click the Categories triangle and choose <strong>Edit
+cells</strong>, <strong>Join multi-valued cells</strong>, <strong>OK</strong>. Choose the pipe character (|) as a
+separator. The rows now look like before, with a multi-valued Categories
+field.</p>
+<h3 id="applying-ad-hoc-transformations-through-the-use-of-regular-expressions">Applying ad-hoc transformations through the use of regular expressions</h3>
+<p>You may remember there was an increase in the number of records after
+the splitting process: nine records appeared out of nowhere. In order to
+find the cause of this disparity, we need to go back in time before we
+split the categories into separate rows. To do so, toggle the Undo/Redo
+tab right of the Facet/Filter tab, and you will get a history of all the
+actions that you performed since the project was created. Select the
+step just before &#39;Split multi-valued cells in column Categories&#39; (if you
+followed our example this should be &#39;Remove 84 rows&#39;) then go back to
+the Facet/Filter tab.</p>
+<p>The issue arose during the splitting operation on the pipe character, so
+there is a strong chance that whatever went wrong is linked to this
+character. Let&#39;s apply a filter on the Categories column by selecting
+&#39;<strong>Text filter</strong>&#39; in the menu. First type a single <code>|</code> in the field on the
+left: <em>OpenRefine</em> informs you that there are 71,064 matching records
+(i.e. records containing a pipe) out of a total of 75,727. Cells that do
+not contain a pipe can be blank ones, but also cells containing a single
+category with no separator, such as record 29 which only has &#39;Scientific
+instruments&#39;.</p>
+<p>Now enter a second <code>|</code> after the first one to get || (double pipe): you
+can see that 9 records are matching this pattern. These are likely the 9
+records guilty of our discrepancy: when <em>OpenRefine</em> splits these up,
+the double pipe is interpreted as a break between two records instead of
+a meaningless double separator. Now how do we correct these values? Go
+to the menu of the &#39;Categories&#39; field, and choose &#39;<strong>Edit cells</strong>&#39; &gt;
+&#39;<strong>Transform</strong>&#39;…. Welcome to the custom text tranform interface, a powerful
+functionality of <em>OpenRefine</em> using the <em>OpenRefine</em> Expression Language
+(GREL).</p>
+<p>The word &#39;value&#39; in the text field represents the current value of each
+cell, which you can see below. We can modify this value by applying
+functions to it (see the <a href="https://github.com/OpenRefine/OpenRefine/wiki/GREL-Functions">GREL documentation</a> for a full list). In
+this case, we want to replace double pipes with a single pipe. This can
+be achieved by entering the following <a href="http://en.wikipedia.org/wiki/Regular_expression" title="Regular Expressions">regular expression</a> (be sure
+not to forget the quotes):</p>
+<pre><code>value.replace(&#39;||&#39;, &#39;|&#39;)
+</code></pre>
+<p>Under the &#39;Expression&#39; text field, you get a preview of the modified
+values, with double pipes removed. Click <strong>OK</strong> and try again to split the
+categories with &#39;<strong>Edit cells</strong>&#39; &gt; &#39;<strong>Split multi-valued cells</strong>&#39;, the number
+of records will now stay at 75,727 (click the &#39;<strong>records</strong>&#39; link to
+double-check).</p>
+<p>* * *<br> Another issue that can be solved with the help of GREL is the problem
+of records for which the same category is listed twice. Take record 41
+for instance, whose categories are &#39;Models|Botanical specimens|Botanical
+Specimens|Didactic Displays|Models&#39;. The category &#39;Models&#39; appears twice
+without any good reason, so we want to remove this duplicate. Click the
+Categories triangle and choose Edit cells, Join multi-valued cells, OK.
+Choose the pipe character as a separator. Now the categories are listed
+as before. Then select &#39;<strong>Edit cells</strong>&#39; &gt; &#39;<strong>Transform</strong>&#39;, also on the
+categories column. Using GREL we can successively split the categories
+on the pipe character, look for unique categories and join them back
+again. To achieve this, just type the following expression:</p>
+<pre><code>value.split(&#39;|&#39;).uniques().join(&#39;|&#39;)
+</code></pre>
+<p>You will notice that 33,008 cells are affected, more than half the
+collection.</p>
+<h3 id="exporting-your-cleaned-data">Exporting your cleaned data</h3>
+<p>Since you first loaded your data into <em>OpenRefine</em>, all cleaning
+operations have been performed in the software memory, leaving your
+original data set untouched. If you want to save the data that you have
+been cleaning, you need to export them by clicking on the &#39;<strong>Export</strong>&#39; menu
+top-right of the screen. <em>OpenRefine</em> supports a large variety of
+formats, such as <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>, HTML or Excel: select whatever suits you best
+or add your own export template by clicking &#39;Templating&#39;. You can also
+export your project in the internal <em>OpenRefine</em> format in order to
+share it with others.</p>
+<h3 id="building-on-top-of-your-cleaned-data">Building on top of your cleaned data</h3>
+<p>Once your data has been cleaned, you can take the next step and explore
+other exciting features of <em>OpenRefine</em>. The user community of
+<em>OpenRefine</em> has developed two particularly interesting extensions which
+allow you to link your data to data that has already been published on
+the Web. The <a href="http://web.archive.org/web/20180113121435/http://refine.deri.ie/docs">RDF Refine extension</a> transforms plaintext keywords into
+URLs. The <a href="https://github.com/RubenVerborgh/Refine-NER-Extension">NER extension</a> allows you to apply named-entity recognition
+(NER), which identifies keywords in flowing text and gives them a URL.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>If you only remember on thing from this lesson, it should be this: <em>all
+data is dirty, but you can do something about it.</em> As we have shown
+here, there is already a lot you can do yourself to increase data
+quality significantly. First of all, you have learned how you can get a
+quick overview of how many empty values your dataset contains and how
+often a particular value (e.g. a keyword) is used throughout a
+collection. This lessons also demonstrated how to solve recurrent issues
+such as duplicates and spelling inconsistencies in an automated manner
+with the help of <em>OpenRefine</em>. Don&#39;t hesitate to experiment with the
+cleaning features, as you&#39;re performing these steps on a copy of your
+data set, and <em>OpenRefine</em> allows you to trace back all of your steps in
+the case you have made an error.</p>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="cleaning-data-with-openrefine/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Cleaning Data with OpenRefine\",\"layout\":\"lesson\",\"date\":\"2013-08-05T00:00:00.000Z\",\"tested_date\":\"2021-09-10T00:00:00.000Z\",\"authors\":[\"Seth van Hooland\",\"Ruben Verborgh\",\"Max De Wilde\"],\"reviewers\":[\"Patrick Burns\",\"Nora McGregor\"],\"editors\":[\"Adam Crymble\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"transforming\",\"topics\":[\"data-manipulation\"],\"abstract\":\"This tutorial focuses on how scholars can diagnose and act upon the accuracy of data.\",\"redirect_from\":\"\u002Flessons\u002Fcleaning-data-with-openrefine\",\"avatar_alt\":\"Two men laundering clothes outside\",\"doi\":\"10.46430\u002Fphen0023\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EDon’t take your data at face value. That is the key message of this\\ntutorial which focuses on how scholars can diagnose and act upon the\\naccuracy of data. In this lesson, you will learn the principles and\\npractice of data cleaning, as well as how \u003Ca href=\\\"http:\u002F\u002Fopenrefine.org\\\" title=\\\"OpenRefine\\\"\u003E\u003Cem\u003EOpenRefine\u003C\u002Fem\u003E\u003C\u002Fa\u003E can be used\\nto perform four essential tasks that will help you to clean your data:\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003ERemove duplicate records\u003C\u002Fli\u003E\\n\u003Cli\u003ESeparate multiple values contained in the same field\u003C\u002Fli\u003E\\n\u003Cli\u003EAnalyse the distribution of values throughout a data set\u003C\u002Fli\u003E\\n\u003Cli\u003EGroup together different representations of the same reality\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003EThese steps are illustrated with the help of a series of exercises based\\non a collection of metadata from the \u003Ca href=\\\"http:\u002F\u002Fwww.powerhousemuseum.com\\\" title=\\\"Powerhouse museum\\\"\u003EPowerhouse museum\u003C\u002Fa\u003E,\\ndemonstrating how (semi-)automated methods can help you correct the\\nerrors in your data.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"why-should-historians-care-about-data-quality\\\"\u003EWhy should historians care about data quality?\u003C\u002Fh2\u003E\\n\u003Cp\u003EDuplicate records, empty values and inconsistent formats are phenomena\\nwe should be prepared to deal with when using historical data sets. This\\nlesson will teach you how to discover inconsistencies in data contained\\nwithin a spreadsheet or a database. As we increasingly share, aggregate\\nand reuse data on the web, historians will need to respond to data\\nquality issues which inevitably pop up. Using a program called\\n\u003Cem\u003EOpenRefine\u003C\u002Fem\u003E, you will be able to easily identify systematic errors such\\nas blank cells, duplicates, spelling inconsistencies, etc. \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E\\nnot only allows you to quickly diagnose the accuracy of your data, but\\nalso to act upon certain errors in an automated manner.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"description-of-the-tool-openrefine\\\"\u003EDescription of the tool: OpenRefine\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn the past, historians had to rely on information technology\\nspecialists to diagnose data quality and to run cleaning tasks. This\\nrequired custom computer programs when working with sizeable data sets.\\nLuckily, the advent of Interactive Data Transformation tools (IDTs) now\\nallows for rapid and inexpensive operations on large amounts of data,\\neven by professionals lacking in-depth technical skills.\u003C\u002Fp\u003E\\n\u003Cp\u003EIDTs resemble the desktop spreadsheet software we are all familiar with,\\nand they share some common functionalities. You can for example use an\\napplication such as Microsoft Excel to sort your data based on\\nnumerical, alphabetical and custom-developed filters, which allows you\\nto detect errors more easily. Setting up these filters in a spreadsheet\\ncan be cumbersome, as they are a secondary functionality. On a more\\ngeneral level, we could say that spreadsheets are designed to work on\\nindividual rows and cells, whereas IDTs operate on large ranges of data\\nat once. These &#39;spreadsheets on steroids&#39; offer an integrated and\\nuser-friendly interface through which end users can detect and correct\\nerrors.\u003C\u002Fp\u003E\\n\u003Cp\u003ESeveral general purpose tools for interactive data transformation have\\nbeen developed in recent years, such as \u003Ca href=\\\"http:\u002F\u002Fcontrol.cs.berkeley.edu\u002Fabc\u002F\\\" title=\\\"Potter&#39;s Wheel ABC \\\"\u003E\u003Cem\u003EPotter’s Wheel ABC\u003C\u002Fem\u003E\u003C\u002Fa\u003E and\\n\u003Ca href=\\\"http:\u002F\u002Fvis.stanford.edu\u002Fpapers\u002Fwrangler\u002F\\\" title=\\\"Wrangler\\\"\u003E\u003Cem\u003EWrangler\u003C\u002Fem\u003E\u003C\u002Fa\u003E. Here we want to focus specifically on \u003Ca href=\\\"http:\u002F\u002Fopenrefine.org\\\" title=\\\"OpenRefine\\\"\u003E\u003Cem\u003EOpenRefine\u003C\u002Fem\u003E\u003C\u002Fa\u003E\\n(formerly Freebase Gridworks and Google Refine), as in the opinion of\\nthe authors, it is the most user-friendly tool to efficiently process\\nand clean large amounts of data in a browser-based interface.\u003C\u002Fp\u003E\\n\u003Cp\u003EOn top of \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FData_profiling\\\"\u003Edata profiling\u003C\u002Fa\u003E and cleaning operations, \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E\\nextensions allow users to identify concepts in unstructured text, a\\nprocess referred to as \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FNamed-entity_recognition\\\"\u003Enamed-entity recognition\u003C\u002Fa\u003E (NER), and can also\\nreconcile their own data with existing knowledge bases. By doing so,\\n\u003Cem\u003EOpenRefine\u003C\u002Fem\u003E can be a practical tool to link data with concepts and\\nauthorities which have already been declared on the Web by parties such\\nas \u003Ca href=\\\"http:\u002F\u002Fwww.loc.gov\u002Findex.html\\\" title=\\\"Library of Congress\\\"\u003ELibrary of Congress\u003C\u002Fa\u003E or \u003Ca href=\\\"http:\u002F\u002Fwww.oclc.org\u002Fhome.en.html\\\" title=\\\"OCLC\\\"\u003EOCLC\u003C\u002Fa\u003E. Data cleaning is a prerequisite\\nto these steps; the success rate of NER and a fruitful matching process\\nbetween your data and external authorities depends on your ability to\\nmake your data as coherent as possible.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"description-of-the-exercise-powerhouse-museum\\\"\u003EDescription of the exercise: Powerhouse Museum\u003C\u002Fh2\u003E\\n\u003Cp\u003EThe Powerhouse Museum in Sydney provides a freely available metadata\\nexport of its collection on its \u003Ca href=\\\"http:\u002F\u002Fwww.powerhousemuseum.com\u002Fcollection\u002Fdatabase\u002Fdownload.php\\\" title=\\\"website\\\"\u003Ewebsite\u003C\u002Fa\u003E. The museum is one of the\\nlargest science and technology museums worldwide, providing access to\\nalmost 90,000 objects, ranging from steam engines to fine glassware and\\nfrom haute couture to computer chips.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe Powerhouse has been very actively disclosing its collection online\\nand making most of its data freely available. From the museum website, a\\ntab-separated text file under the name \u003Cem\u003Ephm-collection.tsv\u003C\u002Fem\u003E can be\\ndownloaded, which you can open as a spreadsheet. The unzipped file\\n(58MB) contains basic metadata (17 fields) for 75,823 objects, released\\nunder a \u003Ca href=\\\"http:\u002F\u002Fcreativecommons.org\u002Flicenses\u002Fby-nc\u002F2.5\u002Fau\u002F\\\"\u003ECreative Commons Attribution Share Alike (CCASA) license\u003C\u002Fa\u003E. In\\nthis tutorial we will be using a copy of the data that we have archived\\nfor you to download (in a moment). This ensures that if the Powerhouse\\nMuseum updates the data, you will still be able to follow along with the\\nLesson.\u003C\u002Fp\u003E\\n\u003Cp\u003EThroughout the data profiling and cleaning process, the case study will\\nspecifically focus on the \u003Ccode\u003ECategories\u003C\u002Fcode\u003E field, which is populated with\\nterms from the Powerhouse museum Object Names Thesaurus (PONT). PONT\\nrecognizes Australian usage and spelling, and reflects in a very direct\\nmanner the strengths of the collection. In the collection you will find\\nbetter representations of social history and decorative arts, and\\ncomparably few object names relating to fine arts and natural history.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe terms in the Categories field comprise what we call a \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FControlled_vocabulary\\\"\u003EControlled\\nvocabulary\u003C\u002Fa\u003E. A controlled vocabulary consists of keywords describing\\nthe content of a collection using a limited number of terms, and is\\noften a key entry point into data sets used by historians in libraries,\\narchives and museums. That is why we will give particular attention to\\nthe &#39;Categories&#39; field. Once the data has been cleaned, it should be\\npossible to reuse the terms in the controlled vocabulary to find\\nadditional information about the terms elsewhere online, which is known\\nas creating \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FLinked_data\\\"\u003ELinked Data\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"getting-started-installing-openrefine-and-importing-data\\\"\u003EGetting started: installing OpenRefine and importing data\u003C\u002Fh3\u003E\\n\u003Cp\u003E\u003Ca href=\\\"http:\u002F\u002Fopenrefine.org\u002F#download_openrefine\\\"\u003EDownload OpenRefine\u003C\u002Fa\u003E and follow the installation instructions.\\nOpenRefine works on all platforms: Windows, Mac, and Linux. \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E\\nwill open in your browser, but it is important to realise that the\\napplication is run locally and that your data won&#39;t be stored online.\\nThe data files are available on our \u003Ca href=\\\"http:\u002F\u002Fdata.freeyourmetadata.org\u002Fpowerhouse-museum\u002F\\\"\u003EFreeYourMetadata website\u003C\u002Fa\u003E, which\\nwill be used throughout this tutorial. Please download the\\n\u003Cem\u003Ephm-collection.tsv\u003C\u002Fem\u003E file before continuing (also archived on the\\nProgramming Historian site: as \u003Ca href=\\\"\u002Fassets\u002Fphm-collection.tsv\\\"\u003Ephm-collection\u003C\u002Fa\u003E).\u003C\u002Fp\u003E\\n\u003Cp\u003EOn the \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E start page, create a new project using the\\ndownloaded data file and click \u003Cstrong\u003ENext\u003C\u002Fstrong\u003E. By default, the first line will\\nbe correctly parsed as the name of a column, but you need to unselect\\nthe &#39;Quotation marks are used to enclose cells containing column\\nseparators&#39; checkbox, since the quotes inside the file do not have any\\nmeaning to \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E. Additionally, select the &#39;Parse cell text into\\nnumbers, dates, ...&#39; checkbox to let OpenRefine automatically detect\\nnumbers. Now click on &#39;\u003Cstrong\u003ECreate project\u003C\u002Fstrong\u003E&#39;. If all goes\\nwell, you will see 75,814 rows. Alternatively, you can download the\\n\u003Ca href=\\\"http:\u002F\u002Fdata.freeyourmetadata.org\u002Fpowerhouse-museum\u002Fphm-collection.google-refine.tar.gz\\\"\u003Einitial OpenRefine project\u003C\u002Fa\u003E directly.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe Powerhouse museum data set consists of detailed metadata on all the\\ncollection objects, including title, description, several categories the\\nitem belongs to, provenance information, and a persistent link to the\\nobject on the museum website. To get an idea of what object the metadata\\ncorresponds to, simply click the persistent link and the website will\\nopen.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;powerhouseScreenshot.png&quot; caption=&quot;Figure 1: Screenshot of a Sample Object on the Powerhouse Museum Website&quot; %}\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"get-to-know-your-data\\\"\u003EGet to know your data\u003C\u002Fh3\u003E\\n\u003Cp\u003EThe first thing to do is to look around and get to know your data. You\\ncan inspect the different data values by displaying them in \u003Ccode\u003Efacets\u003C\u002Fcode\u003E. You\\ncould consider a \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FFaceted_search\\\"\u003Efacet\u003C\u002Fa\u003E like a lense through which you view a\\nspecific subset of the data, based on a criterion of your choice. Click\\nthe triangle in front of the column name, select Facet, and create a\\nfacet. For instance, try a \u003Ccode\u003EText\u003C\u002Fcode\u003E facet or a \u003Ccode\u003ENumeric\u003C\u002Fcode\u003E facet, depending\\non the nature of the values contained in the fields (numeric values are\\nin green). Be warned, however, that text facets are best used on fields\\nwith redundant values (Categories for instance); if you run into a &#39;too\\nmany to display&#39; error, you can choose to raise the choice count limit\\nabove the 2,000 default, but too high a limit can slow down the\\napplication (5,000 is usually a safe choice). Numeric facets do not have\\nthis restriction. For more options, select Customized facets: facet by\\nblank, for instance, comes handy to find out how many values were filled\\nin for each field. We&#39;ll explore these further in the following\\nexercises.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"remove-blank-rows\\\"\u003ERemove blank rows\u003C\u002Fh3\u003E\\n\u003Cp\u003EOne thing you notice when creating a numeric facet for the Record ID\\ncolumn, is that three rows are empty. You can find them by unselecting\\nthe Numeric checkbox, leaving only Non-numeric values. Actually, these\\nvalues are not really blank but contain a single whitespace character,\\nwhich can be seen by moving your cursor to where the value should have\\nbeen and clicking the &#39;\u003Cstrong\u003Eedit\u003C\u002Fstrong\u003E&#39; button that appears. To remove these rows,\\nclick the triangle in front of the first column called &#39;\u003Cstrong\u003EAll\u003C\u002Fstrong\u003E&#39;, select\\n&#39;\u003Cstrong\u003EEdit rows\u003C\u002Fstrong\u003E&#39;, and then &#39;\u003Cstrong\u003ERemove all matching rows\u003C\u002Fstrong\u003E&#39;. Close the numeric\\nfacet to see the remaining 75,811 rows.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"removing-duplicates\\\"\u003ERemoving duplicates\u003C\u002Fh3\u003E\\n\u003Cp\u003EA second step is to detect and remove duplicates. These can be spotted\\nby sorting them by a unique value, such as the Record ID (in this case\\nwe are assuming the Record ID should in fact be unique for each entry).\\nThe operation can be performed by clicking the triangle left of Record\\nID, then choosing &#39;\u003Cstrong\u003ESort\u003C\u002Fstrong\u003E&#39;… and selecting the &#39;\u003Cstrong\u003Enumbers\u003C\u002Fstrong\u003E&#39; bullet. In\\n\u003Cem\u003EOpenRefine\u003C\u002Fem\u003E, sorting is only a visual aid, unless you make the\\nreordering permanent. To do this, click the Sort menu that has just\\nappeared at the top and choose &#39;\u003Cstrong\u003EReorder rows permanently\u003C\u002Fstrong\u003E&#39;. If you forget\\nto do this, you will get unpredictable results later in this tutorial.\u003C\u002Fp\u003E\\n\u003Cp\u003EIdentical rows are now adjacent to each other. Next, blank the Record ID\\nof rows that have the same Record ID as the row above them, marking them\\nduplicates. To do this, click on the Record ID triangle, choose \u003Cstrong\u003EEdit\\ncells\u003C\u002Fstrong\u003E &gt; \u003Cstrong\u003EBlank down\u003C\u002Fstrong\u003E. The status message tells you that 84 columns\\nwere affected (if you forgot to reorder rows permanently, you will get\\nonly 19; if so, undo the blank down operation in the &#39;Undo\u002FRedo&#39; tab and\\ngo back to the previous paragraph to make sure that rows are reordered\\nand not simply sorted). Eliminate those rows by creating a facet on\\n&#39;\u003Cstrong\u003Eblank cells\u003C\u002Fstrong\u003E&#39; in the Record ID column (&#39;\u003Cstrong\u003EFacet\u003C\u002Fstrong\u003E&#39; &gt; &#39;\u003Cstrong\u003ECustomized facets\u003C\u002Fstrong\u003E&#39; &gt;\\n&#39;\u003Cstrong\u003EFacet by blank\u003C\u002Fstrong\u003E&#39;), selecting the 84 blank rows by clicking on &#39;\u003Cstrong\u003Etrue\u003C\u002Fstrong\u003E&#39;,\\nand removing them using the &#39;\u003Cstrong\u003EAll\u003C\u002Fstrong\u003E&#39; triangle (&#39;\u003Cstrong\u003EEdit rows\u003C\u002Fstrong\u003E&#39; &gt; &#39;\u003Cstrong\u003ERemove all\\nmatching rows\u003C\u002Fstrong\u003E&#39;). Upon closing the facet, you see 75,727 unique rows.\u003C\u002Fp\u003E\\n\u003Cp\u003EBe aware that special caution is needed when eliminating duplicates. In\\nthe above mentioned step, we assume the dataset has a field with unique\\nvalues, indicating that the entire row represents a duplicate. This is\\nnot necessarily the case, and great caution should be taken to manually\\nverify whether the entire row represents a duplicate or not.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"atomization\\\"\u003EAtomization\u003C\u002Fh3\u003E\\n\u003Cp\u003EOnce the duplicate records have been removed, we can have a closer look\\nat the \u003Cem\u003ECategories\u003C\u002Fem\u003E field. On average each object has been attributed\\n2.25 categories. These categories are contained within the same field,\\nseparated by a pipe character &#39;|&#39;. Record 9, for instance, contains\\nthree: &#39;Mineral samples|Specimens|Mineral Samples-Geological&#39;. In order\\nto analyze in detail the use of the keywords, the values of the\\nCategories field need to be split up into individual cells on the basis\\nof the pipe character , expanding the 75,727 records into 170,167 rows.\\nChoose &#39;\u003Cstrong\u003EEdit cells\u003C\u002Fstrong\u003E&#39;, &#39;\u003Cstrong\u003ESplit multi-valued cells\u003C\u002Fstrong\u003E&#39;, entering &#39;\u003Cstrong\u003E|\u003C\u002Fstrong\u003E&#39; as the\\nvalue separator. OpenRefine informs you that you now have 170,167 rows.\u003C\u002Fp\u003E\\n\u003Cp\u003EIt is important to fully understand the rows\u002Frecords paradigm. Make the\\nRecord ID column visible to see what is going on. You can switch between\\n&#39;rows&#39; and &#39;records&#39; view by clicking on the so-labelled links just\\nabove the column headers. In the &#39;rows view&#39;, each row represents a\\ncouple of Record IDs and a single Category, enabling manipulation of\\neach one individually. The &#39;records view&#39; has an entry for each Record\\nID, which can have different categories on different rows (grouped\\ntogether in grey or white), but each record is manipulated as a whole.\\nConcretely, there now are 170,167 category assignments (rows), spread\\nover 75,736 collection items (records). You maybe noticed that we are 9\\nrecords up from the original 75,727, but don&#39;t worry about that for the\\ntime being, we will come back to this small difference later.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"facetting-and-clustering\\\"\u003EFacetting and clustering\u003C\u002Fh3\u003E\\n\u003Cp\u003EOnce the content of a field has been properly atomized, filters, facets,\\nand clusters can be applied to give a quick and straightforward overview\\nof classic metadata issues. By applying the customized facet &#39;\u003Ccode\u003EFacet by blank\u003C\u002Fcode\u003E&#39;, one can immediately identify the 461 records that do not have a\\ncategory, representing 0.6% of the collection. Applying a text facet to\\nthe Categories field allows an overview of the 4,934 different\\ncategories used in the collection (the default limit being 2,000, you\\ncan click &#39;\u003Cstrong\u003ESet choice count limit\u003C\u002Fstrong\u003E&#39; to raise it to 5,000). The headings\\ncan be sorted alphabetically or by frequency (&#39;count&#39;), giving a list of\\nthe most used terms to index the collection. The top three headings are\\n&#39;Numismatics&#39; (8,041), &#39;Ceramics&#39; (7,390) and &#39;Clothing and dress&#39;\\n(7,279).\u003C\u002Fp\u003E\\n\u003Cp\u003EAfter the application of a facet, \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E proposes to cluster facet\\nchoices together based on various similarity methods. As Figure 2\\nillustrates, the clustering allows you to solve issues regarding case\\ninconsistencies, incoherent use of either the singular or plural form,\\nand simple spelling mistakes. \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E presents the related values\\nand proposes a merge into the most recurrent value. Select values you\\nwish to cluster by selecting their boxes individually or by clicking\\n&#39;\u003Cstrong\u003ESelect all\u003C\u002Fstrong\u003E&#39; at the bottom, then chose &#39;\u003Cstrong\u003EMerge Selected and Re-Cluster\u003C\u002Fstrong\u003E&#39;.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;overviewOfSomeClusters.png&quot; caption=&quot;Figure 2 : Overview of some clusters&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EThe default clustering method is not too complicated, so it does not\\nfind all clusters yet. Experiment with different methods to see what\\nresults they yield. Be careful though: some methods are too aggressive,\\nso you might end up clustering values that do not belong together. Now\\nthat the values have been clustered individually, we can put them back\\ntogether in a single cell. Click the Categories triangle and choose \u003Cstrong\u003EEdit\\ncells\u003C\u002Fstrong\u003E, \u003Cstrong\u003EJoin multi-valued cells\u003C\u002Fstrong\u003E, \u003Cstrong\u003EOK\u003C\u002Fstrong\u003E. Choose the pipe character (|) as a\\nseparator. The rows now look like before, with a multi-valued Categories\\nfield.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"applying-ad-hoc-transformations-through-the-use-of-regular-expressions\\\"\u003EApplying ad-hoc transformations through the use of regular expressions\u003C\u002Fh3\u003E\\n\u003Cp\u003EYou may remember there was an increase in the number of records after\\nthe splitting process: nine records appeared out of nowhere. In order to\\nfind the cause of this disparity, we need to go back in time before we\\nsplit the categories into separate rows. To do so, toggle the Undo\u002FRedo\\ntab right of the Facet\u002FFilter tab, and you will get a history of all the\\nactions that you performed since the project was created. Select the\\nstep just before &#39;Split multi-valued cells in column Categories&#39; (if you\\nfollowed our example this should be &#39;Remove 84 rows&#39;) then go back to\\nthe Facet\u002FFilter tab.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe issue arose during the splitting operation on the pipe character, so\\nthere is a strong chance that whatever went wrong is linked to this\\ncharacter. Let&#39;s apply a filter on the Categories column by selecting\\n&#39;\u003Cstrong\u003EText filter\u003C\u002Fstrong\u003E&#39; in the menu. First type a single \u003Ccode\u003E|\u003C\u002Fcode\u003E in the field on the\\nleft: \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E informs you that there are 71,064 matching records\\n(i.e. records containing a pipe) out of a total of 75,727. Cells that do\\nnot contain a pipe can be blank ones, but also cells containing a single\\ncategory with no separator, such as record 29 which only has &#39;Scientific\\ninstruments&#39;.\u003C\u002Fp\u003E\\n\u003Cp\u003ENow enter a second \u003Ccode\u003E|\u003C\u002Fcode\u003E after the first one to get || (double pipe): you\\ncan see that 9 records are matching this pattern. These are likely the 9\\nrecords guilty of our discrepancy: when \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E splits these up,\\nthe double pipe is interpreted as a break between two records instead of\\na meaningless double separator. Now how do we correct these values? Go\\nto the menu of the &#39;Categories&#39; field, and choose &#39;\u003Cstrong\u003EEdit cells\u003C\u002Fstrong\u003E&#39; &gt;\\n&#39;\u003Cstrong\u003ETransform\u003C\u002Fstrong\u003E&#39;…. Welcome to the custom text tranform interface, a powerful\\nfunctionality of \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E using the \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E Expression Language\\n(GREL).\u003C\u002Fp\u003E\\n\u003Cp\u003EThe word &#39;value&#39; in the text field represents the current value of each\\ncell, which you can see below. We can modify this value by applying\\nfunctions to it (see the \u003Ca href=\\\"https:\u002F\u002Fgithub.com\u002FOpenRefine\u002FOpenRefine\u002Fwiki\u002FGREL-Functions\\\"\u003EGREL documentation\u003C\u002Fa\u003E for a full list). In\\nthis case, we want to replace double pipes with a single pipe. This can\\nbe achieved by entering the following \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FRegular_expression\\\" title=\\\"Regular Expressions\\\"\u003Eregular expression\u003C\u002Fa\u003E (be sure\\nnot to forget the quotes):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Evalue.replace(&#39;||&#39;, &#39;|&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EUnder the &#39;Expression&#39; text field, you get a preview of the modified\\nvalues, with double pipes removed. Click \u003Cstrong\u003EOK\u003C\u002Fstrong\u003E and try again to split the\\ncategories with &#39;\u003Cstrong\u003EEdit cells\u003C\u002Fstrong\u003E&#39; &gt; &#39;\u003Cstrong\u003ESplit multi-valued cells\u003C\u002Fstrong\u003E&#39;, the number\\nof records will now stay at 75,727 (click the &#39;\u003Cstrong\u003Erecords\u003C\u002Fstrong\u003E&#39; link to\\ndouble-check).\u003C\u002Fp\u003E\\n\u003Cp\u003E* * *\u003Cbr\u003E Another issue that can be solved with the help of GREL is the problem\\nof records for which the same category is listed twice. Take record 41\\nfor instance, whose categories are &#39;Models|Botanical specimens|Botanical\\nSpecimens|Didactic Displays|Models&#39;. The category &#39;Models&#39; appears twice\\nwithout any good reason, so we want to remove this duplicate. Click the\\nCategories triangle and choose Edit cells, Join multi-valued cells, OK.\\nChoose the pipe character as a separator. Now the categories are listed\\nas before. Then select &#39;\u003Cstrong\u003EEdit cells\u003C\u002Fstrong\u003E&#39; &gt; &#39;\u003Cstrong\u003ETransform\u003C\u002Fstrong\u003E&#39;, also on the\\ncategories column. Using GREL we can successively split the categories\\non the pipe character, look for unique categories and join them back\\nagain. To achieve this, just type the following expression:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Evalue.split(&#39;|&#39;).uniques().join(&#39;|&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou will notice that 33,008 cells are affected, more than half the\\ncollection.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"exporting-your-cleaned-data\\\"\u003EExporting your cleaned data\u003C\u002Fh3\u003E\\n\u003Cp\u003ESince you first loaded your data into \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E, all cleaning\\noperations have been performed in the software memory, leaving your\\noriginal data set untouched. If you want to save the data that you have\\nbeen cleaning, you need to export them by clicking on the &#39;\u003Cstrong\u003EExport\u003C\u002Fstrong\u003E&#39; menu\\ntop-right of the screen. \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E supports a large variety of\\nformats, such as \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FComma-separated_values\\\"\u003ECSV\u003C\u002Fa\u003E, HTML or Excel: select whatever suits you best\\nor add your own export template by clicking &#39;Templating&#39;. You can also\\nexport your project in the internal \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E format in order to\\nshare it with others.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"building-on-top-of-your-cleaned-data\\\"\u003EBuilding on top of your cleaned data\u003C\u002Fh3\u003E\\n\u003Cp\u003EOnce your data has been cleaned, you can take the next step and explore\\nother exciting features of \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E. The user community of\\n\u003Cem\u003EOpenRefine\u003C\u002Fem\u003E has developed two particularly interesting extensions which\\nallow you to link your data to data that has already been published on\\nthe Web. The \u003Ca href=\\\"http:\u002F\u002Fweb.archive.org\u002Fweb\u002F20180113121435\u002Fhttp:\u002F\u002Frefine.deri.ie\u002Fdocs\\\"\u003ERDF Refine extension\u003C\u002Fa\u003E transforms plaintext keywords into\\nURLs. The \u003Ca href=\\\"https:\u002F\u002Fgithub.com\u002FRubenVerborgh\u002FRefine-NER-Extension\\\"\u003ENER extension\u003C\u002Fa\u003E allows you to apply named-entity recognition\\n(NER), which identifies keywords in flowing text and gives them a URL.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"conclusions\\\"\u003EConclusions\u003C\u002Fh2\u003E\\n\u003Cp\u003EIf you only remember on thing from this lesson, it should be this: \u003Cem\u003Eall\\ndata is dirty, but you can do something about it.\u003C\u002Fem\u003E As we have shown\\nhere, there is already a lot you can do yourself to increase data\\nquality significantly. First of all, you have learned how you can get a\\nquick overview of how many empty values your dataset contains and how\\noften a particular value (e.g. a keyword) is used throughout a\\ncollection. This lessons also demonstrated how to solve recurrent issues\\nsuch as duplicates and spelling inconsistencies in an automated manner\\nwith the help of \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E. Don&#39;t hesitate to experiment with the\\ncleaning features, as you&#39;re performing these steps on a copy of your\\ndata set, and \u003Cem\u003EOpenRefine\u003C\u002Fem\u003E allows you to trace back all of your steps in\\nthe case you have made an error.\u003C\u002Fp\u003E\\n\"}"}</script></div>
+	</body>
+</html>

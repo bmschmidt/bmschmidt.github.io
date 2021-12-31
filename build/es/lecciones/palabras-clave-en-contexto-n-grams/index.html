@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/es/lecciones/palabras-clave-en-contexto-n-grams"),
+					params: {lang:"es",lessons:"lecciones",slug:"palabras-clave-en-contexto-n-grams"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the es edition.
+
+<h1>Palabras clave en contexto (usando n-grams) con Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="objetivos-de-la-lección">Objetivos de la lección</h2>
+<p>Al igual que en <a href="/es/lecciones/salida-de-datos-como-archivo-html">Salida de datos como archivo HTML</a>, esta lección retoma los pares de frecuencias recolectados en <a href="/es/lecciones/contar-frecuencias">Contar frecuencias de palabras</a> y crea una salida de datos en HTML. Esta vez el objetivo son las palabras clave en contexto (&quot;KWIC”, por sus siglas en inglés) que crea n-gramas del contenido del documento original -en este caso la transcripción de un juicio del &quot;Old Bailey Online&quot;. Puedes utilizar tu programa para seleccionar una palabra clave y la computadora producirá una salida de datos con todas las veces en que aparece esa palabra clave, junto con las palabras a la derecha e izquierda de la misma, haciendo sencillo observar a simple vista cómo es utilizada dicha palabra.</p>
+<p>Una vez que se han creado las KWCIs, se envuelven en HTML y se envían al navegador en donde se pueden ver. Esto refuerza lo aprendido en <a href="salida-de-datos-como-archivo-html">Salida de datos como archivo HTML</a> optando por una salida ligeramente distinta.</p>
+<p>Al final de la lección serás capaz de extraer todos los n-gramas posibles del texto. En la siguiente lección, aprenderás cómo crear salida de todos los n-gramas de una palabra clave dada en un documento descargado de Internet, y visualizarla claramente en la ventana de tu navegador.</p>
+<h2 id="archivos-necesarios-para-esta-lección">Archivos necesarios para esta lección</h2>
+<ul>
+<li><code>obo.py</code></li>
+</ul>
+<p>Si no tienes estos archivos de las lecciones anteriores, puedes descargar python-es-lecciones7, un <a href="/assets/python-es-lecciones7.zip">archivo zip de las lecciones anteriores</a>.</p>
+<h2 id="de-texto-a-n-gramas-a-kwic">De texto a n-gramas a KWIC</h2>
+<p>Ahora que ya sabes cómo recolectar el contenido textual de una página Web de manera automática con Python, y has empezado a utilizar cadenas de caracteres, listas y diccionarios para procesamiento de texto, hay muchas otras cosas que puedes hacer con los textos aparte de contar frecuencias. Quienes estudian las propiedades estadísticas del lenguaje han encontrado que el estudiar las secuencias lineales de unidades lingüísticas puede decirnos muchas cosas acerca de un texto. Estas secuencias lineales son conocidas como *bigramas+ (2 unidades), <em>trigramas</em> (3 unidades) o más generalmente como <em>n-gramas</em>.</p>
+<p>Probablemente has visto con anterioridad n-gramas muchas veces. Se utilizan generalmente en páginas de resultados de investigación para dar una previsualización del lugar en que aparece tu palabra clave en un documento y cuál es el contexto que la rodea. Esta aplicación de los n-gramas es conocida como &quot;palabras clave en contexto&quot; (generalmente abreviada como KWIC). Por ejemplo, si la cadena en cuestión fuese &quot;it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness&quot;, entonces un 7-grama para la palabra clave &quot;wisdom&quot; sería:</p>
+<pre><code>the age of wisdom it was the
+</code></pre>
+<p>Un n-grama puede contener cualquier tipo de unidad lingüística que quieras. Los historiadores tienen más probabilidades de utilizar caracteres como en el bigrama &quot;qu&quot; o palabras como en el trigrama &quot;el perro ladró&quot;; sin embargo, puedes utilizar también fonemas, sílabas o cualquier número de otras unidades en función de tu pregunta de investigación.</p>
+<p>Lo que vamos a hacer ahora es desarrollar la habilidad de visualizar KWIC para cualquier palabra clave en un cuerpo de texto y mostrarla en el contexto de un número fijo de palabras en cada lado. Como antes, vamos a &quot;encerrar&quot; (en HTML) la salida de datos para que se pueda ver en Firefox y añadir fácilmente a Zotero.</p>
+<h2 id="de-texto-a-n-gramas">De texto a n-gramas</h2>
+<p>Dado que queremos trabajar con palabras en lugar de caracteres o fonemas, será mucho más fácil crear n-gramas utilizando una lista de palabras en vez de cadenas. Como ya sabes, Python puede convertir fácilmente una cadena en una lista utilizando la operación dividir (<code>split</code>). Una vez dividida resulta sencillo recuperar una subsecuencia de palabras adyacentes en la lista utilizando un <em>fragmento</em> representado por dos índices separados por dos puntos. Aprendimos esto cuando trabajamos con cadenas en <a href="/es/lecciones/manipular-cadenas-de-caracteres-en-python">Manipular cadenas de caracteres en Python</a></p>
+<pre><code class="language-python">mensaje9 = &quot;Hola Mundo&quot;
+mensaje9a = mensaje9[1:8]
+print(mensaje9a)
+-&gt; ola Mun
+</code></pre>
+<p>Sin embargo, también podemos utilizar esta técnica para tomar un número predeterminado de palabras vecinas de la lista con poco esfuerzo. Estudia los siguientes ejemplos que puedes probar en un intérprete de Python.</p>
+<pre><code class="language-python">cadenaPalabras = &#39;it was the best of times it was the worst of times &#39;
+cadenaPalabras += &#39;it was the age of wisdom it was the age of foolishness&#39;
+listaPalabras = cadenaPalabras.split()
+
+print(listaPalabras[0:4])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;]
+
+print(listaPalabras[0:6])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;]
+
+print(listaPalabras[6:10])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;]
+
+print(listaPalabras[0:12])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;]
+
+print(listaPalabras[:12])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;]
+
+print(listaPalabras[12:])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;, &#39;wisdom&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;, &#39;foolishness&#39;]
+</code></pre>
+<p>En estos ejemplos se ha utilizado el método de división (<code>slice</code>) para recuperar partes de nuestra lista. Ten en cuenta que hay dos lados respecto a los dos puntos en un <code>slice</code>. Si a la derecha de los dos puntos se deja en blanco como en el último ejemplo anterior, el programa sabe continuar automáticamente hasta el final -en este caso, el final de la lista. En el penúltimo ejemplo anterior se muestra que podemos comenzar desde el principio dejando vacío el espacio anterior a los dos puntos. Este es un atajo útil y que está disponible para mantener tu código más corto.</p>
+<p>También puedes utilizar variables para representar las posiciones del índice. Utilizado conjuntamente con un bucle <code>for</code>, puedes crear fácilmente cualquier n-grama posible a partir de tu lista. El siguiente ejemplo recupera todos los 5-gramas de nuestra cadena a partir del ejemplo anterior.</p>
+<pre><code class="language-python">i = 0
+for items in listaPalabras:
+    print(listaPalabras[i: i+5])
+    i += 1
+</code></pre>
+<p>Siguiendo con nuestro enfoque modular, vamos a crear una función y a guardarla en el módulo <code>obo.py</code> que puede crear n-gramas. Estudia y escribe o copia el siguiente código:</p>
+<pre><code class="language-python"># Dada una lista de palabras y un número n, recupera una lista
+# de n-gramas.
+
+def obtenNGramas(listaPalabras, n):
+    return [listaPalabras[i:i+n] for i in range(len(listaPalabras)-(n-1))]
+</code></pre>
+<p>Esta función puede parecer un poco confusa ya que hace muchas cosas sin mucho código. Utiliza una lista por comprensión para mantener el código compacto. El siguiente ejemplo hace exactamente lo mismo:</p>
+<pre><code class="language-python">def obtenNGramas(listaPalabras, n):
+    ngramas = []
+    for i in range(len(listaPalabras)-(n-1)):
+        ngramas.append(listaPalabras[i:i+n])
+    return ngramas
+</code></pre>
+<p>Utiliza el que tenga más sentido para ti.</p>
+<p>Un concepto que todavía te puede resultar confuso es el par de argumentos de la función. Ten en cuenta que nuestra función tiene dos nombres de variables en el paréntesis después de su nombre cuando la declaramos: <em>listaPalabras</em>, <em>n</em>. Estas dos variables son los argumentos de la función. Cuando llamas (ejecutas) esta función, estas variables serán utilizadas por la función para su solución. Sin estos argumentos no hay suficiente información para hacer los cálculos. En este caso, las dos piezas de información son la lista de palabras que quieres covertir en n-gramas (<code>listaPalabras</code>), y el número de palabras que quieres en cada n-grama (<code>n</code>). Para que la función trabaje necesita ambas, así que la llamas como en este ejemplo (guarda el siguiente programa como <code>usaobtenNGramas.py</code>y ejecútalo):</p>
+<pre><code class="language-python">#usaobtenNGramas.py
+
+import obo
+
+cadenaPalabras = &#39;it was the best of times it was the worst of times &#39;
+cadenaPalabras += &#39;it was the age of wisdom it was the age of foolishness&#39;
+todasMisPalabras = cadenaPalabras.split()
+
+print(obo.obtenNGramas(todasMisPalabras, 5))
+</code></pre>
+<p>Observa que los argumentos introducidos no tienen que tener el mismo nombre que los argumentos mencionados en la declaración de la función. Python sabe utilizar <em>todasMisPalabras</em> en cualquier lugar de la función en la que aparezca <em>listaPalabras</em>, ya que esto se dio desde el primer argumento. Del mismo modo, todas las apariciones de <em>n</em> serán remplazadas por el entero 5 en este caso. Intenta cambiar el 5 a una cadena, como &quot;elefantes&quot; y observa lo que sucede cuando ejecutas tu programa. Ten en cuenta que debido a que <em>n</em> se utiliza como un entero, debes asegurarte que el argumento enviado es también un entero. Lo mismo es válido para cadenas de caracteres, puntos flotantes o cualquier otro tipo de variable enviada como argumento.</p>
+<p>También puedes utilizar un terminal de Python para jugar con el código y tener una mejor comprensión de cómo funciona. Pega la declaración de función para <em>obtenNGramas</em> (cualquiera de las dos funciones anteriores) en el intérprete de Python.</p>
+<pre><code class="language-python">prueba1 = &#39;aqui hay cuatro palabras&#39;
+prueba2 = &#39;en la frase de prueba hay ocho palabras&#39;
+
+obtenNGramas(prueba1.split(), 5)
+-&gt; []
+
+obtenNGramas(prueba2.split(), 5)
+-&gt; [[&#39;en&#39;, &#39;la&#39;, &#39;frase&#39;, &#39;de&#39;, &#39;prueba&#39;],
+[&#39;la&#39;, &#39;frase&#39;, &#39;de&#39;, &#39;prueba&#39;, &#39;hay&#39;],
+[&#39;frase&#39;, &#39;de&#39;, &#39;prueba&#39;, &#39;hay&#39;, &#39;ocho&#39;],
+[&#39;de&#39;, &#39;prueba&#39;, &#39;hay&#39;, &#39;ocho&#39;, &#39;palabras&#39;]]
+</code></pre>
+<p>En este ejemplo vemos dos cosas que debes tener en cuenta. En primer lugar, como nuestra función espera una lista de palabras en lugar de una cadena, tenemos que convertir las cadenas en listas antes de que nuestro programa pueda manejarlas. Podríamos haberlo hecho mediante la adición de otra línea de código por encima de la llamada a la función, pero en su lugar utilizamos el método <code>split</code> directamente en el argumento de la función como una especie de atajo.</p>
+<p>En segundo lugar, ¿por qué el primer ejemplo devuelve una lista vacía en lugar del n-grama que buscamos? En <em>test1</em> hemos pedido un n-grama que es más largo que el número de palabras en nuestra lista, lo cual ha resutado en una lista en blanco. En <em>test2</em> no tenemos tal problema y obtuvimos todos los posibles 5-gramas para una lista de palabras más larga. Si quieres puedes adaptar tu función para que imprima un mensaje de advertencia o para recuperar toda la cadena en lugar de una lista vacía.</p>
+<p>Ahora tenemos una manera de extraer todos los posibles n-gramas de un cuerpo de texto. En la siguiente lección podemos centrar nuestra atención en aislar los n-gramas que sean de interés para nosotros.</p>
+<h3 id="sincronización-de-código">Sincronización de código</h3>
+<p>Para seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto. Si estás trabajando con la versión Mac o Linux de las lecciones deberás abrir el archivo <code>obo.py</code> y cambiar &quot;file:///Users/username/Desktop/programming-historian/&quot; a la ruta del directorio de tu propia computadora.</p>
+<ul>
+<li>python-es-lecciones8.zip (<a href="/assets/python-es-lecciones8.zip">zip sync</a>)</li>
+</ul>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="palabras-clave-en-contexto-n-grams/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Palabras clave en contexto (usando n-grams) con Python\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"date\":\"2012-07-17T00:00:00.000Z\",\"translation_date\":\"2017-03-15T00:00:00.000Z\",\"editors\":[\"Miriam Posner\"],\"reviewers\":[\"Jim Clifford\",\"Frederik Elwert\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Adam Crymble\"],\"translation-reviewer\":[\"Jairo A. Melo\",\"Maria José Afanador-Llach\",\"Antonio Rojas Castro\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F50\",\"layout\":\"lesson\",\"next\":\"salida-palabras-clave-contexto-ngrams\",\"previous\":\"salida-de-datos-como-archivo-html\",\"original\":\"keywords-in-context-using-n-grams\",\"python_warning\":false,\"difficulty\":2,\"activity\":\"presenting\",\"topics\":[\"python\"],\"abstract\":\"Esta lección retoma los pares de frecuencias recolectados en [Contar frecuencias de palabras][] y crea una salida de datos en HTML.\",\"avatar_alt\":\"Grabado de mujer, con expresión de sorpresa en la cara, dejando caer una botella de ginebra y una botella de ron.\",\"doi\":\"10.46430\u002Fphes0021\",\"sequence\":13,\"series_total\":14},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"objetivos-de-la-lección\\\"\u003EObjetivos de la lección\u003C\u002Fh2\u003E\\n\u003Cp\u003EAl igual que en \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fsalida-de-datos-como-archivo-html\\\"\u003ESalida de datos como archivo HTML\u003C\u002Fa\u003E, esta lección retoma los pares de frecuencias recolectados en \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fcontar-frecuencias\\\"\u003EContar frecuencias de palabras\u003C\u002Fa\u003E y crea una salida de datos en HTML. Esta vez el objetivo son las palabras clave en contexto (&quot;KWIC”, por sus siglas en inglés) que crea n-gramas del contenido del documento original -en este caso la transcripción de un juicio del &quot;Old Bailey Online&quot;. Puedes utilizar tu programa para seleccionar una palabra clave y la computadora producirá una salida de datos con todas las veces en que aparece esa palabra clave, junto con las palabras a la derecha e izquierda de la misma, haciendo sencillo observar a simple vista cómo es utilizada dicha palabra.\u003C\u002Fp\u003E\\n\u003Cp\u003EUna vez que se han creado las KWCIs, se envuelven en HTML y se envían al navegador en donde se pueden ver. Esto refuerza lo aprendido en \u003Ca href=\\\"salida-de-datos-como-archivo-html\\\"\u003ESalida de datos como archivo HTML\u003C\u002Fa\u003E optando por una salida ligeramente distinta.\u003C\u002Fp\u003E\\n\u003Cp\u003EAl final de la lección serás capaz de extraer todos los n-gramas posibles del texto. En la siguiente lección, aprenderás cómo crear salida de todos los n-gramas de una palabra clave dada en un documento descargado de Internet, y visualizarla claramente en la ventana de tu navegador.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"archivos-necesarios-para-esta-lección\\\"\u003EArchivos necesarios para esta lección\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003ESi no tienes estos archivos de las lecciones anteriores, puedes descargar python-es-lecciones7, un \u003Ca href=\\\"\u002Fassets\u002Fpython-es-lecciones7.zip\\\"\u003Earchivo zip de las lecciones anteriores\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"de-texto-a-n-gramas-a-kwic\\\"\u003EDe texto a n-gramas a KWIC\u003C\u002Fh2\u003E\\n\u003Cp\u003EAhora que ya sabes cómo recolectar el contenido textual de una página Web de manera automática con Python, y has empezado a utilizar cadenas de caracteres, listas y diccionarios para procesamiento de texto, hay muchas otras cosas que puedes hacer con los textos aparte de contar frecuencias. Quienes estudian las propiedades estadísticas del lenguaje han encontrado que el estudiar las secuencias lineales de unidades lingüísticas puede decirnos muchas cosas acerca de un texto. Estas secuencias lineales son conocidas como *bigramas+ (2 unidades), \u003Cem\u003Etrigramas\u003C\u002Fem\u003E (3 unidades) o más generalmente como \u003Cem\u003En-gramas\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EProbablemente has visto con anterioridad n-gramas muchas veces. Se utilizan generalmente en páginas de resultados de investigación para dar una previsualización del lugar en que aparece tu palabra clave en un documento y cuál es el contexto que la rodea. Esta aplicación de los n-gramas es conocida como &quot;palabras clave en contexto&quot; (generalmente abreviada como KWIC). Por ejemplo, si la cadena en cuestión fuese &quot;it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness&quot;, entonces un 7-grama para la palabra clave &quot;wisdom&quot; sería:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ethe age of wisdom it was the\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EUn n-grama puede contener cualquier tipo de unidad lingüística que quieras. Los historiadores tienen más probabilidades de utilizar caracteres como en el bigrama &quot;qu&quot; o palabras como en el trigrama &quot;el perro ladró&quot;; sin embargo, puedes utilizar también fonemas, sílabas o cualquier número de otras unidades en función de tu pregunta de investigación.\u003C\u002Fp\u003E\\n\u003Cp\u003ELo que vamos a hacer ahora es desarrollar la habilidad de visualizar KWIC para cualquier palabra clave en un cuerpo de texto y mostrarla en el contexto de un número fijo de palabras en cada lado. Como antes, vamos a &quot;encerrar&quot; (en HTML) la salida de datos para que se pueda ver en Firefox y añadir fácilmente a Zotero.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"de-texto-a-n-gramas\\\"\u003EDe texto a n-gramas\u003C\u002Fh2\u003E\\n\u003Cp\u003EDado que queremos trabajar con palabras en lugar de caracteres o fonemas, será mucho más fácil crear n-gramas utilizando una lista de palabras en vez de cadenas. Como ya sabes, Python puede convertir fácilmente una cadena en una lista utilizando la operación dividir (\u003Ccode\u003Esplit\u003C\u002Fcode\u003E). Una vez dividida resulta sencillo recuperar una subsecuencia de palabras adyacentes en la lista utilizando un \u003Cem\u003Efragmento\u003C\u002Fem\u003E representado por dos índices separados por dos puntos. Aprendimos esto cuando trabajamos con cadenas en \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fmanipular-cadenas-de-caracteres-en-python\\\"\u003EManipular cadenas de caracteres en Python\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje9 = &quot;Hola Mundo&quot;\\nmensaje9a = mensaje9[1:8]\\nprint(mensaje9a)\\n-&gt; ola Mun\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESin embargo, también podemos utilizar esta técnica para tomar un número predeterminado de palabras vecinas de la lista con poco esfuerzo. Estudia los siguientes ejemplos que puedes probar en un intérprete de Python.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EcadenaPalabras = &#39;it was the best of times it was the worst of times &#39;\\ncadenaPalabras += &#39;it was the age of wisdom it was the age of foolishness&#39;\\nlistaPalabras = cadenaPalabras.split()\\n\\nprint(listaPalabras[0:4])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;]\\n\\nprint(listaPalabras[0:6])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;]\\n\\nprint(listaPalabras[6:10])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;]\\n\\nprint(listaPalabras[0:12])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;]\\n\\nprint(listaPalabras[:12])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;]\\n\\nprint(listaPalabras[12:])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;, &#39;wisdom&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;, &#39;foolishness&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEn estos ejemplos se ha utilizado el método de división (\u003Ccode\u003Eslice\u003C\u002Fcode\u003E) para recuperar partes de nuestra lista. Ten en cuenta que hay dos lados respecto a los dos puntos en un \u003Ccode\u003Eslice\u003C\u002Fcode\u003E. Si a la derecha de los dos puntos se deja en blanco como en el último ejemplo anterior, el programa sabe continuar automáticamente hasta el final -en este caso, el final de la lista. En el penúltimo ejemplo anterior se muestra que podemos comenzar desde el principio dejando vacío el espacio anterior a los dos puntos. Este es un atajo útil y que está disponible para mantener tu código más corto.\u003C\u002Fp\u003E\\n\u003Cp\u003ETambién puedes utilizar variables para representar las posiciones del índice. Utilizado conjuntamente con un bucle \u003Ccode\u003Efor\u003C\u002Fcode\u003E, puedes crear fácilmente cualquier n-grama posible a partir de tu lista. El siguiente ejemplo recupera todos los 5-gramas de nuestra cadena a partir del ejemplo anterior.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Ei = 0\\nfor items in listaPalabras:\\n    print(listaPalabras[i: i+5])\\n    i += 1\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESiguiendo con nuestro enfoque modular, vamos a crear una función y a guardarla en el módulo \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E que puede crear n-gramas. Estudia y escribe o copia el siguiente código:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Dada una lista de palabras y un número n, recupera una lista\\n# de n-gramas.\\n\\ndef obtenNGramas(listaPalabras, n):\\n    return [listaPalabras[i:i+n] for i in range(len(listaPalabras)-(n-1))]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEsta función puede parecer un poco confusa ya que hace muchas cosas sin mucho código. Utiliza una lista por comprensión para mantener el código compacto. El siguiente ejemplo hace exactamente lo mismo:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Edef obtenNGramas(listaPalabras, n):\\n    ngramas = []\\n    for i in range(len(listaPalabras)-(n-1)):\\n        ngramas.append(listaPalabras[i:i+n])\\n    return ngramas\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EUtiliza el que tenga más sentido para ti.\u003C\u002Fp\u003E\\n\u003Cp\u003EUn concepto que todavía te puede resultar confuso es el par de argumentos de la función. Ten en cuenta que nuestra función tiene dos nombres de variables en el paréntesis después de su nombre cuando la declaramos: \u003Cem\u003ElistaPalabras\u003C\u002Fem\u003E, \u003Cem\u003En\u003C\u002Fem\u003E. Estas dos variables son los argumentos de la función. Cuando llamas (ejecutas) esta función, estas variables serán utilizadas por la función para su solución. Sin estos argumentos no hay suficiente información para hacer los cálculos. En este caso, las dos piezas de información son la lista de palabras que quieres covertir en n-gramas (\u003Ccode\u003ElistaPalabras\u003C\u002Fcode\u003E), y el número de palabras que quieres en cada n-grama (\u003Ccode\u003En\u003C\u002Fcode\u003E). Para que la función trabaje necesita ambas, así que la llamas como en este ejemplo (guarda el siguiente programa como \u003Ccode\u003EusaobtenNGramas.py\u003C\u002Fcode\u003Ey ejecútalo):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#usaobtenNGramas.py\\n\\nimport obo\\n\\ncadenaPalabras = &#39;it was the best of times it was the worst of times &#39;\\ncadenaPalabras += &#39;it was the age of wisdom it was the age of foolishness&#39;\\ntodasMisPalabras = cadenaPalabras.split()\\n\\nprint(obo.obtenNGramas(todasMisPalabras, 5))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EObserva que los argumentos introducidos no tienen que tener el mismo nombre que los argumentos mencionados en la declaración de la función. Python sabe utilizar \u003Cem\u003EtodasMisPalabras\u003C\u002Fem\u003E en cualquier lugar de la función en la que aparezca \u003Cem\u003ElistaPalabras\u003C\u002Fem\u003E, ya que esto se dio desde el primer argumento. Del mismo modo, todas las apariciones de \u003Cem\u003En\u003C\u002Fem\u003E serán remplazadas por el entero 5 en este caso. Intenta cambiar el 5 a una cadena, como &quot;elefantes&quot; y observa lo que sucede cuando ejecutas tu programa. Ten en cuenta que debido a que \u003Cem\u003En\u003C\u002Fem\u003E se utiliza como un entero, debes asegurarte que el argumento enviado es también un entero. Lo mismo es válido para cadenas de caracteres, puntos flotantes o cualquier otro tipo de variable enviada como argumento.\u003C\u002Fp\u003E\\n\u003Cp\u003ETambién puedes utilizar un terminal de Python para jugar con el código y tener una mejor comprensión de cómo funciona. Pega la declaración de función para \u003Cem\u003EobtenNGramas\u003C\u002Fem\u003E (cualquiera de las dos funciones anteriores) en el intérprete de Python.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprueba1 = &#39;aqui hay cuatro palabras&#39;\\nprueba2 = &#39;en la frase de prueba hay ocho palabras&#39;\\n\\nobtenNGramas(prueba1.split(), 5)\\n-&gt; []\\n\\nobtenNGramas(prueba2.split(), 5)\\n-&gt; [[&#39;en&#39;, &#39;la&#39;, &#39;frase&#39;, &#39;de&#39;, &#39;prueba&#39;],\\n[&#39;la&#39;, &#39;frase&#39;, &#39;de&#39;, &#39;prueba&#39;, &#39;hay&#39;],\\n[&#39;frase&#39;, &#39;de&#39;, &#39;prueba&#39;, &#39;hay&#39;, &#39;ocho&#39;],\\n[&#39;de&#39;, &#39;prueba&#39;, &#39;hay&#39;, &#39;ocho&#39;, &#39;palabras&#39;]]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEn este ejemplo vemos dos cosas que debes tener en cuenta. En primer lugar, como nuestra función espera una lista de palabras en lugar de una cadena, tenemos que convertir las cadenas en listas antes de que nuestro programa pueda manejarlas. Podríamos haberlo hecho mediante la adición de otra línea de código por encima de la llamada a la función, pero en su lugar utilizamos el método \u003Ccode\u003Esplit\u003C\u002Fcode\u003E directamente en el argumento de la función como una especie de atajo.\u003C\u002Fp\u003E\\n\u003Cp\u003EEn segundo lugar, ¿por qué el primer ejemplo devuelve una lista vacía en lugar del n-grama que buscamos? En \u003Cem\u003Etest1\u003C\u002Fem\u003E hemos pedido un n-grama que es más largo que el número de palabras en nuestra lista, lo cual ha resutado en una lista en blanco. En \u003Cem\u003Etest2\u003C\u002Fem\u003E no tenemos tal problema y obtuvimos todos los posibles 5-gramas para una lista de palabras más larga. Si quieres puedes adaptar tu función para que imprima un mensaje de advertencia o para recuperar toda la cadena en lugar de una lista vacía.\u003C\u002Fp\u003E\\n\u003Cp\u003EAhora tenemos una manera de extraer todos los posibles n-gramas de un cuerpo de texto. En la siguiente lección podemos centrar nuestra atención en aislar los n-gramas que sean de interés para nosotros.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"sincronización-de-código\\\"\u003ESincronización de código\u003C\u002Fh3\u003E\\n\u003Cp\u003EPara seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto. Si estás trabajando con la versión Mac o Linux de las lecciones deberás abrir el archivo \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E y cambiar &quot;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&quot; a la ruta del directorio de tu propia computadora.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-es-lecciones8.zip (\u003Ca href=\\\"\u002Fassets\u002Fpython-es-lecciones8.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+	</body>
+</html>

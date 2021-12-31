@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/keywords-in-context-using-n-grams"),
+					params: {lang:"en",lessons:"lessons",slug:"keywords-in-context-using-n-grams"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Keywords in Context (Using n-grams) with Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="lesson-goals">Lesson Goals</h2>
+<p>Like in <a href="/lessons/output-data-as-html-file">Output Data as HTML File</a>, this lesson takes the frequency
+pairs collected in <a href="/lessons/counting-frequencies">Counting Frequencies</a> and outputs them in HTML.
+This time the focus is on keywords in context (KWIC) which creates
+n-grams from the original document content – in this case a trial
+transcript from the <em>Old Bailey Online</em>. You can use your program to
+select a keyword and the computer will output all instances of that
+keyword, along with the words to the left and right of it, making it
+easy to see at a glance how the keyword is used.</p>
+<p>Once the KWICs have been created, they are then wrapped in HTML and sent
+to the browser where they can be viewed. This reinforces what was
+learned in <a href="output-data-as-html-file">Output Data as HTML File</a>, opting for a slightly
+different output.</p>
+<p>At the end of this lesson, you will be able to extract all possible
+n-grams from the text. In the next lesson, you will be learn how to
+output all of the n-grams of a given keyword in a document downloaded
+from the Internet, and display them clearly in your browser window.</p>
+<h2 id="files-needed-for-this-lesson">Files Needed For This Lesson</h2>
+<ul>
+<li><code>obo.py</code></li>
+</ul>
+<p>If you do not have these files from the previous lesson, you can
+download programming-historian-7, a <a href="/assets/python-lessons7.zip">zip file from the previous lesson</a></p>
+<h2 id="from-text-to-n-grams-to-kwic">From Text to N-Grams to KWIC</h2>
+<p>Now that you know how to harvest the textual content of a web page
+automatically with Python, and have begun to use strings, lists and
+dictionaries for text processing, there are many other things that you
+can do with the text besides counting frequencies. People who study the
+statistical properties of language have found that studying linear
+sequences of linguistic units can tell us a lot about a text. These
+linear sequences are known as <em>bigrams</em> (2 units), <em>trigrams</em> (3 units), or
+more generally as <em>n-grams</em>.</p>
+<p>You have probably seen n-grams many times before. They are commonly used
+on search results pages to give you a preview of where your keyword
+appears in a document and what the surrounding context of the keyword
+is. This application of n-grams is known as keywords in context (often
+abbreviated as KWIC). For example, if the string in question were &quot;it
+was the best of times it was the worst of times it was the age of wisdom
+it was the age of foolishness&quot; then a 7-gram for the keyword &quot;wisdom&quot;
+would be:</p>
+<pre><code>the age of wisdom it was the
+</code></pre>
+<p>An n-gram could contain any type of linguistic unit you like. For
+historians you are most likely to use characters as in the bigram &quot;qu&quot;
+or words as in the trigram &quot;the dog barked&quot;; however, you could also use
+phonemes, syllables, or any number of other units depending on your
+research question.</p>
+<p>What we&#39;re going to do next is develop the ability to display KWIC for
+any keyword in a body of text, showing it in the context of a fixed
+number of words on either side. As before, we will wrap the output so
+that it can be viewed in Firefox and added easily to Zotero.</p>
+<h2 id="from-text-to-n-grams">From Text to N-grams</h2>
+<p>Since we want to work with words as opposed to characters or phonemes,
+it will be much easier to create n-grams using a list of words rather
+than strings. As you already know, Python can easily turn a string into
+a list using the <code>split</code> operation. Once split it becomes simple to
+retrieve a subsequence of adjacent words in the list by using a <em>slice</em>,
+represented as two indexes separated by a colon. This was introduced
+when working with strings in <a href="/lessons/manipulating-strings-in-python">Manipulating Strings in Python</a>.</p>
+<pre><code class="language-python">message9 = &quot;Hello World&quot;
+message9a = message9[1:8]
+print(message9a)
+-&gt; ello Wo
+</code></pre>
+<p>However, we can also use this technique to take a predetermined number
+of neighbouring words from the list with very little effort. Study the
+following examples, which you can try out in a Python Shell.</p>
+<pre><code class="language-python">wordstring = &#39;it was the best of times it was the worst of times &#39;
+wordstring += &#39;it was the age of wisdom it was the age of foolishness&#39;
+wordlist = wordstring.split()
+
+print(wordlist[0:4])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;]
+
+print(wordlist[0:6])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;]
+
+print(wordlist[6:10])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;]
+
+print(wordlist[0:12])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;]
+
+print(wordlist[:12])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;]
+
+print(wordlist[12:])
+-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;, &#39;wisdom&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;, &#39;foolishness&#39;]
+</code></pre>
+<p>In these examples we have used the <code>slice</code> method to return parts of our
+list. Note that there are two sides to the colon in a slice. If the
+right of the colon is left blank as in the last example above, the
+program knows to automatically continue to the end – in this case, to
+the end of the list. The second last example above shows that we can
+start at the beginning by leaving the space before the colon empty. This
+is a handy shortcut available to keep your code shorter.</p>
+<p>You can also use variables to represent the index positions. Used in
+conjunction with a <code>for</code> loop, you could easily create every possible
+n-gram of your list. The following example returns all 5-grams of our
+string from the example above.</p>
+<pre><code class="language-python">i = 0
+for items in wordlist:
+    print(wordlist[i: i+5])
+    i += 1
+</code></pre>
+<p>Keeping with our modular approach, we will create a function and save it
+to the <code>obo.py</code> module that can create n-grams for us. Study and type or
+copy the following code:</p>
+<pre><code class="language-python"># Given a list of words and a number n, return a list
+# of n-grams.
+
+def getNGrams(wordlist, n):
+    return [wordlist[i:i+n] for i in range(len(wordlist)-(n-1))]
+</code></pre>
+<p>This function may look a little confusing as there is a lot going on
+here in not very much code. It uses a <em>list comprehension</em> to keep the
+code compact. The following example does exactly the same thing:</p>
+<pre><code class="language-python">def getNGrams(wordlist, n):
+    ngrams = []
+    for i in range(len(wordlist)-(n-1)):
+        ngrams.append(wordlist[i:i+n])
+    return ngrams
+</code></pre>
+<p>Use whichever makes most sense to you.</p>
+<p>A concept that may still be confusing to you are the two function
+arguments. Notice that our function has two variable names in the
+parentheses after its name when we declared it: <em>wordlist</em>, <em>n</em>. These two
+variables are the function arguments. When you call (run) this function,
+these variables will be used by the function for its solution. Without
+these arguments there is not enough information to do the calculations.
+In this case, the two pieces of information are the list of words you
+want to turn into n-grams (wordlist), and the number of words you want
+in each n-gram (n). For the function to work it needs both, so you call
+it in like this (save the following as <code>useGetNGrams.py</code> and run):</p>
+<pre><code class="language-python">#useGetNGrams.py
+
+import obo
+
+wordstring = &#39;it was the best of times it was the worst of times &#39;
+wordstring += &#39;it was the age of wisdom it was the age of foolishness&#39;
+allMyWords = wordstring.split()
+
+print(obo.getNGrams(allMyWords, 5))
+</code></pre>
+<p>Notice that the arguments you enter do not have to have the same names
+as the arguments named in the function declaration. Python knows to use
+<em>allMyWords</em> everywhere in the function that <em>wordlist</em> appears, since this
+is given as the first argument. Likewise, all instances of <em>n</em> will be
+replaced by the integer 5 in this case. Try changing the 5 to a string,
+such as &quot;elephants&quot; and see what happens when you run your program. Note
+that because <em>n</em> is being used as an integer, you have to ensure the
+argument sent is also an integer. The same is true for strings, floats
+or any other variable type sent as an argument.</p>
+<p>You can also use a Python shell to play around with the code to get a
+better understanding of how it works. Paste the function declaration for
+<em>getNGrams</em> (either of the two functions above) into your Python shell.</p>
+<pre><code class="language-python">test1 = &#39;here are four words&#39;
+test2 = &#39;this test sentence has eight words in it&#39;
+
+getNGrams(test1.split(), 5)
+-&gt; []
+
+getNGrams(test2.split(), 5)
+-&gt; [[&#39;this&#39;, &#39;test&#39;, &#39;sentence&#39;, &#39;has&#39;, &#39;eight&#39;],
+[&#39;test&#39;, &#39;sentence&#39;, &#39;has&#39;, &#39;eight&#39;, &#39;words&#39;],
+[&#39;sentence&#39;, &#39;has&#39;, &#39;eight&#39;, &#39;words&#39;, &#39;in&#39;],
+[&#39;has&#39;, &#39;eight&#39;, &#39;words&#39;, &#39;in&#39;, &#39;it&#39;]]
+</code></pre>
+<p>There are two concepts that we see in this example of which you need to
+be aware. Firstly, because our function expects a list of words rather
+than a string, we have to convert the strings into lists before our
+function can handle them. We could have done this by adding another line
+of code above the function call, but instead we used the <code>split</code> method
+directly in the function argument as a bit of a shortcut.</p>
+<p>Secondly, why did the first example return an empty list rather than the
+n-grams we were after? In <em>test1</em>, we have tried to ask for an n-gram that
+is longer than the number of words in our list. This has resulted in a
+blank list. In <em>test2</em> we have no such problem and get all possible
+5-grams for the longer list of words. If you wanted to you could adapt
+your function to print a warning message or to return the entire string
+instead of an empty list.</p>
+<p>We now have a way to extract all possible n-grams from a body of text.
+In the next lesson, we can focus our attention on isolating those
+n-grams that are of interest to us.</p>
+<h2 id="code-syncing">Code Syncing</h2>
+<p>To follow along with future lessons it is important that you have the
+right files and programs in your &quot;programming-historian&quot; directory. At
+the end of each chapter you can download the &quot;programming-historian&quot; zip
+file to make sure you have the correct code. If you are following along
+with the Mac / Linux version you may have to open the <code>obo.py</code> file and
+change &quot;file:///Users/username/Desktop/programming-historian/&quot; to the
+path to the directory on your own computer.</p>
+<ul>
+<li>python-lessons8.py (<a href="/assets/python-lessons8.zip">zip sync</a>)</li>
+</ul>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="keywords-in-context-using-n-grams/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Keywords in Context (Using n-grams) with Python\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\",\"Frederik Elwert\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"presenting\",\"topics\":[\"python\"],\"abstract\":\"This lesson takes the frequency pairs collected in \\\"Counting Frequencies\\\" and outputs them in HTML.\\n\",\"next\":\"output-keywords-in-context-in-html-file\",\"previous\":\"output-data-as-html-file\",\"series_total\":\"15 lessons\",\"sequence\":13,\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Fkeywords-in-context-using-n-grams\",\"avatar_alt\":\"A figure dropping two bottles of alcohol\",\"doi\":\"10.46430\u002Fphen0010\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003ELike in \u003Ca href=\\\"\u002Flessons\u002Foutput-data-as-html-file\\\"\u003EOutput Data as HTML File\u003C\u002Fa\u003E, this lesson takes the frequency\\npairs collected in \u003Ca href=\\\"\u002Flessons\u002Fcounting-frequencies\\\"\u003ECounting Frequencies\u003C\u002Fa\u003E and outputs them in HTML.\\nThis time the focus is on keywords in context (KWIC) which creates\\nn-grams from the original document content – in this case a trial\\ntranscript from the \u003Cem\u003EOld Bailey Online\u003C\u002Fem\u003E. You can use your program to\\nselect a keyword and the computer will output all instances of that\\nkeyword, along with the words to the left and right of it, making it\\neasy to see at a glance how the keyword is used.\u003C\u002Fp\u003E\\n\u003Cp\u003EOnce the KWICs have been created, they are then wrapped in HTML and sent\\nto the browser where they can be viewed. This reinforces what was\\nlearned in \u003Ca href=\\\"output-data-as-html-file\\\"\u003EOutput Data as HTML File\u003C\u002Fa\u003E, opting for a slightly\\ndifferent output.\u003C\u002Fp\u003E\\n\u003Cp\u003EAt the end of this lesson, you will be able to extract all possible\\nn-grams from the text. In the next lesson, you will be learn how to\\noutput all of the n-grams of a given keyword in a document downloaded\\nfrom the Internet, and display them clearly in your browser window.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"files-needed-for-this-lesson\\\"\u003EFiles Needed For This Lesson\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EIf you do not have these files from the previous lesson, you can\\ndownload programming-historian-7, a \u003Ca href=\\\"\u002Fassets\u002Fpython-lessons7.zip\\\"\u003Ezip file from the previous lesson\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"from-text-to-n-grams-to-kwic\\\"\u003EFrom Text to N-Grams to KWIC\u003C\u002Fh2\u003E\\n\u003Cp\u003ENow that you know how to harvest the textual content of a web page\\nautomatically with Python, and have begun to use strings, lists and\\ndictionaries for text processing, there are many other things that you\\ncan do with the text besides counting frequencies. People who study the\\nstatistical properties of language have found that studying linear\\nsequences of linguistic units can tell us a lot about a text. These\\nlinear sequences are known as \u003Cem\u003Ebigrams\u003C\u002Fem\u003E (2 units), \u003Cem\u003Etrigrams\u003C\u002Fem\u003E (3 units), or\\nmore generally as \u003Cem\u003En-grams\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou have probably seen n-grams many times before. They are commonly used\\non search results pages to give you a preview of where your keyword\\nappears in a document and what the surrounding context of the keyword\\nis. This application of n-grams is known as keywords in context (often\\nabbreviated as KWIC). For example, if the string in question were &quot;it\\nwas the best of times it was the worst of times it was the age of wisdom\\nit was the age of foolishness&quot; then a 7-gram for the keyword &quot;wisdom&quot;\\nwould be:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ethe age of wisdom it was the\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAn n-gram could contain any type of linguistic unit you like. For\\nhistorians you are most likely to use characters as in the bigram &quot;qu&quot;\\nor words as in the trigram &quot;the dog barked&quot;; however, you could also use\\nphonemes, syllables, or any number of other units depending on your\\nresearch question.\u003C\u002Fp\u003E\\n\u003Cp\u003EWhat we&#39;re going to do next is develop the ability to display KWIC for\\nany keyword in a body of text, showing it in the context of a fixed\\nnumber of words on either side. As before, we will wrap the output so\\nthat it can be viewed in Firefox and added easily to Zotero.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"from-text-to-n-grams\\\"\u003EFrom Text to N-grams\u003C\u002Fh2\u003E\\n\u003Cp\u003ESince we want to work with words as opposed to characters or phonemes,\\nit will be much easier to create n-grams using a list of words rather\\nthan strings. As you already know, Python can easily turn a string into\\na list using the \u003Ccode\u003Esplit\u003C\u002Fcode\u003E operation. Once split it becomes simple to\\nretrieve a subsequence of adjacent words in the list by using a \u003Cem\u003Eslice\u003C\u002Fem\u003E,\\nrepresented as two indexes separated by a colon. This was introduced\\nwhen working with strings in \u003Ca href=\\\"\u002Flessons\u002Fmanipulating-strings-in-python\\\"\u003EManipulating Strings in Python\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage9 = &quot;Hello World&quot;\\nmessage9a = message9[1:8]\\nprint(message9a)\\n-&gt; ello Wo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EHowever, we can also use this technique to take a predetermined number\\nof neighbouring words from the list with very little effort. Study the\\nfollowing examples, which you can try out in a Python Shell.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Ewordstring = &#39;it was the best of times it was the worst of times &#39;\\nwordstring += &#39;it was the age of wisdom it was the age of foolishness&#39;\\nwordlist = wordstring.split()\\n\\nprint(wordlist[0:4])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;]\\n\\nprint(wordlist[0:6])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;]\\n\\nprint(wordlist[6:10])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;]\\n\\nprint(wordlist[0:12])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;]\\n\\nprint(wordlist[:12])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;]\\n\\nprint(wordlist[12:])\\n-&gt; [&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;, &#39;wisdom&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;, &#39;foolishness&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIn these examples we have used the \u003Ccode\u003Eslice\u003C\u002Fcode\u003E method to return parts of our\\nlist. Note that there are two sides to the colon in a slice. If the\\nright of the colon is left blank as in the last example above, the\\nprogram knows to automatically continue to the end – in this case, to\\nthe end of the list. The second last example above shows that we can\\nstart at the beginning by leaving the space before the colon empty. This\\nis a handy shortcut available to keep your code shorter.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou can also use variables to represent the index positions. Used in\\nconjunction with a \u003Ccode\u003Efor\u003C\u002Fcode\u003E loop, you could easily create every possible\\nn-gram of your list. The following example returns all 5-grams of our\\nstring from the example above.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Ei = 0\\nfor items in wordlist:\\n    print(wordlist[i: i+5])\\n    i += 1\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EKeeping with our modular approach, we will create a function and save it\\nto the \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E module that can create n-grams for us. Study and type or\\ncopy the following code:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Given a list of words and a number n, return a list\\n# of n-grams.\\n\\ndef getNGrams(wordlist, n):\\n    return [wordlist[i:i+n] for i in range(len(wordlist)-(n-1))]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis function may look a little confusing as there is a lot going on\\nhere in not very much code. It uses a \u003Cem\u003Elist comprehension\u003C\u002Fem\u003E to keep the\\ncode compact. The following example does exactly the same thing:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Edef getNGrams(wordlist, n):\\n    ngrams = []\\n    for i in range(len(wordlist)-(n-1)):\\n        ngrams.append(wordlist[i:i+n])\\n    return ngrams\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EUse whichever makes most sense to you.\u003C\u002Fp\u003E\\n\u003Cp\u003EA concept that may still be confusing to you are the two function\\narguments. Notice that our function has two variable names in the\\nparentheses after its name when we declared it: \u003Cem\u003Ewordlist\u003C\u002Fem\u003E, \u003Cem\u003En\u003C\u002Fem\u003E. These two\\nvariables are the function arguments. When you call (run) this function,\\nthese variables will be used by the function for its solution. Without\\nthese arguments there is not enough information to do the calculations.\\nIn this case, the two pieces of information are the list of words you\\nwant to turn into n-grams (wordlist), and the number of words you want\\nin each n-gram (n). For the function to work it needs both, so you call\\nit in like this (save the following as \u003Ccode\u003EuseGetNGrams.py\u003C\u002Fcode\u003E and run):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#useGetNGrams.py\\n\\nimport obo\\n\\nwordstring = &#39;it was the best of times it was the worst of times &#39;\\nwordstring += &#39;it was the age of wisdom it was the age of foolishness&#39;\\nallMyWords = wordstring.split()\\n\\nprint(obo.getNGrams(allMyWords, 5))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENotice that the arguments you enter do not have to have the same names\\nas the arguments named in the function declaration. Python knows to use\\n\u003Cem\u003EallMyWords\u003C\u002Fem\u003E everywhere in the function that \u003Cem\u003Ewordlist\u003C\u002Fem\u003E appears, since this\\nis given as the first argument. Likewise, all instances of \u003Cem\u003En\u003C\u002Fem\u003E will be\\nreplaced by the integer 5 in this case. Try changing the 5 to a string,\\nsuch as &quot;elephants&quot; and see what happens when you run your program. Note\\nthat because \u003Cem\u003En\u003C\u002Fem\u003E is being used as an integer, you have to ensure the\\nargument sent is also an integer. The same is true for strings, floats\\nor any other variable type sent as an argument.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou can also use a Python shell to play around with the code to get a\\nbetter understanding of how it works. Paste the function declaration for\\n\u003Cem\u003EgetNGrams\u003C\u002Fem\u003E (either of the two functions above) into your Python shell.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Etest1 = &#39;here are four words&#39;\\ntest2 = &#39;this test sentence has eight words in it&#39;\\n\\ngetNGrams(test1.split(), 5)\\n-&gt; []\\n\\ngetNGrams(test2.split(), 5)\\n-&gt; [[&#39;this&#39;, &#39;test&#39;, &#39;sentence&#39;, &#39;has&#39;, &#39;eight&#39;],\\n[&#39;test&#39;, &#39;sentence&#39;, &#39;has&#39;, &#39;eight&#39;, &#39;words&#39;],\\n[&#39;sentence&#39;, &#39;has&#39;, &#39;eight&#39;, &#39;words&#39;, &#39;in&#39;],\\n[&#39;has&#39;, &#39;eight&#39;, &#39;words&#39;, &#39;in&#39;, &#39;it&#39;]]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThere are two concepts that we see in this example of which you need to\\nbe aware. Firstly, because our function expects a list of words rather\\nthan a string, we have to convert the strings into lists before our\\nfunction can handle them. We could have done this by adding another line\\nof code above the function call, but instead we used the \u003Ccode\u003Esplit\u003C\u002Fcode\u003E method\\ndirectly in the function argument as a bit of a shortcut.\u003C\u002Fp\u003E\\n\u003Cp\u003ESecondly, why did the first example return an empty list rather than the\\nn-grams we were after? In \u003Cem\u003Etest1\u003C\u002Fem\u003E, we have tried to ask for an n-gram that\\nis longer than the number of words in our list. This has resulted in a\\nblank list. In \u003Cem\u003Etest2\u003C\u002Fem\u003E we have no such problem and get all possible\\n5-grams for the longer list of words. If you wanted to you could adapt\\nyour function to print a warning message or to return the entire string\\ninstead of an empty list.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe now have a way to extract all possible n-grams from a body of text.\\nIn the next lesson, we can focus our attention on isolating those\\nn-grams that are of interest to us.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"code-syncing\\\"\u003ECode Syncing\u003C\u002Fh2\u003E\\n\u003Cp\u003ETo follow along with future lessons it is important that you have the\\nright files and programs in your &quot;programming-historian&quot; directory. At\\nthe end of each chapter you can download the &quot;programming-historian&quot; zip\\nfile to make sure you have the correct code. If you are following along\\nwith the Mac \u002F Linux version you may have to open the \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E file and\\nchange &quot;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&quot; to the\\npath to the directory on your own computer.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-lessons8.py (\u003Ca href=\\\"\u002Fassets\u002Fpython-lessons8.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+	</body>
+</html>

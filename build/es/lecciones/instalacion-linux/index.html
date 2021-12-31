@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/es/lecciones/instalacion-linux"),
+					params: {lang:"es",lessons:"lecciones",slug:"instalacion-linux"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the es edition.
+
+<h1>Creación de un entorno de desarrollo integrado para Python (Linux)</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<p>Gracias a John Fink por proveer las bases de esta sección. Estas instrucciones son para Ubuntu 18.04 LTS, pero deben funcionar para cualquier distribución y APT como Debian Linux Mint, siempre y cuando tengas instalado <a href="https://es.wikipedia.org/wiki/Sudo">sudo</a>.</p>
+<h2 id="respalda-tu-computadora">Respalda tu computadora</h2>
+<p>Siempre es importante asegurarse de tener copias de seguridad hechas de modo regular y, sobre todo, recientes. Este es un buen consejo de por vida y no se limita a los momentos en los que estés dedicado a programar.</p>
+<h2 id="instalar-python-v3">Instalar Python v.3</h2>
+<ol>
+<li>Abre terminal (<code>Dash Home</code>, entonces teclea <code>Terminal</code>, luego haz clic en el icono de Terminal).</li>
+<li>En Terminal teclea: <code>sudo apt-get install python3</code></li>
+<li>Escribe tu contraseña de administrador del sistema y entonces teclea <code>Y</code>  para finalizar la instalación. Ten en cuenta que probablemente Python 3 esté instalado previamente en el sistema, así que no entres en pánico si Ubuntu te lo dice.</li>
+</ol>
+<h2 id="crea-un-directorio">Crea un directorio</h2>
+<p>Guardarás tus programas de Python en un directorio. Puede ser donde quiera que te guste, pero probablemente lo mejor es colocarlo en el directorio de Home. Algo como esto en la ventana abierta de tu terminal hará el truco:</p>
+<pre><code>cd ~
+mkdir programming-historian
+</code></pre>
+<h2 id="instala-komodo-edit">Instala Komodo Edit</h2>
+<p>Komodo Edit es un editor de texto libre y de código abierto, pero tienes muchas <a href="https://wiki.python.org/moin/PythonEditors/">opciones de editores de texto</a> si lo prefieres. Puedes descargar desde el <a href="http://komodoide.com/komodo-edit/">sitio web de Komodo Edit</a>. Una vez que lo has descargado, ábrelo con el <em>package manager</em> de Ubuntu, extraerlo en el directorio de Home y seguir las instrucciones de instalación. Si estás siguiendo estas instrucciones e instalado Komodo Edit, abre la carpeta de Home, ve al directorio <code>Komodo-Edit-11/bin</code>  y haz clic en <code>Komodo</code>. Puedes también hacer clic con el botón derecho del mouse sobre el icono de Komodo en el lanzador (<em>launcher</em>) , y hacer clic en &quot;<code>Lock to Launcher</code>&quot; para tenerlo de manera permanente en la barra del lanzador.</p>
+<h2 id="haz-un-comando-de-ejecución-de-python-en-komodo-edit">Haz un comando de ejecución de Python en Komodo Edit</h2>
+<ol>
+<li>En Komodo Edit, haz clic en el icono de engranaje bajo <code>Toolbox</code> y selecciona <code>New Command</code></li>
+<li>En el campo superior escribe <code>Run Python File</code></li>
+<li>En el campo ‘<em>Command</em>’ escribe <code>%(python3) %f</code>, Haz clic en OK al pie de la ventana de insertar comando.</li>
+</ol>
+<h2 id="paso-2--hola-mundo-en-python">Paso 2 – “Hola Mundo” en Python</h2>
+<p>Es tradicional que para comenzar a programar en un nuevo lenguaje tratemos de crear un programa que despliegue la frase “Hola Mundo” y termine. Vamos a mostrar cómo hacer esto en Python y en HTML.</p>
+<p>Python es un buen lenguaje de programación para principiantes gracias a que es un lenguaje de programación de muy alto nivel. Es posible, en otras palabras escribir programas cortos que realizan una gran cantidad de procesos. Entre más corto es el programa, lo más probable es que todo quepa en una pantalla y que sea más fácil hacer un seguimiento de todo en tu mente.</p>
+<p>Python es un lenguaje de programación &quot;interpretado&quot;. Esto significa que hay un programa de cómputo especial (conocido como intérprete) que sabe cómo seguir las instrucciones escritas en este lenguaje. Una manera de usar el intérprete es guardar todas tus instrucciones en un archivo y luego ejecutar el intérprete sobre ese archivo. El archivo que contiene instrucciones de lenguaje de programación es conocido como programa. El intérprete ejecutará cada una de las instrucciones que le hayas dado en tu programa y luego se detendrá. Vamos a intentar esto.</p>
+<p>En tu editor de texto crea un nuevo archivo y escribe el siguiente programa de dos líneas y guárdalo en tu carpeta <code>programming-historian</code> con el nombre <code>hola-mundo.py</code>.</p>
+<pre><code class="language-python"># hola-mundo.py
+print(&#39;hola mundo&#39;)
+</code></pre>
+<p>El editor de texto que seleccionaste utilizar debe tener un botón <code>Run</code> que te permitirá ejecutar tu programa. Si todo funciona bien, deberás ver algo como sigue (El ejemplo es como se ve en Komodo Edit.):</p>
+<p>% include figure.html caption=&quot;hello world en Komodo Edit en Linux&quot; filename=&quot;komodo-edit-output-linux.png&quot; %}</p>
+<h2 id="interactuar-con-el-intérprete-de-comandos-shell-de-python">Interactuar con el intérprete de comandos (<em>shell</em>) de Python</h2>
+<p>Otra manera de interactuar con un intérprete es usando lo que se conoce como <em>shell</em> o intérprete de comandos. Se puede escribir en una declaración y oprimir la tecla Enter, y el <em>shell</em> responderá a tus comandos. Utilizar un <em>shell</em> es una excelente forma de comprobar que la construcción de tus declaraciones es adecuada al asegurarte que hace lo que tu piensas que debería hacer.</p>
+<p>Puedes ejecutar un <em>shell</em> de Python abriendo Terminal. Para Linux ve a  <code>Aplicaciones -&gt; Accesorios -&gt; Terminal</code> y haz lo mismo. Frente al prompt del intérprete de comandos escribe:</p>
+<pre><code class="language-python">python
+</code></pre>
+<p>Oprime entonces la tecla Enter. Con ello aparecerá el prompt de Python lo que significa que puedes usar ahora comandos de Python en el <em>shell</em>. Ahora escribe:</p>
+<pre><code class="language-python">print(&#39;Hola Mundo&#39;)
+</code></pre>
+<p>Oprime la tecla Enter. La computadora responderá con:</p>
+<pre><code class="language-python">Hola Mundo
+</code></pre>
+<p>Cuando queramos representar la interacción con el intérprete de comandos usaremos -&gt; para indicar la respuesta del <em>shell</em> a tus comandos, como se muestra inmediatamente:</p>
+<pre><code class="language-python">print(&#39;Hola Mundo&#39;)
+-&gt; Hola Mundo
+</code></pre>
+<p>En la pantalla de tu computadora aparecerá de esta manera:</p>
+<p>{% include figure.html caption=&quot;hello world in Terminal on Linux&quot; filename=&quot;terminal-output-linux.png&quot; %}</p>
+<p>Ahora que tú y tu computadora están en marcha y funcionando, podemos movernos hacia unas tareas algo más interesantes. Si estás trabajando de manera ordenada las lecciones de Python, te sugerimos que pases ahora a la lección <a href="/es/lecciones/ver-archivos-html">Para entender páginas web y HTML</a>.</p>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="instalacion-linux/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Creación de un entorno de desarrollo integrado para Python (Linux)\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"date\":\"2012-07-17T00:00:00.000Z\",\"translation_date\":\"2017-03-15T00:00:00.000Z\",\"editors\":[\"Miriam Posner\"],\"reviewers\":[\"Jim Clifford\",\"Amanda Morton\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Adam Crymble\"],\"translation-reviewer\":[\"Jairo A. Melo\",\"Maria José Afanador-Llach\",\"Antonio Rojas Castro\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F38\",\"layout\":\"lesson\",\"original\":\"linux-installation\",\"avatar_alt\":\"Tres hombres tocando instrumentos musicales\",\"difficulty\":1,\"activity\":\"transforming\",\"topics\":[\"get-ready\",\"python\"],\"abstract\":\"Este tutorial te ayudará a configurar un entorno de desarrollo integrado para Python en un computador con el sistema operativo de Linux.\",\"doi\":\"10.46430\u002Fphes0009\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Cp\u003EGracias a John Fink por proveer las bases de esta sección. Estas instrucciones son para Ubuntu 18.04 LTS, pero deben funcionar para cualquier distribución y APT como Debian Linux Mint, siempre y cuando tengas instalado \u003Ca href=\\\"https:\u002F\u002Fes.wikipedia.org\u002Fwiki\u002FSudo\\\"\u003Esudo\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"respalda-tu-computadora\\\"\u003ERespalda tu computadora\u003C\u002Fh2\u003E\\n\u003Cp\u003ESiempre es importante asegurarse de tener copias de seguridad hechas de modo regular y, sobre todo, recientes. Este es un buen consejo de por vida y no se limita a los momentos en los que estés dedicado a programar.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"instalar-python-v3\\\"\u003EInstalar Python v.3\u003C\u002Fh2\u003E\\n\u003Col\u003E\\n\u003Cli\u003EAbre terminal (\u003Ccode\u003EDash Home\u003C\u002Fcode\u003E, entonces teclea \u003Ccode\u003ETerminal\u003C\u002Fcode\u003E, luego haz clic en el icono de Terminal).\u003C\u002Fli\u003E\\n\u003Cli\u003EEn Terminal teclea: \u003Ccode\u003Esudo apt-get install python3\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003EEscribe tu contraseña de administrador del sistema y entonces teclea \u003Ccode\u003EY\u003C\u002Fcode\u003E  para finalizar la instalación. Ten en cuenta que probablemente Python 3 esté instalado previamente en el sistema, así que no entres en pánico si Ubuntu te lo dice.\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Ch2 id=\\\"crea-un-directorio\\\"\u003ECrea un directorio\u003C\u002Fh2\u003E\\n\u003Cp\u003EGuardarás tus programas de Python en un directorio. Puede ser donde quiera que te guste, pero probablemente lo mejor es colocarlo en el directorio de Home. Algo como esto en la ventana abierta de tu terminal hará el truco:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ecd ~\\nmkdir programming-historian\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"instala-komodo-edit\\\"\u003EInstala Komodo Edit\u003C\u002Fh2\u003E\\n\u003Cp\u003EKomodo Edit es un editor de texto libre y de código abierto, pero tienes muchas \u003Ca href=\\\"https:\u002F\u002Fwiki.python.org\u002Fmoin\u002FPythonEditors\u002F\\\"\u003Eopciones de editores de texto\u003C\u002Fa\u003E si lo prefieres. Puedes descargar desde el \u003Ca href=\\\"http:\u002F\u002Fkomodoide.com\u002Fkomodo-edit\u002F\\\"\u003Esitio web de Komodo Edit\u003C\u002Fa\u003E. Una vez que lo has descargado, ábrelo con el \u003Cem\u003Epackage manager\u003C\u002Fem\u003E de Ubuntu, extraerlo en el directorio de Home y seguir las instrucciones de instalación. Si estás siguiendo estas instrucciones e instalado Komodo Edit, abre la carpeta de Home, ve al directorio \u003Ccode\u003EKomodo-Edit-11\u002Fbin\u003C\u002Fcode\u003E  y haz clic en \u003Ccode\u003EKomodo\u003C\u002Fcode\u003E. Puedes también hacer clic con el botón derecho del mouse sobre el icono de Komodo en el lanzador (\u003Cem\u003Elauncher\u003C\u002Fem\u003E) , y hacer clic en &quot;\u003Ccode\u003ELock to Launcher\u003C\u002Fcode\u003E&quot; para tenerlo de manera permanente en la barra del lanzador.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"haz-un-comando-de-ejecución-de-python-en-komodo-edit\\\"\u003EHaz un comando de ejecución de Python en Komodo Edit\u003C\u002Fh2\u003E\\n\u003Col\u003E\\n\u003Cli\u003EEn Komodo Edit, haz clic en el icono de engranaje bajo \u003Ccode\u003EToolbox\u003C\u002Fcode\u003E y selecciona \u003Ccode\u003ENew Command\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003EEn el campo superior escribe \u003Ccode\u003ERun Python File\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003EEn el campo ‘\u003Cem\u003ECommand\u003C\u002Fem\u003E’ escribe \u003Ccode\u003E%(python3) %f\u003C\u002Fcode\u003E, Haz clic en OK al pie de la ventana de insertar comando.\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Ch2 id=\\\"paso-2--hola-mundo-en-python\\\"\u003EPaso 2 – “Hola Mundo” en Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EEs tradicional que para comenzar a programar en un nuevo lenguaje tratemos de crear un programa que despliegue la frase “Hola Mundo” y termine. Vamos a mostrar cómo hacer esto en Python y en HTML.\u003C\u002Fp\u003E\\n\u003Cp\u003EPython es un buen lenguaje de programación para principiantes gracias a que es un lenguaje de programación de muy alto nivel. Es posible, en otras palabras escribir programas cortos que realizan una gran cantidad de procesos. Entre más corto es el programa, lo más probable es que todo quepa en una pantalla y que sea más fácil hacer un seguimiento de todo en tu mente.\u003C\u002Fp\u003E\\n\u003Cp\u003EPython es un lenguaje de programación &quot;interpretado&quot;. Esto significa que hay un programa de cómputo especial (conocido como intérprete) que sabe cómo seguir las instrucciones escritas en este lenguaje. Una manera de usar el intérprete es guardar todas tus instrucciones en un archivo y luego ejecutar el intérprete sobre ese archivo. El archivo que contiene instrucciones de lenguaje de programación es conocido como programa. El intérprete ejecutará cada una de las instrucciones que le hayas dado en tu programa y luego se detendrá. Vamos a intentar esto.\u003C\u002Fp\u003E\\n\u003Cp\u003EEn tu editor de texto crea un nuevo archivo y escribe el siguiente programa de dos líneas y guárdalo en tu carpeta \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E con el nombre \u003Ccode\u003Ehola-mundo.py\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# hola-mundo.py\\nprint(&#39;hola mundo&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEl editor de texto que seleccionaste utilizar debe tener un botón \u003Ccode\u003ERun\u003C\u002Fcode\u003E que te permitirá ejecutar tu programa. Si todo funciona bien, deberás ver algo como sigue (El ejemplo es como se ve en Komodo Edit.):\u003C\u002Fp\u003E\\n\u003Cp\u003E% include figure.html caption=&quot;hello world en Komodo Edit en Linux&quot; filename=&quot;komodo-edit-output-linux.png&quot; %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"interactuar-con-el-intérprete-de-comandos-shell-de-python\\\"\u003EInteractuar con el intérprete de comandos (\u003Cem\u003Eshell\u003C\u002Fem\u003E) de Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EOtra manera de interactuar con un intérprete es usando lo que se conoce como \u003Cem\u003Eshell\u003C\u002Fem\u003E o intérprete de comandos. Se puede escribir en una declaración y oprimir la tecla Enter, y el \u003Cem\u003Eshell\u003C\u002Fem\u003E responderá a tus comandos. Utilizar un \u003Cem\u003Eshell\u003C\u002Fem\u003E es una excelente forma de comprobar que la construcción de tus declaraciones es adecuada al asegurarte que hace lo que tu piensas que debería hacer.\u003C\u002Fp\u003E\\n\u003Cp\u003EPuedes ejecutar un \u003Cem\u003Eshell\u003C\u002Fem\u003E de Python abriendo Terminal. Para Linux ve a  \u003Ccode\u003EAplicaciones -&gt; Accesorios -&gt; Terminal\u003C\u002Fcode\u003E y haz lo mismo. Frente al prompt del intérprete de comandos escribe:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Epython\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EOprime entonces la tecla Enter. Con ello aparecerá el prompt de Python lo que significa que puedes usar ahora comandos de Python en el \u003Cem\u003Eshell\u003C\u002Fem\u003E. Ahora escribe:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;Hola Mundo&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EOprime la tecla Enter. La computadora responderá con:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EHola Mundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ECuando queramos representar la interacción con el intérprete de comandos usaremos -&gt; para indicar la respuesta del \u003Cem\u003Eshell\u003C\u002Fem\u003E a tus comandos, como se muestra inmediatamente:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;Hola Mundo&#39;)\\n-&gt; Hola Mundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEn la pantalla de tu computadora aparecerá de esta manera:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html caption=&quot;hello world in Terminal on Linux&quot; filename=&quot;terminal-output-linux.png&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EAhora que tú y tu computadora están en marcha y funcionando, podemos movernos hacia unas tareas algo más interesantes. Si estás trabajando de manera ordenada las lecciones de Python, te sugerimos que pases ahora a la lección \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fver-archivos-html\\\"\u003EPara entender páginas web y HTML\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\"}"}</script></div>
+	</body>
+</html>

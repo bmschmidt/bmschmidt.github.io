@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="modulepreload" href="/_app/start-c09d08cd.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+
+		<script type="module">
+			import { start } from "/_app/start-c09d08cd.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-de46afb2.js"),
+						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+					],
+					url: new URL("sveltekit://prerender/en/lessons/creating-and-viewing-html-files-with-python"),
+					params: {lang:"en",lessons:"lessons",slug:"creating-and-viewing-html-files-with-python"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
+<br>
+This is the en edition.
+
+<h1>Creating and Viewing HTML Files with Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2 id="lesson-goals">Lesson Goals</h2>
+<p>This lesson uses Python to create and view an HTML file. If you write
+programs that output HTML, you can use any browser to look at your
+results. This is especially convenient if your program is automatically
+creating hyperlinks or graphic entities like charts and diagrams.</p>
+<p>Here you will learn how to create HTML files with Python scripts, and
+how to use Python to automatically open an HTML file in Firefox.</p>
+<h2 id="files-needed-for-this-lesson">Files Needed For This Lesson</h2>
+<ul>
+<li><code>obo.py</code></li>
+</ul>
+<p>If you do not have these files from the previous lesson, you can
+download programming-historian-5, a <a href="/assets/python-lessons5.zip">zip file from the previous lesson</a>.</p>
+<h2 id="creating-html-with-python">Creating HTML with Python</h2>
+<p>At this point, we’ve started to learn how to use Python to download
+online sources and extract information from them automatically. Remember
+that our ultimate goal is to incorporate programming seamlessly into our
+research practice. In keeping with this goal, in this lesson and the
+next, we will learn how to output data back as HTML. This has a few
+advantages. First, by storing the information on our hard drive as an
+HTML file we can open it with Firefox and use <a href="http://zotero.org">Zotero</a> to index and
+annotate it later. Second, there are a wide range of visualization
+options for HTML which we can draw on later.</p>
+<p>If you have not done the <a href="http://www.w3schools.com/html/default.asp">W3 Schools HTML tutorial</a> yet, take a few
+minutes to do it before continuing. We’re going to be creating an HTML
+document using Python, so you will have to know what an HTML document
+is!</p>
+<h2 id="hello-world-in-html-using-python">&quot;Hello World&quot; in HTML using Python</h2>
+<p>One of the more powerful ideas in computer science is that a file that
+seems to contain code from one perspective can be seen as data from
+another. It is possible, in other words, to write programs that
+manipulate other programs. What we&#39;re going to do next is create an HTML
+file that says &quot;Hello World!&quot; using Python. We will do this by storing
+HTML <em>tags</em> in a multiline Python <em>string</em> and saving the contents to a new
+file. This file will be saved with an <code>.html</code> extension rather than a
+<code>.txt</code> extension.</p>
+<p>Typically an HTML file begins with a <a href="http://www.w3schools.com/tags/tag_doctype.asp">doctype declaration</a>. You saw
+this when you wrote an HTML &quot;Hello World&quot; program in an earlier lesson.
+To make reading our code easier, we will omit the doctype in this
+example. Recall a multi-line string is created by enclosing the text in
+three quotation marks (see below).</p>
+<pre><code class="language-python"># write-html.py
+
+f = open(&#39;helloworld.html&#39;,&#39;w&#39;)
+
+message = &quot;&quot;&quot;&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;&lt;p&gt;Hello World!&lt;/p&gt;&lt;/body&gt;
+&lt;/html&gt;&quot;&quot;&quot;
+
+f.write(message)
+f.close()
+</code></pre>
+<p>Save the above program as <code>write-html.py</code> and execute it. Use <em>File -&gt;
+Open</em> in your chosen text editor to open <code>helloworld.html</code> to verify that
+your program actually created the file. The content should look like
+this:</p>
+<p>{% include figure.html filename=&quot;hello-world-html.png&quot; caption=&quot;HTML Source Generated by Python Program&quot; %}</p>
+<p>Now go to your Firefox browser and choose <em>File -&gt; New Tab</em>, go to the
+tab, and choose <em>File -&gt; Open File</em>. Select <code>helloworld.html</code>. You
+should now be able to see your message in the browser. Take a moment to
+think about this: you now have the ability to write a program which can
+automatically create a webpage. There is no reason why you could not
+write a program to automatically create a whole website if you wanted
+to.</p>
+<h2 id="using-python-to-control-firefox">Using Python to Control Firefox</h2>
+<p>We automatically created an HTML file, but then we had to leave our
+editor and go to Firefox to open the file in a new tab. Wouldn&#39;t it be
+cool to have our Python program include that final step? Type or copy
+the code below and save it as <code>write-html-2.py</code>. When you execute it, it
+should create your HTML file and then automatically open it in a new tab
+in Firefox. Sweet!</p>
+<h3 id="mac-instructions">Mac Instructions</h3>
+<p>Mac users will have to specify to the precise location of the <code>.html</code>
+file on their computer. To do this, locate the <code>programming-historian</code>
+folder you created to do these tutorials, right-click it and select &quot;Get
+Info&quot;.</p>
+<p>You can then cut and paste the file location listed after &quot;Where:&quot; and
+make sure you include a trailing slash (/) to let the computer know you
+want something inside the directory (rather than the directory itself).</p>
+<pre><code class="language-python"># write-html-2-mac.py
+import webbrowser
+
+f = open(&#39;helloworld.html&#39;,&#39;w&#39;)
+
+message = &quot;&quot;&quot;&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;&lt;p&gt;Hello World!&lt;/p&gt;&lt;/body&gt;
+&lt;/html&gt;&quot;&quot;&quot;
+
+f.write(message)
+f.close()
+
+#Change path to reflect file location
+filename = &#39;file:///Users/username/Desktop/programming-historian/&#39; + &#39;helloworld.html&#39;
+webbrowser.open_new_tab(filename)
+</code></pre>
+<p>If you&#39;re getting a &quot;File not found&quot; error you haven&#39;t changed the
+filename path correctly.</p>
+<h3 id="windows-instructions">Windows Instructions</h3>
+<pre><code class="language-python"># write-html-2-windows.py
+
+import webbrowser
+
+f = open(&#39;helloworld.html&#39;,&#39;w&#39;)
+
+message = &quot;&quot;&quot;&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;&lt;p&gt;Hello World!&lt;/p&gt;&lt;/body&gt;
+&lt;/html&gt;&quot;&quot;&quot;
+
+f.write(message)
+f.close()
+
+webbrowser.open_new_tab(&#39;helloworld.html&#39;)
+</code></pre>
+<p>***</p>
+<p>Not only have you written a Python program that can write simple HTML,
+but you&#39;ve now controlled your Firefox browser using Python. In the next
+lesson, we turn to outputting the data that we have collected as an HTML
+file.</p>
+<h2 id="suggested-readings">Suggested Readings</h2>
+<ul>
+<li>Lutz, Learning Python<ul>
+<li>Re-read and review Chs. 1-17</li>
+</ul>
+</li>
+</ul>
+<h2 id="code-syncing">Code Syncing</h2>
+<p>To follow along with future lessons it is important that you have the
+right files and programs in your &quot;programming-historian&quot; directory. At
+the end of each lesson in the series you can download the &quot;programming-historian&quot; zip
+file to make sure you have the correct code. If you are following along
+with the Mac / Linux version you may have to open the <code>obo.py</code> file and
+change &quot;file:///Users/username/Desktop/programming-historian/&quot; to the
+path to the directory on your own computer.</p>
+<ul>
+<li>python-lessons6.zip <a href="/assets/python-lessons6.zip">zip sync</a></li>
+</ul>
+<!-- HTML_TAG_END -->
+
+<script type="application/json" data-type="svelte-data" data-url="creating-and-viewing-html-files-with-python/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Creating and Viewing HTML Files with Python\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"presenting\",\"topics\":[\"python\",\"website\"],\"abstract\":\"Here you will learn how to create HTML files with Python scripts, and how to use Python to automatically open an HTML file in Firefox.\",\"next\":\"output-data-as-html-file\",\"previous\":\"counting-frequencies\",\"series_total\":\"15 lessons\",\"sequence\":11,\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Fcreating-and-viewing-html-files-with-python\",\"avatar_alt\":\"Child drawing on a tablet\",\"doi\":\"10.46430\u002Fphen0004\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EThis lesson uses Python to create and view an HTML file. If you write\\nprograms that output HTML, you can use any browser to look at your\\nresults. This is especially convenient if your program is automatically\\ncreating hyperlinks or graphic entities like charts and diagrams.\u003C\u002Fp\u003E\\n\u003Cp\u003EHere you will learn how to create HTML files with Python scripts, and\\nhow to use Python to automatically open an HTML file in Firefox.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"files-needed-for-this-lesson\\\"\u003EFiles Needed For This Lesson\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EIf you do not have these files from the previous lesson, you can\\ndownload programming-historian-5, a \u003Ca href=\\\"\u002Fassets\u002Fpython-lessons5.zip\\\"\u003Ezip file from the previous lesson\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"creating-html-with-python\\\"\u003ECreating HTML with Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EAt this point, we’ve started to learn how to use Python to download\\nonline sources and extract information from them automatically. Remember\\nthat our ultimate goal is to incorporate programming seamlessly into our\\nresearch practice. In keeping with this goal, in this lesson and the\\nnext, we will learn how to output data back as HTML. This has a few\\nadvantages. First, by storing the information on our hard drive as an\\nHTML file we can open it with Firefox and use \u003Ca href=\\\"http:\u002F\u002Fzotero.org\\\"\u003EZotero\u003C\u002Fa\u003E to index and\\nannotate it later. Second, there are a wide range of visualization\\noptions for HTML which we can draw on later.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you have not done the \u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Fhtml\u002Fdefault.asp\\\"\u003EW3 Schools HTML tutorial\u003C\u002Fa\u003E yet, take a few\\nminutes to do it before continuing. We’re going to be creating an HTML\\ndocument using Python, so you will have to know what an HTML document\\nis!\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"hello-world-in-html-using-python\\\"\u003E&quot;Hello World&quot; in HTML using Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EOne of the more powerful ideas in computer science is that a file that\\nseems to contain code from one perspective can be seen as data from\\nanother. It is possible, in other words, to write programs that\\nmanipulate other programs. What we&#39;re going to do next is create an HTML\\nfile that says &quot;Hello World!&quot; using Python. We will do this by storing\\nHTML \u003Cem\u003Etags\u003C\u002Fem\u003E in a multiline Python \u003Cem\u003Estring\u003C\u002Fem\u003E and saving the contents to a new\\nfile. This file will be saved with an \u003Ccode\u003E.html\u003C\u002Fcode\u003E extension rather than a\\n\u003Ccode\u003E.txt\u003C\u002Fcode\u003E extension.\u003C\u002Fp\u003E\\n\u003Cp\u003ETypically an HTML file begins with a \u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Ftags\u002Ftag_doctype.asp\\\"\u003Edoctype declaration\u003C\u002Fa\u003E. You saw\\nthis when you wrote an HTML &quot;Hello World&quot; program in an earlier lesson.\\nTo make reading our code easier, we will omit the doctype in this\\nexample. Recall a multi-line string is created by enclosing the text in\\nthree quotation marks (see below).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# write-html.py\\n\\nf = open(&#39;helloworld.html&#39;,&#39;w&#39;)\\n\\nmessage = &quot;&quot;&quot;&lt;html&gt;\\n&lt;head&gt;&lt;\u002Fhead&gt;\\n&lt;body&gt;&lt;p&gt;Hello World!&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\nf.write(message)\\nf.close()\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESave the above program as \u003Ccode\u003Ewrite-html.py\u003C\u002Fcode\u003E and execute it. Use \u003Cem\u003EFile -&gt;\\nOpen\u003C\u002Fem\u003E in your chosen text editor to open \u003Ccode\u003Ehelloworld.html\u003C\u002Fcode\u003E to verify that\\nyour program actually created the file. The content should look like\\nthis:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;hello-world-html.png&quot; caption=&quot;HTML Source Generated by Python Program&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ENow go to your Firefox browser and choose \u003Cem\u003EFile -&gt; New Tab\u003C\u002Fem\u003E, go to the\\ntab, and choose \u003Cem\u003EFile -&gt; Open File\u003C\u002Fem\u003E. Select \u003Ccode\u003Ehelloworld.html\u003C\u002Fcode\u003E. You\\nshould now be able to see your message in the browser. Take a moment to\\nthink about this: you now have the ability to write a program which can\\nautomatically create a webpage. There is no reason why you could not\\nwrite a program to automatically create a whole website if you wanted\\nto.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"using-python-to-control-firefox\\\"\u003EUsing Python to Control Firefox\u003C\u002Fh2\u003E\\n\u003Cp\u003EWe automatically created an HTML file, but then we had to leave our\\neditor and go to Firefox to open the file in a new tab. Wouldn&#39;t it be\\ncool to have our Python program include that final step? Type or copy\\nthe code below and save it as \u003Ccode\u003Ewrite-html-2.py\u003C\u002Fcode\u003E. When you execute it, it\\nshould create your HTML file and then automatically open it in a new tab\\nin Firefox. Sweet!\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"mac-instructions\\\"\u003EMac Instructions\u003C\u002Fh3\u003E\\n\u003Cp\u003EMac users will have to specify to the precise location of the \u003Ccode\u003E.html\u003C\u002Fcode\u003E\\nfile on their computer. To do this, locate the \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E\\nfolder you created to do these tutorials, right-click it and select &quot;Get\\nInfo&quot;.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou can then cut and paste the file location listed after &quot;Where:&quot; and\\nmake sure you include a trailing slash (\u002F) to let the computer know you\\nwant something inside the directory (rather than the directory itself).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# write-html-2-mac.py\\nimport webbrowser\\n\\nf = open(&#39;helloworld.html&#39;,&#39;w&#39;)\\n\\nmessage = &quot;&quot;&quot;&lt;html&gt;\\n&lt;head&gt;&lt;\u002Fhead&gt;\\n&lt;body&gt;&lt;p&gt;Hello World!&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\nf.write(message)\\nf.close()\\n\\n#Change path to reflect file location\\nfilename = &#39;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&#39; + &#39;helloworld.html&#39;\\nwebbrowser.open_new_tab(filename)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf you&#39;re getting a &quot;File not found&quot; error you haven&#39;t changed the\\nfilename path correctly.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"windows-instructions\\\"\u003EWindows Instructions\u003C\u002Fh3\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# write-html-2-windows.py\\n\\nimport webbrowser\\n\\nf = open(&#39;helloworld.html&#39;,&#39;w&#39;)\\n\\nmessage = &quot;&quot;&quot;&lt;html&gt;\\n&lt;head&gt;&lt;\u002Fhead&gt;\\n&lt;body&gt;&lt;p&gt;Hello World!&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\nf.write(message)\\nf.close()\\n\\nwebbrowser.open_new_tab(&#39;helloworld.html&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E***\u003C\u002Fp\u003E\\n\u003Cp\u003ENot only have you written a Python program that can write simple HTML,\\nbut you&#39;ve now controlled your Firefox browser using Python. In the next\\nlesson, we turn to outputting the data that we have collected as an HTML\\nfile.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"suggested-readings\\\"\u003ESuggested Readings\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELutz, Learning Python\u003Cul\u003E\\n\u003Cli\u003ERe-read and review Chs. 1-17\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch2 id=\\\"code-syncing\\\"\u003ECode Syncing\u003C\u002Fh2\u003E\\n\u003Cp\u003ETo follow along with future lessons it is important that you have the\\nright files and programs in your &quot;programming-historian&quot; directory. At\\nthe end of each lesson in the series you can download the &quot;programming-historian&quot; zip\\nfile to make sure you have the correct code. If you are following along\\nwith the Mac \u002F Linux version you may have to open the \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E file and\\nchange &quot;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&quot; to the\\npath to the directory on your own computer.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-lessons6.zip \u003Ca href=\\\"\u002Fassets\u002Fpython-lessons6.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+	</body>
+</html>
