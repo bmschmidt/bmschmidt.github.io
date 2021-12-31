@@ -14,6 +14,7 @@
   export let lang = "Farsi"
   export let lesson = "lecciones"
   export let contents;
+  import { page } from '$app/stores'
   let title = lang;
 </script>
 
@@ -22,7 +23,7 @@
 <ul>
   {#each contents as content}
     <li>
-      <a sveltekit:prefetch href="{lesson}/{content.slug}/">{content.title} ({content.slug})</a>
+      <a href="/{lang}/{lesson}/{content.slug}/">{content.title} ({content.slug})</a>
     </li>
   {/each}
 </ul>
