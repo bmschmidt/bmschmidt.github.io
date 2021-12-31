@@ -4,27 +4,44 @@ authors:
 - William J. Turkel
 - Adam Crymble
 date: 2012-07-17
-reviewers:
+translation_date: 2017-03-15
+editors:
 - Miriam Posner
+reviewers:
 - Jim Clifford
 - Amanda Morton
 translator:
 - Víctor Gayol
+translation-editor:
+- Adam Crymble
 translation-reviewer:
 - Jairo A. Melo
 - Maria José Afanador-Llach
 - Antonio Rojas Castro
-layout: default
-redirect_from: /es/lessons/mac-installation
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/36
+avatar_alt: Tres hombres tocando instrumentos musicales
+layout: lesson
+original: mac-installation
+difficulty: 1
+activity: transforming
+topics: [get-ready, python]
+abstract: "Este tutorial te ayudará a configurar un entorno de desarrollo integrado para Python en un computador con el sistema operativo de Apple."
+doi: 10.46430/phes0010
 ---
+
+{% include toc.html %}
+
+
+
+
 
 ### Haz respaldo (copia de seguridad) de toda tu computadora
 
 Los usuarios de Mac pueden aprovechar [Time Machine] para esta labor.
 
-### Instala Python v.2
+### Instalar Python v.3
 
-Desde el mes de mayo de 2012, Mac OS X tiene preinstalado Python v.2. Puedes corroborar si tu Mac cuenta con Python instalado abriendo Terminal en el directorio ´`'/Aplicaciones/Utilidades'´`. En la ventana de Terminal escribe ´`wich Python´` seguido de Enter. Al oprimir la tecla Enter se envía el comando a la computadora cuando se utiliza Terminal. Si ves que en Terminal aparece: ´`'/usr/bin/python'´` o algo por el estilo que contiene la palabra ´python y un manojo de barras oblicuas, puedes tener la seguridad de que tu equipo y sistema lo tienen. Si no fuese así, cierra Terminal y descarga la última versión estable del lenguaje de programación Python (2.7.11 es la correspondiente a abril de 2016), e instálalo siguiendo las instrucciones del [sitio web de Python].
+A partir de enero 2020, Python versión 2 dejará de recibir actualizaciones y la versión 3 será la única desarrollada activamente. Ya que Mac OS X tiene preinstalado Python v.2., podrás continuar utilizando los programas que todavía dependen de esa versión pero necesitarás descargar la versión 3 para seguir las lecciones que encontrarás en *The Programming Historian*. Puedes corroborar si tu Mac cuenta con Python versión 3 instalado abriendo Terminal en el directorio ´`'/Aplicaciones/Utilidades'´`. En la ventana de Terminal escribe ´`which Python3´` seguido de Enter. Al oprimir la tecla Enter se envía el comando a la computadora cuando se utiliza Terminal. Si ves que en Terminal aparece: ´`'/usr/bin/python3'´` o algo por el estilo que contiene la palabra ´python3 y un manojo de barras oblicuas, puedes tener la seguridad de que tu equipo y sistema lo tienen. Si no fuese así, cierra Terminal y descarga la última versión estable del lenguaje de programación Python (v.3.8 es la más actualizada hasta noviembre de 2019), e instálalo siguiendo las instrucciones del [sitio web de Python].
 
 ### Creación de un directorio
 
@@ -36,7 +53,7 @@ Descarga la más reciente versión de [Beautiful Soup] y cópiala en el director
 
 ### Instalar Komodo Edit
 
-Komodo Edit es un editor de texto que sirve para programación, es *software* libre y de código fuente abierto. Pero como se indicó en la introducción, se pueden utilizar [otras opciones de editores de texto]. Algunos colegas prefieren un programa llamado [TextWrangler]. El que decidas utilizar queda a gusto tuyo, pero en aras de conservar la coherencia en estas lecciones se utilizará aquí como ejemplo Komodo Edit. Puedes descargar una copia libre del editor desde el [sitio web de Komodo Edit]. Se puede descargar desde el sitio web de Komodo e instalar fácilmente desde el archivo `.DMG`.
+Komodo Edit es un editor de texto que sirve para programación, es *software* libre y de código fuente abierto. Pero como se indicó en la introducción, se pueden utilizar [otras opciones de editores de texto]. Algunos colegas prefieren un programa llamado [BBEdit]. El que decidas utilizar queda a gusto tuyo, pero en aras de conservar la coherencia en estas lecciones se utilizará aquí como ejemplo Komodo Edit. Puedes descargar una copia libre del editor desde el [sitio web de Komodo Edit]. Se puede descargar desde el sitio web de Komodo e instalar fácilmente desde el archivo `.DMG`.
 
 #### Inicia Komodo Edit
 
@@ -51,7 +68,7 @@ Si no está visible el panel de Caja de Herramientas (Toolbox) a la derecha de l
 Ahora bien, una vez descargado e instalado el editor es necesario configurarlo para que puedas correr los programas de Python. En la ventana de la derecha (caja de herramientas o Toolbox) hay que hacer clic en el icono de engranaje y seleccionar "`New Command…`" Esta acción abre una nueva ventana de diálogo. Ahí se deberá renombrar como "`Ejecutar Python`". En el campo activo "`Command`" deberás escribir:
 
 ``` python
-%(python) %f
+%(python3) %f
 ```
 
 Y en el campo activo "`Start in`" debes escribir:
@@ -74,22 +91,22 @@ En tu editor de texto crea un nuevo archivo y escribe el siguiente programa de d
 
 ```python
 # hola-mundo.py
-print (hola mundo)
+print('hola mundo')
 ```
 El editor de texto que seleccionaste debe tener un botón "`run`" que te permitirá ejecutar tu programa. Por ejemplo, si estás utilizando TextWrangler, haz clic en el botón "`#!`" para ejecutarlo. Si todo funciona bien (es posible que no, con lo cual habrá que revisar las diversas instalaciones y configuraciones), deberás ver algo como sigue:
 
-{% include figure.html filename="TextWrangler-hello-world.png" caption="'Hello World' en Python en una Mac" %}
+{% include figure.html filename="BBEdit-hola-mundo.png" caption="'Hola Mundo' en Python en una Mac" %}
 
 ### Interactuar con el intérprete de comandos (*shell*) de Python
 
 Otra manera de interactuar con un intérprete es usando lo que se conoce como *shell* o intérprete de comandos. Se puede escribir en una declaración y oprimir la tecla Enter, y el *shell* responderá a tus comandos. Utilizar un *shell* es una excelente forma de comprobar que la construcción de tus declaraciones es adecuada al asegurarte que hace lo que tu piensas que debería hacer. Esto se puede hacer de maneras un tanto distintas en las diversas plataformas (Mac, Windows o Linux).
 
-Puedes ejecutar un *shell* de Python iniciando Terminal. En la Mac, abre el Finder, haz doble click en  `Aplicaciones -> Utilidades -> Terminal`. Escribe "`python`" en la ventana que se abre en tu pantalla y oprime la tecla Enter. Ante el *shell prompt* de Python escribe:
+Puedes ejecutar un *shell* de Python iniciando Terminal. En la Mac, abre el Finder, haz doble click en  `Aplicaciones -> Utilidades -> Terminal`. Escribe "`python3`" en la ventana que se abre en tu pantalla y oprime la tecla Enter. Ante el *shell prompt* de Python escribe:
 
 ```python
-print ('Hola Mundo')
+print('Hola Mundo')
 ```
- 
+
 Oprime la tecla Enter. La computadora responderá con:
 
 ```python
@@ -99,13 +116,13 @@ Hola Mundo
 Cuando queramos representar gráficamente la interacción con el intérprete de comandos usaremos `->` para indicar la respuesta del *shell* a tus comandos, como se muestra inmediatamente:
 
 ```python
-Print ('Hola Mundo')
+print('Hola Mundo')
 -> Hola Mundo
 ```
 
 En la pantalla de tu computadora aparecerá de esta manera:
 
-{% include figure.html filename="hello-world-terminal.png" caption="Intérprete de comandos de Python en Terminal de Mac" %}
+{% include figure.html filename="hola-mundo-terminal.png" caption="Intérprete de comandos de Python en Terminal de Mac" %}
 
 Para salir del shell de Python en Terminal debes escribir en el prompt shell:
 
@@ -120,6 +137,6 @@ Ahora que tú y tu computadora están en marcha y funcionando, podemos movernos 
 [sitio web de Python]: https://www.python.org
 [Beautiful Soup]: https://www.crummy.com/software/BeautifulSoup/
 [otras opciones de editores de texto]: https://wiki.python.org/moin/PythonEditors/
-[TextWrangler]: http://www.barebones.com/products/textwrangler/
+[BBEdit]: https://www.barebones.com/products/bbedit/
 [sitio web de Komodo Edit]: http://komodoide.com/komodo-edit/
-[Para entender páginas web y HTML]: http://programminghistorian.org/es/lecciones/ver-archivos-html
+[Para entender páginas web y HTML]: /es/lecciones/ver-archivos-html

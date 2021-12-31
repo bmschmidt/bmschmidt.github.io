@@ -4,18 +4,40 @@ authors:
 - William J. Turkel
 - Adam Crymble
 date: 2012-07-17
+translation_date: 2017-03-15
+editors: Miriam Posner
 reviewers:
 - Miriam Posner
 - Jim Clifford
 translator:
 - Víctor Gayol
+translation-editor:
+- Adam Crymble
 translation-reviewer:
 - Jairo A. Melo
-layout: default
+- Maria José Afanador-Llach
+- Antonio Rojas Castro
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/48
+layout: lesson
 next: salida-de-datos-como-archivo-html
 previous: contar-frecuencias
-redirect_from: /es/lessons/creating-and-viewing-html-files-with-python
+original: creating-and-viewing-html-files-with-python
+difficulty: 2
+activity: presenting
+topics: [python, website]
+abstract: "Aquí aprenderás cómo crear archivos HTML con scripts de Python, y cómo utilizar Python para abrir un archivo HTML en Firefox."
+avatar_alt: Grabado en blanco y negro de un niño sentado en un taburete sujetando un dibujo de una persona con una espada.
+python_warning: false
+doi: 10.46430/phes0003
+sequence: 11
+series_total: 14
 ---
+
+{% include toc.html %}
+
+
+
+
 
 ## Objetivo de la lección
 
@@ -33,7 +55,7 @@ Si no tienes estos archivos de las lecciones anteriores, puedes descargar python
 
 En este punto hemos comenzado a aprender cómo utilizar Python para descargar fuentes documentales en línea y extraer información de ellas automáticamente. Recuerda que nuestro objetivo final es incorporar fácilmente la programación a nuestra práctica de investigación. Acorde con este objetivo, en esta lección y la siguiente vamos a aprender cómo recuperar nuestros datos como HTML. Esto tiene algunas ventajas. Primero, al almacenar nuestra información en nuestro disco duro como HTML podemos abrirla con Firefox y utilizar [Zotero][] para indexarla y anotarla después. Segundo, hay una amplia gama de visualizaciones para HTML que podemos aprovechar más adelante.
 
-Si no has hecho todavía el [tutorial de HTML de W3 Schools][], toma unos minutos para hacerlo antes de continuar. Buscamos crear un documento HTML con Python así que necesitas saber qué es un documento HTML.
+Si no has hecho todavía el [tutorial de HTML de W3 Schools][], invierte tiempo en ello antes de continuar. Buscamos crear un documento HTML con Python así que necesitas saber qué es un documento HTML.
 
 ## 'Hola Mundo' en HTML usando Python
 
@@ -53,13 +75,13 @@ mensaje = """<html>
 
 f.write(mensaje)
 f.close()
-``` 
+```
 
 Guarda el programa anterior como `escribe-html.py` y ejecútalo. Utiliza *File -> Open* en tu editor seleccionado para abrir `holamundo.html` para verificar que tu programa en realidad creó el archivo. El contenido debe verse como esto:
 
 {% include figure.html filename="hello-world-html.png" caption="Fuente HTML generada con Python" %}
 
-Ahora ve a tu navegador Firefox y elige *Archivo-> Nueva pestaña*; ve a la pestaña y elige *Archivo-> Abrir archivo* Selecciona `holamundo.html`. Ahora debería ser posible que veas el mensaje en el navegador. Detente un momento para pensar en esto: ahora tienes la habilidad de escribir un programa que crea automáticamente una página Web. No hay ninguna razón por la que no podrías escribir un programa para crear automáticamente un sitio Web completo si lo quisieras.
+Ahora ve a tu navegador Firefox y elige *Archivo-> Nueva pestaña*; ve a la pestaña y elige *Archivo-> Abrir archivo* Selecciona `holamundo.html`. Ahora deberías ver el mensaje en el navegador. Detente un momento para pensar en esto: ahora tienes la habilidad de escribir un programa que crea automáticamente una página Web. No hay ninguna razón por la que no podrías escribir un programa para crear automáticamente un sitio Web completo si lo quisieras.
 
 ## Utilizar Python para controlar Firefox
 
@@ -127,8 +149,8 @@ Para seguir a lo largo de las lecciones futuras es importante que tengas los arc
 
 -   python-es-lecciones6.zip [zip sync]
 
-  [archivo zip de las lecciones anteriores]: http://programminghistorian.org/assets/python-es-lecciones5.zip
+  [archivo zip de las lecciones anteriores]: /assets/python-es-lecciones5.zip
   [Zotero]: http://zotero.org
   [tutorial de HTML de W3 Schools]: http://www.w3schools.com/html/default.asp
   [declaración doctype]: http://www.w3schools.com/tags/tag_doctype.asp
-  [zip sync]: http://programminghistorian.org/assets/python-es-lecciones6.zip
+  [zip sync]: /assets/python-es-lecciones6.zip

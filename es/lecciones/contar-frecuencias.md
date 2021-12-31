@@ -4,18 +4,41 @@ authors:
 - William J. Turkel
 - Adam Crymble
 date: 2012-07-17
-reviewers:
+translation_date: 2017-03-15
+editors:
 - Miriam Posner
+reviewers:
 - Jim Clifford
+- Frederik Elwert
 translator:
 - Víctor Gayol
+translation-editor:
+- Adam Crymble
 translation-reviewer:
 - Jairo A. Melo
-layout: default
+- Maria José Afanador-Llach
+- Antonio Rojas Castro
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/47
+layout: lesson
 next: crear-y-ver-archivos-html-con-python
 previous: normalizar-datos
-redirect_from: /es/lessons/counting-frequencies
+original: counting-frequencies
+difficulty: 2
+activity: analyzing
+topics: [python]
+abstract: "Contar la frecuencia de palabras específicas en una lista puede proveer datos ilustrativos. Con esta lección aprenderás una forma fácil para contar dichas frecuencias usando Python."
+python_warning: false
+avatar_alt: Boceto de un hombre sentado fumando una pipa y pájaros alrededor
+doi: 10.46430/phes0001
+sequence: 10
+series_total: 14
 ---
+
+{% include toc.html %}
+
+
+
+
 
 ## Objetivo de la lección
 
@@ -46,7 +69,7 @@ for w in listaPalabras:
 print("Cadena\n" + cadenaPalabras +"\n")
 print("Lista\n" + str(listaPalabras) + "\n")
 print("Frecuencias\n" + str(frecuenciaPalab) + "\n")
-print("Pares\n" + str(zip(listaPalabras, frecuenciaPalab)))
+print("Pares\n" + str(list(zip(listaPalabras, frecuenciaPalab))))
 ```
 
 Aquí, comenzamos con una cadena de texto y la dividimos en una lista tal como hicimos antes. Entonces, creamos una lista (inicialmente vacía) llamada *frecuenciaPalab*, fuimos por cada una de las palabras en *listaPalabras* y contamos el número de veces que cada palabra aparece en toda la lista. Añadimos entonces el conteo de palabras a nuestra lista *frecuenciaPalab*. Utilizando la operación `zip`, somos capaces de hacer coincidir la primera palabra de nuestra lista de palabras con el primer número en la lista de frecuencias, la segunda palabra con la segunda frecuencia, y así el resto. Terminamos con una lista de palabras y frecuencias pareadas. La función `str` convierte cualquier objeto en una cadena así que puede ser impresa.
@@ -54,6 +77,7 @@ Aquí, comenzamos con una cadena de texto y la dividimos en una lista tal como h
 Debes obtener algo como esto:
 
 ``` python
+
 Cadena
 it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness
 
@@ -92,12 +116,12 @@ frecuenciaPalab = [listaPalabras.count(w) for w in listaPalabras] # a list compr
 print("Cadena\n" + cadenaPalabras +"\n")
 print("Lista\n" + str(listaPalabras) + "\n")
 print("Frecuencias\n" + str(frecuenciaPalab) + "\n")
-print("Pares\n" + str(zip(listaPalabras, frecuenciaPalab)))
+print("Pares\n" + str(list(zip(listaPalabras, frecuenciaPalab))))
 ```
 
 Si estudias esta lista por comprensión cuidadosamente descubrirás que hace exactamente lo mismo que el bucle `for` en el ejemplo previo, pero de una manera condensada. Cualquiera de los dos métodos trabajará bien, así que utiliza la versión con la que te sientas más a gusto.
 
-Por regla general es más acertado que utilices un código que entiendas en vez de un código que se ejecute más rapidamente.
+Por regla general es más acertado que utilices un código que entiendas en vez de un código que se ejecute más rápidamente.
 
 En este punto tenemos una lista de pares en la que cada par contiene una palabra y su frecuencia. Esta lista es algo redundante. Si el artículo 'the' se encuentra 500 veces, entonces esta lista contendrá quinientas copias del par ('the', 500). También la lista tiene el orden en el que aparecen las palabras en el texto original en vez de enlistar las palabras de la más a la menos frecuente. Podemos resolver ambos problemas convirtiendo la lista en un diccionario e imprimiendo entonces el diccionario en el orden en el que aparecen de más a menos los elementos.
 
@@ -106,6 +130,7 @@ En este punto tenemos una lista de pares en la que cada par contiene una palabra
 Las cadenas y las listas están ordenadas secuencialmente, lo cual significa que puedes acceder a sus contenidos utilizando un índice, un número que comienza en 0. Si tienes una lista que contiene cadenas, puedes utilizar un par de índices para acceder primero a una cadena particular de la lista y luego a un carácter particular de esa cadena. Estudia los ejemplos siguientes.
 
 ``` python
+
 s = 'hola mundo'
 print(s[0])
 -> h
@@ -127,9 +152,10 @@ print(m[1][0])
 -> m
 ```
 
-Para seguirle el rastro a las frecuencias, vamos a utilizar otro tipo de objeto de Python, un diccionario. El diccionario es una colección *no-ordenanda* de objetos. Esto significa que no puedes usar un índice para recobrar elementos de ella. Sin embargo, puedes buscarlos mediante la utilización de una clave (de ahi el nombre de *diccionario*). Estudia el ejemplo siguiente:
+Para seguirle el rastro a las frecuencias, vamos a utilizar otro tipo de objeto de Python, un diccionario. El diccionario es una colección *no-ordenada* de objetos. Esto significa que no puedes usar un índice para recobrar elementos de ella. Sin embargo, puedes buscarlos mediante la utilización de una clave (de ahí el nombre de *diccionario*). Estudia el ejemplo siguiente:
 
 ``` python
+
 d = {'mundo': 1, 'hola': 0}
 print(d['hola'])
 -> 0
@@ -147,7 +173,7 @@ Toma en cuenta que utilizas paréntesis para definir el diccionario y corchetes 
 
 ## Los pares palabra-frecuencia
 
-Sobre la base de lo que tenemos hasta ahora queremos una función que pueda convertir una lista de palabras en un diccionario de pares de palabra-frecuencia. El único comando nuevo que vamos a necesitar en `dict`, que hace un diccionario a partir de una lista de pares. Copia lo siguiente y añádelo en el módulo `obo-py`.
+Sobre la base de lo que tenemos hasta ahora queremos una función que pueda convertir una lista de palabras en un diccionario de pares de palabra-frecuencia. El único comando nuevo que vamos a necesitar es `dict`, que hace un diccionario a partir de una lista de pares. Copia lo siguiente y añádelo en el módulo `obo-py`.
 
 ``` python
 # Dada una lista de palabras, devuelve un diccionario de
@@ -155,7 +181,7 @@ Sobre la base de lo que tenemos hasta ahora queremos una función que pueda conv
 
 def listaPalabrasDicFrec(listaPalabras):
     frecuenciaPalab = [listaPalabras.count(p) for p in listaPalabras]
-    return dict(zip(listaPalabras,frecuenciaPalab))
+    return dict(list(zip(listaPalabras,frecuenciaPalab)))
 ```
 
 También querremos una función que pueda ordenar un diccionario de pares de palabra-frecuencia, en orden de frecuencia descendente. Copia esto y añádelo también al módulo `obo.py`.
@@ -176,12 +202,12 @@ Ahora podemos escribir un programa que importe un URL y nos devuelva pares de pa
 ``` python
 #html-a-frec.py
 
-import urllib2, obo
+import urllib.request, urllib.error, urllib.parse, obo
 
 url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33'
 
-respuesta = urllib2.urlopen(url)
-html = respuesta.read()
+respuesta = urllib.request.urlopen(url)
+html = respuesta.read().decode('UTF-8')
 texto = obo.quitarEtiquetas(html).lower()
 listaPalabras = obo.quitaNoAlfaNum(texto)
 diccionario = obo.listaPalabrasDicFrec(listaPalabras)
@@ -274,7 +300,7 @@ Ahora, deshacerse de las palabras funcionales de una lista es tan fácil como ut
 
 def quitarPalabrasvac(listaPalabras, palabrasvac):
     return [w for w in listaPalabras if w not in palabrasvac]
-``` 
+```
 
 Ensamblar todo
 --------------
@@ -284,13 +310,13 @@ Ahora tenemos todo lo que necesitamos para determinar frecuencias de palabras en
 ``` python
 # html-a-frec-2.py
 
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import obo
 
 url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&div=t17800628-33'
 
-respuesta = urllib2.urlopen(url)
-html = respuesta.read()
+respuesta = urllib.request.urlopen(url)
+html = respuesta.read().decode('UTF-8')
 texto = obo.quitarEtiquetas(html).lower()
 listaPalabrasCompleta = obo.quitaNoAlfaNum(texto)
 listaPalabras = obo.quitarPalabrasvac(listaPalabrasCompleta, obo.palabrasvac)
@@ -328,7 +354,7 @@ Si todo va bien, tus datos de salida se verán como esto:
 
 ## Notas sobre las palabras en español
 
-Hasta ahora hemos trabajado con un documento en inglés: la transcripción del juicio contra Bejamin Bowsey. Una vez que domines estas técnicas, seguramente querrás emplearlas en tu invetigación y con documentos en español. Para ello, deberás hacer algunas modificaciones.
+Hasta ahora hemos trabajado con un documento en inglés: la transcripción del juicio contra Bejamin Bowsey. Una vez que domines estas técnicas, seguramente querrás emplearlas en tu investigación y con documentos en español. Para ello, deberás hacer algunas modificaciones.
 
 La primera es que, a diferencia del inglés, el idioma español contiene una serie de signos ortográficos (tildes) que modifican los caracteres. Los acentos (á, é, í, ó, ú), la diéresis (ü) y la virgulilla de la eñe (ñ). Para poder trabajar con estos signos es necesario indicarle al programa que se va a encontrar con ellos y que los debe considerar como caracteres. Para ello, basta con declarar que trabajaremos con una codificación de caracteres UTF-8. Por lo tanto, deberás incluir esta indicación en tus programas de la siguiente manera:
 
@@ -345,7 +371,7 @@ frecuenciaPalab = [listaPalabras.count(w) for w in listaPalabras]
 print("Cadena\n" + cadenaPalabras +"\n")
 print("Lista\n" + str(listaPalabras) + "\n")
 print("Frequencias\n" + str(frecuenciaPalab) + "\n")
-print("Pares\n" + str(zip(listaPalabras, frecuenciaPalab)))
+print("Pares\n" + str(list(zip(listaPalabras, frecuenciaPalab))))
 ```
 
 Como te habrás dado cuenta, en la segunda línea del programa se hace la declaración de la codificación de caracteres.
@@ -435,6 +461,6 @@ Para seguir a lo largo de las lecciones futuras es importante que tengas los arc
 
   [lista por comprensión]: http://docs.python.org/tutorial/datastructures.html#list-comprehensions
   [informáticos de Glasgow]: http://ir.dcs.gla.ac.uk/resources/linguistic_utils/stop_words
-  [Regular Expressions]: http://www.diveintopython.net/regular_expressions/index.html
-  [zip]: http://programminghistorian.org/assets/python-es-lecciones4.zip
-  [zip sync]: http://programminghistorian.org/assets/python-es-lecciones5.zip
+  [Regular Expressions]: https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html
+  [zip]: /assets/python-es-lecciones4.zip
+  [zip sync]: /assets/python-es-lecciones5.zip

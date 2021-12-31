@@ -1,22 +1,91 @@
 name: Programming Historian
 description: Introductory and intermediate programming lessons for humanists
-url: http://programminghistorian.org
+# Used to insert the live url of the site in places that require a full link such as suggested citations and XML feed
+liveurl: https://programminghistorian.org
 permalink: :categories/:title
-exclude: [deprecated, vendor, Gemfile, Procfile]
-safe: true
+exclude:
+  - deprecated
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - archive
 highlighter: rouge
 markdown: kramdown
-gems:
+permalink: :categories/:title
+future: true
+plugins:
   - jekyll-redirect-from
+  - jekyll-paginate
+paginate: 7
+paginate_path: "/blog/page:num/"
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
     values:
       lang: "en"
-  - 
-    scope:
+  - scope:
+      path: "en"
+    values:
+      lang: "en"
+  - scope:
       path: "es"
     values:
       lang: "es"
-    
+  - scope:
+      path: "fr"
+    values:
+      lang: "fr"
+  - scope:
+      path: "pt"
+    values:
+      lang: "pt"
+  - scope:
+      path: "en/lessons"
+    values:
+      lesson: true
+  - scope:
+      path: "en/lessons/retired"
+    values:
+      lesson: false
+      retired: true
+  - scope:
+      path: "es/lecciones/retirada"
+    values:
+      lesson: false
+      retired: true
+  - scope:
+      path: "fr/lecons/retrait"
+    values:
+      lesson: false
+      retired: true
+  - scope:
+      path: "pt/licoes/retirado"
+    values:
+      lesson: false
+      retired: true
+  - scope:
+      path: "es/lecciones"
+    values:
+      lesson: true
+  - scope:
+      path: "fr/lecons"
+    values:
+      lesson: true
+  - scope:
+      path: "pt/licoes"
+    values:
+      lesson: true
+  - scope:
+      path: "fr/lecons"
+    values:
+      lesson: true
+  - scope:
+      path: _posts
+    values:
+      category: posts
+
+# Flags to enable/disable "Support PH" alerts on lessons, and on sitewide banner above the navigation bar
+lesson_donation_alerts: true
+sitewide_donation_banner: true
+
+# For local work: bundle exec jekyll serve --watch --baseurl '/proghistdev' or wherever else your local site is located

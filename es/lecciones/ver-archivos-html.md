@@ -4,21 +4,38 @@ authors:
 - William J. Turkel
 - Adam Crymble
 date: 2012-07-17
-reviewers:
+translation_date: 2017-03-15
+editors:
 - Miriam Posner
+reviewers:
 - Jim Clifford
 - Amanda Morton
 translator:
 - Víctor Gayol
+translation-editor:
+- Adam Crymble
 translation-reviewer:
 - Jairo A. Melo
 - Maria José Afanador-Llach
 - Antonio Rojas Castro
-layout: default
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/39
+layout: lesson
 next: trabajar-con-archivos-de-texto
 previous: introduccion-e-instalacion
-redirect_from: /es/lessons/viewing-html-files
+original: viewing-html-files
+difficulty: 2
+activity: presenting
+topics: [python]
+abstract: "Esta lección te introduce a las estructuras de HTML y de páginas web."
+avatar_alt: Grabado de un hombre hablando a una mujer.
+doi: 10.46430/phes0030
+sequence: 2
+series_total: 14
 ---
+
+{% include toc.html %}
+
+
 
 
 

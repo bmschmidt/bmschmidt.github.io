@@ -4,18 +4,41 @@ authors:
 - William J. Turkel
 - Adam Crymble
 date: 2012-07-17
-reviewers:
+translation_date: 2017-03-15
+editors:
 - Miriam Posner
+reviewers:
 - Jim Clifford
+- Frederik Elwert
 translator:
 - Víctor Gayol
+translation-editor:
+- Adam Crymble
 translation-reviewer:
 - Jairo A. Melo
-layout: default
+- Maria José Afanador-Llach
+- Antonio Rojas Castro
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/50
+layout: lesson
 next: salida-palabras-clave-contexto-ngrams
 previous: salida-de-datos-como-archivo-html
-redirect_from: /es/lessons/keywords-in-context-using-n-grams
+original: keywords-in-context-using-n-grams
+python_warning: false
+difficulty: 2
+activity: presenting
+topics: [python]
+abstract: "Esta lección retoma los pares de frecuencias recolectados en [Contar frecuencias de palabras][] y crea una salida de datos en HTML."
+avatar_alt: Grabado de mujer, con expresión de sorpresa en la cara, dejando caer una botella de ginebra y una botella de ron.
+doi: 10.46430/phes0021
+sequence: 13
+series_total: 14
 ---
+
+{% include toc.html %}
+
+
+
+
 
 ## Objetivos de la lección
 
@@ -33,9 +56,9 @@ Si no tienes estos archivos de las lecciones anteriores, puedes descargar python
 
 ## De texto a n-gramas a KWIC
 
-Ahora que ya sabes cómo cosechar el contenido textual de una página Web de manera automática con Python, y has empezado a utilizar cadenas de caracteres, listas y diccionarios para procesamiento de texto, hay muchas otras cosas que puedes hacer con los textos aparte de contar frecuencias. Quienes estudian las propiedades estadísticas del lenguaje han encontrado que el estudiar las secuencias lineales de unidades lingüísticas puede decirnos muchas cosas acerca de un texto. Estas secuencias lineales son conocidas como *bigramas+ (2 unidades), *trigramas* (3 unidades) o más generalmente como *n-gramas*.
+Ahora que ya sabes cómo recolectar el contenido textual de una página Web de manera automática con Python, y has empezado a utilizar cadenas de caracteres, listas y diccionarios para procesamiento de texto, hay muchas otras cosas que puedes hacer con los textos aparte de contar frecuencias. Quienes estudian las propiedades estadísticas del lenguaje han encontrado que el estudiar las secuencias lineales de unidades lingüísticas puede decirnos muchas cosas acerca de un texto. Estas secuencias lineales son conocidas como *bigramas+ (2 unidades), *trigramas* (3 unidades) o más generalmente como *n-gramas*.
 
-Probablemente has visto con anterioridad n-gramas muchas veces. Se utilizan generalmente en páginas de resultados de investigación para dar una previsualización de en qué lugar aparece tu palabra clave en un documento y cuál es el contexto que la rodea. Esta aplicación de los n-gramas es conocida como "palabras clave en contexto" (generalmente abreviada como KWIC). Por ejemplo, si la cadena en cuestión fuese "it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness", entonces un 7-grama para la palabra clave "wisdom" sería:
+Probablemente has visto con anterioridad n-gramas muchas veces. Se utilizan generalmente en páginas de resultados de investigación para dar una previsualización del lugar en que aparece tu palabra clave en un documento y cuál es el contexto que la rodea. Esta aplicación de los n-gramas es conocida como "palabras clave en contexto" (generalmente abreviada como KWIC). Por ejemplo, si la cadena en cuestión fuese "it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness", entonces un 7-grama para la palabra clave "wisdom" sería:
 
 ```
 the age of wisdom it was the
@@ -80,7 +103,7 @@ print(listaPalabras[:12])
 
 print(listaPalabras[12:])
 -> ['it', 'was', 'the', 'age', 'of', 'wisdom', 'it', 'was', 'the', 'age', 'of', 'foolishness']
-``` 
+```
 
 En estos ejemplos se ha utilizado el método de división (`slice`) para recuperar partes de nuestra lista. Ten en cuenta que hay dos lados respecto a los dos puntos en un `slice`. Si a la derecha de los dos puntos se deja en blanco como en el último ejemplo anterior, el programa sabe continuar automáticamente hasta el final -en este caso, el final de la lista. En el penúltimo ejemplo anterior se muestra que podemos comenzar desde el principio dejando vacío el espacio anterior a los dos puntos. Este es un atajo útil y que está disponible para mantener tu código más corto.
 
@@ -115,7 +138,7 @@ def obtenNGramas(listaPalabras, n):
 
 Utiliza el que tenga más sentido para ti.
 
-Un concepto que todavía te puede resultar confuso es el par de argumentos de la función. Ten en cuenta que nuestra función tiene dos nombres de variables en el paréntesis después de su nombre cuando la declaramos: *listaPalabras*, *n*. Estas dos variables son los argumentos de la función. Cuando llamas (ejecutas) esta función, estas variables serán utilizadas por la función para su solución. Sin estos argumentos no hay suficiente información para hacer los cálculos. En este caso, las dos piezas de información son la lista de palabras que quieres covertir en n-gramas (wordlist), y el número de palabras que quieres en cada n-grama (n). Para que la función trabaje necesita ambas, así que la llamas como en este ejemplo (guarda el siguiente programa como `usaobtenNGramas.py`y ejecútalo):
+Un concepto que todavía te puede resultar confuso es el par de argumentos de la función. Ten en cuenta que nuestra función tiene dos nombres de variables en el paréntesis después de su nombre cuando la declaramos: *listaPalabras*, *n*. Estas dos variables son los argumentos de la función. Cuando llamas (ejecutas) esta función, estas variables serán utilizadas por la función para su solución. Sin estos argumentos no hay suficiente información para hacer los cálculos. En este caso, las dos piezas de información son la lista de palabras que quieres covertir en n-gramas (`listaPalabras`), y el número de palabras que quieres en cada n-grama (`n`). Para que la función trabaje necesita ambas, así que la llamas como en este ejemplo (guarda el siguiente programa como `usaobtenNGramas.py`y ejecútalo):
 
 ``` python
 #usaobtenNGramas.py
@@ -159,9 +182,9 @@ Para seguir a lo largo de las lecciones futuras es importante que tengas los arc
 
 -   python-es-lecciones8.zip ([zip sync][])
 
-  [Salida de datos como archivo HTML]: ../lecciones/salida-de-datos-como-archivo-html
-  [Contar frecuencias de palabras]: ../lecciones/contar-frecuencias
+  [Salida de datos como archivo HTML]: /es/lecciones/salida-de-datos-como-archivo-html
+  [Contar frecuencias de palabras]: /es/lecciones/contar-frecuencias
   [1]: salida-de-datos-como-archivo-html
-  [archivo zip de las lecciones anteriores]: http://programminghistorian.org/assets/python-es-lecciones7.zip
-  [Manipular cadenas de caracteres en Python]: ../lecciones/manipular-cadenas-de-caracteres-en-python
-  [zip sync]: http://programminghistorian.org/assets/python-es-lecciones8.zip
+  [archivo zip de las lecciones anteriores]: /assets/python-es-lecciones7.zip
+  [Manipular cadenas de caracteres en Python]: /es/lecciones/manipular-cadenas-de-caracteres-en-python
+  [zip sync]: /assets/python-es-lecciones8.zip

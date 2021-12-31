@@ -1,0 +1,143 @@
+# Publication Roles
+# Definitions of editorial sub teams.
+#
+# type: the tag added in ph_authors.yml
+# label: Short label to be displayed alongside the author bio, and in the roles definition list
+# definition: Brief description of that editorial team. If this is a derived label that uses the definition of another role, instead use...
+
+- type: managing
+  label:
+    en: Managing Editor
+    es: Jefe de redacción
+    fr: Rédacteur/rédactrice en chef
+    pt: Editor-chefe
+  definition:
+    en: First point of contact for authors with lesson ideas
+    es: Primer contacto para autores con ideas de lecciones
+    fr: Premier contact pour les auteur(e)s souhaitant proposer une leçon
+    pt: Primeiro contacto para os autores com ideias para lições
+- type: editorial
+  label:
+    en: Editor
+    es: Editor(a)
+    fr: Rédacteur/rédactrice
+    pt: Editor(a)
+  definition:
+    en: Responsible for editorial work resulting in the review and publication of lessons
+    es: Responsable del trabajo editorial que deriva en la revisión y publicación de las lecciones
+    fr: Responsable du travail éditorial pour l'évaluation et la publication des leçons
+    pt: Responsável pelo trabalho editorial para a revisão e publicação das lições
+- type: ombuds
+  label:
+    en: Ombudsperson
+    es: Mediador
+    fr: Médiateur/médiatrice
+    pt: Mediador(a)
+  definition:
+    en: A person that authors and reviewers can turn to if they have queries or concerns about any part of the peer review and publication process
+    es: Persona a la que los autores y revisores pueden recurrir si tienen preguntas o inquietudes sobre cualquier parte del proceso de revisión por pares y publicación
+    fr: Personne que les auteur(e)s et évaluateur(trice)s peuvent consulter pour toute question liée à la procédure de l'évaluation par les pairs ou à la publication
+    pt: Pessoa a quem os autores e revisores podem recorrer se tiverem preocupações ou dúvidas sobre o processo de revisão por pares ou de publicação
+
+# --- Proghist Roles ---
+- type: proghist
+  label:
+    en: ProgHist Ltd
+    es: ProgHist Ltd
+    fr: ProgHist Ltd
+    pt: ProgHist Ltd
+  definition:
+    en: This member holds a role in the not-for-profit company ProgHist Ltd, which supports the publications.
+    es: Este miembro funge un cargo en la compañía sin ánimo de lucro ProgHist Ltd, que gestiona las publicaciones.
+    fr: Ce(tte) membre occupe un rôle au sein de la compagnie sans but lucratif ProgHist Ltd, qui soutient les publications.
+    pt: Este membro tem um papel na gestão da organização sem fins lucrativos ProgHist Ltd., que suporta a publicação.
+- type: technical-lead
+  label:
+    en: Technical Lead
+    es: Líder técnico
+    fr: Responsable technique
+    pt: Coordenador técnico
+  definition:
+    en: Coordinates and trains members of the technical team
+    es: Coordina y forma a los integrantes del equipo técnico
+    fr: Coordonne et forme les membres de l'équipe technique
+    pt: Coordena e dá formação aos membros da equipa técnica
+- type: technical
+  label:
+    en: Technical Team
+    es: Equipo técnico
+    fr: Équipe technique
+    pt: Equipe técnica
+  definition:
+    en: Responsible for the technical features that bring the content and peer review to our community
+    es: Responsable de las características técnicas respecto al contenido y la revisión por pares a nuestra comunidad
+    fr: Responsable des aspects techniques rendant accessibles à notre communauté le contenu et l'évaluation par les pairs
+    pt: Responsável pelos aspectos técnicos que asseguram o conteúdo e a revisão por pares para a nossa comunidade
+- type: communication-manager
+  label:
+    en: Communication Manager
+    es: Mánager de comunicación
+    fr: Responsable de la communication
+    pt: Gestor de comunicação
+  definition:
+    en: Responsible for coordinating efforts of the communication team
+    es: Responsable de la coordinación del equipo de comunicación
+    fr: Responsable de la coordination de l'équipe de communication
+    pt: Responsável por coordenar os esforços da equipe de comunicação
+- type: finance-manager
+  label:
+    en: Finance Manager
+    es: Mánager de finanzas
+    fr: Responsable des finances
+    pt: Gestor financeiro
+  definition:
+    en: Responsible for project finances and fundraising
+    es: Responsable de las finanzas del proyecto y la recaudación de fondos
+    fr: Responsable du financement du projet et de la collecte de fonds
+    pt: Responsável pelas finanças do projeto e pela captação de recursos
+- type: project-manager-at-large
+  label:
+    en: Project Manager at Large
+    es: Mánager de proyectos en general
+    fr: Chef de projet
+    pt: Gestor geral do projeto
+  definition:
+    en: Keeping the team focused on achieving its goals in a timely manner
+    es: Mantener al equipo enfocado en lograr sus objetivos de manera puntual
+    fr: Garder l'équipe concentrée sur la réalisation de ses objectifs à l'intérieur des délais prévus
+    pt: Responsável por manter a equipe focada em atingir os seus objetivos no tempo planeado
+- type: global-lead
+  label:
+    en: Global Lead
+    es: Líder global
+    fr: Responsable global
+    pt: Gestor global
+  definition:
+    en: Managing new global initiatives, as well as trying to improve the cultural and linguistic diversity of the team, our lessons, and of participation in Digital Humanities more generally.
+    es: Coordinar nuevas iniciativas globales, así como tratar de mejorar la diversidad cultural y lingüística del equipo, de nuestras lecciones y de la participación en Humanidades Digitales en general.
+    fr: En charge de nouvelles initiatives à vocation globale, de la diversité culturelle et linguistique de l'équipe et des leçons, et de la participation aux humanités numériques en général.
+    pt: Responsável por coordenar novas iniciativas globais, assim como por alargar a diversidade cultural e linguística da equipe, das lições e da participação no movimento das Humanidades Digitais em geral.
+
+# Status
+- type: volunteer
+  label:
+    en: Volunteer
+    es: Voluntario
+    fr: Bénévole
+    pt: Voluntário
+  definition:
+    en: This member's time on the project is wholly voluntary.
+    es: El tiempo que este miembro dedica al proyecto es voluntario.
+    fr: Ce membre contribue son temps sur une base entièrement bénévole.
+    pt: O tempo que este membro dedica ao projeto é totalmente voluntário.
+- type: institutionally-supported
+  label:
+    en: Institutionally Supported
+    es: Apoyado por su institución
+    fr: Soutenu(e) institutionnellement
+    pt: Apoiado institucionalmente
+  definition:
+    en: This member's time on the project is either directly or indirectly supported by their employer.
+    es: El tiempo que este miembro dedica al proyecto está directa o indirectamente apoyado por su institución.
+    fr: Le temps que ce membre consacre au projet est directement ou indirectement financé par son employeur.
+    pt: O tempo que este membro dedica ao projeto é apoiado direta ou indiretamente pelo seu empregador.

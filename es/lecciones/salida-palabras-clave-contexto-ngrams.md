@@ -4,17 +4,40 @@ authors:
 - William J. Turkel
 - Adam Crymble
 date: 2012-07-17
-reviewers:
+translation_date: 2017-03-15
+editors:
 - Miriam Posner
+reviewers:
 - Jim Clifford
+- Frederik Elwert
 translator:
 - Víctor Gayol
+translation-editor:
+- Adam Crymble
 translation-reviewer:
 - Jairo A. Melo
-layout: default
+- Maria José Afanador-Llach
+- Antonio Rojas Castro
+review-ticket: https://github.com/programminghistorian/ph-submissions/issues/51
+layout: lesson
 previous: palabras-clave-en-contexto-n-grams
-redirect_from: /es/lessons/output-keywords-in-context-in-html-file
+original: output-keywords-in-context-in-html-file
+python_warning: false
+difficulty: 2
+activity: presenting
+topics: [python]
+abstract: "Esta lección se basa en 'Palabras clave en contexto (usando n-grams)', en la que se extrajeron n-gramas de un texto. Aquí aprenderás cómo generar una salidad de todos los n-gramas de una palabra clave dada en un documento descargado de Internet, y visualizarlos claramente en la ventana de tu navegador."
+avatar_alt: Grabado de un león, un oso y un mono caminando.
+doi: 10.46430/phes0026
+sequence: 14
+series_total: 14
 ---
+
+{% include toc.html %}
+
+
+
+
 
 ## Objetivo de la lección
 
@@ -81,7 +104,7 @@ def nGramasAdicKWIC(ngramas):
         else:
             kwicdicc[k[indicePClave]].append(k)
     return kwicdicc
-``` 
+```
 
 Un bucle `for`y una declaración `if` comprueban cada n-grama para ver si su palabra clave está ya almacenada en el diccionario. Si no es así, se añade una nueva entrada. Si lo es, añade a una entrada anterior. Ahora tenemos un diccionario llamado *kwicdicc* que contiene todos los n-gramas, clasificables por palabra clave y podemos regresar a la tarea de dar salida a la información en un formato más útil como lo hicimos en [Salida de datos como archivo HTML][].
 
@@ -100,9 +123,9 @@ Prueba volver a ejecutar el programa `obten-palabraClave.py` y ahora podrás ver
                           i saw a black at first but
                      swear to any black yes there is
                        swear to a black than to a
-                                  ... 
+                                  ...
 
-Esta técnica no es la mejor manera de formatear texto desde la perspectiva de un diseñador de páginas Web. Si tienes experiencia con HTML te animamos a que utilices otro método que permita crear un archivo HTML compatible con los estándares, pero para los nuevos estudiantes, simplemente no podemos resistirnos a la facilidad de la técnica que vamos a describir. Después de todo, el punto es integrar los principios de programación rápidamente en nuestra investigación.
+Esta técnica no es la mejor manera de formatear texto desde la perspectiva de un diseñador de páginas Web. Si tienes experiencia con HTML te animamos a que utilices otro método que permita crear un archivo HTML compatible con los estándares, pero para los nuevos estudiantes, simplemente no podemos resistirnos a la facilidad de la técnica que vamos a describir. Después de todo, el objetivo es integrar los principios de programación rápidamente en nuestra investigación.
 
 Para conseguir este efecto, vamos a tener que hacer un número de manipulaciones de listas y cadenas. Empecemos por averiguar cómo se ve nuestro diccionario de salida en su estado actual. Entonces podremos trabajar en perfeccionarlo para lo que queremos.
 
@@ -127,6 +150,7 @@ Como puedes observar al ejecutar el programa anterior, la salida de datos aún n
 Utilizando el mismo método anterior de `slice`, vamos a crear nuestras tres partes. Abre un intérprete de Python para ensayar los siguiente ejemplos. Pon especial atención a lo que aparece antes y después de los dos puntos en cada caso. Saber cómo manipular el método de `slice` es una poderosa habilidad para un nuevo historiador programador.
 
 ``` python
+# ParseError: Could not check this chunk!
 # calcula la longitud del n-grama
 kwic = 'amongst them a black there was one'.split()
 n = len(kwic)
@@ -156,6 +180,7 @@ Ahora que sabemos cómo encontrar cada uno de los tres segmentos, necesitamos da
 El contexto de la derecha consistirá simplemente en una cadena de términos separados por espacios en blanco. Utilizaremos el método `join` para convertir las entradas de la lista en una cadena.
 
 ``` python
+
 print(' '.join(kwic[(indicePClave+1):]))
 -> there was one
 ```
@@ -167,7 +192,7 @@ print('#' + str(kwic[indicePClave]).center(len(kwic[indicePClave])+6) + '#')
 -> #   black   #
 ```
 
-Por último, queremos que el contexto de la izquierda esté alineado a la derecha. Dependiendo de qué tan grande sea *n*, vamos a necesitar incrementar la longitud total de esta columna. Haremos esto mediante la definición de una variable llamada *with* (*ancho*) y luego hacer que la longitud de la columna sea un múltiplo de esa variable (se utilizó un ancho de 10 caracteres, pero se puede hacer más grande o más pequeña según se desee). El método `rjust` se encarga de alinear a la derecha. Una vez más, hemos añadido marcas de almohadilla para que puedas ver los espacios en blanco.
+Por último, queremos que el contexto de la izquierda esté alineado a la derecha. Dependiendo de qué tan grande sea *n*, vamos a necesitar incrementar la longitud total de esta columna. Haremos esto mediante la definición de una variable llamada *width* (*ancho*) y luego hacer que la longitud de la columna sea un múltiplo de esa variable (se utilizó un ancho de 10 caracteres, pero se puede hacer más grande o más pequeña según se desee). El método `rjust` se encarga de alinear a la derecha. Una vez más, hemos añadido marcas de almohadilla para que puedas ver los espacios en blanco.
 
 ``` python
 width = 10
@@ -216,7 +241,7 @@ diccionarioPalabras = obo.nGramasAdicKWIC(ngramas)
 # genera salida de KWIC y envuelve con html
 objetivo = 'black'
 outstr = '<pre>'
-if diccionarioPalabras.has_key(objetivo):
+if objetivo in diccionarioPalabras:
     for k in diccionarioPalabras[objetivo]:
         outstr += obo.prettyPrintKWIC(k)
         outstr += '<br />'
@@ -229,7 +254,7 @@ obo.envuelveCadenaenHTML('html-a-kwic', url, outstr)
 
 La primera parte del programa es igual que en el caso anterior. En la segunda parte del programa hemos encerrado todo en una etiqueta HTML *pre* (pre-formateada), lo cual le indica al navegador que no se confunda con los espacios que hemos agregado.
 
-Además, toma en cuenta que hemos utilizado el método `has_key` en el diccionario para asegurarnos que la palabra clave realmente se encuentra en nuestro texto. Si no es así, podemos imprimir un mensaje para el usuario antes de enviar la salida a Firefox. Prueba cambiar la variable *objetivo* a algunas otras palabras clave. Intenta con alguna que tú sepas que no se encuentra en el texto para asegurarte que tu programa no genere salida de datos cuando no deba.
+Además, observa que hemos utilizado el método `has_key` en el diccionario para asegurarnos que la palabra clave realmente se encuentra en nuestro texto. Si no es así, podemos imprimir un mensaje para el usuario antes de enviar la salida a Firefox. Prueba cambiar la variable *objetivo* a algunas otras palabras clave. Intenta con alguna que tú sepas que no se encuentra en el texto para asegurarte que tu programa no genere salida de datos cuando no deba.
 
 Ahora hemos creado un programa que busca una palabra clave en un diccionario creado a partir de una página HTML de la Web, y luego produce una salida de datos con n-gramas de esa palabra clave en otro archivo HTML para visualizar en la Web. Todas las lecciones hasta este punto han incluido partes del vocabulario de Python y métodos necesarios para crear este programa final. Al referirte a esas lecciones, ahora puedes experimentar con Python para crear programas que realicen tareas específicas que te ayudarán en tu proceso de investigación.
 
@@ -239,10 +264,10 @@ Esta lección marca el final de la serie de lecciones originales sobre Python. E
 
 -   python-es-lecciones9.zip [zip sync][]
 
-*Nota:* Ahora puedes ir a la siguiente lección (en inglés) para aprender a [Descargar registros múltiples](http://programminghistorian.org/lessons/downloading-multiple-records-using-query-strings)
+*Nota:* Ahora puedes ir a la siguiente lección (en inglés) para aprender a [Descargar registros múltiples](/lessons/downloading-multiple-records-using-query-strings)
 
-  [Palabras clave en contexto (usando n-grams)]: ../lecciones/palabras-clave-en-contexto-n-grams
-  [archivo zip de las lecciones anteriores]: http://programminghistorian.org/assets/python-es-lecciones8.zip
-  [Salida de datos como archivo HTML]: ../lecciones/salida-de-datos-como-archivo-html
-  [zip sync]: http://programminghistorian.org/assets/python-es-lecciones9.zip
- 
+[Palabras clave en contexto (usando n-grams)]: /es/lecciones/palabras-clave-en-contexto-n-grams
+[archivo zip de las lecciones anteriores]: /assets/python-es-lecciones8.zip
+[Salida de datos como archivo HTML]: /es/lecciones/salida-de-datos-como-archivo-html
+[zip sync]: /assets/python-es-lecciones9.zip
+

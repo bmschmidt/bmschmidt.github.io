@@ -1,0 +1,65 @@
+{% comment %}
+Loops through members of editorial team and then generates their contact info using the contact-info.html include. This
+is used both on project-team.md as well as es/equipo-de-proyecto.md
+{% endcomment %}
+
+<!-- Activate the Bootstrap tooltip javascript manually so definitions will display -->
+<script>$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })</script>
+
+
+### Programming Historian in English
+{% assign englishmembers = site.data.ph_authors | where_exp: "member", "member.team_roles contains 'english'" | where_exp: "member", "member.team == true" | sort: "sortname" %}
+{% for member in englishmembers %}
+{% include contact-info.html name=member.name %}
+{% endfor %}
+
+### Programming Historian en espa&ntilde;ol
+{% assign spanishmembers = site.data.ph_authors | where_exp: "member", "member.team_roles contains 'spanish'" | where_exp: "member", "member.team == true" | sort: "sortname" %}
+{% for member in spanishmembers %}
+{% include contact-info.html name=member.name %}
+{% endfor %}
+
+### Programming Historian en fran&ccedil;ais
+{% assign frenchmembers = site.data.ph_authors | where_exp: "member", "member.team_roles contains 'french'" | where_exp: "member", "member.team == true" | sort: "sortname" %}
+{% for member in frenchmembers %}
+{% include contact-info.html name=member.name %}
+{% endfor %}
+
+### Programming Historian em portugu&ecirc;s
+{% assign portuguesemembers = site.data.ph_authors | where_exp: "member", "member.team_roles contains 'portuguese'" | where_exp: "member", "member.team == true" | sort: "sortname" %}
+{% for member in portuguesemembers %}
+{% include contact-info.html name=member.name %}
+{% endfor %}
+
+### ProgHist Ltd
+{% assign proghistmembers = site.data.ph_authors | where_exp: "member", "member.team_roles contains 'proghist'" | where_exp: "member", "member.team == true" | sort: "sortname" %}
+{% for member in proghistmembers %}
+{% include contact-info.html name=member.name %}
+{% endfor %}
+
+{% assign techlead = site.data.ph_authors | where_exp: "member", "member.team_roles contains 'technical-lead'" | where_exp: "member", "member.team == true" | sort: "sortname" %}
+{% for member in techlead %}
+{% include contact-info.html name=member.name %}
+{% endfor %}
+
+{% assign globallead = site.data.ph_authors | where_exp: "member", "member.team_roles contains 'global-lead'" | where_exp: "member", "member.team == true" | sort: "sortname" %}
+{% for member in globallead %}
+{% include contact-info.html name=member.name %}
+{% endfor %}
+
+{% assign commslead = site.data.ph_authors | where_exp: "member", "member.team_roles contains 'communication-manager'" | where_exp: "member", "member.team == true" | sort: "sortname" %}
+{% for member in commslead %}
+{% include contact-info.html name=member.name %}
+{% endfor %}
+
+
+### {{ site.data.snippets.project-team-roles[page.lang] }}
+<ul>
+  {% for team in site.data.teamroles %}
+  {% if team.definition %}
+  <li><strong>{{ team.label[page.lang] }}</strong>: {{ team.definition[page.lang] }}</li>
+  {% endif %}
+  {% endfor %}
+</ul>

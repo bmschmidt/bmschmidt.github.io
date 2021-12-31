@@ -1,0 +1,35 @@
+{% comment %}
+Attached to all pages, this include will check two things:
+
+1. IF this page is known to be a translation of another page because its YAML contains an `original` tag, then the first
+section of this workflow searches across the site to find the 1 matching page that is the `translation_source`
+
+1. Are there are any translations of this page elsewhere on the site. This checks both for
+a) Direct translations that have this page listed under their 'original' metadata
+b) Indirect translations that share the same 'original' as this page
+Those 0+ page objects are saved to the variable `translation_candidates` available when rendering the rest of the page.
+
+{% endcomment %}
+
+{% if page.original %}
+
+    {% assign target_slug = page.original %}
+    {% assign target_name = target_slug | append: ".md" %}
+    
+    {% assign translation_source = site.pages | where: "name", target_name | first %}
+    {% if translation_source == nil %}
+        {% for other_page in site.pages %}
+            {% if other_page.redirect_from contains target_slug or other_page.name == target_name %}
+                {% assign translation_source = other_page %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% else %}
+
+{% assign target_slug = page.name | remove_first: ".md" %}
+{% assign translation_source = page %}
+
+{% endif %}
+
+{% assign translation_candidates = site.pages | where: "original", target_slug %}
