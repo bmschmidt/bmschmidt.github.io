@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/fr/lecons/debuter-avec-markdown"),
+					params: {lang:"fr",lessons:"lecons",slug:"debuter-avec-markdown"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en français</h2>
+	<a class="nav-link" href="/fr/lecons">Leçons</a><a class="nav-link" href="/fr/apropos">À propos</a><a class="nav-link" href="/fr/recherche">Recherche</a><a class="nav-link" href="/fr/nous-soutenir">Nous soutenir</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link active" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Débuter avec Markdown</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h3>Objectifs de la leçon</h3>
+<p>Cette leçon  sert d’initiation à Markdown, qui est une syntaxe en texte brut pour le <a href="https://fr.wikipedia.org/wiki/Langage_de_formatage_de_texte">formatage</a> de documents. Vous allez découvrir pourquoi l'utiliser, comment formater des fichiers Markdown et comment prévisualiser de tels fichiers sur le web.</p>
+<p>Puisque les tutoriels de ce site sont soumis sous forme de fichiers Markdown, je mobilise des exemples maison chaque fois que cela est possible. J'espère que ce guide vous sera particulièrement utile si vous envisagez de rédiger un tutoriel en tant qu'auteur(e) pour le <em>Programming Historian</em>, même s'il reste d'une portée plus générale.</p>
+<h2>Qu'est-ce que le Markdown?</h2>
+<p>Développé en 2004 par <a href="http://daringfireball.net/projects/markdown/" title="Markdown on Daring Fireball">John Gruber</a>, Markdown est à la fois un langage de balisage de fichiers textes et une fonctionnalité du langage <a href="https://fr.wikipedia.org/wiki/Perl_(langage)">Perl</a> permettant de convertir des fichiers Markdown en HTML. Notre leçon traite davantage du premier aspect, puisque nous apprendrons à utiliser la syntaxe Markdown pour préparer des fichiers.</p>
+<p>Les fichiers texte brut présentent plusieurs avantages comparés aux autres formats. Non seulement ils sont compatibles avec tout type d'appareil et de système d'exploitation, mais ils s'avèrent aussi plus pérennes. Si jamais vous avez tenté d'ouvrir un document sauvegardé dans une version antérieure d'un logiciel de traitement de texte, vous pouvez comprendre facilement les problèmes de compatibilité qui sont en jeu.</p>
+<p>L'utilisation de la syntaxe Markdown vous permettra de produire des fichiers à la fois lisibles en texte brut et prêts à recevoir davantage de traitement sur une autre plateforme. Plusieurs systèmes de gestion de blogs, des générateurs de sites web statiques ou encore des plateformes comme <a href="http://github.com" title="GitHub">GitHub</a> prennent en charge des fichiers Markdown pour les convertir en <a href="https://fr.wikipedia.org/wiki/Hypertext_Markup_Language">HTML</a> et les publier sur le web. De plus, des outils comme Pandoc peuvent convertir des fichiers depuis et vers Markdown. Pour apprendre plus sur Pandoc, vous pouvez faire un tour sur <a href="/fr/lecons/redaction-durable-avec-pandoc-et-markdown">cette leçon</a> de Dennis Tenen et Grant Wythoff.</p>
+<h2>La syntaxe Markdown</h2>
+<p>Les fichiers Markdown portent l'extension <code>.md</code>. Il est possible de les ouvrir avec un éditeur de texte comme TextEdit, Notepad++, Sublime Text ou Vim. Plusieurs sites web et des plateformes de publication proposent des éditeurs de texte en ligne et/ou des extensions pour insérer du texte avec la syntaxe Markdown.</p>
+<p>Dans ce tutoriel, nous allons pratiquer la syntaxe Markdown directement depuis notre navigateur préféré en utilisant l'éditeur en ligne <a href="https://stackedit.io">StackEdit</a>. Cet éditeur de traitement vous permet d'insérer du texte formaté en Markdown à gauche et en avoir le rendu directement à côté, à droite.</p>
+<p>Puisque toutes les leçons du Programming Historian sont écrites en Markdown, nous pouvons aussi explorer ces fichiers avec StackEdit. Ainsi, l'URL suivante fait apparaître la leçon &quot;Préserver ses données de recherche&quot; en Markdown:</p>
+<pre><code>https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/fr/lecons/preserver-ses-donnees-de-recherche.md
+</code></pre>
+<p>Une fois sur la fenêtre de <a href="https://stackedit.io/app#">l'éditeur StackEdit</a>, à partir de l'adresse indiquée ci-dessus, copiez l'ensemble du texte puis collez-le dans le panneau de gauche de l'éditeur. Si vous le préférez, après avoir copié le texte, vous pouvez aussi le coller dans un nouveau fichier en utilisant un éditeur de texte de votre choix puis le sauvegarder en format .md sur votre poste de travail. Ensuite, rendez-vous sur l'éditeur de StackEdit et cliquez sur <code>#</code>, en haut <strong>à droite</strong>, pour accéder au menu puis choisissez <code>Import Markdown</code> (<em>Importer Markdown</em>). Spécifiez le chemin pour accéder au fichier que vous avez stocké en local, puis ouvrez-le.*</p>
+<p>Vous remarquez que, même si la fénêtre à droite offre un rendu plus élégant du texte, le fichier initial en Markdown, à gauche, reste bien lisible.</p>
+<p>Maintenant, démarrons notre leçon pour rédiger notre propre syntaxe Markdown. Veuillez créer un nouveau document dans StackEdit en cliquant sur l'icône en haut à gauche et en choisissant <code>New Document</code> (<em>Nouveau document</em>). Vous pouvez introduire un titre pour le document dans la boîte de texte en haut de la page.</p>
+<h3>En-têtes</h3>
+<p>Il y a quatre niveaux d'en-têtes disponibles en Markdown; ils sont indiqués par le nombre de <code>#</code> précédant le texte de l'en-tête. Merci de copier et coller les exemples suivants dans la boîte de texte à gauche.</p>
+<pre><code># En-tête de premier niveau
+## En-tête de deuxième niveau
+### En-tête de troisième niveau
+#### En-tête de quatrième niveau
+</code></pre>
+<p>Les en-têtes de premier et de deuxième niveau peuvent aussi être signalés comme suit:</p>
+<pre><code>En-tête de premier niveau
+=======
+
+En-tête de deuxième niveau
+----------
+</code></pre>
+<p><strong>Le rendu aura l'aspect de ceci:</strong></p>
+<h1>En-tête de premier niveau</h1>
+<h2>En-tête de deuxième niveau</h2>
+<h3>En-tête de troisième niveau</h3>
+<h4>En-tête de quatrième niveau</h4>
+<p>Vous remarquez que la syntaxe Markdown reste facile à lire et à comprendre même dans sa version texte brut.</p>
+<h3>Paragraphes et sauts de ligne</h3>
+<p>Insérez la phrase suivante dans la boîte de texte:</p>
+<pre><code>Bienvenue au Programming Historian.
+
+Aujourd'hui, nous allons travailler sur la syntaxe Markdown.
+Cette phrase se sépare de la précédente par un saut de ligne.
+</code></pre>
+<p><strong>Cela s'affiche de la manière suivante:</strong></p>
+<p>Bienvenue au Programming Historian.</p>
+<p>Aujourd'hui, nous allons travailler sur la syntaxe Markdown.
+Cette phrase se sépare de la précédente par un saut de ligne.</p>
+<p>Les paragraphes doivent être séparés par une ligne vide. Tentez de votre côté de laisser une ligne vide entre <code>syntaxe Markdown.</code> et <code>Cette phrase</code> pour comprendre le fonctionnement. Dans certaines implémentations de Markdown, il est possible d'indiquer les simples sauts de ligne en laissant deux espaces vides à la fin de chaque ligne (qui précède). Ceci n'est toutefois pas le cas avec la version <a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a> que StackEdit utilise par défaut.</p>
+<h3>Mise en forme</h3>
+<p>Vous pouvez mettre du texte en italique en le plaçant entre astérisques <code>*</code> ou tirets bas <code>_</code>. De même, pour le mettre en gras, placez le entre deux astérisques <code>**</code> ou deux tirets bas <code>__</code>.</p>
+<p>Essayez de mettre en forme certaines parties du texte selon ces principes:</p>
+<pre><code>Je suis **vraiment** ravie des tutoriels du _Programming Historian_.
+</code></pre>
+<p><strong>Ceci s'affiche comme suit:</strong></p>
+<p>Je suis <strong>vraiment</strong> ravie des tutoriels du <em>Programming Historian</em>.</p>
+<h3>Listes</h3>
+<p>Markdown permet de créer des listes ordonnées et non ordonnées. Essayez de créer la liste suivante dans la boîte de dialogue:</p>
+<pre><code>Liste de courses
+----------
+* Fruits
+  * Pommes
+  * Oranges
+  * Raisins
+* Produits laitiers
+  * Lait
+  * Fromage
+</code></pre>
+<p>Indenter l'astérisque <code>*</code> vous permet de créer des objets imbriqués.</p>
+<p><strong>Le rendu de ceci est comme suit:</strong></p>
+<h2>Liste de courses</h2>
+<ul>
+<li>Fruits
+<ul>
+<li>Pommes</li>
+<li>Oranges</li>
+<li>Raisins</li>
+</ul>
+</li>
+<li>Produits laitiers
+<ul>
+<li>Lait</li>
+<li>Fromage</li>
+</ul>
+</li>
+</ul>
+<p>Les listes ordonnées sont rédigées en numérotant chaque ligne. Répétons-le, l'objectif de Markdown est de produire des documents qui sont à la fois lisibles en texte brut et transformables en d'autres formats.</p>
+<pre><code>Liste à faire
+----------
+1. Achever le tutoriel Markdown
+2. Aller à l'épicerie
+3. Préparer le déjeuner
+</code></pre>
+<p><strong>Cela s'affiche comme suit:</strong></p>
+<h2>Liste à faire</h2>
+<ol>
+<li>Achever le tutoriel Markdown</li>
+<li>Aller à l'épicerie</li>
+<li>Préparer le déjeuner</li>
+</ol>
+<h3>Blocs de code</h3>
+<p>Représenter les blocs de code de manière distincte du reste du texte est une bonne pratique qui offre davantage de lisibilité. Habituellement le code est affiché en caractères à chasse fixe. Puisque Markdown ne distingue pas les polices, nous pouvons placer les blocs de code entre des guillements inverses tels <code>`</code>. Par exemple, écrire <code>`&lt;br /&gt;`</code>. Nous pouvons insérer des ensembles de code entre trois guillements inverses au début et trois à la fin. Dans la fenêtre de prévisualisation de StackEdit, cela donnera une boîte ombragée avec du texte en chasse fixe.</p>
+<p>Insérez le code suivant dans la boîte de dialogue:</p>
+<pre><code>```html
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Titre de site web&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+```
+</code></pre>
+<p><strong>Cela donne:</strong></p>
+<pre><code>    &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Titre de site web&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+<p>Remarquez comment le code s'affiche en police à chasse fixe.</p>
+<h3>Blocs de citation</h3>
+<p>Ajouter une balise fermante <code>&gt;</code> avant chaque paragraphe le fera apparaître comme élément de citation.</p>
+<p>Essayez de taper le texte suivant dans le panel:</p>
+<pre><code>&gt; Bonjour, je suis un paragraphe de texte englobé dans un bloc de citation. Regardez comment je suis décalé par rapport à la marge gauche.
+</code></pre>
+<p><strong>Ceci s'affiche comme suit:</strong></p>
+<blockquote>
+<p>Bonjour, je suis un paragraphe de texte englobé dans un bloc de citation. Regardez comment je suis décalé par rapport à la marge gauche.</p>
+</blockquote>
+<h3>Liens</h3>
+<p>Les liens peuvent être signalés selon deux styles.</p>
+<p>Pour insérer des liens à l'intérieur du texte, on place d'abord le texte d'accroche entre crochets puis l'URL (et éventuellement du texte supplémentaire) entre parenthèses.</p>
+<p><code>Pour accéder à davantage de tutoriels, merci de visiter la page d'accueil du [Programming Historian](/ &quot;Programming Historian main page&quot;).</code></p>
+<p><strong>Ceci s'affiche comme suit:</strong></p>
+<p>Pour accéder à davantage de tutoriels, merci de visiter la page d'accueil du <a href="/" title="Programming Historian main page">Programming Historian</a>.</p>
+<p>Les liens de références sont très pratiques pour créer des notes de bas de page et permettent de garder votre document en texte brut propre. Ces liens s'écrivent entre une paire de crochets supplémentaire pour leur créer, essentiellement, un identifiant unique.</p>
+<p><code>Le site web du [Programming Historian][1] fournit un exemple.</code></p>
+<p>Puis vous pouvez ajouter l'URL dans une autre partie du document:</p>
+<p><code>[1]: http://programminghistorian.org/ &quot;The Programming Historian&quot;</code></p>
+<p><strong>Ceci s'affiche comme suit:</strong></p>
+<p>Le site web du <a href="http://programminghistorian.org/" title="The Programming Historian">Programming Historian</a> fournit un exemple.</p>
+<h3>Images</h3>
+<p>Les images peuvent être référencées en utilisant un point d'exclamation <code>!</code> suivi par du texte supplémentaire entre crochets et, entre parenthèses, l'URL de l'image. Le titre de l'image, s'il y en a un, se met entre guillemets. Les images ne s'affichent pas dans votre document en texte brut, mais elles seront intégrées à la page convertie en HTML.</p>
+<p><code>![Logo de Wikipedia](https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg &quot;Logo de Wikipedia&quot;)</code></p>
+<p><strong>Ceci s'affiche comme cela:</strong></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="Logo de Wikipedia" title="Logo de Wikipedia"></p>
+<h4>Règles horizontales</h4>
+<p>Les règles horizontales sont créées lorsqu'au moins trois tirets <code>-</code>, astérisques <code>*</code> ou tirets bas <code>_</code> s'alignent seuls, avec ou sans espaces entre eux. Toutes les combinaisons suivantes vont donner des règles horizontales:</p>
+<pre><code>___
+* * *
+- - - - - -
+</code></pre>
+<p><strong>Ceci donne cela:</strong></p>
+<hr>
+<hr>
+<hr>
+<h3>Tables</h3>
+<p>Les spécifications de la version de base de Markdown ne contiennent pas de règles pour l'encodage de tables. Certaines des variantes de Markdown utilisées par des sites et des applications spécifiques permettent cependant la création de tables et d'autres structures complexes. <a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a> est une de ces variantes, principalement utilisée pour afficher des fichiers <code>.md</code> dans le navigateur sur le site web de Github.</p>
+<p>Il est possible de créer une table dans Github en utilisant des barres verticales <code>|</code> pour séparer les colonnes et des tirets <code>-</code> au milieu de vos en-têtes et du contenu de la table. Les barres verticales sont strictement nécessaires seulement entre les colonnes; vous pouvez néanmoins les utiliser des deux côtés de votre table pour obtenir un résultat plus soigné. Il n'y a pas de limitation quant à la longueur du contenu des cellules et il n'est pas nécessaire d'aligner les barres verticales.</p>
+<pre><code>| En-tête 1                   | En-tête 2                   | En-tête 3                   |
+| --------------------------- | --------------------------- | --------------------------- |
+| Ligne 1, colonne 1 | Ligne 1, colonne 2 | Ligne 1, colonne 3  |
+| Ligne 2, colonne 1 | Ligne 2, colonne 2 | Ligne 2, colonne 3  |
+| Ligne 3, colonne 1 | Ligne 3, colonne 2 | Ligne 3, colonne 3  |
+</code></pre>
+<p><strong>Cela s'affiche comme suit:</strong></p>
+<table>
+<thead>
+<tr>
+<th>En-tête 1</th>
+<th>En-tête 2</th>
+<th>En-tête 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ligne 1, colonne 1</td>
+<td>Ligne 1, colonne 2</td>
+<td>Ligne 1, colonne 3</td>
+</tr>
+<tr>
+<td>Ligne 2, colonne 1</td>
+<td>Ligne 2, colonne 2</td>
+<td>Ligne 2, colonne 3</td>
+</tr>
+<tr>
+<td>Ligne 3, colonne 1</td>
+<td>Ligne 3, colonne 2</td>
+<td>Ligne 3, colonne 3</td>
+</tr>
+</tbody>
+</table>
+<p>Pour régler l'alignement de chaque colonne, les deux points <code>:</code> peuvent être ajoutés dans la ligne de l'en-tête comme suit:</p>
+<pre><code>| Aligner à gauche | Centrer | Aligner à droite |
+| :--------------- | :-----: | ---------------: |
+| Pommes           |  Rouge  |             5000 |
+| Bananes          |  Jaune  |               75 |
+</code></pre>
+<p><strong>Cela s'affiche comme suit:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Left-aligned</th>
+<th style="text-align:center">Centered</th>
+<th style="text-align:right">Right-aligned</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Pommes</td>
+<td style="text-align:center">Rouge</td>
+<td style="text-align:right">5000</td>
+</tr>
+<tr>
+<td style="text-align:left">Bananes</td>
+<td style="text-align:center">Jaune</td>
+<td style="text-align:right">75</td>
+</tr>
+</tbody>
+</table>
+<h2>Les limites de Markdown</h2>
+<p>Même si Markdown devient de plus en plus populaire, notamment pour formatter des documents exposés sur le web, beaucoup de gens et d'éditeurs sollicitent des documents traditionnels en Word, PDF et d'autres formats de fichiers. Certains outils de conversion exécutables en ligne de commande, comme <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, offrent une solution, sans toutefois offrir toutes les fonctionnalités des logiciels de traitement de texte, notamment le versionnage. Pour en savoir plus sur Pandoc, merci de consulter la leçon du <em>Programming Historian</em> intitulée <a href="/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown">&quot;Sustainable authorship in plain text using Pandoc and Markdown&quot;</a> (en anglais).</p>
+<h2>Conclusion</h2>
+<p>Markdown est une solution utile à mi-chemin entre les fichiers textes bruts et les logiciels de traitement de texte aux formats hérités. Sa syntaxe simple est facile à apprendre et lisible non seulement en tant que telle, mais aussi après conversion en HTML et vers d'autres formats. Opter pour écrire ses documents en Markdown c'est s'assurer que ceux-ci seront utilisables et lisibles à long terme.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

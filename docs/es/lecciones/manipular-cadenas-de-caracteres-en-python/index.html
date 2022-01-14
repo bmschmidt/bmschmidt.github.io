@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/es/lecciones/manipular-cadenas-de-caracteres-en-python"),
 					params: {lang:"es",lessons:"lecciones",slug:"manipular-cadenas-de-caracteres-en-python"}
@@ -48,52 +49,54 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the es edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en español</h2>
+	<a class="nav-link" href="/es/lecciones">Lecciones</a><a class="nav-link" href="/es/acerca-de">Acerca</a><a class="nav-link" href="/es/investigacion">Investigación</a><a class="nav-link" href="/es/apoyanos">Apóyanos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link active" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Manipular cadenas de caracteres en Python</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="objetivos-de-la-lección">Objetivos de la lección</h2>
+<h2>Objetivos de la lección</h2>
 <p>Esta lección es una rápida introducción a técnicas de manipulación de <a href="https://es.wikipedia.org/wiki/Cadena_de_caracteres">cadenas de caracteres</a> (o <em>strings</em>) en Python. Saber cómo manipular cadenas de caracteres juega un papel fundamental en la mayoría de las tareas de procesamiento de texto. Si quieres experimentar con las siguientes lecciones puedes escribir y ejecutar pequeños programas tal como lo hicimos en lecciones previas, o puedes abrir tu intérprete de comandos de Python / Terminal para probarlos ahí.</p>
-<h2 id="manipular-cadenas-de-caracteres-en-python">Manipular cadenas de caracteres en Python</h2>
+<h2>Manipular cadenas de caracteres en Python</h2>
 <p>Si has estado expuesto antes a otro lenguaje de programación, sabrás que necesitas <em>declarar</em> o <em>escribir</em> variables antes de que puedas almacenar cualquier cosa en ellas. Esto no es necesario cuando trabajas con cadenas de caracteres en Python. Podemos crear una cadena de caracteres simplemente encerrando contenido entre comillas después de un signo de igual (=).</p>
 <pre><code class="language-python">mensaje = “Hola Mundo”
 </code></pre>
-<h2 id="operadores-de-cadenas-de-caracteres-adición-y-multiplicación">Operadores de cadenas de caracteres: adición y multiplicación</h2>
+<h2>Operadores de cadenas de caracteres: adición y multiplicación</h2>
 <p>Una cadena de caracteres en un objeto que consiste precisamente en una serie de signos o caracteres. Python sabe cómo tratar un número de representaciones poderosas y de propósito general, incluidas las cadenas de caracteres. Una forma de manipular cadenas de caracteres es utilizar <em>operadores de cadenas de caracteres</em>. Dichos operadores se representan con símbolos que asociamos a las matemáticas, como +, -, *, / y =. Estos signos realizan acciones similares a sus contrapartes matemáticas cuando se usan con las cadenas de carateres, aunque no iguales.</p>
-<h3 id="concatenar">Concatenar</h3>
+<h3>Concatenar</h3>
 <p>Este término significa juntar cadenas de caracteres. El proceso de <em>concatenación</em> se realiza mediante el operador de suma (+). Ten en cuenta que debes marcar explícitamente dónde quieres los espacios en blanco y colocarlos entre comillas.</p>
 <p>En este ejemplo, la cadena de caracteres &quot;mensaje1&quot; tiene el contenido &quot;Hola Mundo&quot;</p>
-<pre><code class="language-python">mensaje1 = &#39;Hola&#39; + &#39; &#39; + &#39;Mundo&#39;
+<pre><code class="language-python">mensaje1 = 'Hola' + ' ' + 'Mundo'
 print(mensaje1)
 -&gt; Hola Mundo
 </code></pre>
-<h3 id="multiplicar">Multiplicar</h3>
+<h3>Multiplicar</h3>
 <p>Si quieres varias copias de una cadena de caracteres utiliza el operador de multiplicación (*). En este ejemplo, la cadena de caracteres <em>mensaje2a</em> lleva el contenido &quot;Hola&quot; tres veces, mientras que la cadena de caracteres <em>mensaje2b</em> tiene el contenido &quot;Mundo&quot;. Ordenemos imprimir las dos cadenas.</p>
-<pre><code class="language-python">mensaje2a = &#39;Hola &#39; * 3
-mensaje2b = &#39;Mundo&#39;
+<pre><code class="language-python">mensaje2a = 'Hola ' * 3
+mensaje2b = 'Mundo'
 print(mensaje2a + mensaje2b)
 -&gt; Hola Hola Hola Mundo
 </code></pre>
-<h3 id="añadir">Añadir</h3>
+<h3>Añadir</h3>
 <p>¿Qué pasa si quieres añadir material de manera sucesiva al final de una cadena de caracteres? El operador especial para ello es compuesto (+=).</p>
-<pre><code class="language-python">mensaje3 = &#39;Hola&#39;
-mensaje3 += &#39; &#39;
-mensaje3 += &#39;Mundo&#39;
+<pre><code class="language-python">mensaje3 = 'Hola'
+mensaje3 += ' '
+mensaje3 += 'Mundo'
 print(mensaje3)
 -&gt; Hola Mundo
 </code></pre>
-<h2 id="métodos-para-cadenas-de-caracteres-buscar-cambiar">Métodos para cadenas de caracteres: buscar, cambiar</h2>
+<h2>Métodos para cadenas de caracteres: buscar, cambiar</h2>
 <p>En adición a los operadores, Python trae preinstalado docenas de métodos que te permiten hacer cosas con las cadenas de caracteres. Solos o en combinación, los métodos pueden hacer casi todo lo que te imagines con las cadenas de caracteres. Puedes usar como referencia la lista de métodos de cadenas de caracteres (<em>String Methods</em>) en el <a href="https://docs.python.org/2/library/stdtypes.html#string-methods">sitio web de Python</a>, que incluye información de cómo utilizar correctamente cada uno. Para asegurar que tengas una comprensión básica de métodos para cadenas de caracteres, lo que sigue es una breve descripción de los utilizados más comúnmente.</p>
-<h3 id="extensión">Extensión</h3>
+<h3>Extensión</h3>
 <p>Puedes determinar el número de caracteres en una cadena utilizando el método <code>len</code>. Acuérdate que los espacios en blanco cuentan como un carácter.</p>
-<pre><code class="language-python">mensaje4 = &#39;hola&#39; + &#39; &#39; + &#39;mundo&#39;
+<pre><code class="language-python">mensaje4 = 'hola' + ' ' + 'mundo'
 print(len(mensaje4))
 -&gt; 10
 </code></pre>
-<h3 id="encontrar">Encontrar</h3>
+<h3>Encontrar</h3>
 <p>Puedes buscar una sub-cadena en una cadena de caracteres utilizando el método <code>find</code> y tu programa te indicará el índice de inicio de la misma. Esto es muy útil para procesos que veremos más adelante. Ten en mente que los índices están numerados de izquierda a derecha y que el número en el que se comienza a contar la posición es el 0, no el 1.</p>
 <pre><code class="language-python">mensaje5 = &quot;Hola Mundo&quot;
 mensaje5a = mensaje5.find(&quot;Mundo&quot;)
@@ -106,7 +109,7 @@ mensaje6a = mensaje6.find(&quot;ardilla&quot;)
 print(mensaje6a)
 -&gt; -1
 </code></pre>
-<h3 id="minúsculas">Minúsculas</h3>
+<h3>Minúsculas</h3>
 <p>A veces es útil convertir una cadena de caracteres a minúsculas. Para ello se utiliza el método <code>lower</code>. Por ejemplo, al uniformar los caracteres permitimos que la computadora reconozca fácilmente que &quot;Algunas Veces&quot; y &quot;algunas veces&quot; son la misma frase.</p>
 <pre><code class="language-python">mensaje7 = &quot;HOLA MUNDO&quot;
 mensaje7a = mensaje7.lower()
@@ -114,14 +117,14 @@ print(mensaje7a)
 -&gt; hola mundo
 </code></pre>
 <p>Convertir las minúsculas en mayúsculas se logra cambiando <code>.lower()</code> por <code>upper()</code>.</p>
-<h3 id="reemplazar">Reemplazar</h3>
+<h3>Reemplazar</h3>
 <p>Si necesitas cambiar una sub-cadena de una cadena se puede utilizar el método <code>replace</code>.</p>
 <pre><code class="language-python">mensaje8 = &quot;HOLA MUNDO&quot;
 mensaje8a = mensaje7.replace(&quot;L&quot;, &quot;pizza&quot;)
 print(mensaje8a)
 -&gt; HOpizzaA MUNDO
 </code></pre>
-<h3 id="cortar">Cortar</h3>
+<h3>Cortar</h3>
 <p>Si quieres <code>cortar</code> partes que no quieras del principio o del final de la cadena de caracteres, lo puedes hacer creando una sub-cadena. El mismo tipo de técnica te permite separar una cadena muy larga en componentes más manejables.</p>
 <pre><code class="language-python">mensaje9 = &quot;Hola Mundo&quot;
 mensaje9a = mensaje9[1:8]
@@ -152,22 +155,23 @@ print(mensaje7a)
 </code></pre>
 <p>Esta declaración le dice a Python que aplique la función <code>lower</code> a la cadena <em>mensaje7</em> y guarde el valor resultante en la cadena <em>mensaje7a</em>.</p>
 <p>Los corchetes sirven para propósitos diferentes. La cadena es una secuencia de caracteres; así que si quieres acceder al contenido de la cadena a partir de su posición en la secuencia, tienes que indicarle a Python un lugar en la secuencia. Eso es lo que hacen los corchetes: señalan el lugar del principio y del final de la secuencia, tal y como vimos en el método <code>cortar</code>.</p>
-<h3 id="secuencias-de-escape">Secuencias de escape</h3>
+<h3>Secuencias de escape</h3>
 <p>¿Qué haces cuando necesitas incluir comillas en una cadena de caracteres? No quieres que el intérprete de Python se equivoque y piense que la cadena termina en donde se encuentre una comilla. En Python puedes poner una barra invertida (\) enfrente de la comilla para que no acabe ahí la cadena. Esto es conocido como secuencia de escape.</p>
-<pre><code class="language-python">print(&#39;\&quot;&#39;)
+<pre><code class="language-python">print('\&quot;')
 -&gt; &quot;
 </code></pre>
-<pre><code class="language-python">print(&#39;El programa imprime \&quot;Hola Mundo\&quot;&#39;)
+<pre><code class="language-python">print('El programa imprime \&quot;Hola Mundo\&quot;')
 -&gt; El programa imprime &quot;Hola Mundo&quot;
 </code></pre>
 <p>Otras dos secuencias de escape te permiten incluir marcas de tabulación (t) y saltos de línea (n):</p>
-<pre><code class="language-python">print(&#39;Hola\tHola\tHola\nMundo&#39;)
+<pre><code class="language-python">print('Hola\tHola\tHola\nMundo')
 -&gt; Hola Hola Hola
 Mundo
 </code></pre>
-<h2 id="lecturas-sugeridas">Lecturas sugeridas</h2>
+<h2>Lecturas sugeridas</h2>
 <ul>
-<li>Lutz, <em>Learning Python</em><ul>
+<li>Lutz, <em>Learning Python</em>
+<ul>
 <li>Ch. 7: Strings</li>
 <li>Ch. 8: Lists and Dictionaries</li>
 <li>Ch. 10: Introducing Python Statements</li>
@@ -175,13 +179,13 @@ Mundo
 </ul>
 </li>
 </ul>
-<h3 id="sicronización-de-código">Sicronización de código</h3>
+<h3>Sicronización de código</h3>
 <p>Para seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto.</p>
 <ul>
 <li>python-es-lecciones1.zip (<a href="/assets/python-es-lecciones1.zip">zip</a>)</li>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="manipular-cadenas-de-caracteres-en-python/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Manipular cadenas de caracteres en Python\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"date\":\"2012-07-17T00:00:00.000Z\",\"translation_date\":\"2017-03-15T00:00:00.000Z\",\"editors\":[\"Miriam Posner\"],\"reviewers\":[\"Jim Clifford\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Adam Crymble\"],\"translation-reviewer\":[\"Jairo A. Melo\",\"Maria José Afanador-Llach\",\"Antonio Rojas Castro\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F43\",\"layout\":\"lesson\",\"next\":\"de-html-a-lista-de-palabras-1\",\"previous\":\"trabajar-con-paginas-web\",\"original\":\"manipulating-strings-in-python\",\"python_warning\":false,\"difficulty\":2,\"activity\":\"transforming\",\"topics\":[\"python\"],\"abstract\":\"Esta lección es una rápida introducción a técnicas de manipulación de cadenas de caracteres (o strings) en Python.\",\"avatar_alt\":\"Grabado de un joven tocando una guitarra\",\"doi\":\"10.46430\u002Fphes0018\",\"sequence\":6,\"series_total\":14},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"objetivos-de-la-lección\\\"\u003EObjetivos de la lección\u003C\u002Fh2\u003E\\n\u003Cp\u003EEsta lección es una rápida introducción a técnicas de manipulación de \u003Ca href=\\\"https:\u002F\u002Fes.wikipedia.org\u002Fwiki\u002FCadena_de_caracteres\\\"\u003Ecadenas de caracteres\u003C\u002Fa\u003E (o \u003Cem\u003Estrings\u003C\u002Fem\u003E) en Python. Saber cómo manipular cadenas de caracteres juega un papel fundamental en la mayoría de las tareas de procesamiento de texto. Si quieres experimentar con las siguientes lecciones puedes escribir y ejecutar pequeños programas tal como lo hicimos en lecciones previas, o puedes abrir tu intérprete de comandos de Python \u002F Terminal para probarlos ahí.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"manipular-cadenas-de-caracteres-en-python\\\"\u003EManipular cadenas de caracteres en Python\u003C\u002Fh2\u003E\\n\u003Cp\u003ESi has estado expuesto antes a otro lenguaje de programación, sabrás que necesitas \u003Cem\u003Edeclarar\u003C\u002Fem\u003E o \u003Cem\u003Eescribir\u003C\u002Fem\u003E variables antes de que puedas almacenar cualquier cosa en ellas. Esto no es necesario cuando trabajas con cadenas de caracteres en Python. Podemos crear una cadena de caracteres simplemente encerrando contenido entre comillas después de un signo de igual (=).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje = “Hola Mundo”\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"operadores-de-cadenas-de-caracteres-adición-y-multiplicación\\\"\u003EOperadores de cadenas de caracteres: adición y multiplicación\u003C\u002Fh2\u003E\\n\u003Cp\u003EUna cadena de caracteres en un objeto que consiste precisamente en una serie de signos o caracteres. Python sabe cómo tratar un número de representaciones poderosas y de propósito general, incluidas las cadenas de caracteres. Una forma de manipular cadenas de caracteres es utilizar \u003Cem\u003Eoperadores de cadenas de caracteres\u003C\u002Fem\u003E. Dichos operadores se representan con símbolos que asociamos a las matemáticas, como +, -, *, \u002F y =. Estos signos realizan acciones similares a sus contrapartes matemáticas cuando se usan con las cadenas de carateres, aunque no iguales.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"concatenar\\\"\u003EConcatenar\u003C\u002Fh3\u003E\\n\u003Cp\u003EEste término significa juntar cadenas de caracteres. El proceso de \u003Cem\u003Econcatenación\u003C\u002Fem\u003E se realiza mediante el operador de suma (+). Ten en cuenta que debes marcar explícitamente dónde quieres los espacios en blanco y colocarlos entre comillas.\u003C\u002Fp\u003E\\n\u003Cp\u003EEn este ejemplo, la cadena de caracteres &quot;mensaje1&quot; tiene el contenido &quot;Hola Mundo&quot;\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje1 = &#39;Hola&#39; + &#39; &#39; + &#39;Mundo&#39;\\nprint(mensaje1)\\n-&gt; Hola Mundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"multiplicar\\\"\u003EMultiplicar\u003C\u002Fh3\u003E\\n\u003Cp\u003ESi quieres varias copias de una cadena de caracteres utiliza el operador de multiplicación (*). En este ejemplo, la cadena de caracteres \u003Cem\u003Emensaje2a\u003C\u002Fem\u003E lleva el contenido &quot;Hola&quot; tres veces, mientras que la cadena de caracteres \u003Cem\u003Emensaje2b\u003C\u002Fem\u003E tiene el contenido &quot;Mundo&quot;. Ordenemos imprimir las dos cadenas.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje2a = &#39;Hola &#39; * 3\\nmensaje2b = &#39;Mundo&#39;\\nprint(mensaje2a + mensaje2b)\\n-&gt; Hola Hola Hola Mundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"añadir\\\"\u003EAñadir\u003C\u002Fh3\u003E\\n\u003Cp\u003E¿Qué pasa si quieres añadir material de manera sucesiva al final de una cadena de caracteres? El operador especial para ello es compuesto (+=).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje3 = &#39;Hola&#39;\\nmensaje3 += &#39; &#39;\\nmensaje3 += &#39;Mundo&#39;\\nprint(mensaje3)\\n-&gt; Hola Mundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"métodos-para-cadenas-de-caracteres-buscar-cambiar\\\"\u003EMétodos para cadenas de caracteres: buscar, cambiar\u003C\u002Fh2\u003E\\n\u003Cp\u003EEn adición a los operadores, Python trae preinstalado docenas de métodos que te permiten hacer cosas con las cadenas de caracteres. Solos o en combinación, los métodos pueden hacer casi todo lo que te imagines con las cadenas de caracteres. Puedes usar como referencia la lista de métodos de cadenas de caracteres (\u003Cem\u003EString Methods\u003C\u002Fem\u003E) en el \u003Ca href=\\\"https:\u002F\u002Fdocs.python.org\u002F2\u002Flibrary\u002Fstdtypes.html#string-methods\\\"\u003Esitio web de Python\u003C\u002Fa\u003E, que incluye información de cómo utilizar correctamente cada uno. Para asegurar que tengas una comprensión básica de métodos para cadenas de caracteres, lo que sigue es una breve descripción de los utilizados más comúnmente.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"extensión\\\"\u003EExtensión\u003C\u002Fh3\u003E\\n\u003Cp\u003EPuedes determinar el número de caracteres en una cadena utilizando el método \u003Ccode\u003Elen\u003C\u002Fcode\u003E. Acuérdate que los espacios en blanco cuentan como un carácter.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje4 = &#39;hola&#39; + &#39; &#39; + &#39;mundo&#39;\\nprint(len(mensaje4))\\n-&gt; 10\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"encontrar\\\"\u003EEncontrar\u003C\u002Fh3\u003E\\n\u003Cp\u003EPuedes buscar una sub-cadena en una cadena de caracteres utilizando el método \u003Ccode\u003Efind\u003C\u002Fcode\u003E y tu programa te indicará el índice de inicio de la misma. Esto es muy útil para procesos que veremos más adelante. Ten en mente que los índices están numerados de izquierda a derecha y que el número en el que se comienza a contar la posición es el 0, no el 1.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje5 = &quot;Hola Mundo&quot;\\nmensaje5a = mensaje5.find(&quot;Mundo&quot;)\\nprint(mensaje5a)\\n-&gt; 5\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESi la sub-cadena no está presente el programa imprimirá el valor -1.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje6 = &quot;Hola Mundo&quot;\\nmensaje6a = mensaje6.find(&quot;ardilla&quot;)\\nprint(mensaje6a)\\n-&gt; -1\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"minúsculas\\\"\u003EMinúsculas\u003C\u002Fh3\u003E\\n\u003Cp\u003EA veces es útil convertir una cadena de caracteres a minúsculas. Para ello se utiliza el método \u003Ccode\u003Elower\u003C\u002Fcode\u003E. Por ejemplo, al uniformar los caracteres permitimos que la computadora reconozca fácilmente que &quot;Algunas Veces&quot; y &quot;algunas veces&quot; son la misma frase.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje7 = &quot;HOLA MUNDO&quot;\\nmensaje7a = mensaje7.lower()\\nprint(mensaje7a)\\n-&gt; hola mundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EConvertir las minúsculas en mayúsculas se logra cambiando \u003Ccode\u003E.lower()\u003C\u002Fcode\u003E por \u003Ccode\u003Eupper()\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"reemplazar\\\"\u003EReemplazar\u003C\u002Fh3\u003E\\n\u003Cp\u003ESi necesitas cambiar una sub-cadena de una cadena se puede utilizar el método \u003Ccode\u003Ereplace\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje8 = &quot;HOLA MUNDO&quot;\\nmensaje8a = mensaje7.replace(&quot;L&quot;, &quot;pizza&quot;)\\nprint(mensaje8a)\\n-&gt; HOpizzaA MUNDO\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"cortar\\\"\u003ECortar\u003C\u002Fh3\u003E\\n\u003Cp\u003ESi quieres \u003Ccode\u003Ecortar\u003C\u002Fcode\u003E partes que no quieras del principio o del final de la cadena de caracteres, lo puedes hacer creando una sub-cadena. El mismo tipo de técnica te permite separar una cadena muy larga en componentes más manejables.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje9 = &quot;Hola Mundo&quot;\\nmensaje9a = mensaje9[1:8]\\nprint(mensaje9a)\\n-&gt; ola Mun\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EPuedes sustituir las variables por números enteros como en este ejemplo:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje9 = &quot;Hola Mundo&quot;\\nstartLoc = 2\\nendLoc = 8\\nmensaje9b = mensaje9[startLoc: endLoc]\\nprint(mensaje9b)\\n-&gt; la Mun\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEsto hace mucho más simple usar este método en conjunción con el método \u003Ccode\u003Efind\u003C\u002Fcode\u003E como en el próximo ejemplo, que busca la letra &quot;d&quot; en los seis primeros caracteres de &quot;Hola Mundo&quot; y correctamente nos dice que no se encuentra ahí (-1). Esta técnica es mucho más eficaz en cadenas largas -documentos enteros, por ejemplo. Observa que la ausencia de un número entero antes de los dos puntos significa que queremos empezar desde el principio de la cadena. Podemos usar la misma técnica para decirle al programa que pase hasta el final de la cadena de caracteres dejando vacío después de los dos puntos. Y recuerda que la posición del índice empieza a contar desde 0, no desde 1.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje9 = &quot;Hola Mundo&quot;\\nprint(mensaje9[:5].find(&quot;d&quot;))\\n-&gt; -1\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EHay muchos más, pero los métodos para cadenas de caracteres anteriores son un buen comienzo. Fíjate que en el ejemplo anterior utilizamos corchetes en vez de paréntesis. Esta diferencia en los símbolos de la \u003Cem\u003Esintaxis\u003C\u002Fem\u003E es muy importante. Los paréntesis en Python son utilizados generalmente para \u003Cem\u003Ellevar un argumento\u003C\u002Fem\u003E a una función. De tal manera que cuando vemos algo como:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(len(mensaje7))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Equiere decir que se lleva la cadena de caracteres &quot;mensaje7&quot; a la función \u003Ccode\u003Elen\u003C\u002Fcode\u003E y entonces enviar el valor resultante de esa función a la declaración \u003Ccode\u003Eprint\u003C\u002Fcode\u003E para ser impresa. Una función puede ser llamada sin un argumento, pero de todas formas tienes que incluir un par de paréntesis vacíos después del nombre de la función. Vimos un ejemplo de ello también.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emensaje7 = &quot;Hola Mundo&quot;\\nmensaje7a = mensaje7.lower()\\nprint(mensaje7a)\\n-&gt; Hola Mundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEsta declaración le dice a Python que aplique la función \u003Ccode\u003Elower\u003C\u002Fcode\u003E a la cadena \u003Cem\u003Emensaje7\u003C\u002Fem\u003E y guarde el valor resultante en la cadena \u003Cem\u003Emensaje7a\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003ELos corchetes sirven para propósitos diferentes. La cadena es una secuencia de caracteres; así que si quieres acceder al contenido de la cadena a partir de su posición en la secuencia, tienes que indicarle a Python un lugar en la secuencia. Eso es lo que hacen los corchetes: señalan el lugar del principio y del final de la secuencia, tal y como vimos en el método \u003Ccode\u003Ecortar\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"secuencias-de-escape\\\"\u003ESecuencias de escape\u003C\u002Fh3\u003E\\n\u003Cp\u003E¿Qué haces cuando necesitas incluir comillas en una cadena de caracteres? No quieres que el intérprete de Python se equivoque y piense que la cadena termina en donde se encuentre una comilla. En Python puedes poner una barra invertida (\\\\) enfrente de la comilla para que no acabe ahí la cadena. Esto es conocido como secuencia de escape.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;\\\\&quot;&#39;)\\n-&gt; &quot;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;El programa imprime \\\\&quot;Hola Mundo\\\\&quot;&#39;)\\n-&gt; El programa imprime &quot;Hola Mundo&quot;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EOtras dos secuencias de escape te permiten incluir marcas de tabulación (t) y saltos de línea (n):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;Hola\\\\tHola\\\\tHola\\\\nMundo&#39;)\\n-&gt; Hola Hola Hola\\nMundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"lecturas-sugeridas\\\"\u003ELecturas sugeridas\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELutz, \u003Cem\u003ELearning Python\u003C\u002Fem\u003E\u003Cul\u003E\\n\u003Cli\u003ECh. 7: Strings\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 8: Lists and Dictionaries\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 10: Introducing Python Statements\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 15: Function Basics\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"sicronización-de-código\\\"\u003ESicronización de código\u003C\u002Fh3\u003E\\n\u003Cp\u003EPara seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-es-lecciones1.zip (\u003Ca href=\\\"\u002Fassets\u002Fpython-es-lecciones1.zip\\\"\u003Ezip\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/es/lecciones/de-html-a-lista-de-palabras-2"),
 					params: {lang:"es",lessons:"lecciones",slug:"de-html-a-lista-de-palabras-2"}
@@ -48,14 +49,16 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the es edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en español</h2>
+	<a class="nav-link" href="/es/lecciones">Lecciones</a><a class="nav-link" href="/es/acerca-de">Acerca</a><a class="nav-link" href="/es/investigacion">Investigación</a><a class="nav-link" href="/es/apoyanos">Apóyanos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link active" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>De HTML a lista de palabras (parte 2)</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="objetivos-de-la-lección">Objetivos de la lección</h2>
+<h2>Objetivos de la lección</h2>
 <p>En esa lección aprenderás los comandos de Python que son necesarios para implementar la segunda parte del algoritmo que comenzamos en <a href="/es/lecciones/de-html-a-lista-de-palabras-1">De HTML a lista de palabras (parte 1)</a>. La primera parte del algoritmo obtiene el contenido de una página HTML y guarda solamente el contenido que se encuentra entre la primera etiqueta <code>&lt;p&gt;</code> y la última etiqueta <code>&lt;br/&gt;</code>. La segunda mitad del algoritmo hace lo siguiente:</p>
 <ul>
 <li>Revisar cada carácter de la cadena de texto <em>contenidoPagina</em>, uno por uno.</li>
@@ -64,40 +67,40 @@ This is the es edition.
 <li>Si no estamos dentro de una etiqueta, añade añade el carácter actual a una nueva variable: <em>texto</em>.</li>
 <li>Secciona la cadena de caracteres <em>texto</em> en una lista de palabras individuales que puedan ser manipuladas después.</li>
 </ul>
-<h3 id="archivos-requeridos-para-esta-lección">Archivos requeridos para esta lección</h3>
+<h3>Archivos requeridos para esta lección</h3>
 <ul>
 <li><em>obo.py</em></li>
 <li><em>contenido-juicio.py</em></li>
 </ul>
 <p>Si no tienes estos archivos puedes descargar el archivo comprimido python-es-lecciones2.zip (<a href="/assets/python-es-lecciones2.zip">zip</a>) de la lección anterior.</p>
-<h2 id="repetir-y-probar-en-python">Repetir y probar en Python</h2>
+<h2>Repetir y probar en Python</h2>
 <p>El siguiente escalón es implementar el algoritmo que busca cada uno de los caracteres en la cadema <em>contenidoPagina</em>, uno a la vez, y decide si el carácter pertenece a una marca de HTML o al contenido de la transcripción del juicio. Antes de que puedas hacer esto tienes que aprender algunas cuantas técnicas para la repetición de tareas y condiciones de prueba.</p>
-<h3 id="bucles-looping">Bucles (<em>Looping</em>)</h3>
-<p>Como muchos lenguajes de programación Python incluye un número de mecanismos de bucle. El que necesitarás usar en este caso es un <em>bucle for</em>. La versión debajo le dice al intérprete que haga algo en cada carácter de una cadena llamada <em>contenidoPagina</em>. La variable <em>caract</em> contendrá cada carácter de <em>contenidoPagina</em> en sucesión. La nombramos <em>caract</em> porque no tiene un significado especial y podríamos haberla llamado <em>tintineo</em> o <em>k</em> si nos hubiéramos sentido tentados. Puedes utilizar la codificación a colores en Komodo Edit como una guía para decidir si una palabra es una variable con un nombre dado por el usuario (como <em>caract</em>) o se trata de un nombre definido para Python que sirve para un propósito específico (como &#39;<code>for</code>&#39;). Generalmente es buena idea darle a las variables nombres que provean información acerca de lo que contienen. Esto hará mucho más fácil entender un programa que no has revisado desde hace tiempo. Con esto en mente, <em>tintineo</em> no es seguramente una buena elección para el nombre de la variable en este caso.</p>
+<h3>Bucles (<em>Looping</em>)</h3>
+<p>Como muchos lenguajes de programación Python incluye un número de mecanismos de bucle. El que necesitarás usar en este caso es un <em>bucle for</em>. La versión debajo le dice al intérprete que haga algo en cada carácter de una cadena llamada <em>contenidoPagina</em>. La variable <em>caract</em> contendrá cada carácter de <em>contenidoPagina</em> en sucesión. La nombramos <em>caract</em> porque no tiene un significado especial y podríamos haberla llamado <em>tintineo</em> o <em>k</em> si nos hubiéramos sentido tentados. Puedes utilizar la codificación a colores en Komodo Edit como una guía para decidir si una palabra es una variable con un nombre dado por el usuario (como <em>caract</em>) o se trata de un nombre definido para Python que sirve para un propósito específico (como '<code>for</code>'). Generalmente es buena idea darle a las variables nombres que provean información acerca de lo que contienen. Esto hará mucho más fácil entender un programa que no has revisado desde hace tiempo. Con esto en mente, <em>tintineo</em> no es seguramente una buena elección para el nombre de la variable en este caso.</p>
 <pre><code class="language-python">for caract in contenidoPagina:
-    # haz algo con caract
+	# haz algo con caract
 </code></pre>
-<h3 id="salto-branching">Salto (<em>Branching</em>)</h3>
+<h3>Salto (<em>Branching</em>)</h3>
 <p>Enseguida necesitarás una manera de comprobar los contenidos de una cadena y escoger la acción a seguir basada en esa prueba. De nuevo, como muchos lenguajes de programación, Python incluye un número de mecanismos de salto (o estructuras de control). La que vamos a utilizar aquí es la <em>sentencia condicional if</em>. La versión debajo hace una prueba para ver si la cadena llamada <em>caract</em> consiste en un corchete angular izquierdo. Como mencionamos anteriormente, la sangría o indentación en Python es importante. Si el código está indentado, Python lo ejecutará cuando la condición sea verdadera.</p>
 <p>Toma en cuanta que Python utiliza el signo de igual (=) para <em>asignación</em>, es decir, para ajustar que una cosa sea equivalente a otra. Con el fin de comprobar la igualdad, utiliza dos signos de igual (==) en lugar de uno. Los programadores principiantes suelen confundir ambos.</p>
-<pre><code class="language-python">if caract == &#39;&lt;&#39;:
+<pre><code class="language-python">if caract == '&lt;':
     # haz algo
 </code></pre>
 <p>Una forma más general de la sentencia condicional <em>if</em> te permite especificar qué hacer ante un evento en el que la condición de prueba es falsa.</p>
-<pre><code class="language-python">if caract == &#39;&lt;&#39;:
+<pre><code class="language-python">if caract == '&lt;':
     # haz algo
 else:
     # haz algo distinto
 </code></pre>
 <p>En Python tienes la opción de hacer pruebas adicionales después de la primera mediante la utilización de la sentencia condicional <em>elif</em> (abreviatura de <em>else if</em>).</p>
-<pre><code class="language-python">if caract == &#39;&lt;&#39;:
+<pre><code class="language-python">if caract == '&lt;':
     # haz algo
-elif caract == &#39;&gt;&#39;:
+elif caract == '&gt;':
     # haz otra cosa
 else:
     # haz algo completamente diferente
 </code></pre>
-<h2 id="utiliza-el-algoritmo-para-retirar-el-marcado-en-html">Utiliza el algoritmo para retirar el marcado en HTML</h2>
+<h2>Utiliza el algoritmo para retirar el marcado en HTML</h2>
 <p>Ahora sabes lo suficiente para implementar la segunda parte del algoritmo: retirar todas las etiquetas HTML. En esta parte del algoritmo queremos:</p>
 <ul>
 <li>Buscar en cada carácter de la cadena <em>contenidoPagina</em>, un carácter a la vez</li>
@@ -106,7 +109,7 @@ else:
 <li>Si no estamos al interior de una etiqueta, anexa el carácter actual a una nueva variable: texto</li>
 </ul>
 <p>Para hacer esto, usarás un bucle para buscar cada carácter sucesivo en la cadena. Usarás entonces una sentencia condicional <em>if / elif</em> para determinar si el carácter es parte de una marca de HTML o parte del contenido, después anexar los caracteres de contenido a la cadena <em>texto</em>. ¿Cómo haremos el seguimiento de si nos encontramos dentro o fuera de una etiqueta? Podemos utilizar una variable entera que podrá ser 1 (verdadero) si el carácter correspondiente está dentro de una etiqueta y 0 (falso) si  no lo está (en el siguiente ejemplo hemos llamado a la variable &quot;adentro&quot;).</p>
-<h3 id="la-rutina-de-quitaretiquetas">La rutina de <em>quitarEtiquetas</em></h3>
+<h3>La rutina de <em>quitarEtiquetas</em></h3>
 <p>Poniendo todo junto, la versión final de la rutina se muestra a continuación. Observa que hemos expandido la función <em>quitarEtiquetas</em> que creamos anteriormente. Asegúrate de mantener la sangría o indentación como se muestra cuando remplaces la anterior rutina <em>quitarEtiquetas</em> de <em>obo.py</em> con esta nueva.</p>
 <p>Tu rutina debe verse ligeramente diferente y, mientras que funcione, todo está bien. Si estás inclinado a experimentar, probablemente es mejor que pruebes nuestra versión para asegurarte que tu programa hace lo que hace el nuestro.</p>
 <pre><code class="language-python"># obo.py
@@ -118,12 +121,12 @@ def quitarEtiquetas(contenidoPagina):
     contenidoPagina = contenidoPagina[lugarInicio:lugarFin]
 
     adentro = 0
-    texto = &#39;&#39;
+    texto = ''
 
     for caract in contenidoPagina:
-        if caract == &#39;&lt;&#39;:
+        if caract == '&lt;':
             adentro = 1
-        elif (adentro == 1 and caract == &#39;&gt;&#39;):
+        elif (adentro == 1 and caract == '&gt;'):
             adentro = 0
         elif adentro == 1:
             continue
@@ -143,24 +146,24 @@ miTexto = &quot;Éste es mi &lt;h1&gt;HTML&lt;/h1&gt; mensaje&quot;
 
 elResultado = obo.quitarEtiquetas(miTexto)
 </code></pre>
-<p>Al utilizar <code>return</code>, hemos sido capaces de guardar la salida de datos de la función <em>quitarEtiquetas</em> directamente en una variable que hemos denominado &#39;elResultado&#39;, cuyo proceso podemos reanudar según sea necesario mediante código adicional.</p>
+<p>Al utilizar <code>return</code>, hemos sido capaces de guardar la salida de datos de la función <em>quitarEtiquetas</em> directamente en una variable que hemos denominado 'elResultado', cuyo proceso podemos reanudar según sea necesario mediante código adicional.</p>
 <p>Fíjate que en el ejemplo <em>quitarEtiquetas</em> desde el inicio de esta subsección, el valor que queremos recuperar no es <em>contenidoPagina</em> sino el contenido que ha sido despojado de las etiquetas HTML.</p>
 <p>Para comprobar nuestra nueva rutina de <em>quitarEtiquetas</em> puedes ejecutar el programa <em>contenido-juicio.py</em> de nuevo. Dado que hemos redefinido <em>quitarEtiquetas</em>, el programa <em>contenido-juicio.py</em> ahora hace algo diferente (y más cercano a lo que nosotros queremos). Antes de que continúes, asegúrate de comprender por qué cambia el comportamiento de <em>contenido-juicio.py</em> si solamente hemos editado <em>obo.py</em>.</p>
-<h2 id="listas-en-python">Listas en Python</h2>
+<h2>Listas en Python</h2>
 <p>Ahora que tienes la habilidad para extraer texto en crudo de páginas Web, querrás tener ese texto en una forma que sea fácil de procesar. Hasta ahora, cuando has necesitado guardar información en tus programas de Python lo has hecho utilizando cadenas de texto. Sin embargo, hay un par de excepciones. En la rutina de <em>quitarEtiquetas</em> también hiciste uso de un <a href="http://docs.python.org/2.4/lib/typesnumeric.html">entero</a> llamado <em>adentro</em> para guardar un 1 cuando estabas procesando una etiqueta y un 0 cuando no. Puedes hacer operaciones matemáticas con los enteros pero no puedes guardar fracciones o números decimales en una variable de entero.</p>
 <pre><code class="language-python">adentro = 1
 </code></pre>
 <p>Y cada vez que has necesitado leer o escribir a un archivo, has utilizado un controlador de archivo especial como <em>f</em> en el ejemplo siguiente:</p>
-<pre><code class="language-python">f = open(&#39;holamundo.txt&#39;,&#39;w&#39;)
-f.write(&#39;hola mundo&#39;)
+<pre><code class="language-python">f = open('holamundo.txt','w')
+f.write('hola mundo')
 f.close()
 </code></pre>
 <p>Sin embargo, uno de los <a href="http://docs.python.org/3/library/types.html">tipos</a> de objetos que provee Python es <em>list</em> (o <em>lista</em>), una colección ordenada de otros objetos (incluyendo, potencialmente, otras listas). Convertir una cadena de texto a una lista de caracteres o palabras es muy sencillo. Escribe o copia el siguiente programa en tu editor de texto para ver dos maneras de lograrlo. Guarda el archivo como <em>cadena-a-lista.py</em> y ejecútalo. Compara las dos listas que se imprimen en el panel de comandos de salida y ve si puedes imaginarte cómo funciona este código.</p>
 <pre><code class="language-python"># cadena-a-lista.py
 
 # algunas cadenas
-s1 = &#39;hola mundo&#39;
-s2 = &#39;qué tal mundo&#39;
+s1 = 'hola mundo'
+s2 = 'qué tal mundo'
 
 # lista de caracteres
 caracList = []
@@ -168,7 +171,7 @@ for caract in s1:
     caracList.append(caract)
 print(caracList)
 
-# lista de &#39;palabras&#39;
+# lista de 'palabras'
 listPalabras = s2.split()
 print(listPalabras)
 </code></pre>
@@ -177,36 +180,37 @@ print(listPalabras)
 <pre><code class="language-python"># html-a-lista-1.py
 import urllib.request, urllib.error, urllib.parse, obo
 
-url = &#39;http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;
+url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33'
 
 respuesta = urllib.request.urlopen(url)
-html = respuesta.read().decode(&#39;UTF-8&#39;)
+html = respuesta.read().decode('UTF-8')
 texto = obo.quitarEtiquetas(html)
 listaPalabras = texto.split()
 
 print((listaPalabras[0:120]))
 </code></pre>
 <p>Debes obtener algo como lo siguiente:</p>
-<pre><code class="language-python">[&#39;324.&#39;, &#39;\xc2\xa0&#39;, &#39;BENJAMIN&#39;, &#39;BOWSEY&#39;, &#39;(a&#39;, &#39;blackmoor&#39;, &#39;)&#39;, &#39;was&#39;,
-&#39;indicted&#39;, &#39;for&#39;, &#39;that&#39;, &#39;he&#39;, &#39;together&#39;, &#39;with&#39;, &#39;five&#39;, &#39;hundred&#39;,
-&#39;other&#39;, &#39;persons&#39;, &#39;and&#39;, &#39;more,&#39;, &#39;did,&#39;, &#39;unlawfully,&#39;, &#39;riotously,&#39;,
-&#39;and&#39;, &#39;tumultuously&#39;, &#39;assemble&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;to&#39;,
-&#39;the&#39;, &#39;disturbance&#39;, &#39;of&#39;, &#39;the&#39;, &#39;public&#39;, &#39;peace&#39;, &#39;and&#39;, &#39;did&#39;, &#39;begin&#39;,
-&#39;to&#39;, &#39;demolish&#39;, &#39;and&#39;, &#39;pull&#39;, &#39;down&#39;, &#39;the&#39;, &#39;dwelling&#39;, &#39;house&#39;, &#39;of&#39;,
-&#39;\xc2\xa0&#39;, &#39;Richard&#39;, &#39;Akerman&#39;, &#39;,&#39;, &#39;against&#39;, &#39;the&#39;, &#39;form&#39;, &#39;of&#39;,
-&#39;the&#39;, &#39;statute,&#39;, &#39;&amp;amp;c.&#39;, &#39;\xc2\xa0&#39;, &#39;ROSE&#39;, &#39;JENNINGS&#39;, &#39;,&#39;, &#39;Esq.&#39;,
-&#39;sworn.&#39;, &#39;Had&#39;, &#39;you&#39;, &#39;any&#39;, &#39;occasion&#39;, &#39;to&#39;, &#39;be&#39;, &#39;in&#39;, &#39;this&#39;, &#39;part&#39;,
-&#39;of&#39;, &#39;the&#39;, &#39;town,&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;in&#39;, &#39;the&#39;,
-&#39;evening?&#39;, &#39;-&#39;, &#39;I&#39;, &#39;dined&#39;, &#39;with&#39;, &#39;my&#39;, &#39;brother&#39;, &#39;who&#39;, &#39;lives&#39;,
-&#39;opposite&#39;, &#39;Mr.&#39;, &quot;Akerman&#39;s&quot;, &#39;house.&#39;, &#39;They&#39;, &#39;attacked&#39;, &#39;Mr.&#39;,
-&quot;Akerman&#39;s&quot;, &#39;house&#39;, &#39;precisely&#39;, &#39;at&#39;, &#39;seven&#39;, &quot;o&#39;clock;&quot;, &#39;they&#39;,
-&#39;were&#39;, &#39;preceded&#39;, &#39;by&#39;, &#39;a&#39;, &#39;man&#39;, &#39;better&#39;, &#39;dressed&#39;, &#39;than&#39;, &#39;the&#39;,
-&#39;rest,&#39;, &#39;who&#39;]
+<pre><code class="language-python">['324.', '\xc2\xa0', 'BENJAMIN', 'BOWSEY', '(a', 'blackmoor', ')', 'was',
+'indicted', 'for', 'that', 'he', 'together', 'with', 'five', 'hundred',
+'other', 'persons', 'and', 'more,', 'did,', 'unlawfully,', 'riotously,',
+'and', 'tumultuously', 'assemble', 'on', 'the', '6th', 'of', 'June', 'to',
+'the', 'disturbance', 'of', 'the', 'public', 'peace', 'and', 'did', 'begin',
+'to', 'demolish', 'and', 'pull', 'down', 'the', 'dwelling', 'house', 'of',
+'\xc2\xa0', 'Richard', 'Akerman', ',', 'against', 'the', 'form', 'of',
+'the', 'statute,', '&amp;amp;c.', '\xc2\xa0', 'ROSE', 'JENNINGS', ',', 'Esq.',
+'sworn.', 'Had', 'you', 'any', 'occasion', 'to', 'be', 'in', 'this', 'part',
+'of', 'the', 'town,', 'on', 'the', '6th', 'of', 'June', 'in', 'the',
+'evening?', '-', 'I', 'dined', 'with', 'my', 'brother', 'who', 'lives',
+'opposite', 'Mr.', &quot;Akerman's&quot;, 'house.', 'They', 'attacked', 'Mr.',
+&quot;Akerman's&quot;, 'house', 'precisely', 'at', 'seven', &quot;o'clock;&quot;, 'they',
+'were', 'preceded', 'by', 'a', 'man', 'better', 'dressed', 'than', 'the',
+'rest,', 'who']
 </code></pre>
 <p>Tener simplemente una lista de palabras no es realmente significativo. Como seres humanos tenemos la habilidad de leer; sin embargo, te estás acercando a tener una idea de lo que tus programas pueden procesar.</p>
-<h2 id="lecturas-sugeridas">Lecturas sugeridas</h2>
+<h2>Lecturas sugeridas</h2>
 <ul>
-<li>Lutz, <em>Learning Python</em><ul>
+<li>Lutz, <em>Learning Python</em>
+<ul>
 <li>Ch. 7: Strings</li>
 <li>Ch. 8: Lists and Dictionaries</li>
 <li>Ch. 10: Introducing Python Statements</li>
@@ -214,13 +218,13 @@ print((listaPalabras[0:120]))
 </ul>
 </li>
 </ul>
-<h3 id="sincronización-de-código">Sincronización de código</h3>
+<h3>Sincronización de código</h3>
 <p>Para seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto.</p>
 <ul>
 <li>python-es-lecciones3.zip (<a href="/assets/python-es-lecciones3.zip">zip sync</a>)</li>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="de-html-a-lista-de-palabras-2/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"De HTML a lista de palabras (parte 2)\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"date\":\"2012-07-17T00:00:00.000Z\",\"translation_date\":\"2017-03-15T00:00:00.000Z\",\"editors\":[\"Miriam Posner\"],\"reviewers\":[\"Jim Clifford\",\"Frederik Elwert\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Adam Crymble\"],\"translation-reviewer\":[\"Jairo A. Melo\",\"Maria José Afanador-Llach\",\"Antonio Rojas Castro\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F45\",\"layout\":\"lesson\",\"next\":\"normalizar-datos\",\"previous\":\"de-html-a-lista-de-palabras-1\",\"original\":\"from-html-to-list-of-words-2\",\"python_warning\":false,\"difficulty\":2,\"activity\":\"transforming\",\"topics\":[\"python\"],\"abstract\":\"En esa lección aprenderás los comandos de Python que son necesarios para implementar la segunda parte del algoritmo que comenzamos en la lección 'De HTML a lista de palabras (parte 1)'.\",\"avatar_alt\":\"Grabado de un hombre vestido de militar y otro hombre por detrás del primero que parece tener la intención de tropezarlo.\",\"doi\":\"10.46430\u002Fphes0006\",\"sequence\":8,\"series_total\":14},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"objetivos-de-la-lección\\\"\u003EObjetivos de la lección\u003C\u002Fh2\u003E\\n\u003Cp\u003EEn esa lección aprenderás los comandos de Python que son necesarios para implementar la segunda parte del algoritmo que comenzamos en \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fde-html-a-lista-de-palabras-1\\\"\u003EDe HTML a lista de palabras (parte 1)\u003C\u002Fa\u003E. La primera parte del algoritmo obtiene el contenido de una página HTML y guarda solamente el contenido que se encuentra entre la primera etiqueta \u003Ccode\u003E&lt;p&gt;\u003C\u002Fcode\u003E y la última etiqueta \u003Ccode\u003E&lt;br\u002F&gt;\u003C\u002Fcode\u003E. La segunda mitad del algoritmo hace lo siguiente:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ERevisar cada carácter de la cadena de texto \u003Cem\u003EcontenidoPagina\u003C\u002Fem\u003E, uno por uno.\u003C\u002Fli\u003E\\n\u003Cli\u003ESi el carácter es un corchete angular izquierdo (&lt;) entonces estamos dentro de una etiqueta así que ignora cada uno de los caracteres siguientes.\u003C\u002Fli\u003E\\n\u003Cli\u003ESi el carácter es un corchete angular derecho (&gt;) entonces estamos saliendo de una etiqueta; ignora el carácter actual, pero mira cada uno de los caracteres siguientes.\u003C\u002Fli\u003E\\n\u003Cli\u003ESi no estamos dentro de una etiqueta, añade añade el carácter actual a una nueva variable: \u003Cem\u003Etexto\u003C\u002Fem\u003E.\u003C\u002Fli\u003E\\n\u003Cli\u003ESecciona la cadena de caracteres \u003Cem\u003Etexto\u003C\u002Fem\u003E en una lista de palabras individuales que puedan ser manipuladas después.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"archivos-requeridos-para-esta-lección\\\"\u003EArchivos requeridos para esta lección\u003C\u002Fh3\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cem\u003Eobo.py\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cem\u003Econtenido-juicio.py\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003ESi no tienes estos archivos puedes descargar el archivo comprimido python-es-lecciones2.zip (\u003Ca href=\\\"\u002Fassets\u002Fpython-es-lecciones2.zip\\\"\u003Ezip\u003C\u002Fa\u003E) de la lección anterior.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"repetir-y-probar-en-python\\\"\u003ERepetir y probar en Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EEl siguiente escalón es implementar el algoritmo que busca cada uno de los caracteres en la cadema \u003Cem\u003EcontenidoPagina\u003C\u002Fem\u003E, uno a la vez, y decide si el carácter pertenece a una marca de HTML o al contenido de la transcripción del juicio. Antes de que puedas hacer esto tienes que aprender algunas cuantas técnicas para la repetición de tareas y condiciones de prueba.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"bucles-looping\\\"\u003EBucles (\u003Cem\u003ELooping\u003C\u002Fem\u003E)\u003C\u002Fh3\u003E\\n\u003Cp\u003EComo muchos lenguajes de programación Python incluye un número de mecanismos de bucle. El que necesitarás usar en este caso es un \u003Cem\u003Ebucle for\u003C\u002Fem\u003E. La versión debajo le dice al intérprete que haga algo en cada carácter de una cadena llamada \u003Cem\u003EcontenidoPagina\u003C\u002Fem\u003E. La variable \u003Cem\u003Ecaract\u003C\u002Fem\u003E contendrá cada carácter de \u003Cem\u003EcontenidoPagina\u003C\u002Fem\u003E en sucesión. La nombramos \u003Cem\u003Ecaract\u003C\u002Fem\u003E porque no tiene un significado especial y podríamos haberla llamado \u003Cem\u003Etintineo\u003C\u002Fem\u003E o \u003Cem\u003Ek\u003C\u002Fem\u003E si nos hubiéramos sentido tentados. Puedes utilizar la codificación a colores en Komodo Edit como una guía para decidir si una palabra es una variable con un nombre dado por el usuario (como \u003Cem\u003Ecaract\u003C\u002Fem\u003E) o se trata de un nombre definido para Python que sirve para un propósito específico (como &#39;\u003Ccode\u003Efor\u003C\u002Fcode\u003E&#39;). Generalmente es buena idea darle a las variables nombres que provean información acerca de lo que contienen. Esto hará mucho más fácil entender un programa que no has revisado desde hace tiempo. Con esto en mente, \u003Cem\u003Etintineo\u003C\u002Fem\u003E no es seguramente una buena elección para el nombre de la variable en este caso.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Efor caract in contenidoPagina:\\n    # haz algo con caract\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"salto-branching\\\"\u003ESalto (\u003Cem\u003EBranching\u003C\u002Fem\u003E)\u003C\u002Fh3\u003E\\n\u003Cp\u003EEnseguida necesitarás una manera de comprobar los contenidos de una cadena y escoger la acción a seguir basada en esa prueba. De nuevo, como muchos lenguajes de programación, Python incluye un número de mecanismos de salto (o estructuras de control). La que vamos a utilizar aquí es la \u003Cem\u003Esentencia condicional if\u003C\u002Fem\u003E. La versión debajo hace una prueba para ver si la cadena llamada \u003Cem\u003Ecaract\u003C\u002Fem\u003E consiste en un corchete angular izquierdo. Como mencionamos anteriormente, la sangría o indentación en Python es importante. Si el código está indentado, Python lo ejecutará cuando la condición sea verdadera.\u003C\u002Fp\u003E\\n\u003Cp\u003EToma en cuanta que Python utiliza el signo de igual (=) para \u003Cem\u003Easignación\u003C\u002Fem\u003E, es decir, para ajustar que una cosa sea equivalente a otra. Con el fin de comprobar la igualdad, utiliza dos signos de igual (==) en lugar de uno. Los programadores principiantes suelen confundir ambos.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eif caract == &#39;&lt;&#39;:\\n    # haz algo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EUna forma más general de la sentencia condicional \u003Cem\u003Eif\u003C\u002Fem\u003E te permite especificar qué hacer ante un evento en el que la condición de prueba es falsa.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eif caract == &#39;&lt;&#39;:\\n    # haz algo\\nelse:\\n    # haz algo distinto\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEn Python tienes la opción de hacer pruebas adicionales después de la primera mediante la utilización de la sentencia condicional \u003Cem\u003Eelif\u003C\u002Fem\u003E (abreviatura de \u003Cem\u003Eelse if\u003C\u002Fem\u003E).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eif caract == &#39;&lt;&#39;:\\n    # haz algo\\nelif caract == &#39;&gt;&#39;:\\n    # haz otra cosa\\nelse:\\n    # haz algo completamente diferente\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"utiliza-el-algoritmo-para-retirar-el-marcado-en-html\\\"\u003EUtiliza el algoritmo para retirar el marcado en HTML\u003C\u002Fh2\u003E\\n\u003Cp\u003EAhora sabes lo suficiente para implementar la segunda parte del algoritmo: retirar todas las etiquetas HTML. En esta parte del algoritmo queremos:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EBuscar en cada carácter de la cadena \u003Cem\u003EcontenidoPagina\u003C\u002Fem\u003E, un carácter a la vez\u003C\u002Fli\u003E\\n\u003Cli\u003ESi el carácter es un corchete angular izquierdo (&lt;) estamos dentro de una etiqueta así que ignora el carácter\u003C\u002Fli\u003E\\n\u003Cli\u003ESi el carácter es un corchete angular derecho (&gt;) estamos saliendo de una etiqueta, ignora el carácter\u003C\u002Fli\u003E\\n\u003Cli\u003ESi no estamos al interior de una etiqueta, anexa el carácter actual a una nueva variable: texto\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EPara hacer esto, usarás un bucle para buscar cada carácter sucesivo en la cadena. Usarás entonces una sentencia condicional \u003Cem\u003Eif \u002F elif\u003C\u002Fem\u003E para determinar si el carácter es parte de una marca de HTML o parte del contenido, después anexar los caracteres de contenido a la cadena \u003Cem\u003Etexto\u003C\u002Fem\u003E. ¿Cómo haremos el seguimiento de si nos encontramos dentro o fuera de una etiqueta? Podemos utilizar una variable entera que podrá ser 1 (verdadero) si el carácter correspondiente está dentro de una etiqueta y 0 (falso) si  no lo está (en el siguiente ejemplo hemos llamado a la variable &quot;adentro&quot;).\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"la-rutina-de-quitaretiquetas\\\"\u003ELa rutina de \u003Cem\u003EquitarEtiquetas\u003C\u002Fem\u003E\u003C\u002Fh3\u003E\\n\u003Cp\u003EPoniendo todo junto, la versión final de la rutina se muestra a continuación. Observa que hemos expandido la función \u003Cem\u003EquitarEtiquetas\u003C\u002Fem\u003E que creamos anteriormente. Asegúrate de mantener la sangría o indentación como se muestra cuando remplaces la anterior rutina \u003Cem\u003EquitarEtiquetas\u003C\u002Fem\u003E de \u003Cem\u003Eobo.py\u003C\u002Fem\u003E con esta nueva.\u003C\u002Fp\u003E\\n\u003Cp\u003ETu rutina debe verse ligeramente diferente y, mientras que funcione, todo está bien. Si estás inclinado a experimentar, probablemente es mejor que pruebes nuestra versión para asegurarte que tu programa hace lo que hace el nuestro.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# obo.py\\ndef quitarEtiquetas(contenidoPagina):\\n    contenidoPagina = str(contenidoPagina)\\n    lugarInicio = contenidoPagina.find(&quot;&lt;p&gt;&quot;)\\n    lugarFin = contenidoPagina.rfind(&quot;&lt;br\u002F&gt;&quot;)\\n\\n    contenidoPagina = contenidoPagina[lugarInicio:lugarFin]\\n\\n    adentro = 0\\n    texto = &#39;&#39;\\n\\n    for caract in contenidoPagina:\\n        if caract == &#39;&lt;&#39;:\\n            adentro = 1\\n        elif (adentro == 1 and caract == &#39;&gt;&#39;):\\n            adentro = 0\\n        elif adentro == 1:\\n            continue\\n        else:\\n            texto += caract\\n\\n    return texto\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EHay dos nuevos conceptos de Python en este nuevo código: \u003Cem\u003Econtinue\u003C\u002Fem\u003E y \u003Cem\u003Ereturn\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003ELa declaración de Python \u003Cem\u003Econtinue\u003C\u002Fem\u003E le ordena al intérprete regresar al principio del bucle. Así que si estamos procesando caracteres dentro de un par de corchetes angulares, queremos ir al siguiente carácter en la cadena de texto \u003Cem\u003EcontenidoPagina\u003C\u002Fem\u003E sin añadir nada a nuestra variable \u003Cem\u003Etexto\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EEn los ejemplos anteriores hemos utilizado \u003Ccode\u003Eprint\u003C\u002Fcode\u003E extensamente. Éste da salida al resultado de nuestro programa en la pantalla para que lo lea el usuario. Sin embargo, a menudo queremos que una parte del programa envíe información a otra parte. Cuando termina de ejecutarse una función, puede regresar un valor al código que la ha invocado.  Si vamos a llamar a \u003Cem\u003EquitarEtiquetas\u003C\u002Fem\u003E utilizando otro programa, deberemos hacerlo de esta manera:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#entender la declaración Return\\n\\nimport obo\\n\\nmiTexto = &quot;Éste es mi &lt;h1&gt;HTML&lt;\u002Fh1&gt; mensaje&quot;\\n\\nelResultado = obo.quitarEtiquetas(miTexto)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAl utilizar \u003Ccode\u003Ereturn\u003C\u002Fcode\u003E, hemos sido capaces de guardar la salida de datos de la función \u003Cem\u003EquitarEtiquetas\u003C\u002Fem\u003E directamente en una variable que hemos denominado &#39;elResultado&#39;, cuyo proceso podemos reanudar según sea necesario mediante código adicional.\u003C\u002Fp\u003E\\n\u003Cp\u003EFíjate que en el ejemplo \u003Cem\u003EquitarEtiquetas\u003C\u002Fem\u003E desde el inicio de esta subsección, el valor que queremos recuperar no es \u003Cem\u003EcontenidoPagina\u003C\u002Fem\u003E sino el contenido que ha sido despojado de las etiquetas HTML.\u003C\u002Fp\u003E\\n\u003Cp\u003EPara comprobar nuestra nueva rutina de \u003Cem\u003EquitarEtiquetas\u003C\u002Fem\u003E puedes ejecutar el programa \u003Cem\u003Econtenido-juicio.py\u003C\u002Fem\u003E de nuevo. Dado que hemos redefinido \u003Cem\u003EquitarEtiquetas\u003C\u002Fem\u003E, el programa \u003Cem\u003Econtenido-juicio.py\u003C\u002Fem\u003E ahora hace algo diferente (y más cercano a lo que nosotros queremos). Antes de que continúes, asegúrate de comprender por qué cambia el comportamiento de \u003Cem\u003Econtenido-juicio.py\u003C\u002Fem\u003E si solamente hemos editado \u003Cem\u003Eobo.py\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"listas-en-python\\\"\u003EListas en Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EAhora que tienes la habilidad para extraer texto en crudo de páginas Web, querrás tener ese texto en una forma que sea fácil de procesar. Hasta ahora, cuando has necesitado guardar información en tus programas de Python lo has hecho utilizando cadenas de texto. Sin embargo, hay un par de excepciones. En la rutina de \u003Cem\u003EquitarEtiquetas\u003C\u002Fem\u003E también hiciste uso de un \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F2.4\u002Flib\u002Ftypesnumeric.html\\\"\u003Eentero\u003C\u002Fa\u003E llamado \u003Cem\u003Eadentro\u003C\u002Fem\u003E para guardar un 1 cuando estabas procesando una etiqueta y un 0 cuando no. Puedes hacer operaciones matemáticas con los enteros pero no puedes guardar fracciones o números decimales en una variable de entero.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eadentro = 1\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EY cada vez que has necesitado leer o escribir a un archivo, has utilizado un controlador de archivo especial como \u003Cem\u003Ef\u003C\u002Fem\u003E en el ejemplo siguiente:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Ef = open(&#39;holamundo.txt&#39;,&#39;w&#39;)\\nf.write(&#39;hola mundo&#39;)\\nf.close()\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESin embargo, uno de los \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F3\u002Flibrary\u002Ftypes.html\\\"\u003Etipos\u003C\u002Fa\u003E de objetos que provee Python es \u003Cem\u003Elist\u003C\u002Fem\u003E (o \u003Cem\u003Elista\u003C\u002Fem\u003E), una colección ordenada de otros objetos (incluyendo, potencialmente, otras listas). Convertir una cadena de texto a una lista de caracteres o palabras es muy sencillo. Escribe o copia el siguiente programa en tu editor de texto para ver dos maneras de lograrlo. Guarda el archivo como \u003Cem\u003Ecadena-a-lista.py\u003C\u002Fem\u003E y ejecútalo. Compara las dos listas que se imprimen en el panel de comandos de salida y ve si puedes imaginarte cómo funciona este código.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# cadena-a-lista.py\\n\\n# algunas cadenas\\ns1 = &#39;hola mundo&#39;\\ns2 = &#39;qué tal mundo&#39;\\n\\n# lista de caracteres\\ncaracList = []\\nfor caract in s1:\\n    caracList.append(caract)\\nprint(caracList)\\n\\n# lista de &#39;palabras&#39;\\nlistPalabras = s2.split()\\nprint(listPalabras)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELa primera rutina utiliza un bucle &quot;for&quot; para pasar por cada carácter en la cadena de texto \u003Cem\u003Es1\u003C\u002Fem\u003E, y añade el carácter al final de \u003Cem\u003EcaracList\u003C\u002Fem\u003E. La segunda rutina utiliza la operación dividir para romper la cadena \u003Cem\u003Es2\u003C\u002Fem\u003E en fragmentos cada vez que encuentre espacios en blanco (espacios, tabulaciones, retornos de carro y caracteres similares). En realidad, es simplificar un poco las cosas referirse a los objetos de la segunda lista como palabras. Prueba a cambiar el contenido de \u003Cem\u003Es2\u003C\u002Fem\u003E del programa anterior por &quot;qué tal mundo!&quot; y ejecútalo de nuevo. ¿Qué sucedió con el signo de exclamación? Recuerda que deberás guardar los cambios antes de utilizar Ejecutar Python de nuevo.\u003C\u002Fp\u003E\\n\u003Cp\u003EConsiderando lo que has aprendido hasta ahora, ya puedes abrir un URL, descargar la página Web en una cadena de texto, despojarla de las etiquetas HTML y luego cortar el texto en una lista de palabras. Intenta ejecutar el siguiente programa:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# html-a-lista-1.py\\nimport urllib.request, urllib.error, urllib.parse, obo\\n\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;\\n\\nrespuesta = urllib.request.urlopen(url)\\nhtml = respuesta.read().decode(&#39;UTF-8&#39;)\\ntexto = obo.quitarEtiquetas(html)\\nlistaPalabras = texto.split()\\n\\nprint((listaPalabras[0:120]))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EDebes obtener algo como lo siguiente:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E[&#39;324.&#39;, &#39;\\\\xc2\\\\xa0&#39;, &#39;BENJAMIN&#39;, &#39;BOWSEY&#39;, &#39;(a&#39;, &#39;blackmoor&#39;, &#39;)&#39;, &#39;was&#39;,\\n&#39;indicted&#39;, &#39;for&#39;, &#39;that&#39;, &#39;he&#39;, &#39;together&#39;, &#39;with&#39;, &#39;five&#39;, &#39;hundred&#39;,\\n&#39;other&#39;, &#39;persons&#39;, &#39;and&#39;, &#39;more,&#39;, &#39;did,&#39;, &#39;unlawfully,&#39;, &#39;riotously,&#39;,\\n&#39;and&#39;, &#39;tumultuously&#39;, &#39;assemble&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;to&#39;,\\n&#39;the&#39;, &#39;disturbance&#39;, &#39;of&#39;, &#39;the&#39;, &#39;public&#39;, &#39;peace&#39;, &#39;and&#39;, &#39;did&#39;, &#39;begin&#39;,\\n&#39;to&#39;, &#39;demolish&#39;, &#39;and&#39;, &#39;pull&#39;, &#39;down&#39;, &#39;the&#39;, &#39;dwelling&#39;, &#39;house&#39;, &#39;of&#39;,\\n&#39;\\\\xc2\\\\xa0&#39;, &#39;Richard&#39;, &#39;Akerman&#39;, &#39;,&#39;, &#39;against&#39;, &#39;the&#39;, &#39;form&#39;, &#39;of&#39;,\\n&#39;the&#39;, &#39;statute,&#39;, &#39;&amp;amp;c.&#39;, &#39;\\\\xc2\\\\xa0&#39;, &#39;ROSE&#39;, &#39;JENNINGS&#39;, &#39;,&#39;, &#39;Esq.&#39;,\\n&#39;sworn.&#39;, &#39;Had&#39;, &#39;you&#39;, &#39;any&#39;, &#39;occasion&#39;, &#39;to&#39;, &#39;be&#39;, &#39;in&#39;, &#39;this&#39;, &#39;part&#39;,\\n&#39;of&#39;, &#39;the&#39;, &#39;town,&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;in&#39;, &#39;the&#39;,\\n&#39;evening?&#39;, &#39;-&#39;, &#39;I&#39;, &#39;dined&#39;, &#39;with&#39;, &#39;my&#39;, &#39;brother&#39;, &#39;who&#39;, &#39;lives&#39;,\\n&#39;opposite&#39;, &#39;Mr.&#39;, &quot;Akerman&#39;s&quot;, &#39;house.&#39;, &#39;They&#39;, &#39;attacked&#39;, &#39;Mr.&#39;,\\n&quot;Akerman&#39;s&quot;, &#39;house&#39;, &#39;precisely&#39;, &#39;at&#39;, &#39;seven&#39;, &quot;o&#39;clock;&quot;, &#39;they&#39;,\\n&#39;were&#39;, &#39;preceded&#39;, &#39;by&#39;, &#39;a&#39;, &#39;man&#39;, &#39;better&#39;, &#39;dressed&#39;, &#39;than&#39;, &#39;the&#39;,\\n&#39;rest,&#39;, &#39;who&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ETener simplemente una lista de palabras no es realmente significativo. Como seres humanos tenemos la habilidad de leer; sin embargo, te estás acercando a tener una idea de lo que tus programas pueden procesar.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lecturas-sugeridas\\\"\u003ELecturas sugeridas\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELutz, \u003Cem\u003ELearning Python\u003C\u002Fem\u003E\u003Cul\u003E\\n\u003Cli\u003ECh. 7: Strings\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 8: Lists and Dictionaries\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 10: Introducing Python Statements\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 15: Function Basics\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"sincronización-de-código\\\"\u003ESincronización de código\u003C\u002Fh3\u003E\\n\u003Cp\u003EPara seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-es-lecciones3.zip (\u003Ca href=\\\"\u002Fassets\u002Fpython-es-lecciones3.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

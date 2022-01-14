@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/preserving-your-research-data"),
 					params: {lang:"en",lessons:"lessons",slug:"preserving-your-research-data"}
@@ -48,17 +49,19 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Preserving Your Research Data</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h4 id="background">Background</h4>
-<p>In his 2003 essay &#39;Scarcity or Abundance&#39; Roy Rosenzweig sought to alert
-historians to what he called &#39;the fragility of evidence in the digital
-era&#39; (Rosenzweig, 736). And whilst his concerns were focused on sources
+<h4>Background</h4>
+<p>In his 2003 essay 'Scarcity or Abundance' Roy Rosenzweig sought to alert
+historians to what he called 'the fragility of evidence in the digital
+era' (Rosenzweig, 736). And whilst his concerns were focused on sources
 available on the open web, they can easily be extended to the
 born-digital materials – or data – historians create during their
 research.</p>
@@ -110,7 +113,7 @@ future. The guide is not intended to be prescriptive, rather it is
 assumed readers will iterate, change, and adapt the ideas presented to
 best fit their own research.</p>
 <hr>
-<h4 id="documenting-research-data">Documenting research data</h4>
+<h4>Documenting research data</h4>
 <blockquote>
 <p>Birkwood, Katie (girlinthe). “Victory is mine: while ago I worked out
 some Clever Stuff ™ in Excel. And I MADE NOTES ON IT. And those notes
@@ -153,7 +156,7 @@ it is important not to worry about perfection, rather to aim to write
 consistent and efficient documentation that will be useful to you, and
 hopefully someone else using your research data, years after the fact.</p>
 <hr>
-<h4 id="file-formats">File formats</h4>
+<h4>File formats</h4>
 <p>Research data and documentation should ideally be saved in <a href="http://en.wikipedia.org/wiki/Cross-platform">platform
 agnostic</a> formats such as .txt for notes and .csv (comma-separated
 values) or .tsv (tab-seperated values) for tabulated data. These plain
@@ -172,7 +175,7 @@ machine-readable and hence can neither be queried and searched nor are
 appropriate for large quantities of information. Preferable are simple
 notation schemes such as using a double-asterisk or three hashes to
 represent a data feature: in my own notes, for example, three question
-marks indicate something I need to follow up on, chosen because &#39;???&#39;
+marks indicate something I need to follow up on, chosen because '???'
 can easily be found with a CTRL+F search.</p>
 <p>It is likely that on many occasions these notation schemes will emerge
 from existing individual practice (and as a consequence will need to be
@@ -184,7 +187,7 @@ who wish to follow – or adapt – this existing schema. Notepad++
 by no means essential, for working with .md files. Mac or Unix users may
 find <a href="http://komodoide.com/komodo-edit/">Komodo Edit</a> or <a href="https://www.barebones.com/products/textwrangler/">Text Wrangler</a> helpful.</p>
 <hr>
-<h4 id="recap-1">Recap 1</h4>
+<h4>Recap 1</h4>
 <p>To recap, the key points about documentation and file formats are:</p>
 <ul>
 <li>Aim for documentation to capture in a precise and consistent manner
@@ -199,7 +202,7 @@ workflow without allowing documentation work to become a burden.</li>
 time attempting to reconstruct it in the future.</li>
 </ul>
 <hr>
-<h4 id="structuring-research-data">Structuring research data</h4>
+<h4>Structuring research data</h4>
 <p>Documenting your research is made easier by structuring your research
 data in a consistent and predictable manner.</p>
 <p>Why?</p>
@@ -252,7 +255,7 @@ in a future lesson, by more advanced tools).</p>
 <p>In practice (for OS X and Linux users, replace all backslashes hereafter
 with forward slash), the structure of a good research data archive might
 look something like this:</p>
-<p>A base or root directory, perhaps called &#39;work&#39;.</p>
+<p>A base or root directory, perhaps called 'work'.</p>
 <pre><code>\work\
 </code></pre>
 <p>A series of sub-directories.</p>
@@ -278,16 +281,16 @@ as the project grows.</p>
 and as new projects arise taxonomies will need to be revisited. Either
 way, idiosyncrasy is fine so long as the overall directory structure is
 consistent and predictable, and so long as anything that isn’t is
-clearly documented: for example, the &#39;writing&#39; sub-directory in the
+clearly documented: for example, the 'writing' sub-directory in the
 above structure might include a .txt file stating what it contained
-(drafts and final version of written work) and what it didn&#39;t contain
+(drafts and final version of written work) and what it didn't contain
 (research pertaining to that written work).</p>
 <p>The name of this .txt file, indeed any documentation and research data,
 is important to ensuring it and its contents are easy to identify.
-&#39;Notes about this folder.docx&#39; is not a name that fulfils this purpose,
-whilst &#39;2014-01-31_Writing_readme.txt&#39; is as it replicates the title
+'Notes about this folder.docx' is not a name that fulfils this purpose,
+whilst '2014-01-31_Writing_readme.txt' is as it replicates the title
 of the directory and included some date information (North American
-readers should note that I&#39;ve chosen the structure year_month_date). A
+readers should note that I've chosen the structure year_month_date). A
 <a href="/assets/preserving-your-research-data/network_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt">readme file I made for a recent project</a>
 contains the sort of information that you and other users of your data
 might find useful.</p>
@@ -295,8 +298,8 @@ might find useful.</p>
 approach. During the course of a previous research project, I collected
 some 2,000 digital images of Georgian satirical prints from a number of
 online sources, retaining the file names upon download. Had I applied a
-naming convention to these from the outset (say &#39;PUBLICATION
-YEAR_ARTIST SURNAME_TITLE OF WORK.FORMAT&#39;) I would be able to search
+naming convention to these from the outset (say 'PUBLICATION
+YEAR_ARTIST SURNAME_TITLE OF WORK.FORMAT') I would be able to search
 and query these images. Indeed starting each filename with some version
 of YYYYMMDD would have meant that the files could be sorted in
 chronological order on Windows, OS X and Linux. And ensuring that all
@@ -332,7 +335,7 @@ in 2014-02-02_Journal_Articles_analysis_readme.txt.</p>
 <p>Finally, a directory within \data\ called \derived_data\ contains
 data derived from the original 2014-01-31_Journal_Articles.tsv. In
 this case, each derived .tsv file contains lines including the keywords,
-&#39;africa&#39;, &#39;america&#39;, &#39;art&#39; et cetera, and are named accordingly.</p>
+'africa', 'america', 'art' et cetera, and are named accordingly.</p>
 <pre><code>2014-01-31_Journal_Articles_KW_africa.tsv
 
 2014-01-31_Journal_Articles_KW_america.tsv
@@ -342,7 +345,7 @@ this case, each derived .tsv file contains lines including the keywords,
 2014-02-02_Journal_Articles_KW_britain.tsv
 </code></pre>
 <hr>
-<h4 id="recap-2">Recap 2</h4>
+<h4>Recap 2</h4>
 <p>To recap, the key points about structuring research data are:</p>
 <ul>
 <li>Data structures should be consistent and predictable.</li>
@@ -355,7 +358,7 @@ with the long term readability and comprehension of your data
 structure.</li>
 </ul>
 <hr>
-<h4 id="summary">Summary</h4>
+<h4>Summary</h4>
 <p>This lesson has suggested ways for documenting and structuring research
 data, the purpose of which is to ensure that data is preserved by
 capturing tacit knowledge gained during the research process and thus
@@ -363,7 +366,7 @@ making the information easy to use in the future. It has recommended the
 use of platform agnostic and machine-readable formats for documentation
 and research data. It has suggested that URLs offer a practice example
 of both good and bad data structures that can be replicated for the
-purposes of a historian&#39;s research data.</p>
+purposes of a historian's research data.</p>
 <p>These suggestions are intended merely as guides; it is expected that
 researchers will adapt them to suit their purposes. In doing so, it is
 recommended that researchers keep digital preservation strategies and
@@ -372,34 +375,34 @@ spent documenting and structuring research does not become a burden.
 After all, the purpose of this guide is to make more not less efficient
 historical research that generates data. That is, your research.</p>
 <hr>
-<h4 id="further-reading">Further Reading</h4>
-<p>Ashton, Neil, &#39;Seven deadly sins of data publication&#39;, School of Data
+<h4>Further Reading</h4>
+<p>Ashton, Neil, 'Seven deadly sins of data publication', School of Data
 blog (17 October 2013)
 <a href="http://schoolofdata.org/2013/10/17/seven-deadly-sins-of-data-publication/">http://schoolofdata.org/2013/10/17/seven-deadly-sins-of-data-publication/</a></p>
-<p>Hitchcock, Tim, &#39;Judging a book by its URLs&#39;, Historyonics blog (3
+<p>Hitchcock, Tim, 'Judging a book by its URLs', Historyonics blog (3
 January 2014)
 <a href="http://historyonics.blogspot.co.uk/2014/01/judging-book-by-its-url.html">http://historyonics.blogspot.co.uk/2014/01/judging-book-by-its-url.html</a></p>
-<p>Howard, Sharon, &#39;Unclean, unclean! What historians can do about sharing
-our messy research data&#39;, Early Modern Notes blog (18 May 2013)
+<p>Howard, Sharon, 'Unclean, unclean! What historians can do about sharing
+our messy research data', Early Modern Notes blog (18 May 2013)
 <a href="http://earlymodernnotes.wordpress.com/2013/05/18/unclean-unclean-what-historians-can-do-about-sharing-our-messy-research-data/">http://earlymodernnotes.wordpress.com/2013/05/18/unclean-unclean-what-historians-can-do-about-sharing-our-messy-research-data/</a></p>
 <p>Noble, William Stafford, A Quick Guide to Organizing Computational
 Biology Projects.PLoSComputBiol 5(7): e1000424 (2009)
 <a href="https://doi.org/10.1371/journal.pcbi.1000424">https://doi.org/10.1371/journal.pcbi.1000424</a></p>
-<p>Oxford University Computing Services, &#39;Sudamih Project. Research
-Information Management: Organising Humanities Material&#39; (2011)
+<p>Oxford University Computing Services, 'Sudamih Project. Research
+Information Management: Organising Humanities Material' (2011)
 <a href="https://zenodo.org/record/28329">https://zenodo.org/record/28329</a></p>
-<p>Pennock, Maureen, &#39;The Twelve Principles of Digital Preservation (and a
-cartridge in a repository…)&#39;, British Library Collection Care blog (3
+<p>Pennock, Maureen, 'The Twelve Principles of Digital Preservation (and a
+cartridge in a repository…)', British Library Collection Care blog (3
 September 2013)
 <a href="http://britishlibrary.typepad.co.uk/collectioncare/2013/09/the-twelve-principles-of-digital-preservation.html">http://britishlibrary.typepad.co.uk/collectioncare/2013/09/the-twelve-principles-of-digital-preservation.html</a></p>
-<p>Pritchard, Adam, &#39;Markdown Cheatsheet&#39; (2013)
+<p>Pritchard, Adam, 'Markdown Cheatsheet' (2013)
 <a href="https://github.com/adam-p/markdown-here">https://github.com/adam-p/markdown-here</a></p>
-<p>Rosenzweig, Roy, &#39;Scarcity or Abundance? Preserving the Past in a
-Digital Era&#39;, The American Historical Review 108:3 (2003), 735-762.</p>
-<p>UK Data Archive, &#39;Documenting your Data&#39;
+<p>Rosenzweig, Roy, 'Scarcity or Abundance? Preserving the Past in a
+Digital Era', The American Historical Review 108:3 (2003), 735-762.</p>
+<p>UK Data Archive, 'Documenting your Data'
 <a href="http://data-archive.ac.uk/create-manage/document">http://data-archive.ac.uk/create-manage/document</a></p>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="preserving-your-research-data/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Preserving Your Research Data\",\"layout\":\"lesson\",\"date\":\"2014-04-30T00:00:00.000Z\",\"authors\":[\"James Baker\"],\"reviewers\":[\"Jane Winters\",\"Sharon Howard\",\"William J. Turkel\"],\"editors\":[\"Adam Crymble\"],\"difficulty\":1,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"sustaining\",\"topics\":[\"data-management\"],\"abstract\":\"This lesson will suggest ways in which historians can document and structure their research data so as to ensure it remains useful in the future.\",\"redirect_from\":\"\u002Flessons\u002Fpreserving-your-research-data\",\"avatar_alt\":\"A large barrel\",\"doi\":\"10.46430\u002Fphen0039\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"background\\\"\u003EBackground\u003C\u002Fh4\u003E\\n\u003Cp\u003EIn his 2003 essay &#39;Scarcity or Abundance&#39; Roy Rosenzweig sought to alert\\nhistorians to what he called &#39;the fragility of evidence in the digital\\nera&#39; (Rosenzweig, 736). And whilst his concerns were focused on sources\\navailable on the open web, they can easily be extended to the\\nborn-digital materials – or data – historians create during their\\nresearch.\u003C\u002Fp\u003E\\n\u003Cp\u003EIt is this research data that the present guide will focus upon. But\\nwhy?\u003C\u002Fp\u003E\\n\u003Cp\u003EWell, historians are moving toward using computers as the default means\\nof storing all of their research data, their stuff. Their manuscripts\\nhave been digital objects for some time and their research is moving\\naccordingly – be that in the form of typed notes, photographs of\\narchives, or tabulated data. Moreover research data held in a digital\\nform has clear advantages over its physical antecedents: it can be\\nbrowsed and searched, hosted in ways that enable access in many places,\\nand merged with or queried against other research data.\u003C\u002Fp\u003E\\n\u003Cp\u003EMerely putting research data into digital form does not guarantee it\\nwill survive. Here by survival I neither mean survive in a literal sense\\nnor in a survival as readable by the next version of Microsoft Word\\nsense, but rather in a usable by people sense. For if not a problem\\nsolved, the nuts and bolts of how to preserve research data for the\\nfuture is a problem whose potential solutions have already been\\naddressed at length, both with and without historians in mind. So too\\nhave data management experts, services and the like talked about\\nscholarly best practice with regards to documenting, structuring and\\norganising research data. In spite of all this, research data generated\\nby an individual historian is at risk of loss if that historian is not\\nable to generate and preserve it in a form they can understand and find\\nmeaningful years or decades after the fact, let alone someone else\\nwading through the idiosyncrasies of their research process. In short,\\nthere is a risk of loss as a consequence of data being detached from the\\ncontext of its creation, from the tacit knowledge that made it useful at\\nthe time of preparing talk X or manuscript Y. As William Stafford Noble\\nputs it:\u003C\u002Fp\u003E\\n\u003Cblockquote\u003E\\n\u003Cp\u003EThe core guiding principle is simple: Someone unfamiliar with your\\nproject should be able to look at your computer files and understand\\nin detail what you did and why […]Most commonly, however, that\\n“someone” is you. A few months from now, you may not remember what you\\nwere up to when you created a particular set of files, or you may not\\nremember what conclusions you drew. You will either have to then spend\\ntime reconstructing your previous experiments or lose whatever\\ninsights you gained from those experiments.\u003C\u002Fp\u003E\\n\u003Cp\u003EWilliam Stafford Noble (2009) A Quick Guide to Organizing\\nComputational Biology Projects. PLoSComputBiol 5(7): e1000424.\\ndoi:10.1371\u002Fjournal.pcbi.1000424\u003C\u002Fp\u003E\\n\u003C\u002Fblockquote\u003E\\n\u003Cp\u003EDrawing on the lessons and expertise of research data experts, the\\npresent guide will suggest ways in which historians can document and\\nstructure their research data so as to ensure it remains useful in the\\nfuture. The guide is not intended to be prescriptive, rather it is\\nassumed readers will iterate, change, and adapt the ideas presented to\\nbest fit their own research.\u003C\u002Fp\u003E\\n\u003Chr\u003E\\n\u003Ch4 id=\\\"documenting-research-data\\\"\u003EDocumenting research data\u003C\u002Fh4\u003E\\n\u003Cblockquote\u003E\\n\u003Cp\u003EBirkwood, Katie (girlinthe). “Victory is mine: while ago I worked out\\nsome Clever Stuff ™ in Excel. And I MADE NOTES ON IT. And those notes\\nENABLED ME TO DO IT AGAIN.” 7 October 2013, 3:46 a.m.. Tweet.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ca href=\\\"https:\u002F\u002Ftwitter.com\u002FGirlinthe\u002Fstatus\u002F387166944094199809\\\"\u003Ehttps:\u002F\u002Ftwitter.com\u002FGirlinthe\u002Fstatus\u002F387166944094199809\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003C\u002Fblockquote\u003E\\n\u003Cp\u003EThe purpose of documentation is to capture the process of data creation,\\nchanges made to data, and tacit knowledge associated with data. Project\\nmanagement methodologies, such as \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FPRINCE2\\\"\u003EPRINCE2\u003C\u002Fa\u003E, place great emphasis on\\nprecise, structured, and verbose documentation. Whilst there are\\nbenefits to this approach, especially for large, complex, multi-partner\\nprojects, the average working historian is more likely to benefit from a\\nflexible, bespoke approach to documentation that draws on, but is not\\nyoked to, project management principles. In the case of historical\\nresearch, the sort of documentation that might be produced to preserve\\nthe usefulness of research data includes:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Edocumentation describing notes taken whilst examining a document in\\nan archive, such as the archival reference for the original\\ndocument, how representative the notes are (e.g. full\\ntranscriptions, partial transcriptions, or summaries), how much of\\nthe document was examined, or decisions taken to exclude sections of\\nthe document from the research process.\u003C\u002Fli\u003E\\n\u003Cli\u003Edocumentation describing tabulated data, such as how it was\\ngenerated (e.g. by hand or in an automated manner), archival\\nreferences for the original sources some data came from, or what\\nattributes of the original sources were retained (and why).\u003C\u002Fli\u003E\\n\u003Cli\u003Edocumentation describing a directory of digital images, such as how\\neach image was created, where those images were downloaded from, or\\nresearch notes that refer to them.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EAs the last example suggests, one of the key purposes of documentation\\nis to describe the meaningful links that exist between research data,\\nlinks that may not remain obvious over time.\u003C\u002Fp\u003E\\n\u003Cp\u003EWhen to document is very much up to the individual and the rhythm of\\ntheir research. The main rule is to get into a habit of writing and\\nupdating documentation at regular intervals, ideally every time a batch\\nof work is finished for the morning, afternoon, or day. At the same time\\nit is important not to worry about perfection, rather to aim to write\\nconsistent and efficient documentation that will be useful to you, and\\nhopefully someone else using your research data, years after the fact.\u003C\u002Fp\u003E\\n\u003Chr\u003E\\n\u003Ch4 id=\\\"file-formats\\\"\u003EFile formats\u003C\u002Fh4\u003E\\n\u003Cp\u003EResearch data and documentation should ideally be saved in \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FCross-platform\\\"\u003Eplatform\\nagnostic\u003C\u002Fa\u003E formats such as .txt for notes and .csv (comma-separated\\nvalues) or .tsv (tab-seperated values) for tabulated data. These plain\\ntext formats are preferable to the proprietary formats used as defaults\\nby Microsoft Office or iWork because they can be opened by many software\\npackages and have a strong chance of remaining viewable and editable in\\nthe future. Most standard office suites include the option to save files\\nin .txt, .csv and .tsv formats, meaning you can continue to work with\\nfamiliar software and still take appropriate action to make your work\\naccessible. Compared to .doc or .xls these formats have the additional\\nbenefit, from a preservation perspective, of containing only\\nmachine-readable elements. Whilst using bold, italics, and colouring to\\nsignify headings or to make a visual connection between data elements is\\ncommon practice, these display-orientated annotations are not\\nmachine-readable and hence can neither be queried and searched nor are\\nappropriate for large quantities of information. Preferable are simple\\nnotation schemes such as using a double-asterisk or three hashes to\\nrepresent a data feature: in my own notes, for example, three question\\nmarks indicate something I need to follow up on, chosen because &#39;???&#39;\\ncan easily be found with a CTRL+F search.\u003C\u002Fp\u003E\\n\u003Cp\u003EIt is likely that on many occasions these notation schemes will emerge\\nfrom existing individual practice (and as a consequence will need to be\\ndocumented), though existing schema such as \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FMarkdown\\\"\u003EMarkdown\u003C\u002Fa\u003E are available\\n(Markdown files are saved as .md). An excellent Markdown cheat sheet is\\navailable on GitHub \u003Ca href=\\\"https:\u002F\u002Fgithub.com\u002Fadam-p\u002Fmarkdown-here\\\"\u003Ehttps:\u002F\u002Fgithub.com\u002Fadam-p\u002Fmarkdown-here\u003C\u002Fa\u003E) for those\\nwho wish to follow – or adapt – this existing schema. Notepad++\\n\u003Ca href=\\\"http:\u002F\u002Fnotepad-plus-plus.org\u002F\\\"\u003Ehttp:\u002F\u002Fnotepad-plus-plus.org\u002F\u003C\u002Fa\u003E is recommended for Windows users, though\\nby no means essential, for working with .md files. Mac or Unix users may\\nfind \u003Ca href=\\\"http:\u002F\u002Fkomodoide.com\u002Fkomodo-edit\u002F\\\"\u003EKomodo Edit\u003C\u002Fa\u003E or \u003Ca href=\\\"https:\u002F\u002Fwww.barebones.com\u002Fproducts\u002Ftextwrangler\u002F\\\"\u003EText Wrangler\u003C\u002Fa\u003E helpful.\u003C\u002Fp\u003E\\n\u003Chr\u003E\\n\u003Ch4 id=\\\"recap-1\\\"\u003ERecap 1\u003C\u002Fh4\u003E\\n\u003Cp\u003ETo recap, the key points about documentation and file formats are:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EAim for documentation to capture in a precise and consistent manner\\nthe tacit knowledge surrounding a research process, be that with\\nrelation to note taking, generating tabulated data, or accumulating\\nvisual evidence.\u003C\u002Fli\u003E\\n\u003Cli\u003EKeep documentation simple by using file formats and notation\\npractices that are platform agnostic and machine-readable.\u003C\u002Fli\u003E\\n\u003Cli\u003EBuild time for updating and creating documentation into your\\nworkflow without allowing documentation work to become a burden.\u003C\u002Fli\u003E\\n\u003Cli\u003EMake an investment in leaving a paper trail now to save yourself\\ntime attempting to reconstruct it in the future.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Chr\u003E\\n\u003Ch4 id=\\\"structuring-research-data\\\"\u003EStructuring research data\u003C\u002Fh4\u003E\\n\u003Cp\u003EDocumenting your research is made easier by structuring your research\\ndata in a consistent and predictable manner.\u003C\u002Fp\u003E\\n\u003Cp\u003EWhy?\u003C\u002Fp\u003E\\n\u003Cp\u003EWell, every time we use a library or archive catalogue, we rely upon\\nstructured information to help us navigate data (both physical and\\ndigital) the library or archive contains. Without that structured\\ninformation, our research would be much poorer.\u003C\u002Fp\u003E\\n\u003Cp\u003EExamining URLs is a good way of thinking about why structuring research\\ndata in a consistent and predictable manner might be useful in your\\nresearch. Bad URLs are not reproducible and hence, in a scholarly\\ncontext, not citable. On the contrary, good URLs represent with clarity\\nthe content of the page they identify, either by containing semantic\\nelements or by using a single data element found across a set or\\nmajority of pages.\u003C\u002Fp\u003E\\n\u003Cp\u003EA typical example of the former are the URLs used by news websites or\\nblogging services. WordPress URLs follow the format:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cem\u003Ewebsite name\u003C\u002Fem\u003E\u002F\u003Cem\u003Eyear(4 digits)\u003C\u002Fem\u003E\u002F\u003Cem\u003Emonth (2 digits)\u003C\u002Fem\u003E\u002F\u003Cem\u003Eday (2\\ndigits)\u003C\u002Fem\u003E\u002F\u003Cem\u003Ewords-of-title-separated-by-hyphens\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fcradledincaricature.com\u002F2014\u002F02\u002F06\u002Fcomic-art-beyond-the-print-shop\u002F\\\"\u003Ehttp:\u002F\u002Fcradledincaricature.com\u002F2014\u002F02\u002F06\u002Fcomic-art-beyond-the-print-shop\u002F\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EA similar style is used by news agencies such as a The Guardian\\nnewspaper:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cem\u003Ewebsite name\u003C\u002Fem\u003E\u002F\u003Cem\u003Esection subdivision\u003C\u002Fem\u003E\u002F\u003Cem\u003Eyear (4 digits)\u003C\u002Fem\u003E\u002F\u003Cem\u003Emonth (3\\ncharacters)\u003C\u002Fem\u003E\u002F\u003Cem\u003Eday (2\\ndigits)\u003C\u002Fem\u003E\u002F\u003Cem\u003Ewords-describing-content-separated-by-hyphens\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.theguardian.com\u002Fuk-news\u002F2014\u002Ffeb\u002F20\u002Frebekah-brooks-rupert-murdoch-phone-hacking-trial\\\"\u003Ehttp:\u002F\u002Fwww.theguardian.com\u002Fuk-news\u002F2014\u002Ffeb\u002F20\u002Frebekah-brooks-rupert-murdoch-phone-hacking-trial\u003C\u002Fa\u003E\\n.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EIn archival catalogues, URLs structured by a single data element are\\noften used. The British Cartoon Archive structures its online archive\\nusing the format:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cem\u003Ewebsite name\u003C\u002Fem\u003E\u002Frecord\u002F\u003Cem\u003Ereference number\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.cartoons.ac.uk\u002Frecord\u002FSBD0931\\\"\u003Ehttp:\u002F\u002Fwww.cartoons.ac.uk\u002Frecord\u002FSBD0931\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EAnd the Old Bailey Online uses the format:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cem\u003Ewebsite name\u003C\u002Fem\u003E\u002Fbrowse.jsp?ref=\u003Cem\u003Ereference number\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?ref=OA16780417\\\"\u003Ehttp:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?ref=OA16780417\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EWhat we learn from these examples is that a combination of semantic\\ndescription and data elements make consistent and predictable data\\nstructures readable both by humans and machines. Transferring this to\\ndigital data accumulated during the course of historical research makes\\nresearch data easier to browse, to search and to query using the\\nstandard tools provided by our operating systems (and, as we shall see\\nin a future lesson, by more advanced tools).\u003C\u002Fp\u003E\\n\u003Cp\u003EIn practice (for OS X and Linux users, replace all backslashes hereafter\\nwith forward slash), the structure of a good research data archive might\\nlook something like this:\u003C\u002Fp\u003E\\n\u003Cp\u003EA base or root directory, perhaps called &#39;work&#39;.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E\\\\work\\\\\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EA series of sub-directories.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E     \\\\work\\\\events\\\\\\n     \\\\research\\\\\\n     \\\\teaching\\\\\\n     \\\\writing\\\\\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWithin these directories are series of directories for each event,\\nresearch project, module, or piece of writing. Introducing a naming\\nconvention that includes a date elements keeps the information organised\\nwithout the need for subdirectories by, say, year or month.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E\\\\work\\\\research\\\\2014-01_Journal_Articles\\n              \\\\2014-02_Infrastructure\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EFinally, further sub-directories can be used to separate out information\\nas the project grows.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E\\\\work\\\\research\\\\2014_Journal_Articles\\\\analysis\\n                                    \\\\data\\n                                    \\\\notes\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EObviously not all information will fit neatly within any given structure\\nand as new projects arise taxonomies will need to be revisited. Either\\nway, idiosyncrasy is fine so long as the overall directory structure is\\nconsistent and predictable, and so long as anything that isn’t is\\nclearly documented: for example, the &#39;writing&#39; sub-directory in the\\nabove structure might include a .txt file stating what it contained\\n(drafts and final version of written work) and what it didn&#39;t contain\\n(research pertaining to that written work).\u003C\u002Fp\u003E\\n\u003Cp\u003EThe name of this .txt file, indeed any documentation and research data,\\nis important to ensuring it and its contents are easy to identify.\\n&#39;Notes about this folder.docx&#39; is not a name that fulfils this purpose,\\nwhilst &#39;2014-01-31_Writing_readme.txt&#39; is as it replicates the title\\nof the directory and included some date information (North American\\nreaders should note that I&#39;ve chosen the structure year_month_date). A\\n\u003Ca href=\\\"\u002Fassets\u002Fpreserving-your-research-data\u002Fnetwork_analysis_of_Isaac_Cruikshank_and_his_publishers_readme.txt\\\"\u003Ereadme file I made for a recent project\u003C\u002Fa\u003E\\ncontains the sort of information that you and other users of your data\\nmight find useful.\u003C\u002Fp\u003E\\n\u003Cp\u003EAn cautionary tale should be sufficient to confirm the value of this\\napproach. During the course of a previous research project, I collected\\nsome 2,000 digital images of Georgian satirical prints from a number of\\nonline sources, retaining the file names upon download. Had I applied a\\nnaming convention to these from the outset (say &#39;PUBLICATION\\nYEAR_ARTIST SURNAME_TITLE OF WORK.FORMAT&#39;) I would be able to search\\nand query these images. Indeed starting each filename with some version\\nof YYYYMMDD would have meant that the files could be sorted in\\nchronological order on Windows, OS X and Linux. And ensuring that all\\nspaces or punctuation (except dash, dot and underscore) were removed\\nfrom the filenames in the process of making them consistent and\\npredictable, would have made command line work with the files possible.\\nBut I did not, and as it stands I would need to set aside a large amount\\nof time to amend every filename individually so as to make the data\\nusable in this way.\u003C\u002Fp\u003E\\n\u003Cp\u003EFurther, applying such naming conventions to all research data in a\\nconsistent and predictable manner assists with the readability and\\ncomprehension of the data structure. For example for a project on\\njournal articles we might choose the directory…\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E\\\\work\\\\research\\\\2014-01_Journal_Articles\\\\\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E…where the year-month elements captures when the project started.\u003C\u002Fp\u003E\\n\u003Cp\u003EWithin this directory we include a \\\\data\\\\ directory where the original\\ndata used in the project is kept.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E2014-01-31_Journal_Articles.tsv\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAlongside this data is documentation that describes\\n2014-01-31_Journal_Articles.tsv.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E2014-01-31_Journal_Articles_notes.txt\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EGoing back a directory level to \\\\2014-01_Journal_Articles\\\\ we create\\nthe \\\\analysis\\\\ directory in which we place:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E2014-02-02_Journal_Articles_analysis.txt\\n2014-02-15_Journal_Articles_analysis.txt\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENote the different month and date attributes here. These reflect the\\ndates on which data analysis took place, a convention described briefly\\nin 2014-02-02_Journal_Articles_analysis_readme.txt.\u003C\u002Fp\u003E\\n\u003Cp\u003EFinally, a directory within \\\\data\\\\ called \\\\derived_data\\\\ contains\\ndata derived from the original 2014-01-31_Journal_Articles.tsv. In\\nthis case, each derived .tsv file contains lines including the keywords,\\n&#39;africa&#39;, &#39;america&#39;, &#39;art&#39; et cetera, and are named accordingly.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E2014-01-31_Journal_Articles_KW_africa.tsv\\n\\n2014-01-31_Journal_Articles_KW_america.tsv\\n\\n2014-02-01_Journal_Articles_KW_art .tsv\\n\\n2014-02-02_Journal_Articles_KW_britain.tsv\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Chr\u003E\\n\u003Ch4 id=\\\"recap-2\\\"\u003ERecap 2\u003C\u002Fh4\u003E\\n\u003Cp\u003ETo recap, the key points about structuring research data are:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EData structures should be consistent and predictable.\u003C\u002Fli\u003E\\n\u003Cli\u003EConsider using semantic elements or data identifiers to structure\\nresearch data directories.\u003C\u002Fli\u003E\\n\u003Cli\u003EFit and adapt your research data structure to your research.\u003C\u002Fli\u003E\\n\u003Cli\u003EApply naming conventions to directories and file names to identify\\nthem, to create associations between data elements, and to assist\\nwith the long term readability and comprehension of your data\\nstructure.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Chr\u003E\\n\u003Ch4 id=\\\"summary\\\"\u003ESummary\u003C\u002Fh4\u003E\\n\u003Cp\u003EThis lesson has suggested ways for documenting and structuring research\\ndata, the purpose of which is to ensure that data is preserved by\\ncapturing tacit knowledge gained during the research process and thus\\nmaking the information easy to use in the future. It has recommended the\\nuse of platform agnostic and machine-readable formats for documentation\\nand research data. It has suggested that URLs offer a practice example\\nof both good and bad data structures that can be replicated for the\\npurposes of a historian&#39;s research data.\u003C\u002Fp\u003E\\n\u003Cp\u003EThese suggestions are intended merely as guides; it is expected that\\nresearchers will adapt them to suit their purposes. In doing so, it is\\nrecommended that researchers keep digital preservation strategies and\\nproject management best practice in mind, whilst ensuring that time\\nspent documenting and structuring research does not become a burden.\\nAfter all, the purpose of this guide is to make more not less efficient\\nhistorical research that generates data. That is, your research.\u003C\u002Fp\u003E\\n\u003Chr\u003E\\n\u003Ch4 id=\\\"further-reading\\\"\u003EFurther Reading\u003C\u002Fh4\u003E\\n\u003Cp\u003EAshton, Neil, &#39;Seven deadly sins of data publication&#39;, School of Data\\nblog (17 October 2013)\\n\u003Ca href=\\\"http:\u002F\u002Fschoolofdata.org\u002F2013\u002F10\u002F17\u002Fseven-deadly-sins-of-data-publication\u002F\\\"\u003Ehttp:\u002F\u002Fschoolofdata.org\u002F2013\u002F10\u002F17\u002Fseven-deadly-sins-of-data-publication\u002F\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EHitchcock, Tim, &#39;Judging a book by its URLs&#39;, Historyonics blog (3\\nJanuary 2014)\\n\u003Ca href=\\\"http:\u002F\u002Fhistoryonics.blogspot.co.uk\u002F2014\u002F01\u002Fjudging-book-by-its-url.html\\\"\u003Ehttp:\u002F\u002Fhistoryonics.blogspot.co.uk\u002F2014\u002F01\u002Fjudging-book-by-its-url.html\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EHoward, Sharon, &#39;Unclean, unclean! What historians can do about sharing\\nour messy research data&#39;, Early Modern Notes blog (18 May 2013)\\n\u003Ca href=\\\"http:\u002F\u002Fearlymodernnotes.wordpress.com\u002F2013\u002F05\u002F18\u002Funclean-unclean-what-historians-can-do-about-sharing-our-messy-research-data\u002F\\\"\u003Ehttp:\u002F\u002Fearlymodernnotes.wordpress.com\u002F2013\u002F05\u002F18\u002Funclean-unclean-what-historians-can-do-about-sharing-our-messy-research-data\u002F\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003ENoble, William Stafford, A Quick Guide to Organizing Computational\\nBiology Projects.PLoSComputBiol 5(7): e1000424 (2009)\\n\u003Ca href=\\\"https:\u002F\u002Fdoi.org\u002F10.1371\u002Fjournal.pcbi.1000424\\\"\u003Ehttps:\u002F\u002Fdoi.org\u002F10.1371\u002Fjournal.pcbi.1000424\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EOxford University Computing Services, &#39;Sudamih Project. Research\\nInformation Management: Organising Humanities Material&#39; (2011)\\n\u003Ca href=\\\"https:\u002F\u002Fzenodo.org\u002Frecord\u002F28329\\\"\u003Ehttps:\u002F\u002Fzenodo.org\u002Frecord\u002F28329\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EPennock, Maureen, &#39;The Twelve Principles of Digital Preservation (and a\\ncartridge in a repository…)&#39;, British Library Collection Care blog (3\\nSeptember 2013)\\n\u003Ca href=\\\"http:\u002F\u002Fbritishlibrary.typepad.co.uk\u002Fcollectioncare\u002F2013\u002F09\u002Fthe-twelve-principles-of-digital-preservation.html\\\"\u003Ehttp:\u002F\u002Fbritishlibrary.typepad.co.uk\u002Fcollectioncare\u002F2013\u002F09\u002Fthe-twelve-principles-of-digital-preservation.html\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EPritchard, Adam, &#39;Markdown Cheatsheet&#39; (2013)\\n\u003Ca href=\\\"https:\u002F\u002Fgithub.com\u002Fadam-p\u002Fmarkdown-here\\\"\u003Ehttps:\u002F\u002Fgithub.com\u002Fadam-p\u002Fmarkdown-here\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003ERosenzweig, Roy, &#39;Scarcity or Abundance? Preserving the Past in a\\nDigital Era&#39;, The American Historical Review 108:3 (2003), 735-762.\u003C\u002Fp\u003E\\n\u003Cp\u003EUK Data Archive, &#39;Documenting your Data&#39;\\n\u003Ca href=\\\"http:\u002F\u002Fdata-archive.ac.uk\u002Fcreate-manage\u002Fdocument\\\"\u003Ehttp:\u002F\u002Fdata-archive.ac.uk\u002Fcreate-manage\u002Fdocument\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/fr/lecons/manipuler-chaines-caracteres-python"),
+					params: {lang:"fr",lessons:"lecons",slug:"manipuler-chaines-caracteres-python"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en français</h2>
+	<a class="nav-link" href="/fr/lecons">Leçons</a><a class="nav-link" href="/fr/apropos">À propos</a><a class="nav-link" href="/fr/recherche">Recherche</a><a class="nav-link" href="/fr/nous-soutenir">Nous soutenir</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link active" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Manipuler des chaînes de caractères en Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2>Objectifs de la leçon</h2>
+<p>Cette leçon constitue une courte introduction à la manipulation des <a href="https://fr.wikipedia.org/wiki/Cha%C3%AEne_de_caract%C3%A8res">chaînes de caractères</a> en Python. Pour la plupart des tâches de traitement du langage naturel, il est crucial de savoir comment manipuler les chaînes de caractères. Si vous souhaitez mettre la leçon en pratique, vous pouvez écrire et exécuter des programmes courts dans votre environnement de programmation favori ou encore ouvrir un terminal en Python pour tester le code à la ligne de commande.</p>
+<h2>Manipuler les chaînes de caractères en Python</h2>
+<p>Si vous avez déjà été confrontés à un autre langage de programmation auparavant, vous avez peut-être appris que vous aviez besoin de <em>déclarer</em> ou de <em>typer</em> vos variables avant de pouvoir y stocker des données. Ce n’est pas nécessaire lorsque l’on travaille avec Python. En effet, on peut simplement créer une chaîne de caractères en mettant entre guillemets le contenu de la variable et en utilisant le signe égal (=) :</p>
+<pre><code class="language-python">	message = &quot;Bonjour le monde!&quot;
+</code></pre>
+<h2>Les opérateurs de chaînes : additionner et multiplier</h2>
+<p>Une chaîne de caractères est une classe d’objets qui consiste en une série de caractères. Python sait déjà gérer un certain nombre de types de données polyvalents et puissants, y compris les chaînes de caractères. L’une des façons de manipuler ces chaînes de caractères est d’utiliser un <em>opérateur de chaînes</em>. Ces opérateurs sont représentés par des signes que l’on associe généralement avec les mathématiques, tels que +, -, *, / et =. Lorsqu’on les utilise avec des chaînes de caractères, ces opérateurs effectuent des actions qui sont comparables, mais non similaires, à leurs équivalents mathématiques.</p>
+<h3>Concaténer</h3>
+<p>Ce terme signifie “joindre des chaînes de caractères”. Ce processus est appelé <em>la concaténation de chaînes</em>, et s’effectue en utilisant l’opérateur plus (+). Notez qu’il vous faut indiquer explicitement là où vous voulez que des espaces apparaissent, en les mettant eux aussi entre des guillemets simples.</p>
+<p>Dans cette exemple, on attribue le contenu “Bonjour le monde!” à la chaîne de caractères “message1”.</p>
+<pre><code class="language-python">	message1 = 'Bonjour le' + ' ' + 'monde'
+	print(message1)
+	-&gt; Bonjour le monde
+</code></pre>
+<h3>Multiplier</h3>
+<p>Si vous voulez plusieurs copies d’une chaîne de caractères, utilisez l’opérateur de la multiplication (*). Dans cet exemple, on attribue le contenu “bonjour” trois fois à la chaîne de caractères <em>message2a</em> et le contenu “le monde” à la chaîne de caractères <em>message2b</em>. Puis, nous imprimons ces deux chaînes.</p>
+<pre><code class="language-python">	message2a = 'bonjour ' * 3
+	message2b = 'le monde'
+	print(message2a + message2b)
+	-&gt; bonjour bonjour bonjour le monde
+</code></pre>
+<h3>Ajouter</h3>
+<p>Que faire si vous souhaitez ajouter quelque chose à la fin d’une chaîne de caractères, à la suite du contenu ? Il existe un opérateur spécial conçu à cette fin (+=).</p>
+<pre><code class="language-python">	message3 = 'bonjour'
+	message3 += ' '
+	message3 += 'le monde'
+	print(message3)
+	-&gt; bonjour le monde
+</code></pre>
+<h2>Méthodes pour les chaînes de caractères : rechercher, modifier</h2>
+<p>En plus des opérateurs, Python possède des douzaines de <em>méthodes</em> pré-installées qui nous permettent de manipuler les chaînes de caractères. Utilisées seules ou en combinaisons, ces méthodes peuvent appliquer à peu près toutes les opérations imaginables aux chaînes de caractères. Vous pouvez consulter une liste de ces méthodes sur <a href="https://docs.python.org/3.8/library/stdtypes.html#string-methods">le site de Python</a>, y compris des informations sur la manière de les utiliser correctement. Pour vous aider à bien démarrer votre exploration, voici un bref aperçu de quelques-unes des méthodes les plus couramment utilisées :</p>
+<h3>Longueur</h3>
+<p>Vous pouvez déterminer le nombre de caractères contenus dans une chaîne de caractères à l'aide de <code>len</code>. Notez que l'espace blanc compte comme un caractère séparé.</p>
+<pre><code class="language-python">	message4 = 'bonjour' + ' ' + 'le monde'
+	print(len(message4))
+	-&gt; 16
+</code></pre>
+<h3>Rechercher une sous-chaîne</h3>
+<p>Vous pouvez rechercher <em>une sous-chaîne</em> dans une chaîne de caractères et votre programme retournera la position de l'index de départ de cette sous-chaîne. Cela vous sera utile lors de nombreuses opérations plus complexes. Notez que les index sont numérotés de gauche à droite et que le décompte commence à la position 0 et non 1.</p>
+<pre><code class="language-python">	message5 = &quot;bonjour le monde&quot;
+	message5a = message5.find(&quot;mond&quot;)
+	print(message5a)
+	-&gt; 11
+</code></pre>
+<p>Si la sous-chaîne n'est pas présente, le programme renvoie une valeur de -1.</p>
+<pre><code class="language-python">	message6 = &quot;bonjour le monde&quot;
+	message6b = message6.find(&quot;oiseau&quot;)
+	print(message6b)
+	-&gt; -1
+</code></pre>
+<h3>Minuscules</h3>
+<p>Il est parfois utile de convertir une chaîne de caractères en minuscules. Par exemple, il est plus facile pour l'ordinateur de reconnaître que &quot;Parfois&quot; et &quot;parfois&quot; sont le même mot si nous standardisons les casses au préalable.</p>
+<pre><code class="language-python">	message7 = &quot;BONJOUR LE MONDE&quot;
+	message7a = message7.lower()
+	print(message7a)
+	-&gt; bonjour le monde
+</code></pre>
+<p>L'effet inverse, qui consiste à transformer tous les caractères en majuscules, peut être obtenu en changeant <code>.lower()</code> en <code>.upper().</code></p>
+<h3>Remplacer</h3>
+<p>Si vous avez besoin de remplacer une sous-chaîne à l'intérieur d'une chaîne, vous pouvez le faire avec la méthode <code>replace</code>.</p>
+<pre><code class="language-python">	message8 = &quot;BONJOUR LE MONDE&quot;
+	message8a = message8.replace(&quot;L&quot;, &quot;pizza&quot;)
+	print(message8a)
+	-&gt; BONJOUR pizzaE MONDE
+</code></pre>
+<h3>Couper (Slice)</h3>
+<p>Si vous voulez couper (<code>slice</code>) les parties non désirées au début ou à la fin d'une chaîne de caractères, vous pouvez le faire en créant une nouvelle chaîne à l'aide de l'opérateur ':'. La même technique vous permet également de diviser une longue chaîne de caractères en composantes plus faciles à gérer.</p>
+<pre><code class="language-python">	message9 = &quot;Bonjour le monde&quot;
+	message9a = message9[1:9]
+	print(message9a)
+	-&gt; onjour l
+</code></pre>
+<p>Vous pouvez substituer des variables aux entiers utilisés dans cet exemple.</p>
+<pre><code class="language-python">	debut = 2
+	fin = 9
+	message9b = message9[debut:fin]
+	print(message9b)
+	-&gt; njour l
+</code></pre>
+<p>Le découpage d'une partie d'une chaîne facilite de beaucoup l'utilisation de cette méthode en conjonction avec la méthode <code>find</code>.  L'exemple suivant vérifie la présence de la lettre &quot;d&quot; dans les six premiers caractères de &quot;Bonjour le monde&quot; et nous dit correctement qu'elle n'est pas présente (-1). Cette technique est beaucoup plus utile dans des chaînes de caractères plus longues - des documents entiers par exemple. Notez que l'absence d'un entier avant les deux points signifie que nous voulons commencer au début de la chaîne. Nous pourrions utiliser la même technique pour dire au programme d'aller jusqu'au bout, en ne mettant aucun entier après les deux points. Et n'oubliez pas que l'on commence à compter les positions de l'indice à partir de 0 plutôt que de 1.</p>
+<pre><code class="language-python">	message9 = &quot;Bonjour le monde&quot;
+	print(message9[:5].find(&quot;d&quot;))
+	-&gt; -1
+</code></pre>
+<p>Il existe beaucoup d'autres méthodes de manipulation des chaînes, mais celles décrites ci-dessus constituent un bon début. Notez que dans ce dernier exemple, nous utilisons des crochets au lieu de parenthèses. Cette différence de syntaxe signale une distinction importante. En Python, les parenthèses sont généralement utilisées pour passer un <em>argument</em> à une fonction. Donc quand on voit quelque chose comme</p>
+<pre><code class="language-python">	print(len(message7))
+</code></pre>
+<p>cela signifie passer la chaîne de caracteres &quot;message&quot; à la fonction <code>len</code>, puis envoyer la valeur retournée par cette fonction à l'instruction d'impression (<code>print</code>). Si une fonction peut être appelée sans argument, vous devez souvent inclure une paire de parenthèses vides après le nom de la fonction. Nous en avons aussi vu un exemple :</p>
+<pre><code class="language-python">	message7 = &quot;BONJOUR LE MONDE&quot;
+	message7a = message7.lower()
+	print(message7a)
+	-&gt; bonjour le monde
+</code></pre>
+<p>Cette instruction demande à Python d'appliquer la fonction <code>lower</code> à la chaîne &quot;message7&quot;, puis de stocker la valeur retournée dans la chaîne <em>message7a</em>.</p>
+<p>Les crochets ont une fonction différente. Si vous concevez une chaîne de caractères comme une séquence de caractères, et que vous voulez accéder à une partie du contenu de la chaîne en spécifiant son emplacement dans la séquence, alors vous avez évidemment besoin d'un moyen d'indiquer à Python un emplacement dans une séquence. C'est ce que font les crochets : indiquer un emplacement de début et de fin dans une séquence, comme nous l'avons vu en utilisant la méthode <code>slice</code>.</p>
+<h2>Séquence d'échappement</h2>
+<p>Que faire lorsque vous devez inclure des guillemets dans une chaîne de caractères ? Vous ne voulez pas que l'interpréteur Python se méprenne et mette fin à la chaîne lorsqu'il rencontre l'un de ces caractères. En Python, vous pouvez placer une barre oblique inversée devant un guillemet pour que ce guillemet ne termine pas la chaîne. C'est ce qu'on appelle les <em>séquences d'échappement</em>.</p>
+<pre><code class="language-python">	print('\&quot;')
+	-&gt; &quot;
+</code></pre>
+<pre><code class="language-python">	print('Le programme imprime \&quot;Bonjour le monde!\&quot;')
+	-&gt; Le programme imprime &quot;Bonjour le monde!&quot;
+</code></pre>
+<p>Deux autres séquences d'échappement vous permettent d'imprimer des tabulateurs et des fins de lignes :</p>
+<pre><code>	print('bonjour\tbonjour\tbonjour\nle monde')
+	-&gt;bonjour bonjour bonjour
+	le monde
+</code></pre>
+<h2>Bibliographie</h2>
+<ul>
+<li>Mark Lutz, <em><a href="http://www.worldcat.org/oclc/1061273329">Learning Python</a></em>
+<ul>
+<li>Ch. 7: Strings <em>(Chaînes de caractères)</em></li>
+<li>Ch. 8: Lists and Dictionaries <em>(Listes et dictionnaires)</em></li>
+<li>Ch. 10: Introducing Python Statements <em>(Introduction aux déclarations en Python)</em></li>
+<li>Ch. 15: Function Basics <em>(Les fondamentaux des fonctions en Python)</em></li>
+</ul>
+</li>
+</ul>
+<h2>Synchronisation de code</h2>
+<p>Pour suivre les leçons à venir, il est important d'avoir les bons fichiers et programmes dans votre répertoire programming-historian. À la fin de chaque chapitre, vous pouvez télécharger le fichier zip de programming-historian pour vous assurer que vous avez le bon code. Notez que nous avons supprimé les fichiers inutiles des leçons précédentes. Votre répertoire peut contenir plus de fichiers et c'est OK !</p>
+<ul>
+<li>programming-historian-1 (<a href="/assets/python-lessons1.zip">zip</a>)</li>
+</ul>
+<p>Super ! Vous êtes maintenant prêt à passer à <a href="/en/lessons/from-html-to-list-of-words-1">la leçon suivante</a> (en anglais).</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

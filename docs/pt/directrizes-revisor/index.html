@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/pt/directrizes-revisor"),
+					params: {lang:"pt",lessons:"directrizes-revisor"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Diretrizes para Revisores</h1>
+<img src="/images/reviewer-sm.png" class="garnish rounded float-left" alt="{{ site.data.snippets.reviewer-image-alt[page.lang] }}"/>
+<p>O processo de revisão do <em>Programming Historian em português</em> é uma excelente forma de aprender novas competências técnicas e de se envolver com a comunidade das humanidades digitais. Fazemos todo o possível para garantir que os nossos revisores recebam crédito e reconhecimento pelo seu trabalho. Como os revisores contribuem directamente para melhorar significativamente as lições, eles podem ter orgulho que o seu trabalho irá ajudar milhares de leitores.</p>
+<p>Estas directrizes destinam-se a ajudar os revisores a compreender o seu papel no processo editorial e a responder a perguntas comuns sobre como ser mais eficiente e eficaz com as suas revisões.</p>
+<p>{% include toc.html %}</p>
+<h2>Filosofia da Revisão</h2>
+<p>Consideramos o processo de revisão um componente integral de um esforço colaborativo, produtivo e sustentável para os académicos criarem recursos técnicos úteis para todos. Quando um tutorial entra no nosso fluxo editorial, trabalhamos em estreita colaboração com o autor e os revisores para maximizar o potencial e publicá-lo dentro de um período de tempo razoável.</p>
+<h3>Crítica Construtiva</h3>
+<p>Rever um tutorial não é simplesmente avaliar os seus méritos e falhas (embora seja importante fazê-lo também), mas ajudar a melhorar o tutorial em virtude de uma perspectiva externa. Pedimos que os revisores façam críticas justas e construtivas (e, claro, elogios) que ajudem a melhorar o tutorial para uma audiência de leitores ampla.</p>
+<h3>Transparência</h3>
+<p>Valorizamos muito a transparência no nosso processo de produção e revisão de lições. O nosso processo de revisão acontece no Github, onde as nossas lições estão hospedadas. Nomeadamente, nós utilizamos os recursos de comentários e de <a href="https://en.wikipedia.org/wiki/Issue_tracking_system">rastreamento de problemas</a> do Github para acompanhar as sugestões e a forma como são tratadas e discutidas pelos autores e revisores. Isto ajuda a evitar que conversas importantes sejam esquecidas e se percam em discussões por e-mail.</p>
+<p>Portanto, o trabalho como revisor - e a sua identidade - será totalmente visível para o autor. Os comentários devem envolver diretamente o autor e a lição, e não o revisor. Se em algum momento não tiver certeza do seu papel ou do que fazer a seguir, sinta-se à vontade para fazer uma pergunta e um editor responderá assim que puder.</p>
+<p>Seguindo as ideias de investigação pública e de revisão aberta por pares, geralmente incentivamos as discussões a permanecer no GitHub, conforme descrito no fluxo de trabalho editorial. No entanto, queremos também que todos se sintam à vontade. Em alguns casos, uma conversa privada pode ser mais apropriada. Se sentir a necessidade de discutir um assunto relacionado a um tutorial ou relacionado à revisão, por favor, sinta-se à vontade para enviar um <a href="/pt/equipe#programming-historian-em-portugu%C3%AAs">email diretamente para o editor designado</a>, ou entrar em contato com o <a href="/pt/equipe#programming-historian-em-portugu%C3%AAs">nosso mediador independente</a>.</p>
+<p>A menos que seja dada indicação contrária, o nome dos revisores estará na página da lição quando for publicada oficialmente e também estará listado na nossa página de colaboradores.</p>
+<h3>Abertura e Inclusão</h3>
+<p>O <em>Programming Historian em português</em> se dedica a prover um ambiente académico aberto que oferece aos participantes da comunidade a liberdade de examinar minuciosamente as ideias, fazer perguntas, fazer sugestões ou pedidos de esclarecimento. Insistimos em ter um espaço livre de assédio para todos os colaboradores do projeto, independentemente do género, identidade e expressão de género, orientação sexual, deficiência, aparência física, tamanho corporal, raça, idade ou religião ou experiência técnica. Não toleramos o assédio ou ataques <em>ad hominem</em> aos participantes da comunidade, de nenhuma forma. Os participantes que violem estas regras podem ser expulsos da comunidade, a critério do conselho editorial. Se alguém testemunhar ou sentir que foi vítima da atividade acima descrita, por favor <a href="/pt/equipe#programming-historian-em-portugu%C3%AAs">contacte o nosso mediador independente</a>. Obrigado por nos ajudar a criar um espaço seguro.</p>
+<h2>O que comentar</h2>
+<p>O estilo informal das lições do <em>Programming Historian em português</em> pode fazer com que estas pareçam enganosamente simples de escrever. De fato, escrever um bom tutorial é tão exigente, se não mais, do que qualquer outro tipo de escrita académica. Abaixo estão algumas perguntas comuns a ter em mente ao rever uma lição. Algumas serão mais relevantes do que outras, dependendo do tema, do público-alvo e da dificuldade do tutorial. É importante ressaltar que esta não é uma lista restritiva ou abrangente; não pedimos aos revisores que respondam a cada uma das perguntas, mas esperamos que possam fornecer alguma orientação geral.</p>
+<h3>Público-alvo</h3>
+<p>O <em>Programming Historian em português</em> se dirige a um público variado e com níveis de competência diferentes. Algumas lições são para iniciantes, outras são para aqueles consideravelmente mais confortáveis com conceitos e métodos técnicos, e outras ainda são dirigidas a historiadores digitais experientes que procuram resolver desafios técnicos difíceis. Aplaudimos essa diversidade!</p>
+<p>Embora gostemos que cada uma das nossas lições tenha a marca pessoal do seu autor (ou tradutor), também queremos que cada lição individual permaneça com uma linguagem clara e homogénea. Mais especificamente, queremos que as explicações técnicas (e a dificuldade) permaneçam tão constantes quanto possível ao longo de toda a lição. Como revisor, é bastante útil observar as seções de um tutorial direcionadas a utilizadores tecnicamente avançados que parecem explicar excessivamente conceitos relativamente simples; o inverso também é verdadeiro: queremos evitar seções de tutoriais destinadas a iniciantes que não explicam adequadamente os conceitos fundamentais centrais ao tutorial.  Algumas questões a considerar:</p>
+<ul>
+<li>O autor dirige-se a um tipo de leitor consistente ao longo da lição?</li>
+<li>Alguns conceitos ou passos são excessivamente explicados enquanto outros são poucos explicados?</li>
+<li>O público-alvo parece corresponder, pelo menos vagamente, ao de outras lições do <em>Programming Historian em português</em>? Em que medida é um novo público-alvo?</li>
+</ul>
+<h3>Preparação</h3>
+<ul>
+<li>Quais os softwares / as linguagens de programação necessárias?</li>
+<li>Quais as competências prévias necessárias?</li>
+<li>Que familiaridade ou experiência é necessária?</li>
+<li>Que dados são necessários? O conjunto de dados está facilmente disponível?</li>
+</ul>
+<h3>Estrutura</h3>
+<ul>
+<li>Existem objetivos de aprendizagem ou conjuntos de competências a aprender claramente definidos, listados no início da lição?</li>
+<li>Existem competências secundárias úteis a serem adquiridas / praticadas a partir da lição?</li>
+<li>As capturas de tela e outros diagramas ilustram etapas / pontos cruciais da lição?</li>
+<li>As seções e os títulos das seções são claros e guiam o leitor?</li>
+</ul>
+<h3>Benefícios</h3>
+<ul>
+<li>O tutorial sugere se as ferramentas ou técnicas explicadas são úteis de uma maneira geral?</li>
+<li>O tutorial sugere como o leitor pode aplicar os conceitos (ou as etapas) da lição ao seu próprio trabalho?</li>
+</ul>
+<h3>Fluxo de Trabalho</h3>
+<ul>
+<li>A lição está muito grande e deve ser dividida em lições menores?</li>
+<li>Existem pontos de interrupção lógicos ao longo da lição?</li>
+<li>Se conjuntos de dados são necessários, estão disponíveis para download ao longo da lição (ou diferentes versões dos mesmos, se o tutorial assim o exigir)?</li>
+</ul>
+<h3>Sustentabilidade</h3>
+<p>Para o aumentar a vida útil das nossas lições, os revisores do Programming Historian em português devem ter em mente as seguintes questões sobre sustentabilidade. Cada submissão é diferente e algumas destas questões podem não ser aplicáveis a todas as submissões. Tendo em conta o nível de dificuldade de cada lição e o público a que se destina, os revisores devem utilizar estas questões como diretrizes para garantir que as lições sejam tão sustentáveis quanto possível a partir da data de publicação.</p>
+<ul>
+<li>Todas as versões do software e as suas dependências estão listadas na submissão? Estes recursos estão nas versões mais recentes? Se a lição utiliza versões de software mais antigas, o autor indica o motivo?</li>
+<li>Se você tem experiência na metodologia ou ferramenta(s) específica(s) para a lição, a metodologia está atualizada?</li>
+<li>Quais são as fontes de dados para a submissão? Estão incluídas de uma forma que não dependam de uma hospedagem externa?</li>
+<li>Que outros tipos de links ou recursos são utilizados na lição? São atuais ou existem outros recursos mais recentes ou apropriados?</li>
+</ul>
+<p>Integrando a lição no <em>Programming Historian em português</em></p>
+<ul>
+<li>A lição baseia-se numa lição já existente e explica como?</li>
+<li>A lição está ligada a outras lições existentes e tem os links apropriados?</li>
+</ul>
+<h2>Submeter a revisão</h2>
+<p>Gerimos todos os comentários de revisão por pares através do GitHub. Quando uma nova lição estiver pronta para revisão, o editor fornecerá um link para a lição e um link para o fórum de discussão onde podem ser feitos comentários construtivos. Esta discussão é realizada no Github, um ambiente de codificação social livre. É preciso se inscrever numa conta gratuita do GitHub para publicar o comentário. Encorajamos que a discussão permaneça no Github, mas pode enviar um e-mail ao editor em particular ou entrar em contato com o <a href="/pt/equipe#programming-historian-em-portugu%C3%AAs">nosso mediador independente</a>.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

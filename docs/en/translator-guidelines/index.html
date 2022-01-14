@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/en/translator-guidelines"),
+					params: {lang:"en",lessons:"translator-guidelines"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Translator Guidelines</h1>
+<img src="/images/author-sm.png" class="garnish rounded float-left" alt="{{ site.data.snippets.write-a-lesson-image-alt[page.lang] }}"/>
+<h2 class="noclear">Step 1: <a href="#proposing-a-new-lesson">Proposing the Translation of a Lesson</a></h2>
+<h2 class="noclear">Step 2: <a href="#writing-a-new-lesson">Writing and Formatting a Translation</a></h2>
+<h2 class="noclear">Step 3: <a href="#submitting-a-new-lesson">Submitting a Translated Lesson</a></h2>
+<h2>Proposing the Translation of a Lesson</h2>
+<p>If you want to translate a lesson published in <em>Programming Historian</em>, please see the list of <a href="https://github.com/programminghistorian/ph-submissions/issues?q=is%3Aissue+is%3Aopen+label%3AEnglish">pending translations</a> and contact {% include managing-editor.html lang=page.lang %} to discuss your language skills and translation experience. We look for translations that are rigorous, readable, and consider the needs of an English-reading audience.</p>
+<p>Once the translation of a published lesson is approved, one of our editors will create a &quot;Translation Review Ticket&quot; on our Github <a href="https://github.com/programminghistorian/ph-submissions">repository</a> where the peer review will take place. This ticket includes a message board feature, which will be used to document the progress made during the translation review. To avoid delays in publishing, we ask that you submit your translation within 90 days of the editor accepting your proposal.</p>
+<h2>Translating a lesson</h2>
+<p>Translating a lesson involves principally the following:</p>
+<ul>
+<li>translating the main textual body of a lesson</li>
+<li>translating code terms and examples, if possible</li>
+<li>if a lesson uses software with an interface available in the target language, then technical terms related to the software that are used in the text (menu entries, buttons etc) should be translated accordingly</li>
+<li>translating titles and captions of the images. In some cases, new images need to be produced, for example if an exercise uses software with an interface that can be changed to the target language</li>
+<li>adapting the links and notes provided in the original text to fit the targeted linguistic context, if possible; for example, link to software documentation, Wikipedia notices etc., if these resources are provided in the target language.</li>
+</ul>
+<p>If you decide to translate, please keep in mind that you are addressing a global audience. For matters of style and language choice, please see our <a href="/en/author-guidelines">Author's Guidelines</a>.</p>
+<p>All of our lessons must also be written in Markdown and follow our technical formatting guidelines, also available in our <a href="/en/author-guidelines">Author's Guidelines</a>.</p>
+<h2>Submitting a Translated Lesson</h2>
+<p>Once your translation file has been prepared to the above specifications, you are ready to submit it for peer review.</p>
+<p>We have a <a href="https://github.com/programminghistorian">Programming Historian project page at GitHub</a>, where we maintain two repositories (a repository is a place to store related files and folders–you can think of it as a kind of folder). One of these, called <a href="https://github.com/programminghistorian/jekyll">jekyll</a>, hosts the code for the live version of the site you see at http://programminghistorian.org. The other repository is called <a href="https://github.com/programminghistorian/ph-submissions">ph-submissions</a>.</p>
+<p>Our preferred way for translators to submit a lesson is to add them directly to the <a href="https://github.com/programminghistorian/ph-submissions">ph-submissions</a> repository (or repo, for short). Thanks to GitHub's features, you can do this using drag-and-drop uploading actions with which you are probably already familiar. As a new translator, here are the steps:</p>
+<ol>
+<li>Create a <a href="https://github.com/join">free account at GitHub</a>. It takes about 30 seconds.</li>
+<li>Email your editor with your new GitHub username and your lesson filename. The editor will then add you as a <strong>collaborator</strong> on the <a href="https://github.com/programminghistorian/ph-submissions">ph-submissions</a> repo. Once you are added as a collaborator, you will be able to make direct changes to the <a href="https://github.com/programminghistorian/ph-submissions">ph-submissions</a> repo, including adding, editing, removing, and renaming files. The editor will also create a folder with the same name as your lesson in the images folder. (If you have other data files that you link to in your tutorial, please ask your editor about them.)</li>
+<li>Once you've heard from your editor that you've been added as a collaborator, navigate to the <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/lessons">lessons folder</a> of the <a href="https://github.com/programminghistorian/ph-submissions">ph-submissions</a> repo. Then, drag and drop the markdown file of your lesson from your computer onto your browser window. (If you need help, see <a href="https://help.github.com/articles/adding-a-file-to-a-repository/">GitHub's instructions</a>). Now click the green &quot;Commit Changes&quot; button; you don't need to change the default message.</li>
+<li>You might have some images that go along with your lesson. Make sure all the image files are named appropriately according to our naming conventions. Navigate to the <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images">images folder</a> in the <a href="https://github.com/programminghistorian/ph-submissions">ph-submissions</a> repo. Click on the folder with the same name as your lesson (which your editor should have created for you; if you don't see it, please contact your editor and wait for instructions). Once you are in the correct folder, drag and drop all of your images files onto the browser window, just like in step 3. You can't drag a folder of images; but you can drag multiple files at once.</li>
+<li>Preview your lesson! Wait a few minutes (usually less) for GitHub to convert your Markdown file into HTML and make it a live webpage. Then navigate to <code>http://programminghistorian.github.io/ph-submissions/lessons/</code> + <code>YOUR-LESSON-NAME</code> (but replace YOUR-LESSON-NAME with the name of your file).</li>
+<li>Let your editor know that you have uploaded your lesson files to the ph-submissions repo (they should get a notification about this, but we want to make sure nothing gets overlooked).</li>
+</ol>
+<div class="alert alert-info">
+  If you are familiar with command-line git and GitHub already, you may also submit your translation and images as a pull request to the `ph-submission` repo and merge it yourself after being added as a collaborator. <b>Please do not submit lessons by pull request to the main Jekyll repo</b> so we can provide live previews of lessons in progress.
+</div>
+<h3>Translation Submitted! Now What?</h3>
+<p>To see what happens after you submit a translation, feel free to browse our <a href="/editor-guidelines">editor guidelines</a>, which detail our editorial process. Highlights are below:</p>
+<p>The most immediately important step is that your editor will create an <a href="https://github.com/programminghistorian/ph-submissions/issues">issue</a> for the new translation on the <a href="https://github.com/programminghistorian/ph-submissions">ph-submissions</a> repository, with a link to your lesson (that you previewed in step 5). The editor and at least two reviewers invited by the editor will post their comments to this issue.</p>
+<h3>Wait for Reviewer Feedback</h3>
+<p>We aim to complete the review process within four weeks, but sometimes delays occur or people get busy and the process can take longer than we hoped.</p>
+<p>In keeping with the ideas of public scholarship and open peer review, we encourage discussions to stay on GitHub. However, we also want everyone to feel comfortable with the process. If you need to discuss something privately, please feel free to <a href="/project-team">email your editor directly</a>, or to contact our dedicated ombudsperson (Dr Ian Milligan - i2milligan@uwaterloo.ca).</p>
+<h3>Respond to Feedback</h3>
+<p>Your editor and reviewers will most likely make some suggestions for improvements on the &quot;issue&quot; for your translation. The editor should clarify which suggestions are essential to address, which are optional, and which can be set aside.</p>
+<p>You can edit your files on GitHub, following <a href="https://help.github.com/articles/editing-files-in-your-repository/">these instructions</a>.</p>
+<p>Your revisions should be completed within 4 weeks of receiving guidance from the editor on how to respond to the peer review. This is to ensure that translations are published in a timely fashion and do not drag on unnecessarily. If you anticipate having trouble meeting the deadline, you should contact your editor to establish a more suitable due date.</p>
+<p>If at any point you are unsure of your role or what to do next, feel free to email your editor or, better yet, to post a question to the issue (another editor might see it and can help you sooner than your own editor). You’ll understand that sometimes it will take us a few days to respond, but we hope the improvements to the finished lesson will be worth the wait.</p>
+<h3>Let your editor know you're done</h3>
+<p>Once you have finished responding to feedback, let your editor know. If they are satisfied with the lesson at this stage, the, <em>Programming Historian</em>'s Managing Editor will review your lesson, move it from the <code>ph-submissions</code> repository to the <code>jekyll</code> repository, and update our lessons directory where it will be published.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

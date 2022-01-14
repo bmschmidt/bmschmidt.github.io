@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/fr/lecons/telecharger-des-pages-web-avec-python"),
+					params: {lang:"fr",lessons:"lecons",slug:"telecharger-des-pages-web-avec-python"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en français</h2>
+	<a class="nav-link" href="/fr/lecons">Leçons</a><a class="nav-link" href="/fr/apropos">À propos</a><a class="nav-link" href="/fr/recherche">Recherche</a><a class="nav-link" href="/fr/nous-soutenir">Nous soutenir</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link active" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Télécharger des pages web avec Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2>Objectifs de la leçon</h2>
+<p>Cette leçon présente les URL (un acronyme tiré de l'anglais <em>Uniform Resource Locator</em>, soit localisateur uniforme de ressource) et explique comment utiliser Python pour télécharger et sauvegarder le contenu d'une page Web sur votre poste de travail.</p>
+<h3>À propos des URL</h3>
+<p>Une <em>page web</em> est un fichier entreposé sur un autre ordinateur, communément appelé un <em>serveur web</em>. Lorsque vous visitez une page web, votre ordinateur (le <em>client</em>) envoie une requête au serveur (<em>l'hôte</em>) par l'intermédiaire du réseau, et le serveur répond en transmettant une copie de la page demandée à votre poste de travail. Pour accéder à une page web à partir de votre navigateur, vous pouvez suivre un lien à partir d'un autre site. Vous pouvez aussi, bien entendu, copier-coller ou entrer un URL directement dans le champ de recherche du navigateur. L'URL indique au navigateur comment trouver la ressource que vous désirez, en spécifiant le serveur, le répertoire et le nom du fichier appropriés, ainsi que le <em>protocole</em> de communication que le serveur et votre navigateur s'engageront à suivre pendant la transaction (par exemple: HTTP, le protocole de transfert hypertexte ou <em>Hypertext Transfer Protocol</em>.) Un URL est constitué des composantes suivantes :</p>
+<pre><code>protocole://hôte:port/chemin?requête
+</code></pre>
+<p>Voyons quelques exemples.</p>
+<pre><code class="language-xml">http://oldbaileyonline.org
+</code></pre>
+<p>Le type d'URL le plus élémentaire se contente de spécifier le protocole et l'hôte. Si vous fournissez cet URL à votre navigateur, vous obtiendrez la page d'accueil du site <a href="http://www.oldbaileyonline.org/">Old Bailey Online</a>. Par défaut, on assume que la page principale dans un répertoire donné est nommée 'index', le plus souvent <code>index.html</code>.</p>
+<p>L'URL peut aussi inclure un <em>numéro de port</em> (optionnel). Sans entrer dans les détails, le protocole de communication qui gouverne les échanges d'information sur Internet permet aux ordinateurs de connecter de multiples façons. Les numéros de ports servent à identifier ces différentes manières de se connecter. Puisque le port par défaut pour les connexions HTTP est le 80, l'URL suivant est équivalent au précédent :</p>
+<pre><code class="language-xml">http://oldbaileyonline.org:80
+</code></pre>
+<p>Comme vous le savez, on retrouve habituellement plusieurs pages web sur un même site. Ces pages sont stockées dans des répertoires sur le serveur et il est possible de spécifier le chemin à parcourir pour accéder à la page qui nous intéresse. La page d'information générale du site <em>The Old Bailey Online</em>, par exemple, se retrouve à l'URL suivant :</p>
+<pre><code class="language-xml">http://oldbaileyonline.org/static/Project.jsp
+</code></pre>
+<p>Enfin, certaines pages web vous permettent d'envoyer des requêtes au serveur. <em>The Old Bailey Online</em>, par exemple, est conçu de sorte que l'on puisse demander au serveur d'effectuer des recherches dans sa base de données à l'aide d'une <em>chaîne d'interrogation</em>. L'URL suivant vous donnera accès à une liste des procès criminels dont les archives contiennent le mot &quot;arsenic&quot;.</p>
+<pre><code class="language-xml">https://www.oldbaileyonline.org/search.jsp?form=searchHomePage&amp;_divs_fulltext=arsenic&amp;kwparse=and&amp;_persNames_surname=&amp;_persNames_given=&amp;_persNames_alias=&amp;_offences_offenceCategory_offenceSubcategory=&amp;_verdicts_verdictCategory_verdictSubcategory=&amp;_punishments_punishmentCategory_punishmentSubcategory=&amp;_divs_div0Type_div1Type=&amp;fromMonth=&amp;fromYear=&amp;toMonth=&amp;toYear=&amp;ref=&amp;submit.x=0&amp;submit.y=0
+</code></pre>
+<p>Le code qui suit le &quot;?&quot; englobe les paramètres de recherche. Pour en savoir plus sur la manière de construire des requêtes, consultez la leçon <a href="/en/lessons/downloading-multiple-records-using-query-strings">Downloading Multiple Records Using Query Strings</a> (en anglais).</p>
+<h2>Ouvrir des URL en Python</h2>
+<p>En tant qu'historiens et historiennes numériques, nous avons souvent besoin d'accéder aux informations enregistrées dans des bases de données en ligne. Nous pourrions ouvrir les URL appropriés un par un et copier leur contenu dans des fichiers textes. Mais il est aussi possible d'utiliser Python pour récolter et traiter automatiquement le contenu d'un ensemble de pages web. Pour ce faire, il faut d'abord savoir comment ouvrir des URL à l'intérieur de nos programmes. Le langage Python propose un ensemble de fonctionnalités qui permettent de réaliser cela.</p>
+<p>Voici un exemple qui exploite le genre de fichier que vous risquez de rencontrer pendant vos propres recherches historiques. Supposons que vous vous intéressez aux relations interethniques en Grande-Bretagne au XVIIIe siècle. <em>The Old Bailey Online</em> contient des transcriptions de procès tenus entre 1674 et 1913 ; il s'agit donc d'une source potentiellement utile pour votre projet.</p>
+<p>{% include figure.html filename=&quot;old-bailey.png&quot; caption=&quot;Page d'accueil du site Old Bailey Online&quot; %}</p>
+<p>Pour les besoins de cet exemple, nous allons obtenir la transcription du procès de Benjamin Bowsey, un homme noir ('black moor' dans le texte) reconnu coupable d'avoir troublé la paix pendant les <a href="https://fr.wikipedia.org/wiki/Gordon_Riots">Gordon Riots</a> de 1780. L'URL de cette transcription est :</p>
+<pre><code class="language-xml">http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33
+</code></pre>
+<p>En étudiant la structure de l'URL, il est possible d'apprendre plusieurs choses. Par exemple, le <em>Old Bailey Online</em> a été programmé en langage JSP (<em>JavaServer Pages</em>), un langage qui sert à produire du code HTML. On apprend aussi qu'il est possible d'accéder à un procès spécifique à l'aide de la chaîne de requête. Il semble aussi que chaque procès possède son propre code d'identification (<em>id=t</em> dans l'URL) composé de la date de l'audience en format <em>AAAAMMJJ</em> et d'un numéro de série à l'intérieur de cette audience, <em>33</em> dans le cas qui nous concerne. Si vous remplacez les deux copies du nombre <em>33</em> par <em>34</em> dans votre navigateur, vous devriez obtenir la transcription du procès suivant. Mais malheureusement, tous les sites web ne structurent pas leurs URL de façon aussi lisible, ni de façon aussi régulière.</p>
+<p>{% include figure.html filename=&quot;bowsey-trial-page.png&quot; caption=&quot;Page de la transcription du procès de Benjamin Bowsey, 1780&quot; %}</p>
+<p>Examinez la page du procès de Benjamin Bowsey pendant quelques minutes. Concentrez-vous sur les caractéristiques de la page plutôt que sur la transcription elle-même. Par exemple, notez la présence du lien <a href="http://www.oldbaileyonline.org/browse.jsp?foo=bar&amp;path=sessionsPapers/17800628.xml&amp;div=t17800628-33&amp;xml=yes">View as XML</a> au bas de la page, qui vous amènera vers une version abondamment balisée du texte qui pourrait être utile pour certains types de recherche. Vous pouvez aussi consulter une <a href="http://www.oldbaileyonline.org/images.jsp?doc=178006280084">image numérisée du document d'origine</a> qui a été transcrit pour construire cette ressource.</p>
+<p>Essayons maintenant d'ouvrir cette page en Python. Copiez le programme suivant dans votre éditeur de texte et sauvegardez-le sous le titre <code>open-webpage.py</code>. Lorsque vous exécuterez le programme, il ouvrira (<code>open</code>) la page du procès, il lira (<code>read</code>) son contenu dans une chaîne de caractères Python nommée contenu_web, puis il affichera les 300 premiers caractères du fichier à l'écran. Utilisez la commande <code>Outils -&gt; Développement web -&gt; Code source de la page</code> de Firefox (ou son équivalent dans votre propre navigateur) pour vérifier que le code source HTML de la page est bien identique à ce que vous venez de télécharger. Notez aussi que chaque navigateur possède son propre raccourci clavier qui permet d'accéder au code source HTML d'une page ; dans le cas de la version Windows de Firefox, il s'agit de <code>CTRL+u</code>. Si vous ne parvenez pas à trouver l'équivalent pour votre propre navigateur, essayez de faire appel à votre moteur de recherche favori pour y arriver. (Consultez la documentation de Python pour en savoir plus au sujet de <a href="https://docs.python.org/fr/3/library/urllib.html?highlight=urllib">urllib</a>.)</p>
+<pre><code class="language-python"># open-webpage.py
+# NOTE : l'archive zip que vous pouvez télécharger contient une version
+# anglophone de ce code, fonctionnellement identique
+
+import urllib.request, urllib.error, urllib.parse
+
+url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33'
+
+reponse = urllib.request.urlopen(url)
+contenu_web = reponse.read().decode('UTF-8')
+
+print(contenu_web[0:300])
+</code></pre>
+<p>Ces quelques lignes de code accomplissent un travail considérable en un rien de temps. Prenons un moment pour nous assurer que tout est bien clair et que nous maîtrisons bien le rôle de chacun des blocs qui permettent à ce programme de bien remplir sa mission.</p>
+<p>Nous avons nous-même instancié les variables <em>url</em>, <em>reponse</em> et <em>contenu_web</em>.</p>
+<p><em>url</em> contient l'URL de la page que nous voulons télécharger. Dans le cas qui nous concerne, il s'agit de la transcription du procès de Benjamin Bowsey.</p>
+<p>À la ligne suivante, nous invoquons la fonction <code>urlopen</code>, qui fait partie d'un module Python nommé <code>urllib.py</code>. Cette fonction sert à établir une connexion vers le site web dont l'URL a été passé en paramètre. Nous enregistrons ensuite le résultat de la requête dans la variable <em>reponse</em>, qui contient maintenant une liaison vers le site web en question.</p>
+<p>Nous utilisons ensuite la méthode <code>read</code> pour copier le contenu de cette page web dans une nouvelle variable nommée <em>contenu_web</em>.</p>
+<p>Assurez-vous de bien identifier les variables (il y en a trois), le module, les méthodes (il y en a deux) et le paramètre avant de continuer.</p>
+<p>Dans le texte affiché en sortie, vous remarquerez la présence de certains éléments de code HTML :</p>
+<pre><code class="language-xml">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;title&gt;Browse - Central Criminal Court&lt;/title&gt;
+	&lt;meta http-equiv=&quot;content-type&quot; content= 
+</code></pre>
+<p>La transcription du procès elle-même apparaît beaucoup plus bas dans la page. Ce que vous voyez ici fait partie de l'en-tête du document. Ce n'est pas exactement ce dont nous avons besoin pour mener de la recherche historique, mais ne vous découragez pas : vous apprendrez bientôt comment mettre de côté ces marques de balisage et extraire le contenu dont vous avez besoin.</p>
+<h2>Sauvegarder une copie locale d'une page web</h2>
+<p>Si vous savez déjà comment <a href="/fr/lecons/travailler-avec-des-fichiers-texte">écrire des fichiers textes en Python</a>, il est assez facile de modifier le programme ci-dessus pour qu'il sauvegarde les données enregistrées dans <em>contenu_web</em> dans un fichier sur votre poste de travail plutôt que de l'afficher à l'écran. Copiez le programme ci-dessous dans votre éditeur de texte, sauvegardez-le dans un fichier nommé <code>save-webpage.py</code> et exécutez celui-ci. Utilisez ensuite la commande <code>Fichier -&gt; Ouvrir un fichier</code> de Firefox, ou son équivalent dans votre propre navigateur, pour ouvrir le fichier que le programme <code>save-webpage.py</code> vient de créer sur votre poste de travail (<code>obo-t17800628-33.html</code>) et vérifiez que le résultat correspond bien à la page du procès Bowsey que vous avez consultée en ligne un peu plus tôt.</p>
+<pre><code class="language-python"># save-webpage.py
+# NOTE DU TRADUCTEUR : l'archive zip que vous pouvez télécharger contient une version anglophone de ce code, fonctionnellement identique
+
+import urllib.request, urllib.error, urllib.parse
+
+url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33'
+
+reponse = urllib.request.urlopen(url)
+contenu_web = reponse.read().decode('UTF-8')
+
+f = open('obo-t17800628-33.html', 'w')
+f.write(contenu_web)
+f.close
+</code></pre>
+<p>Maintenant que vous savez comment sauvegarder une page web dans un fichier, pourriez-vous écrire un programme capable de télécharger toute une collection de pages? Pourriez-vous parcourir une liste de codes d'identification de procès, par exemple, et sauvegarder des copies locales de chacune des pages correspondantes? Oui. Vous apprendrez notamment à faire cela dans la leçon <a href="/en/lessons/downloading-multiple-records-using-query-strings">Downloading Multiple Records Using Query Strings</a>, que nous vous recommandons d'étudier lorsque vous aurez maîtrisé la présente série de leçons d'introduction.</p>
+<h2>Lectures recommandées</h2>
+<ul>
+<li>Lutz, Mark. “Ch. 4 : Introducing Python Object Types”, <em>Learning Python</em> (O’Reilly, 1999).</li>
+</ul>
+<h3>Synchronisation du code</h3>
+<p>Pour bien suivre la progression de la présente série de leçons, il est important que vous disposiez des bons fichiers et des bons programmes dans votre répertoire &quot;programming-historian&quot;. À la fin de chacune des leçons, vous pourrez télécharger une archive zip &quot;programming-historian&quot; à jour pour vous assurer d'avoir accès au code source nécessaire.</p>
+<ul>
+<li>programming-historian-1 (<a href="/assets/python-lessons1.zip">zip</a>)</li>
+</ul>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

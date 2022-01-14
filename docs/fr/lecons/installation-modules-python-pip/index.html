@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/fr/lecons/installation-modules-python-pip"),
+					params: {lang:"fr",lessons:"lecons",slug:"installation-modules-python-pip"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en français</h2>
+	<a class="nav-link" href="/fr/lecons">Leçons</a><a class="nav-link" href="/fr/apropos">À propos</a><a class="nav-link" href="/fr/recherche">Recherche</a><a class="nav-link" href="/fr/nous-soutenir">Nous soutenir</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link active" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Installation de bibliothèques Python avec pip</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2>Objectifs de la leçon</h2>
+<p>Cette leçon vous présente la manière de télécharger et d'installer des bibliothèques Python en plus des bibliothèques standards distribuées (built-in) avec le langage de base. Il existe de nombreuses façons d'installer des bibliothèques externes, ici nous allons utiliser un programme appelé <a href="https://pip.pypa.io/en/stable/">pip</a>, facilement installable sur les distributions <a href="https://docs.python.org/fr/3.5/installing/index.html#how-do-i">Mac/Linux/Windows</a>. Depuis Python 3.4, pip est inclus dans l’installation par défaut. Si pour quelque raison que ce soit vous avez besoin d'installer ou mettre à jour vous-même pip, ces instructions devraient vous aider.</p>
+<h2>Présentation des bibliothèques</h2>
+<p>L'un des principaux avantages dans l'utilisation de Python est le nombre important de bibliothèques de code qui sont mises à la disposition des programmeurs. Elles permettent d'économiser du temps de programmation, ou simplement de rendre une tâche spécifique (comme la création d'un fichier <a href="https://fr.wikipedia.org/wiki/Comma-separated_values">CSV</a>, ou la copie d'information d'une page web de manière automatique - <em>scraping</em>) beaucoup plus facile. Quand vous recherchez des solutions à des problèmes sur Google, vous trouverez souvent des exemples de code qui utilisent des bibliothèques dont vous n'avez jamais entendu parler auparavant. Ne les laissez pas vous impressionner ! Une fois ces bibliothèques installées sur votre ordinateur, vous pouvez les utiliser en les important au début de votre code; vous pouvez importer autant de bibliothèques que vous le souhaitez, par exemple :</p>
+<pre><code class="language-python">import csv
+import requests
+import kmlwriter
+import pprint
+</code></pre>
+<p>Pour les nouveaux utilisateurs de Python, il peut être quelque peu intimidant de télécharger et d'installer des bibliothèques externes la première fois. Il existe de nombreuses façons de le faire, ce qui ajoute ainsi de la confusion; cette leçon présente l'une des plus simples et des plus couramment utilisées.</p>
+<p>Le but ici est d'installer un gestionnaire sur votre ordinateur qui peut télécharger et installer automatiquement des bibliothèques Python pour vous. Ce programme s'appelle <a href="https://pip.pypa.io/en/stable/">pip</a>.</p>
+<h3>Instructions pour Mac et Linux</h3>
+<p>Selon la documentation de <a href="https://pip.pypa.io/en/stable/">pip</a>, nous pouvons installer un <em>script</em> Python qui se chargera d'installer <code>pip</code> pour nous. En utilisant un Mac ou un Linux, nous pouvons installer <code>pip</code> via la ligne de commande en utilisant la <a href="https://riptutorial.com/fr/curl">commande curl</a>, qui télécharge le <em>script</em> <a href="https://fr.wikipedia.org/wiki/Perl_(langage)">Perl</a> d'installation de <code>pip</code>.</p>
+<pre><code class="language-bash">$ curl -O https://bootstrap.pypa.io/get-pip.py
+</code></pre>
+<p>Une fois que vous avez téléchargé le fichier <strong>get-pip.py</strong>, vous devez l'exécuter avec l'interpréteur Python. Cependant, si vous essayez d’exécuter le <em>script</em> avec Python de cette manière :</p>
+<pre><code class="language-bash">$ python get-pip.py
+</code></pre>
+<p>le <em>script</em> échouera très probablement, car il n'aura pas les permissions pour mettre à jour certains répertoires de votre système de fichiers, qui sont par défaut définis de sorte que les <em>scripts</em> de provenance inconnue ne puissent pas modifier les fichiers importants et vous transmettre des virus. Dans ce cas - et dans les cas où vous devez autoriser un <em>script</em> dans lequel vous avez confiance à écrire dans votre système - vous pouvez utiliser la commande <code>sudo</code> (abréviation de &quot;Super User Do&quot;) devant la commande Python, tel que :</p>
+<pre><code class="language-bash">$ sudo python get-pip.py
+</code></pre>
+<h3>Instructions pour Windows</h3>
+<p>Comme pour les distributions précédentes, la façon la plus simple d'installer <code>pip</code> est d'utiliser un programme Python appelé <strong>get-pip.py</strong>, que vous pouvez télécharger <a href="https://bootstrap.pypa.io/get-pip.py">ici</a>. Lorsque vous ouvrez ce lien, vous pourriez prendre peur devant le fouillis massif de code qui vous attend. Je vous en pris, n'ayez crainte. Utilisez simplement votre navigateur pour enregistrer cette page sous son nom par défaut, qui est <strong>get-pip.py</strong>. Il peut être judicieux d'enregistrer ce fichier dans votre répertoire Python, afin que vous sachiez où le trouver.</p>
+<p>Une fois que vous l'avez enregistré, vous devez l’exécuter. Deux options s'offrent à vous : si vous préférez utiliser l'interpréteur Python, faites un clic droit sur le fichier <strong>get-pip.py</strong> et choisissez l'option «ouvrir avec» puis sélectionnez l'interpréteur Python que vous souhaitez utiliser.</p>
+<p>Si vous préférez installer <code>pip</code> à l'aide de la ligne de commande Windows, accédez au répertoire dans lequel se trouvent <strong>Python</strong> et <strong>get-pip.py</strong>. Pour cet exemple, nous supposerons que ce répertoire est <strong>Python27</strong>, nous utiliserons donc la commande <code>C:\&gt;cd python27</code>. Une fois dans ce répertoire, pour installer <code>pip</code>, exécutez la commande :</p>
+<pre><code class="language-bash">$ python get-pip.py
+</code></pre>
+<p>Si vous souhaitez plus d'informations ou de l'aide concernant un étrange message d'erreur, consultez la page <a href="https://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows">StackOverflow</a> qui semble être régulièrement mise à jour.</p>
+<h2>Installation des bibliothèques</h2>
+<p>Maintenant que vous disposez de <code>pip</code>, il est facile d'installer des bibliothèques Python car <code>pip</code> fait tout le travail pour vous. Lorsque vous trouvez une bibliothèque que vous souhaitez utiliser, généralement, la documentation ou les instructions d'installation incluent la commande <code>pip</code> nécessaire, telle que :</p>
+<pre><code class="language-bash">$ pip install requests
+$ pip install beautifulsoup4
+$ pip install simplekml
+</code></pre>
+<p><em>(Note du traducteur: Le gestionnaire pip crée des liens logiques vers les versions de Python. En effet, si votre ordinateur inclut initialement la version 2.x de Python, la commande <code>pip</code> pointera alors sur cette version de Python. En revanche, si vous décidez d'installer Python en version 3.x en plus de Python 2.x, il vous faudra très certainement utiliser la  commande <code>pip3</code> dans votre terminal et non plus <code>pip</code> pour installer des bibliothèques pour Python 3.x. Afin de connaître quelle version de Python vous utilisez avec la commande <code>pip</code>, il suffit de lancer dans le terminal la commande <code>pip -V</code> ou <code>pip --version</code>).</em></p>
+<p>N'oubliez pas, pour les mêmes raisons expliquées ci-dessus (sous les distributions Mac ou Linux, mais pas sous Windows), vous devrez peut-être exécuter <code>pip</code> avec <code>sudo</code>, comme suit :</p>
+<pre><code class="language-bash">$ sudo pip install requests
+</code></pre>
+<p>Parfois, en particulier sous Windows, vous pouvez trouver utile d'utiliser l'indicateur <code>-m</code> (pour aider Python a trouver la bibliothèque <code>pip</code>), comme :</p>
+<pre><code class="language-bash">$ python -m pip install nom_de_la_bibliothèque
+</code></pre>
+<p>Bonne installation !</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

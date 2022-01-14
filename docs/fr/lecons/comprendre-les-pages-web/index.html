@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/fr/lecons/comprendre-les-pages-web"),
+					params: {lang:"fr",lessons:"lecons",slug:"comprendre-les-pages-web"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en français</h2>
+	<a class="nav-link" href="/fr/lecons">Leçons</a><a class="nav-link" href="/fr/apropos">À propos</a><a class="nav-link" href="/fr/recherche">Recherche</a><a class="nav-link" href="/fr/nous-soutenir">Nous soutenir</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link active" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Comprendre les pages web et le HTML</h1>
+
+<!-- HTML_TAG_START --><h2>&quot;Hello World&quot; en HTML</h2>
+<h2>Consulter des fichiers HTML</h2>
+<p>Lorsque vous travaillez avec des sources en ligne, vous utilisez
+la plupart du temps des fichiers qui ont été encodés en HTML (Hyper Text Markup
+Language). Votre navigateur web sait interpréter ce code, et vous permet
+de consulter le <em>code source</em> HTML pour n'importe quelle page que vous visitez.
+Les deux images ci-dessous montrent une page web classique (du site <em>Old Bailey Online</em>)
+et le code source utilisé pour générer cette page. Vous pouvez voir ce code source
+dans votre navigateur par le menu : <code>Outils -&gt; Développement -&gt; Code source de la page</code>
+sous Firefox (ou par le raccourci <code>Ctrl + U</code>).</p>
+<p>Lorsque vous naviguez sur le web, vous n'avez en général pas besoin de consulter
+le code source de la page. Cependant, si vous devez créer une page, il peut être
+très utile de voir comment d'autres ont réalisé un effet particulier. Il vous sera
+aussi utile de consulter les sources des pages si vous devez manipuler leur contenu
+ou en extraire automatiquement de l'information.</p>
+<p>{% include figure.html filename=&quot;obo.png&quot; caption=&quot;Capture d'écran du Old Bailey Online&quot; %}</p>
+<p>{% include figure.html filename=&quot;obo-page-source.png&quot; caption=&quot;Code HTML de Old Bailey Online&quot; %}</p>
+<p>(À ce point de la lecture, vous pourrez trouver intéressant de naviguer sur les
+<a href="http://www.w3schools.com/html/default.asp">tutoriels W3 Schools HTML</a>. Une connaissance approfondie du HTML n'est pas nécessaire
+pour poursuivre la lecture, mais tout temps passé à apprendre le HTML sera forcément
+utile dans vos activités d'humaniste numérique.)</p>
+<h2>&quot;Hello World&quot; en HTML</h2>
+<p>HTML est ce que l'on appelle un langage de <em>balisage</em>. En d'autres termes,
+le HTML est du texte qui a été &quot;encodé&quot; avec des <em>balises</em> qui fournissent
+des informations supplémentaires à l'interprète (souvent le navigateur web).
+Supposez que vous souhaitiez formatter une référence bibliographique et
+souhaitez placer le titre en italique. En HTML on utilise le mot-clé <code>em</code>
+(&quot;em&quot; pour emphasis, accentuation). Une partie de votre code HTML pourrait
+ressembler à :</p>
+<pre><code class="language-xml">... dans l’œuvre de Cohen et Rosenzweig &lt;em&gt;Digital History&lt;/em&gt;, par exemple ...
+</code></pre>
+<p>Le plus simple des documents HTML est constitué de balises indiquant le début
+et la fin du fichier, et des balises qui identifient une 'en-tête' (head) et un 'corps' (body)
+à l'intérieur du document. Les informations sur le document se placent dans l'en-tête,
+alors que l'information qui sera affichée à l'écran se placera dans le corps.</p>
+<pre><code class="language-xml">&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;body&gt;Hello World!&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Pour créer du code HTML : dans votre éditeur de texte, créez un nouveau fichier et collez
+le code ci-dessous. La première ligne indique au navigateur le type de fichier.
+La balise <code>html</code> a pour attribut l'orientation du texte, définie à <code>ltr</code> (left to right,
+gauche à droite) et l'attribut <code>lang</code> (language, langue) définie à <em>US English</em>, anglais des États-Unis.
+La balise <code>title</code> dans l'en-tête contient les information qui sont souvent
+affichées dans la barre du haut du navigateur, ou au niveau de l'onglet
+sous Firefox.</p>
+<pre><code class="language-xml">&lt;!doctype html&gt;
+&lt;html dir=&quot;ltr&quot; lang=&quot;en-US&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;&lt;!-- Insérer le titre ici --&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;!-- Insérer le contenu ici --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Remplacer :</p>
+<pre><code class="language-xml">&lt;!-- Insérer le titre ici --&gt;
+</code></pre>
+<p>et</p>
+<pre><code class="language-xml">&lt;!-- Insérer le contenu ici --&gt;
+</code></pre>
+<p>par</p>
+<pre><code class="language-xml">Hello World!
+</code></pre>
+<p>Enregistrez le fichier dans un dossier <code>programming-historian</code> sous le nom
+<code>hello-world.html</code>. Dans Firefox, rendez-vous dans le menu
+<code>Fichier &gt; Nouvel onglet</code> puis <code>Fichier &gt; Ouvrir un fichier</code>. Choisissez
+le fichier <code>hello-world.html</code>. En fonction de l'éditeur de texte utilisé,
+vous pourrez avoir dans les menus une option 'ouvrir dans le navigateur'.
+Après avoir ouvert le fichier, votre message devrait apparaître dans le navigateur.
+Vous noterez la différence d'affichage entre le navigateur (qui interprète le code)
+et l'éditeur de texte qui ne l'interprète pas.</p>
+<h2>Suggestions de ressources pour l'apprentissage du HTML</h2>
+<ul>
+<li>
+<p><a href="http://www.w3schools.com/html/default.asp">tutoriels W3 Schools HTML</a></p>
+</li>
+<li>
+<p><a href="http://www.w3schools.com/html/html5_intro.asp">tutoriels W3 Schools HTML5</a></p>
+</li>
+</ul>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

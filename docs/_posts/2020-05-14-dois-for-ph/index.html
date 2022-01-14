@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/_posts/2020-05-14-dois-for-ph"),
+					params: {lang:"_posts",lessons:"2020-05-14-dois-for-ph"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><p>We've taken many steps as part of our ongoing work to interconnect the <em>Programming Historian's</em> open-access, peer-reviewed articles into the larger scholarly ecosystem. In the past, these have included embedding citation metadata in our HTML so you can easily import them with citation managers like <a href="https://www.zotero.org/">Zotero</a>, adding <a href="https://orcid.org/">ORCIDs</a> for our lesson contributors, and making sure we maintained persistent URLs and redirects for all our lessons.</p>
+<p>Today we're proud to announce yet another step: all of our articles now have DOIs, or <a href="https://www.doi.org/"><em>Digital Object Identifiers</em></a>. In partnership with the <a href="https://www.sussex.ac.uk/library/">University of Sussex Library</a>, we have registered DOIs for all of our existing lessons, and will be creating them for all new lessons in the future. Thank you very much to Sussex  Library for supporting this crucial part of our technical infrastructure!</p>
+<p>DOIs will be displayed in the &quot;Suggested Citation&quot; at the bottom of each lesson page:</p>
+<img src="/images/dois-for-ph/ph_doi_example.png" alt="The suggested citation for one of our lessons, showing the DOI." title="The suggested citation for one of our lessons, showing the DOI."/>
+<p>Please use these DOIs when citing or linking to our lessons.</p>
+<h2>How did we do that?</h2>
+<p>You need to partner with a DOI provider such as CrossRef in order to register DOIs to point to your online publications. Sussex University has generously sponsored this service for us. Our editorial team also had to work through how committing to DOIs would <a href="https://github.com/programminghistorian/jekyll/issues/1682">affect our policies around updating, retiring, and replacing lessons</a>.</p>
+<p>Once you have established that partnership and considered your editorial policies, you must then generate the metadata for all your publications. Although you can do this manually, we already have well over one hundred articles across all our publications. So instead, we took advantage of Jekyll's power to <a href="https://github.com/programminghistorian/jekyll/blob/4c5201ceb456deab677866886255bbd54500a9de/_layouts/crossref.xml">generate an XML template</a> that would create the proper CrossRef XML data for each lesson. For example, our lesson <a href="https://doi.org/10.46430/phfr0007">&quot;Débuter avec Markdown&quot;</a> authored by Sarah Simpkin and translated by Sofia Papastamkou, generates XML metadata that reads like this:</p>
+<pre><code class="language-xml">&lt;journal_article publication_type=&quot;full_text&quot; language=&quot;fr&quot;&gt;
+  &lt;titles&gt;
+    &lt;title&gt;Débuter avec Markdown&lt;/title&gt;
+    &lt;original_language_title language=&quot;en&quot;&gt;Getting Started with Markdown&lt;/original_language_title&gt;
+  &lt;/titles&gt;
+  &lt;contributors&gt;
+  &lt;person_name contributor_role=&quot;author&quot; sequence=&quot;first&quot;&gt;
+    &lt;given_name&gt;Sarah&lt;/given_name&gt;
+    &lt;surname&gt;Simpkin&lt;/surname&gt;
+  &lt;/person_name&gt;
+  &lt;person_name contributor_role=&quot;editor&quot; sequence=&quot;additional&quot;&gt;
+    &lt;given_name&gt;Ian&lt;/given_name&gt;
+    &lt;surname&gt;Milligan&lt;/surname&gt;
+  &lt;/person_name&gt;
+  &lt;person_name contributor_role=&quot;editor&quot; sequence=&quot;additional&quot;&gt;
+    &lt;given_name&gt;François Dominic&lt;/given_name&gt;
+    &lt;surname&gt;Laramée&lt;/surname&gt;
+  &lt;/person_name&gt;
+  &lt;person_name contributor_role=&quot;reviewer&quot; sequence=&quot;additional&quot;&gt;
+    &lt;given_name&gt;John&lt;/given_name&gt;
+    &lt;surname&gt;Fink&lt;/surname&gt;
+  &lt;/person_name&gt;
+  &lt;person_name contributor_role=&quot;reviewer&quot; sequence=&quot;additional&quot;&gt;
+    &lt;given_name&gt;Nancy&lt;/given_name&gt;
+    &lt;surname&gt;Lemay&lt;/surname&gt;
+  &lt;/person_name&gt;
+  &lt;person_name contributor_role=&quot;reviewer&quot; sequence=&quot;additional&quot;&gt;
+    &lt;given_name&gt;Déborah&lt;/given_name&gt;
+    &lt;surname&gt;Dubald&lt;/surname&gt;
+  &lt;/person_name&gt;
+  &lt;person_name contributor_role=&quot;reviewer&quot; sequence=&quot;additional&quot;&gt;
+      &lt;given_name&gt;Catherine&lt;/given_name&gt;
+      &lt;surname&gt;Paulin&lt;/surname&gt;
+    &lt;/person_name&gt;
+  &lt;person_name contributor_role=&quot;translator&quot; sequence=&quot;additional&quot;&gt;
+    &lt;given_name&gt;Sofia&lt;/given_name&gt;
+    &lt;surname&gt;Papastamkou&lt;/surname&gt;
+  &lt;/person_name&gt;
+  &lt;/contributors&gt;
+  &lt;jats:abstract xml:lang=&quot;fr&quot;&gt;
+    &lt;jats:p&gt;
+      Cette leçon est une introduction à Markdown, une syntaxe en texte brut pour le formatage de documents. Vous allez découvrir pourquoi l'utiliser, comment formater des fichiers Markdown et comment prévisualiser de tels fichiers sur le web.
+    &lt;/jats:p&gt;
+  &lt;/jats:abstract&gt;
+  &lt;publication_date media_type=&quot;online&quot;&gt;
+    &lt;month&gt;04&lt;/month&gt;
+    &lt;day&gt;10&lt;/day&gt;
+    &lt;year&gt;2020&lt;/year&gt;
+  &lt;/publication_date&gt;
+  &lt;publisher_item&gt;
+    &lt;identifier id_type=&quot;other&quot;&gt;debuter-avec-markdown&lt;/identifier&gt;
+  &lt;/publisher_item&gt;
+  &lt;ai:program name=&quot;AccessIndicators&quot;&gt;
+    &lt;ai:free_to_read/&gt;
+    &lt;ai:license_ref&gt;https://creativecommons.org/licenses/by/4.0/deed.fr&lt;/ai:license_ref&gt;
+  &lt;/ai:program&gt;
+  &lt;doi_data&gt;
+    &lt;doi&gt;10.46430/phfr0007&lt;/doi&gt;
+    &lt;resource&gt;/fr/lecons/debuter-avec-markdown&lt;/resource&gt;
+  &lt;/doi_data&gt;
+&lt;/journal_article&gt;
+</code></pre>
+<p>This allows us to embed not only information about publication date, licenses, languages, and abstracts, but also lets us properly credit everyone who contributed to the production of this lesson, from the original authors and editors to the peer reviewers, translators, and translation editors and reviewers. This is one more step in ensuring that all the individual labor that goes in to our lessons can be visible to the larger scholarly communications data infrastructure.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

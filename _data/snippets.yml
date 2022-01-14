@@ -12,10 +12,10 @@ menu-home:
   fr: /fr
   pt: /pt
 menu-about:
-    en: About
-    es: Acerca
-    fr: À propos
-    pt: Sobre
+  en: About
+  es: Acerca
+  fr: À propos
+  pt: Sobre
 menu-about-overview:
   en:
     title: About PH
@@ -492,11 +492,6 @@ tested-date:
   es: testeado
   fr: test
   pt: testado
-difficulty:
-  en: difficulty
-  es: dificultad
-  fr: difficulté
-  pt: dificuldade
 next-lesson:
   en: next lesson
   es: siguiente lección

@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/data_wrangling_and_management_in_R"),
 					params: {lang:"en",lessons:"lessons",slug:"data_wrangling_and_management_in_R"}
@@ -48,22 +49,24 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Data Wrangling and Management in R</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h1 id="assumptions">Assumptions</h1>
+<h1>Assumptions</h1>
 <p>This lesson makes a few assumptions about your understanding of R. If
 you have not completed the <a href="/lessons/r-basics-with-tabular-data">R Basics with Tabular
 Data</a>
 lesson, I suggest you complete that first. Having a background in
 another programming language will also be beneficial. If you need a
 place to start, I recommend working through the <em>Programming
-Historian&#39;s</em> excellent Python tutorials.</p>
-<h1 id="lesson-goals">Lesson Goals</h1>
+Historian's</em> excellent Python tutorials.</p>
+<h1>Lesson Goals</h1>
 <p>By the end of this lesson, you will:</p>
 <ol>
 <li>Know how to organize data to be &quot;tidy&quot; and why this is important.</li>
@@ -74,7 +77,7 @@ assist you in creating more readable code.</li>
 <li>Learn to work through some basic examples of data manipulation to
 gain a foundation in exploratory data analysis.</li>
 </ol>
-<h1 id="introduction">Introduction</h1>
+<h1>Introduction</h1>
 <p>Data you find &quot;in the wild&quot; will rarely be in a format necessary for
 analysis, and you will need to manipulate it before exploring the
 questions you are interested in. This may take more time than doing the
@@ -136,15 +139,15 @@ the lines and press Ctrl+Enter (Command+Enter on Mac OS):</p>
 install.packages(&quot;tidyverse&quot;)
 library(tidyverse)
 </code></pre>
-<h1 id="an-example-of-dplyr-in-action">An Example of dplyr in Action</h1>
-<p>Let&#39;s go through an example to see how dplyr can aid us as historians by
+<h1>An Example of dplyr in Action</h1>
+<p>Let's go through an example to see how dplyr can aid us as historians by
 inputting U.S. decennial census data from 1790 to 2010. Download the
 data by <a href="/assets/introductory_state_example.csv">clicking
 here</a>
 and place it in the folder that you will use to work through the examples
 in this tutorial.</p>
 <p>Since the data is in a csv file, we are going to use the read_csv()
-command in tidyverse&#39;s
+command in tidyverse's
 <a href="https://cran.r-project.org/web/packages/readr/vignettes/readr.html">readr</a>
 package.</p>
 <p>The read_csv function takes the path of a file we want to import from
@@ -157,12 +160,12 @@ us_state_populations_import&lt;-read_csv(&quot;introductory_state_example.csv&qu
 one for the population, one for the year, and one for the state. This
 data is already in a tidy format providing us a multitude of options for
 further exploration.</p>
-<p>For this example, let&#39;s visualize the population growth of California and
+<p>For this example, let's visualize the population growth of California and
 New York to gain a better understanding of Western migration. We will
 use dplyr to filter our data so that it only contains information about
 the states we are interested in, and we will use ggplot2 to visualize
 this information. This exercise is just to provide you a taste of what
-dplyr can do, so don&#39;t worry if you don&#39;t understand the code at this
+dplyr can do, so don't worry if you don't understand the code at this
 time.</p>
 <pre><code># Filter to California and New York states only
 california_and_new_york_state_populations&lt;-us_state_populations_import %&gt;%
@@ -196,7 +199,7 @@ to &quot;prove&quot; a hypothesis, exploratory data analysis helps us understand
 our data better and ask questions about it. For historians, EDA provides
 an easy means of knowing when to dig deeper into a subject and when to
 step back, and it is an area where R excels.</p>
-<h1 id="pipe-operator">Pipe Operator</h1>
+<h1>Pipe Operator</h1>
 <p>Before looking at dplyr, we need to go over the pipe operator (%&gt;%)
 in R since we will often run into it in our examples. As mentioned
 earlier, the pipe operator is part of the
@@ -209,12 +212,12 @@ not a pipe&quot; underneath in French.</p>
 <p>The pipe operator allows you to pass what is to the left of the pipe as
 the first variable in a function specified on the right. Although it may
 seem strange at first, once you learn it, you will find that it makes
-your code more readable by avoiding nested statements. Don&#39;t worry if
+your code more readable by avoiding nested statements. Don't worry if
 all this is a little confusing right now. It will become more clear as
 we go through the examples.</p>
-<p>Let&#39;s say that we are interested in getting the square root of each
+<p>Let's say that we are interested in getting the square root of each
 population value and then summing all the square roots before getting
-the mean. Obviously, this isn&#39;t a useful measurement, but it demonstrates
+the mean. Obviously, this isn't a useful measurement, but it demonstrates
 just how quickly R code can become difficult to read. Normally, we would
 nest such statements:</p>
 <pre><code>mean(sum(sqrt(us_state_populations_import$population)))
@@ -269,7 +272,7 @@ permanent_sqrt_and_sum_state_populations_vector
 
 ## [1] 1256925
 </code></pre>
-<h1 id="we-need-a-new-dataset">We Need a New Dataset</h1>
+<h1>We Need a New Dataset</h1>
 <p>Now that we have an understanding of the pipe operator, we are ready to
 begin looking at and wrangling with some data. Unfortunately, for
 historians, there are only a few easily available datasets--perhaps you
@@ -302,9 +305,9 @@ early_colleges
 ##  3 Yale                   &lt;NA&gt;                  New Haven     CT
 ##  4 Pennsylvania, Univ. of &lt;NA&gt;                  Philadelphia  PA
 ##  5 Princeton              College of New Jersey Princeton     NJ
-##  6 Columbia               King&#39;s College        New York      NY
+##  6 Columbia               King's College        New York      NY
 ##  7 Brown                  &lt;NA&gt;                  Providence    RI
-##  8 Rutgers                Queen&#39;s College       New Brunswick NJ
+##  8 Rutgers                Queen's College       New Brunswick NJ
 ##  9 Dartmouth              &lt;NA&gt;                  Hanover       NH
 ## 10 Charleston, Coll. Of   &lt;NA&gt;                  Charleston    SC
 ##    established sponsorship
@@ -325,7 +328,7 @@ early_colleges
 original name, the city and state where it was founded, when the college was
 established, and its sponsorship. As we discussed earlier, before we can
 work with a dataset, it is important to think about how to organize the
-data. Let&#39;s see if any of our data is not in a &quot;tidy&quot; format. Do you see
+data. Let's see if any of our data is not in a &quot;tidy&quot; format. Do you see
 any cells that do not match the three criteria for tidy data?</p>
 <p>If you guessed the sponsorship of Harvard, you are correct. In addition
 to noting the original sponsorship, it also mentions that it changed
@@ -343,9 +346,9 @@ early_colleges
 ##  3 Yale                   &lt;NA&gt;                  New Haven     CT
 ##  4 Pennsylvania, Univ. of &lt;NA&gt;                  Philadelphia  PA
 ##  5 Princeton              College of New Jersey Princeton     NJ
-##  6 Columbia               King&#39;s College        New York      NY
+##  6 Columbia               King's College        New York      NY
 ##  7 Brown                  &lt;NA&gt;                  Providence    RI
-##  8 Rutgers                Queen&#39;s College       New Brunswick NJ
+##  8 Rutgers                Queen's College       New Brunswick NJ
 ##  9 Dartmouth              &lt;NA&gt;                  Hanover       NH
 ## 10 Charleston, Coll. Of   &lt;NA&gt;                  Charleston    SC
 ##    established sponsorship
@@ -364,7 +367,7 @@ early_colleges
 </code></pre>
 <p>Now that we have our data in a tidy format, we can shape it through the
 dplyr package.</p>
-<h1 id="what-is-dplyr">What is Dplyr?</h1>
+<h1>What is Dplyr?</h1>
 <p><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/dplyr.html">Dplyr</a>
 is another part of the tidyverse that provides functions for
 manipulating and transforming your data. Because we are keeping our data
@@ -374,13 +377,13 @@ input is tidy then our output will also be tidy. Perhaps most importantly,
 dplyr makes our code easier to read and utilizes &quot;verbs&quot; that are, in
 most cases, intuitive. Each function in dplyr corresponds to these verbs,
 with the five key ones being filter, select, arrange, mutate, and
-summarise--dplyr uses the British spelling. Let&#39;s go through each of them
+summarise--dplyr uses the British spelling. Let's go through each of them
 individually to see how they work in practice.</p>
-<h3 id="select">Select</h3>
+<h3>Select</h3>
 <p>If we look at the early_colleges data, we can observe that there are a
-lot of NA&#39;s in the original names column. NA signifies that the data is
+lot of NA's in the original names column. NA signifies that the data is
 not available, and we may want to view our data with this column
-removed. dplyr&#39;s select() function gives us the ability to do this. It
+removed. dplyr's select() function gives us the ability to do this. It
 takes the data frame you want to manipulate as the first argument, followed by a
 list signifying which columns you would like to keep:</p>
 <pre><code># Remove the original names column using select()
@@ -404,7 +407,7 @@ select(early_colleges, college, city, state, established, sponsorship)
 ## 10 Charleston, Coll. Of   Charleston    SC           1770 Anglican
 ## # ... with 55 more rows
 </code></pre>
-<p>Let&#39;s also go ahead and see how to write this using the pipe operator
+<p>Let's also go ahead and see how to write this using the pipe operator
 (%&gt;%):</p>
 <pre><code>early_colleges%&gt;%
     select(college, city, state, established, sponsorship)
@@ -445,7 +448,7 @@ that we want to remove a column.</p>
 ## 10 Charleston, Coll. Of   Charleston    SC           1770 Anglican
 ## # ... with 55 more rows
 </code></pre>
-<h3 id="filter">Filter</h3>
+<h3>Filter</h3>
 <p>The filter() function does the same thing as the select function but
 rather than choosing the column name, we can use it to filter rows using
 a test requirement. For instance, we can view all the colleges that
@@ -461,9 +464,9 @@ existed before the turn of the century.</p>
 ##  3 Yale                     &lt;NA&gt;                  New Haven      CT
 ##  4 Pennsylvania, Univ. of   &lt;NA&gt;                  Philadelphia   PA
 ##  5 Princeton                College of New Jersey Princeton      NJ
-##  6 Columbia                 King&#39;s College        New York       NY
+##  6 Columbia                 King's College        New York       NY
 ##  7 Brown                    &lt;NA&gt;                  Providence     RI
-##  8 Rutgers                  Queen&#39;s College       New Brunswick  NJ
+##  8 Rutgers                  Queen's College       New Brunswick  NJ
 ##  9 Dartmouth                &lt;NA&gt;                  Hanover        NH
 ## 10 Charleston, Coll. Of     &lt;NA&gt;                  Charleston     SC
 ## 11 Hampden-Sydney           &lt;NA&gt;                  Hampden-Sydney VA
@@ -499,10 +502,10 @@ existed before the turn of the century.</p>
 ## 19        1795 Presbyterian with Congregational
 ## 20        1797 Congregational
 </code></pre>
-<h3 id="mutate">Mutate</h3>
+<h3>Mutate</h3>
 <p>The mutate command allows you to add a column to your data frame. Right
 now, we have the city and state in two separate columns. We can use the
-paste command to combine two strings and specify a seperator. Let&#39;s place
+paste command to combine two strings and specify a seperator. Let's place
 them in a single column called &quot;location.&quot;</p>
 <pre><code>early_colleges%&gt;%mutate(location=paste(city,state,sep=&quot;,&quot;))
 
@@ -514,9 +517,9 @@ them in a single column called &quot;location.&quot;</p>
 ##  3 Yale                   &lt;NA&gt;                  New Haven     CT
 ##  4 Pennsylvania, Univ. of &lt;NA&gt;                  Philadelphia  PA
 ##  5 Princeton              College of New Jersey Princeton     NJ
-##  6 Columbia               King&#39;s College        New York      NY
+##  6 Columbia               King's College        New York      NY
 ##  7 Brown                  &lt;NA&gt;                  Providence    RI
-##  8 Rutgers                Queen&#39;s College       New Brunswick NJ
+##  8 Rutgers                Queen's College       New Brunswick NJ
 ##  9 Dartmouth              &lt;NA&gt;                  Hanover       NH
 ## 10 Charleston, Coll. Of   &lt;NA&gt;                  Charleston    SC
 ##    established sponsorship       location
@@ -551,9 +554,9 @@ early_colleges_with_location
 ##  3 Yale                   &lt;NA&gt;                  New Haven     CT
 ##  4 Pennsylvania, Univ. of &lt;NA&gt;                  Philadelphia  PA
 ##  5 Princeton              College of New Jersey Princeton     NJ
-##  6 Columbia               King&#39;s College        New York      NY
+##  6 Columbia               King's College        New York      NY
 ##  7 Brown                  &lt;NA&gt;                  Providence    RI
-##  8 Rutgers                Queen&#39;s College       New Brunswick NJ
+##  8 Rutgers                Queen's College       New Brunswick NJ
 ##  9 Dartmouth              &lt;NA&gt;                  Hanover       NH
 ## 10 Charleston, Coll. Of   &lt;NA&gt;                  Charleston    SC
 ##    established sponsorship       location
@@ -570,7 +573,7 @@ early_colleges_with_location
 ## 10        1770 Anglican          Charleston,SC
 ## # ... with 55 more rows
 </code></pre>
-<h3 id="arrange">Arrange</h3>
+<h3>Arrange</h3>
 <p>The arrange() function allows us to order our columns in a new way.
 Currently, the colleges are organized by year in ascending order. Lets
 place them in descending order of establishment, in this case, from the end of the Mexican-American War.</p>
@@ -604,7 +607,7 @@ place them in descending order of establishment, in this case, from the end of t
 ## 10 Roman Catholic
 ## # ... with 55 more rows
 </code></pre>
-<h3 id="summarise">Summarise</h3>
+<h3>Summarise</h3>
 <p>The last key function in dplyr is summarise()--note the British
 spelling. Summarise() takes a function or operation, and is usually used
 to create a data frame that contains summary statistics for plotting. We
@@ -617,9 +620,9 @@ founded.</p>
 ##                 &lt;dbl&gt;
 ## 1            1809.831
 </code></pre>
-<h1 id="putting-it-all-together">Putting it All Together</h1>
+<h1>Putting it All Together</h1>
 <p>Now that we have gone through the five main verbs for dplyr, we can use
-them to create a quick visualization of our data. Let&#39;s go ahead and
+them to create a quick visualization of our data. Let's go ahead and
 create a bar graph showing the number of secular and non-secular
 colleges founded before the U.S. War of 1812:</p>
 <pre><code>secular_colleges_before_1812&lt;-early_colleges%&gt;%
@@ -643,7 +646,7 @@ ggplot(secular_colleges_after_1812) +
   labs(x=&quot;Is the college secular?&quot;)
 </code></pre>
 <p>({% include figure.html filename=&quot;college_secular_after_1812.png&quot; caption=&quot;Number of secular and non-secular colleges after War of 1812&quot; %}</p>
-<h1 id="conclusion">Conclusion</h1>
+<h1>Conclusion</h1>
 <p>This tutorial should put you well on the way to thinking about how to
 organize and manipulate your data in R. Later, you will probably want to
 graph your data in some way. I recommend that you begin looking at the
@@ -654,6 +657,6 @@ this should provide a good foundation to build on and cover a lot of
 the common problems you will encounter.</p>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="data_wrangling_and_management_in_R/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Data Wrangling and Management in R\",\"authors\":[\"Nabeel Siddiqui\"],\"date\":\"2017-07-31T00:00:00.000Z\",\"reviewers\":[\"Lauren Tilton\",\"Ryan Deschamps\"],\"editors\":[\"Ian Milligan\"],\"difficulty\":2,\"collection\":\"lessons\",\"activity\":\"transforming\",\"topics\":[\"data-manipulation\",\"data-management\",\"distant-reading\"],\"abstract\":\"This tutorial explores how scholars can organize 'tidy' data, understand R packages to manipulate data, and conduct basic data analysis.\",\"layout\":\"lesson\",\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F60\",\"redirect_from\":\"\u002Flessons\u002Fdata-wrangling-and-management-in-R\",\"avatar_alt\":\"Bar of soap\",\"doi\":\"10.46430\u002Fphen0063\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"assumptions\\\"\u003EAssumptions\u003C\u002Fh1\u003E\\n\u003Cp\u003EThis lesson makes a few assumptions about your understanding of R. If\\nyou have not completed the \u003Ca href=\\\"\u002Flessons\u002Fr-basics-with-tabular-data\\\"\u003ER Basics with Tabular\\nData\u003C\u002Fa\u003E\\nlesson, I suggest you complete that first. Having a background in\\nanother programming language will also be beneficial. If you need a\\nplace to start, I recommend working through the \u003Cem\u003EProgramming\\nHistorian&#39;s\u003C\u002Fem\u003E excellent Python tutorials.\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh1\u003E\\n\u003Cp\u003EBy the end of this lesson, you will:\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003EKnow how to organize data to be &quot;tidy&quot; and why this is important.\u003C\u002Fli\u003E\\n\u003Cli\u003EUnderstand the dplyr package and use it to manipulate and wrangle\\nwith data.\u003C\u002Fli\u003E\\n\u003Cli\u003EBecome acquainted with the pipe operator in R and observe how it can\\nassist you in creating more readable code.\u003C\u002Fli\u003E\\n\u003Cli\u003ELearn to work through some basic examples of data manipulation to\\ngain a foundation in exploratory data analysis.\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Ch1 id=\\\"introduction\\\"\u003EIntroduction\u003C\u002Fh1\u003E\\n\u003Cp\u003EData you find &quot;in the wild&quot; will rarely be in a format necessary for\\nanalysis, and you will need to manipulate it before exploring the\\nquestions you are interested in. This may take more time than doing the\\nanalysis itself! In this tutorial, we will learn some basic techniques\\nfor manipulating, managing, and wrangling with our data in R.\\nSpecifically, we will rely on the philosophy of \u003Ca href=\\\"https:\u002F\u002Fwww.jstatsoft.org\u002Farticle\u002Fview\u002Fv059i10\\\"\u003E&quot;tidy\\ndata&quot;\u003C\u002Fa\u003E as articulated by\\nHadley Wickham.\u003C\u002Fp\u003E\\n\u003Cp\u003EAccording to \u003Ca href=\\\"http:\u002F\u002Fhadley.nz\u002F\\\"\u003EWickham\u003C\u002Fa\u003E, data is &quot;tidy&quot; when it meets\\nthree key criteria:\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003EEach observation is in a row.\u003C\u002Fli\u003E\\n\u003Cli\u003EEach variable is in a column.\u003C\u002Fli\u003E\\n\u003Cli\u003EEach value has its own cell.\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003EBeing observant of these criteria allows us to recognize when data is\\norganized or unorganized. It also provides us a standardized schema and\\nset of tools for cleaning up some of the most common ways that datasets\\nare &quot;messy:&quot;\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003EColumn headers are values, not variable names.\u003C\u002Fli\u003E\\n\u003Cli\u003EMultiple variables are stored in one column.\u003C\u002Fli\u003E\\n\u003Cli\u003EVariables are stored in both rows and columns.\u003C\u002Fli\u003E\\n\u003Cli\u003EMultiple types of observational units are stored in the same table.\u003C\u002Fli\u003E\\n\u003Cli\u003EA single observational unit is stored in multiple tables.\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003EPerhaps most importantly, keeping our data in this format allows us to\\nuse a collection of packages in the\\n\u003Ca href=\\\"http:\u002F\u002Ftidyverse.org\u002F\\\"\u003E&quot;tidyverse,&quot;\u003C\u002Fa\u003E which are designed to specifically\\nwork with tidy data. By making sure that our input and output are tidy,\\nwe only have to use a small set of tools to solve a large number of\\nquestions. In addition, we can combine, manipulate, and split tidy\\ndatasets as we see fit.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn this tutorial, we will be focusing on the\\n\u003Ca href=\\\"https:\u002F\u002Fcran.r-project.org\u002Fweb\u002Fpackages\u002Fdplyr\u002Findex.html\\\"\u003Edplyr\u003C\u002Fa\u003E\\npackage of the tidyverse, but it is worth briefly mentioning some others\\nwe will be running into:\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ca href=\\\"http:\u002F\u002Fmagrittr.tidyverse.org\\\"\u003E\u003Cstrong\u003Emagittr\u003C\u002Fstrong\u003E\u003C\u002Fa\u003E--This package gives us\\naccess to the forward pipe operator and makes our code easier to read.\\n\u003Ca href=\\\"http:\u002F\u002Fggplot2.tidyverse.org\u002F\\\"\u003E\u003Cstrong\u003Eggplot2\u003C\u002Fstrong\u003E\u003C\u002Fa\u003E--This package utilizes the\\n\u003Ca href=\\\"http:\u002F\u002Fwww.springer.com\u002Fus\u002Fbook\u002F9780387245447\\\"\u003E&quot;Grammar of Graphics&quot;\u003C\u002Fa\u003E\\nto provide an easy way to visualize our data.\\n\u003Ca href=\\\"http:\u002F\u002Freadr.tidyverse.org\\\"\u003E\u003Cstrong\u003Ereadr\u003C\u002Fstrong\u003E\u003C\u002Fa\u003E--This package makes available a\\nfaster and more streamlined method of importing rectangular data, such\\nas csv files.\\n\u003Ca href=\\\"http:\u002F\u002Ftibble.tidyverse.org\u002F\\\"\u003E\u003Cstrong\u003Etibble\u003C\u002Fstrong\u003E\u003C\u002Fa\u003E--This package provides us\\naccess to a reconceptualization of data frames that are easier to work\\nwith and print.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you have not already done so, you should install and load the\\n&quot;tidyverse&quot; before beginning. In addition, make sure that you have the\\n\u003Ca href=\\\"https:\u002F\u002Fcran.rstudio.com\u002F\\\"\u003Elatest version of R\u003C\u002Fa\u003E and the \u003Ca href=\\\"https:\u002F\u002Fwww.rstudio.com\u002Fproducts\u002Frstudio\u002Fdownload\u002F\\\"\u003Elatest version\\nof R Studio\u003C\u002Fa\u003E\\ninstalled for your respective platform.\u003C\u002Fp\u003E\\n\u003Cp\u003ECopy the following code into RStudio. To run it, you need to highlight\\nthe lines and press Ctrl+Enter (Command+Enter on Mac OS):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Install tidyverse libraries and load it\\n# Do not worry if this takes a while\\n\\ninstall.packages(&quot;tidyverse&quot;)\\nlibrary(tidyverse)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch1 id=\\\"an-example-of-dplyr-in-action\\\"\u003EAn Example of dplyr in Action\u003C\u002Fh1\u003E\\n\u003Cp\u003ELet&#39;s go through an example to see how dplyr can aid us as historians by\\ninputting U.S. decennial census data from 1790 to 2010. Download the\\ndata by \u003Ca href=\\\"\u002Fassets\u002Fintroductory_state_example.csv\\\"\u003Eclicking\\nhere\u003C\u002Fa\u003E\\nand place it in the folder that you will use to work through the examples\\nin this tutorial.\u003C\u002Fp\u003E\\n\u003Cp\u003ESince the data is in a csv file, we are going to use the read_csv()\\ncommand in tidyverse&#39;s\\n\u003Ca href=\\\"https:\u002F\u002Fcran.r-project.org\u002Fweb\u002Fpackages\u002Freadr\u002Fvignettes\u002Freadr.html\\\"\u003Ereadr\u003C\u002Fa\u003E\\npackage.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe read_csv function takes the path of a file we want to import from\\nas a variable so make sure that you have it set up correctly.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Import CSV File and save to us_state_populations_import\\n# Make sure you set the path of the file correctly\\nus_state_populations_import&lt;-read_csv(&quot;introductory_state_example.csv&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAfter you import the data, you will notice that there are three columns:\\none for the population, one for the year, and one for the state. This\\ndata is already in a tidy format providing us a multitude of options for\\nfurther exploration.\u003C\u002Fp\u003E\\n\u003Cp\u003EFor this example, let&#39;s visualize the population growth of California and\\nNew York to gain a better understanding of Western migration. We will\\nuse dplyr to filter our data so that it only contains information about\\nthe states we are interested in, and we will use ggplot2 to visualize\\nthis information. This exercise is just to provide you a taste of what\\ndplyr can do, so don&#39;t worry if you don&#39;t understand the code at this\\ntime.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Filter to California and New York states only\\ncalifornia_and_new_york_state_populations&lt;-us_state_populations_import %&gt;%\\n  filter(state %in% c(&quot;California&quot;, &quot;New York&quot;))\\n\\n# Plot California and New York State Populations\\nggplot(data=california_and_new_york_state_populations, aes(x=year, y=population, color=state)) +\\n  geom_line() +\\n  geom_point()\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;california_new_york_population.png&quot; caption=&quot;Graph of California and New York population&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EAs we can see, the population of California has grown considerably\\ncompared to New York. While this particular example may seem obvious\\ngiven the history of U.S. migration, the code itself provides us a\\nfoundation that we can build on to ask a multitude of similar questions.\\nFor instance, with a quick change of code, we can create a similar graph\\nwith two different states such as Mississippi and Virginia.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Filter to Mississippi and Virginia\\nmississippi_and_virginia_state_populations&lt;-us_state_populations_import %&gt;%\\n  filter(state %in% c(&quot;Mississippi&quot;, &quot;Virginia&quot;))\\n\\n# Plot California and New York State Populations\\nggplot(data=mississippi_and_virginia_state_populations, aes(x=year, y=population, color=state)) +\\n  geom_line() +\\n  geom_point()\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;mississippi_virginia_population.png&quot; caption=&quot;Graph of Mississippi and Virginia population&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EQuickly making changes to our code and reanalyzing our data is a\\nfundamental part of exploratory data analysis (EDA). Rather than trying\\nto &quot;prove&quot; a hypothesis, exploratory data analysis helps us understand\\nour data better and ask questions about it. For historians, EDA provides\\nan easy means of knowing when to dig deeper into a subject and when to\\nstep back, and it is an area where R excels.\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"pipe-operator\\\"\u003EPipe Operator\u003C\u002Fh1\u003E\\n\u003Cp\u003EBefore looking at dplyr, we need to go over the pipe operator (%&gt;%)\\nin R since we will often run into it in our examples. As mentioned\\nearlier, the pipe operator is part of the\\n\u003Ca href=\\\"https:\u002F\u002Fcran.r-project.org\u002Fweb\u002Fpackages\u002Fmagrittr\u002Fvignettes\u002Fmagrittr.html\\\"\u003Emagrittr\u003C\u002Fa\u003E\\npackage created by \u003Ca href=\\\"http:\u002F\u002Fstefanbache.dk\u002F\\\"\u003EStefan Milton Bache\u003C\u002Fa\u003E and\\n\u003Ca href=\\\"http:\u002F\u002Fhadley.nz\u002F\\\"\u003EHadley Wickham\u003C\u002Fa\u003E and is included in the tidyverse.\\nIts name is an homage to surrealest painter Rene Magritte, whose &quot;The\\nTreachery of Images&quot; famously depicted a pipe with the words &quot;this is\\nnot a pipe&quot; underneath in French.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe pipe operator allows you to pass what is to the left of the pipe as\\nthe first variable in a function specified on the right. Although it may\\nseem strange at first, once you learn it, you will find that it makes\\nyour code more readable by avoiding nested statements. Don&#39;t worry if\\nall this is a little confusing right now. It will become more clear as\\nwe go through the examples.\u003C\u002Fp\u003E\\n\u003Cp\u003ELet&#39;s say that we are interested in getting the square root of each\\npopulation value and then summing all the square roots before getting\\nthe mean. Obviously, this isn&#39;t a useful measurement, but it demonstrates\\njust how quickly R code can become difficult to read. Normally, we would\\nnest such statements:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Emean(sum(sqrt(us_state_populations_import$population)))\\n\\n## [1] 1256925\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAs you can see, with enough nested commands, it is hard to remember how\\nmany parenthesis you need and makes the code awkward to read. To mitigate\\nthis, some people may create temporary vectors in between each function\\ncall.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Get square root of all the state populations\\n\\nsqrt_state_populations_vector&lt;-sqrt(us_state_populations_import$population)\\n\\n# Get sum of all the sqrts of the temporary variable\\n\\nsum_sqrt_state_populations_vector&lt;-sum(sqrt_state_populations_vector)\\n\\n# Get mean of the temporary variable\\n\\nmean_sum_sqrt_state_populations_vector&lt;-mean(sum_sqrt_state_populations_vector)\\n\\n# Display the mean\\n\\nmean_sum_sqrt_state_populations_vector\\n\\n## [1] 1256925\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAlthough you get the same answer, this is a lot more readable. However,\\nit can quickly clutter your workspace if you forget to delete the\\ntemporary vectors. The pipe operator does all this for you. Here is the\\nsame code using the pipe operator.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eus_state_populations_import$population%&gt;%sqrt%&gt;%sum%&gt;%mean\\n\\n## [1] 1256925\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis is a lot easier to read, and you could make it even more clear by\\nwriting this on multiple lines.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Make sure to put the operator at the end of the line\\nus_state_populations_import$population%&gt;%\\n    sqrt%&gt;%\\n    sum%&gt;%\\n    mean\\n\\n## [1] 1256925\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EPlease note that the vectors or data frames that the pipe operator\\ncreates are discarded after the operation is complete. If you want to\\nstore them, you should pass them to a new variable.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Epermanent_sqrt_and_sum_state_populations_vector &lt;- us_state_populations_import$population%&gt;%sqrt%&gt;%sum%&gt;%mean\\npermanent_sqrt_and_sum_state_populations_vector\\n\\n## [1] 1256925\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch1 id=\\\"we-need-a-new-dataset\\\"\u003EWe Need a New Dataset\u003C\u002Fh1\u003E\\n\u003Cp\u003ENow that we have an understanding of the pipe operator, we are ready to\\nbegin looking at and wrangling with some data. Unfortunately, for\\nhistorians, there are only a few easily available datasets--perhaps you\\ncan help change this by making yours available to the public! We are\\ngoing to rely on the \u003Ca href=\\\"https:\u002F\u002Fwww.google.com\u002Fsearch?q=cran%20historydata\\\"\u003Ehistory\\ndata\u003C\u002Fa\u003E package\\ncreated by \u003Ca href=\\\"http:\u002F\u002Flincolnmullen.com\u002F\\\"\u003ELincoln Mullen\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003ELets go ahead and install and load the package:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Install historydata package\\ninstall.packages(&quot;historydata&quot;)\\n\\n# Load historydata package\\nlibrary(historydata)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis packages contains samples of historical datasets--the earlier U.S.\\nCensus data sample was taken from this package. Throughout this\\ntutorial, we are specifically going to work with the early_colleges\\ndataset that contains data about colleges founded before 1848. Lets\\nstart by loading the data and view it.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Make sure you have installed the historydata package and loaded it before this\\n\\ndata(early_colleges)\\nearly_colleges\\n\\n## # A tibble: 65 x 6\\n##    college                original_name         city          state\\n##    &lt;chr&gt;                  &lt;chr&gt;                 &lt;chr&gt;         &lt;chr&gt;\\n##  1 Harvard                &lt;NA&gt;                  Cambridge     MA\\n##  2 William and Mary       &lt;NA&gt;                  Williamsburg  VA\\n##  3 Yale                   &lt;NA&gt;                  New Haven     CT\\n##  4 Pennsylvania, Univ. of &lt;NA&gt;                  Philadelphia  PA\\n##  5 Princeton              College of New Jersey Princeton     NJ\\n##  6 Columbia               King&#39;s College        New York      NY\\n##  7 Brown                  &lt;NA&gt;                  Providence    RI\\n##  8 Rutgers                Queen&#39;s College       New Brunswick NJ\\n##  9 Dartmouth              &lt;NA&gt;                  Hanover       NH\\n## 10 Charleston, Coll. Of   &lt;NA&gt;                  Charleston    SC\\n##    established sponsorship\\n##          &lt;int&gt; &lt;chr&gt;\\n##  1        1636 Congregational; after 1805 Unitarian\\n##  2        1693 Anglican\\n##  3        1701 Congregational\\n##  4        1740 Nondenominational\\n##  5        1746 Presbyterian\\n##  6        1754 Anglican\\n##  7        1765 Baptist\\n##  8        1766 Dutch Reformed\\n##  9        1769 Congregational\\n## 10        1770 Anglican\\n## # ... with 55 more rows\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAs you can observe, this dataset contains the current name of the college, its\\noriginal name, the city and state where it was founded, when the college was\\nestablished, and its sponsorship. As we discussed earlier, before we can\\nwork with a dataset, it is important to think about how to organize the\\ndata. Let&#39;s see if any of our data is not in a &quot;tidy&quot; format. Do you see\\nany cells that do not match the three criteria for tidy data?\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you guessed the sponsorship of Harvard, you are correct. In addition\\nto noting the original sponsorship, it also mentions that it changed\\nsponsorship in 1805. Usually, you want to keep as much information about\\nyour data that you can, but for the purposes of this tutorial, we are\\ngoing to change the column to only have the original sponsorship.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eearly_colleges[1,6] &lt;- &quot;Congregational&quot;\\nearly_colleges\\n\\n## # A tibble: 65 x 6\\n##    college                original_name         city          state\\n##    &lt;chr&gt;                  &lt;chr&gt;                 &lt;chr&gt;         &lt;chr&gt;\\n##  1 Harvard                &lt;NA&gt;                  Cambridge     MA\\n##  2 William and Mary       &lt;NA&gt;                  Williamsburg  VA\\n##  3 Yale                   &lt;NA&gt;                  New Haven     CT\\n##  4 Pennsylvania, Univ. of &lt;NA&gt;                  Philadelphia  PA\\n##  5 Princeton              College of New Jersey Princeton     NJ\\n##  6 Columbia               King&#39;s College        New York      NY\\n##  7 Brown                  &lt;NA&gt;                  Providence    RI\\n##  8 Rutgers                Queen&#39;s College       New Brunswick NJ\\n##  9 Dartmouth              &lt;NA&gt;                  Hanover       NH\\n## 10 Charleston, Coll. Of   &lt;NA&gt;                  Charleston    SC\\n##    established sponsorship\\n##          &lt;int&gt; &lt;chr&gt;\\n##  1        1636 Congregational\\n##  2        1693 Anglican\\n##  3        1701 Congregational\\n##  4        1740 Nondenominational\\n##  5        1746 Presbyterian\\n##  6        1754 Anglican\\n##  7        1765 Baptist\\n##  8        1766 Dutch Reformed\\n##  9        1769 Congregational\\n## 10        1770 Anglican\\n## # ... with 55 more rows\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow that we have our data in a tidy format, we can shape it through the\\ndplyr package.\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"what-is-dplyr\\\"\u003EWhat is Dplyr?\u003C\u002Fh1\u003E\\n\u003Cp\u003E\u003Ca href=\\\"https:\u002F\u002Fcran.rstudio.com\u002Fweb\u002Fpackages\u002Fdplyr\u002Fvignettes\u002Fdplyr.html\\\"\u003EDplyr\u003C\u002Fa\u003E\\nis another part of the tidyverse that provides functions for\\nmanipulating and transforming your data. Because we are keeping our data\\n&quot;tidy,&quot; we only need a small set of tools to explore our data. Compared\\nto base R, using dplyr is often faster, and guarantees that if our\\ninput is tidy then our output will also be tidy. Perhaps most importantly,\\ndplyr makes our code easier to read and utilizes &quot;verbs&quot; that are, in\\nmost cases, intuitive. Each function in dplyr corresponds to these verbs,\\nwith the five key ones being filter, select, arrange, mutate, and\\nsummarise--dplyr uses the British spelling. Let&#39;s go through each of them\\nindividually to see how they work in practice.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"select\\\"\u003ESelect\u003C\u002Fh3\u003E\\n\u003Cp\u003EIf we look at the early_colleges data, we can observe that there are a\\nlot of NA&#39;s in the original names column. NA signifies that the data is\\nnot available, and we may want to view our data with this column\\nremoved. dplyr&#39;s select() function gives us the ability to do this. It\\ntakes the data frame you want to manipulate as the first argument, followed by a\\nlist signifying which columns you would like to keep:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# Remove the original names column using select()\\n# Note that you do not have to append the column name with a $ to the end of early_colleges since\\n# dplyr automatically assumes that a &quot;,&quot; represents AND\\n\\nselect(early_colleges, college, city, state, established, sponsorship)\\n\\n## # A tibble: 65 x 5\\n##    college                city          state established sponsorship\\n##    &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;\\n##  1 Harvard                Cambridge     MA           1636 Congregational\\n##  2 William and Mary       Williamsburg  VA           1693 Anglican\\n##  3 Yale                   New Haven     CT           1701 Congregational\\n##  4 Pennsylvania, Univ. of Philadelphia  PA           1740 Nondenominational\\n##  5 Princeton              Princeton     NJ           1746 Presbyterian\\n##  6 Columbia               New York      NY           1754 Anglican\\n##  7 Brown                  Providence    RI           1765 Baptist\\n##  8 Rutgers                New Brunswick NJ           1766 Dutch Reformed\\n##  9 Dartmouth              Hanover       NH           1769 Congregational\\n## 10 Charleston, Coll. Of   Charleston    SC           1770 Anglican\\n## # ... with 55 more rows\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELet&#39;s also go ahead and see how to write this using the pipe operator\\n(%&gt;%):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eearly_colleges%&gt;%\\n    select(college, city, state, established, sponsorship)\\n\\n## # A tibble: 65 x 5\\n##    college                city          state established sponsorship\\n##    &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;\\n##  1 Harvard                Cambridge     MA           1636 Congregational\\n##  2 William and Mary       Williamsburg  VA           1693 Anglican\\n##  3 Yale                   New Haven     CT           1701 Congregational\\n##  4 Pennsylvania, Univ. of Philadelphia  PA           1740 Nondenominational\\n##  5 Princeton              Princeton     NJ           1746 Presbyterian\\n##  6 Columbia               New York      NY           1754 Anglican\\n##  7 Brown                  Providence    RI           1765 Baptist\\n##  8 Rutgers                New Brunswick NJ           1766 Dutch Reformed\\n##  9 Dartmouth              Hanover       NH           1769 Congregational\\n## 10 Charleston, Coll. Of   Charleston    SC           1770 Anglican\\n## # ... with 55 more rows\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EReferencing each of the columns that we want to keep just to get rid of\\none is a little tedous. We can use the minus symbol (-) to demonstrate\\nthat we want to remove a column.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eearly_colleges%&gt;%\\n    select(-original_name)\\n\\n## # A tibble: 65 x 5\\n##    college                city          state established sponsorship\\n##    &lt;chr&gt;                  &lt;chr&gt;         &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;\\n##  1 Harvard                Cambridge     MA           1636 Congregational\\n##  2 William and Mary       Williamsburg  VA           1693 Anglican\\n##  3 Yale                   New Haven     CT           1701 Congregational\\n##  4 Pennsylvania, Univ. of Philadelphia  PA           1740 Nondenominational\\n##  5 Princeton              Princeton     NJ           1746 Presbyterian\\n##  6 Columbia               New York      NY           1754 Anglican\\n##  7 Brown                  Providence    RI           1765 Baptist\\n##  8 Rutgers                New Brunswick NJ           1766 Dutch Reformed\\n##  9 Dartmouth              Hanover       NH           1769 Congregational\\n## 10 Charleston, Coll. Of   Charleston    SC           1770 Anglican\\n## # ... with 55 more rows\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"filter\\\"\u003EFilter\u003C\u002Fh3\u003E\\n\u003Cp\u003EThe filter() function does the same thing as the select function but\\nrather than choosing the column name, we can use it to filter rows using\\na test requirement. For instance, we can view all the colleges that\\nexisted before the turn of the century.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eearly_colleges%&gt;%\\n    filter(established &lt; 1800)\\n\\n## # A tibble: 20 x 6\\n##    college                  original_name         city           state\\n##    &lt;chr&gt;                    &lt;chr&gt;                 &lt;chr&gt;          &lt;chr&gt;\\n##  1 Harvard                  &lt;NA&gt;                  Cambridge      MA\\n##  2 William and Mary         &lt;NA&gt;                  Williamsburg   VA\\n##  3 Yale                     &lt;NA&gt;                  New Haven      CT\\n##  4 Pennsylvania, Univ. of   &lt;NA&gt;                  Philadelphia   PA\\n##  5 Princeton                College of New Jersey Princeton      NJ\\n##  6 Columbia                 King&#39;s College        New York       NY\\n##  7 Brown                    &lt;NA&gt;                  Providence     RI\\n##  8 Rutgers                  Queen&#39;s College       New Brunswick  NJ\\n##  9 Dartmouth                &lt;NA&gt;                  Hanover        NH\\n## 10 Charleston, Coll. Of     &lt;NA&gt;                  Charleston     SC\\n## 11 Hampden-Sydney           &lt;NA&gt;                  Hampden-Sydney VA\\n## 12 Transylvania             &lt;NA&gt;                  Lexington      KY\\n## 13 Georgia, Univ. of        &lt;NA&gt;                  Athens         GA\\n## 14 Georgetown               &lt;NA&gt;                  Washington     DC\\n## 15 North Carolina, Univ. of &lt;NA&gt;                  Chapel Hill    NC\\n## 16 Vermont, Univ. of        &lt;NA&gt;                  Burlington     VT\\n## 17 Williams                 &lt;NA&gt;                  Williamstown   MA\\n## 18 Tennessee, Univ. of      Blount College        Knoxville      TN\\n## 19 Union College            &lt;NA&gt;                  Schenectady    NY\\n## 20 Marietta                 &lt;NA&gt;                  Marietta       OH\\n##    established sponsorship\\n##          &lt;int&gt; &lt;chr&gt;\\n##  1        1636 Congregational\\n##  2        1693 Anglican\\n##  3        1701 Congregational\\n##  4        1740 Nondenominational\\n##  5        1746 Presbyterian\\n##  6        1754 Anglican\\n##  7        1765 Baptist\\n##  8        1766 Dutch Reformed\\n##  9        1769 Congregational\\n## 10        1770 Anglican\\n## 11        1775 Presbyterian\\n## 12        1780 Disciples of Christ\\n## 13        1785 Secular\\n## 14        1789 Roman Catholic\\n## 15        1789 Secular\\n## 16        1791 Nondenominational\\n## 17        1793 Congregational\\n## 18        1794 Secular\\n## 19        1795 Presbyterian with Congregational\\n## 20        1797 Congregational\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"mutate\\\"\u003EMutate\u003C\u002Fh3\u003E\\n\u003Cp\u003EThe mutate command allows you to add a column to your data frame. Right\\nnow, we have the city and state in two separate columns. We can use the\\npaste command to combine two strings and specify a seperator. Let&#39;s place\\nthem in a single column called &quot;location.&quot;\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eearly_colleges%&gt;%mutate(location=paste(city,state,sep=&quot;,&quot;))\\n\\n## # A tibble: 65 x 7\\n##    college                original_name         city          state\\n##    &lt;chr&gt;                  &lt;chr&gt;                 &lt;chr&gt;         &lt;chr&gt;\\n##  1 Harvard                &lt;NA&gt;                  Cambridge     MA\\n##  2 William and Mary       &lt;NA&gt;                  Williamsburg  VA\\n##  3 Yale                   &lt;NA&gt;                  New Haven     CT\\n##  4 Pennsylvania, Univ. of &lt;NA&gt;                  Philadelphia  PA\\n##  5 Princeton              College of New Jersey Princeton     NJ\\n##  6 Columbia               King&#39;s College        New York      NY\\n##  7 Brown                  &lt;NA&gt;                  Providence    RI\\n##  8 Rutgers                Queen&#39;s College       New Brunswick NJ\\n##  9 Dartmouth              &lt;NA&gt;                  Hanover       NH\\n## 10 Charleston, Coll. Of   &lt;NA&gt;                  Charleston    SC\\n##    established sponsorship       location\\n##          &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;\\n##  1        1636 Congregational    Cambridge,MA\\n##  2        1693 Anglican          Williamsburg,VA\\n##  3        1701 Congregational    New Haven,CT\\n##  4        1740 Nondenominational Philadelphia,PA\\n##  5        1746 Presbyterian      Princeton,NJ\\n##  6        1754 Anglican          New York,NY\\n##  7        1765 Baptist           Providence,RI\\n##  8        1766 Dutch Reformed    New Brunswick,NJ\\n##  9        1769 Congregational    Hanover,NH\\n## 10        1770 Anglican          Charleston,SC\\n## # ... with 55 more rows\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAgain, you need to remember that dplyr does not save the data or\\nmanipulate the original. Instead, it creates a temporary data frame at\\neach step. If you want to keep it, you need to create a permanent\\nvariable.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eearly_colleges_with_location &lt;- early_colleges%&gt;%\\n    mutate(location=paste(city, state, sep=&quot;,&quot;))\\n\\n# View the new tibble with the location added\\nearly_colleges_with_location\\n\\n## # A tibble: 65 x 7\\n##    college                original_name         city          state\\n##    &lt;chr&gt;                  &lt;chr&gt;                 &lt;chr&gt;         &lt;chr&gt;\\n##  1 Harvard                &lt;NA&gt;                  Cambridge     MA\\n##  2 William and Mary       &lt;NA&gt;                  Williamsburg  VA\\n##  3 Yale                   &lt;NA&gt;                  New Haven     CT\\n##  4 Pennsylvania, Univ. of &lt;NA&gt;                  Philadelphia  PA\\n##  5 Princeton              College of New Jersey Princeton     NJ\\n##  6 Columbia               King&#39;s College        New York      NY\\n##  7 Brown                  &lt;NA&gt;                  Providence    RI\\n##  8 Rutgers                Queen&#39;s College       New Brunswick NJ\\n##  9 Dartmouth              &lt;NA&gt;                  Hanover       NH\\n## 10 Charleston, Coll. Of   &lt;NA&gt;                  Charleston    SC\\n##    established sponsorship       location\\n##          &lt;int&gt; &lt;chr&gt;             &lt;chr&gt;\\n##  1        1636 Congregational    Cambridge,MA\\n##  2        1693 Anglican          Williamsburg,VA\\n##  3        1701 Congregational    New Haven,CT\\n##  4        1740 Nondenominational Philadelphia,PA\\n##  5        1746 Presbyterian      Princeton,NJ\\n##  6        1754 Anglican          New York,NY\\n##  7        1765 Baptist           Providence,RI\\n##  8        1766 Dutch Reformed    New Brunswick,NJ\\n##  9        1769 Congregational    Hanover,NH\\n## 10        1770 Anglican          Charleston,SC\\n## # ... with 55 more rows\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"arrange\\\"\u003EArrange\u003C\u002Fh3\u003E\\n\u003Cp\u003EThe arrange() function allows us to order our columns in a new way.\\nCurrently, the colleges are organized by year in ascending order. Lets\\nplace them in descending order of establishment, in this case, from the end of the Mexican-American War.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eearly_colleges %&gt;%\\n    arrange(desc(established))\\n\\n## # A tibble: 65 x 6\\n##    college               original_name city        state established\\n##    &lt;chr&gt;                 &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;       &lt;int&gt;\\n##  1 Wisconsin, Univ. of   &lt;NA&gt;          Madison     WI           1848\\n##  2 Earlham               &lt;NA&gt;          Richmond    IN           1847\\n##  3 Beloit                &lt;NA&gt;          Beloit      WI           1846\\n##  4 Bucknell              &lt;NA&gt;          Lewisburg   PA           1846\\n##  5 Grinnell              &lt;NA&gt;          Grinnell    IA           1846\\n##  6 Mount Union           &lt;NA&gt;          Alliance    OH           1846\\n##  7 Louisiana, Univ. of   &lt;NA&gt;          New Orleans LA           1845\\n##  8 U.S. Naval Academy    &lt;NA&gt;          Annapolis   MD           1845\\n##  9 Mississipps, Univ. of &lt;NA&gt;          Oxford      MI           1844\\n## 10 Holy Cross            &lt;NA&gt;          Worchester  MA           1843\\n##    sponsorship\\n##    &lt;chr&gt;\\n##  1 Secular\\n##  2 Quaker\\n##  3 Congregational\\n##  4 Baptist\\n##  5 Congregational\\n##  6 Methodist\\n##  7 Secular\\n##  8 Secular\\n##  9 Secular\\n## 10 Roman Catholic\\n## # ... with 55 more rows\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"summarise\\\"\u003ESummarise\u003C\u002Fh3\u003E\\n\u003Cp\u003EThe last key function in dplyr is summarise()--note the British\\nspelling. Summarise() takes a function or operation, and is usually used\\nto create a data frame that contains summary statistics for plotting. We\\nwill use it to calculate the average year that colleges before 1848 were\\nfounded.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eearly_colleges%&gt;%summarise(mean(established))\\n\\n## # A tibble: 1 x 1\\n##   `mean(established)`\\n##                 &lt;dbl&gt;\\n## 1            1809.831\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch1 id=\\\"putting-it-all-together\\\"\u003EPutting it All Together\u003C\u002Fh1\u003E\\n\u003Cp\u003ENow that we have gone through the five main verbs for dplyr, we can use\\nthem to create a quick visualization of our data. Let&#39;s go ahead and\\ncreate a bar graph showing the number of secular and non-secular\\ncolleges founded before the U.S. War of 1812:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Esecular_colleges_before_1812&lt;-early_colleges%&gt;%\\n  filter(established &lt; 1812)%&gt;%\\n  mutate(is_secular=ifelse(sponsorship!=&quot;Secular&quot;, &quot;no&quot;, &quot;yes&quot;))\\n\\nggplot(secular_colleges_before_1812) +\\n  geom_bar(aes(x=is_secular, fill=is_secular))+\\n  labs(x=&quot;Is the college secular?&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;college_secular_before_1812.png&quot; caption=&quot;Number of secular and non-secular colleges before War of 1812&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EAgain, by making a quick change to our code, we can also look at the\\nnumber of secular versus non-secular colleges founded after the start of\\nthe War of 1812:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Esecular_colleges_after_1812&lt;-early_colleges%&gt;%\\n  filter(established &gt; 1812)%&gt;%\\n  mutate(is_secular=ifelse(sponsorship!=&quot;Secular&quot;, &quot;no&quot;, &quot;yes&quot;))\\n\\nggplot(secular_colleges_after_1812) +\\n  geom_bar(aes(x=is_secular, fill=is_secular))+\\n  labs(x=&quot;Is the college secular?&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E({% include figure.html filename=&quot;college_secular_after_1812.png&quot; caption=&quot;Number of secular and non-secular colleges after War of 1812&quot; %}\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"conclusion\\\"\u003EConclusion\u003C\u002Fh1\u003E\\n\u003Cp\u003EThis tutorial should put you well on the way to thinking about how to\\norganize and manipulate your data in R. Later, you will probably want to\\ngraph your data in some way. I recommend that you begin looking at the\\n\u003Ca href=\\\"https:\u002F\u002Fggplot2.tidyverse.org\u002F\\\"\u003Eggplot2\u003C\u002Fa\u003E package for a set of tools that work\\nwell with dplyr. In addition, you may want to examine some of the\\nother functions that come with dplyr to hone your skills. Either way,\\nthis should provide a good foundation to build on and cover a lot of\\nthe common problems you will encounter.\u003C\u002Fp\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

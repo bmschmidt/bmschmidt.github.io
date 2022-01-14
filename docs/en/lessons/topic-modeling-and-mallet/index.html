@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/topic-modeling-and-mallet"),
 					params: {lang:"en",lessons:"lessons",slug:"topic-modeling-and-mallet"}
@@ -48,18 +49,20 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Getting Started with Topic Modeling and MALLET</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="editors-note">Editor&#39;s Note</h2>
+<h2>Editor's Note</h2>
 <p>This lesson requires you to use the command line. If you have no
 previous experience using the command line you may find it helpful to
 work through the Programming Historian <a href="/lessons/intro-to-bash">Bash Command Line</a> lesson.</p>
-<h2 id="lesson-goals">Lesson Goals</h2>
+<h2>Lesson Goals</h2>
 <p>In this lesson you will first learn what <em>topic modeling</em> is and why you
 might want to employ it in your research. You will then learn how to
 install and work with the MALLET <em>natural language processing</em> toolkit
@@ -71,22 +74,22 @@ menus). We will run the topic modeller on some example files, and look
 at the kinds of outputs that MALLET installed. This will give us a
 good idea of how it can be used on a corpus of texts to identify topics
 found in the documents without reading them individually.</p>
-<p>Please see the MALLET users&#39; <a href="http://mallet.cs.umass.edu/mailinglist.php">discussion list</a> for the full range of
+<p>Please see the MALLET users' <a href="http://mallet.cs.umass.edu/mailinglist.php">discussion list</a> for the full range of
 things one can do with the software.</p>
 <p>(We would like to thank Robert Nelson and Elijah Meeks for hints and
 tips in getting MALLET to run for us the first time, and for their
 examples of what can be done with this tool.)</p>
-<h2 id="what-is-topic-modeling-and-for-whom-is-this-useful">What is Topic Modeling And For Whom is this Useful?</h2>
+<h2>What is Topic Modeling And For Whom is this Useful?</h2>
 <p>A <em>topic modeling</em> tool takes a single text (or corpus) and looks for
 patterns in the use of words; it is an attempt to inject semantic
 meaning into vocabulary. Before you begin with topic modeling, you
 should ask yourself whether or not it is likely to be useful for your
-project. Matthew Kirschenbaum&#39;s <em><a href="http://www.cs.umbc.edu/~hillol/NGDM07/abstracts/talks/MKirschenbaum.pdf">Distant Reading</a></em> (a talk given at the
+project. Matthew Kirschenbaum's <em><a href="http://www.cs.umbc.edu/~hillol/NGDM07/abstracts/talks/MKirschenbaum.pdf">Distant Reading</a></em> (a talk given at the
 2009 National Science Foundation Symposium on the Next Generation of
 Data Mining and Cyber-Enabled Discovery for Innovation) and Stephen
-Ramsay&#39;s <em><a href="http://www.worldcat.org/title/reading-machines-toward-an-algorithmic-criticism/oclc/708761605&amp;referer=brief_results">Reading Machines</a></em> are good places for beginning to
+Ramsay's <em><a href="http://www.worldcat.org/title/reading-machines-toward-an-algorithmic-criticism/oclc/708761605&amp;referer=brief_results">Reading Machines</a></em> are good places for beginning to
 understand in which circumstances a technique such as this could be most
-effective. As with all tools, just because you can use it, doesn&#39;t
+effective. As with all tools, just because you can use it, doesn't
 necessarily mean that you should. If you are working with a small number
 of documents (or even a single document) it may well be that simple
 frequency counts are sufficient, in which case something like <a href="http://voyant-tools.org">Voyant
@@ -144,56 +147,56 @@ popular. The myriad variations of topic modeling have resulted in an
 alphabet soup of techniques and programs to implement them that might be
 confusing or overwhelming to the uninitiated; ignore them for now. They
 all work in much the same way. MALLET uses LDA.</p>
-<h3 id="examples-of-topic-models-employed-by-historians">Examples of topic models employed by historians:</h3>
+<h3>Examples of topic models employed by historians:</h3>
 <ul>
 <li>Rob Nelson, <em><a href="http://dsl.richmond.edu/dispatch/">Mining the Dispatch</a></em></li>
-<li>Cameron Blevins, &quot;<a href="http://historying.org/2010/04/01/topic-modeling-martha-ballards-diary/">Topic Modeling Martha Ballard&#39;s Diary</a>&quot;
+<li>Cameron Blevins, &quot;<a href="http://historying.org/2010/04/01/topic-modeling-martha-ballards-diary/">Topic Modeling Martha Ballard's Diary</a>&quot;
 <em>Historying</em>, April 1, 2010.</li>
 <li>David J Newman and Sharon Block, &quot;Probabilistic topic decomposition
 of an eighteenth century American newspaper,&quot; <em>Journal of the
 American Society for Information Science and Technology</em> vol. 57,
 no. 6 (April 1, 2006): 753-767.</li>
 </ul>
-<h2 id="installing-mallet">Installing MALLET</h2>
+<h2>Installing MALLET</h2>
 <p>There are many tools one could use to create topic models, but at the
 time of this writing (summer 2017) the simplest tool to run your text
 through is called MALLET. <a href="http://mallet.cs.umass.edu/index.php">MALLET</a> uses an implementation of
 <a href="http://en.wikipedia.org/wiki/Gibbs_sampling"><em>Gibbs sampling</em></a>, a statistical technique meant to quickly construct
 a sample distribution, to create its topic models. MALLET requires
-using the command line – we&#39;ll talk about that more in a moment,
+using the command line – we'll talk about that more in a moment,
 although you typically use the same few commands over and over.</p>
 <p>The installation instructions are different for Windows and Mac. Follow
 the instructions appropriate for you below:</p>
 <p>{% include figure.html filename=&quot;windows-150x150.png&quot; caption=&quot;&quot; %}</p>
-<h3 id="windows-instructions">Windows Instructions</h3>
+<h3>Windows Instructions</h3>
 <ol>
 <li>Go to the <a href="http://mallet.cs.umass.edu/index.php">MALLET</a> project page. You can <a href="http://mallet.cs.umass.edu/download.php">download MALLET here</a>.</li>
-<li>You will also need the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java developer&#39;s kit</a> – that is, not the
-regular Java that&#39;s on every computer, but the one that lets you
+<li>You will also need the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java developer's kit</a> – that is, not the
+regular Java that's on every computer, but the one that lets you
 program things. Install this on your computer.</li>
 <li>Unzip MALLET into your <code>C:</code> directory . This is important: it
 cannot be anywhere else. You will then have a directory called
-<code>C:\mallet-2.0.8</code> or similar. For simplicity&#39;s sake, rename this
+<code>C:\mallet-2.0.8</code> or similar. For simplicity's sake, rename this
 directory just <code>mallet</code>.</li>
 <li>MALLET uses an <em>environment variable</em> to tell the computer where to
 find all the various components of its processes when it is running.
-It&#39;s rather like a shortcut for the program. A programmer cannot
+It's rather like a shortcut for the program. A programmer cannot
 know exactly where every user will install a program, so the
 programmer creates a variable in the code that will always stand in
 for that location. We tell the computer, once, where that location
 is by setting the environment variable. If you moved the program to
-a new location, you&#39;d have to change the variable.</li>
+a new location, you'd have to change the variable.</li>
 </ol>
-<p>To create an environment variable in Windows 10, click Start (Windows icon) or press the Windows key on your keyboard then type &#39;Control Panel&#39;. Within Control Panel, select System and Security.  In System and Security, type &#39;Advanced&#39; into the search field (upper right) and choose &#39;View advanced system settings&#39; from the results. In the pop-up dialogue box, click &#39;Environmental Variables&#39;. Next, click &#39;New&#39; and type <code>MALLET_HOME</code> in the variable name
+<p>To create an environment variable in Windows 10, click Start (Windows icon) or press the Windows key on your keyboard then type 'Control Panel'. Within Control Panel, select System and Security.  In System and Security, type 'Advanced' into the search field (upper right) and choose 'View advanced system settings' from the results. In the pop-up dialogue box, click 'Environmental Variables'. Next, click 'New' and type <code>MALLET_HOME</code> in the variable name
 box (Figures 1,2,3). It must be like this – all caps, with an underscore – since that is
 the shortcut that the programmer built into the program and all of its
 subroutines. Then type the exact path (location) of where you unzipped
-MALLET in the variable value, e.g., <code>c:\mallet</code>. </p>
+MALLET in the variable value, e.g., <code>c:\mallet</code>.</p>
 <p>To see if you have been successful, please read on to the next section.</p>
 <p>{% include figure.html filename=&quot;fig1-advanced-system-settings.png&quot; caption=&quot;Figure 1: Advanced System Settings on Windows&quot; %}</p>
 <p>{% include figure.html filename=&quot;fig2-environment-variables-location.png&quot; caption=&quot;Figure 2: Environment Variables Location&quot; %}</p>
 <p>{% include figure.html filename=&quot;fig3-environment-variable.png&quot; caption=&quot;Figure 3: Environment Variable&quot; %}</p>
-<h4 id="running-mallet-using-the-command-line">Running MALLET using the Command Line</h4>
+<h4>Running MALLET using the Command Line</h4>
 <p>MALLET is run from the command line, also known as <em>Command Prompt</em>
 (Figure 4). If you remember MS-DOS, or have ever played with a Unix
 computer Terminal, this will be familiar. The command line is where you
@@ -201,10 +204,11 @@ can type commands directly, rather than clicking on icons and menus.</p>
 <p>{% include figure.html filename=&quot;fig-4-command-prompt-window.png&quot; caption=&quot;Figure 4: Command Prompt on Windows&quot; %}</p>
 <ol>
 <li>Click on your
-<code>Start Menu -&gt; All Programs -&gt; Accessories -&gt; Command Prompt</code>.<br> You&#39;ll get the command prompt window, which will have a cursor at
+<code>Start Menu -&gt; All Programs -&gt; Accessories -&gt; Command Prompt</code>.<br>
+You'll get the command prompt window, which will have a cursor at
 <code>c:\user\user&gt;</code> (or similar; see Figure 4).</li>
 <li>Type <code>cd ..</code> (That is: cd-space-period-period) to <em>change
-directory</em>. Keep doing this until you&#39;re at the <code>C:\</code> . (as in
+directory</em>. Keep doing this until you're at the <code>C:\</code> . (as in
 Figure 5)</li>
 </ol>
 <p>{% include figure.html filename=&quot;fig-5-command-prompt-window-getting-to-c.png&quot; caption=&quot;Figure 5: Navigating to the C:\ Directory in Command Prompt&quot; %}</p>
@@ -213,7 +217,7 @@ Figure 5)</li>
 you type in the command prompt window is a <em>command</em>. There are
 commands like <code>cd</code> (change directory) and <code>dir</code> (list directory
 contents) that the computer understands. You have to tell the
-computer explicitly that &#39;this is a MALLET command&#39; when you want
+computer explicitly that 'this is a MALLET command' when you want
 to use MALLET. You do this by telling the computer to grab its
 instructions from the MALLET <em>bin</em>, a subfolder in MALLET that
 contains the core operating routines.</li>
@@ -226,7 +230,7 @@ MALLET located at <code>C:\mallet</code> ?</li>
 <p>{% include figure.html filename=&quot;fig-6command-prompt-mallet-installed.png&quot; caption=&quot;Figure 6: Command Prompt MALLET Installed&quot; %}</p>
 <p>You are now ready to skip ahead to the next section.</p>
 <p>{% include figure.html filename=&quot;apple-150x150.png&quot; caption=&quot;&quot; %}</p>
-<h3 id="mac-instructions">Mac Instructions</h3>
+<h3>Mac Instructions</h3>
 <p>Many of the instructions for OS X installation are similar to Windows,
 with a few differences. In fact, it is a bit easier.</p>
 <ol>
@@ -252,9 +256,9 @@ arise). If on Windows a command would be <code>\bin\mallet</code>, on a Mac you
 would instead type:</p>
 <pre><code class="language-bash">./bin/mallet
 </code></pre>
-<p>A list of commands should appear. If it does, congratulations – you&#39;ve
+<p>A list of commands should appear. If it does, congratulations – you've
 installed it correctly!</p>
-<h2 id="typing-in-mallet-commands">Typing in MALLET Commands</h2>
+<h2>Typing in MALLET Commands</h2>
 <p>Now that you have MALLET installed, it is time to learn what commands
 are available to use with the program. There are nine MALLET commands
 you can use (see Figure 6 above). Sometimes you can combine multiple
@@ -283,14 +287,14 @@ spaces offset multiple commands or parameters. These parameters let us
 tweak the file that is created when we import our texts into MALLET. A
 double hyphen (as with <code>–-help</code> above) modifies, adds a sub-command, or
 specifies some sort of parameter to the command.</p>
-<p>For Windows users, if you got the error <em>&#39;exception in thread &quot;main&quot;
-java.lang.NoClassDefFoundError:&#39;</em> it might be because you installed
+<p>For Windows users, if you got the error <em>'exception in thread &quot;main&quot;
+java.lang.NoClassDefFoundError:'</em> it might be because you installed
 MALLET somewhere other than in the <code>C:\</code> directory. For instance,
 installing MALLET at <code>C:\Program Files\mallet</code> will produce this error
 message. The second thing to check is that your environment variable is
 set correctly. In either of these cases, check the Windows installation
 instructions and double check that you followed them properly.</p>
-<h2 id="working-with-data">Working with data</h2>
+<h2>Working with data</h2>
 <p>MALLET comes pre-packaged with sample <code>.txt</code> files with which you can
 practice. Type <code>dir</code> at the <code>C:\mallet&gt; prompt</code>, and you are given the
 listing of the MALLET directory contents. One of those directories is
@@ -306,7 +310,7 @@ Try it:</p>
 <p>You get the error message. You will have to navigate back to the main
 MALLET folder to run the commands. This is because of the way MALLET
 and its components are structured.</p>
-<h2 id="importing-data">Importing data</h2>
+<h2>Importing data</h2>
 <p>In the <code>sample data</code> directory, there are a number of <code>.txt</code> files. Each
 one of these files is a single document, the text of a number of
 different web pages. The entire folder can be considered to be a corpus
@@ -327,22 +331,22 @@ such frequencies that they obstruct analysis) using the default English
 up key on your keyboard to recall the last command you typed, and look
 carefully for typos). This file now contains all of your data, in a
 format that MALLET can work with.</p>
-<p>Try running it again now with different data. For example, let&#39;s imagine we wanted to use the German sample data instead. We would use:</p>
+<p>Try running it again now with different data. For example, let's imagine we wanted to use the German sample data instead. We would use:</p>
 <pre><code>bin\mallet import-dir --input sample-data\web\de --output tutorial.mallet --keep-sequence --remove-stopwords
 </code></pre>
 <p>And then finally, you could use your own data. Change <code>sample-data\web\de</code> to a directory that contains your own research files. Good luck!</p>
 <p>If you are unsure how directories work, we suggest the <em>Programming Historian</em> lesson <a href="/lessons/intro-to-bash">&quot;Introduction to the Bash Command Line&quot;</a>.</p>
-<h3 id="for-mac">For Mac</h3>
+<h3>For Mac</h3>
 <p>Mac instructions are similar to those above for Windows, but note some of the differences below:</p>
 <pre><code class="language-bash">./bin/mallet import-dir --input sample-data/web/en --output tutorial.mallet --keep-sequence --remove-stopwords
 </code></pre>
-<h2 id="issues-with-big-data">Issues with Big Data</h2>
-<p>If you&#39;re working with large file collections – or indeed,
+<h2>Issues with Big Data</h2>
+<p>If you're working with large file collections – or indeed,
 very large files – you may run into issues with your <em>heap space</em>, your
-computer&#39;s working memory. This issue will initially arise during the
+computer's working memory. This issue will initially arise during the
 import sequence, if it is relevant. By default, MALLET allows for 1GB
 of memory to be used. If you run into the following error message,
-you&#39;ve run into your limit:</p>
+you've run into your limit:</p>
 <pre><code>Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Java heap space
 </code></pre>
 <p>If your system has more memory, you can try increasing the memory
@@ -355,11 +359,11 @@ or the <code>mallet</code> file (<code>~/Mallet/bin/mallet</code>) if you are us
 <p>Find the following line:</p>
 <p><code>MEMORY=1g</code></p>
 <p>You can then change the 1g value upwards – to 2g, 4g, or even higher
-depending on your system&#39;s RAM, which you can find out by looking up the
-machine&#39;s system information.</p>
+depending on your system's RAM, which you can find out by looking up the
+machine's system information.</p>
 <p>Save your changes. You should now be able to avoid the error. If not,
 increase the value again.</p>
-<h2 id="your-first-topic-model">Your first topic model</h2>
+<h2>Your first topic model</h2>
 <p>At the command prompt in the MALLET directory, type:</p>
 <pre><code>bin\mallet train-topics  --input tutorial.mallet
 </code></pre>
@@ -396,7 +400,7 @@ everything with a double hyphen afterwards sets different parameters</p>
 <li>opens your <code>tutorial.mallet</code> file</li>
 <li>trains MALLET to find 20 topics</li>
 <li>outputs every word in your corpus of materials and the topic it
-belongs to into a compressed file (<code>.gz</code>; see <a href="http://www.gzip.org">www.gzip.org</a> on how to
+belongs to into a compressed file (<code>.gz</code>; see www.gzip.org on how to
 unzip this)</li>
 <li>outputs a text document showing you what the top key words are for
 each topic (<code>tutorial_keys.txt</code>)</li>
@@ -429,7 +433,7 @@ number 2.5).</p>
 <p>That is, the first number is the topic (topic 0), and the second number
 gives an indication of the <em>weight</em> of that topic. In general, including
 <code>-–optimize-interval</code> leads to better topics.</p>
-<h3 id="the-composition-of-your-documents">The composition of your documents</h3>
+<h3>The composition of your documents</h3>
 <p>What topics compose your documents? The answer is in the
 <code>tutorial_composition.txt</code> file. To stay organized, import the
 <code>tutorial_composition.txt</code> file into a spreadsheet (Excel, Open Office,
@@ -460,7 +464,7 @@ using MALLETs <code>hlda command</code>, but for the reader of this tutorial, it
 probably just quicker to cycle through a number of iterations (but for
 more see Griffiths, T. L., &amp; Steyvers, M. (2004). Finding scientific
 topics. Proceedings of the National Academy of Science, 101, 5228-5235).</p>
-<h3 id="getting-your-own-texts-into-mallet">Getting your own texts into MALLET</h3>
+<h3>Getting your own texts into MALLET</h3>
 <p>The <code>sample data</code> folder in MALLET is your guide to how you should
 arrange your texts. You want to put everything you wish to topic model
 into a single folder within <code>c:\mallet</code>, ie <code>c:\mallet\mydata</code>. Your
@@ -475,7 +479,7 @@ that when naming folders or files, do not leave spaces in the name.
 Instead use underscores to represent spaces). If the texts that you are
 interested in are on the web, you might be able to <a href="http://electricarchaeology.ca/2012/07/09/mining-a-day-of-archaeology/">automate this
 process</a>.</p>
-<h3 id="further-reading-about-topic-modeling">Further Reading about Topic Modeling</h3>
+<h3>Further Reading about Topic Modeling</h3>
 <p>To see a fully worked out example of topic modeling with a body of
 materials culled from webpages, see <a href="http://electricarchaeology.ca/2012/06/08/mining-the-open-web-with-looted-heritage-draft/">Mining the Open Web with Looted
 Heritage Draft</a>.</p>
@@ -484,28 +488,28 @@ number of <code>.txt</code> files. Each individual <code>.txt</code> file is a s
 report.</p>
 <ul>
 <li>For extensive background and bibliography on topic modeling you may
-wish to begin with Scott Weingart&#39;s <a href="http://www.scottbot.net/HIAL/?p=19113">Guided Tour to Topic
+wish to begin with Scott Weingart's <a href="http://www.scottbot.net/HIAL/?p=19113">Guided Tour to Topic
 Modeling</a></li>
-<li>Ted Underwood&#39;s &#39;<a href="http://tedunderwood.wordpress.com/2012/04/07/topic-modeling-made-just-simple-enough/">Topic modeling made just simple enough</a>&#39; is an
+<li>Ted Underwood's '<a href="http://tedunderwood.wordpress.com/2012/04/07/topic-modeling-made-just-simple-enough/">Topic modeling made just simple enough</a>' is an
 important discussion on interpreting the meaning of topics.</li>
-<li>Lisa Rhody&#39;s post on interpreting topics is also illuminating.
-&#39;<a href="http://web.archive.org/web/20160704150726/http://www.lisarhody.com:80/some-assembly-required/">Some Assembly Required</a>&#39; <em>Lisa @ Work</em> August 22, 2012.</li>
-<li>Clay Templeton, &#39;<a href="http://mith.umd.edu/topic-modeling-in-the-humanities-an-overview/">Topic Modeling in the Humanities: An Overview |
-Maryland Institute for Technology in the Humanities</a>&#39;, n.d.</li>
-<li>David Blei, Andrew Ng, and Michael Jordan, &#39;<a href="http://dl.acm.org/citation.cfm?id=944937">Latent dirichlet
-allocation</a>,&#39; The Journal of Machine Learning Research 3 (2003).</li>
-<li>Finally, also consult David Mimno&#39;s <a href="http://mimno.infosci.cornell.edu/topics.html">bibliography of topic modeling
-articles</a>. They&#39;re tagged by topic to make finding the right one
+<li>Lisa Rhody's post on interpreting topics is also illuminating.
+'<a href="http://web.archive.org/web/20160704150726/http://www.lisarhody.com:80/some-assembly-required/">Some Assembly Required</a>' <em>Lisa @ Work</em> August 22, 2012.</li>
+<li>Clay Templeton, '<a href="http://mith.umd.edu/topic-modeling-in-the-humanities-an-overview/">Topic Modeling in the Humanities: An Overview |
+Maryland Institute for Technology in the Humanities</a>', n.d.</li>
+<li>David Blei, Andrew Ng, and Michael Jordan, '<a href="http://dl.acm.org/citation.cfm?id=944937">Latent dirichlet
+allocation</a>,' The Journal of Machine Learning Research 3 (2003).</li>
+<li>Finally, also consult David Mimno's <a href="http://mimno.infosci.cornell.edu/topics.html">bibliography of topic modeling
+articles</a>. They're tagged by topic to make finding the right one
 for a particular application that much easier. Also take a look at
 his recent article on <a href="http://www.perseus.tufts.edu/publications/02-jocch-mimno.pdf">Computational Historiography</a> from ACM
 Transactions on Computational Logic which goes through a hundred
 years of Classics journals to learn something about the field. While
 the article should be read as a good example of topic modeling, his
-&#39;Methods&#39; section is especially important, in that it discusses
+'Methods' section is especially important, in that it discusses
 preparing text for this sort of analysis.</li>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="topic-modeling-and-mallet/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Getting Started with Topic Modeling and MALLET\",\"layout\":\"lesson\",\"date\":\"2012-09-02T00:00:00.000Z\",\"authors\":[\"Shawn Graham\",\"Scott Weingart\",\"Ian Milligan\"],\"reviewers\":[\"John Fink\",\"Alan MacEachern\"],\"editors\":[\"Adam Crymble\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"analyzing\",\"topics\":[\"distant-reading\"],\"abstract\":\"In this lesson you will first learn what topic modeling is and why you might want to employ it in your research. You will then learn how to install and work with the MALLET natural language processing toolkit to do so.\",\"redirect_from\":\"\u002Flessons\u002Ftopic-modeling-and-mallet\",\"avatar_alt\":\"A man striking an anvil with a large hammer\",\"doi\":\"10.46430\u002Fphen0017\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"editors-note\\\"\u003EEditor&#39;s Note\u003C\u002Fh2\u003E\\n\u003Cp\u003EThis lesson requires you to use the command line. If you have no\\nprevious experience using the command line you may find it helpful to\\nwork through the Programming Historian \u003Ca href=\\\"\u002Flessons\u002Fintro-to-bash\\\"\u003EBash Command Line\u003C\u002Fa\u003E lesson.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn this lesson you will first learn what \u003Cem\u003Etopic modeling\u003C\u002Fem\u003E is and why you\\nmight want to employ it in your research. You will then learn how to\\ninstall and work with the MALLET \u003Cem\u003Enatural language processing\u003C\u002Fem\u003E toolkit\\nto do so. MALLET involves modifying an \u003Cem\u003Eenvironment variable\u003C\u002Fem\u003E\\n(essentially, setting up a short-cut so that your computer always knows\\nwhere to find the MALLET program) and working with the \u003Cem\u003Ecommand line\u003C\u002Fem\u003E\\n(ie, by typing in commands manually, rather than clicking on icons or\\nmenus). We will run the topic modeller on some example files, and look\\nat the kinds of outputs that MALLET installed. This will give us a\\ngood idea of how it can be used on a corpus of texts to identify topics\\nfound in the documents without reading them individually.\u003C\u002Fp\u003E\\n\u003Cp\u003EPlease see the MALLET users&#39; \u003Ca href=\\\"http:\u002F\u002Fmallet.cs.umass.edu\u002Fmailinglist.php\\\"\u003Ediscussion list\u003C\u002Fa\u003E for the full range of\\nthings one can do with the software.\u003C\u002Fp\u003E\\n\u003Cp\u003E(We would like to thank Robert Nelson and Elijah Meeks for hints and\\ntips in getting MALLET to run for us the first time, and for their\\nexamples of what can be done with this tool.)\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"what-is-topic-modeling-and-for-whom-is-this-useful\\\"\u003EWhat is Topic Modeling And For Whom is this Useful?\u003C\u002Fh2\u003E\\n\u003Cp\u003EA \u003Cem\u003Etopic modeling\u003C\u002Fem\u003E tool takes a single text (or corpus) and looks for\\npatterns in the use of words; it is an attempt to inject semantic\\nmeaning into vocabulary. Before you begin with topic modeling, you\\nshould ask yourself whether or not it is likely to be useful for your\\nproject. Matthew Kirschenbaum&#39;s \u003Cem\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.cs.umbc.edu\u002F~hillol\u002FNGDM07\u002Fabstracts\u002Ftalks\u002FMKirschenbaum.pdf\\\"\u003EDistant Reading\u003C\u002Fa\u003E\u003C\u002Fem\u003E (a talk given at the\\n2009 National Science Foundation Symposium on the Next Generation of\\nData Mining and Cyber-Enabled Discovery for Innovation) and Stephen\\nRamsay&#39;s \u003Cem\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.worldcat.org\u002Ftitle\u002Freading-machines-toward-an-algorithmic-criticism\u002Foclc\u002F708761605&amp;referer=brief_results\\\"\u003EReading Machines\u003C\u002Fa\u003E\u003C\u002Fem\u003E are good places for beginning to\\nunderstand in which circumstances a technique such as this could be most\\neffective. As with all tools, just because you can use it, doesn&#39;t\\nnecessarily mean that you should. If you are working with a small number\\nof documents (or even a single document) it may well be that simple\\nfrequency counts are sufficient, in which case something like \u003Ca href=\\\"http:\u002F\u002Fvoyant-tools.org\\\"\u003EVoyant\\nTools\u003C\u002Fa\u003E might be appropriate. However, if you have hundreds of\\ndocuments from an archive and you wish to understand something of what\\nthe archive contains without necessarily reading every document, then\\ntopic modeling might be a good approach.\u003C\u002Fp\u003E\\n\u003Cp\u003ETopic models represent a family of computer programs that extract\\n\u003Cem\u003Etopics\u003C\u002Fem\u003E from \u003Cem\u003Etexts\u003C\u002Fem\u003E. A topic to the computer is a list of words that\\noccur in statistically meaningful ways. A text can be an email, a blog\\npost, a book chapter, a journal article, a diary entry – that is, any\\nkind of unstructured text. By unstructured we mean that there are no\\ncomputer-readable annotations that tell the computer the semantic\\nmeaning of the words in the text.\u003C\u002Fp\u003E\\n\u003Cp\u003ETopic modeling programs do not know anything about the meaning of the\\nwords in a text. Instead, they assume that any piece of text is composed\\n(by an author) by selecting words from possible baskets of words where\\neach basket corresponds to a topic. If that is true, then it becomes\\npossible to mathematically decompose a text into the probable baskets\\nfrom whence the words first came. The tool goes through this process\\nover and over again until it settles on the most likely distribution of\\nwords into baskets, which we call topics.\u003C\u002Fp\u003E\\n\u003Cp\u003EThere are many different topic modeling programs available; this\\ntutorial uses one called MALLET. If one used it on a series of\\npolitical speeches for example, the program would return a list of\\ntopics and the keywords composing those topics. Each of these lists is a\\ntopic according to the algorithm. Using the example of political\\nspeeches, the list might look like:\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003EJob Jobs Loss Unemployment Growth\u003C\u002Fli\u003E\\n\u003Cli\u003EEconomy Sector Economics Stock Banks\u003C\u002Fli\u003E\\n\u003Cli\u003EAfghanistan War Troops Middle-East Taliban Terror\u003C\u002Fli\u003E\\n\u003Cli\u003EElection Opponent Upcoming President\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cem\u003Eet cetera\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003EBy examining the keywords we can discern that the politician who gave\\nthe speeches was concerned with the economy, jobs, the Middle East, the\\nupcoming election, and so on.\u003C\u002Fp\u003E\\n\u003Cp\u003EAs Scott Weingart warns, there are many \u003Ca href=\\\"http:\u002F\u002Fwww.scottbot.net\u002FHIAL\u002F?p=16713\\\"\u003Edangers\u003C\u002Fa\u003E that face those who\\nuse topic modeling without fully understanding it. For instance, we\\nmight be interested in word use as a proxy for placement along a\\npolitical spectrum. Topic modeling could certainly help with that, but\\nwe have to remember that the proxy is not in itself the thing we seek to\\nunderstand – as Andrew Gelman demonstrates in his mock study of \u003Ca href=\\\"http:\u002F\u002Farxiv.org\u002Fabs\u002F1003.6087\u002F\\\"\u003Ezombies\\nusing Google Trends\u003C\u002Fa\u003E. Ted Underwood and Lisa Rhody (see Further\\nReading) argue that we as historians would be better to think of these\\ncategories as discourses; however for our purposes here we will continue\\nto use the word: topic.\u003C\u002Fp\u003E\\n\u003Cp\u003ENote: You will sometimes come across the term &quot;\u003Cem\u003ELDA\u003C\u002Fem\u003E&quot; when looking into\\nthe bibliography of topic modeling. LDA and Topic Model are often used\\nsynonymously, but the LDA technique is actually a special case of topic\\nmodeling created by \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FLatent_Dirichlet_allocation\\\"\u003EDavid Blei and friends\u003C\u002Fa\u003E in 2002. It was not the\\nfirst technique now considered topic modeling, but it is by far the most\\npopular. The myriad variations of topic modeling have resulted in an\\nalphabet soup of techniques and programs to implement them that might be\\nconfusing or overwhelming to the uninitiated; ignore them for now. They\\nall work in much the same way. MALLET uses LDA.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"examples-of-topic-models-employed-by-historians\\\"\u003EExamples of topic models employed by historians:\u003C\u002Fh3\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ERob Nelson, \u003Cem\u003E\u003Ca href=\\\"http:\u002F\u002Fdsl.richmond.edu\u002Fdispatch\u002F\\\"\u003EMining the Dispatch\u003C\u002Fa\u003E\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003ECameron Blevins, &quot;\u003Ca href=\\\"http:\u002F\u002Fhistorying.org\u002F2010\u002F04\u002F01\u002Ftopic-modeling-martha-ballards-diary\u002F\\\"\u003ETopic Modeling Martha Ballard&#39;s Diary\u003C\u002Fa\u003E&quot;\\n\u003Cem\u003EHistorying\u003C\u002Fem\u003E, April 1, 2010.\u003C\u002Fli\u003E\\n\u003Cli\u003EDavid J Newman and Sharon Block, &quot;Probabilistic topic decomposition\\nof an eighteenth century American newspaper,&quot; \u003Cem\u003EJournal of the\\nAmerican Society for Information Science and Technology\u003C\u002Fem\u003E vol. 57,\\nno. 6 (April 1, 2006): 753-767.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch2 id=\\\"installing-mallet\\\"\u003EInstalling MALLET\u003C\u002Fh2\u003E\\n\u003Cp\u003EThere are many tools one could use to create topic models, but at the\\ntime of this writing (summer 2017) the simplest tool to run your text\\nthrough is called MALLET. \u003Ca href=\\\"http:\u002F\u002Fmallet.cs.umass.edu\u002Findex.php\\\"\u003EMALLET\u003C\u002Fa\u003E uses an implementation of\\n\u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FGibbs_sampling\\\"\u003E\u003Cem\u003EGibbs sampling\u003C\u002Fem\u003E\u003C\u002Fa\u003E, a statistical technique meant to quickly construct\\na sample distribution, to create its topic models. MALLET requires\\nusing the command line – we&#39;ll talk about that more in a moment,\\nalthough you typically use the same few commands over and over.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe installation instructions are different for Windows and Mac. Follow\\nthe instructions appropriate for you below:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;windows-150x150.png&quot; caption=&quot;&quot; %}\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"windows-instructions\\\"\u003EWindows Instructions\u003C\u002Fh3\u003E\\n\u003Col\u003E\\n\u003Cli\u003EGo to the \u003Ca href=\\\"http:\u002F\u002Fmallet.cs.umass.edu\u002Findex.php\\\"\u003EMALLET\u003C\u002Fa\u003E project page. You can \u003Ca href=\\\"http:\u002F\u002Fmallet.cs.umass.edu\u002Fdownload.php\\\"\u003Edownload MALLET here\u003C\u002Fa\u003E.\u003C\u002Fli\u003E\\n\u003Cli\u003EYou will also need the \u003Ca href=\\\"http:\u002F\u002Fwww.oracle.com\u002Ftechnetwork\u002Fjava\u002Fjavase\u002Fdownloads\u002Findex.html\\\"\u003EJava developer&#39;s kit\u003C\u002Fa\u003E – that is, not the\\nregular Java that&#39;s on every computer, but the one that lets you\\nprogram things. Install this on your computer.\u003C\u002Fli\u003E\\n\u003Cli\u003EUnzip MALLET into your \u003Ccode\u003EC:\u003C\u002Fcode\u003E directory . This is important: it\\ncannot be anywhere else. You will then have a directory called\\n\u003Ccode\u003EC:\\\\mallet-2.0.8\u003C\u002Fcode\u003E or similar. For simplicity&#39;s sake, rename this\\ndirectory just \u003Ccode\u003Emallet\u003C\u002Fcode\u003E.\u003C\u002Fli\u003E\\n\u003Cli\u003EMALLET uses an \u003Cem\u003Eenvironment variable\u003C\u002Fem\u003E to tell the computer where to\\nfind all the various components of its processes when it is running.\\nIt&#39;s rather like a shortcut for the program. A programmer cannot\\nknow exactly where every user will install a program, so the\\nprogrammer creates a variable in the code that will always stand in\\nfor that location. We tell the computer, once, where that location\\nis by setting the environment variable. If you moved the program to\\na new location, you&#39;d have to change the variable.\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003ETo create an environment variable in Windows 10, click Start (Windows icon) or press the Windows key on your keyboard then type &#39;Control Panel&#39;. Within Control Panel, select System and Security.  In System and Security, type &#39;Advanced&#39; into the search field (upper right) and choose &#39;View advanced system settings&#39; from the results. In the pop-up dialogue box, click &#39;Environmental Variables&#39;. Next, click &#39;New&#39; and type \u003Ccode\u003EMALLET_HOME\u003C\u002Fcode\u003E in the variable name\\nbox (Figures 1,2,3). It must be like this – all caps, with an underscore – since that is\\nthe shortcut that the programmer built into the program and all of its\\nsubroutines. Then type the exact path (location) of where you unzipped\\nMALLET in the variable value, e.g., \u003Ccode\u003Ec:\\\\mallet\u003C\u002Fcode\u003E. \u003C\u002Fp\u003E\\n\u003Cp\u003ETo see if you have been successful, please read on to the next section.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig1-advanced-system-settings.png&quot; caption=&quot;Figure 1: Advanced System Settings on Windows&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig2-environment-variables-location.png&quot; caption=&quot;Figure 2: Environment Variables Location&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig3-environment-variable.png&quot; caption=&quot;Figure 3: Environment Variable&quot; %}\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"running-mallet-using-the-command-line\\\"\u003ERunning MALLET using the Command Line\u003C\u002Fh4\u003E\\n\u003Cp\u003EMALLET is run from the command line, also known as \u003Cem\u003ECommand Prompt\u003C\u002Fem\u003E\\n(Figure 4). If you remember MS-DOS, or have ever played with a Unix\\ncomputer Terminal, this will be familiar. The command line is where you\\ncan type commands directly, rather than clicking on icons and menus.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig-4-command-prompt-window.png&quot; caption=&quot;Figure 4: Command Prompt on Windows&quot; %}\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003EClick on your\\n\u003Ccode\u003EStart Menu -&gt; All Programs -&gt; Accessories -&gt; Command Prompt\u003C\u002Fcode\u003E.\u003Cbr\u003E You&#39;ll get the command prompt window, which will have a cursor at\\n\u003Ccode\u003Ec:\\\\user\\\\user&gt;\u003C\u002Fcode\u003E (or similar; see Figure 4).\u003C\u002Fli\u003E\\n\u003Cli\u003EType \u003Ccode\u003Ecd ..\u003C\u002Fcode\u003E (That is: cd-space-period-period) to \u003Cem\u003Echange\\ndirectory\u003C\u002Fem\u003E. Keep doing this until you&#39;re at the \u003Ccode\u003EC:\\\\\u003C\u002Fcode\u003E . (as in\\nFigure 5)\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig-5-command-prompt-window-getting-to-c.png&quot; caption=&quot;Figure 5: Navigating to the C:\\\\ Directory in Command Prompt&quot; %}\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003EThen type \u003Ccode\u003Ecd mallet \u003C\u002Fcode\u003Eand you are in the MALLET directory. Anything\\nyou type in the command prompt window is a \u003Cem\u003Ecommand\u003C\u002Fem\u003E. There are\\ncommands like \u003Ccode\u003Ecd\u003C\u002Fcode\u003E (change directory) and \u003Ccode\u003Edir\u003C\u002Fcode\u003E (list directory\\ncontents) that the computer understands. You have to tell the\\ncomputer explicitly that &#39;this is a MALLET command&#39; when you want\\nto use MALLET. You do this by telling the computer to grab its\\ninstructions from the MALLET \u003Cem\u003Ebin\u003C\u002Fem\u003E, a subfolder in MALLET that\\ncontains the core operating routines.\u003C\u002Fli\u003E\\n\u003Cli\u003EType \u003Ccode\u003Ebin\\\\mallet\u003C\u002Fcode\u003E as in Figure 6. If all has gone well, you should\\nbe presented with a list of MALLET commands – congratulations! If\\nyou get an error message, check your typing. Did you use the wrong\\nslash? Did you set up the environment variable correctly? Is\\nMALLET located at \u003Ccode\u003EC:\\\\mallet\u003C\u002Fcode\u003E ?\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig-6command-prompt-mallet-installed.png&quot; caption=&quot;Figure 6: Command Prompt MALLET Installed&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EYou are now ready to skip ahead to the next section.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;apple-150x150.png&quot; caption=&quot;&quot; %}\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"mac-instructions\\\"\u003EMac Instructions\u003C\u002Fh3\u003E\\n\u003Cp\u003EMany of the instructions for OS X installation are similar to Windows,\\nwith a few differences. In fact, it is a bit easier.\u003C\u002Fp\u003E\\n\u003Col\u003E\\n\u003Cli\u003EDownload and \u003Ca href=\\\"http:\u002F\u002Fmallet.cs.umass.edu\u002Fdownload.php\\\"\u003Einstall MALLET\u003C\u002Fa\u003E.\u003C\u002Fli\u003E\\n\u003Cli\u003EDownload the \u003Ca href=\\\"http:\u002F\u002Fwww.oracle.com\u002Ftechnetwork\u002Fjava\u002Fjavase\u002Fdownloads\u002Findex.html\\\"\u003EJava Development Kit\u003C\u002Fa\u003E.\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003EUnzip MALLET into a directory on your system (for ease of following\\nalong with this tutorial, your \u003Ccode\u003E\u002Fuser\u002F\u003C\u002Fcode\u003E directory works but anywhere is\\nokay). Once it is unzipped, open up your Terminal window (in the\\n\u003Ccode\u003EApplications\u003C\u002Fcode\u003E directory in your Finder. Navigate to the directory where\\nyou unzipped MALLET using the Terminal (it will be \u003Ccode\u003Emallet-2.0.8\u003C\u002Fcode\u003E . If\\nyou unzipped it into your \u003Ccode\u003E\u002Fuser\u002F\u003C\u002Fcode\u003E directory as was suggested in this\\nlesson, you can navigate to the correct directory by typing\\n\u003Ccode\u003Ecd mallet-2.0.8\u003C\u002Fcode\u003E). cd is short for &quot;change directory&quot; when working in\\nthe Terminal.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe same command will suffice to run commands from this directory,\\nexcept you need to append \u003Ccode\u003E.\u002F\u003C\u002Fcode\u003E (period-slash) before each command. This\\nneeds to be done before all MALLET commands when working on a Mac.\u003C\u002Fp\u003E\\n\u003Cp\u003EGoing forward, the commands for MALLET on a Mac will be nearly\\nidentical to those on Windows, except for the direction of slashes\\n(there are a few other minor differences that will be noted when they\\narise). If on Windows a command would be \u003Ccode\u003E\\\\bin\\\\mallet\u003C\u002Fcode\u003E, on a Mac you\\nwould instead type:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003E.\u002Fbin\u002Fmallet\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EA list of commands should appear. If it does, congratulations – you&#39;ve\\ninstalled it correctly!\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"typing-in-mallet-commands\\\"\u003ETyping in MALLET Commands\u003C\u002Fh2\u003E\\n\u003Cp\u003ENow that you have MALLET installed, it is time to learn what commands\\nare available to use with the program. There are nine MALLET commands\\nyou can use (see Figure 6 above). Sometimes you can combine multiple\\ninstructions. At the Command Prompt or Terminal (depending on your\\noperating system), try typing:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003Eimport-dir --help\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou are presented with the error message that \u003Ccode\u003Eimport-dir\u003C\u002Fcode\u003E is not\\nrecognized as an internal or external command, operable program, or\\nbatch file. This is because we forgot to tell the computer to look in\\nthe MALLET \u003Ccode\u003Ebin\u003C\u002Fcode\u003E for it. Try again, with\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ebin\\\\mallet import-dir --help\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ERemember, the direction of the slash matters (See Figure 7, which\\nprovides an entire transcript of what we have done so far in the\\ntutorial). We checked to see that we had installed MALLET by typing in\\n\u003Ccode\u003Ebin\\\\mallet\u003C\u002Fcode\u003E. We then made the mistake with \u003Ccode\u003Eimport-dir\u003C\u002Fcode\u003E a few lines\\nfurther down. After that, we successfully called up the help file, which\\ntold us what \u003Ccode\u003Eimport-dir\u003C\u002Fcode\u003E does, and it listed all of the potential\\n\u003Cem\u003Eparameters\u003C\u002Fem\u003E you can set for this tool.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig-7-command-prompt-typing-help.png&quot; caption=&quot;Figure 7: The Help Menu in MALLET&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ENote: there is a difference in MALLET commands between a single hyphen\\nand a double hyphen. A single hyphen is simply part of the name; it\\nreplaces a space (e.g., \u003Ccode\u003Eimport-dir\u003C\u002Fcode\u003E rather than import dir), since\\nspaces offset multiple commands or parameters. These parameters let us\\ntweak the file that is created when we import our texts into MALLET. A\\ndouble hyphen (as with \u003Ccode\u003E–-help\u003C\u002Fcode\u003E above) modifies, adds a sub-command, or\\nspecifies some sort of parameter to the command.\u003C\u002Fp\u003E\\n\u003Cp\u003EFor Windows users, if you got the error \u003Cem\u003E&#39;exception in thread &quot;main&quot;\\njava.lang.NoClassDefFoundError:&#39;\u003C\u002Fem\u003E it might be because you installed\\nMALLET somewhere other than in the \u003Ccode\u003EC:\\\\\u003C\u002Fcode\u003E directory. For instance,\\ninstalling MALLET at \u003Ccode\u003EC:\\\\Program Files\\\\mallet\u003C\u002Fcode\u003E will produce this error\\nmessage. The second thing to check is that your environment variable is\\nset correctly. In either of these cases, check the Windows installation\\ninstructions and double check that you followed them properly.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"working-with-data\\\"\u003EWorking with data\u003C\u002Fh2\u003E\\n\u003Cp\u003EMALLET comes pre-packaged with sample \u003Ccode\u003E.txt\u003C\u002Fcode\u003E files with which you can\\npractice. Type \u003Ccode\u003Edir\u003C\u002Fcode\u003E at the \u003Ccode\u003EC:\\\\mallet&gt; prompt\u003C\u002Fcode\u003E, and you are given the\\nlisting of the MALLET directory contents. One of those directories is\\ncalled \u003Ccode\u003Esample-data\u003C\u002Fcode\u003E. You know it is a directory because it has the word\\n&lt;dir&gt; beside it.\u003C\u002Fp\u003E\\n\u003Cp\u003EType \u003Ccode\u003Ecd sample-data\u003C\u002Fcode\u003E. Type \u003Ccode\u003Edir\u003C\u002Fcode\u003E again. Using what you know, navigate\\nto first the \u003Ccode\u003Eweb\u003C\u002Fcode\u003E then the \u003Ccode\u003Een\u003C\u002Fcode\u003E directories. You can look inside these\\n\u003Ccode\u003E.txt\u003C\u002Fcode\u003E files by typing the full name of the file (with extension).\u003C\u002Fp\u003E\\n\u003Cp\u003ENote that you cannot now run any MALLET commands from this directory.\\nTry it:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ebin\\\\mallet import-dir --help\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou get the error message. You will have to navigate back to the main\\nMALLET folder to run the commands. This is because of the way MALLET\\nand its components are structured.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"importing-data\\\"\u003EImporting data\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn the \u003Ccode\u003Esample data\u003C\u002Fcode\u003E directory, there are a number of \u003Ccode\u003E.txt\u003C\u002Fcode\u003E files. Each\\none of these files is a single document, the text of a number of\\ndifferent web pages. The entire folder can be considered to be a corpus\\nof data. To work with this corpus and find out what the topics are that\\ncompose these individual documents, we need to transform them from\\nseveral individual text files into a single MALLET format file.\\nMALLET can import more than one file at a time. We can import the\\nentire directory of text files using the \u003Ccode\u003Eimport\u003C\u002Fcode\u003E command. The commands\\nbelow import the directory, turn it into a MALLET file, keep the\\noriginal texts in the order in which they were listed, and strip out the\\n\u003Cem\u003Estop words\u003C\u002Fem\u003E (words such as \u003Cem\u003Eand\u003C\u002Fem\u003E, \u003Cem\u003Ethe\u003C\u002Fem\u003E, \u003Cem\u003Ebut\u003C\u002Fem\u003E, and \u003Cem\u003Eif\u003C\u002Fem\u003E that occur in\\nsuch frequencies that they obstruct analysis) using the default English\\n\u003Ccode\u003Estop-words\u003C\u002Fcode\u003E dictionary. Try the following, which will use sample data.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ebin\\\\mallet import-dir --input sample-data\\\\web\\\\en --output tutorial.mallet --keep-sequence --remove-stopwords\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf you type \u003Ccode\u003Edir\u003C\u002Fcode\u003E now (or \u003Ccode\u003Els\u003C\u002Fcode\u003E for Mac), you will find a file called\\n\u003Ccode\u003Etutorial.mallet\u003C\u002Fcode\u003E. (If you get an error message, you can hit the cursor\\nup key on your keyboard to recall the last command you typed, and look\\ncarefully for typos). This file now contains all of your data, in a\\nformat that MALLET can work with.\u003C\u002Fp\u003E\\n\u003Cp\u003ETry running it again now with different data. For example, let&#39;s imagine we wanted to use the German sample data instead. We would use:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ebin\\\\mallet import-dir --input sample-data\\\\web\\\\de --output tutorial.mallet --keep-sequence --remove-stopwords\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAnd then finally, you could use your own data. Change \u003Ccode\u003Esample-data\\\\web\\\\de\u003C\u002Fcode\u003E to a directory that contains your own research files. Good luck!\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you are unsure how directories work, we suggest the \u003Cem\u003EProgramming Historian\u003C\u002Fem\u003E lesson \u003Ca href=\\\"\u002Flessons\u002Fintro-to-bash\\\"\u003E&quot;Introduction to the Bash Command Line&quot;\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"for-mac\\\"\u003EFor Mac\u003C\u002Fh3\u003E\\n\u003Cp\u003EMac instructions are similar to those above for Windows, but note some of the differences below:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003E.\u002Fbin\u002Fmallet import-dir --input sample-data\u002Fweb\u002Fen --output tutorial.mallet --keep-sequence --remove-stopwords\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"issues-with-big-data\\\"\u003EIssues with Big Data\u003C\u002Fh2\u003E\\n\u003Cp\u003EIf you&#39;re working with large file collections – or indeed,\\nvery large files – you may run into issues with your \u003Cem\u003Eheap space\u003C\u002Fem\u003E, your\\ncomputer&#39;s working memory. This issue will initially arise during the\\nimport sequence, if it is relevant. By default, MALLET allows for 1GB\\nof memory to be used. If you run into the following error message,\\nyou&#39;ve run into your limit:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EException in thread &quot;main&quot; java.lang.OutOfMemoryError: Java heap space\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf your system has more memory, you can try increasing the memory\\nallocated to your \u003Cem\u003EJava virtual machine\u003C\u002Fem\u003E. To do so, you need to edit the\\ncode in the \u003Ccode\u003Emallet\u003C\u002Fcode\u003E file found in the \u003Ccode\u003Ebin\u003C\u002Fcode\u003E subdirectory of your\\nMALLET folder. Using Komodo Edit, (See \u003Ca href=\\\"\u002Flessons\u002Fmac-installation\\\"\u003EMac\u003C\u002Fa\u003E,\\n\u003Ca href=\\\"\u002Flessons\u002Fwindows-installation\\\"\u003EWindows\u003C\u002Fa\u003E, \u003Ca href=\\\"\u002Flessons\u002Flinux-installation\\\"\u003ELinux\u003C\u002Fa\u003E for installation instructions), open the\\n\u003Ccode\u003EMallet.bat\u003C\u002Fcode\u003E file (\u003Ccode\u003EC:\\\\Mallet\\\\bin\\\\mallet.bat\u003C\u002Fcode\u003E) if you are using Windows,\\nor the \u003Ccode\u003Emallet\u003C\u002Fcode\u003E file (\u003Ccode\u003E~\u002FMallet\u002Fbin\u002Fmallet\u003C\u002Fcode\u003E) if you are using Linux or OS X.\u003C\u002Fp\u003E\\n\u003Cp\u003EFind the following line:\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003EMEMORY=1g\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EYou can then change the 1g value upwards – to 2g, 4g, or even higher\\ndepending on your system&#39;s RAM, which you can find out by looking up the\\nmachine&#39;s system information.\u003C\u002Fp\u003E\\n\u003Cp\u003ESave your changes. You should now be able to avoid the error. If not,\\nincrease the value again.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"your-first-topic-model\\\"\u003EYour first topic model\u003C\u002Fh2\u003E\\n\u003Cp\u003EAt the command prompt in the MALLET directory, type:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ebin\\\\mallet train-topics  --input tutorial.mallet\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis command opens your \u003Ccode\u003Etutorial.mallet\u003C\u002Fcode\u003E file, and runs the topic model\\nroutine on it using only the default settings. As it iterates through\\nthe routine, trying to find the best division of words into topics, your\\ncommand prompt window will fill with output from each run. When it is\\ndone, you can scroll up to see what it was outputting (as in Figure 8).\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig-8-basic-topic-model-output.png&quot; caption=&quot;Figure 8: Basic Topic Model Output&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EThe computer is printing out the key words, the words that help define a\\nstatistically significant topic, per the routine. In Figure 8, the first\\ntopic it prints out might look like this (your key words might look a\\nbit different):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E0    5    test cricket Australian hill acting England northern leading ended innings record runs scored run team batsman played society English\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf you are a fan of cricket, you will recognize that all of these words\\ncould be used to describe a cricket match. What we are dealing with here\\nis a topic related to Australian cricket. If you go to\\n\u003Ccode\u003EC:\\\\mallet\\\\sample-data\\\\web\\\\en\\\\hill.txt\u003C\u002Fcode\u003E, you will see that this file is\\na brief biography of the noted Australian cricketer Clem Hill. The 0 and\\nthe 5 we will talk about later in the lesson. Note that MALLET\\nincludes an element of randomness, so the keyword lists will look\\ndifferent every time the program is run, even if on the same set of\\ndata.\u003C\u002Fp\u003E\\n\u003Cp\u003EGo back to the main MALLET directory, and type \u003Ccode\u003Edir\u003C\u002Fcode\u003E. You will see\\nthat there is no output file. While we successfully created a topic\\nmodel, we did not save the output! At the command prompt, type\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ebin\\\\mallet train-topics  --input tutorial.mallet --num-topics 20 --output-state topic-state.gz --output-topic-keys tutorial_keys.txt --output-doc-topics tutorial_compostion.txt\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EHere, we have told MALLET to create a topic model (\u003Ccode\u003Etrain-topics\u003C\u002Fcode\u003E) and\\neverything with a double hyphen afterwards sets different parameters\u003C\u002Fp\u003E\\n\u003Cp\u003EThis command\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eopens your \u003Ccode\u003Etutorial.mallet\u003C\u002Fcode\u003E file\u003C\u002Fli\u003E\\n\u003Cli\u003Etrains MALLET to find 20 topics\u003C\u002Fli\u003E\\n\u003Cli\u003Eoutputs every word in your corpus of materials and the topic it\\nbelongs to into a compressed file (\u003Ccode\u003E.gz\u003C\u002Fcode\u003E; see \u003Ca href=\\\"http:\u002F\u002Fwww.gzip.org\\\"\u003Ewww.gzip.org\u003C\u002Fa\u003E on how to\\nunzip this)\u003C\u002Fli\u003E\\n\u003Cli\u003Eoutputs a text document showing you what the top key words are for\\neach topic (\u003Ccode\u003Etutorial_keys.txt\u003C\u002Fcode\u003E)\u003C\u002Fli\u003E\\n\u003Cli\u003Eand outputs a text file indicating the breakdown, by percentage, of\\neach topic within each original text file you imported\\n(\u003Ccode\u003Etutorial_composition.txt\u003C\u002Fcode\u003E). (To see the full range of possible\\nparameters that you may wish to tweak, type\\n\u003Ccode\u003Ebin\\\\mallet train-topics –-help\u003C\u002Fcode\u003E at the prompt.)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EType \u003Ccode\u003Edir\u003C\u002Fcode\u003E. Your outputted files will be at the bottom of the list of\\nfiles and directories in \u003Ccode\u003EC:\\\\Mallet\u003C\u002Fcode\u003E. Open \u003Ccode\u003Etutorial_keys.txt\u003C\u002Fcode\u003E in a word\\nprocessor (Figure 9). You are presented with a series of paragraphs. The\\nfirst paragraph is topic 0; the second paragraph is topic 1; the third\\nparagraph is topic 2; etc. (The output begins counting at 0 rather than\\n1; so if you ask it to determine 20 topics, your list will run from 0 to\\n19). The second number in each paragraph is the \u003Cem\u003EDirichlet parameter\u003C\u002Fem\u003E for\\nthe topic. This is related to an option which we did not run, and so its\\ndefault value was used (this is why every topic in this file has the\\nnumber 2.5).\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig-9-tutorial-key-words-in-Word.png&quot; caption=&quot;Figure 9: Keywords Shown in a Word Processor&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EIf when you ran the topic model routine you had included\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E--optimize-interval 20\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Eas below\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ebin\\\\mallet train-topics  --input tutorial.mallet  --num-topics 20 --optimize-interval 20 --output-state topic-state.gz  --output-topic-keys tutorial_keys.txt --output-doc-topics tutorial_composition.txt\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Ethe output might look like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E0 0.02995 xi ness regular asia online cinema established alvida acclaim veenr commercial\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThat is, the first number is the topic (topic 0), and the second number\\ngives an indication of the \u003Cem\u003Eweight\u003C\u002Fem\u003E of that topic. In general, including\\n\u003Ccode\u003E-–optimize-interval\u003C\u002Fcode\u003E leads to better topics.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"the-composition-of-your-documents\\\"\u003EThe composition of your documents\u003C\u002Fh3\u003E\\n\u003Cp\u003EWhat topics compose your documents? The answer is in the\\n\u003Ccode\u003Etutorial_composition.txt\u003C\u002Fcode\u003E file. To stay organized, import the\\n\u003Ccode\u003Etutorial_composition.txt\u003C\u002Fcode\u003E file into a spreadsheet (Excel, Open Office,\\netc). You will have a spreadsheet with a #doc, source, topic,\\nproportion columns. All subsequent columns run topic, proportion, topic,\\nproportion, etc., as in figure 10.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;fig-10-topic-composition.png&quot; caption=&quot;Figure 10: Topic Composition&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EThis can be a somewhat difficult file to read. The topics begin in the third\\ncolumn, in this case Column C, and continue until the last topic in Column V.\\nThis is because we have trained 20 topics – if we trained 25, for example,\\nthey would run until column AA.\u003C\u002Fp\u003E\\n\u003Cp\u003EFrom this, you can see that doc# 0 (ie, the first document loaded into MALLET),\\n\u003Ccode\u003Eelizabeth_needham.txt\u003C\u002Fcode\u003E has topic 0 at a percentage of 0.43% (column C).\\nWe can see that topic 17 is the principal topic, at 59.05%, by locating the highest\\nvalue. Your own topics may be different given the nature of MALLET.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you have a corpus of text files that are arranged in chronological\\norder (e.g., \u003Ccode\u003E1.txt\u003C\u002Fcode\u003E is earlier than \u003Ccode\u003E2.txt\u003C\u002Fcode\u003E), then you can graph this\\noutput in your spreadsheet program, and begin to see changes over time,\\nas Robert Nelson has done in \u003Ca href=\\\"http:\u002F\u002Fdsl.richmond.edu\u002Fdispatch\u002F\\\"\u003EMining the Dispatch\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EHow do you know the number of topics to search for? Is there a \u003Cem\u003Enatural\u003C\u002Fem\u003E\\nnumber of topics? What we have found is that one has to run the\\ntrain-topics with varying numbers of topics to see how the composition\\nfile breaks down. If we end up with the majority of our original texts\\nall in a very limited number of topics, then we take that as a signal\\nthat we need to increase the number of topics; the settings were too\\ncoarse. There are computational ways of searching for this, including\\nusing MALLETs \u003Ccode\u003Ehlda command\u003C\u002Fcode\u003E, but for the reader of this tutorial, it is\\nprobably just quicker to cycle through a number of iterations (but for\\nmore see Griffiths, T. L., &amp; Steyvers, M. (2004). Finding scientific\\ntopics. Proceedings of the National Academy of Science, 101, 5228-5235).\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"getting-your-own-texts-into-mallet\\\"\u003EGetting your own texts into MALLET\u003C\u002Fh3\u003E\\n\u003Cp\u003EThe \u003Ccode\u003Esample data\u003C\u002Fcode\u003E folder in MALLET is your guide to how you should\\narrange your texts. You want to put everything you wish to topic model\\ninto a single folder within \u003Ccode\u003Ec:\\\\mallet\u003C\u002Fcode\u003E, ie \u003Ccode\u003Ec:\\\\mallet\\\\mydata\u003C\u002Fcode\u003E. Your\\ntexts should be in \u003Ccode\u003E.txt\u003C\u002Fcode\u003E format (that is, you create them with Notepad,\\nor in Word choose \u003Ccode\u003ESave As -&gt; MS Dos text\u003C\u002Fcode\u003E). You have to make some\\ndecisions. Do you want to explore topics at a paragraph by paragraph\\nlevel? Then each \u003Ccode\u003Etxt\u003C\u002Fcode\u003E file should contain one paragraph. Things like\\npage numbers or other identifiers can be indicated in the name you give\\nthe file, e.g., \u003Ccode\u003Epg32_paragraph1.txt\u003C\u002Fcode\u003E. If you are working with a diary,\\neach text file might be a single entry, e.g., \u003Ccode\u003Eapril_25_1887.txt\u003C\u002Fcode\u003E. (Note\\nthat when naming folders or files, do not leave spaces in the name.\\nInstead use underscores to represent spaces). If the texts that you are\\ninterested in are on the web, you might be able to \u003Ca href=\\\"http:\u002F\u002Felectricarchaeology.ca\u002F2012\u002F07\u002F09\u002Fmining-a-day-of-archaeology\u002F\\\"\u003Eautomate this\\nprocess\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"further-reading-about-topic-modeling\\\"\u003EFurther Reading about Topic Modeling\u003C\u002Fh3\u003E\\n\u003Cp\u003ETo see a fully worked out example of topic modeling with a body of\\nmaterials culled from webpages, see \u003Ca href=\\\"http:\u002F\u002Felectricarchaeology.ca\u002F2012\u002F06\u002F08\u002Fmining-the-open-web-with-looted-heritage-draft\u002F\\\"\u003EMining the Open Web with Looted\\nHeritage Draft\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou can grab the data for yourself at \u003Ca href=\\\"https:\u002F\u002Fndownloader.figshare.com\u002Ffiles\u002F90972\\\"\u003EFigshare.com\u003C\u002Fa\u003E, which includes a\\nnumber of \u003Ccode\u003E.txt\u003C\u002Fcode\u003E files. Each individual \u003Ccode\u003E.txt\u003C\u002Fcode\u003E file is a single news\\nreport.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EFor extensive background and bibliography on topic modeling you may\\nwish to begin with Scott Weingart&#39;s \u003Ca href=\\\"http:\u002F\u002Fwww.scottbot.net\u002FHIAL\u002F?p=19113\\\"\u003EGuided Tour to Topic\\nModeling\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003ETed Underwood&#39;s &#39;\u003Ca href=\\\"http:\u002F\u002Ftedunderwood.wordpress.com\u002F2012\u002F04\u002F07\u002Ftopic-modeling-made-just-simple-enough\u002F\\\"\u003ETopic modeling made just simple enough\u003C\u002Fa\u003E&#39; is an\\nimportant discussion on interpreting the meaning of topics.\u003C\u002Fli\u003E\\n\u003Cli\u003ELisa Rhody&#39;s post on interpreting topics is also illuminating.\\n&#39;\u003Ca href=\\\"http:\u002F\u002Fweb.archive.org\u002Fweb\u002F20160704150726\u002Fhttp:\u002F\u002Fwww.lisarhody.com:80\u002Fsome-assembly-required\u002F\\\"\u003ESome Assembly Required\u003C\u002Fa\u003E&#39; \u003Cem\u003ELisa @ Work\u003C\u002Fem\u003E August 22, 2012.\u003C\u002Fli\u003E\\n\u003Cli\u003EClay Templeton, &#39;\u003Ca href=\\\"http:\u002F\u002Fmith.umd.edu\u002Ftopic-modeling-in-the-humanities-an-overview\u002F\\\"\u003ETopic Modeling in the Humanities: An Overview |\\nMaryland Institute for Technology in the Humanities\u003C\u002Fa\u003E&#39;, n.d.\u003C\u002Fli\u003E\\n\u003Cli\u003EDavid Blei, Andrew Ng, and Michael Jordan, &#39;\u003Ca href=\\\"http:\u002F\u002Fdl.acm.org\u002Fcitation.cfm?id=944937\\\"\u003ELatent dirichlet\\nallocation\u003C\u002Fa\u003E,&#39; The Journal of Machine Learning Research 3 (2003).\u003C\u002Fli\u003E\\n\u003Cli\u003EFinally, also consult David Mimno&#39;s \u003Ca href=\\\"http:\u002F\u002Fmimno.infosci.cornell.edu\u002Ftopics.html\\\"\u003Ebibliography of topic modeling\\narticles\u003C\u002Fa\u003E. They&#39;re tagged by topic to make finding the right one\\nfor a particular application that much easier. Also take a look at\\nhis recent article on \u003Ca href=\\\"http:\u002F\u002Fwww.perseus.tufts.edu\u002Fpublications\u002F02-jocch-mimno.pdf\\\"\u003EComputational Historiography\u003C\u002Fa\u003E from ACM\\nTransactions on Computational Logic which goes through a hundred\\nyears of Classics journals to learn something about the field. While\\nthe article should be read as a good example of topic modeling, his\\n&#39;Methods&#39; section is especially important, in that it discusses\\npreparing text for this sort of analysis.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/pt/directrizes-autor"),
+					params: {lang:"pt",lessons:"directrizes-autor"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Directrizes para Autores</h1>
+<img src="/images/author-sm.png" class="garnish rounded float-left" alt="{{ site.data.snippets.write-a-lesson-image-alt[page.lang] }}"/>
+<h2 class="noclear">Etapa 1: <a href="#etapa-1-propor-uma-nova-lição">Propor uma nova lição</a></h2>
+<h2 class="noclear">Etapa 2: <a href="#etapa-2-escrever-e-formatar-uma-nova-lição">Escrever e formatar uma nova lição</a></h2>
+<h2 class="noclear">Etapa 3: <a href="#etapa-3-submeter-uma-nova-lição">Submeter uma nova lição</a></h2>
+<p>Estas directrizes foram desenvolvidas para ajudar a entender o processo de criação de um tutorial para o <em>Programming Historian em português</em>. Estão incluídos detalhes práticos e teóricos do processo de escrita do tutorial, bem como a indicação do fluxo de trabalho e do processo de revisão por pares. Se a qualquer momento não estiver seguro, basta enviar um email ao editor {% include managing-editor.html lang=page.lang %}.</p>
+<h2>Etapa 1: Propor uma nova lição</h2>
+<div class="alert alert-success">
+Procuramos lições relevantes para as Humanidades sobre um problema ou processo que sejam sustentáveis a longo prazo e dirigidos a um público geral, com qualquer nível de aptidão técnica e experiência.
+<p>O âmbito e extensão da lição devem ser adequados à  complexidade da tarefa, mas não devem ter mais de 8.000 palavras (incluindo códigos). Lições mais curtas são bem-vindas. Lições mais longas podem precisar de ser divididas.</p>
+</div>
+<p>Se tem uma ideia para uma nova lição preencha o <a href="/assets/forms/formulario.proposta.licao.txt">formulário de proposta de lição</a> e envie para {% include managing-editor.html lang=page.lang %}.</p>
+<p>Para ter uma ideia do que publicamos consulte as <a href="/pt/licoes">lições publicadas</a>, leia as nossas <a href="/pt/directrizes-revisor">orientações para revisores</a> ou navegue pelas <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/pt/licoes">lições em desenvolvimento</a>. Por favor, reserve um momento para verificar o nosso documento de <a href="https://docs.google.com/spreadsheets/d/1vrvZTygZLfQRoQildD667Xcgzhf_reQC8Nq4OD-BRIA/edit#gid=0">Concordância de Lições</a> para ver quais os métodos já abordados nas nossas lições publicadas ou futuras.</p>
+<p>Se a sua proposta for aceite, um editor criará uma página &quot;Proposta&quot; no nosso <a href="https://github.com/programminghistorian/ph-submissions/issues">website de submissões</a> com o título da lição, mesmo que seja apenas um rascunho, e com os objetivos propostos. Isto serve para acompanhar o trabalho em andamento. Para garantir a publicação em tempo útil, os autores devem enviar a sua proposta de lição no prazo de 90 dias.</p>
+<p>Durante este período, o seu ponto de contato será o editor-chefe ou um editor nomeado.</p>
+<h2>Etapa 2: Escrever e formatar uma nova lição</h2>
+<p>Estas directrizes estabelecem um conjunto de regras para os autores utilizarem na criação ou tradução de lições para o <em>Programming Historian em português</em>. Ao utilizá-lo, os autores nos ajudarão a garantir que o conteúdo é consistente e acessível.</p>
+<p>Estas estão organizadas em três seções que devem ser lidas antes e depois de escrever a lição:</p>
+<ul>
+<li>A. Estilo e público</li>
+<li>B. Directrizes específicas de estilo</li>
+<li>C. Directrizes de formatação</li>
+</ul>
+<h2>A. Estilo e público</h2>
+<p>Esta primeira seção trata de questões gerais sobre o estilo, que ajudarão a tomar decisões que tenham em conta as necessidades do público e dos editores. Temos informações básicas sobre o estilo e o tom da lição, acesso aberto e valores de código aberto, informações sobre como escrever para um público geral, sustentabilidade das lições e escolhas inteligentes sobre as fontes de dados a utilizar. Leia esta seção quando planejar a lição e, novamente, antes de a enviar para garantir que cumpre os requisitos.</p>
+<h3>Idioma e estilo</h3>
+<ul>
+<li>As lições não devem exceder 8.000 palavras (incluindo código).</li>
+<li>O tom deve ser formal, mas acessível.</li>
+<li>O leitor deve ser tratado na segunda pessoa.</li>
+<li>Utilize um estilo de português genérico, que se adapte tanto ao português europeu quanto ao brasileiro.</li>
+<li>A sua contribuição é um &quot;tutorial&quot; ou uma &quot;lição&quot; e não um &quot;artigo&quot;.</li>
+</ul>
+<h3>Código aberto, Acesso aberto</h3>
+<p>O <em>Programming Historian em português</em> está comprometido com os valores de código aberto. Todas as lições devem usar linguagens de programação e softwares livres sempre que possível. O objetivo é minimizar os custos e permitir aumentar a participação o máximo possível.</p>
+<p>Depois da lição ser aceite, o autor deve concordar com a sua publicação sob uma licença Creative Commons &quot;<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC-BY</a>&quot;.</p>
+<h3>Escrever para um público geral</h3>
+<p>Os leitores do <em>Programming historian</em> vivem em todo o mundo. Os autores podem e devem tomar medidas para escrever a lição de forma acessível para o maior número de pessoas possível. Siga estas directrizes gerais:</p>
+<ul>
+<li>
+<p>Escreva para alguém que não more no mesmo país ou que não partilhe das mesmas crenças.</p>
+</li>
+<li>
+<p><strong>Termos técnicos:</strong>  devem ser sempre apresentados com um link para a <a href="https://www.wikipedia.org/">Wikipedia</a>, para um dicionário de confiança ou site sustentável em primeira instância. Um termo técnico é qualquer palavra que não seja do conhecimento geral das pessoas, algo que alguém possa não conhecer ou entender.</p>
+</li>
+<li>
+<p><strong>Referências Culturais</strong>: referências a pessoas, organizações ou detalhes históricos devem sempre vir com informações de contexto. Não se pode assumir que o leitor tem conhecimento prévio, mesmo de referências culturais  muito conhecidas (como os <a href="https://en.wikipedia.org/wiki/The_Beatles">Beatles</a>). É melhor utilizar termos genéricos ao invés de marcas comerciais (lencinhos em vez de Kleenex). Os links para a <a href="https://www.wikipedia.org/">Wikipedia</a> devem ser usados para contexto. Esteja ciente de que eventos históricos muitas vezes têm nomes diferentes em países diferentes.</p>
+</li>
+<li>
+<p><strong>Expressões</strong>: evite brincadeiras, trocadilhos, jogos de palavras, expressões idiomáticas, sarcasmo, emojis, jargões, termos exclusivos do seu dialeto ou um registo mais complicado do que o necessário.</p>
+</li>
+<li>
+<p><strong>Geografia</strong>: ao referenciar  lugares, seja específico. &quot;Sudoeste&quot; pode representar lugares diferentes: Valência? Canadá? África? É necessário escrever o nome completo da área, pelo menos, na primeira vez em que é utilizado.</p>
+</li>
+<li>
+<p><strong>Multilíngue</strong>: na escolha de métodos ou ferramentas, é necessário ter em conta leitores multilíngues - especialmente para métodos de análise textual, que podem não suportar outros conjuntos de caracteres ou que podem apenas apresentar resultados intelectualmente robustos quando usados em textos em português. Sempre que possível, escolha abordagens com documentação multilíngue ou que forneçam  referências multilíngues para leitura adicional. Isso também ajudará os tradutores.</p>
+</li>
+<li>
+<p><strong>Linguagem racial e étnica</strong>: terminologia racial deve ser utilizada com cuidado e especificidade. Termos históricos não mais em uso devem ser utilizados apenas no seu contexto histórico e somente quando necessário. Usar termos raciais como adjetivos e não substantivos: pessoas brancas em vez de &quot;brancos&quot;, uma mulher asiática em vez de &quot;uma asiática&quot;. Esteja ciente de que os termos podem ser entendidos de maneira diferente em diferentes países e que o que no seu contexto é considerado correto, pode ser culturalmente específico do seu país (por exemplo, nem todas as pessoas com ascendência africana são &quot;afro-americanas&quot;. Algumas delas são africanas ou britânicas ou do Caribe, etc.). Da mesma forma, leitores do Reino Unido entenderão “Ásia” (Índia, Paquistão, Bangladesh) de forma diferente dos leitores da América do Norte (por exemplo,  China, Japão, Vietnã, Tailândia).</p>
+</li>
+<li>
+<p><strong>Representações visuais</strong>: na escolha de fontes primárias, imagens, figuras e capturas de tela, é importante ter em consideração como elas serão apresentadas a um público geral.</p>
+</li>
+</ul>
+<h3>Escrita sustentável</h3>
+<p>O <em>Programming historian em português</em> publica lições que estarão disponíveis a longo prazo e que sejam sustentáveis. Por favor, siga estas directrizes de sustentabilidade ao escrever:</p>
+<ul>
+<li><strong>Ser tão geral quanto possível, mas não demasiado</strong>: foque em metodologias e generalidades, não em detalhes do software/interface (por exemplo, evite dizer aos usuários para &quot;clicar no botão X&quot;, que podem ser diferentes em versões futuras).</li>
+<li><strong>Diminuir a dependência de elementos insustentáveis</strong>: use um número moderado de capturas de tela. As interfaces dos programas mudam com frequência e os futuros leitores podem ficar confusos quando não corresponder à versão deles. Escolha links externos com preocupações futuras em mente. O website muda com frequência? Será que existirá  daqui a dez anos?</li>
+<li><strong>Especificar as versões se importantes</strong>: seja claro sobre qualquer detalhe específico da versão que os leitores precisarão saber para acompanhar a lição. Por exemplo, é necessário ser Python v.2 ou qualquer versão serve?</li>
+<li><strong>Referir documentação</strong>: direcione os leitores para documentação de confiança sempre que possível. Forneça uma orientação geral sobre como encontrar a documentação futuramente, para o caso de aparecerem novas versões no futuro.</li>
+<li><strong>Cópias de dados</strong>: todos os dados usados nas lições devem ser publicados com a lição nos servidores do <em>Programming Historian em português</em>. O direito legal de utilizar e publicar os dados deve estar assegurado. Os ficheiros de dados devem ser em formatos abertos.</li>
+</ul>
+<p>Os autores devem consultar a <a href="/pt/licoes-politica-remocao">política de remoção das lições</a> para obter informações sobre como a equipe editorial administra as lições que se tornam desatualizadas.</p>
+<h2>B. Directrizes específicas de estilo</h2>
+<p>Esta segunda seção é sobre questões mais específicas de estilo de escrita, tais como quais palavras usar, como utilizar a pontuação ou que formato adotar para datas ou números. Leia esta seção antes e depois de escrever seu texto.</p>
+<h3>Datas e Tempo</h3>
+<ul>
+<li>Para os séculos, use século XVIII e não século dezoito ou século 18. Evite frases centradas no contexto nacional, como &quot;longo século dezoito&quot;, que têm significado específico para os especialistas do século dezoito britânico, mas não para qualquer outra pessoa.</li>
+<li>Para décadas, escreva “década de 50” ou “década de 1950” (não “1950s”, &quot;os 1950s&quot; ou &quot;os cinquenta&quot;).</li>
+<li>Não comprima sequências de datas: use 1816-1819 em vez de 1816-19 ou 1816-9.</li>
+<li>Para datas escritas em forma numérica, utilize o formato AAAA-MM-DD, que está em conformidade com a norma ISO 8601:2004. Isso evita ambiguidade.</li>
+<li>Use AC/DC e não BCE/CE ou BC/AD para datas (ex. 325 AC).</li>
+<li>Use 17 horas ou 17:30 em vez de 5pm ou 5:30pm.</li>
+</ul>
+<h3>Números</h3>
+<ul>
+<li>Escreva por extenso os números de um a nove.</li>
+<li>Use um formato consistente se o limite acima for cruzado em uma única frase (cinco maçãs e cem laranjas; 5 maçãs e 100 laranjas).</li>
+<li>Utilize pontos entre grupos de três dígitos em grandes números (32.904 e não 32904). Exceções: números de páginas, endereços, entre aspas, etc.</li>
+<li>Use numerais para versões (versão 5 ou v.5) ou valores reais (por exemplo, 5%, 7″, $6.00).</li>
+<li>Use sempre o símbolo % com numerais ao invés da palavra “por cento” e verifique  se o número está fechado: 0,05%.</li>
+<li>Use a formatação LaTeX para fórmulas matemáticas.</li>
+<li>Para unidades de medida, use o sistema métrico.</li>
+</ul>
+<h3>Cabeçalhos</h3>
+<p>Os cabeçalhos não devem conter fontes de código embutido ou formatação de estilo como negrito ou itálico. Devem sempre preceder imediatamente o corpo do texto. Não coloque a seguir ao título um aviso ou outro título sem antes inserir uma nota introdutória.</p>
+<h3>Listas</h3>
+<p>Normalmente, utilizamos listas numeradas e listas com marcadores. Os itens das listas são limitados a frases. Devem ser tratados como itens separados, sem pontuação ou conjunções.</p>
+<p>NÃO faz parte do estilo:</p>
+<ul>
+<li>Aqui está um item, e</li>
+<li>aqui está outro item; e</li>
+<li>aqui está o item final.</li>
+</ul>
+<p>Faz parte do estilo:</p>
+<ul>
+<li>Aqui está um item</li>
+<li>Aqui está outro item</li>
+<li>Aqui está o item final</li>
+</ul>
+<p>Ou:</p>
+<ol>
+<li>Aqui está um item</li>
+<li>Aqui está outro item</li>
+<li>Aqui está o item final</li>
+</ol>
+<h3>Pontuação</h3>
+<ul>
+<li><strong>Abreviação</strong>: escreva todas as palavras por extenso, na primeira menção. União Europeia (UE) e depois UE. Não utilize pontos ou espaços entre as iniciais: BBC, PhD, mph, 4am, etc.</li>
+<li><strong>Ampersand</strong>: em geral, não utilize um ampersand (eitza ou sinal tironiano) no lugar da conjunção aditiva &quot;e&quot; a menos que se refira a uma empresa ou publicação que a utilize: P&amp;O, Past &amp; Present.</li>
+<li><strong>Parênteses/Parênteses Retos/Chaves</strong>: é melhor usar vírgulas ou travessões. Utilize parênteses para introduzir explicações numa citação direta, por exemplo: Ele disse: &quot;Quando terminado (o túnel) vai revolucionar a viagem&quot; ou &quot;Ela disse adiós (adeus)&quot;. Coloque reticências ou um ponto final fora do parêntese final se o material dentro não for uma frase. (Mas uma frase independente tem um ponto final antes do parêntese de fechamento.)</li>
+<li><strong>Dois pontos</strong>: utilize para introduzir listas, tabulações, textos, como em:
+<ul>
+<li>O comitê recomenda: estender o horário de licenciamento até à meia-noite; permitir que as crianças estejam em locais licenciados; relaxar o controlo de planeamento em novas casas públicas.</li>
+<li>Utilize após o nome de um orador para citar uma frase inteira: o Sr. James Sherwood, presidente da Sealink, disse: &quot;Nós temos...&quot;</li>
+<li>Inicie em minúscula a primeira letra após os dois pontos: é assim que nós fazemos.</li>
+</ul>
+</li>
+<li><strong>Vírgula</strong>: vírgula sequencial (esta, aquela e a outra).</li>
+<li><strong>Travessão</strong>: útil para usar ao invés de vírgulas, mas não mais do que um par por frase.</li>
+<li><strong>Reticências</strong>: três pontos separados das palavras anteriores e seguintes por um espaço ( ... ). Use para condensar uma citação direta (assim a citação &quot;as pessoas sentadas nesta sala de reunião merecem um acordo melhor&quot; torna-se &quot;as pessoas ... merecem um acordo melhor&quot;).</li>
+<li><strong>Ponto de exclamação</strong>: use somente no final de uma citação direta quando estiver claro que a observação é exclamativa, por exemplo &quot;Eu odeio a intolerância!&quot;</li>
+<li><strong>Ponto final</strong>: as frases devem ser curtas, claras e diretas. Mas não coloque pontos entre as iniciais, após o título do status (Mx, Dr) ou entre abreviações (EU).</li>
+<li><strong>Hífen</strong>: use para evitar ambiguidade ou para formar uma única ideia a partir de duas ou mais palavras:
+<ul>
+<li>Para frações: dois-terços.</li>
+<li>Para a maior parte das palavras que começam com anti ou neo.</li>
+<li>Para alguns títulos (diretor-geral, secretário-geral, mas não para Procurador Geral,  coordenador geral etc.). A regra é adotar o uso da autoridade conforme ela mesma criou.</li>
+</ul>
+</li>
+<li><strong>Aspas</strong>: use aspas retas &quot;...&quot; ou '...' (e não aspas curvas) para citações diretas. Usar tanto as aspas simples quanto as aspas duplas, mas seja consistente.</li>
+</ul>
+<h3>Maiúsculas</h3>
+<p>A orientação é que seja utilizada com moderação no texto em prosa. Regras específicas:</p>
+<ul>
+<li><strong>Em títulos</strong>: cabeçalhos e títulos de livros devem usar maiúsculas para iniciar nomes, pronomes, verbos, advérbios e adjetivos, mas não artigos e preposições : &quot;Preparar os Dados para Análise&quot;; <em>Não Serás um Estranho</em>, etc.</li>
+<li><strong>Sempre em maiúscula</strong>:
+<ul>
+<li><strong>Nomes Próprios</strong>: William J. Turkel – a não ser que a pessoa escolha que o seu nome seja escrito de outra forma (ex. &quot;bell hooks&quot;).</li>
+<li><strong>Organizações Culturais, Artísticas e Governamentais, etc</strong>: Museu da Imagem e do Som, Casa de Anne Frank, Agency for Global Media, Nações Unidas.</li>
+<li><strong>Feriados e festejos</strong>: Diwali, Chanucá, Eid-Ul-Adha, Ramadão.</li>
+</ul>
+</li>
+<li><strong>Ocasionalmente ou parcialmente escritos em maiúsculas:</strong>:
+<ul>
+<li><strong>Locais</strong>: capitais de países, regiões, áreas reconhecidas (ex.: Oriente Médio, Senegal). Usar minúsculas para pontos cardeais, exceto quando usados como parte do nome de um local (para chegar ao Polo Norte, siga para o norte). Outros exemplos: nordeste do Quênia, sul do Brasil, o oeste, Canadá ocidental, América Central, América Latina.</li>
+<li><strong>Eventos Históricos</strong>: Primeira Guerra Mundial, Segunda Guerra Mundial; guerra da(do) Criméia/Bôeres/Vietnã/Golfo; Guerra dos Cem Anos.</li>
+<li><strong>Religião</strong>: maiúsculas para Anglicana, Batista, Budista, Católica, Cristã, Hindu, Metodista, Muçulmana, Protestante, Católica Apostólica Romana, Sique, e minúsculas para evangélicos, carismáticos, ateístas.</li>
+<li><strong>Livros Sagrados</strong>: usar inicial maiúscula para os livros sagrados das religiões (Novo Testamento; Livro dos Mortos Tibetano; Brahmanas; Torah; Hadith ou Adi Granth, por exemplo).</li>
+<li><strong>Funções ou Profissões</strong>: colocar em maiúscula quando usado juntamente com um nome – Presidente Macron, mas não como uma descrição – Emmanuel Macron, presidente da França.</li>
+<li><strong>Organizações e Instituições</strong>: o Governo (maiúscula em todas as referências), o Gabinete (maiúscula em todas as referências), a Igreja da Irlanda (maiúscula quando completa, minúscula se referência abreviada &quot;a igreja&quot;), o Departamento de Educação e Ciências (maiúscula quando completa, minúscula se referência abreviada &quot;o departamento&quot;), Universidade de Lisboa (maiúscula quando completa, minúscula se referência abreviada &quot;a universidade&quot;).</li>
+<li><strong>Instituições Religiosas, Hospitais e Escolas</strong>: maiúsculas para nomes próprios ou nomes de lugares, minúsculas para o restante. Ex.: Hospital da Ordem Terceira Chiado, Colégio de São Bento do Rio de Janeiro, Mesquita Hazrat Hamza.</li>
+</ul>
+</li>
+<li><strong>Sempre minúsculas</strong>:
+<ul>
+<li><strong>Estações do ano</strong>: primavera, verão, outono, inverno.</li>
+<li><strong>Moedas</strong>: euro, dólar, libra, real, etc.</li>
+</ul>
+</li>
+</ul>
+<h3>Referências</h3>
+<ul>
+<li>Links, em vez de notas de fim, podem ser adequados na maioria dos casos.</li>
+<li>Certifique-se que as frases com links são semanticamente significativas. Não link termos significativos apenas para leitores com visão, como &quot;clique aqui&quot;.</li>
+<li>Toda a literatura tradicionalmente publicada e académica deve ser incluída em notas de fim, em vez de fornecido um link.</li>
+<li>Se escrever um tutorial de &quot;análise&quot;, deve consultar a literatura académica publicada.</li>
+<li>Os sobrescritos da nota de fim devem estar fora da pontuação final desta forma.² Não dentro desta forma².</li>
+<li>Usar o sistema de &quot;Notas e Bibliografia&quot; do <a href="https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-1.html"><em>The Chicago Manual of Style</em>, 17th Edition</a> para notas de fim.</li>
+<li>Na primeira menção a um trabalho publicado, incluir o nome do autor (primeiro/sobrenome). Por exemplo, &quot;Pode encontrar mais informações em <em>The Elements of Typographic Style</em> de Robert Bringhurst,&quot; ou &quot;Para obter mais informações, consulte <em>The Elements of Typographic Style</em> de Robert Bringhurst.&quot; Nas referências subsequentes, basta usar o título do livro. Os nomes dos autores podem ser encurtados para sobrenome apenas no uso subsequente.</li>
+<li>As notas de fim não devem conter apenas um URL.
+<ul>
+<li>(Correto): Grove, John. &quot;Calhoun and Conservative Reform.&quot; American Political Thought 4, no. 2 (2015): 203–27. https://doi.org/10.1086/680389.</li>
+<li>(Incorreto): https://doi.org/10.1086/680389</li>
+</ul>
+</li>
+</ul>
+<h2>C. Directrizes de formatação</h2>
+<p>Esta seção final aborda questões de formatação para a submissão. Leia esta seção antes e depois de escrever o seu rascunho. Se errar alguns destes elementos, poderá corrigi-los quando publicarmos uma visualização online da lição no início do processo de revisão por pares.</p>
+<h3>Escrever em Markdown</h3>
+<p>Todas as lições devem ser escritas em <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>. Existe um template para as lições.</p>
+<ul>
+<li><a href="/pt/licoes-modelo.md">Faça o download do template de lição em português (.md).</a>.</li>
+</ul>
+<p>Markdown é uma linguagem de marcação que é mais fácil de trabalhar num editor de texto. O MS Word e o Open Office NÃO são editores de texto e devem ser evitados. Recomendamos <a href="https://atom.io/">Atom</a>, <a href="https://www.barebones.com/products/textwrangler/">TextWrangler</a>, <a href="https://en.wikipedia.org/wiki/TextEdit">TextEdit</a>, <a href="https://macdown.uranusjr.com/">MacDown</a> ou <a href="https://notepad-plus-plus.org/download">Notepad++</a>.
+Para uma primeira introdução à formatação do Markdown, consultar <a href="/pt/licoes/introducao-ao-markdown">Introdução ao Markdown</a>, ou uma explicação mais breve em <a href="https://guides.github.com/features/mastering-markdown/">Guia de Markdown do GitHub</a>.</p>
+<p>A lição deve ser guardada no formato .md. O nome do ficheiro da lição torna-se parte do URL da lição. Portanto, deve ser nomeado de acordo com as seguintes regras:</p>
+<ul>
+<li>Um nome descritivo, curto e em minúsculas que forneça uma indicação clara do conteúdo da lição (por exemplo: introducao-ao-markdown.md).</li>
+<li>Não use espaços ou sublinhados no nome do ficheiro; use hífens.</li>
+<li>Não use acentos, cedilhas e caracteres especiais no nome do ficheiro.</li>
+<li>O nome do ficheiro deve ser rico em palavras-chave que incluam as principais tecnologias ou metodologias (por exemplo, Python ou Análise de sentimentos).</li>
+</ul>
+<h3>Negrito, itálico e sublinhado</h3>
+<p>Para garantir coerência entre as lições, siga as seguintes diretrizes de formatação de texto:</p>
+<h4>Negrito</h4>
+<ul>
+<li>Negrito não é usado, exceto em circunstâncias excepcionais.</li>
+<li>Negrito é formatado usando <strong>**asteriscos duplos**</strong>.</li>
+</ul>
+<h4>Itálico</h4>
+<ul>
+<li>Usar para títulos de livros, filmes, programas de TV, pinturas, músicas, álbuns e sites.</li>
+<li>Nunca em nomes de empresas (o site <em>Facebook</em> é de propriedade do Facebook).</li>
+<li>Não usar itálico em cabeçalhos, mesmo que se refiram ao título de um livro.</li>
+<li>Itálico é formatado usando <em>*asteriscos únicos*</em>.</li>
+</ul>
+<h4>Sublinhado</h4>
+<ul>
+<li>Sublinhado não é utilizado.</li>
+</ul>
+<h3>Alertas e avisos</h3>
+<p>Se deseja incluir uma nota ou um aviso para os leitores, é possível separá-lo do texto principal:</p>
+<pre><code>&lt;div class=&quot;alert alert-warning&quot;&gt;
+  Certifique-se de seguir as instruções cuidadosamente!
+&lt;/div&gt;
+</code></pre>
+<h3>Figuras e imagens</h3>
+<p>As imagens podem ajudar os leitores a entender os passos da lição, mas não devem ser usadas como decoração. Se desejar usar imagens na sua lição, identifique-as sequencialmente como LESSON-NAME1.jpg, LESSON-NAME2.jpg, etc. Refira as imagens no texto como &quot;Figura 1&quot;, &quot;Figura 2&quot;, e assim por diante. Todas as figuras devem vir com uma legenda concisa e notas finais, quando apropriado. A licença legal para publicar qualquer imagem tem de estar assegurada.</p>
+<p>Os ficheiros devem ser compatíveis com a web, preferencialmente .png ou .jpg, e devem ter um máximo de 840px no lado mais longo. Isso é especialmente importante para leitores de países com velocidades mais lentas de Internet.</p>
+<p>As imagens devem ser guardadas numa pasta com o mesmo nome .md da lição. Quando submeter a sua lição o editor atribuído poderá ajudá-lo a enviar as imagens.</p>
+<p>Para inserir uma imagem no seu texto, use o seguinte formato:</p>
+<p>{% raw %}</p>
+<pre><code class="language-markdown">{% include figure.html filename=&quot;NOME-DO-FICHEIRO-DE-IMAGEM&quot; caption=&quot;A LEGENDA USANDO \&quot;BARRAS\&quot; PARA SALTAR ASPAS INTERNAS&quot; %}
+</code></pre>
+<p>{% endraw %}</p>
+<p>Notar que as aspas da legenda devem ser limitadas por uma barra invertida, como no exemplo acima. As imagens podem não aparecer nas pré-visualizações da lição, mas o editor tem a missão de garantir que sejam renderizadas corretamente quando a lição for publicada.</p>
+<h3>Exemplos de código</h3>
+<p>As linhas de código devem ser formatadas para distingui-las claramente do texto em prosa:</p>
+<ul>
+<li>Linhas de código devem ter no máximo 80 caracteres</li>
+<li>Os blocos de código com várias linhas devem ser colocados em três ```acentos grave```.</li>
+<li>O código embutido (raramente usado) pode ser colocado entre apenas um  `acento grave`.</li>
+</ul>
+<pre><code>Eles ficarão assim
+</code></pre>
+<p><code>e assim</code> respectivamente.</p>
+<p>--
+Recomendamos estas práticas ao escrever o código:</p>
+<ul>
+<li><strong>Nomes de variáveis e funções</strong>: os nomes de variáveis devem ser substantivos (por exemplo, &quot;contagem&quot;) e os nomes de funções devem ser verbos (por exemplo, &quot;criarFicheiro&quot;). Escolher nomes curtos e significativos. O <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> ou o <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a> podem ser usados desde que de forma coerente.</li>
+<li><strong>Comandos do usuário</strong>: ao escrever tags que o leitor deve substituir por informação própria, use MAIÚSCULAS e coloque entre <code>acentos graves</code> (por exemplo,  `USUÁRIO AQUI`).</li>
+<li><strong>Nomes dos ficheiros</strong>: os nomes de ficheiros que o leitor precisa de criar também devem estar entre <code>acentos graves</code> e a referência deve incluir a extensão do ficheiro (por exemplo, <code>data.txt</code>, <code>cleanData.py</code> etc). Escolha nomes concisos mas com significado. Pode usar <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> ou <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>, mas seja consistente.</li>
+<li><strong>Palavras Restritas</strong>: as palavras que fazem parte de uma linguagem de programação devem sempre ser formatadas como <code>código</code> usando<code> acentos graves</code> na prosa em execução. Uma lista de termos reservados em linguagens de programação inclui:</li>
+</ul>
+<h4>Em JavaScript:</h4>
+<p><code>abstract</code>, <code>arguments</code>, <code>await</code>, <code>Boolean</code>, <code>break</code>, <code>byte</code>, <code>case</code>, <code>catch</code>, <code>char</code>, <code>class</code>, <code>const</code>, <code>continue</code>, <code>debugger</code>, <code>default</code>, <code>delete</code>, <code>do</code>, <code>double</code>, <code>else</code>, <code>enum</code>, <code>eval</code>, <code>export</code>, <code>extends</code>, <code>false</code>, <code>final</code>, <code>finally</code>, <code>float</code>, <code>for</code>, <code>function</code>, <code>goto</code>, <code>if</code>, <code>implements</code>, <code>import</code>, <code>in</code>, <code>instanceof</code>, <code>int</code>, <code>interface</code>, <code>let</code>, <code>long</code>, <code>native</code>, <code>new</code>, <code>null</code>, <code>package</code>, <code>private</code>, <code>protected</code>, <code>public</code>, <code>return</code>, <code>short</code>, <code>static</code>, <code>super</code>, <code>switch</code>, <code>synchronized</code>, <code>this</code>, <code>throw</code>, <code>throws</code>, <code>transient</code>, <code>true</code>, <code>try</code>, <code>typeof</code>, <code>var</code>, <code>void</code>, <code>volatile</code>, <code>while</code>, <code>with</code>, <code>yield</code>.</p>
+<h4>Em Python 2:</h4>
+<p><code>and</code>, <code>as</code>, <code>assert</code>, <code>break</code>, <code>class</code>, <code>continue</code>, <code>def</code>, <code>del</code>, <code>elif</code>, <code>else</code>, <code>except</code>, <code>exec</code>, <code>finally</code>, <code>for</code>, <code>from</code>, <code>global</code>, <code>if</code>, <code>import</code>, <code>in</code>, <code>is</code>, <code>lambda</code>, <code>not</code>, <code>or</code>, <code>pass</code>, <code>print</code>, <code>raise</code>, <code>return</code>, <code>try</code>, <code>while</code>, <code>with</code>, <code>yield</code>.</p>
+<h4>Em Python 3:</h4>
+<p><code>and</code>, <code>as</code>, <code>assert</code>, <code>break</code>, <code>class</code>, <code>continue</code>, <code>def</code>, <code>del</code>, <code>elif</code>, <code>else</code>, <code>except</code>, <code>False</code>, <code>finally</code>, <code>for</code>, <code>from</code>, <code>global</code>, <code>if</code>, <code>import</code>, <code>in</code>, <code>is</code>, <code>lambda</code>, <code>nonlocal</code>, <code>None</code>, <code>not</code>, <code>or</code>, <code>pass</code>, <code>raise</code>, <code>return</code>, <code>True</code>, <code>try</code>, <code>while</code>, <code>with</code>, <code>yield</code>.</p>
+<h4>Em R:</h4>
+<p><code>break</code>, <code>else</code>, <code>for</code>, <code>FALSE</code>, <code>function</code>, <code>if</code>, <code>in</code>, <code>Inf</code>, <code>NA</code>, <code>NA_character_</code>, <code>NA_complex_</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NaN</code>, <code>next</code>, <code>NULL</code>, <code>repeat</code>, <code>TRUE</code>, <code>while</code>.</p>
+<h2>Etapa 3: submeter uma nova lição</h2>
+<p>Verifique se o ficheiro da lição está de acordo com as especificações acima. Quando terminado, é altamente recomendável pedir a pelo menos duas pessoas para ler a lição e experimentar o tutorial, para dar feedback e garantir que é entendido por todos. Desta maneira ajuda os revisores a concentrarem-se em ajudá-lo a produzir uma lição tão consistente quanto possível.</p>
+<p>Se a lição está pronta a submeter, segue-se a revisão por pares. As submissões são feitas enviando materiais por e-mail para o editor, para que ele possa carregá-los no nosso site de revisão por pares no <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/lessons">Github</a>.</p>
+<ol>
+<li><strong>Obter acesso</strong>: crie uma <a href="https://github.com/join">conta gratuita</a>. Envie o nome de usuário Github para o editor, que dará acesso de upload ao nosso site de submissões. Informe o editor do nome do ficheiro da lição e se há imagens ou ficheiros de dados que acompanhem o tutorial. O autor não fará o upload inicial para o GitHub, mas precisará de acesso para postar revisões subsequentes.</li>
+<li><strong>Preparar os materiais</strong>: se a lição incluir imagens, certificar-se de que todos os ficheiros estão nomeados de acordo com as convenções de nomenclatura especificadas acima. Essas imagens devem ser enviadas numa única pasta compactada. Se a lição incluir ficheiros de dados, estes devem ser enviados noutra pasta compactada.</li>
+<li><strong>Enviar um e-mail ao editor</strong>: informe o editor de que está pronto para enviar a lição. Este e-mail deve incluir o ficheiro da lição, bem como as pastas de imagens e recursos, se aplicável.</li>
+<li><strong>Juntar-se à conversa</strong>: o editor irá enviar os ficheiros para o nosso <a href="https://github.com/programminghistorian/ph-submissions">diretório de submissões</a> e fazer as alterações iniciais necessárias. O editor abrirá também um ticket de revisão para a lição.</li>
+<li><strong>Fazer revisões</strong>: o upload da lição inicial será realizado pelo editor designado, mas o processo editorial exigirá que o autor faça outras alterações. Todas as revisões subsequentes devem ser feitas pelo autor diretamente nos ficheiros do nosso repositório de submissões para garantir que se esteja a trabalhar com a versão mais recente do ficheiro da lição.</li>
+</ol>
+<h2>O processo de revisão por pares</h2>
+<p>Depois do editor verificar se os ficheiros estão carregados e formatados da forma correta, será enviado um link para a pré-visualização da lição, onde quaisquer erros de formatação serão evidentes e ainda podem ser corrigidos.</p>
+<p>Todo o processo de revisão por pares estará registado num &quot;<a href="https://github.com/programminghistorian/ph-submissions/issues">ticket do Github</a>&quot;, que funciona como um quadro de mensagens de discussão aberta. Esteja ciente que o processo de revisão é feito em público e permanece disponível como um registo permanente da revisão por pares. Se houver alguma dúvida ou preferir uma revisão fechada, entre em contato com o editor.</p>
+<p>O processo de revisão por pares normalmente tem três etapas:</p>
+<ol>
+<li>
+<p>O editor da lição irá ler e testar a lição cuidadosamente, fornecendo uma primeira ronda de <em>feedback</em> a que é necessário responder. O objetivo é garantir que a lição atende às necessidades dos leitores do <em>Programming Historian</em>, e que os revisores externos recebem uma lição que funciona. Normalmente tem um mês para responder a esta primeira revisão.</p>
+</li>
+<li>
+<p>O editor abrirá a lição para a revisão formal por pares. Serão nomeados dois revisores convidados pelo editor, mas a comunidade também é convidada a participar se quiser. Geralmente, é pedido que os revisores dêem os seus comentários dentro de um mês, mas às vezes imprevistos podem levar a atrasos. O editor deve deixar claro que não deverá responder às revisões até que as duas estejam publicadas e o editor já tenha feito um resumo com instruções claras sobre como avançar. Às vezes, pode incluir a sugestão para repensar substancialmente a lição, outras vezes, será uma questão de fazer pequenas alterações. Dependendo dos comentários da revisão por pares e da natureza dos problemas levantados, pode ser preciso rever o tutorial mais do que uma vez, mas o editor tem como missão garantir que o caminho para a publicação seja claro e bem definido. A qualquer momento pode pedir para sair do processo de revisão, se assim o desejar.</p>
+</li>
+<li>
+<p>Quando o editor e revisores estiverem satisfeitos com a lição, o editor recomendará a publicação ao Editor Chefe, que irá ler e garantir que corresponde às Directrizes para Autores e aos padrões do <em>Programming Historian</em>. Em alguns casos, podem haver revisões adicionais ou edições nesta fase para alinhar a peça aos padrões de publicação. Se o Editor Chefe estiver satisfeito com a lição, ela será copiada para o site online. Quando isto acontecer o editor irá comunicar se qualquer informação adicional for necessária nesta fase.</p>
+</li>
+</ol>
+<p>Pode ser útil ler as <a href="/pt/directrizes-editor">directrizes para editores</a>, que apresentam mais detalhes sobre todo o processo editorial.</p>
+<p>Se, a qualquer momento, tiver dúvidas do seu papel ou o que fazer a seguir, basta publicar a pergunta na discussão da revisão por pares. Qualquer um dos nossos editores responderá assim que possível. A equipe esforça-se por responder a todas as perguntas dentro de poucos dias.</p>
+<h3>O que acontece depois da lição ser publicada?</h3>
+<p>Ocasionalmente, recebemos feedback de usuários que encontraram um erro ao concluir uma de nossas lições. Se isso acontecer, o/a nosso/a Assistente de Publicação abrirá um ticket no GitHub e, em seguida, realizará uma avaliação para confirmar se o erro relatado representa um problema causado pelo usuário (editar o código da lição ou alterar o seu conjunto de dados, por exemplo) ou um problema dentro da lição em si. Neste último caso, o/a nosso/a Assistente de Publicação testará novamente a(s) parte(s) relevante(s) da lição e fará pesquisas para identificar uma correção. Como parte deste processo de manutenção da lição, podemos contatá-lo juntamente com outros membros da equipe do <em>Programming Historian</em> para pedir conselhos. Caso nenhuma correção seja encontrada, proporemos adicionar um aviso à lição explicando que alguns usuários podem encontrar um erro. Sempre que possível, o aviso deve incluir links para leituras adicionais, permitindo que os usuários identifiquem eles próprios uma solução.</p>
+<h3>Responsabilidade da equipe</h3>
+<p>A equipe de voluntários trabalha intensamente para fazer uma revisão rigorosa, académica e eficiente para aos autores. No entanto, reconhecemos que há momentos em que podemos ficar abaixo das expectativas. Queremos que os autores se sintam à vontade para nos ajudar a manter os nossos padrões elevados. Se, por qualquer motivo, sentir que foi tratado injustamente, está insatisfeito ou confuso com o processo, se o processo foi adiado desnecessariamente, ou um revisor foi rude e o editor não respondeu de acordo, ou mesmo se tiver qualquer outra preocupação, chame a atenção da equipe para que se possa resolver rapidamente.</p>
+<p>Apresentar uma questão NÃO afetará o resultado da revisão por pares - mesmo que ainda esteja a decorrer.</p>
+<p>Para apresentar uma preocupação, basta entrar em contato com uma das seguintes partes, escolhendo com quem se sentir mais confortável em abordar a questão:</p>
+<ul>
+<li>O editor da lição</li>
+<li>O editor chefe</li>
+<li>O mediador independente</li>
+</ul>
+<p>Esperamos que não se encontre infeliz com nenhuma situação, mas, se for o caso, agradecemos que nos ajude a melhorar.</p>
+<hr>
+<p>Este guia de estilo foi criado com o apoio da Escola de Humanidades da Universidade de Hertfordshire.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

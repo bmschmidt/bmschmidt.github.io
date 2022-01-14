@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/en/author-guidelines"),
+					params: {lang:"en",lessons:"author-guidelines"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Author Guidelines</h1>
+<img src="/images/author-sm.png" class="garnish rounded float-left" alt="{{ site.data.snippets.write-a-lesson-image-alt[page.lang] }}"/>
+<h2 class="noclear">Step 1: <a href="#step-1-proposing-a-new-lesson">Proposing a New Lesson</a></h2>
+<h2 class="noclear">Step 2: <a href="#step-2-writing-a-new-lesson">Writing and Formatting a New Lesson</a></h2>
+<h2 class="noclear">Step 3: <a href="#step-3-submitting-a-new-lesson">Submitting a New Lesson</a></h2>  
+<p>These guidelines have been developed to help you understand the process of creating a tutorial for the English <em>Programming Historian</em>. They include practical and philosophical details of the tutorial writing process, as well as an indication of the workflow and the peer review process. If at any time you are unclear, please email the managing editor, {% include managing-editor.html lang=page.lang %}.</p>
+<h2>Step 1: Proposing a New Lesson</h2>
+<div class="alert alert-success">
+We welcome tutorials relevant to the humanities, pitched at any level of technical aptitude and experience, that focus on one problem or process, can be sustainable in the long term, and are addressed to a global audience.
+<p>The scope and length of the tutorial should be appropriate to the complexity of the task. Tutorials should not exceed 8,000 words (including code). Shorter lessons are welcome. Longer lessons may need to be split into multiple tutorials.</p>
+</div>
+<p>If you have an idea for a new lesson, complete a lesson <a href="/assets/forms/Lesson.Query.Form.txt">proposal form</a> and send it to {% include managing-editor.html lang=page.lang %}.</p>
+<p>You can get a sense of what we publish by looking through our <a href="/en/lessons">published lessons</a>, reading our <a href="/en/reviewer-guidelines">reviewer guidelines</a> or browsing <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/lessons">lessons in development</a>. Please also take a moment to check our <a href="https://docs.google.com/spreadsheets/d/1vrvZTygZLfQRoQildD667Xcgzhf_reQC8Nq4OD-BRIA/edit#gid=0">Lesson Concordance document</a> to see which methods we have already covered in our published or forthcoming lessons.</p>
+<p>If your proposal is accepted, an editor will create a &quot;Proposal&quot; page on our <a href="https://github.com/programminghistorian/ph-submissions/issues">submissions website</a> with the lesson's working title and proposed learning outcomes. This serves to mark the work in progress. To ensure timely publication, authors should submit their draft article within 90 days.</p>
+<p>During this 90 day period, your point of contact will be the managing editor or an editor delegated at the managing editor's perogative.</p>
+<h2>Step 2: Writing and Formatting a New Lesson</h2>
+<p>This style guide lays out a set of standards for authors to use when creating or translating English-language lessons for <em>Programming Historian</em>. By using it, you help us ensure content is consistent and accessible.</p>
+<p>It is presented in three sections which should be read before and after writing:</p>
+<ul>
+<li>A. Style and Audience</li>
+<li>B. Specific Style Guidelines</li>
+<li>C. Formatting Guidelines</li>
+</ul>
+<h2>A. Style and Audience</h2>
+<p>This first section is concerned with big-picture matters of style which will help you make decisions that meet the needs of our audience and editors. They include basic information on style and tone, open access and open source values, information on writing for a global audience, writing sustainably, and making smart choices about data used in lessons. Read this section when planning your lesson. Read it again before submitting to make sure your lesson meets these requirements.</p>
+<h3>Language and Style</h3>
+<ul>
+<li>Tutorials should not exceed 8,000 words (including code).</li>
+<li>Keep your tone formal but accessible.</li>
+<li>Talk to your reader in the second person (you).</li>
+<li>Adopt a widely-used version of English (British, Canadian, Indian, South African etc).</li>
+<li>The piece of writing is a &quot;tutorial&quot; or a &quot;lesson&quot; and not an &quot;article&quot;.</li>
+</ul>
+<h3>Open Source, Open Access</h3>
+<p><em>Programming Historian</em> is committed to open source values. All lessons must use open source programming languages and software whenever possible. This policy is meant to minimize costs for all parties, and to allow the greatest possible level of participation.</p>
+<p>Upon acceptance, you agree to publish your lesson under a Creative Commons &quot;<a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC-BY</a>&quot; license.</p>
+<h3>Write for a Global Audience</h3>
+<p><em>Programming Historian</em> readers live all around the world. Authors can and should take steps to write their lesson accessibly for as many people as possible. Follow these global-facing guidelines:</p>
+<ul>
+<li>
+<p>Write for someone who doesn't live in your country or share your beliefs.</p>
+</li>
+<li>
+<p><strong>Technical Terms:</strong> should always be linked to <a href="https://www.wikipedia.org/">Wikipedia</a> or a suitably reliable dictionary or sustainable website in the first instance. A technical term is any word that a person on the street may not know or understand.</p>
+</li>
+<li>
+<p><strong>Cultural References</strong>: mentions of persons, organisations, or historical details should always come with contextual information. Assume no prior knowledge, even of widely known cultural references (eg, <a href="https://en.wikipedia.org/wiki/The_Beatles">the Beatles</a>). Use generic terms rather than trademarks (tissue rather than Kleenex). Links to <a href="https://www.wikipedia.org/">Wikipedia</a> should be used liberally. Be aware that historical events often have different names in different countries.</p>
+</li>
+<li>
+<p><strong>Idioms</strong>: Avoid jokes, puns, plays on words, idiomatic expressions, sarcasm, emojis, jargon, terms unique to your dialect, or language that is more difficult than it needs to be.</p>
+</li>
+<li>
+<p><strong>Geography</strong>: when referencing places, be specific. Does &quot;south-west&quot; mean Valencia? Canada? Africa? Always write out the full name of the area the first time you use it.</p>
+</li>
+<li>
+<p><strong>Multi-lingual</strong>: when choosing methods or tools, make choices with multi-lingual readers in mind – especially for textual analysis methods, which may not support other character sets or may only provide intellectually robust results when used on English texts. Where possible, choose approaches that have multi-lingual documentation, or provide multi-lingual references for further reading. This will help our translators.</p>
+</li>
+<li>
+<p><strong>Racial and Ethnic Language</strong>: use racial terminology carefully and with specificity. Historic terms no longer in use should be used only in their historical context and only when necessary. Use racial terms as adjectives and not nouns: white people rather than &quot;whites&quot;, an Asian woman rather than &quot;an Asian&quot;. Be aware that terms may be understood differently in different countries and what you have learned to be correct or sensitive may be culturally specific to your country (eg, not all people with African ancestry are &quot;African Americans&quot;. Some of them are African, or black British, or Caribbean, etc). Likewise, readers in the UK will understand &quot;Asian&quot; (India, Pakistan, Bangladesh) differently than those in North America (eg China, Japan, Vietnam, Thailand).</p>
+</li>
+<li>
+<p><strong>Visual Representations</strong>: choose primary sources, images, figures, and screen shots, considering how they will present themselves to a global audience.</p>
+</li>
+<li>
+<p><strong>Computing resources</strong>: if your lesson requires relatively substantial computing resources, include an alert warning after the Table of Contents to inform the readers. Please be specific and translate the requirements into real terms (e.g. &quot;You need at least 8GB of RAM to finish this lesson&quot;, &quot;This lesson uses large files (up to 2GB)&quot;, etc. ). State if readers need admin access to install software.</p>
+</li>
+</ul>
+<h3>Sustainable Writing</h3>
+<p><em>Programming Historian</em> publishes lessons for the long-term. Please follow these sustainability guidelines when writing:</p>
+<ul>
+<li><strong>As General as Possible, but No More</strong>: focus on methodologies and generalities, not software/interface specifics (eg avoid telling users to &quot;click the X button&quot;, which may be different in future versions).</li>
+<li><strong>Reduce Reliance on Unsustainable Elements</strong>: use screenshots sparingly and with purpose. Interfaces change frequently and future readers may be confused. Chose external links with the future in mind. Does the site you are linking to change often? Will it exist in ten years?</li>
+<li><strong>Specify Versions if they are Important</strong>: be clear about any version-specific details readers will need to know in order to follow your lesson. Eg, do you need Python v.2, or will any version be fine?</li>
+<li><strong>Point to Documentation</strong>: direct readers to reliable documentation where possible. Provide general guidance on how to find the documentation if new versions are probable in future.</li>
+<li><strong>Copies of Data</strong>: all data used in lessons must be published with the lesson on <em>Programming Historian</em> servers along with your lesson. You must ensure you have the legal right to publish a copy of any data that you use. Data files should use open formats.</li>
+</ul>
+<p>Authors should consult our <a href="/en/lesson-retirement-policy">lesson retirement policy</a> for information on how the editorial team manages lessons that have become out-of-date.</p>
+<h2>B. Specific Writing Guidelines</h2>
+<p>This second section covers more specific matters of writing style, such as which words to use, or how we use punctuation, or what format to use for dates or numbers. Read this section before and after writing your draft.</p>
+<h3>Dates and Time</h3>
+<ul>
+<li>For centuries, use eighteenth century not 18th century. Avoid national-centric phrases such as &quot;long eighteenth century&quot; which have specific meaning to British eighteenth century specialists, but not to anyone else.</li>
+<li>For decades, write the 1950s (not &quot;the 50s&quot; or &quot;the fifties&quot;).</li>
+<li>Compress date sequences as follows; 1816-17, 1856-9, 1854-64.</li>
+<li>For dates written in numeric form, use the format YYYY-MM-DD, which conforms to the standard ISO 8601:2004. This avoids ambiguity.</li>
+<li>Use BCE/CE not BC/AD for dates (eg 325BCE).</li>
+<li>1am, 6:30pm. Not 10 o’clock.</li>
+</ul>
+<h3>Numbers</h3>
+<ul>
+<li>Spell out from one to nine; integers above 10.</li>
+<li>Use a consistent format if the boundary outlined above is crossed within a single sentence (five apples and one hundred oranges; 5 apples and 110 oranges).</li>
+<li>Use commas (not periods/full stops) between groups of three digits in large numbers (32,904 not 32904). Exceptions: page numbers, addresses, in quotation, etc.</li>
+<li>Use numerals for versions (version 5 or v.5) or actual values (eg, 5%, 7″, $6.00).</li>
+<li>Always use the symbol % with numerals rather than the spelled-out word (percent), and make sure it is closed up to number: 0.05%.</li>
+<li>Use <a href="https://davidhamann.de/2017/06/12/latex-cheat-sheet/">LaTeX formatting for mathematical formulae</a>.</li>
+<li>For units of measure, use metric or imperial but be consistent.</li>
+</ul>
+<h3>Headings</h3>
+<p>Headings should not contain inline code font or style formatting such as bold, italic, or code font.
+Headings should always immediately precede body text. Do not follow a heading with an admonition or another heading without some form of introductory or descriptive text.</p>
+<h3>Lists</h3>
+<p>Typically, we use numbered lists and bulleted lists. List items are sentence-capped. List items should be treated as separate items and should not be strung together with punctuation or conjunctions.</p>
+<p>NOT style:</p>
+<ul>
+<li>Here is an item, and</li>
+<li>here is another item; and</li>
+<li>here is the final item.</li>
+</ul>
+<p>Style:</p>
+<ul>
+<li>Here is an item</li>
+<li>Here is another item</li>
+<li>Here is the final item</li>
+</ul>
+<p>Or:</p>
+<ol>
+<li>Here is an item</li>
+<li>Here is another item</li>
+<li>Here is the final item</li>
+</ol>
+<h3>Punctuation</h3>
+<ul>
+<li><strong>Abbreviation</strong>: spell out all words on first mention. European Union (EU) and then EU. Do not use full points / periods or spaces between initials: BBC, PhD, mph, 4am, etc.</li>
+<li><strong>Ampersand</strong>: generally speaking, do not use an ampersand in place of the word &quot;and&quot; unless referring to a company or publication that uses it: P&amp;O, <em>Past &amp; Present</em>.</li>
+<li><strong>Apostrophe</strong>: use the possessive 's after singular words or names that end in s – St James's, Jones's, mistress's; use it after plurals that do not end in s: children's, people’s, media's.</li>
+<li><strong>Brackets / Parentheses</strong>: it is better to use commas or dashes. Use round brackets to introduce explanatory material into a direct quote, eg: He said: &quot;When finished it (the tunnel) will revolutionise travel&quot; or &quot;She said adiós (goodbye)&quot;. Place a full stop / period outside a closing bracket if the material inside is not a sentence (like this). (But an independent sentence takes the full stop before the closing bracket.)</li>
+<li><strong>Colon</strong>: use to introduce lists, tabulations, texts, as in:
+<ul>
+<li>The committee recommends: extending licensing hours to midnight; allowing children on licensed premises; relaxing planning controls on new public houses.</li>
+<li>Use after the name of a speaker for a whole quoted sentence: Mr James Sherwood, chairman of Sealink, said: &quot;We have...&quot;</li>
+<li>Lowercase the first letter after a colon: this is how we do it.</li>
+</ul>
+</li>
+<li><strong>Comma</strong>: serial comma (this, that, and the other).</li>
+<li><strong>Dash</strong>: a useful device to use instead of commas, but not more than one pair per sentence.</li>
+<li><strong>Ellipsis</strong>: three periods separated from the preceding and following words by a space ( ... ). Use to condense a direct quote (thus the quote &quot;the people sitting in this meeting room deserve a better deal&quot; becomes &quot;the people ... deserve a better deal&quot;).</li>
+<li><strong>Exclamation Mark</strong>: use only at the end of a direct quote when it is clear that the remark is exclamatory, eg &quot;I hate intolerance!&quot;</li>
+<li><strong>Full Stop / Period</strong>: use frequently. Sentences should be short, crisp, straightforward. But do not put full stops between initials, after status title (Mx, Dr) or between abbreviations (EU).</li>
+<li><strong>Hyphen</strong>: use to avoid ambiguity or to form a single idea from two or more words:
+<ul>
+<li>Fractions: two-thirds.</li>
+<li>Most words that begin with anti, non and neo.</li>
+<li>A sum followed by the word worth - £10 million-worth of exports.</li>
+<li>Some titles (director-general, secretary-general, but Attorney General, general secretary etc). The rule is to adopt the usage of the authority which created it</li>
+<li>Avoiding ambiguity (little-used car ... little used car).</li>
+<li>Compass quarters (south-west, north-east).</li>
+</ul>
+</li>
+<li><strong>Quotation Marks</strong>: use straight (not curly) quotation marks for direct quotes. Use either single or double quotation marks but be consistent.</li>
+</ul>
+<h3>Capitalisation</h3>
+<p>The guideline is to use them sparingly in the running prose. Specific rules:</p>
+<ul>
+<li><strong>Title Case</strong>: headings and book titles should use title case: &quot;Preparing the Data for Analysis&quot;; <em>The Pride and the Passion</em>, etc.</li>
+<li><strong>Always Capitalized</strong>:
+<ul>
+<li><strong>Proper Names</strong>: William J. Turkel – unless the person choses to spell their name otherwise (eg &quot;bell hooks&quot;).</li>
+<li><strong>Artistic, Cultural, Government Organizations, etc</strong>: Museum of the Moving Image, Anne Frank House, Home Office, Agency for Global Media, United Nations.</li>
+<li><strong>Holidays and Festivals</strong>: Diwali, Hanukkah, Eid-Ul-Adha, Ramadan.</li>
+</ul>
+</li>
+<li><strong>Sometimes or Partially Capitalized</strong>:
+<ul>
+<li><strong>Places</strong>: capitals for countries, regions, recognisable areas (eg, the Middle East, Senegal). Lower case for points of the compass, except where they are used as part of a place name (to reach the North Pole, head north). Further examples include: north-east Kenya, south Brazil, the west, western Canada, the far east, south-east Asia, Central America, Latin America.</li>
+<li><strong>Historic Events</strong>: first world war, second world war; Crimean/Boer/Vietnam/Gulf war; hundred years war.</li>
+<li><strong>Religion</strong>: Upper case for Anglican, Baptist, Buddhist, Catholic, Christian, Hindu, Methodist, Muslim, Protestant, Roman Catholic, Sikh, but lower for evangelicals, charismatics, atheists.</li>
+<li><strong>Holy Books (select)</strong>:
+<ul>
+<li><strong>Bible</strong>: Capitalise if referring to Old or New Testament.</li>
+<li><strong>Buddhist</strong>: sutras (sermons) and abhidhamma (analysis and interpretation). For Tibetan Buddhism there are also tantric texts and the Tibetan Book of the Dead.</li>
+<li><strong>Hindu</strong>: the Śruti texts: Vedas, Samhitas, Brahmanas, Aranyakas, Upanishads; the Vedāngas, Hindu epics, Sutras, Shastras, philosophical texts, the Puranas, the Kāvya, the Bhasyas, many Nibandhas.</li>
+<li><strong>Judaism</strong>: the Tanakh (Torah, Nevi'im, Ketuvim), Talmud (Mishnah, Gemara)</li>
+<li><strong>Qu'ran</strong>: Capitalise. Texts include the Hadith, the Tawrat (Torah), Zabur (possibly Psalms), Injil (1.2 billion).</li>
+<li><strong>Sikh</strong>: Adi Granth (commonly called the Guru Granth Sahib), the Dasam Granth, the Varan Bhai Gurdas, the texts of Bhai Nand Lal.</li>
+</ul>
+</li>
+<li><strong>Jobs</strong>: Capitalise the title when used with the name – President Macron but not as a description – Emmanuel Macron, president of France. The Pope and the Queen have capital letters.</li>
+<li><strong>Organisations and Institutions</strong>: the Government (cap in all references), the Cabinet (cap in all references), the Church of Ireland (&quot;the church&quot;), the Department of Education and Science (&quot;the department&quot;), Western University (&quot;the university&quot;), the Court of Appeal (&quot;the appeal court&quot; or &quot;the court&quot;).</li>
+<li><strong>Universities and Colleges</strong>: Capitals for institution, lower case for departments (&quot;Australian National University department of medieval history&quot;).</li>
+<li><strong>Religious Institutions, Hospitals and Schools</strong>: cap up the proper or place name, lower case the rest eg Nurture Hillandale rehabilitation hospital, Vernon county primary school, Ali Pasha’s mosque.</li>
+</ul>
+</li>
+<li><strong>Always Lowercase</strong>:
+<ul>
+<li><strong>Committees, Reports and Inquiries</strong>: committee on climate change, trade and industry committee, royal commission on electoral reform</li>
+<li><strong>Agencies, Commissions, Public Bodies, Quangos</strong>: benefits agency, crown prosecution service, customs and excise, parole board</li>
+<li><strong>Seasons</strong>: spring, summer, autumn/fall, winter.</li>
+<li><strong>Currencies</strong>: euro, franc, mark, sterling, dong etc</li>
+</ul>
+</li>
+</ul>
+<h3>References</h3>
+<ul>
+<li>
+<p>Links rather than endnotes may be appropriate in most cases.</p>
+</li>
+<li>
+<p>Ensure linked phrases are semantically meaningful. Do not link terms that are meaningful only to sighted users such as &quot;click here&quot;.</p>
+</li>
+<li>
+<p>All traditionally published and academic literature should be end-noted rather than linked.</p>
+</li>
+<li>
+<p>If you are writing an &quot;analysis&quot; tutorial, you must refer to published scholarly literature.</p>
+</li>
+<li>
+<p>Endnote superscripts should be outside the final punctuation like this.² Not inside like this².</p>
+</li>
+<li>
+<p>Use the &quot;Notes and Bibliography&quot; system found in the <a href="https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-1.html"><em>The Chicago Manual of Style</em>, 17th Edition</a> for endnotes.</p>
+</li>
+<li>
+<p>On first mention of a published work, include author name (including first/given name). For example, &quot;You can find more information in <em>The Elements of Typographic Style</em> by Robert Bringhurst,&quot; or &quot;For more information, consult Robert Bringhurt’s <em>The Elements of Typographic Style</em>.&quot; On subsequent references, just use the book title. Author’s names can be shortened to surname only on subsequent use.</p>
+</li>
+<li>
+<p>Endnotes should not just contain a URL.</p>
+<ul>
+<li>(Correct): Grove, John. &quot;Calhoun and Conservative Reform.&quot; <em>American Political Thought</em> 4, no. 2 (2015): 203–27. https://doi.org/10.1086/680389.</li>
+<li>(Incorrect): https://doi.org/10.1086/680389</li>
+</ul>
+</li>
+<li>
+<p>In order to cite software, which requires citation as a condition of use within a lesson, please provide as much as possible from the information below, following the general &quot;Notes and Bibliography” system found in the Chicago Manual of Style, 17th Edition for endnotes:</p>
+<ul>
+<li>author</li>
+<li>product name</li>
+<li>version number</li>
+<li>year of publication</li>
+<li>URL or DOI</li>
+</ul>
+<p>Eg. The Pandas Development Team. <em>pandas-dev/pandas: Pandas</em>. v. 1.2.3 (2020). https://doi.org/10.5281/zenodo.3509134</p>
+<p>Please check each software official webpage or documentation for authors guidelines about how to cite their work (eg. https://pandas.pydata.org/about/citing.html, https://www.tidyverse.org/blog/2019/11/tidyverse-1-3-0/#citing-the-tidyverse).</p>
+</li>
+</ul>
+<h3>Challenging Words Explained</h3>
+<ul>
+<li><strong>Collective Nouns</strong> (group, family, cabinet, etc) take singular or plural verb according to meaning: the family was shocked, the family were sitting down, scratching their heads.</li>
+<li><strong>Less or Fewer?</strong> Less means less in quantity, (less money); fewer means smaller in number, (fewer coins).</li>
+<li><strong>Over or More Than?</strong> Over and under answer the question &quot;how much?&quot;; more than and fewer than answer the question &quot;how many?&quot;: she is over 18, there were more than 20,000 at the game.</li>
+<li><strong>That or Which?</strong> that defines, which informs: this is the house that Jack built, but this house, which Jack built, is now falling down.</li>
+</ul>
+<h2>C. Formatting Guidelines</h2>
+<p>This final section covers matters of formatting for submission. Read this section before and after writing your draft. If you get any of these elements wrong, you will be able to correct them when we post a live preview of your lesson at the start of the peer review process.</p>
+<h3>Write in Markdown</h3>
+<p>All lessons must be written in <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>. A template for writing your lessons has been provided.</p>
+<ul>
+<li><a href="/en/lesson-template.md">Download the English Language Lesson template (.md)</a>.</li>
+</ul>
+<p>Markdown is a mark-up language that is best created with a text editor. MS Word and Open Office are NOT text editors and should be avoided. We recommend <a href="https://atom.io/">Atom</a>, <a href="https://www.barebones.com/products/textwrangler/">TextWrangler</a>, <a href="https://en.wikipedia.org/wiki/TextEdit">TextEdit</a>, <a href="https://macdown.uranusjr.com/">MacDown</a> or <a href="https://notepad-plus-plus.org/download">Notepad++</a>.
+For a gentle introduction to Markdown formatting see <a href="/en/lessons/%7Bgetting-start%7Ded-with-markdown">Getting Started with Markdown</a>, or the concise reference <a href="https://guides.github.com/features/mastering-markdown/">GitHub Guide to Markdown</a>.</p>
+<p>Your lesson should be saved in .md format. Your lesson filename becomes part of the lesson URL. Therefore, it should be named according to the following rules:</p>
+<ul>
+<li>A short, lowercase, descriptive name that gives a clear indication of the lesson contents (eg. getting-started-with-markdown.md).</li>
+<li>Do not use spaces or underscores in the filename; use hyphens instead.</li>
+<li>Use a keyword-rich filename that includes key technologies or methods (eg, Python or Sentiment Analysis).</li>
+</ul>
+<h3>Bold, Italics, and Underline</h3>
+<p>To ensure consistency across lessons, adhere to the following text formatting guidelines:</p>
+<h4>Bold</h4>
+<ul>
+<li>Bold is not used except in exceptional circumstances.</li>
+<li>Bold is formatted using <strong>**double asterisks**</strong>.</li>
+</ul>
+<h4>Italics</h4>
+<ul>
+<li>Use italics for book titles, films, TV programmes, paintings, songs, albums, and websites.</li>
+<li>Never use italics for business names (the <em>Facebook</em> website is owned by Facebook).</li>
+<li>Do not use italics in headlines, even if referring to a book title.</li>
+<li>Italics are formatted using <em>*single asterisks*</em>.</li>
+</ul>
+<h4>Underline</h4>
+<ul>
+<li>Underline is not used.</li>
+</ul>
+<h3>Alerts and Warnings</h3>
+<p>If you want to include an aside or a warning to readers, you can set it apart from the main text:</p>
+<pre><code>&lt;div class=&quot;alert alert-warning&quot;&gt;
+ Be sure that you follow directions carefully!
+&lt;/div&gt;
+</code></pre>
+<h3>Figures and Images</h3>
+<p>Images can help readers understand your lesson steps, but should not be used for decoration. If you wish to use images in your lesson, label them sequentially LESSON-NAME1.jpg, LESSON-NAME2.jpg, etc. Refer to them in the text as &quot;Figure 1&quot;, &quot;Figure 2&quot;, and so on. All figures must come with a concise figure caption and endnotes where appropriate. You must have the legal right to post any images.</p>
+<p>Use web-friendly file formats such as .png or .jpg and reduce large images to a maximum of 840px on the longest side. This is important for readers in countries with slower internet speeds.</p>
+<p>Images should be saved in a folder with the same name as your lesson .md file. The editor assigned to your lesson can assist you in uploading your images when you submit.</p>
+<p>To insert an image in your text, use the following format:</p>
+<p>{% raw %}</p>
+<pre><code class="language-markdown">{% include figure.html filename=&quot;IMAGE-FILENAME&quot; caption=&quot;YOUR CAPTION USING \&quot;ESCAPED\&quot; QUOTES&quot; %}
+</code></pre>
+<p>{% endraw %}</p>
+<p>Note that internal quotation marks in your caption must be escaped with a backslash, as in the example above. Images may not appear in previews of your lesson, but your editor will ensure they render properly when the lesson is published.</p>
+<h3>Code Examples</h3>
+<p>Lines of code should be formatted to distinguish them clearly from prose:</p>
+<ul>
+<li>Lines of code should be maximum 80 characters</li>
+<li>Multi-line code blocks should be enclosed in three ```back-ticks```.</li>
+<li>Inline code (rarely used) can be enclosed in single `backticks`.</li>
+</ul>
+<pre><code>They will look like this
+</code></pre>
+<p><code>and this</code> respectively.</p>
+<p>--
+Follow best practice in writing your code:</p>
+<ul>
+<li><strong>Variable and Function Names</strong>: variable names should be nouns (eg &quot;counter&quot;) and function names should be verbs (eg &quot;createFile&quot;). Choose names that are concise and meaningful. You may use <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> or <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>, but be consistent.</li>
+<li><strong>User Commands</strong>: when writing about text you want the reader to replace with their own information, use FULL CAPS and enclose by <code>backticks</code> (eg, `USERNAME HERE`).</li>
+<li><strong>Filenames</strong>: filenames that you ask your reader to create or use should be enclosed in <code>backticks</code> when mentioned in the text and should include their file extension. Choose names that are concise and meaningful. You may use <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> or <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>, but be consistent (eg, <code>data.txt</code>, <code>cleanData.py</code> etc).</li>
+<li><strong>Reserved Words</strong>: words that are part of a programming language should always be formatted as <code>code</code> using <code>back-ticks</code> in the running prose. A list of reserved words in common programming languages include:</li>
+</ul>
+<h4>JavaScript:</h4>
+<p><code>abstract</code>, <code>arguments</code>, <code>await</code>, <code>Boolean</code>, <code>break</code>, <code>byte</code>, <code>case</code>, <code>catch</code>, <code>char</code>, <code>class</code>, <code>const</code>, <code>continue</code>, <code>debugger</code>, <code>default</code>, <code>delete</code>, <code>do</code>, <code>double</code>, <code>else</code>, <code>enum</code>, <code>eval</code>, <code>export</code>, <code>extends</code>, <code>false</code>, <code>final</code>, <code>finally</code>, <code>float</code>, <code>for</code>, <code>function</code>, <code>goto</code>, <code>if</code>, <code>implements</code>, <code>import</code>, <code>in</code>, <code>instanceof</code>, <code>int</code>, <code>interface</code>, <code>let</code>, <code>long</code>, <code>native</code>, <code>new</code>, <code>null</code>, <code>package</code>, <code>private</code>, <code>protected</code>, <code>public</code>, <code>return</code>, <code>short</code>, <code>static</code>, <code>super</code>, <code>switch</code>, <code>synchronized</code>, <code>this</code>, <code>throw</code>, <code>throws</code>, <code>transient</code>, <code>true</code>, <code>try</code>, <code>typeof</code>, <code>var</code>, <code>void</code>, <code>volatile</code>, <code>while</code>, <code>with</code>, <code>yield</code>.</p>
+<h4>Python 2:</h4>
+<p><code>and</code>, <code>as</code>, <code>assert</code>, <code>break</code>, <code>class</code>, <code>continue</code>, <code>def</code>, <code>del</code>, <code>elif</code>, <code>else</code>, <code>except</code>, <code>exec</code>, <code>finally</code>, <code>for</code>, <code>from</code>, <code>global</code>, <code>if</code>, <code>import</code>, <code>in</code>, <code>is</code>, <code>lambda</code>, <code>not</code>, <code>or</code>, <code>pass</code>, <code>print</code>, <code>raise</code>, <code>return</code>, <code>try</code>, <code>while</code>, <code>with</code>, <code>yield</code>.</p>
+<h4>Python 3:</h4>
+<p><code>and</code>, <code>as</code>, <code>assert</code>, <code>break</code>, <code>class</code>, <code>continue</code>, <code>def</code>, <code>del</code>, <code>elif</code>, <code>else</code>, <code>except</code>, <code>False</code>, <code>finally</code>, <code>for</code>, <code>from</code>, <code>global</code>, <code>if</code>, <code>import</code>, <code>in</code>, <code>is</code>, <code>lambda</code>, <code>nonlocal</code>, <code>None</code>, <code>not</code>, <code>or</code>, <code>pass</code>, <code>raise</code>, <code>return</code>, <code>True</code>, <code>try</code>, <code>while</code>, <code>with</code>, <code>yield</code>.</p>
+<h4>R:</h4>
+<p><code>break</code>, <code>else</code>, <code>for</code>, <code>FALSE</code>, <code>function</code>, <code>if</code>, <code>in</code>, <code>Inf</code>, <code>NA</code>, <code>NA_character_</code>, <code>NA_complex_</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NaN</code>, <code>next</code>, <code>NULL</code>, <code>repeat</code>, <code>TRUE</code>, <code>while</code>.</p>
+<h2>Step 3: Submitting a New Lesson</h2>
+<p>Double-check that your lesson file has been prepared to the above specifications. Once you are satisfied, we strongly recommend that you ask at least two people to try your tutorial and provide feedback. This will help you make improvements that mean our peer reviewers can focus on helping you produce the strongest possible lesson.</p>
+<p>You are ready to submit the lesson for peer review. Submissions are made by emailing materials to your editor so they can upload them to our peer review site on <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/lessons">Github</a>.</p>
+<ol>
+<li><strong>Getting Access</strong>: create a <a href="https://github.com/join">free Github account</a>. Email your Github username to your editor who will give you upload access to our submission site. Let the editor know the file name of your lesson and if you have any images or data files accompanying your tutorial. You will not do the initial upload to GitHub, but you will need access to post subsequent revisions.</li>
+<li><strong>Prepare your materials</strong>: if your lesson includes images, make sure all of the files are named according to the naming conventions specified above.These images should be submitted in a single, compressed folder. If your lesson includes data files, they should be submitted in another compressed folder.</li>
+<li><strong>Email your editor</strong>: let your editor know that you are ready to submit your lesson. This email should include the lesson file as well as the image and assets folders if applicable.</li>
+<li><strong>Join the conversation</strong>: the editor will upload your files to our <a href="https://github.com/programminghistorian/ph-submissions">submissions repository</a> and make any necessary, initial changes to them. They will also open a review ticket for your lesson.</li>
+<li><strong>Make revisions</strong>: the initial lesson upload will be carried out by your assigned editor, but the editorial process will require that you make further changes. All subsequent revisions should be made by the author directly to the files in our submissions repository to ensure you are working from the latest version of the lesson file.</li>
+</ol>
+<h2>The Peer Review Process</h2>
+<p>Your editor will check that your files have been uploaded and formatted properly. At this stage you will be sent a preview link where any formatting errors will be evident and you can fix them.</p>
+<p>The peer review will be recorded on a Github &quot;<a href="https://github.com/programminghistorian/ph-submissions/issues">ticket</a>&quot;, which acts like an open message board discussion. Be aware that our peer review happens in public and remains publicly available as a permanent record of peer review. If you have concerns or would like to request a closed review, contact your assigned editor.</p>
+<p>The peer review process normally happens in 3 stages:</p>
+<ol>
+<li>
+<p>The editor assigned to your lesson will carefully read and try your lesson, providing a first round of feedback that you will be asked to respond to. The purpose of this first round of feedback is to ensure that your lesson addresses the needs of <em>Programming Historian</em> readers, and to make sure that the external peer reviewers receive a lesson that works. You will normally be given one month to respond to this first peer review.</p>
+</li>
+<li>
+<p>The editor will then open the lesson for formal peer review. This will include at least two reviewers invited by the editor, and may also include comments from the wider community, who are welcome to contribute views. We generally try to ask reviewers to provide their comments within one month, but sometimes unforeseen circumstances mean this is not possible. The editor should make it clear to you that you should not respond to reviews until after both reviews have been published and the editor has summarised and provided clear instructions for moving forward. In some cases this may be a suggestion to substantially revise or rethink the lesson.  In other cases it will be a matter of making some changes. Depending on the peer review comments, and the nature of issues raised, you may need to revise the tutorial more than once, but the editor will endeavour to ensure that you are given a clear pathway towards publication. You always have the option of withdrawing from the review process if you so choose.</p>
+</li>
+<li>
+<p>Once your editor and peer reviewers are happy with the piece, the editor will recommend publication to the Managing Editor, who will read the piece to ensure that it meets our Author's Guidelines and standards. In some cases there may be additional revisions or copy editing at this stage to bring the  piece in line with our publishing standards. If the Managing Editor is happy with the piece, it will be moved to the live site for publication. Your editor will inform you of any additional information required at this stage.</p>
+</li>
+</ol>
+<p>You may find it helpful to read our <a href="/editor-guidelines">editor guidelines</a>, which detail our editorial process.</p>
+<p>If at any point you are unsure of your role or what to do next, post a question to the peer review issue. One of our editors will respond as soon as possible. We endeavour to respond to all queries within a few days.</p>
+<h3>What happens after your lesson is published?</h3>
+<p>Occasionally, we receive feedback from users who have encountered an error while completing one of our lessons. If this happens, our Publishing Assistant will open an Issue on GitHub, then carry out an assessment to confirm whether the error reported represents a problem caused by the user (editing the lesson's code or changing its dataset, for example) or a problem within the lesson itself. If the latter, our Publishing Assistant will re-test the relevant part(s) of the lesson and undertake research to identify a fix. As part of this Lesson Maintenance process, we may contact you alongside other members of the <em>Programming Historian</em> team to ask for advice. In the case that no fix can be found, we will propose adding a warning to the lesson explaining that some users may encounter an error. Where possible, the warning should include links to further reading, empowering users to identify a solution themselves.</p>
+<h3>Holding Us to Account</h3>
+<p>Our team of volunteers works hard to provide a rigourous, collegial, and efficient peer review for authors. However, we recognize that there are times when we may fall short of expectations. We want authors to feel empowered to hold us to high standards. If, for whatever reason, you feel that you have been treated unfairly, that you are unhappy or confused by the process, that the review process has been unnecessarily delayed, that a reviewer has been rude, that your editor has not been responsive enough, or have any other concern, please bring it to our attention so we can address it proactively.</p>
+<p>Raising a concern will NOT negatively affect the outcome of your peer review - even a peer review in progress.</p>
+<p>To raise a concern, please contact one of the following parties, chosing whomever you feel most comfortable approaching.</p>
+<ul>
+<li>Your assigned editor</li>
+<li>The managing editor</li>
+<li>Our independent ombudsperson (Dr Ian Milligan - i2milligan@uwaterloo.ca)</li>
+</ul>
+<p>We hope you don't find yourself in a situation in which you are unhappy, but if you do, we thank you for helping us to improve.</p>
+<hr>
+<p>This style guide was created with support from the School of Humanities, University of Hertfordshire.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

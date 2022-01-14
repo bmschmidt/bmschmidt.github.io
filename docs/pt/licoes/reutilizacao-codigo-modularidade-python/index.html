@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/pt/licoes/reutilizacao-codigo-modularidade-python"),
+					params: {lang:"pt",lessons:"licoes",slug:"reutilizacao-codigo-modularidade-python"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Reutilização de código e modularidade em Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2>Objetivos da lição</h2>
+<p>Programas de computador podem se tornar longos, pesados e confusos sem mecanismos especiais para gerenciar a complexidade. Esta lição mostrará como reutilizar partes do seu código escrevendo <em>Funções</em> e dividindo seus programas em <em>Módulos</em>, a fim de mantê-los concisos e fáceis de serem depurados. A possibilidade de remover um único módulo disfuncional pode economizar tempo e esforço.</p>
+<h3>Funções</h3>
+<p>Frequentemente você descobrirá que deseja reutilizar um determinado conjunto de comandos, geralmente porque há uma tarefa que precisa ser realizada repetidas vezes. Programas são majoritariamente compostos de rotinas que são poderosas e cujos usos são gerais o suficiente para serem reutilizadas. Essas rotinas são conhecidos como funções, e o Python possui mecanismos que permitem a definição de novas funções. Vamos trabalhar com um exemplo muito simples de função. Suponha que você deseja criar uma função de uso geral para cumprimentar pessoas. Copie a definição de função a seguir no Komodo Edit e salve o documento como <code>cumprimento.py</code>.</p>
+<pre><code># cumprimento.py
+
+def cumprimentar_entidade (x):
+    print(&quot;Olá &quot; + x)
+
+cumprimentar_entidade(&quot;mundo&quot;)
+cumprimentar_entidade(&quot;Programming Historian&quot;)
+</code></pre>
+<p>A linha que começa com <code>def</code> é a declaração de função. Definiremos (&quot;def&quot;) uma função, que neste caso nomeamos &quot;cumprimentar_entidade&quot;. O <code>x</code> é o parâmetro da função. Seu funcionamento deve ficar claro num instante. A segunda linha contém o código da função. O número de linhas do código varia conforme a nossa necessidade, mas neste exemplo é apenas uma única linha.</p>
+<p>Note que a <em>indentação</em> é muito importante em Python. O espaço vazio antes do comando <code>print</code> informa ao interpretador que esse comando é parte da função que está sendo definida. Você aprenderá mais sobre isso à medida que prosseguirmos; por ora, certifique-se de manter a indentação da maneira como foi mostrada. Ao executar o programa, deverá ver algo assim:</p>
+<pre><code>Olá mundo
+Olá Programming Historian
+</code></pre>
+<p>Este exemplo contém uma função: <em>cumprimentar_entidade</em>. Então essa função é &quot;chamada&quot; (ou &quot;invocada&quot;) duas vezes. Chamar ou invocar uma função significa apenas dizer ao programa para executar o código daquela função. É como dar ao cachorro sua guloseima com sabor de frango (*au* *au*). Nesse caso, para cada vez que chamamos a função damos à mesma um parâmetro diferente. Tente editar <code>cumprimento.py</code> de forma que ele chame a função <em>cumprimentar_entidade</em> uma terceira vez utilizando seu próprio nome como parâmetro. Execute o código novamente. Agora deve entender melhor o que <code>x</code> faz na declaração da função.</p>
+<p>Antes de prosseguirmos para o próximo passo, edite <code>cumprimento.py</code> para deletar os chamados da função, deixando apenas a declaração da função. Agora aprenderá como chamar uma função através de outro programa. Quando terminar, seu ficheiro <code>cumprimento.py</code> deve estar assim:</p>
+<pre><code># cumprimento.py
+
+def cumprimentar_entidade (x):
+    print(&quot;Olá &quot; + x)
+</code></pre>
+<h2>Modularidade</h2>
+<p>Quando os programas são pequenos como o do exemplo acima, tipicamente ficam hospedados num único ficheiro. Quando quiser executar um de seus programas, pode simplesmente enviar o ficheiro ao interpretador. À medida que os programas ficam maiores, faz sentido dividi-los em ficheiros separados conhecidos como módulos. Essa modularidade torna mais fácil o trabalho em seções quando os programas forem maiores. Aperfeiçoando cada seção do programa antes de unir todas as seções, torna-se mais fácil não apenas reutilizar módulos individuais em outros programas, como também torna mais fácil corrigir eventuais problemas pois permite identificar a origem do erro. Quando você divide um programa em módulos, também consegue ocultar os detalhes de como algo é feito dentro do módulo que o faz. Outros módulos não precisam saber como algo é feito se não são os responsáveis pela sua execução. Esse princípio &quot;need-to-know&quot; (necessidade de saber) é chamado de &quot;encapsulamento&quot;.</p>
+<p>Suponha que você esteja construindo um carro. É possível começar a adicionar peças à vontade, mas faria mais sentido começar construindo e testando um módulo - talvez o motor - antes de passar para os outros. O motor, por sua vez, pode ser imaginado como consistindo em vários outros módulos menores, como o carburador e o sistema de ignição, e esses são compostos de módulos ainda menores e mais básicos. O mesmo se aplica à codificação. Você tenta quebrar um problema em pedaços menores e resolvê-los primeiro.</p>
+<p>Um módulo já foi criado quando o programa <code>cumprimento.py</code> foi escrito. Agora você escreverá um segundo programa, <code>utilizando-cumprimento.py</code>, que importará o código do seu módulo e fará uso dele. O Python possui um comando especial, <code>import</code>, que permite que um programa tenha acesso ao conteúdo de outro ficheiro de programa. É isso que será utilizado.</p>
+<p>Copie este código no Komodo Edit e salve-o como <code>utilizando-cumprimento.py</code>. Este ficheiro é o seu programa; <code>cumprimento.py</code> é o seu módulo.</p>
+<pre><code># utilizando-cumprimento.py
+
+import cumprimento
+cumprimento.cumprimentar_entidade(&quot;mundo&quot;)
+cumprimento.cumprimentar_entidade(&quot;programming historian&quot;)
+</code></pre>
+<p>Fizemos algumas coisas aqui. Primeiro, dissemos ao Python para importar (carregar), utilizando o comando <code>import</code>, o módulo <code>cumprimento.py</code> que criamos anteriormente.</p>
+<p>Você perceberá que, embora antes conseguíssemos executar a função chamando-a pelo nome: <em>cumprimentar_entidade(&quot;mundo&quot;)</em>, agora precisamos incluir o nome do módulo seguido por um ponto (.) na frente do nome da função. De uma forma clara, isso significa: execute a função <em>cumprimentar_entidade</em>, que deve ser encontrada no módulo <code>cumprimento.py</code>.</p>
+<p>É possível executar o programa <code>utilizando-cumprimento.py</code> com o comando &quot;Run Python&quot; que você criou no Komodo Edit. Note que não é necessário executar o módulo… somente o programa que chama por ele. Se tudo correu bem, deverá ver o seguinte no painel de saída do Komodo Edit:</p>
+<pre><code>Olá mundo
+Olá programming historian
+</code></pre>
+<p>Tenha certeza de que entende a diferença entre carregar um ficheiro de texto (ex.: olamundo.txt) e importar um ficheiro de programa (ex.: cumprimento.py) antes de prosseguir.</p>
+<h2>Leituras recomendadas</h2>
+<ul>
+<li><a href="https://users.astro.ufl.edu/~warner/prog/python.html">Python Basics</a> (em inglês)</li>
+</ul>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

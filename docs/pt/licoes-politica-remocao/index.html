@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/pt/licoes-politica-remocao"),
+					params: {lang:"pt",lessons:"licoes-politica-remocao"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Política para remover lições</h1>
+<p>Os editores do <em>Programming Historian em português</em> fazem o possível para manter as lições, mesmo que problemas menores possam inevitavelmente surgir. No entanto, com o passar do tempo, as alterações tecnológicas ou dos princípios usados por uma determinada lição podem ser tão evidentes que os utilizadores poderão não concluir com êxito a lição. Nessas situações, a equipe editorial do <em>Programming Historian em português</em> pode decidir remover a lição: mantendo a página publicada, mas removê-la do diretório de lições ativas e adicionar um aviso no topo da página, com a nota que nem todos os itens da lição podem funcionar como pretendido originalmente.</p>
+<p>Não retiramos as lições de forma irrefletida.
+Se a equipe editorial começar a receber relatórios sobre problemas com uma lição, investigaremos o problema e tomaremos medidas para resolvê-lo. Frequentemente, decidimos que não é necessário retirar a lição:</p>
+<ul>
+<li>Nos casos em que pequenas correções possam ser feitas facilmente, como corrigir a formatação ou alterar um ou dois URLs quebrados;</li>
+<li>Nos casos em que surjam novos métodos para uma tarefa que podem ser preferíveis aos métodos expostos na lição, mas cuja tecnologia original ainda funciona e está disponível. A lição ainda poderá servir como uma ferramenta útil, e um retrato das técnicas da história digital quando foi publicada.</li>
+</ul>
+<p>No entanto, se estiver claro que são necessárias alterações essenciais no texto, código e/ou figuras, e que tais alterações exigem uma reformulação da lição, então abrimos um debate público para discutir com todos os membros da equipe editorial a possibilidade de remover a lição.</p>
+<p>Nos casos em que membros da equipe editorial ou membros da comunidade em geral estejam dispostos e aptos a oferecer seus conhecimentos, podemos criar uma lição atualizada derivada do original. De acordo com nosso licenciamento <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC-BY</a>, esta versão derivada será atribuída ao criador da lição original e a todos os colaboradores que ajudaram na produção da nova lição.</p>
+<p>Quer uma versão derivada seja criada ou não, a lição a remover seguirá as seguintes etapas:</p>
+<ol>
+<li>
+<p>A lição será movida de <code>/licoes/TITULO-LICAO</code> para <code>/lesson/retirado/TITULO-LICAO</code>. Um redirecionamento será implementado para que os links que apontam para o URL original levem o usuário para o novo URL.</p>
+</li>
+<li>
+<p>Uma vez retirada, a lição não aparecerá mais no diretório de lições e será removida do fluxo de postagens do Twitter. Para removê-la do Twitter, os editores devem consultar as instruções encontradas na Wiki do <em>Programming Historian</em>.</p>
+</li>
+<li>
+<p>O seguinte aviso será adicionado ao topo da lição retirada:</p>
+ <div class="alert alert-warning">{{ site.data.snippets.retired-definition[page.lang] | markdownify }}
+</li>
+</ol>
+<h2>Mais sobre sustentabilidade das lições</h2>
+<p><a href="/directrizes-autor#escrita-sustent%C3%A1vel">Directrizes para Autores para escrever de maneira sustentável</a></p>
+<p><a href="/directrizes-revisor#sustentabilidade">Diretrizes para Revisores para avaliar a sustentabilidade da lição</a></p>
+<p><a href="/directrizes-editor#c-revis%C3%A3o-para-a-sustentabilidade-e-internacionaliza%C3%A7%C3%A3o">Directrizes para Editores para promoverem a sustentabilidade da lição</a></p>
+<h2>Lições removidas</h2>
+<p>{% assign retired = site.pages | where: &quot;retired&quot;, &quot;true&quot; %}
+{% for lesson in retired %}
+[{{ lesson.title }}]({{ lesson.url }})
+{% endfor %}</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

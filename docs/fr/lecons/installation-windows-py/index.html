@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/fr/lecons/installation-windows-py"),
+					params: {lang:"fr",lessons:"lecons",slug:"installation-windows-py"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en français</h2>
+	<a class="nav-link" href="/fr/lecons">Leçons</a><a class="nav-link" href="/fr/apropos">À propos</a><a class="nav-link" href="/fr/recherche">Recherche</a><a class="nav-link" href="/fr/nous-soutenir">Nous soutenir</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link active" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Installer un environnement de développement intégré pour Python (Windows)</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2>Sauvegarder son disque dur</h2>
+<p>Faites en sorte de toujours disposer de sauvegardes régulières et récentes du contenu de votre disque dur. L'importance de cette pratique dépasse largement le cadre de vos activités de programmation, et il serait avisé d’en faire une habitude.</p>
+<h2>Installer Python (v.3)</h2>
+<p>Rendez-vous sur le <a href="http://www.python.org/">site web de Python</a>, téléchargez la dernière version stable du langage de programmation Python (version 3.8 au mois d'avril 2020) et procédez à l'installation selon les instructions fournies sur le site. <em>N.D.L.R. Notez que les versions les plus récentes de Python, à partir de la v. 3.5, ne sont pas compatibles avec Windows XP ni avec les versions antérieures de Windows.</em></p>
+<h2>Créer un répertoire dédié</h2>
+<p>Pour mieux organiser votre travail, il est recommandé de créer un répertoire (dossier) dédié sur votre disque dur, à l'emplacement de votre choix, pour y ranger vos fichiers de programmation (par exemple, <code>programming-historian</code>).</p>
+<h2>Installer Komodo Edit</h2>
+<p>Komodo Edit est un éditeur de texte au code source ouvert et gratuit que vous pouvez télécharger depuis <a href="http://www.activestate.com/komodo-edit">son site web &quot;Komodo Edit&quot;</a>. Il existe néanmoins <a href="http://wiki.python.org/moin/PythonEditors/">un vaste choix d'éditeurs de texte</a>, si vous souhaitez utiliser un autre programme.</p>
+<h2>Démarrer Komodo Edit</h2>
+<p>Ouvrez Komodo Edit; vous devriez obtenir quelque chose qui ressemble à ceci:</p>
+<p>{% include figure.html filename=&quot;komodo-edit11-windows-main.png&quot; caption=&quot;Komodo Edit sur Windows&quot; %}</p>
+<p>Si vous ne voyez pas le volet <code>Toolbox</code> (<em>Boîte à outils</em>) en haut à droite, vous pouvez y accéder via le menu <code>View -&gt; Tabs &amp; Sidebars -&gt; Toolbox</code> (<em>Vue -&gt; Onglets &amp; Volets latéraux -&gt; Boîte à outils</em>). Peu importe pour le moment si le volet du projet est ouvert ou non. Prenez le temps d'explorer l'interface et de vous familiariser avec son agencement. Si besoin, le menu d'aide <code>Help</code> offre une documentation détaillée.</p>
+<h3>Configurer Komodo Edit</h3>
+<p>Vous devez maintenant configurer l'éditeur pour pouvoir exécuter vos programmes en Python.</p>
+<p>Sélectionnez d'abord <code>Edit -&gt; Preferences -&gt; Languages -&gt; Python 3</code> (<em>Modifier -&gt; Préférences -&gt; Langages -&gt; Python 3</em>) puis <code>Browse</code> (<em>Parcourir</em>). Puis, sélectionnez le chemin du répertoire d'installation de Python, qui ressemble à ceci: <code>C:\Utilisateurs\VotreNomUtilisateur\AppData\Local\Programs\Python\Python38-32</code>). Lorsque vous avez trouvé le bon chemin, cliquez sur <code>OK</code>:</p>
+<p>{% include figure.html caption=&quot;Définissez l'interpréteur Python par défaut&quot; filename=&quot;komodo-edit11-windows-interpreter.png&quot; %}</p>
+<p><em>(N.D.L.R. En effectuant la manipulation décrite plus haut, après avoir cliqué sur <code>Browse</code> pour parcourir votre disque dur et afficher la boîte de dialogue <code>Open Executable File</code>, il se peut que vous n'arriviez pas à localiser le dossier AppData pour récupérer le chemin et définir l'interpréteur par défaut. Dans ce cas, entrez <code>%AppData%</code> dans la barre de recherche du menu <code>Démarrer</code> de Windows, puis cliquez sur l'emplacement pour l'ouvrir. Localisez le chemin spécifié ci-haut (<code>\AppData\Local\Programs\Python\Python38-32</code>) puis retournez à la boîte de dialogue <code>Open Executable File</code> (à l'intérieur de Komodo Edit) et copiez-le dans la barre <code>Nom du fichier</code>. Une fois le répertoire ouvert, sélectionnez <code>python.exe</code> (type de fichier: application) et cliquez sur <code>Ouvrir</code>.</em></p>
+<p>Ensuite, depuis le menu <code>Preferences</code> (<em>Préférences</em>) à gauche sélectionnez <code>Internationalization</code>. Maintenant, allez à la section <code>Language-specific Default Encoding</code> (<em>Encodage par défaut selon le langage de programmation</em>) et, dans le menu déroulant de <code>Language-specific</code>, sélectionnez <code>Python</code>. Vérifiez que l'encodage <a href="http://en.wikipedia.org/wiki/UTF-8">UTF-8</a> est sélectionné en tant qu'encodage par défaut.</p>
+<p>{% include figure.html caption=&quot;Paramètre d'encodage du texte en format UTF-8&quot; filename=&quot;komodo-edit11-windows-utf-set.png&quot; %}</p>
+<p>Ensuite sélectionnez <code>Toolbox-&gt;Add-&gt;New Command</code> (<em>Boite à outils-&gt;Ajouter-&gt;Nouvelle commande</em>). Vous ouvrirez ainsi une nouvelle fenêtre de dialogue. Renommez votre commande <code>‘Run Python’</code> (<em>Exécuter Python</em>). Dans la barre <code>‘Command’</code> (<em>Commande</em>), tapez:</p>
+<pre><code class="language-python">%(python3) %f
+</code></pre>
+<p>Si vous oubliez d'exécuter cette commande, Python ne saura pas coment interpréter les instructions envoyées.</p>
+<p>Dans la barre <code>‘Start in’</code>, tapez:</p>
+<p><code>%D</code></p>
+<p>Si vous obtenez ceci, cliquez sur <code>OK</code>:</p>
+<p>{% include figure.html filename=&quot;komodo-edit11-windows-python-command.png&quot; caption=&quot;Commande « Exécuter Python3 »&quot; %}
+{% include figure.html filename=&quot;komodo-edit11-windows-python-start.png&quot; caption=&quot;Configuration de la commande « Run Python3 Start » .&quot; %}</p>
+<p>Votre nouvelle commande devrait apparaître dans le panneau de la boite à outils <code>Toolbox</code>. Après avoir complété cette étape, vous devrez peut-être redémarrer votre ordinateur avant d’être en mesure de travailler avec Python dans Komodo Edit.</p>
+<h2>Étape 2 – 'Hello World' en Python</h2>
+<p>Il est de coutume d'inaugurer l'utilisation d'un nouveau langage de programmation avec un script qui dit tout simplement <em>&quot;hello world&quot;</em> soit &quot;bonjour le monde&quot;. Nous allons voir ensemble comment faire cela en Python et en HTML.</p>
+<p>Python est un langage de très haut niveau, ce qui en fait un choix fréquemment recommandé pour les personnes qui débutent en programmation. Autrement dit: il est possible d'écrire en Python de courts programmes qui sont très performants. Plus un programme est court, plus il est susceptible de tenir sur la taille d'un écran et donc plus il a des chances de rester gravé dans votre mémoire.</p>
+<p>Python est un langage de programmation interprété. Cela signifie qu'il existe un programme informatique spécifique, appelé interpréteur, qui sait reconnaître les instructions écrites dans ce langage. Une manière d'utiliser un interpréteur consiste à stocker toutes vos instructions Python dans un fichier puis à soumettre ce fichier à l'interpréteur. Un fichier contenant des instructions écrites avec un langage de programmation s'appelle un programme (informatique). L'interpréteur exécute chacune des instructions contenues dans le programme, puis il s'arrête. Voyons les étapes à suivre pour y parvenir.</p>
+<p>Dans votre éditeur de texte, créez un nouveau fichier, entrez ce petit programme de deux lignes, puis sauvegardez-le dans votre répertoire <code>programming-historian</code> sous le nom
+<code>hello-world.py</code></p>
+<pre><code class="language-python"># hello-world.py
+print('hello world')
+</code></pre>
+<p>L'éditeur de texte de votre choix doit avoir un bouton de menu “<code>Run</code>” qui vous permet d'exécuter votre programme. Si tout s'est bien passé, vous devriez obtenir un résultat semblable à celui présenté dans la figure ci-dessous, que nous avons obtenue avec Komodo Edit:</p>
+<p>{% include figure.html filename=&quot;komodo-edit11-windows-hello.png&quot; caption=&quot;'Hello World'&quot; %}</p>
+<h2>Interagir via une console Python (shell)</h2>
+<p>Une autre manière d'interagir avec un interpréteur est d'utiliser ce que nous appelons une console. Dans ce cas, il suffit de taper une instruction au clavier et d'appuyer sur la touche Entrée pour que la console exécute votre commande. La console est un moyen parfait pour tester votre code et avoir la certitude que vous allez obtenir le résultat que vous recherchez.</p>
+<p>Vous pouvez exécuter une console Python en double-cliquant sur le fichier <code>python.exe</code>. Si vous avez installé la version 3.8 (la plus récente au moment de cette traduction en avril 2020), ce fichier se trouve fort probablement dans votre répertoire <code>C:\Utilisateurs\VotreNomUtilisateur\AppData\Local\Programs\Python\Python38-32</code>. Lorsque la fenêtre de la console s'affiche sur votre écran, tapez:</p>
+<pre><code class="language-python">print('hello world')
+</code></pre>
+<p>puis appuyez sur la touche Entrée. Votre ordinateur va vous répondre:</p>
+<pre><code class="language-python">hello world
+</code></pre>
+<p>Pour représenter une interaction via la console, nous utilisons -&gt; pour indiquer la réponse reçue dans celle-ci, comme suit:</p>
+<pre><code class="language-python">print('hello world')
+-&gt; hello world
+</code></pre>
+<p>Sur votre écran, l'affichage ressemble plutôt à cela:</p>
+<p>{% include figure.html caption=&quot;La console Python sous Windows&quot; filename=&quot;windows-python3-cmd.png&quot; %}</p>
+<p>Maintenant, votre ordinateur est prêt et vous êtes en mesure d'exécuter des tâches plus intéressantes. Si vous travaillez avec nos tutoriels sur Python dans l'ordre, nous vous recommandons de consulter par la suite la leçon « <a href="/fr/lecons/comprendre-les-pages-web">Comprendre les pages web et le HTML</a> » .</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

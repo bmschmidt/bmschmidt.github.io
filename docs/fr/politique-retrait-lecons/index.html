@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/fr/politique-retrait-lecons"),
+					params: {lang:"fr",lessons:"politique-retrait-lecons"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en français</h2>
+	<a class="nav-link" href="/fr/lecons">Leçons</a><a class="nav-link" href="/fr/apropos">À propos</a><a class="nav-link" href="/fr/recherche">Recherche</a><a class="nav-link" href="/fr/nous-soutenir">Nous soutenir</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link active" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Politique de retrait des leçons</h1>
+<p>Les rédacteurs et les rédactries du <em>Programming Historian</em> font de leur mieux pour maintenir les leçons en ligne, même si des problèmes mineurs peuvent inévitablement survenir.
+Néanmoins, l'évolution au fil du temps des technologies ou des concepts mobilisés dans un cours peut être importante au point que les utilisateurs et les utilisatrices ne seront plus en mesure de terminer la leçon avec succès.
+Dans de tels cas, l'équipe éditoriale du <em>Programming Historian</em> peut prendre la décision de &quot;retirer&quot; une leçon: si la page reste publiée, un avertissement est ajouté informant que certaines composantes du cours peuvent ne pas fonctionner comme initialement prévu, et la leçon est enlevée du répertoire des leçons actives.</p>
+<p>Nous ne procédons pas facilement au retrait des leçons.
+Si l'équipe éditoriale commence à recevoir des informations concernant d'éventuels problèmes sur une leçon, nous allons les examiner et tenter de les résoudre.
+Il arrive fréquemment de décider qu'il n'est pas nécessaire de retirer la leçon:</p>
+<ul>
+<li>Lorsque des corrections peuvent se faire facilement pour réviser le formattage d'une leçon ou remplacer quelques URLs obsolètes, nous les prenons en charge.</li>
+<li>Lorsque de nouvelles méthodes semblent préférables à celles discutées dans une leçon, mais que les technologies mobilisées restent néanmoins efficaces et disponibles, la leçon <strong>n'est pas</strong> retirée. Elle peut en effet servir encore en tant qu'outil d'apprentissage, tout en illustrant quelles étaient les techniques de l'histoire numérique au moment de sa publication.</li>
+</ul>
+<p>Toutefois, lorsqu'il devient clair que des changements essentiels sont nécessaires dans le code, le texte et/ou les images fournies, qui déboucheraient sur le remaniement complet de la leçon, dans ce cas nous ouvrons un ticket public pour discuter entre tous les membres de l'équipe éditoriale de la possibilité de retirer cette leçon.</p>
+<p>Si des membres de l'équipe éditoriale ou de la communauté plus large qui l'entoure ont la volonté et la possibilité d'offrir leur expertise, il peut alors être envisagé de créer une leçon mise à jour, dérivée de celle d'origine.
+En accord avec notre licence <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">CC-BY</a>, cette version dérivée sera créditée à l'auteur(e) de la leçon originale, ainsi qu'aux personnes qui auront contribué à son élaboration.</p>
+<p>Qu'une leçon dérivée soit créée ou pas, voici les étapes à suivre pour retirer une leçon :</p>
+<ol>
+<li>
+<p>La leçon sera déplacée de <code>/fr/lecon/TITRE-DE-LA-LEÇON</code> à <code>/fr/lecons/retrait/TITRE-DE-LA-LEÇON</code>. Une redirection sera mise en place pour que des liens pointant à l'URL originelle renvoient l'utilisateur à la nouvelle URL.</p>
+</li>
+<li>
+<p>Une fois la leçon retirée, celle-ci n'apparaît plus dans le répertoire des leçons et elle est aussi enlevée de la liste de publications sur Twitter. Les rédacteurs et les rédactrices du Programming Historian peuvent trouver toutes les instructions nécessaires sur le wiki pour enlever une leçon du bot Twitter.</p>
+</li>
+<li>
+<p>L'avertissement suivant est ajouté en haut de la page de la leçon retirée:</p>
+ <div class="alert alert-warning">{{ site.data.snippets.retired-definition[page.lang] | markdownify }}
+</li>
+</ol>
+<h2>Autres consignes sur la pérennisation des leçons</h2>
+<p>{% comment %}
+The following anchors need to be checked/replaced once all pages have been created and published in the FR branch)
+<a href="/author-guidelines#write-sustainably">Author Guidelines for Writing Sustainably</a></p>
+<p><a href="/reviewer-guidelines#sustainability">Reviewer Guidelines for Assessing Lesson Sustainability</a></p>
+<p><a href="(/consignes-redacteurs#c-perennisation-et-internationalisation)">Consignes aux rédacteurs et rédactrices pour assurer la pérennisation des leçons</a> <a href="/editor-guidelines#c-sustainability-review">Editor Guidelines for Fostering Lesson Sustainability</a>
+{% endcomment %}</p>
+<h2>Leçons retirées</h2>
+<p>{% assign retired = site.pages | where: &quot;retired&quot;, &quot;true&quot; %}
+{% for lesson in retired %}
+[{{ lesson.title }}]({{ lesson.url }})
+{% endfor %}</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

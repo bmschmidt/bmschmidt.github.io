@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/pt/directrizes-editor"),
+					params: {lang:"pt",lessons:"directrizes-editor"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Diretrizes para editores</h1>
+<p>Esta página contém as instruções passo a passo para os editores, facilitando a revisão por pares do <em>Programming Historian em português</em>.</p>
+<h2>O papel do editor</h2>
+<p>Obrigado por editar uma lição para o <em>Programming Historian em português</em>. Somos extremamente gratos pelo seu empenho. Este guia destina-se a garantir que todos os autores, editores e revisores têm uma experiência consistente e justa com o <em>Programming Historian em português</em>. Se houver alguma dúvida sobre algo nestas diretrizes, basta enviar um e-mail para um dos outros editores ou publicar uma questão no nosso <a href="https://github.com/programminghistorian/jekyll/issues">Github</a>. Também podem ser colocadas sugestões se encontrar formas para melhorar ou atualizar esta página.</p>
+<p>{% include toc.html %}</p>
+<p>Incentivamos sempre potenciais autores ou tradutores de lições a apresentar as suas ideias antes de começarem a escrever. Se uma proposta não é adequada para o <em>Programming Historian em português</em>, o papel do editor é informar o autor antes que ele tenha escrito a lição completa. Queremos com isto poupar o tempo e a energia de todos. Uma vez conversado com o autor e encorajadas as suas ideias, o objetivo é apoiar o autor até que a lição esteja pronta para publicar. O objetivo é ajudá-lo da forma mais eficiente possível e com directrizes claras. Para isso pode ser útil conhecer as nossas <a href="/pt/directrizes-autor">diretrizes para autores</a>.</p>
+<h3>Espaços seguros</h3>
+<p>O <em>Programming Historian em português</em> compromete-se em manter um espaço seguro para a troca de ideias, onde todos possam falar sem medo de assédio ou abuso. O editor desempenha um papel fundamental ao garantir a tolerância neste espaço. O trabalho inclui reforçar permanentemente a nossa política anti-assédio. Se for preciso ajuda, basta perguntar a um dos <a href="/pt/equipe#programming-historian-em-portugu%C3%AAs">outros editores ou ao nosso mediador independente</a>. Para saber mais, pode ler sobre o <a href="/posts/PH-commitment-to-diversity">compromisso com espaços seguros</a> no blog do projeto.</p>
+<h3>Política anti-assédio</h3>
+<p>Esta é uma declaração dos princípios do <em>Programming Historian em português</em> onde são definidas as expectativas para o tom e estilo de toda a comunicação entre revisores, autores, editores e participantes dos nossos fóruns públicos.</p>
+<p>O <em>Programming Historian em português</em> dedica-se a criar um ambiente académico aberto em que os membros da comunidade podem examinar em liberdade e detalhadamente ideias, fazer perguntas, sugestões ou pedir esclarecimentos. Este espaço tem que ser livre de assédio para todos no projeto, independentemente do género, identidade e expressão de género, orientação sexual, deficiência, aparência física, raça, idade ou religião ou experiência técnica. Não é tolerado de nenhuma forma qualquer assédio ou ataque <em>ad hominem</em> a membros da comunidade. Os membros que violarem estas regras podem ser expulsos da comunidade, por avaliação do conselho editorial. Se alguém testemunhar ou sentir que foi vítima das atividades descritas acima, deve entrar em <a href="/pt/equipe#programming-historian-em-portugu%C3%AAs">contato com o nosso mediador independente</a>. Obrigado por nos ajudar a criar um espaço seguro.</p>
+<h3>Acompanhar as lições propostas</h3>
+<p>Depois que uma proposta de lição receber &quot;sinal verde&quot; da equipa editorial e ter um editor atribuído, este trabalha com o autor para definir os objetivos da lição e acordar um prazo de submissão. O prazo recomendado é de 90 dias a contar do início da conversa editorial, embora possa ser ajustado, se necessário.</p>
+<p>O editor criará um issue com o nome &quot;Lição proposta&quot; no <a href="https://github.com/programminghistorian/ph-submissions/issues">repositório de propostas no Github</a> com a etiqueta &quot;proposta&quot;. O texto padrão da proposta está incluído no modelo de publicações ou pode ser copiado do modelo abaixo.</p>
+<pre><code>O Programming Historian em português recebeu a seguinte proposta de lição sobre 'TÍTULO PROVISÓRIO DA LIÇÃO' pelo(s) NOME(S) DO AUTOR(ES). Os objectivos de aprendizagem propostos são:
+
+- objectivo de aprendizagem 1
+- objectivo de aprendizagem 2
+- objectivo de aprendizagem 3 (adicionar conforme necessário)
+
+Para promover uma publicação rápida deste importante tópico, foi acordada a data de submissão para o mais tardar em [90 DIAS POR DEFEITO, MAS PODE SER MAIS TEMPO, SE ACORDADO COM O EDITOR]. O(s) autor(es) concordam em entrar em contato com o editor com antecedência se precisarem de ajustar o prazo.
+
+Se a lição não for enviada até [DATA ACORDADA], o editor tentará entrar em contato com o(s) autor(es). Se não for recebida uma atualização, a issue será encerrada. Mas poderá ser reaberta no futuro, a pedido do(s) autor(es).
+
+O contato editorial principal desta lição é [USERNAME DO EDITOR]. Se houver alguma preocupação dos autores, eles podem entrar em contato com o nosso mediador independente.
+</code></pre>
+<p>O editor é incentivado a ajustar o texto para refletir quaisquer metas ou requisitos adicionais acordados com o(s) autor(es).</p>
+<p>Quando os materiais da lição estiverem prontos para envio, o autor entrará em contato com o editor designado, cujo trabalho será enviá-los para o <a href="https://github.com/programminghistorian/ph-submissions">repositório de submissões</a> após a primeira verificação para garantir que não haja problemas importantes de metadados.</p>
+<ol>
+<li><strong>Carregar a lição</strong>: a lição em si deve ser enviada para a subpasta apropriada (dependendo se é uma lição original ou uma tradução) da <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/pt">pasta de lições</a> dentro da pasta de idioma correspondente na raiz do repositório ph-submissions. Se precisar de ajuda, consulte as <a href="https://help.github.com/articles/adding-a-file-to-a-repository/">instruções do GitHub</a>.</li>
+<li><strong>Carregar imagens</strong>: se a lição incluir imagens, certifique-se de que todos os arquivos sejam nomeados de acordo com as convenções de nomenclatura especificadas nas <a href="/pt/directrizes-autor">diretrizes para autores</a>. O editor deve criar uma pasta para as imagens no <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/images">diretório de imagens</a>. Esta pasta deve ter o mesmo nome do ficheiro da lição. Faça upload das imagens para esta pasta.</li>
+<li><strong>Carregar dados</strong>: se a lição incluir ficheiros de dados, eles devem ser enviados para uma pasta com nome semelhante no <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/assets">diretório de recursos</a>.</li>
+</ol>
+<p>Após o upload, o editor deve verificar o <a href="https://github.com/programminghistorian/ph-submissions/commits/gh-pages">histórico de commits do repositório</a> para garantir que o upload recebeu uma marca de seleção verde. Se não, algo deu errado e o <a href="https://github.com/programminghistorian/jekyll/wiki/Making-Technical-Contributions#checking-travis-for-errors">wiki</a> deve ser consultado para solucionar os erros. Após o envio bem sucedido da lição, o editor criará um ticket de revisão para a lição e fechará o issue da proposta. A partir daqui o editor deve garantir que o autor trabalha a partir da versão mais recente da lição no repositório e carrega as alterações diretamente no GitHub.</p>
+<h3>Revisão por pares aberta</h3>
+<p>O <em>Programming Historian em português</em> usa um modelo de revisão por pares aberta. Embora acreditando que isto incentiva a civilidade e a partilha produtiva de ideias, os autores têm o direito (e tem que ser respeitado) de solicitar uma revisão por pares fechada. Há muitas razões pelas quais alguém pode hesitar em participar numa revisão aberta e queremos que os autores escolham a opção com que se sentem mais confortáveis.</p>
+<p>Antes de solicitar revisões externas, o editor deve ler e experimentar o tutorial da lição e usar da sua experiência com o Programming Historian em português para ajudar o autor a fazer melhorias (se necessário). Não se espera que o editor seja um especialista no conteúdo da lição, esse é o papel dos <a href="/pt/directrizes-revisor">revisores</a>.</p>
+<p>O editor deve ter uma visão geral para a sustentabilidade da lição e garantir que estão identificadas as versões, dependências e requisitos do software, as capturas de tela estão limitadas às necessárias para concluir a lição e que existe referência à documentação do próprio software (se disponível e apropriada). Os editores também devem garantir que as lições evitem, na medida do possível, instruções específicas do software, como &quot;Clique com o botão direito do mouse no ícone x para aceder ao menu x&quot;, e sim favorecer visões gerais metodológicas. A <a href="#c-sustainability-review">lista de validação editorial</a> contém mais detalhes sobre práticas de sustentabilidade do Programming Historian em português.</p>
+<p>Muitas vezes, os editores precisam de ajuda para definir qual o público-alvo de uma lição ou identificar o jargão que precisa de explicação. Esta revisão inicial vai ajudar os revisores externos a concentrar-se em melhorar a lição. Normalmente, é feito abertamente no nosso sistema de submissão (abaixo), mas poderá ser uma revisão fechada a pedido de qualquer das partes.</p>
+<p>Depois do autor ter revisto a lição de acordo com as indicações do editor, é tarefa do editor convidar duas revisões formais de pares externos. No interesse do <a href="https://github.com/programminghistorian/jekyll/issues">compromisso com a diversidade</a>, incentivamos os editores a fazer um esforço para escolher revisores que sejam diferentes de si próprios, quer seja pelo género, sexo, nacionalidade, raça, idade ou formação académica. Por favor, tente encontrar duas pessoas que não sejam muito parecidas com o editor.</p>
+<p>Para coordenar os pedidos de revisores, existe uma tabela do Google &quot;Programming Historian - Reviewer Tracking&quot; (se precisar de ajuda para aceder ao ficheiro basta entrar em contato com o editor-chefe). Antes de enviar um convite de revisão, é necessário verificar a lista para garantir que a pessoa não foi recentemente requisitada por outro editor. Para evitar a sobrecarga de revisores, definimos o limite de pedidos a uma vez por ano. Se um revisor tiver sido contactado no último ano, o campo &quot;date_contacted&quot; será exibido em vermelho.</p>
+<p>Para cada potencial revisor que for contactado, independemente da sua resposta, por favor insira:</p>
+<ul>
+<li>a data do contato,</li>
+<li>o nome do revisor,</li>
+<li>o seu <em>username</em> como editor,</li>
+<li>a lição a ser revisada,</li>
+<li>a resposta,</li>
+<li>e, se a resposta foi &quot;sim&quot;, a data em que foi concluída.</li>
+</ul>
+<p>Por favor, coloque as datas com o formato: <code>mm/dd/aaaa</code></p>
+<p>Ao convidar revisores, o editor deve fornecer as <a href="/pt/directrizes-revisor">diretrizes para revisores</a> e um prazo para concluir a revisão (geralmente um mês) para garantir a publicação eficiente da lição.</p>
+<p>Quando a lição for submetida, o editor abrirá uma nova 'issue' no nosso <a href="https://github.com/programminghistorian/ph-submissions/issues">repositório de questões do GitHub</a> onde irá ocorrer a revisão aberta. Este quadro de mensagens permite que todos acompanhem a conversa. Todos os envolvidos (autor, editor e os revisores) devem ter uma conta gratuita no GitHub.</p>
+<h3>O comentário inicial</h3>
+<p>O primeiro comentário no quadro de mensagens para uma revisão da proposta deve usar o nosso template. Este descreve o papel do editor e o que uma revisão implica, bem como as opções de todos no caso (improvável) de algum problema. Sempre que necessário, o <a href="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/.github/ISSUE_TEMPLATE">template</a> pode ser adaptado. Mas ele também deve aparecer automaticamente em todas as novas questões de edição. O template tem esta estrutura:</p>
+<pre><code>O Programming Historian em português recebeu a proposta sobre '[TÍTULO DA LIÇÃO]' do autor [USERNAME NO GITHUB DO AUTOR]. Esta lição está agora em revisão e pode ser lida em:
+
+http://programminghistorian.github.io/ph-submissions/pt/licoes/[&quot;originais&quot; ou &quot;traducoes&quot;]/[NOME-DO-FICHEIRO-AQUI]
+
+Eu serei o editor no processo de revisão. O meu papel é solicitar duas revisões da comunidade e gerir as discussões, que devem ser realizadas aqui neste fórum. Eu já li a lição e forneci feedback, ao qual o autor respondeu.
+
+Os membros da comunidade em geral também são convidados a oferecer feedback construtivo que deve ser publicado neste canal, mas é solicitado que leiam primeiro as diretrizes para revisores (/directrizes-revisor) e sigam a nossa política anti-assédio (abaixo). Pedimos que todas as revisões parem após o envio da segunda revisão formal para que o autor possa concentrar-se no ajuste da lição. Eu farei um anúncio neste tópico quando isso ocorrer.
+
+Vou me esforçar para manter a conversa aberta aqui no GitHub, mas se alguém sentir a necessidade de discutir algo em particular, pode entrar em contato comigo, ou pode sempre recorrer para o nosso mediador independente se achar necessário.
+
+Política anti-assédio
+_
+
+Esta é uma declaração de princípios do *Programming Historian em português* e define o tom e estilo de toda a comunicação entre revisores, autores, editores e participantes.
+
+O *Programming Historian em português* dedica-se a criar um ambiente académico aberto em que os membros da comunidade podem examinar em liberdade e detalhadamente ideias, fazer perguntas, sugestões ou pedir esclarecimentos. Este espaço tem que ser livre de assédio para todos no projeto, independentemente do género, identidade e expressão de género, orientação sexual, deficiência, aparência física, raça, idade, religião ou experiência técnica. Não é tolerado qualquer assédio ou ataque *ad hominem* a membros da comunidade de nenhuma forma. Os membros que violarem estas regras podem ser expulsos da comunidade, por avaliação do conselho editorial. Se alguém testemunhar ou sentir que foi vítima das atividades descritas acima, entre em contato com o nosso mediador independente. Obrigado por nos ajudar a criar um espaço seguro.
+</code></pre>
+<h3>Orientar a conversa</h3>
+<p>Todos vão procurar orientações do editor sobre o sistema. Para a maioria dos autores e revisores, esta será a primeira experiência com o nosso processo de revisão por pares. O feedback imediato no quadro de mensagens significa que os autores podem ver os comentários do revisor antes do editor. Isso significa que será necessário indicar de forma clara como tudo funciona e quando todos deverão participar ou esperar por mais instruções.</p>
+<p>Se possível, é sempre melhor marcar os passos de revisão o mais rápido possível. Por exemplo, após a primeira revisão, é recomendado publicar uma resposta a agradecer ao revisor e a informar o autor que outra revisão está a caminho. Também é conveniente sugerir ao autor que aguarde a segunda revisão antes de responder. Esta mensagem permite que todos saibam o que esperar e quando.</p>
+<p>Se o editor estiver com problemas de tempo, basta fazer uma anotação no fórum para dizer que viu a nova atividade, mas vai precisar de mais tempo para responder adequadamente. Gerir as expectativas pode ser a chave para manter todos felizes.</p>
+<h3>Resumir a revisão</h3>
+<p>Depois das duas revisões formais serem feitas (assim como as contribuições informais da comunidade), o editor tem que resumir as sugestões e dar ao autor indicações claras para as respostas a dar às revisões. Se alguma sugestão for contrária aos objetivos do <em>Programming Historian em português</em>, peça educadamente ao autor para ignorar essas sugestões. Lembre-se de como é ser um autor e receber uma crítica. São necessárias directrizes claras, mas o editor deve também manter o direito de rejeitar ideias que não melhorem a lição. É essencial definir bem os objectivos. Um bom resumo das revisões recebidas implica que o autor ao responder pode esperar a publicação, se todos os obstáculos forem ultrapassados.</p>
+<h3>Gerir o processo de revisão</h3>
+<p>Com o resumo das revisões e todas as instruções finais, convém lembrar o autor que as revisões devem ser concluídas em quatro semanas. Este prazo serve para garantir que as lições são publicadas em tempo útil e não se arrastam desnecessariamente. Se o autor antecipar problemas para cumprir o prazo, deve entrar em contato com o editor e estabelecer um prazo mais adequado.</p>
+<h2>Processo técnico de revisão - Lista de verificação editorial</h2>
+<p>A revisão por pares é realizada no nosso <a href="https://github.com/programminghistorian/ph-submissions">repositório de submissões</a>. Instruções completas sobre como fazer o upload dos ficheiros, incluindo os formatos dos ficheiros e orientações para a formatação, podem ser encontradas nas <a href="/pt/directrizes-autor">directrizes para os autores</a>, que estarão sempre atualizadas. É bom estar familiarizado com estas etapas e consultá-las sempre que necessário. Se for preciso ajuda, não hesite em enviar um <a href="/pt/equipe">email diretamente para outro editor</a>.</p>
+<p>Existem áreas em que o editor deve intervir do ponto de vista técnico. Estas são:</p>
+<h3>A) Nome do ficheiro da lição</h3>
+<p>O <strong>Editor</strong> deve sugerir um nome para o novo ficheiro de lição que esteja em conformidade com estas orientações:</p>
+<ul>
+<li>nome curto, mas descritivo (o nome acabará por ser parte do URL da lição quando estiver publicada);</li>
+<li>Um bom URL é semelhante a um bom slide do powerpoint, é fácil de lembrar e dá informação sobre a lição. Os URLs das lições têm a seguinte estrutura: <code>/pt/licoes/NOME-DO-FICHEIRO-AQUI</code>;</li>
+<li>Nunca colocar espaços no nome do ficheiro, use hífens;</li>
+<li>Não usar acentos, cedilhas e caracteres especiais no nome do ficheiro;</li>
+<li>A extensão do ficheiro deve ser <code>.md</code> para que o GitHub consiga apresentar uma pré-visualização da lição.</li>
+</ul>
+<p>Este nome utilizado no link é chamado de slug no contexto da publicação web. Para além de servir de referência na construção do URL da lição, serve também de referência para estabelecer a ligação com os ficheiros anexos.</p>
+<p>Depois de escolher um nome para o ficheiro da lição, o mesmo será usado para criar uma nova pasta em <code>images</code> que conterá todas as imagens da lição. Se a lição usar datasets, o mesmo tem que ser feito na pasta <code>assets</code>.</p>
+<h3>B) Verificação inicial da pontuação Markdown</h3>
+<p>Os autores são responsáveis por verificar se a lição foi processada corretamente no Markdown. Se as regras de sintaxe tiverem sido seguidas não devem aparecer problemas. Se algum símbolo de Markdown aparecer na página é porque existe algum erro. Instruções detalhadas sobre sintaxe do Markdown estão disponíveis nas nossas <a href="/pt/directrizes-autor">diretrizes para o autor</a>.</p>
+<p>Esta verificação pode ser feita rapidamente na pré-visualização da versão compilada da página. Disponível em:</p>
+<p><code>http://programminghistorian.github.io/ph-submissions/pt/licoes/originais/NOME-DO-FICHEIRO-AQUI</code> (atenção que não tem .md no fim)</p>
+<p>Observe que se for uma tradução, você substituirá &quot;originais&quot; por &quot;traducoes&quot;. Se não funcionar, informe a equipa técnica e ela tentará solucionar.</p>
+<h3>C) Revisão para a sustentabilidade e internacionalização</h3>
+<p>Para aumentar a longevidade das lições os editores do <em>Programming Historian em português</em> devem fazer uma revisão de sustentabilidade, como parte da verificação final. Cada proposta é diferente e algumas destas áreas podem não ser aplicáveis. Tendo em conta o nível de dificuldade de cada lição e o público-alvo, os editores devem usar estas questões como orientação para garantir que as lições sejam o mais sustentável possível desde a data de publicação.</p>
+<ul>
+<li>Todas as versões e dependências de software estão descritas na introdução da lição;</li>
+<li>Sempre que possível os datasets para a lição estão claramente identificados e alojados no <em>Programming Historian em português</em>;</li>
+<li>Sempre que possível as lições fazem uso da documentação do software existente;</li>
+<li>As lições conectam-se à Wikipedia para terminologia técnica;</li>
+<li>As capturas de tela da <a href="https://pt.wikipedia.org/wiki/Interface_gr%C3%A1fica_do_utilizador">Interface gráfica do utilizador</a> do software são limitadas àquelas necessárias para entender a lição;</li>
+<li>Links externos (por exemplo, software ou datasets) são atuais e estão ativos (embora os autores devam considerar direcionar os usuários para a documentação no seu todo, em vez de fornecer links para páginas de documentação específicas);</li>
+<li>Links para artigos devem usar os respectivos <a href="https://www.doi.org">DOIs</a>, se disponíveis.</li>
+</ul>
+<p>Para ajudar a alcançar um público mais alargado, sempre que possível os autores devem seguir as seguintes diretrizes:</p>
+<ul>
+<li>Na escolha de métodos ou ferramentas, ter em mente escolhas multilingues para os leitores. É particularmente importante para métodos de análise textual ou quando é necessário suportar diferentes conjuntos de caracteres (por exemplo, caracteres acentuados, não latinos etc.);</li>
+<li>Ao escolher fontes primárias, imagens, produzir figuras ou tirar capturas de tela, considerar que serão lidos por público diversificado;</li>
+<li>Ao escrever evite piadas, referências culturais, trocadilhos, jogos de palavras, expressões idiomáticas, sarcasmo, emojis ou linguagem mais complicada do que o necessário.;</li>
+<li>Referências a pessoas, organizações ou detalhes históricos devem sempre vir com informações de contexto. Pode ajudar supor que o leitor não mora no mesmo país ou não fala o mesmo idioma;</li>
+<li>Nos exemplos de código ou metadados, use formatos padrão reconhecidos internacionalmente para datas e horas (<a href="https://www.iso.org/standard/40874.html">ISO 8601:2004</a>). Em texto livre, esteja ciente das diferenças culturais relacionadas à representação de datas e horários que podem causar confusão;</li>
+<li>Sempre que possível, escolher métodos e ferramentas que possuam documentação multilingue. Se isso não for prático, será ótimo adicionar algumas referências multilingues no final do tutorial.</li>
+</ul>
+<p>Os editores devem trabalhar em estreita colaboração com os autores para garantir que estes critérios sejam cumpridos. Quando não for possível, devem ser apresentadas justificativas de forma clara e transparente na discussão de revisão respectiva.</p>
+<h3>D) Verifique as imagens</h3>
+<p>Todas as imagens devem usar nomes de arquivos consistentes e semanticamente significativos que indiquem claramente o que são. Se uma lição possui um grande número de imagens em rápida sucessão e a ordem é importante (por exemplo, uma série de capturas de tela), pode ser aconselhável usar um sistema de nomeação sequencial - idealmente, usando o mesmo slug do nome de arquivo hifenizado que a lição em si (ou uma versão abreviada se o título da lição for bastante longo), seguido de números para indicar qual é a figura (por exemplo, <code>counting-frequencies-1.png</code>,<code> counting-frequencies-1.png</code>, <code>counting-frequencies-2.png</code> e assim por diante).</p>
+<p>Se uma lição usar um sistema de nomeação de imagem seqüencial, é possível que a numeração das figuras mude durante o processo de revisão por pares. Pedimos que, antes da publicação de uma lição, todos os nomes de arquivos sejam atualizados para os números das figuras apropriadas. Isso facilita muito a atualização das lições, se necessário no futuro. Obrigado por nos ajudar a manter o <em>Programming Historian em português</em> sustentável.</p>
+<p>Independentemente de como as imagens são nomeadas (semântica ou sequencialmente), elas devem ser colocadas num subdiretório no diretório <code>images</code>. O subdiretório deve ser nomeado usando o mesmo slug de URL usado para nomear a lição. Verifique se as imagens estão em formatos compatíveis com a Web, como PNG ou JPEG, e dimensionadas adequadamente (em termos de pixels e bytes).</p>
+<p>Instruções completas sobre como adicionar imagens estão disponíveis nas <a href="/pt/directrizes-autor">Diretrizes para o autor</a>.</p>
+<h3>E) Verificar datasets</h3>
+<p>Assim como as imagens, todos os datasets devem ser armazenados no site (não vinculados externamente - por motivos de sustentabilidade). Todos os dados devem ser armazenados no diretório 'assets', usando as regras acima, mas os autores devem ficar à vontade para usar uma descrição para seu dataset que reflita o que ele é:</p>
+<ul>
+<li><code>/assets/LESSON-SLUG/Louvre-Paintings-1.csv</code></li>
+</ul>
+<p>Ocasionalmente, lições específicas podem utilizar datasets demasiado grandes para serem armazenados no repositório GitHub do <em>Programming Historian em português</em>. Se for esse o caso, recomendamos que os autores coloquem os recursos no <a href="https://zenodo.org/">Zenodo</a> e forneçam ao editor da lição o DOI gerado pelo mesmo para colocá-lo na lição. No caso de já existirem num repositório institucional, recomendamos o upload da versão utilizada para o repositório do <em>Programming Historian em português</em> ou para o Zenodo para que seja utilizado de forma coerente em todas as lições.</p>
+<p>Ao fazer o upload para o Zenodo, todos os ficheiros (mesmo se for apenas um) devem ser comprimidos num único ficheiro zip. O ficheiro zip deve ter o mesmo nome do ficheiro da lição (a slug escolhida). Isso é necessário apenas quando o tamanho total do dataset é maior que 25 MB.</p>
+<h3>F) Verificar vídeos / gifs</h3>
+<p>Vídeos e gifs são fortemente desencorajados porque criam uma série de problemas. Por exemplo, é difícil e demorado solicitar alterações num vídeo durante o processo de revisão por pares e impossível para um editor fazer pequenas atualizações nos anos seguintes, à medida que se tornar desatualizado. Os vídeos exigem a administração de um canal separado no YouTube, não podem ser impressos e muitos de nossos leitores usam cópias em PDF ou <a href="https://zenodo.org/record/49873#.V0lazGaGa7o">cópias impressas do <em>Programming Historian</em></a>. Desse modo, só devem ser utilizados quando for absolutamente necessário.</p>
+<p>Se um tutorial contiver um vídeo, ele deverá ser hospedado no nosso canal do YouTube (que ainda não está configurado, envie um e-mail aos outros editores quando você receber um vídeo). Um backup do arquivo também deve ser armazenado no nosso repositório no Github, seguindo os mesmos princípios de nomeação e armazenamento das seções de imagens e dados descritos acima e armazenados no diretório 'assets':</p>
+<ul>
+<li><code>/assets/LESSON-SLUG/FILENAME-HERE-3</code></li>
+</ul>
+<hr>
+<h2>Recomendar a publicação - Lista para verificação editorial</h2>
+<p>Quando o editor e o autor estão satisfeitos com a proposta, a próxima etapa é recomendar a publicação ao editor-chefe. Isto envolve a verificação dos ficheiros, mas também adicionar alguns metadados antes de o contactar:</p>
+<h3>1)  Criar uma biografia do autor</h3>
+<p>Se a lição foi escrita por um novo autor, o editor-chefe precisará de adicionar uma nova biografia. Para isso é preciso dar-lhe as seguintes informações:</p>
+<pre><code class="language-yaml">- name: João Silva
+  team: false
+  orcid: 0000-0000-1111-1111
+  bio:
+      pt: |
+          João Silva é professor auxiliar do Departamento de Arqueologia
+          da Universidade do Algarve.
+</code></pre>
+<p><strong>O espaçamento é importante</strong>, portanto, é necessário verificar se o avanço e o recuo  correspondem aos outros exemplos.</p>
+<p>O <code>orcid</code> é opcional, mas muito recomendado se <a href="https://orcid.org/">os autores se registrarem para um ID no serviço</a>. <strong>Apenas incluir o ORCiD com indicação explícita do autor. Nunca adicionar sem primeiro obter a confirmação do autor de que é o correto.</strong></p>
+<h3>2) Adicionar índice na lição</h3>
+<p>O código a seguir deve ser colocado no texto da lição, geralmente antes do primeiro subtítulo:</p>
+<pre><code>{% raw %}{% include toc.html %}{% endraw %}
+</code></pre>
+<h3>3) Adicionar metadados YAML ao ficheiro da lição</h3>
+<pre><code>title: &quot;Seu título aqui&quot;
+collection: lições
+layout: lição
+slug: e.g. introducao-a-analise-de-redes
+date: AAAA-MM-DD
+translation_date: AAAA-MM-DD (somente traduções)
+authors:
+- Nome próprio Apelido
+- Nome próprio Apelido etc
+reviewers:
+- Nome próprio Apelido
+- Nome próprio Apelido etc
+editors:
+- Nome próprio Apelido
+translator:
+- Nome próprio Apelido (somente traduções)
+translation-editor:
+- Nome próprio Apelido (somente traduções)
+translation-reviewer:
+- Nome próprio Apelido (somente traduções)
+original: slug para a lição publicada original (somente traduções)
+review-ticket: e.g. https://github.com/programminghistorian/ph-submissions/issues/108
+difficulty: veja as diretrizes abaixo
+activity: ESCOLHER UM: adquirir, transformar, analisar, apresentar, sustentar:
+topics:
+ - tópico um (consultar as diretrizes abaixo)
+ - tópico dois
+abstract: |
+  diretrizes abaixo
+avatar_alt: Descrição da imagem da lição
+</code></pre>
+<ul>
+<li><strong>dificulty (dificuldade)</strong> para ajudar os leitores a avaliar quais as melhores lições para os seus objetivos e nível de competência, fornecemos a frase &quot;Recomendado para utilizadores ___ &quot; no ficheiro YAML da lição, que é lido por um código de níveis. Atualmente, existem três níveis, que podem ser definidos com os seguintes códigos numéricos: 1 (Iniciante), 2 (Intermediário), 3 (Avançado). Para adicionar o nível de dificuldade 'intermediário' à lição, inclua o seguinte no ficheiro YAML:</li>
+</ul>
+<pre><code>difficulty: 2
+</code></pre>
+<ul>
+<li><strong>topics (tópicos)</strong> pode ser qualquer um dos itens listados após &quot;type:&quot; no ficheiro /_data/topics.yml. Também podem ser adicionados novos tópicos para ajudar a recuperar a lição na pesquisa. Para isso, além de listar o(s) tópico(s) no assunto principal da lição, deve:</li>
+</ul>
+<ol>
+<li>Adicionar o tópico a qualquer lição existente também descrita pelo novo tópico.</li>
+<li>Adicionar o(s) novo(s) tópico(s) em /_data/topics.yml, seguindo o formato dos existentes (atenção que os tópicos não podem ter espaços – quando necessário usar hífens).</li>
+<li>Editar o ficheiro /js/lessonfilter.js para garantir que o botão de filtro funciona para o novo tópico. Dentro ficheiro basta procurar o trecho de código de dez linhas que começa com <code>$ ('# filter-api')</code>, copiar e colar o mesmo trecho  de código, mas substituindo &quot;api&quot; pelo novo tópico nas <em>duas</em> vezes que aparece.</li>
+</ol>
+<ul>
+<li><strong>abstract (resumo)</strong> basta uma descrição de 1 a 3 frases do que a lição permite aprender. Tente evitar vocabulário técnico, pois estes resumos podem conduzir académicos sem conhecimento técnico a experimentar algo novo.</li>
+<li><strong>slug</strong> deve ter o caminho para a lição no site público do Programming Historian. Tal como indicado acima representa o texto hifenizado que aparece a seguir a pprogramminghistorian.org/pt/licoes/ no link da lição (por exemplo, introducao-ao-markdown)&quot;.</li>
+<li><strong>date (data)</strong> A data da lição deve ser atualizada para a data em que a proposta foi colocada no repositório Jekyll principal.</li>
+</ul>
+<h3>4) Encontrar uma imagem para representar a lição</h3>
+<p>Representamos as lições usando uma imagem antiga que consideramos capturar alguns elementos da tarefa descrita no tutorial. O exemplo de todas as lições pode ser visto no <a href="/pt/licoes/">diretório principal das lições</a>. Estas imagens são selecionadas pelos editores.</p>
+<p>Aqui estão alguns locais para procurar imagens para a lição:</p>
+<ul>
+<li><a href="https://www.flickr.com/photos/britishlibrary">British Library</a></li>
+<li><a href="https://www.flickr.com/photos/internetarchivebookimages">Internet Archive Book Images</a></li>
+<li><a href="https://www.flickr.com/photos/e-codices">Virtual Manuscript Library of Switzerland</a></li>
+<li><a href="http://www.loc.gov/maps/collections">Library of Congress Maps</a></li>
+</ul>
+<p>É preciso verificar se a imagem corresponde ao estilo das anteriores (deve ser uma imagem de livro, não uma fotografia), ter pelo menos 200 pixels em ambas as dimensões e não ter restrições de direitos de autor. A imagem não pode ser ofensiva e deve seguir o nosso <a href="/posts/PH-commitment-to-diversity">compromisso com a diversidade (em inglês)</a>. Convém encontrar algo que não perpetue estereótipos ou tenha uma mensagem subliminar de machismo ou superioridade branca.</p>
+<p>É necessário salvar a imagem original. O nome do ficheiro deve ser correspondente com a slug da URL da lição seguido de original no final e o tipo de ficheiro deve ser .png. Por exemplo, a lição “Cleaning Data with OpenRefine” possui o slug da URL <code>cleaning-data-with-openrefine</code>, portanto o nome do ficheiro da imagem original deve ser <code>cleaning-data-with-openrefine-original.png</code>.</p>
+<p>Em seguida, será para criar uma nova cópia da imagem, mas cortada em quadrado, e sem perder nenhum aspecto importante. Esta cópia deve ser dimensionada para 200x200 pixels, e convertida em escala de cinza. Ainda podem ser feitos ajustes necessários para tornar a imagem compatível com as outras imagens das lições, como clarear, escurecer ou alterar o contraste. Esta nova imagem será para salvar com o nome correspondente à slug da URL da lição. Novamente, o formato do ficheiro deve ser .png. Seguindo o exemplo anterior, o nome desta cópia da imagem seria <code>cleaning-data-with-openrefine.png</code>.</p>
+<p>O <em>upload</em> da imagem original será feito na pasta <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/gallery/originals">gallery/originals</a> e o da imagem editada na pasta <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/gallery">gallery</a>. É necessário deixar a indicação para o editor-chefe dos caminhos destas imagens no repositório ph_submissions aquando da entrega dos ficheiros para a publicação da lição.</p>
+<h3>5) Informar o editor-chefe da recomendação para publicação</h3>
+<p>O Editor-Chefe irá ler e verificar cuidadosamente a lição, garantindo que ela corresponde com as orientações de sustentabilidade, internacionalização e estilo. Se, a critério do Editor-chefe, a lição não atender a nenhum dos critérios de qualidade, a lição poderá ser devolvida ao autor para revisão. Se passar nas verificações finais do controle de qualidade, o Editor-chefe publicará a lição colocando os ficheiros no site principal e verificando se está tudo de acordo.</p>
+<p>Para facilitar o trabalho do editor-chefe, é preciso colocar na thread de submissão da lição uma lista de todos os ficheiros que precisam ser copiados para a publicação. Normalmente, esta lista deve incluir:</p>
+<ul>
+<li>O ficheiro .md da lição</li>
+<li>O diretório para todos os ficheiros anexos (imagens, datasets, etc)</li>
+<li>Os ícones da galeria</li>
+<li>A biografia do autor, se for novo</li>
+</ul>
+<p>Todos, exceto a biografia, devem ser ficheiros colocados no repositório ph_submissions. A biografia pode ser colocada diretamente no ticket (thread).</p>
+<h3>6) Incorporar a lição ao nosso bot do Twitter</h3>
+<p>Além da promoção no Twitter descrita abaixo, também temos um bot do Twitter para anunciar regularmente as lições mais antigas. Para adicionar a nova lição ao pipeline, esta tem que ser adicionada através duma linha neste <a href="https://docs.google.com/spreadsheets/d/1o-C-3WwfcEYWipIFb112tkuM-XOI8pVVpA9_sag9Ph8/edit#gid=1625380994">ficheiro/planilha</a>. Todos na equipe editorial devem ter a capacidade de fazer alterações, se houver problemas enviar um email ao grupo do Google. A linha para a lição nova deverá ter os seguintes campos:</p>
+<ul>
+<li>message_one (coluna A) – um tweet para ser publicado no início da semana no twitter.</li>
+<li>message_two (coluna B) – um tweet &quot;Caso você tenha perdido&quot; para ser publicada no final da semana.</li>
+<li>link (coluna C) - o link para a lição.</li>
+</ul>
+<p>A coluna D é para deixar em branco e nunca ser editada - esta coluna é usada pelo próprio bot do Twitter para registar o progresso na lista. Atenção que esta etapa não deve substituir a promoção directa da lição pela equipe editorial. O bot escolhe as lições aleatoriamente, uma por semana, portanto pode levar meses até que a nova lição através do bot.</p>
+<h3>7) Agradecer a todos e incentivar a divulgação</h3>
+<p>Depois de receber a notícia de que o Editor-Chefe publicou a lição com êxito, é preciso fechar o ticket de submissão, colocando o link para a lição publicada. É importante enviar um email ou uma mensagem a todos os envolvidos, agradecendo os esforços de todos. Em particular, agradecer ao autor por contribuir e incentivar para que volte a contribuir no futuro. Também vale a pena dar ao autor algumas ideias para divulgarem a lição. As lições mais usadas têm sempre a energia dos autores por trás. Por exemplo, os autores devem ser incentivados a:</p>
+<ul>
+<li>Publicar um tweet pelo menos 3 vezes sobre a lição (com o link);</li>
+<li>Retweetar os nossos tweets sobre a lição ('gostar' não ajuda a espalhar a notícia);</li>
+<li>Promover a lição em apresentações ou publicações do seu trabalho;</li>
+<li>Referir a lição com link nos posts do blog, quando relevante;</li>
+<li>Adicionar a lição a listas de recursos em repositórios relevantes (por exemplo, Wikipedia, grupos comunitários, etc.).</li>
+</ul>
+<p>As pessoas não encontram lições por conta própria. A parte difícil está feita, então vamos ter certeza de que valeu a pena e divulgar!</p>
+<h1>Lista de verificação do editor-chefe</h1>
+<p>O Editor-chefe é responsável por verificar cuidadosamente a lição e garantir que ela cumpre com todas as políticas e requisitos do Programming Historian. Se a lição não atender aos requisitos, ela deve ser encaminhada ao editor para mais uma revisão. Esta é uma parte crucial do fluxo de trabalho editorial. Depois do Editor-chefe estar convencido de que a lição atende aos nossos padrões, tem que mover os ficheiros para o website principal através de um <em>pull request</em>.</p>
+<h2>1) Verificar cuidadosamente a pré-visualização da proposta</h2>
+<p>Verificar a pré-visualização da proposta quanto a erros ou falhas de acordo com as orientações de publicação. Qualquer problema deve ser remetido ao editor.</p>
+<h2>2) Solicitar o DOI</h2>
+<p>O editor precisa solicitar um novo DOI para a lição seguindo os passos descritos no <a href="https://github.com/programminghistorian/jekyll/wiki/How-to-Request-a-new-DOI">Wiki</a>.</p>
+<p>Esta parte do processo não deve levar mais de um ou dois dias, dependendo da diferença de horário com o Reino Unido. O editor pode iniciar as próximas etapas enquanto espera, mas deve notar que as verificações da página inicialmente falharão até que o DOI seja adicionado aos metadados da lição.</p>
+<h2>3) Mover os ficheiros</h2>
+<p>O editor deve ter deixado uma lista clara dos ficheiros que precisam de ser publicados na thread de submissão. Se não estiver, é preciso pedir que corrijam antes de continuar.</p>
+<p>Existem várias maneiras de executar um <em>pull request</em> para publicar os ficheiros:</p>
+<ul>
+<li>
+<p>A) Siga as nossas <a href="https://github.com/programminghistorian/jekyll/wiki/Making-Technical-Contributions">&quot;Orientações para contribuições técnicas&quot;</a>, que usam a GUI do Github.</p>
+</li>
+<li>
+<p>B) Use <code>git</code> na linha de comando. As instruções que se seguem assumem que os repositórios <code>jekyll</code> e<code> ph-submissions</code> já estão copiados para a máquina local. (a <a href="/lessons/getting-started-with-github-desktop">lição sobre o uso do GitHub Desktop</a> pode ser útil se tudo isto for novidade.) Em caso de incertezas ou dúvidas sobre como fazer, entrar em contato com Matthew Lincoln para ajudar.</p>
+</li>
+</ul>
+<ol>
+<li>Ir para o diretório do repositório local <code>ph-submissions</code>.</li>
+<li>Usar o comando <code>git pull</code> para obter todas as alterações mais recentes na máquina local (ou <code>sync</code> se estiver no GitHub Desktop)</li>
+<li>Repetir as etapas 1 e 2 para o repositório <code>jekyll</code> na máquina local.</li>
+<li>Copiar os ficheiros da lição e qualquer imagem relacionada e ainda os datasets associados do diretório <code>ph-submissions</code> na máquina local para os destinos apropriados no diretório<code> jekyll</code> da máquina local. (é possível usar um comando como o <code>cp</code> na linha de comando do Unix ou usar o sistema de ficheiros da GUI no GitHub Desktop.)</li>
+<li>No diretório <code>jekyll</code> da máquina local, usar o comando <code>git add</code> para adicionar os novos ficheiros e, em seguida, <code>git commit</code> para adicionar os ficheiros e <code>git push</code> para verificar as alterações.</li>
+</ol>
+<p>Após a lição ter sido colocada para o repositório <code>jekyll</code>, também é necessário guardar a lição submetida no repositório<code> ph-submissions</code>.</p>
+<ol>
+<li>Ir ao diretório <code>ph-submissions</code>na máquina local.</li>
+<li>Adicionar uma nova linha ao cabeçalho YAML da lição agora publicada: <code>redirect_from: &quot;/licoes/SLUG-DA-LICAO&quot;</code></li>
+<li>Mover a lição agora publicada de <code>pt/licoes/originais/</code> ou <code>pt/licoes/traducoes/</code> para <code>pt/licoes/publicadas/</code>.</li>
+<li>Mover a pasta que contém as imagens da lição agora publicada de <code>images/</code> para <code>images/published/</code>.</li>
+<li>Usar comandos <code>git add</code>, <code>git commit</code> e <code>git push</code> para finalizar todas as alterações (ou seguir as orientações para contribuições técnicas: https://github.com/programminghistorian/jekyll/wiki/Making-Technical-Contributions).</li>
+</ol>
+<h2>4) Adicionar a biografia do autor a ph_authors.yml</h2>
+<p>Se a lição foi escrita por um autor novo, o editor-chefe deve adicionar informações sobre o autor à <a href="https://github.com/programminghistorian/jekyll/blob/gh-pages/_data/ph_authors.yml">lista de autores</a>. É para seguir a sintaxe dos exemplos já colocados, usando a biografia fornecida pelo editor:</p>
+<pre><code class="language-yaml">- name: João Silva
+  team: false
+  orcid: 0000-0000-1111-1111
+  bio:
+      pt: |
+          João Silva é professor auxiliar do Departamento de Arqueologia
+          da Universidade do Algarve.
+</code></pre>
+<h2>5) Confirmar se todos os links e cabeçalhos YAML funcionam corretamente</h2>
+<p>Depois de enviar as alterações para o ramo <code>gh-pages</code> do repositório <a href="https://github.com/programminghistorian/jekyll">programminghistorian</a>, o site será automaticamente testado pelo GitHub Actions.
+O processo de teste verifica três coisas: primeiro, se todo o código YAML e markdown está legível; segundo, que todos os hiperlinks apontam para páginas operacionais válidas; e terceiro, que os links internos para páginas no <em>Programming Historian em português</em> são todos links relativos que começam com / em vez de /pt.</p>
+<p>Executamos estes testes principalmente para assegurar que as URLs que em algum momento funcionaram ainda funcionam, pois muitas vezes as páginas externas da Web são movidas para novos endereços ou são inativadas.
+Também é uma boa forma detectar pequenos erros de digitação que podem escapar a autores, editores e revisores.
+O status destes testes (geralmente chamado de &quot;Status de Compilação (Build status)&quot; no GitHub) pode ser visto na <a href="https://github.com/programminghistorian/jekyll">página do repositório do <em>Programming Historian</em></a> ao clicar em &quot;Commits&quot; no canto superior esquerdo do menu de &quot;Code&quot;.</p>
+<p><img src="/images/editor-guidelines/gh_commits_location_screen.png" alt="GitHub commit menu location"></p>
+<p>Assim, pode ser vista a lista de todas as alterações feitas no repositório principal, juntamente com o ícone do status:</p>
+<ul>
+<li>Check verde: indica que a página está pronta para ir ao ar! Todos os links da página foram verificados e considerados válidos. <a href="#11-thank-everyone-and-encourage-promotion"><strong>O restante desta lição pode ser ignorado e passar directamente para a secção de agradecimento.</strong></a></li>
+<li>Círculo amarelo: o último commit ainda está a compilar. Dentro de 1-2 minutos deve estar pronto.</li>
+<li>X vermelho: houve um erro na compilação.</li>
+</ul>
+<p>Se a compilação falhou, será necessário consultar os logs para ver qual a razão. Para isso:</p>
+<ol>
+<li>Clicar no X vermelho para o commit mais recente (o mais próximo da parte superior da página) e depois clicar no link &quot;Details&quot;.
+<img src="/images/editor-guidelines/commit_list_screen.png" alt="Travis details location"></li>
+<li>Isto irá conduzir à página de log da compilação no GitHub Actions. Os logs de compilação geralmente têm várias centenas de linhas, mas as informações de erro que é necessário ter atenção estarão na parte inferior. Para isso, basta clicar no pequeno círculo cinza no canto superior direito da janela do log para ser levado lá.
+<img src="/images/editor-guidelines/travis_top_screen.png" alt="The top of the GitHub Actions build screen"></li>
+<li>Podem ser encontrados dois tipos de erro: primeiro, se uma página estiver com um campo YAML obrigatório vazio (por exemplo, se uma lição não tiver o campo editors preenchidos), este estará marcado de vermelho. Os links com falha também serão listados de vermelho, agrupados pela página em que apareceram. Se algum dos links da nova lição estiver na origem do erro, é necessário verificar novamente se não há erros de digitação. Depois de feitas as correções necessárias e ter sido feito commit das alterações no repositório, é necessário colocar o GitHub Actions a executar testes novamente.
+<img src="/images/editor-guidelines/travis_bottom_screen.png" alt="Locating error details in GitHub Actions build results"></li>
+</ol>
+<ul>
+<li>Como parte das suas operações normais, o GitHub Actions ocasionalmente retorna e verifica novamente links antigos em todo o site, incluindo lições antigas. Portanto, pode aparecer um erro causado não pela lição nova, mas por outra página. Se for possível compreender como corrigir imediatamente os erros, basta fazer a correcção e aguardar por uma nova compilação. Se não for possível fazer todas as correcções necessárias para todos os links identificados com erros, depois de verificar que nenhum vem da nova lição, basta <a href="https://github.com/programminghistorian/jekyll/issues/new">criar uma nova questão</a> para que alguém da equipe técnica possa analisar o problema.</li>
+</ul>
+<h2>6) Informar o Editor</h2>
+<p>Depois da lição estar publicada, deve informar o editor e verificar que a lição foi adicionada ao bot do twitter.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

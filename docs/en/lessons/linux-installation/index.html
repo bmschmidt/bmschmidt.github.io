@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/linux-installation"),
 					params: {lang:"en",lessons:"lessons",slug:"linux-installation"}
@@ -48,45 +49,47 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Setting up an Integrated Development Environment for Python (Linux)</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
 <p>Thanks to John Fink for providing the basis of this section. These
 instructions are for Ubuntu 18.04 LTS, but should work for any apt based
 system such as Debian, or Linux Mint, provided you have sudo installed.</p>
-<h2 id="back-up-your-computer">Back up your computer</h2>
+<h2>Back up your computer</h2>
 <p>It is always important to make sure you have regular and recent backups
 of your computer. This is just good advice for life, and is not limited
 to times when you are engaged in programming.</p>
-<h2 id="install-python-3">Install Python 3</h2>
+<h2>Install Python 3</h2>
 <ol>
 <li>Open a terminal (Go to Applications, then type <code>Terminal</code>, then click on
 the Terminal icon).</li>
 <li>Now type: <code>sudo apt-get install python3</code></li>
 <li>Enter your password, and then type <code>Y</code> to finish the install. Note
-that you probably have Python 3 installed already, so don&#39;t be
+that you probably have Python 3 installed already, so don't be
 alarmed if Ubuntu tells you that.</li>
 </ol>
-<h2 id="create-a-directory">Create a directory</h2>
+<h2>Create a directory</h2>
 <p>You will keep your Python programs in this directory. It can be anywhere
 you like, but it is probably best to put it in your home folder.
 Something like this in your open terminal window should do the trick:</p>
 <pre><code>cd ~
 mkdir programming-historian
 </code></pre>
-<h2 id="install-komodo-edit">Install Komodo Edit</h2>
+<h2>Install Komodo Edit</h2>
 <p>Komodo Edit is a free and open source code editor, but you have many <a href="https://wiki.python.org/moin/PythonEditors/">other text editing options</a> if you prefer. You can
-download Komodo Edit at the <a href="https://www.activestate.com/products/komodo-edit/">Komoto Edit Website</a>. Once you&#39;ve
-downloaded it, open it with Ubuntu&#39;s package manager, extract it to your
+download Komodo Edit at the <a href="https://www.activestate.com/products/komodo-edit/">Komoto Edit Website</a>. Once you've
+downloaded it, open it with Ubuntu's package manager, extract it to your
 home directory, and follow the installation instructions. If you are
 following along with these instructions and have installed Komodo Edit,
 open the home folder, go to the <code>Komodo-Edit-11/bin</code> directory, and click
 on <code>komodo</code>.</p>
-<h2 id="make-a-run-python-command-in-komodo-edit">Make a “Run Python” Command in Komodo Edit</h2>
+<h2>Make a “Run Python” Command in Komodo Edit</h2>
 <ol>
 <li>In Komodo Edit, make sure the “Toolbox” sidebar is visible.</li>
 <li>Click the gear icon in the toolbox and select
@@ -96,7 +99,7 @@ on <code>komodo</code>.</p>
 the bottom of the Add Command window.</li>
 </ol>
 <p>{% include figure.html caption=&quot;Add new command in Komodo Edit&quot; filename=&quot;komodo-edit-tools-linux.png&quot; %}</p>
-<h2 id="step-2--hello-world-in-python">Step 2 – “Hello World” in Python</h2>
+<h2>Step 2 – “Hello World” in Python</h2>
 <hr>
 <p>It is traditional to begin programming in a new language by trying to
 create a program that says “hello world” and terminates.</p>
@@ -105,7 +108,7 @@ high-level. It is possible, in other words, to write short programs that
 accomplish a lot. The shorter the program, the more likely it is for the
 whole thing to fit on one screen, and the easier it is to keep track of
 all of it in your mind.</p>
-<p>Python is an &#39;interpreted&#39; programming language. This means that
+<p>Python is an 'interpreted' programming language. This means that
 there is a special computer program (known as an interpreter) that knows
 how to follow instructions written in that language. One way to use the
 interpreter is to store all of your instructions in a file, and then run
@@ -117,13 +120,13 @@ try this.</p>
 program and save it to your <code>programming-historian</code> directory as
 <code>hello-world.py</code></p>
 <pre><code class="language-python"># hello-world.py
-print(&#39;hello world&#39;)
+print('hello world')
 </code></pre>
 <p>The “<em>Run Python File</em>” command allows you to execute your program.
 If you chose another text editor, it might provide similar functionality.
 If all went well, it should look something like this:</p>
 <p>{% include figure.html caption=&quot;hello world in Komodo Edit on Linux&quot; filename=&quot;komodo-edit-output-linux.png&quot; %}</p>
-<h2 id="interacting-with-a-python-shell">Interacting with a Python shell</h2>
+<h2>Interacting with a Python shell</h2>
 <p>Another way to interact with an interpreter is to use what is known as a
 shell. You can type in a statement and press the Enter key, and the
 shell will respond to your command. Using a shell is a great way to test
@@ -134,14 +137,14 @@ In the Terminal window, type</p>
 </code></pre>
 <p>This will open up the Python prompt, meaning that you can now use Python
 commands in the shell. Now type</p>
-<pre><code class="language-python">print(&#39;hello world&#39;)
+<pre><code class="language-python">print('hello world')
 </code></pre>
 <p>and press Enter. The computer will respond with</p>
 <pre><code class="language-python">hello world
 </code></pre>
 <p>When we want to represent an interaction with the shell, we will use
 <code>-&gt;</code> to indicate the shell’s response to your command, as shown below:</p>
-<pre><code class="language-python">print(&#39;hello world&#39;)
+<pre><code class="language-python">print('hello world')
 -&gt; hello world
 </code></pre>
 <p>On your screen, it will look more like this:</p>
@@ -151,6 +154,6 @@ more interesting tasks. If you are working through the Python lessons in
 order, we suggest you next try ‘<a href="/lessons/viewing-html-files">Understanding Web Pages and HTML</a>‘</p>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="linux-installation/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Setting up an Integrated Development Environment for Python (Linux)\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\",\"Amanda Morton\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":1,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"transforming\",\"topics\":[\"get-ready\",\"python\"],\"abstract\":\"This lesson will help you set up an integrated development environment for Python on a computer running the Linux operating system.\",\"redirect_from\":\"\u002Flessons\u002Flinux-installation\",\"avatar_alt\":\"A band with three musicians\",\"doi\":\"10.46430\u002Fphen0011\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Cp\u003EThanks to John Fink for providing the basis of this section. These\\ninstructions are for Ubuntu 18.04 LTS, but should work for any apt based\\nsystem such as Debian, or Linux Mint, provided you have sudo installed.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"back-up-your-computer\\\"\u003EBack up your computer\u003C\u002Fh2\u003E\\n\u003Cp\u003EIt is always important to make sure you have regular and recent backups\\nof your computer. This is just good advice for life, and is not limited\\nto times when you are engaged in programming.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"install-python-3\\\"\u003EInstall Python 3\u003C\u002Fh2\u003E\\n\u003Col\u003E\\n\u003Cli\u003EOpen a terminal (Go to Applications, then type \u003Ccode\u003ETerminal\u003C\u002Fcode\u003E, then click on\\nthe Terminal icon).\u003C\u002Fli\u003E\\n\u003Cli\u003ENow type: \u003Ccode\u003Esudo apt-get install python3\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003EEnter your password, and then type \u003Ccode\u003EY\u003C\u002Fcode\u003E to finish the install. Note\\nthat you probably have Python 3 installed already, so don&#39;t be\\nalarmed if Ubuntu tells you that.\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Ch2 id=\\\"create-a-directory\\\"\u003ECreate a directory\u003C\u002Fh2\u003E\\n\u003Cp\u003EYou will keep your Python programs in this directory. It can be anywhere\\nyou like, but it is probably best to put it in your home folder.\\nSomething like this in your open terminal window should do the trick:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ecd ~\\nmkdir programming-historian\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"install-komodo-edit\\\"\u003EInstall Komodo Edit\u003C\u002Fh2\u003E\\n\u003Cp\u003EKomodo Edit is a free and open source code editor, but you have many \u003Ca href=\\\"https:\u002F\u002Fwiki.python.org\u002Fmoin\u002FPythonEditors\u002F\\\"\u003Eother text editing options\u003C\u002Fa\u003E if you prefer. You can\\ndownload Komodo Edit at the \u003Ca href=\\\"https:\u002F\u002Fwww.activestate.com\u002Fproducts\u002Fkomodo-edit\u002F\\\"\u003EKomoto Edit Website\u003C\u002Fa\u003E. Once you&#39;ve\\ndownloaded it, open it with Ubuntu&#39;s package manager, extract it to your\\nhome directory, and follow the installation instructions. If you are\\nfollowing along with these instructions and have installed Komodo Edit,\\nopen the home folder, go to the \u003Ccode\u003EKomodo-Edit-11\u002Fbin\u003C\u002Fcode\u003E directory, and click\\non \u003Ccode\u003Ekomodo\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"make-a-run-python-command-in-komodo-edit\\\"\u003EMake a “Run Python” Command in Komodo Edit\u003C\u002Fh2\u003E\\n\u003Col\u003E\\n\u003Cli\u003EIn Komodo Edit, make sure the “Toolbox” sidebar is visible.\u003C\u002Fli\u003E\\n\u003Cli\u003EClick the gear icon in the toolbox and select\\n\u003Ccode\u003ENew Command\u003C\u002Fcode\u003E.\u003C\u002Fli\u003E\\n\u003Cli\u003EIn the top field type “\u003Ccode\u003ERun Python File\u003C\u002Fcode\u003E”\u003C\u002Fli\u003E\\n\u003Cli\u003EIn the Command field, type: \u003Ccode\u003E%(python3) %F\u003C\u002Fcode\u003E. Then hit the OK button at\\nthe bottom of the Add Command window.\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cp\u003E{% include figure.html caption=&quot;Add new command in Komodo Edit&quot; filename=&quot;komodo-edit-tools-linux.png&quot; %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"step-2--hello-world-in-python\\\"\u003EStep 2 – “Hello World” in Python\u003C\u002Fh2\u003E\\n\u003Chr\u003E\\n\u003Cp\u003EIt is traditional to begin programming in a new language by trying to\\ncreate a program that says “hello world” and terminates.\u003C\u002Fp\u003E\\n\u003Cp\u003EPython is a good programming language for beginners because it is very\\nhigh-level. It is possible, in other words, to write short programs that\\naccomplish a lot. The shorter the program, the more likely it is for the\\nwhole thing to fit on one screen, and the easier it is to keep track of\\nall of it in your mind.\u003C\u002Fp\u003E\\n\u003Cp\u003EPython is an &#39;interpreted&#39; programming language. This means that\\nthere is a special computer program (known as an interpreter) that knows\\nhow to follow instructions written in that language. One way to use the\\ninterpreter is to store all of your instructions in a file, and then run\\nthe interpreter on the file. A file that contains programming language\\ninstructions is known as a program. The interpreter will execute each of\\nthe instructions that you gave it in your program and then stop. Let’s\\ntry this.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn your text editor, create a new file, enter the following two-line\\nprogram and save it to your \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E directory as\\n\u003Ccode\u003Ehello-world.py\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# hello-world.py\\nprint(&#39;hello world&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe “\u003Cem\u003ERun Python File\u003C\u002Fem\u003E” command allows you to execute your program.\\nIf you chose another text editor, it might provide similar functionality.\\nIf all went well, it should look something like this:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html caption=&quot;hello world in Komodo Edit on Linux&quot; filename=&quot;komodo-edit-output-linux.png&quot; %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"interacting-with-a-python-shell\\\"\u003EInteracting with a Python shell\u003C\u002Fh2\u003E\\n\u003Cp\u003EAnother way to interact with an interpreter is to use what is known as a\\nshell. You can type in a statement and press the Enter key, and the\\nshell will respond to your command. Using a shell is a great way to test\\nstatements to make sure that they do what you think they should.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou can run a Python shell by launching the “Terminal” application.\\nIn the Terminal window, type\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Epython3\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis will open up the Python prompt, meaning that you can now use Python\\ncommands in the shell. Now type\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;hello world&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Eand press Enter. The computer will respond with\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Ehello world\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWhen we want to represent an interaction with the shell, we will use\\n\u003Ccode\u003E-&gt;\u003C\u002Fcode\u003E to indicate the shell’s response to your command, as shown below:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;hello world&#39;)\\n-&gt; hello world\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EOn your screen, it will look more like this:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html caption=&quot;hello world in Terminal on Linux&quot; filename=&quot;terminal-output-linux.png&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ENow that you and your computer are up and running, we can move onto some\\nmore interesting tasks. If you are working through the Python lessons in\\norder, we suggest you next try ‘\u003Ca href=\\\"\u002Flessons\u002Fviewing-html-files\\\"\u003EUnderstanding Web Pages and HTML\u003C\u002Fa\u003E‘\u003C\u002Fp\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

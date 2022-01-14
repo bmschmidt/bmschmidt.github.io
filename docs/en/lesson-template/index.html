@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/en/lesson-template"),
+					params: {lang:"en",lessons:"lesson-template"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Programming Historian English Language Lesson Template</h1>
+<p>This file can be used as a template for writing your lesson. It includes information and guidelines on formatting which supplement but do not replace the author's guidelines (/en/author-guidelines)</p>
+<h2>Some Important Reminders:</h2>
+<ul>
+<li>Tutorials should not exceed 8,000 words (including code).</li>
+<li>Keep your tone formal but accessible.</li>
+<li>Talk to your reader in the second person (you).</li>
+<li>Adopt a widely-used version of English (British, Canadian, Indian, South African etc).</li>
+<li>The piece of writing is a &quot;tutorial&quot; or a &quot;lesson&quot; and not an &quot;article&quot;.</li>
+<li>Adopt open source principles</li>
+<li>Write for a global audience</li>
+<li>Write sustainably</li>
+</ul>
+<h1>Lesson Metadata</h1>
+<p><strong>Delete everything above this line when ready to submit your lesson</strong>.</p>
+<hr>
+<p>title: YOUR TITLE HERE<br>
+collection: lessons<br>
+layout: lesson<br>
+authors:</p>
+<ul>
+<li>FORENAME SURNAME 1</li>
+<li>FORENAME SURNAME 2, etc</li>
+</ul>
+<hr>
+<h1>A Table of Contents</h1>
+<p>Include the following short code to automatically generate a table of contents for your lesson (mandatory).</p>
+<p>{% include toc.html %}</p>
+<p>--</p>
+<h2>Some Markdown Formatting Examples:</h2>
+<h1>First Level Heading</h1>
+<h2>Second Level Heading</h2>
+<h3>Third Level Heading</h3>
+<h4>Fourth Level Heading</h4>
+<h3>Font Formatting</h3>
+<p><strong>bold text</strong>
+<em>italic text</em>
+<code>reserved words</code> (eg &quot;for loop&quot;, or &quot;myData.csv&quot;)</p>
+<h3>Links</h3>
+<p>Create <a href="/">a link to <em>Programming Historian</em></a> using the format in this sentence. Ensure linked phrases are semantically meaningful. Do not link terms that are meaningful only to sighted users such as &quot;click here&quot;.</p>
+<h3>Inserting Images:</h3>
+<p>Copy this short-code to insert an image. Replace words in all caps with your image information (eg, Figure1.jpg). Captions should include sequential image numbering (eg &quot;Figure 1: ...&quot;).</p>
+<p>{% include figure.html filename=&quot;IMAGE-FILENAME&quot; caption=&quot;CAPTION TO IMAGE&quot; %}</p>
+<h3>Alerts and Warnings</h3>
+<p>If you want to include an aside or a warning to readers, you can set it apart from the main text:</p>
+<div class="alert alert-warning">
+ Be sure that you follow directions carefully!
+</div>
+<p>It will appear in a coloured box and can be useful for drawing attention to particular warnings.</p>
+<h3>A Sample Unordered List</h3>
+<ul>
+<li>Here is an item</li>
+<li>Here is another item</li>
+<li>Here is the final item</li>
+</ul>
+<h3>A Sample Ordered List</h3>
+<ol>
+<li>Here is an item</li>
+<li>Here is another item</li>
+<li>Here is the final item</li>
+</ol>
+<p>###A Sample Table</p>
+<table>
+<thead>
+<tr>
+<th>Heading 1</th>
+<th>Heading 2</th>
+<th>Heading 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Row 1, column 1</td>
+<td>Row 1, column 2</td>
+<td>Row 1, column 3</td>
+</tr>
+<tr>
+<td>Row 2, column 1</td>
+<td>Row 2, column 2</td>
+<td>Row 2, column 3</td>
+</tr>
+<tr>
+<td>Row 3, column 1</td>
+<td>Row 3, column 2</td>
+<td>Row 3, column 3</td>
+</tr>
+<tr>
+<td>Table 1: This table contains...</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Referencing</h3>
+<ul>
+<li>Links rather than endnotes may be appropriate in most cases.</li>
+<li>Ensure linked phrases are semantically meaningful. Do not link terms that are meaningful only to sighted users such as &quot;click here&quot;.</li>
+<li>All traditionally published and academic literature should be end-noted rather than linked.</li>
+<li>If you are writing an &quot;analysis&quot; tutorial, you must refer to published scholarly literature.</li>
+<li>Endnote superscripts should be outside the final punctuation like this.[^1] Not inside like this[^1].</li>
+<li>Use the &quot;Notes and Bibliography&quot; system found in the <a href="https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-1.html">The Chicago Manual of Style, 17th Edition</a> for endnotes.</li>
+</ul>
+<h4>An End Note:</h4>
+<p>This is some text.[^1]
+This is some more text.[^2]</p>
+<h5>Endnotes</h5>
+<p>[^1]: Properly formatted citation using Chicago Manual of Style
+[^2]: Properly formatted citation using Chicago Manual of Style</p>
+<h1>Further Questions?</h1>
+<p>Your assigned editor or the managing editor would be happy to answer any questions you may have.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

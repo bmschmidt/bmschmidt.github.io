@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/pt/licoes/trabalhando-ficheiros-texto-python"),
+					params: {lang:"pt",lessons:"licoes",slug:"trabalhando-ficheiros-texto-python"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Trabalhando com ficheiros de texto em Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2>Objetivos da lição</h2>
+<p>Nesta lição, você aprenderá a manipular ficheiros de texto usando Python.
+Isto inclui abrir, fechar, ler e gravar ficheiros no formato <code>.txt</code> usando instruções nesta linguagem de programação.</p>
+<p>As próximas lições desta série envolverão o download de uma página da web e a reorganização do seu conteúdo em blocos de informação úteis. Você fará a maior parte do trabalho usando código Python escrito e executado no ambiente Komodo Edit.</p>
+<h2>Trabalhando com ficheiros de texto</h2>
+<p>A linguagem Python facilita o trabalho com ficheiros e texto. Vamos começar com ficheiros.</p>
+<h2>Criando e gravando um ficheiro de texto</h2>
+<p>Vamos começar com uma breve discussão da terminologia. Numa lição anterior (dependendo do seu sistema operativo: <a href="/lessons/mac-installation">Instalação em Mac</a>, <a href="/lessons/windows-installation">Instalação em Windows</a>, ou <a href="/lessons/linux-installation">Instalação em Linux</a>), você viu como enviar informação para a janela de &quot;Saída de Comando&quot; do seu editor de texto, usando o comando <a href="https://docs.python.org/2/reference/simple_stmts.html#the-print-statement">print</a> do Python.</p>
+<pre><code class="language-python[´p">print('olá mundo')
+</code></pre>
+<p>A linguagem de programação Python é <em>orientada a objetos</em>. Isso quer dizer que a mesma é construída em torno de um tipo especial de entidade, um <em>objeto</em>, que
+contém <em>dados</em> e vários <em>métodos</em> para aceder e alterar esses dados. Depois de um objeto ser criado, ele pode interagir com outros objetos.</p>
+<p>No exemplo acima, vemos um tipo de objeto, a <em>string</em> &quot;olá mundo&quot;. A <em>string</em> é a sequência de caracteres entre aspas. Você pode escrever uma <em>string</em> de três maneiras:</p>
+<pre><code>message1 = 'olá mundo'
+message2 = &quot;olá mundo&quot;
+message3 = &quot;&quot;&quot;olá
+olá
+olá mundo&quot;&quot;&quot;
+</code></pre>
+<p>O importante a notar é que nos primeiros dois exemplos você pode usar aspas simples ou duplas / vírgulas invertidas, mas não pode misturar as duas dentro de uma <em>string</em>.
+No terceiro exemplo, as aspas triplas significam uma <em>string</em> que abrange mais de uma linha.</p>
+<p>Por exemplo, as seguintes declarações estão todas erradas:</p>
+<pre><code>message1 = &quot;olá mundo'
+message2 = 'olá mundo&quot;
+message3 = 'O meu nome é John O'Brian'
+</code></pre>
+<p>Conte o número de aspas simples na <em>message3</em>. Para funcionar você
+teria que <em>libertar</em> o apóstrofo:</p>
+<pre><code class="language-python">message3 = 'O meu nome é John O\'Brian'
+</code></pre>
+<p>Alternativamente, poderia reescrever a declaração como:</p>
+<pre><code class="language-python">message3 = &quot;O meu nome é John O'Brian&quot;
+</code></pre>
+<p><code>Print</code> é um comando que imprime objetos na forma textual. O comando <em>print</em>, quando combinado com a <em>string</em>, produz uma <em>instrução</em>.</p>
+<p>Você usará <code>print</code> como indicado anteriormente nos casos em que deseja apresentar a informação imediatamente. Às vezes, no entanto, você criará informação que deseja guardar, enviar a outra pessoa, ou usar como entrada para processamento posterior por um outro programa ou conjunto de programas. Nestes casos, você desejará enviar a informação para ficheiros no seu disco rígido, em vez de para a janela de &quot;saída de comando&quot;. Insira o seguinte programa no seu editor de texto e salve-o como <code>ficheiro-saida.py</code>.</p>
+<pre><code class="language-python"># ficheiro-saida.py
+f = open('olamundo.txt','w')
+f.write('olá mundo')
+f.close()
+</code></pre>
+<p>Em Python, qualquer linha que comece com uma marca de hash (#) é conhecida como um <em>comentário</em> e é ignorada pelo interpretador Python. Os comentários têm como objetivo permitir que os programadores comuniquem uns com os outros (ou para se lembrarem do que seu código faz quando o voltam a analisar alguns meses depois). Num sentido mais amplo, os próprios programas são tipicamente escritos e formatados de modo que seja mais fácil para os programadores comunicarem uns com os outros. Quando o código é mais próximo dos requisitos da máquina é conhecido como <em>baixo nível</em>, enquanto o que está mais próximo da linguagem natural é de <em>alto nível</em>. Um dos benefícios de usar uma linguagem como Python é que ela é de nível muito alto, tornando mais fácil a comunicação (com algum custo em termos de eficiência computacional).</p>
+<p>No programa anterior, <em>f</em> é um <em>objeto ficheiro</em> (<em>file object</em>), e <code>open</code> (abrir), <code>write</code> (gravar) e <code>close</code> (fechar) são <em>métodos de ficheiro</em> (<em>file
+methods</em>). Em outras palavras, abrir, gravar, e fechar fazem algo com o objeto <em>f</em> que, neste caso, é definido como um ficheiro <code>.txt</code>. Este é provavelmente um uso diferente do termo &quot;método&quot; do que aquele que você poderia esperar e, de vez em quando, você descobrirá que as palavras usadas no contexto de programação têm significados ligeiramente (ou completamente) diferentes do que na fala do dia a dia. Neste caso, lembre-se de que os métodos são código que executa ações. Eles fazem algo a outra coisa e retornam um resultado. Você pode tentar pensar nisto usando um exemplo do mundo real, como dar comandos ao cão da família. O cão (o objeto) entende comandos (ou seja, tem &quot;métodos&quot;) como &quot;latir&quot;, &quot;sentar&quot;, &quot;fingir de morto&quot; e assim por diante. Discutiremos e aprenderemos como usar muitos outros métodos à medida que avançarmos.</p>
+<p><em>f</em> é um nome de variável escolhido por nós; você poderia chamá-lo de qualquer coisa que quisesse. No Python, os nomes das variáveis podem ser constituídos por letras maiúsculas e minúsculas, números, e o símbolo <em>underline</em>... mas você não pode usar os nomes dos comandos Python como variáveis. Se você tentasse nomear a sua variável de ficheiro como, por exemplo, &quot;print&quot;, o seu programa não funcionaria porque esta é uma <a href="http://docs.python.org/release/2.5.4/ref/keywords.html">palavra reservada</a> que faz parte da linguagem de programação.</p>
+<p>Os nomes das variáveis Python também são <em>case-sensitive</em>, ou seja, diferenciam letras maiúsculas de minúsculas, o que significa que <em>foobar</em>, <em>Foobar</em> e <em>FOOBAR</em> seriam todas variáveis diferentes.</p>
+<p>Quando você executa o programa, o método <code>open</code> (abrir) vai dizer ao seu computador para criar um novo ficheiro de texto <code>olamundo.txt</code> na mesma pasta que você salvou o programa <code>ficheiro-saida.py</code>. O parâmetro <em>w</em> diz que você pretende gravar conteúdo neste novo ficheiro usando Python.</p>
+<p>Observe que, como o nome do ficheiro e o parâmetro estão entre aspas simples, você sabe que ambos estão armazenados como <em>strings</em>; esquecer de incluir as aspas fará com que o seu programa falhe.</p>
+<p>Na próxima linha, o seu programa grava a mensagem &quot;olá mundo&quot; (outra string) no ficheiro e o fecha. (Para obter mais informações sobre estas instruções, consulte a seção <a href="https://docs.python.org/2/library/stdtypes.html#bltin-file-objects">File Objects</a> na Referência da biblioteca Python.)</p>
+<p>Clique duas vezes no botão &quot;Executar Python&quot; no Komodo Edit para executar o programa (ou o equivalente em qualquer outro editor de texto que você tenha decidido usar: por exemplo, clique em &quot;#!&quot; E &quot;Executar&quot; no TextWrangler). Embora nada seja impresso no painel &quot;Saída de Comando&quot;, você verá uma mensagem de status que diz algo como</p>
+<pre><code class="language-python">`/usr/bin/python ficheiro-saida.py` returned 0.
+</code></pre>
+<p>em Mac ou Linux, ou</p>
+<pre><code class="language-python">'C:\Python27\Python.exe ficheiro-saida.py' returned 0.
+</code></pre>
+<p>no Windows.</p>
+<p>Isso significa que o seu programa foi executado com sucesso. Se você usar <em>Arquivo -&gt; Abrir -&gt; Arquivo</em> no Komodo Edit, você pode abrir o ficheiro <code>olamundo.txt</code>. Ele deve conter a sua mensagem numa linha:</p>
+<pre><code class="language-python">olá mundo
+</code></pre>
+<p>Como os ficheiros de texto incluem uma quantidade mínima de informação de formatação, eles tendem a ser pequenos, fáceis de trocar entre plataformas diferentes
+(ou seja, do Windows para Linux ou Mac, ou vice-versa) e fáceis de enviar de um programa de computador para outro. Eles geralmente também podem ser lidos por pessoas que usam um editor de texto como o Komodo Edit.</p>
+<h3>Lendo de um ficheiro de texto</h3>
+<p>A linguagem Python também possui métodos que permitem obter informação desde ficheiros. Digite o seguinte programa no seu editor de texto e salve-o como
+<code>ficheiro-entrada.py</code>. Ao clicar em &quot;Executar&quot; para executá-lo, será aberto o ficheiro de texto que você acabou de criar, lida a mensagem numa linha do ficheiro, e
+impressa a mensagem no painel &quot;Saída de Comando&quot;.</p>
+<pre><code class="language-python"># ficheiro-entrada.py
+f = open('olamundo.txt','r')
+message = f.read()
+print(message)
+f.close()
+</code></pre>
+<p>Nesse caso, o parâmetro <em>r</em> é usado para indicar que você está abrindo um ficheiro para ler (<code>read</code>) a partir dele. Os parâmetros permitem que você escolha entre as diferentes opções que um método específico permite. Voltando ao exemplo do cão da família, o cão pode ser treinado a latir uma vez quando faz um lanche com sabor de carne e duas vezes quando recebe um com sabor de frango. O sabor do lanche é um parâmetro. Cada método é diferente em termos de quais parâmetros aceitará. Você não pode, por exemplo, pedir a um cão que cante uma ópera italiana - a menos que o seu cão seja particularmente talentoso. Você pode pesquisar os parâmetros possíveis para um método específico no site do Python ou, frequentemente, pode encontrá-los digitando o nome do método num motor de busca, junto com o termo &quot;Python&quot;.</p>
+<p><code>Read</code> é um outro método de ficheiro. Os conteúdos do ficheiro (a mensagem de uma linha) são copiados para a variável <em>message</em>, que é como decidimos chamar esta <em>string</em>, e então o comando <code>print</code> é usado para enviar os conteúdos de <em>message</em> para o painel &quot;Saída do Comando&quot;.</p>
+<h3>Anexando conteúdo a um ficheiro de texto pré-existente</h3>
+<p>Uma terceira opção é abrir um ficheiro pré-existente e adicionar mais conteúdo a ele. Note que se você abrir (<code>open</code>) um ficheiro e usar o método <code>write</code> (gravar), <em>o programa sobrescreverá tudo o que possa estar contido no ficheiro</em>. Isso não é um problema quando você está criando um novo ficheiro, ou quando deseja sobrescrever os conteúdos de um ficheiro existente, mas pode ser indesejável quando você está criando um registro de eventos ou compilando um grande conjunto de dados em um ficheiro. Neste caso, ao invés de <code>write</code>, você vai querer usar o método acrescentar (<code>append</code>), designado por <code>a</code>.</p>
+<p>Digite o seguinte programa no seu editor de texto e salve-o como<code>ficheiro-acrescentar.py</code>. Quando você executar este programa, ele abrirá o mesmo ficheiro <code>olamundo.txt</code> criado anteriormente e anexará uma segunda mensagem “olá mundo” ao ficheiro. A sequência '\n' significa o início de uma nova linha.</p>
+<pre><code class="language-python"># ficheiro-acrescentar.py
+f = open('olamundo.txt','a')
+f.write('\n' + 'olá mundo')
+f.close()
+</code></pre>
+<p>Depois de executar o programa, abra o ficheiro <code>olamundo.txt</code> e veja o que aconteceu. Feche o ficheiro de texto e execute mais algumas vezes o programa <code>ficheiro-acrescentar.py</code>. Quando você abrir <code>olamundo.txt</code> novamente, notará algumas mensagens 'olá mundo' extra esperando por você.</p>
+<p>Na próxima seção, discutiremos a modularidade e a reutilização de código.</p>
+<h2>Leituras sugeridas</h2>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/Non-Programmer%27s_Tutorial_for_Python_3/Hello,_World">Non-Programmer's Tutorial for Python 3/Hello, World</a></li>
+</ul>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

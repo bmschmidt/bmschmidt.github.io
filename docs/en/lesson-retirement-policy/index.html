@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/en/lesson-retirement-policy"),
+					params: {lang:"en",lessons:"lesson-retirement-policy"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Lesson Retirement Policy</h1>
+<p>The <em>Programming Historian</em> editors do their best to maintain lessons as minor issues inevitably arise.
+However, as time passes, changes to either the underlying technologies or principles used by a given lesson can become so substantial that users will no longer be able to successfully complete the lesson.
+In these situations, the <em>Programming Historian</em> editorial team may decide to &quot;retire&quot; a lesson: keeping the page published, but removing it from our directory of active lessons and adding a warning to the top of the page noting that not all elements of the lesson may be working as originally intended.</p>
+<p>We do not retire lessons lightly.
+If the editorial team begins to receive reports about problems with a lesson, we will investigate the problem and take steps to address it.
+Often, we will decide it is not necessary to retire the lesson:</p>
+<ul>
+<li>In cases where minor fixes are easily done, such as correcting the formatting of a lesson, or changing one or two broken URLs, we will generally do so.</li>
+<li>In cases where new methods for a task have emerged that may be preferred to the methods discussed in a lesson, but the original technology for a lesson still works and is available, we will <strong>not</strong> retire the lesson. The lesson may still prove a useful learning tool and a snapshot into the techniques of digital history when it was published</li>
+</ul>
+<p>However, if it is clear that systemic changes to text, code, and/or figures are necessary, and that such changes are of a scale that would require complete re-testing of the entire lesson, then we will open a public issue to discuss the possibility of retiring the lesson between all the members of the editorial team.</p>
+<p>In cases where members of the editorial team, or members of the larger community, are willing and able to volunteer their expertise, we may create an updated lesson derived from the original.
+In accordance with our <a href="https://creativecommons.org/licenses/by/4.0/deed.en">CC-BY</a> licensing, this derivative will conspicuously attribute the creator of the original lesson, as well as the names of any contributors who aided in the production of the new lesson.</p>
+<p>Whether or not a new derivative is created, the following steps will be taken with the retired lesson:</p>
+<ol>
+<li>
+<p>The lesson will be moved from <code>/lesson/LESSON-TITLE</code> TO <code>/lesson/retired/LESSON-TITLE</code>. A redirect will be established, so any links to the original URL will seamlessly point the user to the new URL.</p>
+</li>
+<li>
+<p>Once retired, the lesson will no longer appear in the directory of lessons, and it will be removed from the Twitter announcement stream. In order to remove it from the Twitter stream, editors should consult the Programming Historian Wiki.</p>
+</li>
+<li>
+<p>The following announcement will be added to the top of the retired lesson:</p>
+ <div class="alert alert-warning">{{ site.data.snippets.retired-definition[page.lang] | markdownify }}
+</li>
+</ol>
+<h2>Related Sustainability Guidelines</h2>
+<p><a href="/author-guidelines#write-sustainably">Author Guidelines for Writing Sustainably</a></p>
+<p><a href="/reviewer-guidelines#sustainability">Reviewer Guidelines for Assessing Lesson Sustainability</a></p>
+<p><a href="/editor-guidelines#c-sustainability-review">Editor Guidelines for Fostering Lesson Sustainability</a></p>
+<h2>Retired Lessons</h2>
+<p>{% assign retired = site.pages | where: &quot;retired&quot;, &quot;true&quot; %}
+{% for lesson in retired %}
+[{{ lesson.title }}]({{ lesson.url }})
+{% endfor %}</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

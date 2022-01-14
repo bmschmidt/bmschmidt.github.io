@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/getting-started-with-markdown"),
 					params: {lang:"en",lessons:"lessons",slug:"getting-started-with-markdown"}
@@ -48,29 +49,31 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Getting Started with Markdown</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h3 id="lesson-goals">Lesson goals</h3>
+<h3>Lesson goals</h3>
 <p>In this lesson, you will be introduced to Markdown, a plain text-based syntax for formatting documents. You will find out why it is used, how to format Markdown files, and how to preview Markdown-formatted documents on the web.</p>
 <p>Since Programming Historian lessons are submitted as Markdown files, I have included PH-specific examples whenever possible. It is my hope that this guide will be useful to you if you are considering authoring a lesson for this site.</p>
-<h2 id="what-is-markdown">What is Markdown?</h2>
-<p>Developed in 2004 by <a href="http://daringfireball.net/projects/markdown/" title="Markdown on Daring Fireball">John Gruber</a>, Markdown refers to both (1) a way of formatting text files, as well as (2) a Perl utility to convert Markdown files into HTML. In this lesson, we&#39;ll focus on the first part and learn to write files using the Markdown syntax.</p>
-<p>Plain text files have many advantages over other formats. For one, they are readable on virtually all devices. They have also withstood the test of time better than other file types -- if you&#39;ve ever tried to open a document saved in a legacy word processor format, you&#39;ll be familiar with the compatibility challenges involved.</p>
-<p>By following Markdown syntax, you&#39;ll be able to produce files that are both legible in plain text and ready to be styled on other platforms. Many blogging engines, static site generators, and sites like <a href="http://github.com" title="GitHub">GitHub</a> also support Markdown, and will render these files into HTML for display on the web. Additionally, tools like Pandoc can convert files into and out of Markdown. For more on Pandoc, visit the lesson on <a href="/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown">Sustainable authorship in plain text using Pandoc and Markdown</a> by Dennis Tenen and Grant Wythoff.</p>
-<h2 id="markdown-syntax">Markdown Syntax</h2>
+<h2>What is Markdown?</h2>
+<p>Developed in 2004 by <a href="http://daringfireball.net/projects/markdown/" title="Markdown on Daring Fireball">John Gruber</a>, Markdown refers to both (1) a way of formatting text files, as well as (2) a Perl utility to convert Markdown files into HTML. In this lesson, we'll focus on the first part and learn to write files using the Markdown syntax.</p>
+<p>Plain text files have many advantages over other formats. For one, they are readable on virtually all devices. They have also withstood the test of time better than other file types -- if you've ever tried to open a document saved in a legacy word processor format, you'll be familiar with the compatibility challenges involved.</p>
+<p>By following Markdown syntax, you'll be able to produce files that are both legible in plain text and ready to be styled on other platforms. Many blogging engines, static site generators, and sites like <a href="http://github.com" title="GitHub">GitHub</a> also support Markdown, and will render these files into HTML for display on the web. Additionally, tools like Pandoc can convert files into and out of Markdown. For more on Pandoc, visit the lesson on <a href="/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown">Sustainable authorship in plain text using Pandoc and Markdown</a> by Dennis Tenen and Grant Wythoff.</p>
+<h2>Markdown Syntax</h2>
 <p>Markdown files are saved with the extension <code>.md</code>, and can be opened in a text editor such as TextEdit, Notepad, Sublime Text, or Vim. Many websites and publishing platforms also offer web-based editors and/or extensions for entering text using Markdown syntax.</p>
-<p>In this tutorial, we&#39;ll be practicing Markdown syntax in the browser using <a href="https://stackedit.io">StackEdit</a>. You&#39;ll be able to enter Markdown-formatted text on the left and immediately see the rendered version alongside it on the right.</p>
+<p>In this tutorial, we'll be practicing Markdown syntax in the browser using <a href="https://stackedit.io">StackEdit</a>. You'll be able to enter Markdown-formatted text on the left and immediately see the rendered version alongside it on the right.</p>
 <p>Since all <em>Programming Historian</em> lessons are written in Markdown, we can examine these files in StackEdit too. From the <a href="https://stackedit.io">StackEdit</a>, click on &quot;Start Writing&quot; in the upper bar. Then copy and paste the raw text from the lesson &quot;Intro to Bash&quot; in the editor:</p>
 <pre><code>https://raw.githubusercontent.com/programminghistorian/jekyll/gh-pages/en/lessons/intro-to-bash.md
 </code></pre>
-<p>You&#39;ll notice that while the right panel features a more elegant rendering of the text, the original Markdown file on the left is still fairly readable.</p>
-<p>Now, let&#39;s dive into the lesson by writing our own Markdown syntax. Create a new document in StackEdit by clicking the folder icon in the upper right and choosing <code>New document</code>. You may enter a title for the document in the textbox on the top of the page.</p>
-<h3 id="headings">Headings</h3>
+<p>You'll notice that while the right panel features a more elegant rendering of the text, the original Markdown file on the left is still fairly readable.</p>
+<p>Now, let's dive into the lesson by writing our own Markdown syntax. Create a new document in StackEdit by clicking the folder icon in the upper right and choosing <code>New document</code>. You may enter a title for the document in the textbox on the top of the page.</p>
+<h3>Headings</h3>
 <p>Four levels of headings are available in Markdown, and are indicated by the number of <code>#</code> preceding the heading text. Paste the following examples into the textbox on your left:</p>
 <pre><code># First level heading
 ## Second level heading
@@ -85,31 +88,31 @@ Second level heading
 ----------
 </code></pre>
 <p><strong>These will render as:</strong></p>
-<h1 id="first-level-heading">First level heading</h1>
-<h2 id="second-level-heading">Second level heading</h2>
-<h3 id="third-level-heading">Third level heading</h3>
-<h4 id="fourth-level-heading">Fourth level heading</h4>
+<h1>First level heading</h1>
+<h2>Second level heading</h2>
+<h3>Third level heading</h3>
+<h4>Fourth level heading</h4>
 <p>Notice how the Markdown syntax remains understandable even in the plain text version.</p>
-<h3 id="paragraphs--line-breaks">Paragraphs &amp; Line Breaks</h3>
+<h3>Paragraphs &amp; Line Breaks</h3>
 <p>Try typing the following sentence into the textbox:</p>
 <pre><code>Welcome to the Programming Historian.
 
-Today we&#39;ll be learning about Markdown syntax.
+Today we'll be learning about Markdown syntax.
 This sentence is separated by a single line break from the preceding one.
 </code></pre>
 <p><strong>This renders as:</strong></p>
 <p>Welcome to the Programming Historian.</p>
-<p>Today we&#39;ll be learning about Markdown syntax.
+<p>Today we'll be learning about Markdown syntax.
 This sentence is separated by a single line break from the preceding one.</p>
 <p>Paragraphs must be separated by an empty line. Leave an empty line between <code>syntax.</code> and <code>This</code> to see how this works. In some implementations of Markdown, single line breaks must also be indicated with two empty spaces at the end of each line. This is unnecessary in the <a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a> variant that StackEdit uses by default.</p>
-<h3 id="adding-emphasis">Adding Emphasis</h3>
+<h3>Adding Emphasis</h3>
 <p>Text can be italicized by wrapping the word in <code>*</code> or <code>_</code> symbols. Likewise, bold text is written by wrapping the word in <code>**</code> or <code>__</code>.</p>
 <p>Try adding emphasis to a sentence using these methods:</p>
 <pre><code>I am **very** excited about the _Programming Historian_ tutorials.
 </code></pre>
 <p><strong>This renders as:</strong></p>
-<p> I am <strong>very</strong> excited about the <em>Programming Historian</em> tutorials.</p>
-<h3 id="making-lists">Making Lists</h3>
+<p>I am <strong>very</strong> excited about the <em>Programming Historian</em> tutorials.</p>
+<h3>Making Lists</h3>
 <p>Markdown includes support for ordered and unordered lists. Try typing the following list into the textbox:</p>
 <pre><code>Shopping List
 ----------
@@ -123,15 +126,17 @@ This sentence is separated by a single line break from the preceding one.</p>
 </code></pre>
 <p>Indenting the <code>*</code> will allow you to created nested items.</p>
 <p><strong>This renders as:</strong></p>
-<h2 id="shopping-list">Shopping List</h2>
+<h2>Shopping List</h2>
 <ul>
-<li>Fruits<ul>
+<li>Fruits
+<ul>
 <li>Apples</li>
 <li>Oranges</li>
 <li>Grapes</li>
 </ul>
 </li>
-<li>Dairy<ul>
+<li>Dairy
+<ul>
 <li>Milk</li>
 <li>Cheese</li>
 </ul>
@@ -145,13 +150,13 @@ This sentence is separated by a single line break from the preceding one.</p>
 3. Prepare lunch
 </code></pre>
 <p><strong>This renders as:</strong></p>
-<h2 id="to-do-list">To-do list</h2>
+<h2>To-do list</h2>
 <ol>
 <li>Finish Markdown tutorial</li>
 <li>Go to grocery store</li>
 <li>Prepare lunch</li>
 </ol>
-<h3 id="code-snippets">Code Snippets</h3>
+<h3>Code Snippets</h3>
 <p>Representing code snippets differently from the rest of a document is a good practice that improves readability. Typically, code is represented in monospaced type. Since Markdown does not distinguish between fonts, we represent code by wrapping snippets in back-tick characters like <code>`</code>. For example, <code>`&lt;br /&gt;`</code>. Whole blocks of code are written by typing three back-tick characters before and after each block. In the StackEdit preview window, this will render a shaded box with text in a monospaced font.</p>
 <p>Try typing the following text into the textbox:</p>
 <pre><code>```html
@@ -174,7 +179,7 @@ This sentence is separated by a single line break from the preceding one.</p>
     &lt;/html&gt;
 </code></pre>
 <p>Notice how the code block renders in a monospaced font.</p>
-<h3 id="blockquotes">Blockquotes</h3>
+<h3>Blockquotes</h3>
 <p>Adding a <code>&gt;</code> before any paragraph will render it as a blockquote element.</p>
 <p>Try typing the following text into the textbox:</p>
 <pre><code>&gt; Hello, I am a paragraph of text enclosed in a blockquote. Notice how I am offset from the left margin.
@@ -183,7 +188,7 @@ This sentence is separated by a single line break from the preceding one.</p>
 <blockquote>
 <p>Hello, I am a paragraph of text enclosed in a blockquote. Notice how I am offset from the left margin.</p>
 </blockquote>
-<h3 id="links">Links</h3>
+<h3>Links</h3>
 <p>Links can be written in two styles.</p>
 <p>Inline links are written by enclosing the link text in square brackets first, then including the URL and optional alt-text in round brackets.</p>
 <p><code>For more tutorials, please visit the [Programming Historian](/ &quot;Programming Historian main page&quot;).</code></p>
@@ -195,12 +200,12 @@ This sentence is separated by a single line break from the preceding one.</p>
 <p><code>[1]: http://programminghistorian.org/ &quot;The Programming Historian&quot;</code></p>
 <p><strong>This renders as:</strong></p>
 <p>One example is the <a href="http://programminghistorian.org/" title="The Programming Historian">Programming Historian</a> website.</p>
-<h3 id="images">Images</h3>
+<h3>Images</h3>
 <p>Images can be referenced using <code>!</code>, followed by some alt-text in square brackets, followed by the image URL and an optional title. These will not be displayed in your plain text document, but would be embedded into a rendered HTML page.</p>
 <p><code>![Wikipedia logo](https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg &quot;Wikipedia logo&quot;)</code></p>
 <p><strong>This renders as:</strong></p>
 <p><img src="https://upload.wikimedia.org/wikipedia/en/8/80/Wikipedia-logo-v2.svg" alt="Wikipedia logo" title="Wikipedia logo"></p>
-<h4 id="horizontal-rules">Horizontal Rules</h4>
+<h4>Horizontal Rules</h4>
 <p>Horizontal rules are produced when three or more <code>-</code>, <code>*</code> or <code>_</code> are included on a line by themselves, regardless of the number of spaces between them. All of the following combinations will render horizontal rules:</p>
 <pre><code>___
 * * *
@@ -210,7 +215,7 @@ This sentence is separated by a single line break from the preceding one.</p>
 <hr>
 <hr>
 <hr>
-<h3 id="tables">Tables</h3>
+<h3>Tables</h3>
 <p>The core Markdown spec does not include tables; however, some sites and applications use variants of Markdown that may include tables and other special features. <a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a> is one of these variants, and is used to render <code>.md</code> files in the browser on the GitHub site.</p>
 <p>To create a table within GitHub, use pipes <code>|</code> to separate columns and hyphens <code>-</code> between your headings and the rest of the table content. While pipes are only strictly necessary between columns, you may use them on either side of your table for a more polished look. Cells can contain any length of content, and it is not necessary for pipes to be vertically aligned with each other.</p>
 <pre><code>| Heading 1 | Heading 2 | Heading 3 |
@@ -228,7 +233,8 @@ This sentence is separated by a single line break from the preceding one.</p>
 <th>Heading 3</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Row 1, column 1</td>
 <td>Row 1, column 2</td>
 <td>Row 1, column 3</td>
@@ -243,7 +249,8 @@ This sentence is separated by a single line break from the preceding one.</p>
 <td>Row 3, column 2</td>
 <td>Row 3, column 3</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>To specify the alignment of each column, colons <code>:</code> can be added to the header row as follows:</p>
 <pre><code>| Left-aligned | Centered | Right-aligned |
 | :-------- | :-------: | --------: |
@@ -254,28 +261,30 @@ This sentence is separated by a single line break from the preceding one.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Left-aligned</th>
-<th align="center">Centered</th>
-<th align="right">Right-aligned</th>
+<th style="text-align:left">Left-aligned</th>
+<th style="text-align:center">Centered</th>
+<th style="text-align:right">Right-aligned</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">Apples</td>
-<td align="center">Red</td>
-<td align="right">5000</td>
+<tbody>
+<tr>
+<td style="text-align:left">Apples</td>
+<td style="text-align:center">Red</td>
+<td style="text-align:right">5000</td>
 </tr>
 <tr>
-<td align="left">Bananas</td>
-<td align="center">Yellow</td>
-<td align="right">75</td>
+<td style="text-align:left">Bananas</td>
+<td style="text-align:center">Yellow</td>
+<td style="text-align:right">75</td>
 </tr>
-</tbody></table>
-<h2 id="markdown-limitations">Markdown Limitations</h2>
+</tbody>
+</table>
+<h2>Markdown Limitations</h2>
 <p>While Markdown is becoming increasingly popular, particularly for styling documents that are viewable on the web, many people and publishers still expect traditional Word documents, PDFs, and other file formats. This can be mitigated somewhat with command line conversion tools such as <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a>; however, certain word processor features like track changes are not supported yet. Please visit the Programming Historian lesson on <a href="/lessons/sustainable-authorship-in-plain-text-using-pandoc-and-markdown">Sustainable authorship in plain text using Pandoc and Markdown</a> for more information about Pandoc.</p>
-<h2 id="conclusion">Conclusion</h2>
+<h2>Conclusion</h2>
 <p>Markdown is a useful middle ground between unstyled plain text files and legacy word processor documents. Its simple syntax is quick to learn and legible both by itself and when rendered into HTML and other document types. Finally, choosing to write your own documents in Markdown should mean that they will be usable and readable in the long-term.</p>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="getting-started-with-markdown/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Getting Started with Markdown\",\"layout\":\"lesson\",\"date\":\"2015-11-13T00:00:00.000Z\",\"authors\":[\"Sarah Simpkin\"],\"reviewers\":[\"John Fink\",\"Nancy Lemay\"],\"difficulty\":1,\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fjekyll\u002Fpull\u002F61\",\"editors\":[\"Ian Milligan\"],\"activity\":\"presenting\",\"topics\":[\"data-management\"],\"abstract\":\"In this lesson, you will be introduced to Markdown, a plain text-based syntax for formatting documents. You will find out why it is used, how to format Markdown files, and how to preview Markdown-formatted documents on the web.\",\"exclude_from_check\":[\"reviewers\"],\"redirect_from\":\"\u002Flessons\u002Fgetting-started-with-markdown\",\"avatar_alt\":\"Ornate decorated characters from a typographical manual\",\"doi\":\"10.46430\u002Fphen0046\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"lesson-goals\\\"\u003ELesson goals\u003C\u002Fh3\u003E\\n\u003Cp\u003EIn this lesson, you will be introduced to Markdown, a plain text-based syntax for formatting documents. You will find out why it is used, how to format Markdown files, and how to preview Markdown-formatted documents on the web.\u003C\u002Fp\u003E\\n\u003Cp\u003ESince Programming Historian lessons are submitted as Markdown files, I have included PH-specific examples whenever possible. It is my hope that this guide will be useful to you if you are considering authoring a lesson for this site.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"what-is-markdown\\\"\u003EWhat is Markdown?\u003C\u002Fh2\u003E\\n\u003Cp\u003EDeveloped in 2004 by \u003Ca href=\\\"http:\u002F\u002Fdaringfireball.net\u002Fprojects\u002Fmarkdown\u002F\\\" title=\\\"Markdown on Daring Fireball\\\"\u003EJohn Gruber\u003C\u002Fa\u003E, Markdown refers to both (1) a way of formatting text files, as well as (2) a Perl utility to convert Markdown files into HTML. In this lesson, we&#39;ll focus on the first part and learn to write files using the Markdown syntax.\u003C\u002Fp\u003E\\n\u003Cp\u003EPlain text files have many advantages over other formats. For one, they are readable on virtually all devices. They have also withstood the test of time better than other file types -- if you&#39;ve ever tried to open a document saved in a legacy word processor format, you&#39;ll be familiar with the compatibility challenges involved.\u003C\u002Fp\u003E\\n\u003Cp\u003EBy following Markdown syntax, you&#39;ll be able to produce files that are both legible in plain text and ready to be styled on other platforms. Many blogging engines, static site generators, and sites like \u003Ca href=\\\"http:\u002F\u002Fgithub.com\\\" title=\\\"GitHub\\\"\u003EGitHub\u003C\u002Fa\u003E also support Markdown, and will render these files into HTML for display on the web. Additionally, tools like Pandoc can convert files into and out of Markdown. For more on Pandoc, visit the lesson on \u003Ca href=\\\"\u002Flessons\u002Fsustainable-authorship-in-plain-text-using-pandoc-and-markdown\\\"\u003ESustainable authorship in plain text using Pandoc and Markdown\u003C\u002Fa\u003E by Dennis Tenen and Grant Wythoff.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"markdown-syntax\\\"\u003EMarkdown Syntax\u003C\u002Fh2\u003E\\n\u003Cp\u003EMarkdown files are saved with the extension \u003Ccode\u003E.md\u003C\u002Fcode\u003E, and can be opened in a text editor such as TextEdit, Notepad, Sublime Text, or Vim. Many websites and publishing platforms also offer web-based editors and\u002For extensions for entering text using Markdown syntax.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn this tutorial, we&#39;ll be practicing Markdown syntax in the browser using \u003Ca href=\\\"https:\u002F\u002Fstackedit.io\\\"\u003EStackEdit\u003C\u002Fa\u003E. You&#39;ll be able to enter Markdown-formatted text on the left and immediately see the rendered version alongside it on the right.\u003C\u002Fp\u003E\\n\u003Cp\u003ESince all \u003Cem\u003EProgramming Historian\u003C\u002Fem\u003E lessons are written in Markdown, we can examine these files in StackEdit too. From the \u003Ca href=\\\"https:\u002F\u002Fstackedit.io\\\"\u003EStackEdit\u003C\u002Fa\u003E, click on &quot;Start Writing&quot; in the upper bar. Then copy and paste the raw text from the lesson &quot;Intro to Bash&quot; in the editor:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ehttps:\u002F\u002Fraw.githubusercontent.com\u002Fprogramminghistorian\u002Fjekyll\u002Fgh-pages\u002Fen\u002Flessons\u002Fintro-to-bash.md\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou&#39;ll notice that while the right panel features a more elegant rendering of the text, the original Markdown file on the left is still fairly readable.\u003C\u002Fp\u003E\\n\u003Cp\u003ENow, let&#39;s dive into the lesson by writing our own Markdown syntax. Create a new document in StackEdit by clicking the folder icon in the upper right and choosing \u003Ccode\u003ENew document\u003C\u002Fcode\u003E. You may enter a title for the document in the textbox on the top of the page.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"headings\\\"\u003EHeadings\u003C\u002Fh3\u003E\\n\u003Cp\u003EFour levels of headings are available in Markdown, and are indicated by the number of \u003Ccode\u003E#\u003C\u002Fcode\u003E preceding the heading text. Paste the following examples into the textbox on your left:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E# First level heading\\n## Second level heading\\n### Third level heading\\n#### Fourth level heading\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EFirst and second level headings may also be entered as follows:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EFirst level heading\\n=======\\n\\nSecond level heading\\n----------\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThese will render as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Ch1 id=\\\"first-level-heading\\\"\u003EFirst level heading\u003C\u002Fh1\u003E\\n\u003Ch2 id=\\\"second-level-heading\\\"\u003ESecond level heading\u003C\u002Fh2\u003E\\n\u003Ch3 id=\\\"third-level-heading\\\"\u003EThird level heading\u003C\u002Fh3\u003E\\n\u003Ch4 id=\\\"fourth-level-heading\\\"\u003EFourth level heading\u003C\u002Fh4\u003E\\n\u003Cp\u003ENotice how the Markdown syntax remains understandable even in the plain text version.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"paragraphs--line-breaks\\\"\u003EParagraphs &amp; Line Breaks\u003C\u002Fh3\u003E\\n\u003Cp\u003ETry typing the following sentence into the textbox:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EWelcome to the Programming Historian.\\n\\nToday we&#39;ll be learning about Markdown syntax.\\nThis sentence is separated by a single line break from the preceding one.\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EWelcome to the Programming Historian.\u003C\u002Fp\u003E\\n\u003Cp\u003EToday we&#39;ll be learning about Markdown syntax.\\nThis sentence is separated by a single line break from the preceding one.\u003C\u002Fp\u003E\\n\u003Cp\u003EParagraphs must be separated by an empty line. Leave an empty line between \u003Ccode\u003Esyntax.\u003C\u002Fcode\u003E and \u003Ccode\u003EThis\u003C\u002Fcode\u003E to see how this works. In some implementations of Markdown, single line breaks must also be indicated with two empty spaces at the end of each line. This is unnecessary in the \u003Ca href=\\\"https:\u002F\u002Fhelp.github.com\u002Farticles\u002Fgithub-flavored-markdown\u002F\\\"\u003EGitHub Flavored Markdown\u003C\u002Fa\u003E variant that StackEdit uses by default.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"adding-emphasis\\\"\u003EAdding Emphasis\u003C\u002Fh3\u003E\\n\u003Cp\u003EText can be italicized by wrapping the word in \u003Ccode\u003E*\u003C\u002Fcode\u003E or \u003Ccode\u003E_\u003C\u002Fcode\u003E symbols. Likewise, bold text is written by wrapping the word in \u003Ccode\u003E**\u003C\u002Fcode\u003E or \u003Ccode\u003E__\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003ETry adding emphasis to a sentence using these methods:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EI am **very** excited about the _Programming Historian_ tutorials.\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E I am \u003Cstrong\u003Every\u003C\u002Fstrong\u003E excited about the \u003Cem\u003EProgramming Historian\u003C\u002Fem\u003E tutorials.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"making-lists\\\"\u003EMaking Lists\u003C\u002Fh3\u003E\\n\u003Cp\u003EMarkdown includes support for ordered and unordered lists. Try typing the following list into the textbox:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EShopping List\\n----------\\n* Fruits\\n  * Apples\\n  * Oranges\\n  * Grapes\\n* Dairy\\n  * Milk\\n  * Cheese\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIndenting the \u003Ccode\u003E*\u003C\u002Fcode\u003E will allow you to created nested items.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"shopping-list\\\"\u003EShopping List\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EFruits\u003Cul\u003E\\n\u003Cli\u003EApples\u003C\u002Fli\u003E\\n\u003Cli\u003EOranges\u003C\u002Fli\u003E\\n\u003Cli\u003EGrapes\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003EDairy\u003Cul\u003E\\n\u003Cli\u003EMilk\u003C\u002Fli\u003E\\n\u003Cli\u003ECheese\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EOrdered lists are written by numbering each line. Once again, the goal of Markdown is to produce documents that are both legible as plain text and able to be transformed into other formats.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003ETo-do list\\n----------\\n1. Finish Markdown tutorial\\n2. Go to grocery store\\n3. Prepare lunch\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"to-do-list\\\"\u003ETo-do list\u003C\u002Fh2\u003E\\n\u003Col\u003E\\n\u003Cli\u003EFinish Markdown tutorial\u003C\u002Fli\u003E\\n\u003Cli\u003EGo to grocery store\u003C\u002Fli\u003E\\n\u003Cli\u003EPrepare lunch\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Ch3 id=\\\"code-snippets\\\"\u003ECode Snippets\u003C\u002Fh3\u003E\\n\u003Cp\u003ERepresenting code snippets differently from the rest of a document is a good practice that improves readability. Typically, code is represented in monospaced type. Since Markdown does not distinguish between fonts, we represent code by wrapping snippets in back-tick characters like \u003Ccode\u003E`\u003C\u002Fcode\u003E. For example, \u003Ccode\u003E`&lt;br \u002F&gt;`\u003C\u002Fcode\u003E. Whole blocks of code are written by typing three back-tick characters before and after each block. In the StackEdit preview window, this will render a shaded box with text in a monospaced font.\u003C\u002Fp\u003E\\n\u003Cp\u003ETry typing the following text into the textbox:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E```html\\n&lt;html&gt;\\n    &lt;head&gt;\\n        &lt;title&gt;Website Title&lt;\u002Ftitle&gt;\\n    &lt;\u002Fhead&gt;\\n    &lt;body&gt;\\n    &lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;\\n```\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E    &lt;html&gt;\\n        &lt;head&gt;\\n            &lt;title&gt;Website Title&lt;\u002Ftitle&gt;\\n        &lt;\u002Fhead&gt;\\n        &lt;body&gt;\\n        &lt;\u002Fbody&gt;\\n    &lt;\u002Fhtml&gt;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENotice how the code block renders in a monospaced font.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"blockquotes\\\"\u003EBlockquotes\u003C\u002Fh3\u003E\\n\u003Cp\u003EAdding a \u003Ccode\u003E&gt;\u003C\u002Fcode\u003E before any paragraph will render it as a blockquote element.\u003C\u002Fp\u003E\\n\u003Cp\u003ETry typing the following text into the textbox:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E&gt; Hello, I am a paragraph of text enclosed in a blockquote. Notice how I am offset from the left margin.\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cblockquote\u003E\\n\u003Cp\u003EHello, I am a paragraph of text enclosed in a blockquote. Notice how I am offset from the left margin.\u003C\u002Fp\u003E\\n\u003C\u002Fblockquote\u003E\\n\u003Ch3 id=\\\"links\\\"\u003ELinks\u003C\u002Fh3\u003E\\n\u003Cp\u003ELinks can be written in two styles.\u003C\u002Fp\u003E\\n\u003Cp\u003EInline links are written by enclosing the link text in square brackets first, then including the URL and optional alt-text in round brackets.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003EFor more tutorials, please visit the [Programming Historian](\u002F &quot;Programming Historian main page&quot;).\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EFor more tutorials, please visit the \u003Ca href=\\\"\u002F\\\" title=\\\"Programming Historian main page\\\"\u003EProgramming Historian\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EReference-style links are handy for footnotes and may keep your plain text document neater. These are written with an additional set of square brackets to establish a link ID label.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003EOne example is the [Programming Historian][1] website.\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EYou may then add the URL to another part of the document:\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003E[1]: http:\u002F\u002Fprogramminghistorian.org\u002F &quot;The Programming Historian&quot;\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EOne example is the \u003Ca href=\\\"http:\u002F\u002Fprogramminghistorian.org\u002F\\\" title=\\\"The Programming Historian\\\"\u003EProgramming Historian\u003C\u002Fa\u003E website.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"images\\\"\u003EImages\u003C\u002Fh3\u003E\\n\u003Cp\u003EImages can be referenced using \u003Ccode\u003E!\u003C\u002Fcode\u003E, followed by some alt-text in square brackets, followed by the image URL and an optional title. These will not be displayed in your plain text document, but would be embedded into a rendered HTML page.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Ccode\u003E![Wikipedia logo](https:\u002F\u002Fupload.wikimedia.org\u002Fwikipedia\u002Fen\u002F8\u002F80\u002FWikipedia-logo-v2.svg &quot;Wikipedia logo&quot;)\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cimg src=\\\"https:\u002F\u002Fupload.wikimedia.org\u002Fwikipedia\u002Fen\u002F8\u002F80\u002FWikipedia-logo-v2.svg\\\" alt=\\\"Wikipedia logo\\\" title=\\\"Wikipedia logo\\\"\u003E\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"horizontal-rules\\\"\u003EHorizontal Rules\u003C\u002Fh4\u003E\\n\u003Cp\u003EHorizontal rules are produced when three or more \u003Ccode\u003E-\u003C\u002Fcode\u003E, \u003Ccode\u003E*\u003C\u002Fcode\u003E or \u003Ccode\u003E_\u003C\u002Fcode\u003E are included on a line by themselves, regardless of the number of spaces between them. All of the following combinations will render horizontal rules:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E___\\n* * *\\n- - - - - -\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Chr\u003E\\n\u003Chr\u003E\\n\u003Chr\u003E\\n\u003Ch3 id=\\\"tables\\\"\u003ETables\u003C\u002Fh3\u003E\\n\u003Cp\u003EThe core Markdown spec does not include tables; however, some sites and applications use variants of Markdown that may include tables and other special features. \u003Ca href=\\\"https:\u002F\u002Fhelp.github.com\u002Farticles\u002Fgithub-flavored-markdown\u002F\\\"\u003EGitHub Flavored Markdown\u003C\u002Fa\u003E is one of these variants, and is used to render \u003Ccode\u003E.md\u003C\u002Fcode\u003E files in the browser on the GitHub site.\u003C\u002Fp\u003E\\n\u003Cp\u003ETo create a table within GitHub, use pipes \u003Ccode\u003E|\u003C\u002Fcode\u003E to separate columns and hyphens \u003Ccode\u003E-\u003C\u002Fcode\u003E between your headings and the rest of the table content. While pipes are only strictly necessary between columns, you may use them on either side of your table for a more polished look. Cells can contain any length of content, and it is not necessary for pipes to be vertically aligned with each other.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E| Heading 1 | Heading 2 | Heading 3 |\\n| --------- | --------- | --------- |\\n| Row 1, column 1 | Row 1, column 2 | Row 1, column 3|\\n| Row 2, column 1 | Row 2, column 2 | Row 2, column 3|\\n| Row 3, column 1 | Row 3, column 2 | Row 3, column 3|\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Ctable\u003E\\n\u003Cthead\u003E\\n\u003Ctr\u003E\\n\u003Cth\u003EHeading 1\u003C\u002Fth\u003E\\n\u003Cth\u003EHeading 2\u003C\u002Fth\u003E\\n\u003Cth\u003EHeading 3\u003C\u002Fth\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Fthead\u003E\\n\u003Ctbody\u003E\u003Ctr\u003E\\n\u003Ctd\u003ERow 1, column 1\u003C\u002Ftd\u003E\\n\u003Ctd\u003ERow 1, column 2\u003C\u002Ftd\u003E\\n\u003Ctd\u003ERow 1, column 3\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003ERow 2, column 1\u003C\u002Ftd\u003E\\n\u003Ctd\u003ERow 2, column 2\u003C\u002Ftd\u003E\\n\u003Ctd\u003ERow 2, column 3\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd\u003ERow 3, column 1\u003C\u002Ftd\u003E\\n\u003Ctd\u003ERow 3, column 2\u003C\u002Ftd\u003E\\n\u003Ctd\u003ERow 3, column 3\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Ftbody\u003E\u003C\u002Ftable\u003E\\n\u003Cp\u003ETo specify the alignment of each column, colons \u003Ccode\u003E:\u003C\u002Fcode\u003E can be added to the header row as follows:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E| Left-aligned | Centered | Right-aligned |\\n| :-------- | :-------: | --------: |\\n| Apples | Red | 5000 |\\n| Bananas | Yellow | 75 |\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E\u003Cstrong\u003EThis renders as:\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Ctable\u003E\\n\u003Cthead\u003E\\n\u003Ctr\u003E\\n\u003Cth align=\\\"left\\\"\u003ELeft-aligned\u003C\u002Fth\u003E\\n\u003Cth align=\\\"center\\\"\u003ECentered\u003C\u002Fth\u003E\\n\u003Cth align=\\\"right\\\"\u003ERight-aligned\u003C\u002Fth\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Fthead\u003E\\n\u003Ctbody\u003E\u003Ctr\u003E\\n\u003Ctd align=\\\"left\\\"\u003EApples\u003C\u002Ftd\u003E\\n\u003Ctd align=\\\"center\\\"\u003ERed\u003C\u002Ftd\u003E\\n\u003Ctd align=\\\"right\\\"\u003E5000\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003Ctr\u003E\\n\u003Ctd align=\\\"left\\\"\u003EBananas\u003C\u002Ftd\u003E\\n\u003Ctd align=\\\"center\\\"\u003EYellow\u003C\u002Ftd\u003E\\n\u003Ctd align=\\\"right\\\"\u003E75\u003C\u002Ftd\u003E\\n\u003C\u002Ftr\u003E\\n\u003C\u002Ftbody\u003E\u003C\u002Ftable\u003E\\n\u003Ch2 id=\\\"markdown-limitations\\\"\u003EMarkdown Limitations\u003C\u002Fh2\u003E\\n\u003Cp\u003EWhile Markdown is becoming increasingly popular, particularly for styling documents that are viewable on the web, many people and publishers still expect traditional Word documents, PDFs, and other file formats. This can be mitigated somewhat with command line conversion tools such as \u003Ca href=\\\"http:\u002F\u002Fjohnmacfarlane.net\u002Fpandoc\u002F\\\"\u003EPandoc\u003C\u002Fa\u003E; however, certain word processor features like track changes are not supported yet. Please visit the Programming Historian lesson on \u003Ca href=\\\"\u002Flessons\u002Fsustainable-authorship-in-plain-text-using-pandoc-and-markdown\\\"\u003ESustainable authorship in plain text using Pandoc and Markdown\u003C\u002Fa\u003E for more information about Pandoc.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"conclusion\\\"\u003EConclusion\u003C\u002Fh2\u003E\\n\u003Cp\u003EMarkdown is a useful middle ground between unstyled plain text files and legacy word processor documents. Its simple syntax is quick to learn and legible both by itself and when rendered into HTML and other document types. Finally, choosing to write your own documents in Markdown should mean that they will be usable and readable in the long-term.\u003C\u002Fp\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

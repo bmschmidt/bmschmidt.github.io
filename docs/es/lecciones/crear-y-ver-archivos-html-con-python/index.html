@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/es/lecciones/crear-y-ver-archivos-html-con-python"),
 					params: {lang:"es",lessons:"lecciones",slug:"crear-y-ver-archivos-html-con-python"}
@@ -48,30 +49,32 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the es edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en español</h2>
+	<a class="nav-link" href="/es/lecciones">Lecciones</a><a class="nav-link" href="/es/acerca-de">Acerca</a><a class="nav-link" href="/es/investigacion">Investigación</a><a class="nav-link" href="/es/apoyanos">Apóyanos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link active" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Crear y ver archivos HTML con Python</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="objetivo-de-la-lección">Objetivo de la lección</h2>
+<h2>Objetivo de la lección</h2>
 <p>Esta lección utiliza Python para crear y ver un archivo HTML. Si escribes programas que tengan salida en HTML puedes utilizar cualquier navegador para ver tus resultados. Esto es especialmente conveniente si tu programa crea automáticamente hipervínculos o entidades gráficas y diagramas.</p>
 <p>Aquí aprenderás cómo crear archivos HTML con <em>scripts</em> de Python, y cómo utilizar Python para abrir un archivo HTML en Firefox.</p>
-<h2 id="archivos-necesarios-para-esta-lección">Archivos necesarios para esta lección</h2>
+<h2>Archivos necesarios para esta lección</h2>
 <ul>
 <li><code>obo.py</code></li>
 </ul>
 <p>Si no tienes estos archivos de las lecciones anteriores, puedes descargar python-es-lecciones5, un <a href="/assets/python-es-lecciones5.zip">archivo zip de las lecciones anteriores</a>.</p>
-<h2 id="crear-html-con-python">Crear HTML con Python</h2>
+<h2>Crear HTML con Python</h2>
 <p>En este punto hemos comenzado a aprender cómo utilizar Python para descargar fuentes documentales en línea y extraer información de ellas automáticamente. Recuerda que nuestro objetivo final es incorporar fácilmente la programación a nuestra práctica de investigación. Acorde con este objetivo, en esta lección y la siguiente vamos a aprender cómo recuperar nuestros datos como HTML. Esto tiene algunas ventajas. Primero, al almacenar nuestra información en nuestro disco duro como HTML podemos abrirla con Firefox y utilizar <a href="http://zotero.org">Zotero</a> para indexarla y anotarla después. Segundo, hay una amplia gama de visualizaciones para HTML que podemos aprovechar más adelante.</p>
 <p>Si no has hecho todavía el <a href="http://www.w3schools.com/html/default.asp">tutorial de HTML de W3 Schools</a>, invierte tiempo en ello antes de continuar. Buscamos crear un documento HTML con Python así que necesitas saber qué es un documento HTML.</p>
-<h2 id="hola-mundo-en-html-usando-python">&#39;Hola Mundo&#39; en HTML usando Python</h2>
+<h2>'Hola Mundo' en HTML usando Python</h2>
 <p>Una de las ideas más poderosas en la informática es que un archivo que parece contener código desde una perspectiva puede ser visto como conjunto de datos desde otra. Es posible, en otras palabras, escribir programas que manipulen otros programas. Lo que vamos a hacer es crear un archivo HTML que diga &quot;Hola Mundo&quot; utilizando Python. Lo haremos almacenando <em>etiquetas</em> HTML en una cadena multilineal de Python y guardando el contenido en un nuevo archivo. Este archivo se guardará con una extensión <code>.html</code> en vez de <code>.txt</code>.</p>
 <p>Normalmente un archivo HTML comienza con una <a href="http://www.w3schools.com/tags/tag_doctype.asp">declaración doctype</a>. Viste esto cuando escribiste un programa &quot;Hola Mundo&quot; en HTML en una lección anterior. Para hacer que la lectura de nuestro código sea más fácil, omitiremos el <em>doctype</em> en este ejemplo. Recuerda que una cadena multilineal se crea encerrando el texto en tres juegos de comillas (ver abajo).</p>
 <pre><code class="language-python"># escribe-html.py
 
-f = open(&#39;holamundo.html&#39;,&#39;w&#39;)
+f = open('holamundo.html','w')
 
 mensaje = &quot;&quot;&quot;&lt;html&gt;
 &lt;head&gt;&lt;/head&gt;
@@ -84,15 +87,15 @@ f.close()
 <p>Guarda el programa anterior como <code>escribe-html.py</code> y ejecútalo. Utiliza <em>File -&gt; Open</em> en tu editor seleccionado para abrir <code>holamundo.html</code> para verificar que tu programa en realidad creó el archivo. El contenido debe verse como esto:</p>
 <p>{% include figure.html filename=&quot;hello-world-html.png&quot; caption=&quot;Fuente HTML generada con Python&quot; %}</p>
 <p>Ahora ve a tu navegador Firefox y elige <em>Archivo-&gt; Nueva pestaña</em>; ve a la pestaña y elige <em>Archivo-&gt; Abrir archivo</em> Selecciona <code>holamundo.html</code>. Ahora deberías ver el mensaje en el navegador. Detente un momento para pensar en esto: ahora tienes la habilidad de escribir un programa que crea automáticamente una página Web. No hay ninguna razón por la que no podrías escribir un programa para crear automáticamente un sitio Web completo si lo quisieras.</p>
-<h2 id="utilizar-python-para-controlar-firefox">Utilizar Python para controlar Firefox</h2>
+<h2>Utilizar Python para controlar Firefox</h2>
 <p>Creamos automáticamente un archivo HTML, pero entonces tuvimos que dejar nuestro editor e ir a Firefox para abrir ese archivo en una nueva pestaña. ¿No sería genial que nuestro programa de Python incluya este paso final? Escribe o copia el código de abajo y guárdalo como <code>escribe-html-2.py</code>. Cuando lo ejecutas debe crear y abrir automáticamente tu archivo HTML en una nueva pestaña de Firefox. ¡Genial!</p>
-<h3 id="instrucciones-para-usuarios-de-mac">Instrucciones para usuarios de Mac</h3>
+<h3>Instrucciones para usuarios de Mac</h3>
 <p>Los usuarios de Mac deben especificar la localización precisa del archivo <code>.html</code> en su computadora. Para hacerlo, localiza la carpeta <code>programming-historian</code>que creaste para hacer estos tutoriales, haz clic con el botón derecho y selecciona &quot;Obtener información&quot;.</p>
 <p>Puedes entonces copiar y pegar la localización del archivo enlistado después de &quot;Ubicación:&quot; y asegúrate de incluir una diagonal (/) para permitirle a la computadora saber que quieres algo dentro del directorio (en vez del directorio en sí mismo).</p>
 <pre><code class="language-python"># escribe-html-2-mac.py
 import webbrowser
 
-f = open(&#39;holamundo.html&#39;,&#39;w&#39;)
+f = open('holamundo.html','w')
 
 mensaje = &quot;&quot;&quot;&lt;html&gt;
 &lt;head&gt;&lt;/head&gt;
@@ -103,16 +106,16 @@ f.write(mensaje)
 f.close()
 
 #Cambia la ruta para indicar la localización del archivo
-nombreArchivo = &#39;file:///Users/username/Desktop/programming-historian/&#39; + &#39;holamundo.html&#39;
+nombreArchivo = 'file:///Users/username/Desktop/programming-historian/' + 'holamundo.html'
 webbrowser.open_new_tab(nombreArchivo)
 </code></pre>
 <p>Si recibes un error de &quot;File not found&quot; no has cambiado la ruta de nombre de archivo correctamente.</p>
-<h3 id="instrucciones-para-windows">Instrucciones para Windows</h3>
+<h3>Instrucciones para Windows</h3>
 <pre><code class="language-python"># escribe-html-2-windows.py
 
 import webbrowser
 
-f = open(&#39;holamundo.html&#39;,&#39;w&#39;)
+f = open('holamundo.html','w')
 
 mensaje = &quot;&quot;&quot;&lt;html&gt;
 &lt;head&gt;&lt;/head&gt;
@@ -122,24 +125,25 @@ mensaje = &quot;&quot;&quot;&lt;html&gt;
 f.write(mensaje)
 f.close()
 
-webbrowser.open_new_tab(&#39;holamundo.html&#39;)
+webbrowser.open_new_tab('holamundo.html')
 </code></pre>
 <p>***</p>
 <p>No solamente has escrito un programa en Python que puede escribir HTML simple, sino que también has logrado controlar tu navegador de Firefox utilizando Python. En la siguiente lección regresaremos a la salida de datos que hemos recolectado como un archivo HTML.</p>
-<h2 id="lecturas-sugeridas">Lecturas sugeridas</h2>
+<h2>Lecturas sugeridas</h2>
 <ul>
-<li>Lutz, Learning Python<ul>
+<li>Lutz, Learning Python
+<ul>
 <li>Re-read and review Chs. 1-17</li>
 </ul>
 </li>
 </ul>
-<h3 id="sincronización-de-código">Sincronización de código</h3>
+<h3>Sincronización de código</h3>
 <p>Para seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto. Si estás trabajando con la versión Mac o Linux de las lecciones deberás abrir el archivo <code>obo.py</code> y cambiar &quot;file:///Users/username/Desktop/programming-historian/&quot; a la ruta del directorio de tu propia computadora.</p>
 <ul>
 <li>python-es-lecciones6.zip <a href="/assets/python-es-lecciones6.zip">zip sync</a></li>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="crear-y-ver-archivos-html-con-python/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Crear y ver archivos HTML con Python\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"date\":\"2012-07-17T00:00:00.000Z\",\"translation_date\":\"2017-03-15T00:00:00.000Z\",\"editors\":\"Miriam Posner\",\"reviewers\":[\"Miriam Posner\",\"Jim Clifford\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Adam Crymble\"],\"translation-reviewer\":[\"Jairo A. Melo\",\"Maria José Afanador-Llach\",\"Antonio Rojas Castro\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F48\",\"layout\":\"lesson\",\"next\":\"salida-de-datos-como-archivo-html\",\"previous\":\"contar-frecuencias\",\"original\":\"creating-and-viewing-html-files-with-python\",\"difficulty\":2,\"activity\":\"presenting\",\"topics\":[\"python\",\"website\"],\"abstract\":\"Aquí aprenderás cómo crear archivos HTML con scripts de Python, y cómo utilizar Python para abrir un archivo HTML en Firefox.\",\"avatar_alt\":\"Grabado en blanco y negro de un niño sentado en un taburete sujetando un dibujo de una persona con una espada.\",\"python_warning\":false,\"doi\":\"10.46430\u002Fphes0003\",\"sequence\":11,\"series_total\":14},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"objetivo-de-la-lección\\\"\u003EObjetivo de la lección\u003C\u002Fh2\u003E\\n\u003Cp\u003EEsta lección utiliza Python para crear y ver un archivo HTML. Si escribes programas que tengan salida en HTML puedes utilizar cualquier navegador para ver tus resultados. Esto es especialmente conveniente si tu programa crea automáticamente hipervínculos o entidades gráficas y diagramas.\u003C\u002Fp\u003E\\n\u003Cp\u003EAquí aprenderás cómo crear archivos HTML con \u003Cem\u003Escripts\u003C\u002Fem\u003E de Python, y cómo utilizar Python para abrir un archivo HTML en Firefox.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"archivos-necesarios-para-esta-lección\\\"\u003EArchivos necesarios para esta lección\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003ESi no tienes estos archivos de las lecciones anteriores, puedes descargar python-es-lecciones5, un \u003Ca href=\\\"\u002Fassets\u002Fpython-es-lecciones5.zip\\\"\u003Earchivo zip de las lecciones anteriores\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"crear-html-con-python\\\"\u003ECrear HTML con Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EEn este punto hemos comenzado a aprender cómo utilizar Python para descargar fuentes documentales en línea y extraer información de ellas automáticamente. Recuerda que nuestro objetivo final es incorporar fácilmente la programación a nuestra práctica de investigación. Acorde con este objetivo, en esta lección y la siguiente vamos a aprender cómo recuperar nuestros datos como HTML. Esto tiene algunas ventajas. Primero, al almacenar nuestra información en nuestro disco duro como HTML podemos abrirla con Firefox y utilizar \u003Ca href=\\\"http:\u002F\u002Fzotero.org\\\"\u003EZotero\u003C\u002Fa\u003E para indexarla y anotarla después. Segundo, hay una amplia gama de visualizaciones para HTML que podemos aprovechar más adelante.\u003C\u002Fp\u003E\\n\u003Cp\u003ESi no has hecho todavía el \u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Fhtml\u002Fdefault.asp\\\"\u003Etutorial de HTML de W3 Schools\u003C\u002Fa\u003E, invierte tiempo en ello antes de continuar. Buscamos crear un documento HTML con Python así que necesitas saber qué es un documento HTML.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"hola-mundo-en-html-usando-python\\\"\u003E&#39;Hola Mundo&#39; en HTML usando Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EUna de las ideas más poderosas en la informática es que un archivo que parece contener código desde una perspectiva puede ser visto como conjunto de datos desde otra. Es posible, en otras palabras, escribir programas que manipulen otros programas. Lo que vamos a hacer es crear un archivo HTML que diga &quot;Hola Mundo&quot; utilizando Python. Lo haremos almacenando \u003Cem\u003Eetiquetas\u003C\u002Fem\u003E HTML en una cadena multilineal de Python y guardando el contenido en un nuevo archivo. Este archivo se guardará con una extensión \u003Ccode\u003E.html\u003C\u002Fcode\u003E en vez de \u003Ccode\u003E.txt\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003ENormalmente un archivo HTML comienza con una \u003Ca href=\\\"http:\u002F\u002Fwww.w3schools.com\u002Ftags\u002Ftag_doctype.asp\\\"\u003Edeclaración doctype\u003C\u002Fa\u003E. Viste esto cuando escribiste un programa &quot;Hola Mundo&quot; en HTML en una lección anterior. Para hacer que la lectura de nuestro código sea más fácil, omitiremos el \u003Cem\u003Edoctype\u003C\u002Fem\u003E en este ejemplo. Recuerda que una cadena multilineal se crea encerrando el texto en tres juegos de comillas (ver abajo).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# escribe-html.py\\n\\nf = open(&#39;holamundo.html&#39;,&#39;w&#39;)\\n\\nmensaje = &quot;&quot;&quot;&lt;html&gt;\\n&lt;head&gt;&lt;\u002Fhead&gt;\\n&lt;body&gt;&lt;p&gt;Hola Mundo!&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\nf.write(mensaje)\\nf.close()\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EGuarda el programa anterior como \u003Ccode\u003Eescribe-html.py\u003C\u002Fcode\u003E y ejecútalo. Utiliza \u003Cem\u003EFile -&gt; Open\u003C\u002Fem\u003E en tu editor seleccionado para abrir \u003Ccode\u003Eholamundo.html\u003C\u002Fcode\u003E para verificar que tu programa en realidad creó el archivo. El contenido debe verse como esto:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;hello-world-html.png&quot; caption=&quot;Fuente HTML generada con Python&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EAhora ve a tu navegador Firefox y elige \u003Cem\u003EArchivo-&gt; Nueva pestaña\u003C\u002Fem\u003E; ve a la pestaña y elige \u003Cem\u003EArchivo-&gt; Abrir archivo\u003C\u002Fem\u003E Selecciona \u003Ccode\u003Eholamundo.html\u003C\u002Fcode\u003E. Ahora deberías ver el mensaje en el navegador. Detente un momento para pensar en esto: ahora tienes la habilidad de escribir un programa que crea automáticamente una página Web. No hay ninguna razón por la que no podrías escribir un programa para crear automáticamente un sitio Web completo si lo quisieras.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"utilizar-python-para-controlar-firefox\\\"\u003EUtilizar Python para controlar Firefox\u003C\u002Fh2\u003E\\n\u003Cp\u003ECreamos automáticamente un archivo HTML, pero entonces tuvimos que dejar nuestro editor e ir a Firefox para abrir ese archivo en una nueva pestaña. ¿No sería genial que nuestro programa de Python incluya este paso final? Escribe o copia el código de abajo y guárdalo como \u003Ccode\u003Eescribe-html-2.py\u003C\u002Fcode\u003E. Cuando lo ejecutas debe crear y abrir automáticamente tu archivo HTML en una nueva pestaña de Firefox. ¡Genial!\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"instrucciones-para-usuarios-de-mac\\\"\u003EInstrucciones para usuarios de Mac\u003C\u002Fh3\u003E\\n\u003Cp\u003ELos usuarios de Mac deben especificar la localización precisa del archivo \u003Ccode\u003E.html\u003C\u002Fcode\u003E en su computadora. Para hacerlo, localiza la carpeta \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003Eque creaste para hacer estos tutoriales, haz clic con el botón derecho y selecciona &quot;Obtener información&quot;.\u003C\u002Fp\u003E\\n\u003Cp\u003EPuedes entonces copiar y pegar la localización del archivo enlistado después de &quot;Ubicación:&quot; y asegúrate de incluir una diagonal (\u002F) para permitirle a la computadora saber que quieres algo dentro del directorio (en vez del directorio en sí mismo).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# escribe-html-2-mac.py\\nimport webbrowser\\n\\nf = open(&#39;holamundo.html&#39;,&#39;w&#39;)\\n\\nmensaje = &quot;&quot;&quot;&lt;html&gt;\\n&lt;head&gt;&lt;\u002Fhead&gt;\\n&lt;body&gt;&lt;p&gt;Hola Mundo!&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\nf.write(mensaje)\\nf.close()\\n\\n#Cambia la ruta para indicar la localización del archivo\\nnombreArchivo = &#39;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&#39; + &#39;holamundo.html&#39;\\nwebbrowser.open_new_tab(nombreArchivo)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESi recibes un error de &quot;File not found&quot; no has cambiado la ruta de nombre de archivo correctamente.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"instrucciones-para-windows\\\"\u003EInstrucciones para Windows\u003C\u002Fh3\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# escribe-html-2-windows.py\\n\\nimport webbrowser\\n\\nf = open(&#39;holamundo.html&#39;,&#39;w&#39;)\\n\\nmensaje = &quot;&quot;&quot;&lt;html&gt;\\n&lt;head&gt;&lt;\u002Fhead&gt;\\n&lt;body&gt;&lt;p&gt;Hola Mundo!&lt;\u002Fp&gt;&lt;\u002Fbody&gt;\\n&lt;\u002Fhtml&gt;&quot;&quot;&quot;\\n\\nf.write(mensaje)\\nf.close()\\n\\nwebbrowser.open_new_tab(&#39;holamundo.html&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003E***\u003C\u002Fp\u003E\\n\u003Cp\u003ENo solamente has escrito un programa en Python que puede escribir HTML simple, sino que también has logrado controlar tu navegador de Firefox utilizando Python. En la siguiente lección regresaremos a la salida de datos que hemos recolectado como un archivo HTML.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lecturas-sugeridas\\\"\u003ELecturas sugeridas\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELutz, Learning Python\u003Cul\u003E\\n\u003Cli\u003ERe-read and review Chs. 1-17\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"sincronización-de-código\\\"\u003ESincronización de código\u003C\u002Fh3\u003E\\n\u003Cp\u003EPara seguir a lo largo de las lecciones futuras es importante que tengas los archivos correctos y programas en el directorio &quot;programming-historian&quot; de tu disco duro. Al final de cada lección puedes descargar el archivo zip &quot;python-es-lecciones&quot; para asegurarte que tienes el código correcto. Si estás trabajando con la versión Mac o Linux de las lecciones deberás abrir el archivo \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E y cambiar &quot;file:\u002F\u002F\u002FUsers\u002Fusername\u002FDesktop\u002Fprogramming-historian\u002F&quot; a la ruta del directorio de tu propia computadora.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-es-lecciones6.zip \u003Ca href=\\\"\u002Fassets\u002Fpython-es-lecciones6.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

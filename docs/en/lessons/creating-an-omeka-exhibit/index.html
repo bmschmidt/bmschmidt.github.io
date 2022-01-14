@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/creating-an-omeka-exhibit"),
 					params: {lang:"en",lessons:"lessons",slug:"creating-an-omeka-exhibit"}
@@ -48,38 +49,40 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Creating an Omeka Exhibit</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<p>Now that you&#39;ve <a href="/lessons/up-and-running-with-omeka">added items to your Omeka site</a> and grouped them into collections, you&#39;re ready for the next step: taking your users on a guided tour through the items you&#39;ve collected.</p>
-<h2 id="before-you-begin-map-your-exhibit">Before you begin: Map your exhibit</h2>
-<p>It pays to do some thinking before you launch into creating an exhibit. You&#39;ll be creating sections and pages, and you&#39;ll need to give some thought to the argument you want to make and how you intend to make it. In the lesson that follows, I use the silly example of my dogs. But what if I were discussing, say, silent film? My sections might be thematic (comedies, romances, dramas), chronological (early silent film, the transitional period, classical era), or stylistic (modernist, impressionist, narrative). It all depends on the message I want to convey to the site&#39;s visitors. You might draw out a map of your exhibit, showing where you want to put each digital asset.</p>
-<h2 id="add-an-exhibit">Add an exhibit</h2>
+<p>Now that you've <a href="/lessons/up-and-running-with-omeka">added items to your Omeka site</a> and grouped them into collections, you're ready for the next step: taking your users on a guided tour through the items you've collected.</p>
+<h2>Before you begin: Map your exhibit</h2>
+<p>It pays to do some thinking before you launch into creating an exhibit. You'll be creating sections and pages, and you'll need to give some thought to the argument you want to make and how you intend to make it. In the lesson that follows, I use the silly example of my dogs. But what if I were discussing, say, silent film? My sections might be thematic (comedies, romances, dramas), chronological (early silent film, the transitional period, classical era), or stylistic (modernist, impressionist, narrative). It all depends on the message I want to convey to the site's visitors. You might draw out a map of your exhibit, showing where you want to put each digital asset.</p>
+<h2>Add an exhibit</h2>
 <p>{% include figure.html filename=&quot;createoexhibit2.png&quot; caption=&quot;Create an exhibit page&quot; %}</p>
 <p>A collection is just a list of objects. An exhibit is a guided tour through your items, complete with descriptive text and customized layouts. To create one, click on the <strong>Exhibits</strong> tab and then <strong>Add an exhibit</strong>. Fill out the form on the top half of the page. A <strong>slug</strong> is a machine-readable name for your exhibit and will become part of your URL.</p>
-<h2 id="add-a-page">Add a page</h2>
-<p>Pages are where you&#39;ll stick the actual items in your exhibit. An exhibit can have multiple pages, and you can drag and drop them to rearrange the order, even making some pages sub-sections of others.</p>
-<p>Click on the green <strong>Add Page</strong> button. On the following page, you&#39;ll enter some information and pick a layout for your exhibit page.</p>
-<h2 id="add-a-content-block-to-your-page">Add a content block to your page</h2>
+<h2>Add a page</h2>
+<p>Pages are where you'll stick the actual items in your exhibit. An exhibit can have multiple pages, and you can drag and drop them to rearrange the order, even making some pages sub-sections of others.</p>
+<p>Click on the green <strong>Add Page</strong> button. On the following page, you'll enter some information and pick a layout for your exhibit page.</p>
+<h2>Add a content block to your page</h2>
 <p>{% include figure.html filename=&quot;createoexhibit2.png&quot; caption=&quot;Add a page fields&quot; %}</p>
-<p>On the page that follows, you&#39;ll seen an option for <strong>Page Title</strong> and <strong>Slug</strong>. Fill those in.</p>
-<p> You&#39;ll see the option for <strong>New Block</strong>. Pages are made up of blocks, which can be files and test, just files, or just text.</p>
+<p>On the page that follows, you'll seen an option for <strong>Page Title</strong> and <strong>Slug</strong>. Fill those in.</p>
+<p>You'll see the option for <strong>New Block</strong>. Pages are made up of blocks, which can be files and test, just files, or just text.</p>
 <p>Click the <strong>File with Text</strong> option and then the green <strong>Add new content block</strong></p>
-<h2 id="add-content-to-your-content-block">Add content to your content block</h2>
+<h2>Add content to your content block</h2>
 <p>{% include figure.html filename=&quot;createoexhibit3.png&quot; caption=&quot;Add a item and file to your content block&quot; %}</p>
 <p>In <strong>Block 1 (File with Text)</strong> click the <strong>Add Item</strong> button.</p>
 <p>In the window which opens, click on your item and then click <strong>Select Item</strong>. You can add a caption if you want. Click the green <strong>Apply</strong> button.</p>
 <p>I also added some filler text to the <strong>Text</strong> field.</p>
-<p>When you&#39;re done, click the <strong>View Public Page</strong> button to see how your Omeka site looks.</p>
-<h2 id="you-have-an-omeka-site">You have an Omeka site!</h2>
+<p>When you're done, click the <strong>View Public Page</strong> button to see how your Omeka site looks.</p>
+<h2>You have an Omeka site!</h2>
 <p>{% include figure.html filename=&quot;createoexhibit4.png&quot; caption=&quot;Bertie the dog is an exhibit item&quot; %}</p>
 <p>Now your site has items, collections, and an exhibit — all the basic units of an Omeka site!</p>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="creating-an-omeka-exhibit/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Creating an Omeka Exhibit\",\"layout\":\"lesson\",\"date\":\"2016-02-24T00:00:00.000Z\",\"authors\":[\"Miriam Posner\",\"Megan R. Brett\"],\"reviewers\":[\"Sheila Brennan\"],\"editors\":[\"Adam Crymble\"],\"lesson-testers\":[\"Pao-Chuan Ma\"],\"tested-date\":\"2021-06-10T00:00:00.000Z\",\"difficulty\":1,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"presenting\",\"topics\":[\"website\"],\"abstract\":\"Now that you've added items to your Omeka site and grouped them into collections, you're ready for the next step: taking your users on a guided tour through the items you've collected.\",\"redirect_from\":\"\u002Flessons\u002Fcreating-an-omeka-exhibit\",\"avatar_alt\":\"Ornate room filled with paintings hung salon-style\",\"doi\":\"10.46430\u002Fphen0049\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Cp\u003ENow that you&#39;ve \u003Ca href=\\\"\u002Flessons\u002Fup-and-running-with-omeka\\\"\u003Eadded items to your Omeka site\u003C\u002Fa\u003E and grouped them into collections, you&#39;re ready for the next step: taking your users on a guided tour through the items you&#39;ve collected.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"before-you-begin-map-your-exhibit\\\"\u003EBefore you begin: Map your exhibit\u003C\u002Fh2\u003E\\n\u003Cp\u003EIt pays to do some thinking before you launch into creating an exhibit. You&#39;ll be creating sections and pages, and you&#39;ll need to give some thought to the argument you want to make and how you intend to make it. In the lesson that follows, I use the silly example of my dogs. But what if I were discussing, say, silent film? My sections might be thematic (comedies, romances, dramas), chronological (early silent film, the transitional period, classical era), or stylistic (modernist, impressionist, narrative). It all depends on the message I want to convey to the site&#39;s visitors. You might draw out a map of your exhibit, showing where you want to put each digital asset.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"add-an-exhibit\\\"\u003EAdd an exhibit\u003C\u002Fh2\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;createoexhibit2.png&quot; caption=&quot;Create an exhibit page&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EA collection is just a list of objects. An exhibit is a guided tour through your items, complete with descriptive text and customized layouts. To create one, click on the \u003Cstrong\u003EExhibits\u003C\u002Fstrong\u003E tab and then \u003Cstrong\u003EAdd an exhibit\u003C\u002Fstrong\u003E. Fill out the form on the top half of the page. A \u003Cstrong\u003Eslug\u003C\u002Fstrong\u003E is a machine-readable name for your exhibit and will become part of your URL.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"add-a-page\\\"\u003EAdd a page\u003C\u002Fh2\u003E\\n\u003Cp\u003EPages are where you&#39;ll stick the actual items in your exhibit. An exhibit can have multiple pages, and you can drag and drop them to rearrange the order, even making some pages sub-sections of others.\u003C\u002Fp\u003E\\n\u003Cp\u003EClick on the green \u003Cstrong\u003EAdd Page\u003C\u002Fstrong\u003E button. On the following page, you&#39;ll enter some information and pick a layout for your exhibit page.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"add-a-content-block-to-your-page\\\"\u003EAdd a content block to your page\u003C\u002Fh2\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;createoexhibit2.png&quot; caption=&quot;Add a page fields&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EOn the page that follows, you&#39;ll seen an option for \u003Cstrong\u003EPage Title\u003C\u002Fstrong\u003E and \u003Cstrong\u003ESlug\u003C\u002Fstrong\u003E. Fill those in.\u003C\u002Fp\u003E\\n\u003Cp\u003E You&#39;ll see the option for \u003Cstrong\u003ENew Block\u003C\u002Fstrong\u003E. Pages are made up of blocks, which can be files and test, just files, or just text.\u003C\u002Fp\u003E\\n\u003Cp\u003EClick the \u003Cstrong\u003EFile with Text\u003C\u002Fstrong\u003E option and then the green \u003Cstrong\u003EAdd new content block\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"add-content-to-your-content-block\\\"\u003EAdd content to your content block\u003C\u002Fh2\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;createoexhibit3.png&quot; caption=&quot;Add a item and file to your content block&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EIn \u003Cstrong\u003EBlock 1 (File with Text)\u003C\u002Fstrong\u003E click the \u003Cstrong\u003EAdd Item\u003C\u002Fstrong\u003E button.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn the window which opens, click on your item and then click \u003Cstrong\u003ESelect Item\u003C\u002Fstrong\u003E. You can add a caption if you want. Click the green \u003Cstrong\u003EApply\u003C\u002Fstrong\u003E button.\u003C\u002Fp\u003E\\n\u003Cp\u003EI also added some filler text to the \u003Cstrong\u003EText\u003C\u002Fstrong\u003E field.\u003C\u002Fp\u003E\\n\u003Cp\u003EWhen you&#39;re done, click the \u003Cstrong\u003EView Public Page\u003C\u002Fstrong\u003E button to see how your Omeka site looks.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"you-have-an-omeka-site\\\"\u003EYou have an Omeka site!\u003C\u002Fh2\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;createoexhibit4.png&quot; caption=&quot;Bertie the dog is an exhibit item&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ENow your site has items, collections, and an exhibit — all the basic units of an Omeka site!\u003C\u002Fp\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

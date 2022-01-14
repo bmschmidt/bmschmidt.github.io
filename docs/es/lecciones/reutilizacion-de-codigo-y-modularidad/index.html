@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/es/lecciones/reutilizacion-de-codigo-y-modularidad"),
 					params: {lang:"es",lessons:"lecciones",slug:"reutilizacion-de-codigo-y-modularidad"}
@@ -48,21 +49,23 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the es edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en español</h2>
+	<a class="nav-link" href="/es/lecciones">Lecciones</a><a class="nav-link" href="/es/acerca-de">Acerca</a><a class="nav-link" href="/es/investigacion">Investigación</a><a class="nav-link" href="/es/apoyanos">Apóyanos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link active" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Reutilización de código y modularidad en Python</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="objetivos-de-la-lección">Objetivos de la lección</h2>
+<h2>Objetivos de la lección</h2>
 <p>Los programas de computadora pueden resultar largos, inmanejables y confusos si no contamos con mecanismos especiales para la gestión de su complejidad. Esta lección te mostrará la manera de reutilizar partes de su código mediante la escritura de <em>Funciones</em> y cómo fraccionar tus programas en <em>Módulos</em> con el fin de mantener todo de una manera concisa y fácil de depurar. Ser capaz de extraer un módulo que no resulte útil nos ahorra tiempo y esfuerzo.</p>
-<h3 id="funciones">Funciones</h3>
+<h3>Funciones</h3>
 <p>A menudo encontrarás que deseas volver a utilizar un conjunto particular de enunciados, generalmente porque tiene una tarea que vas a utilizar una y otra vez. Los programas están compuestos, sobre todo, de rutinas que son lo suficientemente potentes y con propósitos generales y que por lo tanto pueden ser reutilizadas. Estas rutinas se conocen como funciones, y Python tiene los mecanismos para permitirte definir nuevas funciones. Vamos a trabajar con un ejemplo muy simple de una función. Supongamos que deseas crear una función general para saludar a la gente. Copia la siguiente definición de función en el editor de Komodo y guárdalo como <code>saludo.py</code></p>
 <pre><code class="language-python"># saludo.py
 
 def saludoEntidad (x):
-    print(&quot;Hola &quot; + x)
+	print(&quot;Hola &quot; + x)
 
 saludoEntidad(&quot;Todos&quot;)
 saludoEntidad(&quot;Programming Historian&quot;)
@@ -72,14 +75,14 @@ saludoEntidad(&quot;Programming Historian&quot;)
 <pre><code>Hola Todos
 Hola Programming Historian
 </code></pre>
-<p>Este ejemplo contiene una función: <em>saludoEntidad</em>. Esta función entonces es <em>llamada</em> (a veces se le denomina <em>invocada</em>) dos veces. Llamar o invocar una función solamente significa que le hemos dicho al programa que ejecute el código en esa función. Como darle al perro su recompensa sabor a pollo (*guau* *guau*). En este caso, cada vez que hemos llamado a la función le hemos dado un parámetro diferente. Intenta editar <code>saludo.py</code> para que invoque a la función <em>saludoEntidad</em> una tercera vez utilizando tu propio nombre como parámetro. Ejecuta el programa de nuevo. Debes ser capaz de imaginarte qué es lo que hace &#39;(x)&#39; en la declaración de la función.</p>
+<p>Este ejemplo contiene una función: <em>saludoEntidad</em>. Esta función entonces es <em>llamada</em> (a veces se le denomina <em>invocada</em>) dos veces. Llamar o invocar una función solamente significa que le hemos dicho al programa que ejecute el código en esa función. Como darle al perro su recompensa sabor a pollo (*guau* *guau*). En este caso, cada vez que hemos llamado a la función le hemos dado un parámetro diferente. Intenta editar <code>saludo.py</code> para que invoque a la función <em>saludoEntidad</em> una tercera vez utilizando tu propio nombre como parámetro. Ejecuta el programa de nuevo. Debes ser capaz de imaginarte qué es lo que hace '(x)' en la declaración de la función.</p>
 <p>Antes de ir al siguiente paso, edita <code>saludo.py</code> para borrar las llamadas de la función dejando solamente la declaración de la función. Vas a aprender cómo llamar a la función desde otro programa. Cuando termines, tu  archivo<code>saludo.py</code> deberá verse como esto:</p>
 <pre><code class="language-python"># saludo.py
 
 def saludoEntidad (x):
-    print(&quot;Hola &quot; + x)
+	print(&quot;Hola &quot; + x)
 </code></pre>
-<h2 id="modularidad">Modularidad</h2>
+<h2>Modularidad</h2>
 <p>Cuando los programas son pequeños, como en el ejemplo anterior, generalmente se almacenan en un solo archivo. Cuando deseas ejecutar uno de tus programas simplemente puedes enviar el archivo al intérprete. Cuando los programas se hacen más grandes, tiene sentido cortarlos en archivos separados conocidos como módulos. Esta <a href="https://es.wikipedia.org/wiki/Modularidad_(inform%C3%A1tica)">modularidad</a> hace que te sea más fácil trabajar en secciones de tus programas más largos. Al perfeccionar cada sección del programa antes de poner todas las secciones juntas haces más fácil el reutilizar módulos individuales en otros programas y haces más sencillo resolver problemas al ser capaz de precisar la fuente del error. Cuando se corta un programa en módulos también eres capaz de ocultar detalles de cómo se hace algo dentro del módulo que lo hace. Otros módulos no necesitan saber cómo se logra algo si no son responsables de hacerlo. Este principio, necesario de conocer, se llama <a href="https://es.wikipedia.org/wiki/Encapsulamiento_(inform%C3%A1tica)">encapsulamiento</a>.</p>
 <p>Supongamos que estamos construyendo un automóvil. Podrías empezar a juntar piezas de cualquier modo, pero tendría más sentido comenzar a construir y probar cada modulo -quizá el motor- antes de pasar a otros. El motor, a su vez, podría idearse a partir de un número de otros pequeños módulos, como el sistema de carburación y de encendido, los cuales se componen de módulos básicos aún más pequeños. Lo mismo aplica cuando escribes código. Trata de separar un problema en partes más pequeñas y resuélvelas primero.</p>
 <p>Acabas de crear un módulo cuando escribiste el programa <code>saludo.py</code>. Ahora vas a escribir un segundo programa, <code>usar-saludo.py</code>, que importará el código de tu módulo y hará uso de él. Python tiene una declaración especial de importación (<code>import</code>) que permite a un programa tener acceso al contenido de otro archivo de programa. Esto es lo que estarás utilizando.</p>
@@ -97,12 +100,12 @@ saludo.saludoEntidad(&quot;programming historian&quot;)
 Hola programming historian
 </code></pre>
 <p>Antes de seguir adelante, asegúrate de entender la diferencia entre cargar un archivo de datos (por ejemplo: <code>hola-mundo.txt</code>) e importar un archivo de programa (por ejemplo: <code>saludo.py</code> ).</p>
-<h2 id="lecturas-recomendadas">Lecturas recomendadas:</h2>
+<h2>Lecturas recomendadas:</h2>
 <ul>
 <li><a href="https://users.astro.ufl.edu/~warner/prog/python.html">Python Basics</a></li>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="reutilizacion-de-codigo-y-modularidad/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Reutilización de código y modularidad en Python\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"date\":\"2012-07-17T00:00:00.000Z\",\"translation_date\":\"2017-03-15T00:00:00.000Z\",\"editors\":[\"Miriam Posner\"],\"reviewers\":[\"Jim Clifford\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Adam Crymble\"],\"translation-reviewer\":[\"Jairo A. Melo\",\"Maria José Afanador-Llach\",\"Antonio Rojas Castro\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F41\",\"layout\":\"lesson\",\"categories\":[\"lessons\",\"original-ph\",\"python\"],\"next\":\"trabajar-con-paginas-web\",\"previous\":\"trabajar-con-archivos-de-texto\",\"original\":\"code-reuse-and-modularity\",\"difficulty\":2,\"activity\":\"transforming\",\"topics\":[\"python\"],\"abstract\":\"Los programas de computadora pueden resultar largos, inmanejables y confusos si no contamos con mecanismos especiales para la gestión de su complejidad. Esta lección te mostrará la manera de reutilizar partes de su código mediante la escritura de Funciones y cómo fraccionar tus programas en Módulos con el fin de mantener todo de una manera concisa y fácil de depurar.\",\"python_warning\":true,\"avatar_alt\":\"Caricatura de tres hombres.\",\"doi\":\"10.46430\u002Fphes0024\",\"sequence\":4,\"series_total\":14},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"objetivos-de-la-lección\\\"\u003EObjetivos de la lección\u003C\u002Fh2\u003E\\n\u003Cp\u003ELos programas de computadora pueden resultar largos, inmanejables y confusos si no contamos con mecanismos especiales para la gestión de su complejidad. Esta lección te mostrará la manera de reutilizar partes de su código mediante la escritura de \u003Cem\u003EFunciones\u003C\u002Fem\u003E y cómo fraccionar tus programas en \u003Cem\u003EMódulos\u003C\u002Fem\u003E con el fin de mantener todo de una manera concisa y fácil de depurar. Ser capaz de extraer un módulo que no resulte útil nos ahorra tiempo y esfuerzo.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"funciones\\\"\u003EFunciones\u003C\u002Fh3\u003E\\n\u003Cp\u003EA menudo encontrarás que deseas volver a utilizar un conjunto particular de enunciados, generalmente porque tiene una tarea que vas a utilizar una y otra vez. Los programas están compuestos, sobre todo, de rutinas que son lo suficientemente potentes y con propósitos generales y que por lo tanto pueden ser reutilizadas. Estas rutinas se conocen como funciones, y Python tiene los mecanismos para permitirte definir nuevas funciones. Vamos a trabajar con un ejemplo muy simple de una función. Supongamos que deseas crear una función general para saludar a la gente. Copia la siguiente definición de función en el editor de Komodo y guárdalo como \u003Ccode\u003Esaludo.py\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# saludo.py\\n\\ndef saludoEntidad (x):\\n    print(&quot;Hola &quot; + x)\\n\\nsaludoEntidad(&quot;Todos&quot;)\\nsaludoEntidad(&quot;Programming Historian&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELa línea que comienza con \u003Ccode\u003Edef\u003C\u002Fcode\u003E es la declaración de función. Vamos a definir (&quot;def&quot;) una función que en este caso hemos llamado &quot;saludoEntidad&quot;. La \u003Ccode\u003E(x)\u003C\u002Fcode\u003E es el parámetro de la función. En un momento entenderás cómo trabaja. La segunda línea contiene el código de la función. Éste puede contener las líneas que necesitemos, pero en este caso es una sola línea.\u003C\u002Fp\u003E\\n\u003Cp\u003ETen en cuenta que la \u003Cem\u003Esangría\u003C\u002Fem\u003E es muy importante en Python. El espacio en blanco antes de la declaración \u003Ccode\u003Eprint\u003C\u002Fcode\u003E le dice al intérprete que es parte de la función que ha sido definida. Aprenderás más acerca de esto a medida que avanzamos; por ahora, asegúrate de mantener la sangría de la manera en que te demostramos. Ejecuta el programa y debes ver algo como esto:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EHola Todos\\nHola Programming Historian\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEste ejemplo contiene una función: \u003Cem\u003EsaludoEntidad\u003C\u002Fem\u003E. Esta función entonces es \u003Cem\u003Ellamada\u003C\u002Fem\u003E (a veces se le denomina \u003Cem\u003Einvocada\u003C\u002Fem\u003E) dos veces. Llamar o invocar una función solamente significa que le hemos dicho al programa que ejecute el código en esa función. Como darle al perro su recompensa sabor a pollo (*guau* *guau*). En este caso, cada vez que hemos llamado a la función le hemos dado un parámetro diferente. Intenta editar \u003Ccode\u003Esaludo.py\u003C\u002Fcode\u003E para que invoque a la función \u003Cem\u003EsaludoEntidad\u003C\u002Fem\u003E una tercera vez utilizando tu propio nombre como parámetro. Ejecuta el programa de nuevo. Debes ser capaz de imaginarte qué es lo que hace &#39;(x)&#39; en la declaración de la función.\u003C\u002Fp\u003E\\n\u003Cp\u003EAntes de ir al siguiente paso, edita \u003Ccode\u003Esaludo.py\u003C\u002Fcode\u003E para borrar las llamadas de la función dejando solamente la declaración de la función. Vas a aprender cómo llamar a la función desde otro programa. Cuando termines, tu  archivo\u003Ccode\u003Esaludo.py\u003C\u002Fcode\u003E deberá verse como esto:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# saludo.py\\n\\ndef saludoEntidad (x):\\n    print(&quot;Hola &quot; + x)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"modularidad\\\"\u003EModularidad\u003C\u002Fh2\u003E\\n\u003Cp\u003ECuando los programas son pequeños, como en el ejemplo anterior, generalmente se almacenan en un solo archivo. Cuando deseas ejecutar uno de tus programas simplemente puedes enviar el archivo al intérprete. Cuando los programas se hacen más grandes, tiene sentido cortarlos en archivos separados conocidos como módulos. Esta \u003Ca href=\\\"https:\u002F\u002Fes.wikipedia.org\u002Fwiki\u002FModularidad_(inform%C3%A1tica)\\\"\u003Emodularidad\u003C\u002Fa\u003E hace que te sea más fácil trabajar en secciones de tus programas más largos. Al perfeccionar cada sección del programa antes de poner todas las secciones juntas haces más fácil el reutilizar módulos individuales en otros programas y haces más sencillo resolver problemas al ser capaz de precisar la fuente del error. Cuando se corta un programa en módulos también eres capaz de ocultar detalles de cómo se hace algo dentro del módulo que lo hace. Otros módulos no necesitan saber cómo se logra algo si no son responsables de hacerlo. Este principio, necesario de conocer, se llama \u003Ca href=\\\"https:\u002F\u002Fes.wikipedia.org\u002Fwiki\u002FEncapsulamiento_(inform%C3%A1tica)\\\"\u003Eencapsulamiento\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003ESupongamos que estamos construyendo un automóvil. Podrías empezar a juntar piezas de cualquier modo, pero tendría más sentido comenzar a construir y probar cada modulo -quizá el motor- antes de pasar a otros. El motor, a su vez, podría idearse a partir de un número de otros pequeños módulos, como el sistema de carburación y de encendido, los cuales se componen de módulos básicos aún más pequeños. Lo mismo aplica cuando escribes código. Trata de separar un problema en partes más pequeñas y resuélvelas primero.\u003C\u002Fp\u003E\\n\u003Cp\u003EAcabas de crear un módulo cuando escribiste el programa \u003Ccode\u003Esaludo.py\u003C\u002Fcode\u003E. Ahora vas a escribir un segundo programa, \u003Ccode\u003Eusar-saludo.py\u003C\u002Fcode\u003E, que importará el código de tu módulo y hará uso de él. Python tiene una declaración especial de importación (\u003Ccode\u003Eimport\u003C\u002Fcode\u003E) que permite a un programa tener acceso al contenido de otro archivo de programa. Esto es lo que estarás utilizando.\u003C\u002Fp\u003E\\n\u003Cp\u003ECopia este código en el Komodo Edit y guárdalo como \u003Ccode\u003Eusar-saludo.py\u003C\u002Fcode\u003E . Este archivo es tu programa y \u003Ccode\u003Esaludo.py\u003C\u002Fcode\u003E es tu módulo.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# usar-saludo.py\\n\\nimport saludo\\nsaludo.saludoEntidad(&quot;todos&quot;)\\nsaludo.saludoEntidad(&quot;programming historian&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EHemos hecho algunas cosas aquí. Primero, le dijimos a Python que cargara (\u003Ccode\u003Eimport\u003C\u002Fcode\u003E ) el módulo \u003Ccode\u003Esaludo.py\u003C\u002Fcode\u003E que creamos previamente.\u003C\u002Fp\u003E\\n\u003Cp\u003ETambién te darás cuenta que si antes hemos podido ejecutar la función llamándola solo por su nombre \u003Cem\u003EsaludoEntidad(&quot;todos&quot;)\u003C\u002Fem\u003E, ahora tenemos que incluir el nombre del módulo seguido por un punto (.) antes del nombre de la función. En lenguaje llano esto significa: ejecuta la función \u003Cem\u003EsaludoEntidad\u003C\u002Fem\u003E que deberás encontrar en el módulo \u003Cem\u003Esaludo.py\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EPuedes ejecutar tu programa \u003Ccode\u003Eusar-saludo.py\u003C\u002Fcode\u003E con el comando &quot;Ejecutar Python&quot; que creaste en Komodo Edit. Ten en cuenta que no necesitas ejecutar tu módulo... solamente el programa que lo llama. Si todo se hizo bien, deberás ver lo siguiente en el panel de salida de Komodo Edit:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003EHola todos\\nHola programming historian\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAntes de seguir adelante, asegúrate de entender la diferencia entre cargar un archivo de datos (por ejemplo: \u003Ccode\u003Ehola-mundo.txt\u003C\u002Fcode\u003E) e importar un archivo de programa (por ejemplo: \u003Ccode\u003Esaludo.py\u003C\u002Fcode\u003E ).\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lecturas-recomendadas\\\"\u003ELecturas recomendadas:\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ca href=\\\"https:\u002F\u002Fusers.astro.ufl.edu\u002F~warner\u002Fprog\u002Fpython.html\\\"\u003EPython Basics\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

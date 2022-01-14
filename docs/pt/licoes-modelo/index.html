@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/pt/licoes-modelo"),
+					params: {lang:"pt",lessons:"licoes-modelo"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Modelo de Lições em Português do Programming Historian</h1>
+<p>Este ficheiro pode ser utilizado como modelo para escrever a sua lição. Inclui informação e diretrizes sobre formatação que são complementares (mas não substituem) as diretrizes para autores (/pt/directrizes-autor).</p>
+<h2>Alguns lembretes importantes:</h2>
+<ul>
+<li>Os tutoriais não devem exceder as 8,000 palavras (incluindo código).</li>
+<li>Adote uma linguagem formal, mas acessível.</li>
+<li>Dirija-se ao leitor na segunda pessoa do plural (você).</li>
+<li>Adote uma forma de escrita do português que tenha em conta um público amplo (no Brasil e em Portugal, mas também noutros países de expressão oficial portuguesa).</li>
+<li>Estará a escrever um &quot;tutorial&quot; ou uma &quot;lição&quot;, mas não um &quot;artigo&quot;.</li>
+<li>Adote os princípios de código aberto.</li>
+<li>Escreva para uma audiência ampla (global).</li>
+<li>Escreva de forma sustentável.</li>
+</ul>
+<h1>Metadados das lições</h1>
+<p><strong>Apague tudo o que está acima desta linha quando estiver pronto a submeter a lição</strong>.</p>
+<hr>
+<p>title: O SEU TÍTULO<br>
+collection: lessons<br>
+layout: lesson<br>
+authors:</p>
+<ul>
+<li>PRIMEIRO NOME APELIDO 1</li>
+<li>PRIMEIRO NOME APELIDO 2, etc</li>
+</ul>
+<hr>
+<h1>Índice</h1>
+<p>Inclua o código curto seguinte para gerar automaticamente um índice analítico para a sua lição (obrigatório).</p>
+<p>{% include toc.html %}</p>
+<p>--</p>
+<h2>Alguns exemplos de formatação em Markdown:</h2>
+<h1>Primeiro nível do cabeçalho</h1>
+<h2>Segundo nível do cabeçalho</h2>
+<h3>Terceiro nível do cabeçalho</h3>
+<h4>Quarto nível do cabeçalho</h4>
+<h3>Formatação da fonte</h3>
+<p><strong>texto em negrito</strong>
+<em>texto em itálico</em>
+<code>palavras reservadas</code> (ex: &quot;for loop&quot;, ou  &quot;myData.csv&quot;)</p>
+<h3>Links</h3>
+<p>Criar <a href="/pt/">um link para o <em>Programming Historian</em></a> utilizando o formato desta frase. Assegure-se que as frases linkadas têm um significado semântico válido. Não link termos com significado apenas para usuários com visão, como por exemplo, &quot;clique aqui&quot;.</p>
+<h3>Inserir imagens</h3>
+<p>Copie este código curto para inserir uma imagem. Substitua todas as palavras em maiúsculas com a sua informação sobre a imagem (ex: Figura1.jpg). As legendas devem incluir uma numeração sequencial (ex: &quot;Figura 1: ...&quot;).</p>
+<p>{% include figure.html filename=&quot;IMAGEM-NOMEFICHEIRO&quot; caption=&quot;LEGENDA DA IMAGEM&quot; %}</p>
+<h3>Alertas e Avisos</h3>
+<p>Se quiser incluir um aparte ou um aviso aos leitores, pode separá-lo do texto principal:</p>
+<div class="alert alert-warning">
+ Assegure-se que segue as indicações atentamente!
+</div>
+<p>Este aparecerá numa caixa colorida, podendo ser útil para chamar a atenção para avisos particulares.</p>
+<h3>Uma amostra de lista não ordenada</h3>
+<ul>
+<li>Aqui está um item</li>
+<li>Aqui está outro item</li>
+<li>Aqui está o item final</li>
+</ul>
+<h3>Uma amostra de lista ordenada</h3>
+<ol>
+<li>Aqui está um item</li>
+<li>Aqui está outro item</li>
+<li>Aqui está o item final</li>
+</ol>
+<p>###Uma amostra de tabela</p>
+<table>
+<thead>
+<tr>
+<th>Cabeçalho 1</th>
+<th>Cabeçalho 2</th>
+<th>Cabeçalho 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linha 1, coluna 1</td>
+<td>Linha 1, coluna 2</td>
+<td>Linha 1, coluna 3</td>
+</tr>
+<tr>
+<td>Linha 2, coluna 1</td>
+<td>Linha 2, coluna 2</td>
+<td>Linha 2, coluna 3</td>
+</tr>
+<tr>
+<td>Linha 3, coluna 1</td>
+<td>Linha 3, coluna 2</td>
+<td>Linha 3, coluna 3</td>
+</tr>
+<tr>
+<td>Tabela 1: Esta tabela contem...</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Referências</h3>
+<ul>
+<li>Na maior parte dos casos é mais apropriada a utilização de links do que de notas de fim.</li>
+<li>Certifique-se que as frases linkadas têm um significado semântico válido. Não link termos com significado apenas para usuários com visão, tais como &quot;clique aqui&quot;.</li>
+<li>Os trabalhos publicados ou a literatura académica devem ser referenciados em nota de fim (e não através de link).</li>
+<li>Se está a escrever um tutorial de &quot;análise&quot;, deve referenciar literatura académica publicada.</li>
+<li>A indicação de nota de fim no texto deve ficar depois da pontuação final, como aqui .[^1] Não dentro da mesma, como aqui [^1].</li>
+<li>Nas notas de fim, utilize o sistema de &quot;Notas e Bibliografia&quot; do <a href="https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-1.html">The Chicago Manual of Style, 17th Edition</a>.</li>
+</ul>
+<h4>Uma nota final</h4>
+<p>Isto é algum texto.[^1]
+Isto é mais algum texto.[^2]</p>
+<h5>Notas de fim</h5>
+<p>[^1]: Citação devidamente formatada segundo o Chicago Manual of Style
+[^2]: Citação devidamente formatada segundo o Chicago Manual of Style</p>
+<h1>Further Questions?</h1>
+<p>O seu editor ou o gestor editorial poderá ajudá-lo a responder às questões que possa ter.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

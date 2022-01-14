@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/fr/modele-tuto"),
+					params: {lang:"fr",lessons:"modele-tuto"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en français</h2>
+	<a class="nav-link" href="/fr/lecons">Leçons</a><a class="nav-link" href="/fr/apropos">À propos</a><a class="nav-link" href="/fr/recherche">Recherche</a><a class="nav-link" href="/fr/nous-soutenir">Nous soutenir</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link active" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Modèle de leçon pour le Programming Historian en français</h1>
+<p>Vous pouvez utiliser ce fichier en tant que modèle pour écrire votre leçon. Il vous fournit des informations et des instructions de formatage sans pour autant remplacer les consignes aux auteur(e)s que nous vous remercions par avance de bien vouloir lire (/fr/consignes-auteurs).</p>
+<h2>Ne pas oublier:</h2>
+<ul>
+<li>La longueur des tutoriels ne doit pas excéder 8000 mots (en incluant le code source).</li>
+<li>Veillez à garder un ton formel mais accessible</li>
+<li>Nous conseillons l'utilisation de la deuxième personne du pluriel (<em>vous</em>) pour vous adresser à votre lectorat</li>
+<li>Merci de veiller à ce que votre français soit compréhensible dans tout l'espace francophone</li>
+<li>Souvenez-vous que vous rédigez un tutoriel ou une leçon, mais pas un article académique</li>
+<li>Adhérez aux principes de l’open source et du libre accès</li>
+<li>Écrivez pour un public international</li>
+<li>Écrivez de manière durable</li>
+</ul>
+<h2>Métadonnées de la leçon</h2>
+<p><strong>Au moment de la soumission de votre leçon, merci d'effacer tout ce qui précède cette ligne</strong>.</p>
+<hr>
+<p>title: VOTRE TITRE<br>
+collection: lessons<br>
+layout: lesson<br>
+authors:</p>
+<ul>
+<li>PRÉNOM NOM 1</li>
+<li>PRÉNOM NOM 2, etc</li>
+</ul>
+<hr>
+<h1>Table de matières</h1>
+<p>Merci de ne pas oublier d'introduire au tout début du texte cette brève ligne de code qui génère automatiquement la table de matières de votre leçon:</p>
+<p>{% include toc.html %}</p>
+<p>--</p>
+<h2>Exemples des formatages les plus courants en Markdown:</h2>
+<h3>Titres</h3>
+<h1>Titre 1</h1>
+<h2>Titre 2</h2>
+<h3>Titre 3</h3>
+<h4>Titre 4</h4>
+<h3>Mise en forme de caractères</h3>
+<p><strong>texte en gras</strong>
+<em>texte en italique</em>
+<code>mots réservés</code> ou <code>noms_de_fichiers</code></p>
+<h3>Liens</h3>
+<p>Si vous souhaitez renvoyer à une autre leçon du <em>Programming Historian</em>, merci d'utiliser des liens relatifs, par exemple:</p>
+<ul>
+<li>Pour aller plus loin, vous pouvez consulter <a href="/fr/lecons/preserver-ses-donnees-de-recherche">notre leçon sur la préservation des données de recherche</a>.<br>
+Merci de faire en sorte que les phrases qui intégrent des liens soient parlantes, plutôt que d'utiliser des phrases comme &quot;cliquer ici&quot;.</li>
+</ul>
+<h3>Insérer des images</h3>
+<p>Merci de copier la brève ligne de code fournie ci-dessous, si vous souhaitez insérer une image. Remplacez les mots en majuscules avec les informations sur votre image (par exemple,  Figure1.jpg). Les légendes doivent annoncer les images de manière ordonnée (par exemple, &quot;Figure 1: ...&quot;).</p>
+<p>{% include figure.html filename=&quot;NOM-FICHIER-IMAGE&quot; caption=&quot;LÉGENDE DE L'IMAGE&quot; %}</p>
+<h3>Alertes et messages importants</h3>
+<p>Si vous souhaitez attirer l'attention de votre lectorat sur un point précis, vous pouvez ajouter un bloc à part dans le texte:</p>
+<pre><code>&lt;div class=&quot;alert alert-warning&quot;&gt;
+Attention à ces instructions, elles sont très importantes!
+&lt;/div&gt;
+</code></pre>
+<p>Le message sera encadré et dans une couleur différente, il servira ainsi à attirer l'attention à une mise en garde spécifique.</p>
+<h3>Comment formater une liste non ordonnée</h3>
+<ul>
+<li>Voici un item</li>
+<li>Voici un autre item</li>
+<li>Voici un dernier item</li>
+</ul>
+<h3>Comment formater une liste ordonnée</h3>
+<ol>
+<li>Voici un item</li>
+<li>Voici un autre item</li>
+<li>Voici un dernier item</li>
+</ol>
+<p>###Comment formater un tableau</p>
+<table>
+<thead>
+<tr>
+<th>en-tête 1</th>
+<th>en-tête 2</th>
+<th>en-tête 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ligne 1, colonne 1</td>
+<td>ligne 1, colonne 2</td>
+<td>ligne 1, colonne 3</td>
+</tr>
+<tr>
+<td>ligne 2, colonne 1</td>
+<td>ligne 2, colonne 2</td>
+<td>ligne 2, colonne 3</td>
+</tr>
+<tr>
+<td>ligne 3, colonne 1</td>
+<td>ligne 3, colonne 2</td>
+<td>ligne 3, colonne 3</td>
+</tr>
+<tr>
+<td>Tableau 1: Ce tableau contient...</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>Références</h3>
+<ul>
+<li>Utiliser des hyperliens dans le texte plutôt que d'insérer des notes de fin peut convenir dans la plupart de cas.</li>
+<li>La phrase source d'un hyperlien doit être sémantique, éviter par conséquent des phrases du type &quot;cliquer ici&quot;.</li>
+<li>Utiliser des notes de fin pour renvoyer aux références bibliographiques académiques, qu'elles soient électroniques ou publiées sur papier.</li>
+<li>Si votre tutoriel a vocation d'être un tutoriel d'analyse, vous devez vous référer à la littérature savante publiée du domaine.</li>
+<li>Pour signaler une note de fin, placer le chiffre en exposant (appel de note) à l'endroit souhaité sans espacement après le mot. Le cas échéant, veiller à ce qu'il précède un point de ponctuation et non pas qu'il le suive. Par exemple, pour insérer une note de fin imaginaire dans cette phrase, le chiffre en exposant doit se placer avant le point final comme ceci². Mais il ne peut pas être placé de cette manière.²</li>
+<li>Pour les notes de fin, merci d'utiliser le style de citation <a href="https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-1.html"><em>The Chicago Manual of Style</em>, 17e édition</a> en tenant compte des règles typographiques de la langue française.</li>
+</ul>
+<h4>Formatage du texte pour renvoyer à une note</h4>
+<p>Vous avez du texte ici[^1].
+Et vous avez un peu plus de texte ici[^2].</p>
+<h5>Notes de fin</h5>
+<p>[^1]: Référence utilisant le style Chicago Manual
+[^2]: Référence utilisant le style Chicago Manual</p>
+<h1>Avez-vous plus de questions?</h1>
+<p>Votre rédacteur/rédactrice se fera un plaisir de répondre à toute question que vous pouvez avoir.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

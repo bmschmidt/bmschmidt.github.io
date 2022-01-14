@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/es/plantilla-leccion"),
+					params: {lang:"es",lessons:"plantilla-leccion"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en español</h2>
+	<a class="nav-link" href="/es/lecciones">Lecciones</a><a class="nav-link" href="/es/acerca-de">Acerca</a><a class="nav-link" href="/es/investigacion">Investigación</a><a class="nav-link" href="/es/apoyanos">Apóyanos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link active" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Plantilla para lecciones de Programming Historian en español</h1>
+<p>Este archivo puede ser utilizado como plantilla para desarrollar tu lección. Contiene algunas indicaciones de formato que complementan <strong>pero no remplazan</strong> las orientaciones de la <a href="/es/guia-para-autores">Guía para autores</a>.</p>
+<h1>Metadatos de la lección</h1>
+<p><strong>Borra todo lo que está hasta esta línea cuando envíes tu lección</strong></p>
+<hr>
+<p>title: EL TÍTULO DE LA LECCIÓN<br>
+collection: lessons<br>
+layout: lesson<br>
+authors:</p>
+<ul>
+<li>NOMBRE APELLIDO 1</li>
+<li>NOMBRE APELLIDO 2, etc</li>
+</ul>
+<hr>
+<h1>Contenidos</h1>
+<p>Agrega la siguiente línea de código para incluir una tabla de contenidos en la lección:</p>
+<p>{% include toc.html %}</p>
+<p>--</p>
+<p>Algunos ejemplos de formato con Markdown:</p>
+<h1>Encabezado de primer nivel</h1>
+<h2>Encabezado de segundo nivel</h2>
+<h3>Encabezado de tercer nivel</h3>
+<p>Dar formato en Markdown:
+<em>texto en cursiva</em>
+<strong>texto en negrita</strong>
+<code>código o nombres de archivos</code></p>
+<h3>Enlaces</h3>
+<p>Si quieres incluir enlaces a la página de Programming Historian (por ejemplo, para mencionar otras lecciones), debes utilizar enlaces relativos, es decir, no incluir la primera parte de la url: <code>programminghistorian.org</code>. Por ejemplo: <a href="/es/lecciones/analisis-voyant-tools">Análisis de corpus con Voyant Tools</a></p>
+<h3>Imágenes</h3>
+<p>Bloque de código para insertar imágenes:</p>
+<p>{% raw %}</p>
+<pre><code class="language-markdown">{% include figure.html filename=&quot;NOMBRE-ARCHIVO-IMAGEN&quot; caption=&quot;PIE DE FOTO UTILIZANDO \&quot;ESCAPED\&quot; QUOTES&quot; %}
+</code></pre>
+<p>{% endraw %}</p>
+<h3>Ejemplo de una tabla:</h3>
+<table>
+<thead>
+<tr>
+<th>Encabezado 1</th>
+<th>Encabezado 2</th>
+<th>Encabezado 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fila 1, columna 1</td>
+<td>Fila 1, columna 2</td>
+<td>Fila 1, columna 3</td>
+</tr>
+<tr>
+<td>Fila 2, columna 1</td>
+<td>Fila 2, columna 2</td>
+<td>Fila 2, columna 3</td>
+</tr>
+<tr>
+<td>Fila 3, columna 1</td>
+<td>Fila 3, columna 2</td>
+<td>Fila 3, columna 3</td>
+</tr>
+</tbody>
+</table>
+<h3>Una nota a pie de página:</h3>
+<p>Esto es un texto.[^1]
+Esto es más texto.[^2]</p>
+<h1>Notas</h1>
+<p>[^1] Cita en formato Manual de Estilo Chicago
+[^2] Cita en formato Manual de Estilo Chicago</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

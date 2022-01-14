@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/es/lecciones/instalacion-windows"),
 					params: {lang:"es",lessons:"lecciones",slug:"instalacion-windows"}
@@ -48,26 +49,28 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the es edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en español</h2>
+	<a class="nav-link" href="/es/lecciones">Lecciones</a><a class="nav-link" href="/es/acerca-de">Acerca</a><a class="nav-link" href="/es/investigacion">Investigación</a><a class="nav-link" href="/es/apoyanos">Apóyanos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link active" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Creación de un entorno de desarrollo integrado para Python (Windows)</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="respalda-toda-tu-computadora">Respalda toda tu computadora.</h2>
+<h2>Respalda toda tu computadora.</h2>
 <p>Siempre es importante asegurarse de tener copias de seguridad hechas de modo regular y, sobre todo, recientes. Este es un buen consejo de por vida y no se limita a los momentos en los que estés dedicado a programar.</p>
-<h2 id="instalar-python-v3">Instalar Python v.3</h2>
+<h2>Instalar Python v.3</h2>
 <p>Dirígete al <a href="https://www.python.org">sitio web de Python</a>, descarga la última versión estable del lenguaje de programación Python (3.8 es la correspondiente a noviembre de 2019), e instálalo siguiendo las instrucciones del sitio web de Python.</p>
-<h2 id="creación-de-un-directorio">Creación de un directorio</h2>
+<h2>Creación de un directorio</h2>
 <p>Para mantener organizados los datos en tu equipo, lo mejor es crear un directorio o carpeta en tu computadora dedicado exclusivamente a almacenar todos tus programas que escribas con Python (i.e, <code>programming-historian</code>) y mantenlo en el lugar de tu disco duro que mejor te acomode.</p>
-<h2 id="instalar-komodo-edit">Instalar Komodo Edit</h2>
+<h2>Instalar Komodo Edit</h2>
 <p>Komodo Edit es un editor de texto libre y de código abierto, pero puedes utilizar varias <a href="https://wiki.python.org/moin/PythonEditors/">opciones de editores de texto</a> si quieres utilizar otros programas. Puedes descargar una copia desde el <a href="http://komodoide.com/komodo-edit/">sitio web de Komodo Edit</a>.</p>
-<h2 id="inicia-komodo-edit">Inicia Komodo Edit</h2>
+<h2>Inicia Komodo Edit</h2>
 <p>Se deberá ver algo parecido a la siguiente ventana:</p>
 <p>{% include figure.html filename=&quot;komodo-edit11-windows-main.png&quot; caption=&quot;Komodo Edit en Windows&quot; %}</p>
 <p>Si no está visible el panel de Caja de Herramientas (Toolbox) de la derecha, es necesario activarlo en el menú correspondiente. Selecciona <code>View -&gt; Tabs -&gt; Toolbox</code>. No importa si el panel del proyecto está abierto o no. Tómate un tiempo para familiarizarte con el diseño del Komodo Editor. El archivo de ayuda es bastante bueno.</p>
-<h3 id="configuración-de-komodo-edit">Configuración de Komodo Edit</h3>
+<h3>Configuración de Komodo Edit</h3>
 <p>Ahora es necesario configurarlo para que puedas correr los programas de Python.</p>
 <p>1 .  Selecciona <code>Edit -&gt; Preferences</code>. Esto abrirá una nueva ventana de diálogo. En &quot;<em>Languages</em>&quot; y &quot;<em>Python 3</em>&quot; selecciona &quot;<em>Browse</em>&quot; y navega hasta <code>C:\Users\tunombredeusuario\AppData\Local\Programs\Python\Python38-32</code>)
 Si se ve más o menos así, oprime OK:</p>
@@ -82,29 +85,29 @@ Si se ve más o menos así, oprime OK:</p>
 <pre><code class="language-python">%D
 </code></pre>
 <p>Si se ve así, oprime OK:</p>
-<p>{% include figure.html filename=&quot;komodo-edit11-windows-python-command.png&quot; caption=&quot;Configuración del comando &#39;Run Python&#39;.&quot; %}
-{% include figure.html filename=&quot;komodo-edit11-windows-python-start.png&quot; caption=&quot;Configuración del comando &#39;Run Python Start&#39;.&quot; %}</p>
+<p>{% include figure.html filename=&quot;komodo-edit11-windows-python-command.png&quot; caption=&quot;Configuración del comando 'Run Python'.&quot; %}
+{% include figure.html filename=&quot;komodo-edit11-windows-python-start.png&quot; caption=&quot;Configuración del comando 'Run Python Start'.&quot; %}</p>
 <p>Tu nuevo comando debe aparecer en el panel de la caja de herramientas (<em>Toolbox</em>). Probablemente deberás reiniciar tu computadora para completar el paso antes de que Python trabaje con Komodo Edit.</p>
-<h2 id="paso-2--hola-mundo-en-python">Paso 2 – “Hola Mundo” en Python</h2>
+<h2>Paso 2 – “Hola Mundo” en Python</h2>
 <p>Es tradicional que para comenzar a programar en un nuevo lenguaje tratemos de crear un programa que despliegue la frase “Hola Mundo” y termine. Vamos a mostrar cómo hacer esto en Python y en HTML.</p>
 <p>Python es un buen lenguaje de programación para principiantes gracias a que es un lenguaje de programación de muy alto nivel. Es posible, en otras palabras, escribir programas cortos que realizan una gran cantidad de procesos. Entre más corto es el programa, lo más probable es que todo quepa en una pantalla y que sea más fácil hacer un seguimiento de todo en tu mente.</p>
 <p>Python es un lenguaje de programación &quot;interpretado&quot;. Esto significa que hay un programa de cómputo especial (conocido como intérprete) que sabe cómo seguir las instrucciones escritas en este lenguaje. Una manera de usar el intérprete es guardar todas tus instrucciones en un archivo y luego ejecutar el intérprete sobre ese archivo. El archivo que contiene instrucciones de lenguaje de programación es conocido como programa.  El intérprete ejecutará cada una de las instrucciones que le hayas dado en tu programa y luego se detendrá. Vamos a intentar esto.</p>
 <p>En tu editor de texto crea un nuevo archivo y escribe el siguiente programa de dos líneas y guárdalo en tu carpeta <code>programming-historian</code> con el nombre <code>hola-mundo.py</code>.</p>
 <pre><code class="language-python"># hola-mundo.py
-print(&#39;hola mundo&#39;)
+print('hola mundo')
 </code></pre>
 <p>El editor de texto que seleccionaste debe tener un botón <code>Run</code>  que te permitirá ejecutar tu programa. Si todo funciona bien, deberás ver algo como sigue (El ejemplo es como se ve en Komodo Edit. Da un clic en la imagen para ver una copia en tamaño completo):</p>
 <p>{% include figure.html filename=&quot;komodo-edit11-windows-hola.png&quot; caption=&quot;Hola Mundo en Komodo Edit&quot; %}</p>
-<h2 id="interactuar-con-el-intérprete-de-comandos-shell-de-python">Interactuar con el intérprete de comandos (shell) de Python</h2>
+<h2>Interactuar con el intérprete de comandos (shell) de Python</h2>
 <p>Otra manera de interactuar con un intérprete es usando lo que se conoce como <em>shell</em> o intérprete de comandos. Se puede escribir en una declaración y oprimir la tecla Enter, y el shell responderá a tus comandos. Utilizar un shell es una excelente forma de comprobar que la construcción de tus declaraciones es adecuada al asegurarte que hace lo que tu piensas que debería hacer. Esto se puede hacer de maneras un tanto distintas en las diversas plataformas (Mac, Windows o Linux).</p>
 <p>Puedes ejecutar un shell de Python haciendo doble clic en el archivo ejecutable <code>python.exe</code>. Si instalaste la más reciente versión de Python 3.8 (la más reciente para noviembre de 2019), probablemente el archivo .exe  esté localizado en el directorio <code>C:\Users\tunombredeusuario\AppData\Local\Programs\Python\Python38-32</code>. En la ventana del intérprete de comandos (&quot;Símbolo de Sistema&quot;), escribe:</p>
-<pre><code class="language-python">print(&#39;Hola Mundo&#39;)
+<pre><code class="language-python">print('Hola Mundo')
 </code></pre>
 <p>Oprime la tecla Enter. La computadora responderá con:</p>
 <pre><code class="language-python">Hola Mundo
 </code></pre>
 <p>Cuando queramos representar la interacción con el intérprete de comandos usaremos -&gt; para indicar la respuesta del shell a tus comandos, como se muestra inmediatamente:</p>
-<pre><code class="language-python">Print(&#39;Hola Mundo&#39;)
+<pre><code class="language-python">Print('Hola Mundo')
 -&gt; Hola Mundo
 </code></pre>
 <p>En la pantalla de tu computadora aparecerá de esta manera:</p>
@@ -112,6 +115,6 @@ print(&#39;hola mundo&#39;)
 <p>Ahora que tú y tu computadora están en marcha y funcionando, podemos movernos hacia unas tareas algo más interesantes. Si estás trabajando de manera ordenada las lecciones de Python, te sugerimos que pases ahora a la lección <a href="/es/lecciones/ver-archivos-html">Para entender páginas web y HTML</a>.</p>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="instalacion-windows/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Creación de un entorno de desarrollo integrado para Python (Windows)\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"date\":\"2012-07-17T00:00:00.000Z\",\"translation_date\":\"2017-03-15T00:00:00.000Z\",\"editors\":[\"Miriam Posner\"],\"reviewers\":[\"Jim Clifford\",\"Amanda Morton\"],\"translator\":[\"Víctor Gayol\"],\"translation-editor\":[\"Adam Crymble\"],\"translation-reviewer\":[\"Jairo A. Melo\",\"Maria José Afanador-Llach\",\"Antonio Rojas Castro\"],\"review-ticket\":\"https:\u002F\u002Fgithub.com\u002Fprogramminghistorian\u002Fph-submissions\u002Fissues\u002F37\",\"layout\":\"lesson\",\"original\":\"windows-installation\",\"avatar_alt\":\"Tres hombres tocando instrumentos musicales\",\"difficulty\":1,\"activity\":\"transforming\",\"topics\":[\"get-ready\",\"python\"],\"abstract\":\"Este tutorial te ayudará a configurar un entorno de desarrollo integrado para Python en un computador con el sistema operativo de Windows.\",\"doi\":\"10.46430\u002Fphes0011\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"respalda-toda-tu-computadora\\\"\u003ERespalda toda tu computadora.\u003C\u002Fh2\u003E\\n\u003Cp\u003ESiempre es importante asegurarse de tener copias de seguridad hechas de modo regular y, sobre todo, recientes. Este es un buen consejo de por vida y no se limita a los momentos en los que estés dedicado a programar.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"instalar-python-v3\\\"\u003EInstalar Python v.3\u003C\u002Fh2\u003E\\n\u003Cp\u003EDirígete al \u003Ca href=\\\"https:\u002F\u002Fwww.python.org\\\"\u003Esitio web de Python\u003C\u002Fa\u003E, descarga la última versión estable del lenguaje de programación Python (3.8 es la correspondiente a noviembre de 2019), e instálalo siguiendo las instrucciones del sitio web de Python.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"creación-de-un-directorio\\\"\u003ECreación de un directorio\u003C\u002Fh2\u003E\\n\u003Cp\u003EPara mantener organizados los datos en tu equipo, lo mejor es crear un directorio o carpeta en tu computadora dedicado exclusivamente a almacenar todos tus programas que escribas con Python (i.e, \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E) y mantenlo en el lugar de tu disco duro que mejor te acomode.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"instalar-komodo-edit\\\"\u003EInstalar Komodo Edit\u003C\u002Fh2\u003E\\n\u003Cp\u003EKomodo Edit es un editor de texto libre y de código abierto, pero puedes utilizar varias \u003Ca href=\\\"https:\u002F\u002Fwiki.python.org\u002Fmoin\u002FPythonEditors\u002F\\\"\u003Eopciones de editores de texto\u003C\u002Fa\u003E si quieres utilizar otros programas. Puedes descargar una copia desde el \u003Ca href=\\\"http:\u002F\u002Fkomodoide.com\u002Fkomodo-edit\u002F\\\"\u003Esitio web de Komodo Edit\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"inicia-komodo-edit\\\"\u003EInicia Komodo Edit\u003C\u002Fh2\u003E\\n\u003Cp\u003ESe deberá ver algo parecido a la siguiente ventana:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;komodo-edit11-windows-main.png&quot; caption=&quot;Komodo Edit en Windows&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ESi no está visible el panel de Caja de Herramientas (Toolbox) de la derecha, es necesario activarlo en el menú correspondiente. Selecciona \u003Ccode\u003EView -&gt; Tabs -&gt; Toolbox\u003C\u002Fcode\u003E. No importa si el panel del proyecto está abierto o no. Tómate un tiempo para familiarizarte con el diseño del Komodo Editor. El archivo de ayuda es bastante bueno.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"configuración-de-komodo-edit\\\"\u003EConfiguración de Komodo Edit\u003C\u002Fh3\u003E\\n\u003Cp\u003EAhora es necesario configurarlo para que puedas correr los programas de Python.\u003C\u002Fp\u003E\\n\u003Cp\u003E1 .  Selecciona \u003Ccode\u003EEdit -&gt; Preferences\u003C\u002Fcode\u003E. Esto abrirá una nueva ventana de diálogo. En &quot;\u003Cem\u003ELanguages\u003C\u002Fem\u003E&quot; y &quot;\u003Cem\u003EPython 3\u003C\u002Fem\u003E&quot; selecciona &quot;\u003Cem\u003EBrowse\u003C\u002Fem\u003E&quot; y navega hasta \u003Ccode\u003EC:\\\\Users\\\\tunombredeusuario\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python38-32\u003C\u002Fcode\u003E)\\nSi se ve más o menos así, oprime OK:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;komodo-edit11-windows-interpreter.png&quot; caption=&quot;Seleccionar Python como intérprete por defecto.&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E2 .  Enseguida en la sección  &quot;\u003Cem\u003EPreferences\u003C\u002Fem\u003E&quot; selecciona \u003Cem\u003EInternacionalization\u003C\u002Fem\u003E. Selecciona \u003Cem\u003EPython\u003C\u002Fem\u003E del menú despegable que se llama \u003Cem\u003ELanguage-specific Default Encoding\u003C\u002Fem\u003E y asegúrate que \u003Ca href=\\\"https:\u002F\u002Fes.wikipedia.org\u002Fwiki\u002FUTF-8\\\"\u003EUTF-8\u003C\u002Fa\u003E esté seleccionado como el método de codificación por defecto.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;komodo-edit11-windows-utf-set.png&quot; caption=&quot;Configurar lenguaje a UFT-8.&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EEnseguida selecciona \u003Ccode\u003EToolbox -&gt; Add -&gt; New Command\u003C\u002Fcode\u003E . Esto abrirá una nueva ventana de diálogo en la que deberás renombrar tu comando como \u003Ccode\u003ERun Python\u003C\u002Fcode\u003E. Debajo de \u003Ccode\u003ECommand\u003C\u002Fcode\u003E teclea:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E%(python3) %f\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESi olvidas este comando, Python se quedará colgado porque no estará recibiendo las órdenes (input).\u003C\u002Fp\u003E\\n\u003Cp\u003EEl campo activo ‘Start in’ debes escribir:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E%D\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESi se ve así, oprime OK:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;komodo-edit11-windows-python-command.png&quot; caption=&quot;Configuración del comando &#39;Run Python&#39;.&quot; %}\\n{% include figure.html filename=&quot;komodo-edit11-windows-python-start.png&quot; caption=&quot;Configuración del comando &#39;Run Python Start&#39;.&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ETu nuevo comando debe aparecer en el panel de la caja de herramientas (\u003Cem\u003EToolbox\u003C\u002Fem\u003E). Probablemente deberás reiniciar tu computadora para completar el paso antes de que Python trabaje con Komodo Edit.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"paso-2--hola-mundo-en-python\\\"\u003EPaso 2 – “Hola Mundo” en Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EEs tradicional que para comenzar a programar en un nuevo lenguaje tratemos de crear un programa que despliegue la frase “Hola Mundo” y termine. Vamos a mostrar cómo hacer esto en Python y en HTML.\u003C\u002Fp\u003E\\n\u003Cp\u003EPython es un buen lenguaje de programación para principiantes gracias a que es un lenguaje de programación de muy alto nivel. Es posible, en otras palabras, escribir programas cortos que realizan una gran cantidad de procesos. Entre más corto es el programa, lo más probable es que todo quepa en una pantalla y que sea más fácil hacer un seguimiento de todo en tu mente.\u003C\u002Fp\u003E\\n\u003Cp\u003EPython es un lenguaje de programación &quot;interpretado&quot;. Esto significa que hay un programa de cómputo especial (conocido como intérprete) que sabe cómo seguir las instrucciones escritas en este lenguaje. Una manera de usar el intérprete es guardar todas tus instrucciones en un archivo y luego ejecutar el intérprete sobre ese archivo. El archivo que contiene instrucciones de lenguaje de programación es conocido como programa.  El intérprete ejecutará cada una de las instrucciones que le hayas dado en tu programa y luego se detendrá. Vamos a intentar esto.\u003C\u002Fp\u003E\\n\u003Cp\u003EEn tu editor de texto crea un nuevo archivo y escribe el siguiente programa de dos líneas y guárdalo en tu carpeta \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E con el nombre \u003Ccode\u003Ehola-mundo.py\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# hola-mundo.py\\nprint(&#39;hola mundo&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEl editor de texto que seleccionaste debe tener un botón \u003Ccode\u003ERun\u003C\u002Fcode\u003E  que te permitirá ejecutar tu programa. Si todo funciona bien, deberás ver algo como sigue (El ejemplo es como se ve en Komodo Edit. Da un clic en la imagen para ver una copia en tamaño completo):\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;komodo-edit11-windows-hola.png&quot; caption=&quot;Hola Mundo en Komodo Edit&quot; %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"interactuar-con-el-intérprete-de-comandos-shell-de-python\\\"\u003EInteractuar con el intérprete de comandos (shell) de Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EOtra manera de interactuar con un intérprete es usando lo que se conoce como \u003Cem\u003Eshell\u003C\u002Fem\u003E o intérprete de comandos. Se puede escribir en una declaración y oprimir la tecla Enter, y el shell responderá a tus comandos. Utilizar un shell es una excelente forma de comprobar que la construcción de tus declaraciones es adecuada al asegurarte que hace lo que tu piensas que debería hacer. Esto se puede hacer de maneras un tanto distintas en las diversas plataformas (Mac, Windows o Linux).\u003C\u002Fp\u003E\\n\u003Cp\u003EPuedes ejecutar un shell de Python haciendo doble clic en el archivo ejecutable \u003Ccode\u003Epython.exe\u003C\u002Fcode\u003E. Si instalaste la más reciente versión de Python 3.8 (la más reciente para noviembre de 2019), probablemente el archivo .exe  esté localizado en el directorio \u003Ccode\u003EC:\\\\Users\\\\tunombredeusuario\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python38-32\u003C\u002Fcode\u003E. En la ventana del intérprete de comandos (&quot;Símbolo de Sistema&quot;), escribe:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;Hola Mundo&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EOprime la tecla Enter. La computadora responderá con:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EHola Mundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ECuando queramos representar la interacción con el intérprete de comandos usaremos -&gt; para indicar la respuesta del shell a tus comandos, como se muestra inmediatamente:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EPrint(&#39;Hola Mundo&#39;)\\n-&gt; Hola Mundo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEn la pantalla de tu computadora aparecerá de esta manera:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;windows-python3-cmd.png&quot; caption=&quot;Python Shell en Windows&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EAhora que tú y tu computadora están en marcha y funcionando, podemos movernos hacia unas tareas algo más interesantes. Si estás trabajando de manera ordenada las lecciones de Python, te sugerimos que pases ahora a la lección \u003Ca href=\\\"\u002Fes\u002Flecciones\u002Fver-archivos-html\\\"\u003EPara entender páginas web y HTML\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

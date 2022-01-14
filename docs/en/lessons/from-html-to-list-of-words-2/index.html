@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/from-html-to-list-of-words-2"),
 					params: {lang:"en",lessons:"lessons",slug:"from-html-to-list-of-words-2"}
@@ -48,14 +49,16 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>From HTML to List of Words (part 2)</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="lesson-goals">Lesson Goals</h2>
+<h2>Lesson Goals</h2>
 <p>In this lesson, you will learn the Python commands needed to implement
 the second part of the algorithm begun in the <a href="/lessons/from-html-to-list-of-words-1">From HTML to a List of
 Words (part 1)</a>. The first half of the algorithm gets the content of
@@ -74,20 +77,20 @@ variable: <em>text</em></li>
 <li>Split the <em>text</em> string into a list of individual words that can later
 be manipulated further.</li>
 </ul>
-<h3 id="files-needed-for-this-lesson">Files Needed For This Lesson</h3>
+<h3>Files Needed For This Lesson</h3>
 <ul>
 <li><em>obo.py</em></li>
 <li><em>trial-content.py</em></li>
 </ul>
 <p>If you do not have these files, you can
 download python-lessons2.zip, a (<a href="/assets/python-lessons2.zip">zip</a>) file from the previous lesson.</p>
-<h2 id="repeating-and-testing-in-python">Repeating and Testing in Python</h2>
+<h2>Repeating and Testing in Python</h2>
 <p>The next stage in implementing the algorithm is to look at every
 character in the <em>pageContents</em> string, one at a time and decide whether
 the character belongs to HTML markup or to the content of the trial
 transcript. Before you can do this you’ll have to learn a few techniques
 for repeating tasks and for testing conditions.</p>
-<h3 id="looping">Looping</h3>
+<h3>Looping</h3>
 <p>Like many programming languages, Python includes a number of <em>looping</em>
 mechanisms. The one that you want to use in this case is called a <em>for</em>
 <em>loop</em>. The version below tells the interpreter to do something for each
@@ -96,16 +99,16 @@ each character from <em>pageContents</em> in succession. We gave <em>char</em> i
 it does not have any special significance and could have been named
 <em>jingles</em> or <em>k</em> if we had felt so inclined. You can use the colour-coding
 in Komodo Edit as a guideline for deciding if a word is a variable with
-a user-given name (such as &#39;<em>char</em>&#39;) or a Python-defined name that serves
-a specific purpose (such as &#39;<code>for</code>&#39;). It is usually a good idea to give
+a user-given name (such as '<em>char</em>') or a Python-defined name that serves
+a specific purpose (such as '<code>for</code>'). It is usually a good idea to give
 variables names that provide information about what they contain. This
 will make it much easier to understand a program that you haven’t looked
-at for a while. With this in mind, &#39;<em>jingles</em>&#39; is probably not a very good
+at for a while. With this in mind, '<em>jingles</em>' is probably not a very good
 choice for a variable name in this case.</p>
 <pre><code class="language-python">for char in pageContents:
     # do something with char
 </code></pre>
-<h3 id="branching">Branching</h3>
+<h3>Branching</h3>
 <p>Next you need a way of testing the contents of a string, and choosing a
 course of action based on that test. Again, like many programming
 languages, Python includes a number of <em>branching</em> mechanisms. The one
@@ -117,26 +120,26 @@ code is indented, Python will execute it when the condition is true.</p>
 for setting one thing equal to something else. In order to test for
 <em>equality</em>, use double equals signs (==) instead. Beginning programmers
 often confuse the two.</p>
-<pre><code class="language-python">if char == &#39;&lt;&#39;:
+<pre><code class="language-python">if char == '&lt;':
     # do something
 </code></pre>
 <p>A more general form of the if statement allows you to specify what to do
 in the event that your test condition is false.</p>
-<pre><code class="language-python">if char == &#39;&lt;&#39;:
+<pre><code class="language-python">if char == '&lt;':
     # do something
 else:
     # do something different
 </code></pre>
 <p>In Python you have the option of doing further tests after the first
 one, by using an <em>elif statement</em> (which is shorthand for else if).</p>
-<pre><code class="language-python">if char == &#39;&lt;&#39;:
+<pre><code class="language-python">if char == '&lt;':
     # do something
-elif char == &#39;&gt;&#39;:
+elif char == '&gt;':
     # do another thing
 else:
     # do something completely different
 </code></pre>
-<h2 id="use-the-algorithm-to-remove-html-markup">Use the Algorithm to Remove HTML Markup</h2>
+<h2>Use the Algorithm to Remove HTML Markup</h2>
 <p>You now know enough to implement the second part of the algorithm:
 removing all HTML tags. In this part of the algorithm we want to:</p>
 <ul>
@@ -157,7 +160,7 @@ track of whether or not we’re inside a tag? We can use an integer
 variable, which will be 1 (true) if the current character is inside a
 tag and 0 (false) if it’s not (in the example below we have named the
 variable <em>inside</em>).</p>
-<h3 id="the-striptags-routine">The stripTags Routine</h3>
+<h3>The stripTags Routine</h3>
 <p>Putting it all together, the final version of the routine is shown
 below. Note that we are expanding the <em>stripTags</em> function created above.
 Make sure you maintain the indentation as shown when you replace the old
@@ -174,12 +177,12 @@ def stripTags(pageContents):
     pageContents = pageContents[startLoc:endLoc]
 
     inside = 0
-    text = &#39;&#39;
+    text = ''
 
     for char in pageContents:
-        if char == &#39;&lt;&#39;:
+        if char == '&lt;':
             inside = 1
-        elif (inside == 1 and char == &#39;&gt;&#39;):
+        elif (inside == 1 and char == '&gt;'):
             inside = 0
         elif inside == 1:
             continue
@@ -208,7 +211,7 @@ myText = &quot;This is my &lt;h1&gt;HTML&lt;/h1&gt; message&quot;
 theResult = obo.stripTags(myText)
 </code></pre>
 <p>By using <code>return</code>, we have been able to save the output of the <em>stripTags</em>
-function directly into a variable that we have called &#39;theResult&#39;,
+function directly into a variable that we have called 'theResult',
 which we can then resume processing as needed using additional code.</p>
 <p>Note that in the <em>stripTags</em> example from the start of this sub-section,
 the value that we want to return now is not <em>pageContents</em>, but rather the
@@ -218,7 +221,7 @@ Since we’ve redefined <em>stripTags</em>, the <em>trial-content.py</em> progra
 something different (and closer to what we want). Before you continue,
 make sure that you understand why the behaviour of <em>trial-content.py</em>
 would change when we only edited <em>obo.py</em>.</p>
-<h2 id="python-lists">Python Lists</h2>
+<h2>Python Lists</h2>
 <p>Now that you have the ability to extract raw text from web pages, you’re
 going to want to get the text in a form that is easy to process. So far,
 when you’ve needed to store information in your Python programs, you’ve
@@ -231,8 +234,8 @@ fractions or decimal numbers in integer variables.</p>
 </code></pre>
 <p>And whenever you’ve needed to read from or write to a file, you’ve used
 a special file handle like <em>f</em> in the example below.</p>
-<pre><code class="language-python">f = open(&#39;helloworld.txt&#39;,&#39;w&#39;)
-f.write(&#39;hello world&#39;)
+<pre><code class="language-python">f = open('helloworld.txt','w')
+f.write('hello world')
 f.close()
 </code></pre>
 <p>One of the most useful <a href="http://docs.python.org/3/library/types.html">types</a> of object that Python provides,
@@ -246,8 +249,8 @@ code works.</p>
 <pre><code class="language-python"># string-to-list.py
 
 # some strings
-s1 = &#39;hello world&#39;
-s2 = &#39;howdy world&#39;
+s1 = 'hello world'
+s2 = 'howdy world'
 
 # list of characters
 charlist = []
@@ -255,7 +258,7 @@ for char in s1:
     charlist.append(char)
 print(charlist)
 
-# list of &#39;words&#39;
+# list of 'words'
 wordlist = s2.split()
 print(wordlist)
 </code></pre>
@@ -274,38 +277,39 @@ list of words. Try executing the following program.</p>
 <pre><code class="language-python">#html-to-list1.py
 import urllib.request, urllib.error, urllib.parse, obo
 
-url = &#39;http://www.oldbaileyonline.org/print.jsp?div=t17800628-33&#39;
+url = 'http://www.oldbaileyonline.org/print.jsp?div=t17800628-33'
 
 response = urllib.request.urlopen(url)
-html = response.read().decode(&#39;UTF-8&#39;)
+html = response.read().decode('UTF-8')
 text = obo.stripTags(html)
 wordlist = text.split()
 
 print((wordlist[0:120]))
 </code></pre>
 <p>You should get something like the following.</p>
-<pre><code class="language-python">[&#39;324.&#39;, &#39;\xc2\xa0&#39;, &#39;BENJAMIN&#39;, &#39;BOWSEY&#39;, &#39;(a&#39;, &#39;blackmoor&#39;, &#39;)&#39;, &#39;was&#39;,
-&#39;indicted&#39;, &#39;for&#39;, &#39;that&#39;, &#39;he&#39;, &#39;together&#39;, &#39;with&#39;, &#39;five&#39;, &#39;hundred&#39;,
-&#39;other&#39;, &#39;persons&#39;, &#39;and&#39;, &#39;more,&#39;, &#39;did,&#39;, &#39;unlawfully,&#39;, &#39;riotously,&#39;,
-&#39;and&#39;, &#39;tumultuously&#39;, &#39;assemble&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;to&#39;,
-&#39;the&#39;, &#39;disturbance&#39;, &#39;of&#39;, &#39;the&#39;, &#39;public&#39;, &#39;peace&#39;, &#39;and&#39;, &#39;did&#39;, &#39;begin&#39;,
-&#39;to&#39;, &#39;demolish&#39;, &#39;and&#39;, &#39;pull&#39;, &#39;down&#39;, &#39;the&#39;, &#39;dwelling&#39;, &#39;house&#39;, &#39;of&#39;,
-&#39;\xc2\xa0&#39;, &#39;Richard&#39;, &#39;Akerman&#39;, &#39;,&#39;, &#39;against&#39;, &#39;the&#39;, &#39;form&#39;, &#39;of&#39;,
-&#39;the&#39;, &#39;statute,&#39;, &#39;&amp;amp;c.&#39;, &#39;\xc2\xa0&#39;, &#39;ROSE&#39;, &#39;JENNINGS&#39;, &#39;,&#39;, &#39;Esq.&#39;,
-&#39;sworn.&#39;, &#39;Had&#39;, &#39;you&#39;, &#39;any&#39;, &#39;occasion&#39;, &#39;to&#39;, &#39;be&#39;, &#39;in&#39;, &#39;this&#39;, &#39;part&#39;,
-&#39;of&#39;, &#39;the&#39;, &#39;town,&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;in&#39;, &#39;the&#39;,
-&#39;evening?&#39;, &#39;-&#39;, &#39;I&#39;, &#39;dined&#39;, &#39;with&#39;, &#39;my&#39;, &#39;brother&#39;, &#39;who&#39;, &#39;lives&#39;,
-&#39;opposite&#39;, &#39;Mr.&#39;, &quot;Akerman&#39;s&quot;, &#39;house.&#39;, &#39;They&#39;, &#39;attacked&#39;, &#39;Mr.&#39;,
-&quot;Akerman&#39;s&quot;, &#39;house&#39;, &#39;precisely&#39;, &#39;at&#39;, &#39;seven&#39;, &quot;o&#39;clock;&quot;, &#39;they&#39;,
-&#39;were&#39;, &#39;preceded&#39;, &#39;by&#39;, &#39;a&#39;, &#39;man&#39;, &#39;better&#39;, &#39;dressed&#39;, &#39;than&#39;, &#39;the&#39;,
-&#39;rest,&#39;, &#39;who&#39;]
+<pre><code class="language-python">['324.', '\xc2\xa0', 'BENJAMIN', 'BOWSEY', '(a', 'blackmoor', ')', 'was',
+'indicted', 'for', 'that', 'he', 'together', 'with', 'five', 'hundred',
+'other', 'persons', 'and', 'more,', 'did,', 'unlawfully,', 'riotously,',
+'and', 'tumultuously', 'assemble', 'on', 'the', '6th', 'of', 'June', 'to',
+'the', 'disturbance', 'of', 'the', 'public', 'peace', 'and', 'did', 'begin',
+'to', 'demolish', 'and', 'pull', 'down', 'the', 'dwelling', 'house', 'of',
+'\xc2\xa0', 'Richard', 'Akerman', ',', 'against', 'the', 'form', 'of',
+'the', 'statute,', '&amp;amp;c.', '\xc2\xa0', 'ROSE', 'JENNINGS', ',', 'Esq.',
+'sworn.', 'Had', 'you', 'any', 'occasion', 'to', 'be', 'in', 'this', 'part',
+'of', 'the', 'town,', 'on', 'the', '6th', 'of', 'June', 'in', 'the',
+'evening?', '-', 'I', 'dined', 'with', 'my', 'brother', 'who', 'lives',
+'opposite', 'Mr.', &quot;Akerman's&quot;, 'house.', 'They', 'attacked', 'Mr.',
+&quot;Akerman's&quot;, 'house', 'precisely', 'at', 'seven', &quot;o'clock;&quot;, 'they',
+'were', 'preceded', 'by', 'a', 'man', 'better', 'dressed', 'than', 'the',
+'rest,', 'who']
 </code></pre>
 <p>Simply having a list of words doesn’t buy you much yet. As human beings,
 we already have the ability to read. You’re getting much closer to a
 representation that your programs can process, however.</p>
-<h2 id="suggested-reading">Suggested Reading</h2>
+<h2>Suggested Reading</h2>
 <ul>
-<li>Lutz, <em>Learning Python</em><ul>
+<li>Lutz, <em>Learning Python</em>
+<ul>
 <li>Ch. 7: Strings</li>
 <li>Ch. 8: Lists and Dictionaries</li>
 <li>Ch. 10: Introducing Python Statements</li>
@@ -313,7 +317,7 @@ representation that your programs can process, however.</p>
 </ul>
 </li>
 </ul>
-<h3 id="code-syncing">Code Syncing</h3>
+<h3>Code Syncing</h3>
 <p>To follow along with future lessons it is important that you have the
 right files and programs in your programming-historian directory. At the
 end of each chapter in this series you can download the programming-historian zip file
@@ -323,6 +327,6 @@ to make sure you have the correct code.</p>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="from-html-to-list-of-words-2/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"From HTML to List of Words (part 2)\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\",\"Frederik Elwert\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"transforming\",\"topics\":[\"python\"],\"abstract\":\"In this lesson, you will learn the Python commands needed to implement the second part of the algorithm begun in the lesson 'From HTML to a List of Words (part 1)'.\",\"next\":\"normalizing-data\",\"previous\":\"from-html-to-list-of-words-1\",\"series_total\":\"15 lessons\",\"sequence\":8,\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Ffrom-html-to-list-of-words-2\",\"avatar_alt\":\"A soldier being mocked by a man\",\"doi\":\"10.46430\u002Fphen0007\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn this lesson, you will learn the Python commands needed to implement\\nthe second part of the algorithm begun in the \u003Ca href=\\\"\u002Flessons\u002Ffrom-html-to-list-of-words-1\\\"\u003EFrom HTML to a List of\\nWords (part 1)\u003C\u002Fa\u003E. The first half of the algorithm gets the content of\\nan HTML page and saves only the content between the first \u003Ccode\u003E&lt;p&gt;\u003C\u002Fcode\u003E and the last \u003Ccode\u003E&lt;br\u002F&gt;\u003C\u002Fcode\u003E\\ntags. The second half of the algorithm does the following:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELook at every character in the \u003Cem\u003EpageContents\u003C\u002Fem\u003E string, one character at\\na time\u003C\u002Fli\u003E\\n\u003Cli\u003EIf the character is a left angle bracket (&lt;) we are now inside a\\ntag so ignore each following character\u003C\u002Fli\u003E\\n\u003Cli\u003EIf the character is a right angle bracket (&gt;) we are now leaving\\nthe tag; ignore the current character, but look at each following\\ncharacter\u003C\u002Fli\u003E\\n\u003Cli\u003EIf we’re not inside a tag, append the current character to a new\\nvariable: \u003Cem\u003Etext\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003ESplit the \u003Cem\u003Etext\u003C\u002Fem\u003E string into a list of individual words that can later\\nbe manipulated further.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"files-needed-for-this-lesson\\\"\u003EFiles Needed For This Lesson\u003C\u002Fh3\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cem\u003Eobo.py\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cem\u003Etrial-content.py\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EIf you do not have these files, you can\\ndownload python-lessons2.zip, a (\u003Ca href=\\\"\u002Fassets\u002Fpython-lessons2.zip\\\"\u003Ezip\u003C\u002Fa\u003E) file from the previous lesson.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"repeating-and-testing-in-python\\\"\u003ERepeating and Testing in Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EThe next stage in implementing the algorithm is to look at every\\ncharacter in the \u003Cem\u003EpageContents\u003C\u002Fem\u003E string, one at a time and decide whether\\nthe character belongs to HTML markup or to the content of the trial\\ntranscript. Before you can do this you’ll have to learn a few techniques\\nfor repeating tasks and for testing conditions.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"looping\\\"\u003ELooping\u003C\u002Fh3\u003E\\n\u003Cp\u003ELike many programming languages, Python includes a number of \u003Cem\u003Elooping\u003C\u002Fem\u003E\\nmechanisms. The one that you want to use in this case is called a \u003Cem\u003Efor\u003C\u002Fem\u003E\\n\u003Cem\u003Eloop\u003C\u002Fem\u003E. The version below tells the interpreter to do something for each\\ncharacter in a string named \u003Cem\u003EpageContents\u003C\u002Fem\u003E. The variable \u003Cem\u003Echar\u003C\u002Fem\u003E will contain\\neach character from \u003Cem\u003EpageContents\u003C\u002Fem\u003E in succession. We gave \u003Cem\u003Echar\u003C\u002Fem\u003E its name;\\nit does not have any special significance and could have been named\\n\u003Cem\u003Ejingles\u003C\u002Fem\u003E or \u003Cem\u003Ek\u003C\u002Fem\u003E if we had felt so inclined. You can use the colour-coding\\nin Komodo Edit as a guideline for deciding if a word is a variable with\\na user-given name (such as &#39;\u003Cem\u003Echar\u003C\u002Fem\u003E&#39;) or a Python-defined name that serves\\na specific purpose (such as &#39;\u003Ccode\u003Efor\u003C\u002Fcode\u003E&#39;). It is usually a good idea to give\\nvariables names that provide information about what they contain. This\\nwill make it much easier to understand a program that you haven’t looked\\nat for a while. With this in mind, &#39;\u003Cem\u003Ejingles\u003C\u002Fem\u003E&#39; is probably not a very good\\nchoice for a variable name in this case.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Efor char in pageContents:\\n    # do something with char\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"branching\\\"\u003EBranching\u003C\u002Fh3\u003E\\n\u003Cp\u003ENext you need a way of testing the contents of a string, and choosing a\\ncourse of action based on that test. Again, like many programming\\nlanguages, Python includes a number of \u003Cem\u003Ebranching\u003C\u002Fem\u003E mechanisms. The one\\nthat you want to use here is called an \u003Cem\u003Eif statement\u003C\u002Fem\u003E. The version below\\ntests to see whether the string named \u003Cem\u003Echar\u003C\u002Fem\u003E consists of a left angle\\nbracket. As we mentioned earlier, indentation is important in Python. If\\ncode is indented, Python will execute it when the condition is true.\u003C\u002Fp\u003E\\n\u003Cp\u003ENote that Python uses a single equals sign (=) for \u003Cem\u003Eassignment\u003C\u002Fem\u003E, that is\\nfor setting one thing equal to something else. In order to test for\\n\u003Cem\u003Eequality\u003C\u002Fem\u003E, use double equals signs (==) instead. Beginning programmers\\noften confuse the two.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eif char == &#39;&lt;&#39;:\\n    # do something\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EA more general form of the if statement allows you to specify what to do\\nin the event that your test condition is false.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eif char == &#39;&lt;&#39;:\\n    # do something\\nelse:\\n    # do something different\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIn Python you have the option of doing further tests after the first\\none, by using an \u003Cem\u003Eelif statement\u003C\u002Fem\u003E (which is shorthand for else if).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eif char == &#39;&lt;&#39;:\\n    # do something\\nelif char == &#39;&gt;&#39;:\\n    # do another thing\\nelse:\\n    # do something completely different\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"use-the-algorithm-to-remove-html-markup\\\"\u003EUse the Algorithm to Remove HTML Markup\u003C\u002Fh2\u003E\\n\u003Cp\u003EYou now know enough to implement the second part of the algorithm:\\nremoving all HTML tags. In this part of the algorithm we want to:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELook at every character in the \u003Cem\u003EpageContents\u003C\u002Fem\u003E string, one character at\\na time\u003C\u002Fli\u003E\\n\u003Cli\u003EIf the character is a left angle bracket (&lt;) we are now inside a\\ntag so ignore the character\u003C\u002Fli\u003E\\n\u003Cli\u003EIf the character is a right angle bracket (&gt;) we are now leaving\\nthe tag; ignore the character\u003C\u002Fli\u003E\\n\u003Cli\u003EIf we’re not inside a tag, append the current character to a new\\nvariable: text\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003ETo do this, you will use a for loop to look at each successive character\\nin the string. You will then use an if \u002F elif statement to determine\\nwhether the character is part of HTML markup or part of the content,\\nthen append the content characters to the \u003Cem\u003Etext\u003C\u002Fem\u003E string. How will we keep\\ntrack of whether or not we’re inside a tag? We can use an integer\\nvariable, which will be 1 (true) if the current character is inside a\\ntag and 0 (false) if it’s not (in the example below we have named the\\nvariable \u003Cem\u003Einside\u003C\u002Fem\u003E).\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"the-striptags-routine\\\"\u003EThe stripTags Routine\u003C\u002Fh3\u003E\\n\u003Cp\u003EPutting it all together, the final version of the routine is shown\\nbelow. Note that we are expanding the \u003Cem\u003EstripTags\u003C\u002Fem\u003E function created above.\\nMake sure you maintain the indentation as shown when you replace the old\\n\u003Cem\u003EstripTags\u003C\u002Fem\u003E routine in \u003Cem\u003Eobo.py\u003C\u002Fem\u003E with this new one.\u003C\u002Fp\u003E\\n\u003Cp\u003EYour routine may look slightly different and as long as it works that’s\\nfine. If you’ve elected to experiment, it’s probably best to try our\\nversion as well to make sure that your program does what ours does.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# obo.py\\ndef stripTags(pageContents):\\n    pageContents = str(pageContents)\\n    startLoc = pageContents.find(&quot;&lt;p&gt;&quot;)\\n    endLoc = pageContents.rfind(&quot;&lt;br\u002F&gt;&quot;)\\n\\n    pageContents = pageContents[startLoc:endLoc]\\n\\n    inside = 0\\n    text = &#39;&#39;\\n\\n    for char in pageContents:\\n        if char == &#39;&lt;&#39;:\\n            inside = 1\\n        elif (inside == 1 and char == &#39;&gt;&#39;):\\n            inside = 0\\n        elif inside == 1:\\n            continue\\n        else:\\n            text += char\\n\\n    return text\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThere are two new Python concepts in this new code: \u003Cem\u003Econtinue\u003C\u002Fem\u003E and \u003Cem\u003Ereturn\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe Python continue statement tells the interpreter to jump back to the\\ntop of the enclosing loop. So if we are processing characters inside of\\na pair of angle brackets, we want to go get the next character in the\\n\u003Cem\u003EpageContents\u003C\u002Fem\u003E string without adding anything to our \u003Cem\u003Etext\u003C\u002Fem\u003E variable.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn our previous examples we have used \u003Ccode\u003Eprint\u003C\u002Fcode\u003E extensively. This outputs\\nthe result of our program to the screen for the user to read. Often,\\nhowever, we wish to allow one part of the program to send information to\\nanother part. When a function finishes executing, it can return a value\\nto the code which called it. If we were to call \u003Cem\u003EstripTags\u003C\u002Fem\u003E using another\\nprogram, we would do so like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#understanding the Return statement\\n\\nimport obo\\n\\nmyText = &quot;This is my &lt;h1&gt;HTML&lt;\u002Fh1&gt; message&quot;\\n\\ntheResult = obo.stripTags(myText)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EBy using \u003Ccode\u003Ereturn\u003C\u002Fcode\u003E, we have been able to save the output of the \u003Cem\u003EstripTags\u003C\u002Fem\u003E\\nfunction directly into a variable that we have called &#39;theResult&#39;,\\nwhich we can then resume processing as needed using additional code.\u003C\u002Fp\u003E\\n\u003Cp\u003ENote that in the \u003Cem\u003EstripTags\u003C\u002Fem\u003E example from the start of this sub-section,\\nthe value that we want to return now is not \u003Cem\u003EpageContents\u003C\u002Fem\u003E, but rather the\\ncontent which has had the HTML markup stripped out.\u003C\u002Fp\u003E\\n\u003Cp\u003ETo test our new \u003Cem\u003EstripTags\u003C\u002Fem\u003E routine, you can run \u003Cem\u003Etrial-content.py\u003C\u002Fem\u003E again.\\nSince we’ve redefined \u003Cem\u003EstripTags\u003C\u002Fem\u003E, the \u003Cem\u003Etrial-content.py\u003C\u002Fem\u003E program now does\\nsomething different (and closer to what we want). Before you continue,\\nmake sure that you understand why the behaviour of \u003Cem\u003Etrial-content.py\u003C\u002Fem\u003E\\nwould change when we only edited \u003Cem\u003Eobo.py\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"python-lists\\\"\u003EPython Lists\u003C\u002Fh2\u003E\\n\u003Cp\u003ENow that you have the ability to extract raw text from web pages, you’re\\ngoing to want to get the text in a form that is easy to process. So far,\\nwhen you’ve needed to store information in your Python programs, you’ve\\nusually used strings. There were a couple of exceptions, however. In the\\n\u003Cem\u003EstripTags\u003C\u002Fem\u003E routine, you also made use of an \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F2.4\u002Flib\u002Ftypesnumeric.html\\\"\u003Einteger\u003C\u002Fa\u003E named \u003Cem\u003Einside\u003C\u002Fem\u003E to\\nstore a 1 when you were processing a tag and a 0 when you weren’t. You\\ncan do mathematical operations on integers but you cannot store\\nfractions or decimal numbers in integer variables.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Einside = 1\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAnd whenever you’ve needed to read from or write to a file, you’ve used\\na special file handle like \u003Cem\u003Ef\u003C\u002Fem\u003E in the example below.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Ef = open(&#39;helloworld.txt&#39;,&#39;w&#39;)\\nf.write(&#39;hello world&#39;)\\nf.close()\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EOne of the most useful \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F3\u002Flibrary\u002Ftypes.html\\\"\u003Etypes\u003C\u002Fa\u003E of object that Python provides,\\nhowever, is the \u003Cem\u003Elist\u003C\u002Fem\u003E, an ordered collection of other objects (including,\\npotentially, other lists). Converting a string into a list of characters\\nor words is straightforward. Type or copy the following program into\\nyour text editor to see two ways of achieving this. Save the file as\\n\u003Cem\u003Estring-to-list.py\u003C\u002Fem\u003E and execute it. Compare the two lists that are\\nprinted to the Command Output pane and see if you can figure out how the\\ncode works.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# string-to-list.py\\n\\n# some strings\\ns1 = &#39;hello world&#39;\\ns2 = &#39;howdy world&#39;\\n\\n# list of characters\\ncharlist = []\\nfor char in s1:\\n    charlist.append(char)\\nprint(charlist)\\n\\n# list of &#39;words&#39;\\nwordlist = s2.split()\\nprint(wordlist)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe first routine uses a for loop to step through each character in the\\nstring \u003Cem\u003Es1\u003C\u002Fem\u003E, and appends the character to the end of \u003Cem\u003Echarlist\u003C\u002Fem\u003E. The second\\nroutine makes use of the split operation to break the string \u003Cem\u003Es2\u003C\u002Fem\u003E apart\\nwherever there is whitespace (spaces, tabs, carriage returns and similar\\ncharacters). Actually, it is a bit of a simplification to refer to the\\nobjects in the second list as words. Try changing \u003Cem\u003Es2\u003C\u002Fem\u003E in the above\\nprogram to ‘howdy world!’ and running it again. What happened to the\\nexclamation mark? Note, that you will have to save your changes before\\nusing Run Python again.\u003C\u002Fp\u003E\\n\u003Cp\u003EGiven what you’ve learned so far, you can now open a URL, download the\\nweb page to a string, strip out the HTML and then split the text into a\\nlist of words. Try executing the following program.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#html-to-list1.py\\nimport urllib.request, urllib.error, urllib.parse, obo\\n\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fprint.jsp?div=t17800628-33&#39;\\n\\nresponse = urllib.request.urlopen(url)\\nhtml = response.read().decode(&#39;UTF-8&#39;)\\ntext = obo.stripTags(html)\\nwordlist = text.split()\\n\\nprint((wordlist[0:120]))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou should get something like the following.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E[&#39;324.&#39;, &#39;\\\\xc2\\\\xa0&#39;, &#39;BENJAMIN&#39;, &#39;BOWSEY&#39;, &#39;(a&#39;, &#39;blackmoor&#39;, &#39;)&#39;, &#39;was&#39;,\\n&#39;indicted&#39;, &#39;for&#39;, &#39;that&#39;, &#39;he&#39;, &#39;together&#39;, &#39;with&#39;, &#39;five&#39;, &#39;hundred&#39;,\\n&#39;other&#39;, &#39;persons&#39;, &#39;and&#39;, &#39;more,&#39;, &#39;did,&#39;, &#39;unlawfully,&#39;, &#39;riotously,&#39;,\\n&#39;and&#39;, &#39;tumultuously&#39;, &#39;assemble&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;to&#39;,\\n&#39;the&#39;, &#39;disturbance&#39;, &#39;of&#39;, &#39;the&#39;, &#39;public&#39;, &#39;peace&#39;, &#39;and&#39;, &#39;did&#39;, &#39;begin&#39;,\\n&#39;to&#39;, &#39;demolish&#39;, &#39;and&#39;, &#39;pull&#39;, &#39;down&#39;, &#39;the&#39;, &#39;dwelling&#39;, &#39;house&#39;, &#39;of&#39;,\\n&#39;\\\\xc2\\\\xa0&#39;, &#39;Richard&#39;, &#39;Akerman&#39;, &#39;,&#39;, &#39;against&#39;, &#39;the&#39;, &#39;form&#39;, &#39;of&#39;,\\n&#39;the&#39;, &#39;statute,&#39;, &#39;&amp;amp;c.&#39;, &#39;\\\\xc2\\\\xa0&#39;, &#39;ROSE&#39;, &#39;JENNINGS&#39;, &#39;,&#39;, &#39;Esq.&#39;,\\n&#39;sworn.&#39;, &#39;Had&#39;, &#39;you&#39;, &#39;any&#39;, &#39;occasion&#39;, &#39;to&#39;, &#39;be&#39;, &#39;in&#39;, &#39;this&#39;, &#39;part&#39;,\\n&#39;of&#39;, &#39;the&#39;, &#39;town,&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;in&#39;, &#39;the&#39;,\\n&#39;evening?&#39;, &#39;-&#39;, &#39;I&#39;, &#39;dined&#39;, &#39;with&#39;, &#39;my&#39;, &#39;brother&#39;, &#39;who&#39;, &#39;lives&#39;,\\n&#39;opposite&#39;, &#39;Mr.&#39;, &quot;Akerman&#39;s&quot;, &#39;house.&#39;, &#39;They&#39;, &#39;attacked&#39;, &#39;Mr.&#39;,\\n&quot;Akerman&#39;s&quot;, &#39;house&#39;, &#39;precisely&#39;, &#39;at&#39;, &#39;seven&#39;, &quot;o&#39;clock;&quot;, &#39;they&#39;,\\n&#39;were&#39;, &#39;preceded&#39;, &#39;by&#39;, &#39;a&#39;, &#39;man&#39;, &#39;better&#39;, &#39;dressed&#39;, &#39;than&#39;, &#39;the&#39;,\\n&#39;rest,&#39;, &#39;who&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESimply having a list of words doesn’t buy you much yet. As human beings,\\nwe already have the ability to read. You’re getting much closer to a\\nrepresentation that your programs can process, however.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"suggested-reading\\\"\u003ESuggested Reading\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELutz, \u003Cem\u003ELearning Python\u003C\u002Fem\u003E\u003Cul\u003E\\n\u003Cli\u003ECh. 7: Strings\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 8: Lists and Dictionaries\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 10: Introducing Python Statements\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 15: Function Basics\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"code-syncing\\\"\u003ECode Syncing\u003C\u002Fh3\u003E\\n\u003Cp\u003ETo follow along with future lessons it is important that you have the\\nright files and programs in your programming-historian directory. At the\\nend of each chapter in this series you can download the programming-historian zip file\\nto make sure you have the correct code.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-lessons3.zip (\u003Ca href=\\\"\u002Fassets\u002Fpython-lessons3.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

@@ -1,36 +1,40 @@
 <script context="module">
-  export async function load({params, fetch}) {
-    const contents = await fetch(`/${params.lang}/${params.lessons}/contents.json`).then(response => response.json())
+  import { tree_view } from '$lib/markdown';
+  export async function load({params, url}) {
+    const {lang, lessons, slug} = params;
+    const page = tree_view.get(url.pathname)
+    if (page === undefined) {
+      // COMMENT THIS OUT TO RAISE ERROR PROPERLY
+      return {
+        props: {
+          error: true
+        }
+      }
+    }
     return {
-      props: {
-        contents: contents.contents,
-        lang: params.lang,
-        lesson: params.lessons,
-      } 
+      props : {
+        html: page.html,
+        attributes: page.attributes
+      }
     }
   }
 </script>
+
 <script>
-  export let lang = "Farsi"
-  export let lesson = "lecciones"
-  export let contents;
-  import { page } from '$app/stores'
-  let title = lang;
+  export let html = "PAGE NOT FOUND";
+  import { lesson_slugs } from '$lib/translate'
+  import LessonIndex from '$lib/components/LessonIndex.svelte'
+  import { page } from '$app/stores';
+  $: lang = $page.params.lang
 </script>
 
-<h1>{title}</h1>
-
-<ul>
-  {#each contents as content}
-    <li>
-      <a href="/{lang}/{lesson}/{content.slug}/">{content.title} ({content.slug})</a>
-    </li>
-  {/each}
-</ul>
-
+{#if lesson_slugs.has($page.params.lessons)}
+  <LessonIndex {lang}></LessonIndex>
+{:else}
+{@html html}
+{/if}
 <style>
   a {
     color: #303;
-
   }
 </style>

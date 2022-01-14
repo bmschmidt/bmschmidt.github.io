@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/_posts/2016-09-19-distant-reading-in-the-undergraduate-classroom"),
+					params: {lang:"_posts",lessons:"2016-09-19-distant-reading-in-the-undergraduate-classroom"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><p>Close reading of primary sources is one of the most valuable skills historians can cultivate with their students. But as teachers, researchers, and students face unprecedented access to historical material in our <a href="http://chnm.gmu.edu/essays-on-history-new-media/essays/?essayid=6">“culture of abundance,”</a> computer-assisted analysis of text is an increasingly viable and attractive skill. An insightful close reading of a single text, combined with a “distant reading” of a body of texts too large to comprehend on one’s own, can together offer students and researchers powerful new ways to understand historical documents.</p>
+<p>Distant reading is one of the most well represented techniques in the <em>Programming Historian</em>’s cache of digital humanities tutorials. From <a href="/lessons/corpus-analysis-with-antconc">identifying common phrases and sentence structures with AntConc</a> to <a href="/lessons/topic-modeling-and-mallet">uncovering frequent keywords with MALLET</a>, distant reading offers researchers an entryway into analyzing huge corpuses of text without requiring them to read through them line by line —— which could actually be an insurmountable task, depending on the scope of one’s archive, bibliography, or dataset.</p>
+<p>Distant reading is a useful addition to any humanities researcher’s methodological toolkit. But it can also be really useful for teaching undergraduates how to research and analyze the many thousands of pages of archival documents that are being digitized every single day.<br>
+What might this look like in the classroom? Here’s an example from one of my own research and teaching areas, U.S. immigration history.</p>
+<p>1892 to 1924 was a foundational era in the history of American immigration law and policy. 1892 was the first year when the regulation of immigration in the U.S. was brought under the supervision of a single federal office. In 1924, Congress passed the Johnson-Reed Act, a law that for the first time in American history limited immigration via numerical quotas based on national origin. Although the Johnson-Reed Act is known as one of the most exclusionary immigration laws of its time, it was hardly the first law in American history to restrict migration to the United States. The Page Act of 1875 and the Chinese Exclusion Act of 1882 paved the way for a tide of legislation that excluded many categories of immigrants from entering the country according to race, class, ability, sexuality, gender, and political affiliation.</p>
+<p>There are many avenues for researching the evolution of  exclusion in American immigration law. But one of the most accessible ways to do so is through the annual reports of immigration that the U.S. federal government published at the turn of the twentieth century. These annual reports are digitized and accessible to researchers and students through databases like <a href="https://www.hathitrust.org/">HathiTrust</a>, <a href="http://home.heinonline.org/">HeinOnline</a>, and other databases available through many university library subscriptions.</p>
+<p>As a first foray into distant reading, instructors might encourage students to pick one annual report and run it through <a href="http://voyant-tools.org/">Voyant Tools</a>. For example, a group of students could plug in the U.S. Department of Labor’s Annual Report on Immigration for the year 1910 and do a group think on the document’s major word frequencies.</p>
+<figure>
+<a href="/images/distant-reading-in-the-undergraduate-classroom/distant-reading-01.png">
+        <img src="/images/distant-reading-in-the-undergraduate-classroom/distant-reading-01.png" alt="" />
+    </a>
+</figure><figure>
+<a href="/images/distant-reading-in-the-undergraduate-classroom/distant-reading-02.png">
+        <img src="/images/distant-reading-in-the-undergraduate-classroom/distant-reading-02.png" alt="" />
+    </a>
+    <figcaption>
+    <p>Screenshots of a distant reading of the US Department of Labor’s Annual Report on Immigration, 1910, conducted with <a href="http://voyant-tools.org/">VoyantTools.org</a>.</p>
+</figcaption>
+</figure>
+<p>They might not be surprised, for example, that the words “immigration,” “united,” and “states” are some of the most recurring words in the document.</p>
+<p>But what about the word “alien”? Students might discuss what the frequency of this word suggests about how government officials were thinking about immigrants at the time.</p>
+<p>Or how about “Chinese”? Students might dig deeper into the report and read more closely about why Chinese immigration was such a concern to immigration officials at the time — and, at the same time, they might think about why “Chinese” is the only ethnic descriptor among the document’s most frequent words.</p>
+<p>On the other end of the spectrum, students might discuss why words like “border” and “deportation” — words that are extremely important in today’s debates about immigration — are not among the most frequent words in the report.</p>
+<p>The possibilities for coming up with questions about primary sources through distant reading become even more powerful when working with multiple texts. For example, an instructor who teaches themselves how to topic model with <em>Programming Historian</em> could pass that knowledge on to students by having them run every single annual report on immigration from 1892 to 1924 through the Topic Modeling Tool, a <a href="http://www.themacroscope.org/?page_id=391">user-friendly interface for topic modeling that students who have no coding knowledge can use in the classroom</a>. Using the Topic Modeling Tool with the annual reports from this era of immigration history would give students a chance to begin identifying the topics that were of concern to government officials, and begin to make observations about how those concerns changed over time.</p>
+<p>As <a href="http://tedunderwood.com/2015/06/04/seven-ways-humanists-are-using-computers-to-understand-text/">Ted Underwood notes</a>, topic modeling may be especially useful for individuals who are approaching a set of texts without a particular research question in mind. Distant reading is a great way for students in particular to begin analyzing historical documents — and could also be a great way for students to start coming up with questions for research papers that will allow them to practice close readings of primary sources and further develop their digital research skills.</p>
+<p>Have you taught with distant reading, or used a PH tutorial on distant reading in your classroom? Let us know! Tweet @ProgHist with the hashtag #teachDH and share your experiences with us.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

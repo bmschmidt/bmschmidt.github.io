@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/pt/licoes/instalacao-linux"),
+					params: {lang:"pt",lessons:"licoes",slug:"instalacao-linux"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Configurar um ambiente de desenvolvimento integrado para Python (Linux)</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<p>Deixamos em primeiro lugar um obrigado a John Fink por fornecer as bases para esta seção. Damos instruções para o Ubuntu 18.04 LTS, mas as mesmas devem funcionar com qualquer versão do Linux baseada em apt, tal como o Debian ou Linux-Mint. Você também deve ter acesso ao comando sudo.</p>
+<h2>Faça um backup do seu computador</h2>
+<p>É sempre importante garantir que você tenha backups regulares e recentes do seu computador. Este é um bom conselho que serve para a vida toda e não se limita à pratica específica de programação.</p>
+<h2>Instale o Python 3</h2>
+<ol>
+<li>Abra um Terminal (Vá para Applicações, digite <code>Terminal</code> e clique no ícone Terminal).</li>
+<li>De seguida, digite: <code>sudo apt-get install python3</code></li>
+<li>Entre a sua senha e em seguida tecle <code>S</code> para finalizar a instalação.
+Note que você provavelmente já deve ter o Python 3 instalado. Assim, não estranhe se o Ubuntu informar que o Python já está instalado.</li>
+</ol>
+<h2>Crie um diretório</h2>
+<p>Você irá armazenar os seus programas Python num diretório (i.e., uma pasta). Este diretório pode estar em qualquer pasta que você quiser,
+mas é melhor que você crie o mesmo na sua pasta <em>Home</em>. Para criar o diretório de forma rápida, abra a janela do terminal e digite:</p>
+<pre><code>cd ~
+mkdir programming-historian
+</code></pre>
+<h2>Instale o Komodo Edit</h2>
+<p>O Komodo Edit é um editor livre e de código aberto, mas pode utilizar <a href="https://wiki.python.org/moin/PythonEditors/">outros editores</a> se você preferir. Pode fazer o download directamente do <a href="https://www.activestate.com/products/komodo-ide/downloads/edit/">site do Komodo Edit</a>. Uma vez que você tenha feito o download, faça a extração do ficheiro para a sua pasta pessoal e siga as instruções de instalação. Se você tiver seguido corretamente as instruções, abra a sua pasta pessoal, acesse a pasta <code>Komodo-Edit-12/bin</code> e finalmente clique no arquivo <code>komodo</code>.</p>
+<h3>Faça um comando “Run Python” no Komodo Edit</h3>
+<ol>
+<li>Já no editor, certifique que a barra lateral “Toolbox” está visível.</li>
+<li>Clique no ícone da engrenagem na barra de ferramentas e selecione <code>New Command</code>.</li>
+<li>No campo Type, digite “<code>Run Python</code>”.</li>
+<li>No campo Command, digite: <code>%(python3) %F</code>.</li>
+</ol>
+<p>Se o ecrã estiver mostrando algo como descrito na janela abaixo, clique no botão OK.</p>
+<p>{% include figure.html caption=&quot;Adicione um novo comando no Komodo Edit&quot; filename=&quot;komodo-edit-tools-linux.png&quot; %}</p>
+<h2>Passo 2 – “Olá Mundo” em Python</h2>
+<hr>
+<p>É uma tradição para quem está começando a programar em uma nova linguagem que o primeiro programa a ser construído emita a frase &quot;Olá Mundo&quot;.</p>
+<p>O Python é uma boa linguagem de programação para iniciantes porque ela é de alto-nível.
+Isto quer dizer que é possível escrever pequenos programas que realizam muitas funcionalidades.
+Quanto menor o programa, mais provável que ele caiba em apenas um ecrã e mais fácil será de manter o controle dele em sua mente.</p>
+<p>O Python é uma lingugagem 'interpretada'. Isto significa que existe um programa especial (conhecido como Interpretador) que sabe como seguir as instruções da linguagem. Uma forma de utilizar o interpretador passa por guardar todas as instruções a serem executadas em um ficheiro para, em seguida, solicitar ao interpretador que ele interprete o conteúdo desse ficheiro.</p>
+<p>Um ficheiro que contém instruções de uma linguagem de programação é conhecido como um programa. O interpretador irá executar cada uma das instruções que você incluiu no seu programa e, no final, irá parar. Vamos experimentar como isto funciona.</p>
+<p>No seu editor de texto, crie um novo ficheiro, entre o seguinte programa de duas linhas e salve-o na pasta <code>programming-historian</code>:</p>
+<p><code>ola-mundo.py</code></p>
+<pre><code class="language-python"># ola-mundo.py
+print('Olá Mundo')
+</code></pre>
+<p>O comando “<em>Run Python</em>” permite que você execute o seu programa. Se você escolheu um outro editor, este deve ter uma funcionalidade semelhante. Se tudo correu bem, o ecrã deverá mostrar algo como o apresentado de seguida:</p>
+<p>{% include figure.html caption=&quot;Olá mundo no Komodo Edit no Linux&quot; filename=&quot;komodo-edit-output-linux.png&quot; %}</p>
+<h2>Interagindo com a linha de comandos do Python</h2>
+<p>Outra forma de interagir com o interpretador é utilizar o que é denominado por linha de comandos.
+Você pode digitar um comando, pressionar a tecla Enter e a linha de comandos irá responder ao seu comando.
+Usar a linha de comandos é um ótimo método para testar os comandos e para se certificar que eles realmente fazem o que você está imaginando.</p>
+<p>Você pode executar a linha de comandos do Python iniciando a aplicação &quot;Terminal&quot; e, de seguida, digitando “<code>python3</code>” na janela que se abriu na sua tela.</p>
+<p>Esse comando irá abrir a linha de comandos do Python, indicando assim que você já pode executar comandos Python. De seguida, digite:</p>
+<pre><code class="language-python">print('Olá Mundo')
+</code></pre>
+<p>e pressione Enter. O computador irá responder com:</p>
+<pre><code class="language-python">Olá Mundo
+</code></pre>
+<p>Quando quisermos representar uma interação na linha de comandos, nós utilizaremos o símbolo <code>-&gt;</code> para indicar a resposta para o nosso comando, tal como no exemplo abaixo:</p>
+<pre><code class="language-python">print('Olá Mundo')
+-&gt; Olá Mundo
+</code></pre>
+<p>No seu ecrã, você verá algo como:</p>
+<p>{% include figure.html caption=&quot;Olá Mundo no Terminal do Linux&quot; filename=&quot;terminal-output-linux.png&quot; %}</p>
+<p>Agora que você e o seu computador estão preparados, podemos seguir para tarefas mais interessantes. Se você está seguindo as lições do Python,
+nossa sugestão é que você tente a próxima lição ‘<a href="nocoes-basicas-paginas-web-html">Noções básicas de páginas web e HTML</a>‘</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

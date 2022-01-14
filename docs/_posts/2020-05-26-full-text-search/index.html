@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/_posts/2020-05-26-full-text-search"),
+					params: {lang:"_posts",lessons:"2020-05-26-full-text-search"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><p>In an effort to make finding lessons more user-friendly, we've officially launched full-text searching for all our lessons. Previously you could use filter buttons to select lessons based on topic or activity, and sort them by date and difficulty. However, you weren't able to find lessons based on their content.</p>
+<p>As of today now you can you dig even deeper, finding the exact lesson to match your interests in all of our supported languages! This feature has been a long time coming (our initial issue ticket was opened on September 20, 2018) and we hope this new addition will make Programming Historian even more accessible.</p>
+<h2>How to search?</h2>
+<p>To use the search feature, go to the lessons page and click on the <code>Start Searching</code> button.</p>
+<figure>
+  <img src="/images/full-text-search/start_search.png" alt="Initial lesson home page, showing the start search button." title="Initial lesson home page, showing the start search button."/>
+  <figcaption>Initial lesson home page. Click start searching to enter search queries.</figcaption>
+</figure>
+<br/>
+<p>You'll now see a search bar and button. You can enter your search terms and get a list of the relevant  lessons, with the search terms highlighted.</p>
+<figure>
+  <img src="/images/full-text-search/search_results.png" alt="Search results displaying highlighted search terms." title="Search results displaying highlighted search terms."/>
+  <figcaption>Search results for <em>Twitter</em> and <em>Network</em></figcaption>
+</figure>
+<br/>
+<p>The results are ranked by relevance and you can also filter them using our existing buttons.</p>
+<figure>
+  <img src="/images/full-text-search/search_filter.png" alt="Search results displaying highlighted search terms with selected filters." title="Search results displaying highlighted search terms with selected filters."/>
+  <figcaption>Search results for <em>Twitter</em> and <em>Network</em> with topic <em>Python</em></figcaption>
+</figure>
+<br/>
+If you want more information about searching, you can click the information button to get more details about how to use this feature.
+<img src="/images/full-text-search/search_info.png" alt="Search info section, displaying additional details on how to search." title="Search info section, displaying additional details on how to search."/>
+<h2>How does the search work?</h2>
+<p>Behind the scenes, this search feature uses <a href="https://lunrjs.com">LunrJS</a>, a software package for enabling full-text search on static sites.</p>
+<div style="display: flex;">
+  <figure>
+    <img src="/images/full-text-search/inverted_index.jpeg" alt="Search info section, displaying additional details on how to search." title="Search info section, displaying additional details on how to search."/>
+    <figcaption>Inverted index diagram</figcaption>
+  </figure>
+  <figure>
+    <img src="/images/full-text-search/book_index.jpg" alt="Search info section, displaying additional details on how to search." title="Search info section, displaying additional details on how to search."/>
+    <figcaption>Book index (<a href="https://commons.wikimedia.org/wiki/File:Book_of_Knowledge_1919_Vol_20,_General_Index_Start.jpg">from Wikipedia entry on <em>Book of Knowledge</em></a>)</figcaption>
+  </figure>
+</div>
+<p>Lunr builds an <em>inverted index</em> of all our lessons, which is essentially the same as an index at the back of a book. So each time you enter a search term, Lunr looks for term, finds all the lessons that is in, and then returns the lessons based on relevance of the term (which is calculated using an information retrieval algorithm called <a href="https://en.wikipedia.org/wiki/Okapi_BM25">Okapi BM25</a>).</p>
+<p>For optimal results, we recommend using multiple search terms, as well as the <code>+</code> and <code>-</code> symbols to get exact searches or limit searches, respectively. You can also read more about how to search with Lunr on their <a href="https://lunrjs.com/guides/searching.html">searching documentation</a>.</p>
+<h2>How did we implement search?</h2>
+<p>In adding full-text search, we have endeavored to optimize speed, as well as accuracy of results. Most search engines utilized inverted indices (like Solr or ElasticSearch) but they still expect you to have some sort of database to dynamically return results to your queries. Since we use a static site architecture, we don't have any live databases, which means that our entire search index needs to be built prior to the site being loaded (otherwise users won't be able to get search results).</p>
+<p>Lunr remains one of the most common solutions for adding search to static site, but there's a few drawbacks. One is that it takes a lot of time to build the search index and it can end up creating fairly large files to be loaded into the browser. We also had the additional complication of wanting to separate search results by language.</p>
+<p>In the end, we implemented a fairly novel approach (as far as I know) to generate the search corpora using Jekyll, and then built a separate NodeJS app to make the search indices - in essence creating a microservice. You can view the code for this search index building in the <a href="https://github.com/programminghistorian/search-index">search-index repository</a>, and we used TravisCI to automatically rebuild the indices every night. In separating out the search index building, we were able to limit the JavaScript dependencies in our main repository and minimize the time needed to build the site locally. Having the indices built separately also allowed us to use Github's built-in CDN functionality for serving the indices, as well as enabling us to limit the JavaScript payload for slower connections.</p>
+<p>For more information about the technical features behind our full-text search, feel free to visit our <a href="https://github.com/programminghistorian/jekyll/wiki/Technical-Tutorial-on-Search">technical documentation on search</a>.</p>
+<p>We hope that search allows users to more easily access lessons, as well as discover lessons in new ways. As Programming Historian continues to produce new lessons and support for additional languages, we hope features like full-text search help us maintain a user-friendly and sustainable web infrastructure.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

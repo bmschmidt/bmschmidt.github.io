@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/qgis-layers"),
 					params: {lang:"en",lessons:"lessons",slug:"qgis-layers"}
@@ -48,14 +49,16 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Installing QGIS 2.0 and Adding Layers</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="lesson-goals">Lesson Goals</h2>
+<h2>Lesson Goals</h2>
 <p>In this lesson you will install QGIS software, download geospatial files
 like shapefiles and GeoTIFFs, and create a map out of a number of vector
 and raster layers. Quantum or QGIS is an open source alternative to the
@@ -76,11 +79,11 @@ advanced work. In many cases it is not lack of functions, but stability
 issues that bring us back to ArcGIS. For those who are learning Python
 with the Programming Historian, you will be glad to know that both QGIS
 and ArcGIS use Python as their main scripting language.</p>
-<h2 id="installing-qgis">Installing QGIS</h2>
+<h2>Installing QGIS</h2>
 <p>Navigate to the <a href="http://qgis.org/en/site/forusers/download.html">QGIS Download page</a>. The procedure is a little
 different depending on your operating system. Click on the appropriate
 Operating System. Follow the instructions below.</p>
-<h4 id="mac-instructions">Mac Instructions</h4>
+<h4>Mac Instructions</h4>
 <ul>
 <li>For most people it will be best to choose Master release (the one
 that has a single installer package). You will still need to install
@@ -96,7 +99,7 @@ framework package (under Requirements). Install the framework package like any o
 <li>as with any other Mac application you are using for the first time,
 you will have to go find the QGIS application in Applications</li>
 </ul>
-<h4 id="windows-instructions">Windows Instructions</h4>
+<h4>Windows Instructions</h4>
 <ul>
 <li>under Standalone Installer, click on the link to Download QGIS</li>
 </ul>
@@ -106,10 +109,10 @@ you will have to go find the QGIS application in Applications</li>
 </ul>
 <p>QGIS is very simple to install in most versions of Linux. Follow the
 instructions on the download page.</p>
-<h3 id="prince-edward-island-data">Prince Edward Island Data</h3>
+<h3>Prince Edward Island Data</h3>
 <p>We will be using some government data from the Canadian province of
 Prince Edward Island. PEI is a great example because there is a lot of
-data for free online and because it is Canada&#39;s smallest province,
+data for free online and because it is Canada's smallest province,
 making the downloads quick! Download PEI shapefiles:</p>
 <ul>
 <li>Navigate to the links below in your web browser, read/accept the
@@ -139,7 +142,7 @@ zip compression. Remember the folder in which you save uncompressed
 shapefile folders, as you will need to find them from within QGIS in
 a few minutes.</li>
 </ul>
-<h2 id="starting-your-gis-project">Starting Your GIS Project</h2>
+<h2>Starting Your GIS Project</h2>
 <p>Open QGIS. The first thing we need to do is set up the <a href="http://en.wikipedia.org/wiki/Spatial_reference_system">Coordinate
 Reference System</a> (CRS) correctly. The CRS is the map projection and
 projections are the various ways to represent real world places on
@@ -147,7 +150,7 @@ two-dimensional maps. The default is WGS84 (it is increasingly common to
 use WGS 84 which is compatible with Google Earth type software), but
 since most of our data and examples are created by Canadian governments
 we recommend using NAD 83 (North American Datum, 1983). For more on NAD
-83 and the Federal Government&#39;s datum, see <a href="http://www.nrcan.gc.ca/earth-sciences/geography-boundary/mapping/topographic-mapping/10272">NRCan&#39;s website</a>. PEI has
+83 and the Federal Government's datum, see <a href="http://www.nrcan.gc.ca/earth-sciences/geography-boundary/mapping/topographic-mapping/10272">NRCan's website</a>. PEI has
 its own NAD 83 coordinate reference system which uses a <a href="http://www.gov.pe.ca/gis/index.php3?number=77865&amp;lang=E">Double
 Stereographic projection</a>. Managing the CRS of different layers of
 information and making sure they are working correctly is one of the
@@ -164,15 +167,19 @@ Properties</em></p>
 </ul>
 <p>{% include figure.html filename=&quot;qgis4.png&quot; caption=&quot;Figure 4&quot; %}</p>
 <ul>
-<li><p>In the left window pane select CRS (second from the top)</p>
+<li>
+<p>In the left window pane select CRS (second from the top)</p>
 </li>
-<li><p>click Enable &#39;on the fly&#39; CRS transformation button on top left</p>
+<li>
+<p>click Enable 'on the fly' CRS transformation button on top left</p>
 </li>
-<li><p>in the Filter box enter &#39;2291′ – this quickly navigates to the best
+<li>
+<p>in the Filter box enter '2291′ – this quickly navigates to the best
 Coordinate reference system for Prince Edward Island.</p>
 </li>
-<li><p>under the box titled Coordinate reference systems of the world,
-select &#39;NAD83(CSRS98) / Prince Edward Isl. (Stereographic)&#39; and hit
+<li>
+<p>under the box titled Coordinate reference systems of the world,
+select 'NAD83(CSRS98) / Prince Edward Isl. (Stereographic)' and hit
 OK</p>
 </li>
 </ul>
@@ -196,23 +203,23 @@ region. For those of you working on North American projects identifying
 the correct NAD83 for your region will often be the best CRS. Here are a
 few links to other resources that will help you choose a CRS for your
 own project: <a href="http://web.archive.org/web/20180807132308/http://qgis.spatialthoughts.com/2012/04/tutorial-working-with-projections-in.html">Tutorial: Working with Projections in QGIS</a></p>
-<h3 id="building-a-base-map">Building a Base Map</h3>
-<p>Now that your computer is driving with the right directions, it&#39;s time
+<h3>Building a Base Map</h3>
+<p>Now that your computer is driving with the right directions, it's time
 to add some information that makes sense to humans. Your project should
 start with a base map, or a selection of geospatial information that
 lets your readers recognize real world features on the map. For most
-users this will be comprised of several &#39;layers&#39; of vector and raster
+users this will be comprised of several 'layers' of vector and raster
 data, which can be rearranged, coloured, and labeled in such a way that
-they make sense to your readers and your project&#39;s objectives. A
+they make sense to your readers and your project's objectives. A
 relatively new feature on many GIS programs is the availability of
 pre-fab base maps, but since this technology is under development for
 open source platforms like QGIS we will walk through the process of
 creating our own base map by adding vector and raster layers in this
 module. For those who would like to add pre-fab base maps to QGIS, you
-can try installing the &#39;OpenLayers&#39; Plugin under Plugins-&gt;Manage and
+can try installing the 'OpenLayers' Plugin under Plugins-&gt;Manage and
 Install Plugins. Select &quot;Get More&quot; on the left. Click OpenLayers and
 then click Install plugin. Click OK and then click close. Once
-installed, you&#39;ll find OpenLayers in the Plugins Menu. Try installing
+installed, you'll find OpenLayers in the Plugins Menu. Try installing
 some of the different Google and OpenStreetMaps layers. At the time of
 writing this module, the OpenLayers plugin (v. 1.1.1) installs but fails
 to work properly on any Mac using OSX. It appears to work more
@@ -221,12 +228,12 @@ it will only get better in the months ahead. Note, however, that the
 projection for some of these global maps do not correct on the fly, so
 the satellite images might not alway sync up with data projected in a
 different CRS.</p>
-<h2 id="opening-vectors">Opening Vectors</h2>
+<h2>Opening Vectors</h2>
 <p>Vectors <a href="http://www.gislounge.com/geodatabases-explored-vector-and-raster-data/">defined</a>: GIS uses points, lines, and polygons, also known as
 <strong>vector</strong> data. Its first order of work is to arrange these points,
 lines, and polygons and project them accurately on maps. Points may be
 towns or telephone poles; lines could represent rivers, roads, or
-railroads; and polygons could encompass a farmer&#39;s lot or larger
+railroads; and polygons could encompass a farmer's lot or larger
 political boundaries. However, it is also possible to attach historical
 data to these geographical places and study how people interacted with
 and changed their physical environments. The population of towns
@@ -234,7 +241,7 @@ changed, rivers moved their courses, lots were subdivided, and land was
 planted with various crops.</p>
 <ul>
 <li>under Layer on toolbar, choose Add Vector Layer (alternatively the
-same icon you see next to &#39;Add Vector Layer&#39; can also be selected
+same icon you see next to 'Add Vector Layer' can also be selected
 from the tool bar on the upper left side)</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis6.png&quot; caption=&quot;Figure 6&quot; %}</p>
@@ -245,8 +252,8 @@ in the folder</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis7.png&quot; caption=&quot;Figure 7&quot; %}</p>
 <ul>
-<li>select coastline_polygon.shp, then select &#39;OK&#39;, and you should see
-the island&#39;s coastline on your screen. Sometimes QGIS adds a
+<li>select coastline_polygon.shp, then select 'OK', and you should see
+the island's coastline on your screen. Sometimes QGIS adds a
 coloured background (see the image above). If you have a coloured
 background, follow the steps below. If not, skip down the page to
 the ***.</li>
@@ -255,15 +262,17 @@ choose Properties.\</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis8.png&quot; caption=&quot;Figure 8&quot; %}</p>
 <ul>
-<li><p>In the ensuing window, click Style in the left pane</p>
+<li>
+<p>In the ensuing window, click Style in the left pane</p>
 </li>
-<li><p>There are a range of options, but we want to get rid of the
+<li>
+<p>There are a range of options, but we want to get rid of the
 background all together. Click <strong>Simple fill</strong>.</p>
 </li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis9.png&quot; caption=&quot;Figure 9&quot; %}</p>
 <ul>
-<li>Then choose &#39;<strong>No Brush</strong>&#39; in the <strong>Fill style</strong> drop down menu.
+<li>Then choose '<strong>No Brush</strong>' in the <strong>Fill style</strong> drop down menu.
 <strong>Click OK.</strong></li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis10.png&quot; caption=&quot;Figure 10&quot; %}</p>
@@ -272,11 +281,11 @@ background all together. Click <strong>Simple fill</strong>.</p>
 <li>Choose Add Vector Layer again.</li>
 <li>click Browse, find your downloaded Prince Edward Island shapefiles
 in the folder</li>
-<li>select &#39;PEI_HYDRONETWORK&#39;</li>
-<li>click on &#39;PEI_HYDRONETWORK.shp&#39; and then hit &#39;Open&#39;</li>
+<li>select 'PEI_HYDRONETWORK'</li>
+<li>click on 'PEI_HYDRONETWORK.shp' and then hit 'Open'</li>
 <li>right click the layer in the Layers menu and choose Properties.</li>
 <li>select Style tab, and choose an appropriate blue to color the
-hydronetwork and select &#39;OK&#39; at the bottom right of the window</li>
+hydronetwork and select 'OK' at the bottom right of the window</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis11.png&quot; caption=&quot;Figure 11&quot; %}</p>
 <ul>
@@ -287,7 +296,7 @@ hydronetwork and select &#39;OK&#39; at the bottom right of the window</li>
 <li>Choose Add Vector Layer again.</li>
 <li>click Browse, find your downloaded Prince Edward Island shapefiles
 in the folder</li>
-<li>double-click on &#39;1935 inventory_region.shp&#39; and then hit &#39;Open&#39;</li>
+<li>double-click on '1935 inventory_region.shp' and then hit 'Open'</li>
 </ul>
 <p>This will add a dense map showing the different forest cover in 1935.
 However, to see the different categories, you will need to change the
@@ -314,31 +323,33 @@ how to display these categories on the map.</p>
 </ul>
 <p>{% include figure.html filename=&quot;qgis15.png&quot; caption=&quot;Figure 15&quot; %}</p>
 <ul>
-<li>on the menu bar that reads &#39;Single Symbol&#39; select &#39;Categorized&#39;</li>
+<li>on the menu bar that reads 'Single Symbol' select 'Categorized'</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis16.png&quot; caption=&quot;Figure 16&quot; %}</p>
 <ul>
-<li>beside Column choose &#39;Landuse&#39;</li>
+<li>beside Column choose 'Landuse'</li>
 <li>under Color ramp choose Greens</li>
-<li>click &#39;Classify&#39; below and to the left</li>
+<li>click 'Classify' below and to the left</li>
 <li>in Symbol Column, choose the furthest down dark green square (with
-no value beside it) and hit the &#39;Delete&#39; button (to the right of
+no value beside it) and hit the 'Delete' button (to the right of
 Classify); also delete the Developed category, as we want to
-highlight forested areas. Click &#39;OK&#39;</li>
+highlight forested areas. Click 'OK'</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis17.png&quot; caption=&quot;Figure 17&quot; %}</p>
 <ul>
-<li><p>in Layers sidebar menu, click on the little arrow beside
+<li>
+<p>in Layers sidebar menu, click on the little arrow beside
 1935_inventory_region to view the legend.</p>
 </li>
-<li><p>You can now see the extent of the forests in 1935. Try using the
+<li>
+<p>You can now see the extent of the forests in 1935. Try using the
 magnifying glass tool to zoom in and inspect the different landuses.</p>
 </li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis18-300x283.png&quot; caption=&quot;Figure 18: Click to see full-size image&quot; %}</p>
 <ul>
 <li>To get back to the full island, right click on any of the layers and
-choose &#39;<strong>Zoom to Layer Extent.</strong>&#39;</li>
+choose '<strong>Zoom to Layer Extent.</strong>'</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis19.png&quot; caption=&quot;Figure 19&quot; %}</p>
 <ul>
@@ -346,22 +357,24 @@ choose &#39;<strong>Zoom to Layer Extent.</strong>&#39;</li>
 <li>under Layer on toolbar, choose Add Vector Layer</li>
 <li>click Browse, find your downloaded Prince Edward Island shapefiles
 in the folder</li>
-<li>select &#39;PEI_highway.shp&#39;</li>
-<li>in the Layers menu on the left, double-click &#39;PEI_highway_ship&#39;
-and select Style from the menu on the left (if it isn&#39;t already
+<li>select 'PEI_highway.shp'</li>
+<li>in the Layers menu on the left, double-click 'PEI_highway_ship'
+and select Style from the menu on the left (if it isn't already
 selected)</li>
-<li>click on &#39;Single Symbol&#39; on top left and select &#39;Categorized&#39;</li>
-<li>beside Column choose &#39;TYPE&#39;</li>
+<li>click on 'Single Symbol' on top left and select 'Categorized'</li>
+<li>beside Column choose 'TYPE'</li>
 <li>click Classify</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis20.png&quot; caption=&quot;Figure 20&quot; %}</p>
 <ul>
-<li><p>in the Symbol column, double-click beside &#39;primary&#39; – in the ensuing
+<li>
+<p>in the Symbol column, double-click beside 'primary' – in the ensuing
 window, there is a box with different symbols. Scroll down and find
-&#39;primary road&#39;.</p>
+'primary road'.</p>
 </li>
-<li><p>You are back in the Style window. Repeat for the item that called
-&#39;primary_link&#39; in the Label column.</p>
+<li>
+<p>You are back in the Style window. Repeat for the item that called
+'primary_link' in the Label column.</p>
 </li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis21.png&quot; caption=&quot;Figure 21&quot; %}</p>
@@ -377,17 +390,17 @@ represented on the map</li>
 <li>under Layer on toolbar, choose Add Vector Layer</li>
 <li>click Browse, find your downloaded Prince Edward Island shapefiles
 in the folder</li>
-<li>select &#39;PEI_placenames_shp&#39;</li>
-<li>double click on &#39;PEI_placenames&#39; and select &#39;Open&#39;</li>
+<li>select 'PEI_placenames_shp'</li>
+<li>double click on 'PEI_placenames' and select 'Open'</li>
 <li>in the Layers window, double-click on the PEI_placenames layer.
 Choose Labels tab along the left (under Style). At the top, select
-the box beside &#39;Label this layer with&#39; and in the dropdown box
-beside that select &#39;Placename&#39;</li>
+the box beside 'Label this layer with' and in the dropdown box
+beside that select 'Placename'</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis23.png&quot; caption=&quot;Figure 23&quot; %}</p>
 <ul>
-<li>Change Font size to &#39;18′</li>
-<li>Click &#39;OK&#39; and examine the results on the map</li>
+<li>Change Font size to '18′</li>
+<li>Click 'OK' and examine the results on the map</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis24.png&quot; caption=&quot;Figure 24: Click to see full-size image&quot; %}</p>
 <ul>
@@ -397,11 +410,11 @@ for a presentation. Try going back to the Labels tab and changing
 the different settings to see how symbols and displays change.</li>
 </ul>
 <p>Note that in the Layers menu you can add and remove the various layers
-we&#39;ve added to the map much the same way you did in Google Earth. Click
+we've added to the map much the same way you did in Google Earth. Click
 on the check boxes to remove and add the various layers. Drag and drop
 layers to change the the order they appear. Dragging a layer to the top
 will place it above the rest of the layers and make it the most
-prominent. For example, if you drag &#39;coastline_polygon&#39; to the top, you
+prominent. For example, if you drag 'coastline_polygon' to the top, you
 have a simplified outline of the province along with place names.</p>
 <p>{% include figure.html filename=&quot;qgis25.png&quot; caption=&quot;Figure 25: Click to see full-size image&quot; %}</p>
 <ul>
@@ -419,7 +432,7 @@ first raster layer. This is a good time to save your work.</li>
 </ul>
 <p><strong>Opening Rasters</strong>: <strong>Raster</strong> data are digital images made up of grids.
 All remote sensing data such as satellite images or <a href="http://en.wikipedia.org/wiki/Orthophoto">aerial photos</a>
-are rasters, but usually you can&#39;t see the grids in these images because
+are rasters, but usually you can't see the grids in these images because
 they are made up of tiny pixels. Each pixel has its own value and when
 those values are symbolized in colour or greyscale they make up an image
 that is useful for display or topographical analysis. A scanned
@@ -427,21 +440,21 @@ historical map is also brought into GIS in raster format.</p>
 <ul>
 <li>download: <a href="/assets/PEI_CumminsMap1927_compLZW.tif">PEI_CumminsMap1927.tif</a> to your project folder.</li>
 <li>under Layer on toolbar, choose Add Raster Layer (alternatively the
-same icon you see next to &#39;Add Raster Layer&#39; can also be selected
+same icon you see next to 'Add Raster Layer' can also be selected
 from the tool bar along the left side of the window)</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis27.png&quot; caption=&quot;Figure 27&quot; %}</p>
 <ul>
-<li>find the file you have downloaded titled &#39;PEI_CumminsMap1927.tif&#39;</li>
-<li>you will be prompted to define this layer&#39;s coordinate system. In
-the Filter box search for &#39;2291′, then in the box below select
-&#39;NAD83(CSRS98) / Prince Edward Isl. (Stereographic)…&#39;</li>
+<li>find the file you have downloaded titled 'PEI_CumminsMap1927.tif'</li>
+<li>you will be prompted to define this layer's coordinate system. In
+the Filter box search for '2291′, then in the box below select
+'NAD83(CSRS98) / Prince Edward Isl. (Stereographic)…'</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis28.png&quot; caption=&quot;Figure 28&quot; %}</p>
 <ul>
 <li>If the program does not prompt you for the CRS you need to change it
 yourself. Double click the PEI_CummingMap1927_compLZW layer and
-choose &#39;<strong>General</strong>&#39; from the menu on the left. Click &#39;<strong>Specify…</strong>&#39;
+choose '<strong>General</strong>' from the menu on the left. Click '<strong>Specify…</strong>'
 beside the box showing the incorrect Coordinate reference system.
 Then follow the instructions above (choose 2291).</li>
 </ul>
@@ -453,16 +466,16 @@ Move it to the bottom of the menu if necessary:</li>
 <p>{% include figure.html filename=&quot;qgis30.png&quot; caption=&quot;Figure 30&quot; %}</p>
 <ul>
 <li>Now we would like to make the coastline more visible, so
-double-click on &#39;coastline_polygon&#39; and select &#39;Style&#39; on the left.
-In the box under Symbol layers, select &#39;Simple fill&#39; and options
-appear in the box to the right. Click on the menu next to &#39;Border&#39;
+double-click on 'coastline_polygon' and select 'Style' on the left.
+In the box under Symbol layers, select 'Simple fill' and options
+appear in the box to the right. Click on the menu next to 'Border'
 and make it red, and then beside Border width change it to 0.5, and
 click OK.</li>
 </ul>
 <p>{% include figure.html filename=&quot;qgis31.png&quot; caption=&quot;Figure 31&quot; %}</p>
 <ul>
 <li>You are now able to see the background raster map through the
-&#39;coastline_polygon&#39; layer. Zoom in for closer inspection, and you
+'coastline_polygon' layer. Zoom in for closer inspection, and you
 should be able to see the coastline layer clearly. Notice that the
 alignment is relatively good, but not perfect. We will learn more in
 lesson 4 about the challenges of georeferencing historical maps to
@@ -474,6 +487,6 @@ save your work!</strong></p>
 <p><em>This lesson is part of the <a href="http://geospatialhistorian.wordpress.com/">Geospatial Historian</a>.</em></p>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="qgis-layers/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Installing QGIS 2.0 and Adding Layers\",\"layout\":\"lesson\",\"date\":\"2013-12-13T00:00:00.000Z\",\"authors\":[\"Jim Clifford\",\"Josh MacFadyen\",\"Daniel Macfarlane\"],\"reviewers\":[\"Finn Arne Jørgensen\",\"Sarah Simpkin\"],\"editors\":[\"Adam Crymble\"],\"difficulty\":1,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"presenting\",\"topics\":[\"mapping\"],\"abstract\":\"In this lesson you will install QGIS software, download geospatial files like shapefiles and GeoTIFFs, and create a map out of a number of vector and raster layers.\",\"next\":\"vector-layers-qgis\",\"previous\":\"googlemaps-googleearth\",\"series_total\":\"4 lessons\",\"sequence\":2,\"redirect_from\":\"\u002Flessons\u002Fqgis-layers\",\"avatar_alt\":\"Elevation view view of a mountain range\",\"doi\":\"10.46430\u002Fphen0031\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn this lesson you will install QGIS software, download geospatial files\\nlike shapefiles and GeoTIFFs, and create a map out of a number of vector\\nand raster layers. Quantum or QGIS is an open source alternative to the\\nindustry leader, ArcGIS from ESRI. QGIS is multiplatform, which means it\\nruns on Windows, Macs, and Linux and it has many of the functions most\\ncommonly used by historians. ArcGIS is prohibitively expensive and only\\nruns on Windows (though software can be purchased to allow it to run on\\nMac). However, many universities have site licenses, meaning students\\nand employees have access to free copies of the software (try contacting\\nyour map librarian, computer services, or the geography department).\\nQGIS is ideal for those without access to a free copy of Arc and it is\\nalso a good option for learning basic GIS skills and deciding if you\\nwant to install a copy of ArcGIS on your machine. Moreover, any work you\\ndo in QGIS can be exported to ArcGIS at a later date if you decide to\\nupgrade. The authors tend to use both and are happy to run QGIS on Mac\\nand Linux computers for basic tasks, but still return to ArcGIS for more\\nadvanced work. In many cases it is not lack of functions, but stability\\nissues that bring us back to ArcGIS. For those who are learning Python\\nwith the Programming Historian, you will be glad to know that both QGIS\\nand ArcGIS use Python as their main scripting language.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"installing-qgis\\\"\u003EInstalling QGIS\u003C\u002Fh2\u003E\\n\u003Cp\u003ENavigate to the \u003Ca href=\\\"http:\u002F\u002Fqgis.org\u002Fen\u002Fsite\u002Fforusers\u002Fdownload.html\\\"\u003EQGIS Download page\u003C\u002Fa\u003E. The procedure is a little\\ndifferent depending on your operating system. Click on the appropriate\\nOperating System. Follow the instructions below.\u003C\u002Fp\u003E\\n\u003Ch4 id=\\\"mac-instructions\\\"\u003EMac Instructions\u003C\u002Fh4\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EFor most people it will be best to choose Master release (the one\\nthat has a single installer package). You will still need to install\\nother software packages before installing QGIS. Under &quot;Download for Mac OS X&quot;, click on\\nthe link (\u003Ca href=\\\"http:\u002F\u002Fwww.kyngchaos.com\u002Fsoftware\u002Fqgis\\\"\u003EKyngChaos Qgis download page\u003C\u002Fa\u003E) and download the\\nfile (see screen shot below): 1) QGIS 2.18.13-1 (under\\nDownload) for your respective Mac OS (this works with versions from Lion onwards). Then go to the left &quot;software menu&quot; and click on    &quot;\u003Ca href=\\\"http:\u002F\u002Fwww.kyngchaos.com\u002Fsoftware\u002Farchive\\\"\u003EDownload Archive\u003C\u002Fa\u003E&quot;. Under &quot;GDAL Complete&quot; download the file 2) GDAL complete 1.11\\nframework package (under Requirements). Install the framework package like any other Mac programs.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis1.png&quot; caption=&quot;Figure 1: Click to view full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eonce the frameworks are installed, download and install QGIS.\u003C\u002Fli\u003E\\n\u003Cli\u003Eas with any other Mac application you are using for the first time,\\nyou will have to go find the QGIS application in Applications\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch4 id=\\\"windows-instructions\\\"\u003EWindows Instructions\u003C\u002Fh4\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eunder Standalone Installer, click on the link to Download QGIS\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis2.jpg&quot; caption=&quot;Figure 2&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Edouble-click on the \u003Ccode\u003E.exe\u003C\u002Fcode\u003E file to execute\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EQGIS is very simple to install in most versions of Linux. Follow the\\ninstructions on the download page.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"prince-edward-island-data\\\"\u003EPrince Edward Island Data\u003C\u002Fh3\u003E\\n\u003Cp\u003EWe will be using some government data from the Canadian province of\\nPrince Edward Island. PEI is a great example because there is a lot of\\ndata for free online and because it is Canada&#39;s smallest province,\\nmaking the downloads quick! Download PEI shapefiles:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ENavigate to the links below in your web browser, read\u002Faccept the\\nlicense agreement, and then download the following (they will ask\\nfor your name and email with each download). We created the final\\ntwo shapefiles, so they should download directly:\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Col\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=coastline&amp;file_format=SHP\\\"\u003Ehttp:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=coastline&amp;file_format=SHP\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=lot_town&amp;file_format=SHP\\\"\u003Ehttp:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=lot_town&amp;file_format=SHP\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=hydronetwork&amp;file_format=SHP\\\"\u003Ehttp:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=hydronetwork&amp;file_format=SHP\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=forest_35&amp;file_format=SHP\\\"\u003Ehttp:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=forest_35&amp;file_format=SHP\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"http:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=nat_parks&amp;file_format=SHP\\\"\u003Ehttp:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Flicense_agreement.php3?name=nat_parks&amp;file_format=SHP\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"\u002Fassets\u002FPEI_highway.zip\\\"\u003EPEI Highways\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Ca href=\\\"\u002Fassets\u002FPEI_placenames.zip\\\"\u003EPEI Places\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Fol\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EAfter downloading all seven files, move them into a folder and unzip\\nthe zipped files. Take a look at the contents of the folders. You\\nwill notice four files with the same name, but different file types.\\nWhen you navigate to these folders from GIS software, you will find\\nthat you only need to click on the .shp and that the other three\\nformats support this file in the background. It is important when\\nmoving files on your computer to always move and keep all four files\\ntogether. This is one reason Shapefiles are normally shared using\\nzip compression. Remember the folder in which you save uncompressed\\nshapefile folders, as you will need to find them from within QGIS in\\na few minutes.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch2 id=\\\"starting-your-gis-project\\\"\u003EStarting Your GIS Project\u003C\u002Fh2\u003E\\n\u003Cp\u003EOpen QGIS. The first thing we need to do is set up the \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FSpatial_reference_system\\\"\u003ECoordinate\\nReference System\u003C\u002Fa\u003E (CRS) correctly. The CRS is the map projection and\\nprojections are the various ways to represent real world places on\\ntwo-dimensional maps. The default is WGS84 (it is increasingly common to\\nuse WGS 84 which is compatible with Google Earth type software), but\\nsince most of our data and examples are created by Canadian governments\\nwe recommend using NAD 83 (North American Datum, 1983). For more on NAD\\n83 and the Federal Government&#39;s datum, see \u003Ca href=\\\"http:\u002F\u002Fwww.nrcan.gc.ca\u002Fearth-sciences\u002Fgeography-boundary\u002Fmapping\u002Ftopographic-mapping\u002F10272\\\"\u003ENRCan&#39;s website\u003C\u002Fa\u003E. PEI has\\nits own NAD 83 coordinate reference system which uses a \u003Ca href=\\\"http:\u002F\u002Fwww.gov.pe.ca\u002Fgis\u002Findex.php3?number=77865&amp;lang=E\\\"\u003EDouble\\nStereographic projection\u003C\u002Fa\u003E. Managing the CRS of different layers of\\ninformation and making sure they are working correctly is one of the\\nmost complicated aspects of GIS for beginners. Nonetheless, if the\\nsoftware is setup correctly, it should convert the CRS and allow you to\\nwork with data imported from different sources. \u003Cem\u003ESelect Project\\nProperties\u003C\u002Fem\u003E\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EMac: Project–&gt;Project Properties\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis3.png&quot; caption=&quot;Figure 3&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EWindows: Settings-&gt; Project Properties\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis4.png&quot; caption=&quot;Figure 4&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003EIn the left window pane select CRS (second from the top)\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003Eclick Enable &#39;on the fly&#39; CRS transformation button on top left\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003Ein the Filter box enter &#39;2291′ – this quickly navigates to the best\\nCoordinate reference system for Prince Edward Island.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003Eunder the box titled Coordinate reference systems of the world,\\nselect &#39;NAD83(CSRS98) \u002F Prince Edward Isl. (Stereographic)&#39; and hit\\nOK\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis5.png&quot; caption=&quot;Figure 5&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Enotice the projection has changed in the bottom right corner of the\\nQGIS window. Next to that you will see the geographic location of\\nyour mouse pointer in metres\u003C\u002Fli\u003E\\n\u003Cli\u003Eunder Project menu, select Save Project (you should save your\\nproject after each step)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EYou are now set up to work on the tutorial project, but might have a few\\nquestions about what CRS to use for your own project. WGS83 might work\\nin the short term, particularly if you are working on a fairly large\\nscale, but it will be difficult to accurately work on local maps. One\\nhint is to learn what CRS or Projections is used for paper maps of the\\nregion. If you are scanning a good quality paper map to use as the base\\nlayer it might be a good idea to use the same projection. You can also\\ntry searching the internet for the more common CRS for a particular\\nregion. For those of you working on North American projects identifying\\nthe correct NAD83 for your region will often be the best CRS. Here are a\\nfew links to other resources that will help you choose a CRS for your\\nown project: \u003Ca href=\\\"http:\u002F\u002Fweb.archive.org\u002Fweb\u002F20180807132308\u002Fhttp:\u002F\u002Fqgis.spatialthoughts.com\u002F2012\u002F04\u002Ftutorial-working-with-projections-in.html\\\"\u003ETutorial: Working with Projections in QGIS\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"building-a-base-map\\\"\u003EBuilding a Base Map\u003C\u002Fh3\u003E\\n\u003Cp\u003ENow that your computer is driving with the right directions, it&#39;s time\\nto add some information that makes sense to humans. Your project should\\nstart with a base map, or a selection of geospatial information that\\nlets your readers recognize real world features on the map. For most\\nusers this will be comprised of several &#39;layers&#39; of vector and raster\\ndata, which can be rearranged, coloured, and labeled in such a way that\\nthey make sense to your readers and your project&#39;s objectives. A\\nrelatively new feature on many GIS programs is the availability of\\npre-fab base maps, but since this technology is under development for\\nopen source platforms like QGIS we will walk through the process of\\ncreating our own base map by adding vector and raster layers in this\\nmodule. For those who would like to add pre-fab base maps to QGIS, you\\ncan try installing the &#39;OpenLayers&#39; Plugin under Plugins-&gt;Manage and\\nInstall Plugins. Select &quot;Get More&quot; on the left. Click OpenLayers and\\nthen click Install plugin. Click OK and then click close. Once\\ninstalled, you&#39;ll find OpenLayers in the Plugins Menu. Try installing\\nsome of the different Google and OpenStreetMaps layers. At the time of\\nwriting this module, the OpenLayers plugin (v. 1.1.1) installs but fails\\nto work properly on any Mac using OSX. It appears to work more\\nconsistently on QGIS running on Windows 7. Give it a try, as we expect\\nit will only get better in the months ahead. Note, however, that the\\nprojection for some of these global maps do not correct on the fly, so\\nthe satellite images might not alway sync up with data projected in a\\ndifferent CRS.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"opening-vectors\\\"\u003EOpening Vectors\u003C\u002Fh2\u003E\\n\u003Cp\u003EVectors \u003Ca href=\\\"http:\u002F\u002Fwww.gislounge.com\u002Fgeodatabases-explored-vector-and-raster-data\u002F\\\"\u003Edefined\u003C\u002Fa\u003E: GIS uses points, lines, and polygons, also known as\\n\u003Cstrong\u003Evector\u003C\u002Fstrong\u003E data. Its first order of work is to arrange these points,\\nlines, and polygons and project them accurately on maps. Points may be\\ntowns or telephone poles; lines could represent rivers, roads, or\\nrailroads; and polygons could encompass a farmer&#39;s lot or larger\\npolitical boundaries. However, it is also possible to attach historical\\ndata to these geographical places and study how people interacted with\\nand changed their physical environments. The population of towns\\nchanged, rivers moved their courses, lots were subdivided, and land was\\nplanted with various crops.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eunder Layer on toolbar, choose Add Vector Layer (alternatively the\\nsame icon you see next to &#39;Add Vector Layer&#39; can also be selected\\nfrom the tool bar on the upper left side)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis6.png&quot; caption=&quot;Figure 6&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eclick Browse, find your downloaded Prince Edward Island shapefiles\\nin the folder\u003C\u002Fli\u003E\\n\u003Cli\u003Eopen the coastline_polygon folder\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis7.png&quot; caption=&quot;Figure 7&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eselect coastline_polygon.shp, then select &#39;OK&#39;, and you should see\\nthe island&#39;s coastline on your screen. Sometimes QGIS adds a\\ncoloured background (see the image above). If you have a coloured\\nbackground, follow the steps below. If not, skip down the page to\\nthe ***.\u003C\u002Fli\u003E\\n\u003Cli\u003Eright click the layer (coastline_polygon) in the Layers menu and\\nchoose Properties.\\\\\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis8.png&quot; caption=&quot;Figure 8&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003EIn the ensuing window, click Style in the left pane\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EThere are a range of options, but we want to get rid of the\\nbackground all together. Click \u003Cstrong\u003ESimple fill\u003C\u002Fstrong\u003E.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis9.png&quot; caption=&quot;Figure 9&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EThen choose &#39;\u003Cstrong\u003ENo Brush\u003C\u002Fstrong\u003E&#39; in the \u003Cstrong\u003EFill style\u003C\u002Fstrong\u003E drop down menu.\\n\u003Cstrong\u003EClick OK.\u003C\u002Fstrong\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis10.png&quot; caption=&quot;Figure 10&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E***\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EChoose Add Vector Layer again.\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick Browse, find your downloaded Prince Edward Island shapefiles\\nin the folder\u003C\u002Fli\u003E\\n\u003Cli\u003Eselect &#39;PEI_HYDRONETWORK&#39;\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick on &#39;PEI_HYDRONETWORK.shp&#39; and then hit &#39;Open&#39;\u003C\u002Fli\u003E\\n\u003Cli\u003Eright click the layer in the Layers menu and choose Properties.\u003C\u002Fli\u003E\\n\u003Cli\u003Eselect Style tab, and choose an appropriate blue to color the\\nhydronetwork and select &#39;OK&#39; at the bottom right of the window\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis11.png&quot; caption=&quot;Figure 11&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EYour map should now look like this:\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis12-300x199.png&quot; caption=&quot;Figure 12: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EChoose Add Vector Layer again.\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick Browse, find your downloaded Prince Edward Island shapefiles\\nin the folder\u003C\u002Fli\u003E\\n\u003Cli\u003Edouble-click on &#39;1935 inventory_region.shp&#39; and then hit &#39;Open&#39;\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EThis will add a dense map showing the different forest cover in 1935.\\nHowever, to see the different categories, you will need to change the\\nsymbology to represent the different categories of forest with different\\ncolours. We will need to know which column of the database tables\\nincludes the forest category information, so the first step is to open\\nand inspect the attribute table.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eright click on the 1935_inventory_region layer in the Layers\\nwindow on the left and click on Open Attribute Table\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis13.png&quot; caption=&quot;Figure 13&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EAn Attribute Table will open. It has a number of categories and\\nidentifiers. Of particular interest is the LANDUSE category which\\nprovides information on the forest cover in 1935. We will now show you\\nhow to display these categories on the map.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis14.png&quot; caption=&quot;Figure 14&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EClose the Attribute Table, and right click on the\\n1935_inventory_region layer again and this time choose Properties\\n(alternatively, the shortcut is to double click on the\\n1935_inventory_region layer).\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick Style along the left\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis15.png&quot; caption=&quot;Figure 15&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eon the menu bar that reads &#39;Single Symbol&#39; select &#39;Categorized&#39;\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis16.png&quot; caption=&quot;Figure 16&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Ebeside Column choose &#39;Landuse&#39;\u003C\u002Fli\u003E\\n\u003Cli\u003Eunder Color ramp choose Greens\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick &#39;Classify&#39; below and to the left\u003C\u002Fli\u003E\\n\u003Cli\u003Ein Symbol Column, choose the furthest down dark green square (with\\nno value beside it) and hit the &#39;Delete&#39; button (to the right of\\nClassify); also delete the Developed category, as we want to\\nhighlight forested areas. Click &#39;OK&#39;\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis17.png&quot; caption=&quot;Figure 17&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003Ein Layers sidebar menu, click on the little arrow beside\\n1935_inventory_region to view the legend.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EYou can now see the extent of the forests in 1935. Try using the\\nmagnifying glass tool to zoom in and inspect the different landuses.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis18-300x283.png&quot; caption=&quot;Figure 18: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ETo get back to the full island, right click on any of the layers and\\nchoose &#39;\u003Cstrong\u003EZoom to Layer Extent.\u003C\u002Fstrong\u003E&#39;\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis19.png&quot; caption=&quot;Figure 19&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ENext, we will add a layer of roads.\u003C\u002Fli\u003E\\n\u003Cli\u003Eunder Layer on toolbar, choose Add Vector Layer\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick Browse, find your downloaded Prince Edward Island shapefiles\\nin the folder\u003C\u002Fli\u003E\\n\u003Cli\u003Eselect &#39;PEI_highway.shp&#39;\u003C\u002Fli\u003E\\n\u003Cli\u003Ein the Layers menu on the left, double-click &#39;PEI_highway_ship&#39;\\nand select Style from the menu on the left (if it isn&#39;t already\\nselected)\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick on &#39;Single Symbol&#39; on top left and select &#39;Categorized&#39;\u003C\u002Fli\u003E\\n\u003Cli\u003Ebeside Column choose &#39;TYPE&#39;\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick Classify\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis20.png&quot; caption=&quot;Figure 20&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cp\u003Ein the Symbol column, double-click beside &#39;primary&#39; – in the ensuing\\nwindow, there is a box with different symbols. Scroll down and find\\n&#39;primary road&#39;.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cp\u003EYou are back in the Style window. Repeat for the item that called\\n&#39;primary_link&#39; in the Label column.\u003C\u002Fp\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis21.png&quot; caption=&quot;Figure 21&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eclick Symbol beside secondary and change color to black and width to\\n0.7\u003C\u002Fli\u003E\\n\u003Cli\u003Erepeat for secondary link\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick OK. You will now have the highways and other major roads\\nrepresented on the map\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis22.png&quot; caption=&quot;Figure 22: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eunder Layer on toolbar, choose Add Vector Layer\u003C\u002Fli\u003E\\n\u003Cli\u003Eclick Browse, find your downloaded Prince Edward Island shapefiles\\nin the folder\u003C\u002Fli\u003E\\n\u003Cli\u003Eselect &#39;PEI_placenames_shp&#39;\u003C\u002Fli\u003E\\n\u003Cli\u003Edouble click on &#39;PEI_placenames&#39; and select &#39;Open&#39;\u003C\u002Fli\u003E\\n\u003Cli\u003Ein the Layers window, double-click on the PEI_placenames layer.\\nChoose Labels tab along the left (under Style). At the top, select\\nthe box beside &#39;Label this layer with&#39; and in the dropdown box\\nbeside that select &#39;Placename&#39;\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis23.png&quot; caption=&quot;Figure 23&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EChange Font size to &#39;18′\u003C\u002Fli\u003E\\n\u003Cli\u003EClick &#39;OK&#39; and examine the results on the map\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis24.png&quot; caption=&quot;Figure 24: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELabelling is where QGIS falls well short of real cartography – it\\nwill take tinkering to adjust settings to display the detail desired\\nfor a presentation. Try going back to the Labels tab and changing\\nthe different settings to see how symbols and displays change.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003ENote that in the Layers menu you can add and remove the various layers\\nwe&#39;ve added to the map much the same way you did in Google Earth. Click\\non the check boxes to remove and add the various layers. Drag and drop\\nlayers to change the the order they appear. Dragging a layer to the top\\nwill place it above the rest of the layers and make it the most\\nprominent. For example, if you drag &#39;coastline_polygon&#39; to the top, you\\nhave a simplified outline of the province along with place names.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis25.png&quot; caption=&quot;Figure 25: Click to see full-size image&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EAlong the toolbar on the top left of the main window are icons that\\nallow you to explore the map. The hand symbol, for example, allows\\nyou to click on the map and move it around, while the magnifying\\nglass symbols with plus and minus on them allow you to zoom in and\\nout. Play with these and familiarize yourself with the various\\nfunctions\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis26.png&quot; caption=&quot;Figure 26&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Ehaving created a map using vector layers, we will now add or use our\\nfirst raster layer. This is a good time to save your work.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E\u003Cstrong\u003EOpening Rasters\u003C\u002Fstrong\u003E: \u003Cstrong\u003ERaster\u003C\u002Fstrong\u003E data are digital images made up of grids.\\nAll remote sensing data such as satellite images or \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FOrthophoto\\\"\u003Eaerial photos\u003C\u002Fa\u003E\\nare rasters, but usually you can&#39;t see the grids in these images because\\nthey are made up of tiny pixels. Each pixel has its own value and when\\nthose values are symbolized in colour or greyscale they make up an image\\nthat is useful for display or topographical analysis. A scanned\\nhistorical map is also brought into GIS in raster format.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Edownload: \u003Ca href=\\\"\u002Fassets\u002FPEI_CumminsMap1927_compLZW.tif\\\"\u003EPEI_CumminsMap1927.tif\u003C\u002Fa\u003E to your project folder.\u003C\u002Fli\u003E\\n\u003Cli\u003Eunder Layer on toolbar, choose Add Raster Layer (alternatively the\\nsame icon you see next to &#39;Add Raster Layer&#39; can also be selected\\nfrom the tool bar along the left side of the window)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis27.png&quot; caption=&quot;Figure 27&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Efind the file you have downloaded titled &#39;PEI_CumminsMap1927.tif&#39;\u003C\u002Fli\u003E\\n\u003Cli\u003Eyou will be prompted to define this layer&#39;s coordinate system. In\\nthe Filter box search for &#39;2291′, then in the box below select\\n&#39;NAD83(CSRS98) \u002F Prince Edward Isl. (Stereographic)…&#39;\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis28.png&quot; caption=&quot;Figure 28&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EIf the program does not prompt you for the CRS you need to change it\\nyourself. Double click the PEI_CummingMap1927_compLZW layer and\\nchoose &#39;\u003Cstrong\u003EGeneral\u003C\u002Fstrong\u003E&#39; from the menu on the left. Click &#39;\u003Cstrong\u003ESpecify…\u003C\u002Fstrong\u003E&#39;\\nbeside the box showing the incorrect Coordinate reference system.\\nThen follow the instructions above (choose 2291).\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis29.png&quot; caption=&quot;Figure 29&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EIn the Layers window, the map should appear below the vector data.\\nMove it to the bottom of the menu if necessary:\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis30.png&quot; caption=&quot;Figure 30&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ENow we would like to make the coastline more visible, so\\ndouble-click on &#39;coastline_polygon&#39; and select &#39;Style&#39; on the left.\\nIn the box under Symbol layers, select &#39;Simple fill&#39; and options\\nappear in the box to the right. Click on the menu next to &#39;Border&#39;\\nand make it red, and then beside Border width change it to 0.5, and\\nclick OK.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis31.png&quot; caption=&quot;Figure 31&quot; %}\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EYou are now able to see the background raster map through the\\n&#39;coastline_polygon&#39; layer. Zoom in for closer inspection, and you\\nshould be able to see the coastline layer clearly. Notice that the\\nalignment is relatively good, but not perfect. We will learn more in\\nlesson 4 about the challenges of georeferencing historical maps to\\ngive them real world coordinates.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;qgis32.png&quot; caption=&quot;Figure 32&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cstrong\u003EYou have learned how to install QGIS and add layers. Make sure you\\nsave your work!\u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cem\u003EThis lesson is part of the \u003Ca href=\\\"http:\u002F\u002Fgeospatialhistorian.wordpress.com\u002F\\\"\u003EGeospatial Historian\u003C\u002Fa\u003E.\u003C\u002Fem\u003E\u003C\u002Fp\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

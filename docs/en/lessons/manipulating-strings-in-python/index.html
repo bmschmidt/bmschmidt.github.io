@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/manipulating-strings-in-python"),
 					params: {lang:"en",lessons:"lessons",slug:"manipulating-strings-in-python"}
@@ -48,21 +49,23 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Manipulating Strings in Python</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="lesson-goals">Lesson Goals</h2>
+<h2>Lesson Goals</h2>
 <p>This lesson is a brief introduction to <a href="https://en.wikipedia.org/wiki/String_(computer_science)">string</a> manipulation techniques in
 Python. Knowing how to manipulate strings plays a crucial role in most
 text processing tasks. If you’d like to experiment with the following
 lessons, you can write and execute short programs as we’ve been doing in previous lessons in the series,
 or you can open up a Python shell / Terminal to try them out on the
 command line.</p>
-<h2 id="manipulating-python-strings">Manipulating Python Strings</h2>
+<h2>Manipulating Python Strings</h2>
 <p>If you have been exposed to another programming language before, you
 might have learned that you need to <em>declare</em> or <em>type</em> variables before you
 can store anything in them. This is not necessary when working with
@@ -70,7 +73,7 @@ strings in Python. We can create a string simply by putting content
 wrapped with quotation marks into it with an equal sign (=):</p>
 <pre><code class="language-python">message = &quot;Hello World&quot;
 </code></pre>
-<h2 id="string-operators-adding-and-multiplying">String Operators: Adding and Multiplying</h2>
+<h2>String Operators: Adding and Multiplying</h2>
 <p>A string is a type of object, one that
 consists of a series of characters. Python already knows how to deal
 with a number of general-purpose and powerful representations, including
@@ -79,37 +82,37 @@ These operators are represented by symbols that you likely associate
 with mathematics, such as +, -, *, /, and =. When used with strings,
 they perform actions that are similar to, but not the same as, their
 mathematical counterparts.</p>
-<h3 id="concatenate">Concatenate</h3>
+<h3>Concatenate</h3>
 <p>This term means to join strings together. The process is known as
 <em>concatenating</em> strings and it is done using the plus (+) operator. Note
 that you must be explicit about where you want blank spaces to occur by
 placing them between single quotation marks also.</p>
 <p>In this example, the string &quot;message1&quot; is given the content &quot;hello
 world&quot;.</p>
-<pre><code class="language-python">message1 = &#39;hello&#39; + &#39; &#39; + &#39;world&#39;
+<pre><code class="language-python">message1 = 'hello' + ' ' + 'world'
 print(message1)
 -&gt; hello world
 </code></pre>
-<h3 id="multiply">Multiply</h3>
+<h3>Multiply</h3>
 <p>If you want multiple copies of a string, use the multiplication (*)
 operator. In this example, string <em>message2a</em> is given the content
 &quot;hello&quot; times three; string <em>message 2b</em> is given content &quot;world&quot;; then
 we print both strings.</p>
-<pre><code class="language-python">message2a = &#39;hello &#39; * 3
-message2b = &#39;world&#39;
+<pre><code class="language-python">message2a = 'hello ' * 3
+message2b = 'world'
 print(message2a + message2b)
 -&gt; hello hello hello world
 </code></pre>
-<h3 id="append">Append</h3>
+<h3>Append</h3>
 <p>What if you want to add material to the end of a string successively?
 There is a special operator for that (+=).</p>
-<pre><code class="language-python">message3 = &#39;howdy&#39;
-message3 += &#39; &#39;
-message3 += &#39;world&#39;
+<pre><code class="language-python">message3 = 'howdy'
+message3 += ' '
+message3 += 'world'
 print(message3)
 -&gt; howdy world
 </code></pre>
-<h2 id="string-methods-finding-changing">String Methods: Finding, Changing</h2>
+<h2>String Methods: Finding, Changing</h2>
 <p>In addition to operators, Python comes pre-installed with dozens of
 string methods that allow you to do things to strings. Used alone or in
 combination, these methods can do just about anything you can imagine to
@@ -118,14 +121,14 @@ Methods on the <a href="https://docs.python.org/2/library/stdtypes.html#string-m
 each properly. To make sure that you’ve got a basic grasp of string
 methods, what follows is a brief overview of some of the more commonly
 used ones:</p>
-<h3 id="length">Length</h3>
+<h3>Length</h3>
 <p>You can determine the number of characters in a string using <code>len</code>. Note
 that the blank space counts as a separate character.</p>
-<pre><code class="language-python">message4 = &#39;hello&#39; + &#39; &#39; + &#39;world&#39;
+<pre><code class="language-python">message4 = 'hello' + ' ' + 'world'
 print(len(message4))
 -&gt; 11
 </code></pre>
-<h3 id="find">Find</h3>
+<h3>Find</h3>
 <p>You can search a string for a <em>substring</em> and your program will return the
 starting index position of that substring. This is helpful for further
 processing. Note that indexes are numbered from left to right and that
@@ -141,7 +144,7 @@ message6b = message6.find(&quot;squirrel&quot;)
 print(message6b)
 -&gt; -1
 </code></pre>
-<h3 id="lower-case">Lower Case</h3>
+<h3>Lower Case</h3>
 <p>Sometimes it is useful to convert a string to lower case. For example,
 if we standardize case it makes it easier for the computer to recognize
 that &quot;Sometimes&quot; and &quot;sometimes&quot; are the same word.</p>
@@ -152,7 +155,7 @@ print(message7a)
 </code></pre>
 <p>The opposite effect, raising characters to upper case, can be achieved
 by changing <code>.lower()</code> to <code>.upper()</code>.</p>
-<h3 id="replace">Replace</h3>
+<h3>Replace</h3>
 <p>If you need to replace a substring throughout a string you can do so
 with the <code>replace</code> method.</p>
 <pre><code class="language-python">message8 = &quot;HELLO WORLD&quot;
@@ -160,7 +163,7 @@ message8a = message8.replace(&quot;L&quot;, &quot;pizza&quot;)
 print(message8a)
 -&gt; HEpizzapizzaO WORpizzaD
 </code></pre>
-<h3 id="slice">Slice</h3>
+<h3>Slice</h3>
 <p>If you want to <code>slice</code> off unwanted parts of a string from the beginning
 or end you can do so by creating a substring. The same kind of technique
 also allows you to break a long string into more manageable components.</p>
@@ -214,26 +217,27 @@ contents of the string by their location within the sequence, then you
 need some way of giving Python a location within a sequence. That is
 what the square brackets do: indicate a beginning and ending location
 within a sequence as we saw when using the <code>slice</code> method.</p>
-<h2 id="escape-sequences">Escape Sequences</h2>
+<h2>Escape Sequences</h2>
 <p>What do you do when you need to include quotation marks within a string?
 You don’t want the Python interpreter to get the wrong idea and end the
 string when it comes across one of these characters. In Python, you can
-put a backslash (\) in front of a quotation mark so that it doesn&#39;t
+put a backslash (\) in front of a quotation mark so that it doesn't
 terminate the string. These are known as escape sequences.</p>
-<pre><code class="language-python">print(&#39;\&quot;&#39;)
+<pre><code class="language-python">print('\&quot;')
 -&gt; &quot;
 </code></pre>
-<pre><code class="language-python">print(&#39;The program printed \&quot;hello world\&quot;&#39;)
+<pre><code class="language-python">print('The program printed \&quot;hello world\&quot;')
 -&gt; The program printed &quot;hello world&quot;
 </code></pre>
 <p>Two other escape sequences allow you to print tabs and newlines:</p>
-<pre><code class="language-python">print(&#39;hello\thello\thello\nworld&#39;)
+<pre><code class="language-python">print('hello\thello\thello\nworld')
 -&gt;hello hello hello
 world
 </code></pre>
-<h2 id="suggested-reading">Suggested Reading</h2>
+<h2>Suggested Reading</h2>
 <ul>
-<li>Lutz, <em>Learning Python</em><ul>
+<li>Lutz, <em>Learning Python</em>
+<ul>
 <li>Ch. 7: Strings</li>
 <li>Ch. 8: Lists and Dictionaries</li>
 <li>Ch. 10: Introducing Python Statements</li>
@@ -241,7 +245,7 @@ world
 </ul>
 </li>
 </ul>
-<h2 id="code-syncing">Code Syncing</h2>
+<h2>Code Syncing</h2>
 <p>To follow along with future lessons it is important that you have the
 right files and programs in your programming-historian directory. At the
 end of each chapter you can download the programming-historian zip file
@@ -253,6 +257,6 @@ that’s ok!</p>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="manipulating-strings-in-python/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Manipulating Strings in Python\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"transforming\",\"topics\":[\"python\"],\"abstract\":\"This lesson is a brief introduction to string manipulation techniques in Python.\",\"next\":\"from-html-to-list-of-words-1\",\"previous\":\"working-with-web-pages\",\"series_total\":\"15 lessons\",\"sequence\":6,\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Fmanipulating-strings-in-python\",\"avatar_alt\":\"A man playing a guitar\",\"doi\":\"10.46430\u002Fphen0013\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EThis lesson is a brief introduction to \u003Ca href=\\\"https:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FString_(computer_science)\\\"\u003Estring\u003C\u002Fa\u003E manipulation techniques in\\nPython. Knowing how to manipulate strings plays a crucial role in most\\ntext processing tasks. If you’d like to experiment with the following\\nlessons, you can write and execute short programs as we’ve been doing in previous lessons in the series,\\nor you can open up a Python shell \u002F Terminal to try them out on the\\ncommand line.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"manipulating-python-strings\\\"\u003EManipulating Python Strings\u003C\u002Fh2\u003E\\n\u003Cp\u003EIf you have been exposed to another programming language before, you\\nmight have learned that you need to \u003Cem\u003Edeclare\u003C\u002Fem\u003E or \u003Cem\u003Etype\u003C\u002Fem\u003E variables before you\\ncan store anything in them. This is not necessary when working with\\nstrings in Python. We can create a string simply by putting content\\nwrapped with quotation marks into it with an equal sign (=):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage = &quot;Hello World&quot;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"string-operators-adding-and-multiplying\\\"\u003EString Operators: Adding and Multiplying\u003C\u002Fh2\u003E\\n\u003Cp\u003EA string is a type of object, one that\\nconsists of a series of characters. Python already knows how to deal\\nwith a number of general-purpose and powerful representations, including\\nstrings. One way to manipulate strings is by using \u003Cem\u003Estring operators\u003C\u002Fem\u003E.\\nThese operators are represented by symbols that you likely associate\\nwith mathematics, such as +, -, *, \u002F, and =. When used with strings,\\nthey perform actions that are similar to, but not the same as, their\\nmathematical counterparts.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"concatenate\\\"\u003EConcatenate\u003C\u002Fh3\u003E\\n\u003Cp\u003EThis term means to join strings together. The process is known as\\n\u003Cem\u003Econcatenating\u003C\u002Fem\u003E strings and it is done using the plus (+) operator. Note\\nthat you must be explicit about where you want blank spaces to occur by\\nplacing them between single quotation marks also.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn this example, the string &quot;message1&quot; is given the content &quot;hello\\nworld&quot;.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage1 = &#39;hello&#39; + &#39; &#39; + &#39;world&#39;\\nprint(message1)\\n-&gt; hello world\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"multiply\\\"\u003EMultiply\u003C\u002Fh3\u003E\\n\u003Cp\u003EIf you want multiple copies of a string, use the multiplication (*)\\noperator. In this example, string \u003Cem\u003Emessage2a\u003C\u002Fem\u003E is given the content\\n&quot;hello&quot; times three; string \u003Cem\u003Emessage 2b\u003C\u002Fem\u003E is given content &quot;world&quot;; then\\nwe print both strings.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage2a = &#39;hello &#39; * 3\\nmessage2b = &#39;world&#39;\\nprint(message2a + message2b)\\n-&gt; hello hello hello world\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"append\\\"\u003EAppend\u003C\u002Fh3\u003E\\n\u003Cp\u003EWhat if you want to add material to the end of a string successively?\\nThere is a special operator for that (+=).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage3 = &#39;howdy&#39;\\nmessage3 += &#39; &#39;\\nmessage3 += &#39;world&#39;\\nprint(message3)\\n-&gt; howdy world\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"string-methods-finding-changing\\\"\u003EString Methods: Finding, Changing\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn addition to operators, Python comes pre-installed with dozens of\\nstring methods that allow you to do things to strings. Used alone or in\\ncombination, these methods can do just about anything you can imagine to\\nstrings. The good news is that you can reference a list of String\\nMethods on the \u003Ca href=\\\"https:\u002F\u002Fdocs.python.org\u002F2\u002Flibrary\u002Fstdtypes.html#string-methods\\\"\u003EPython website\u003C\u002Fa\u003E, including information on how to use\\neach properly. To make sure that you’ve got a basic grasp of string\\nmethods, what follows is a brief overview of some of the more commonly\\nused ones:\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"length\\\"\u003ELength\u003C\u002Fh3\u003E\\n\u003Cp\u003EYou can determine the number of characters in a string using \u003Ccode\u003Elen\u003C\u002Fcode\u003E. Note\\nthat the blank space counts as a separate character.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage4 = &#39;hello&#39; + &#39; &#39; + &#39;world&#39;\\nprint(len(message4))\\n-&gt; 11\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"find\\\"\u003EFind\u003C\u002Fh3\u003E\\n\u003Cp\u003EYou can search a string for a \u003Cem\u003Esubstring\u003C\u002Fem\u003E and your program will return the\\nstarting index position of that substring. This is helpful for further\\nprocessing. Note that indexes are numbered from left to right and that\\nthe count starts with position 0, not 1.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage5 = &quot;hello world&quot;\\nmessage5a = message5.find(&quot;worl&quot;)\\nprint(message5a)\\n-&gt; 6\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf the substring is not present, the program will return a value of -1.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage6 = &quot;Hello World&quot;\\nmessage6b = message6.find(&quot;squirrel&quot;)\\nprint(message6b)\\n-&gt; -1\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"lower-case\\\"\u003ELower Case\u003C\u002Fh3\u003E\\n\u003Cp\u003ESometimes it is useful to convert a string to lower case. For example,\\nif we standardize case it makes it easier for the computer to recognize\\nthat &quot;Sometimes&quot; and &quot;sometimes&quot; are the same word.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage7 = &quot;HELLO WORLD&quot;\\nmessage7a = message7.lower()\\nprint(message7a)\\n-&gt; hello world\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe opposite effect, raising characters to upper case, can be achieved\\nby changing \u003Ccode\u003E.lower()\u003C\u002Fcode\u003E to \u003Ccode\u003E.upper()\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"replace\\\"\u003EReplace\u003C\u002Fh3\u003E\\n\u003Cp\u003EIf you need to replace a substring throughout a string you can do so\\nwith the \u003Ccode\u003Ereplace\u003C\u002Fcode\u003E method.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage8 = &quot;HELLO WORLD&quot;\\nmessage8a = message8.replace(&quot;L&quot;, &quot;pizza&quot;)\\nprint(message8a)\\n-&gt; HEpizzapizzaO WORpizzaD\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch3 id=\\\"slice\\\"\u003ESlice\u003C\u002Fh3\u003E\\n\u003Cp\u003EIf you want to \u003Ccode\u003Eslice\u003C\u002Fcode\u003E off unwanted parts of a string from the beginning\\nor end you can do so by creating a substring. The same kind of technique\\nalso allows you to break a long string into more manageable components.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage9 = &quot;Hello World&quot;\\nmessage9a = message9[1:8]\\nprint(message9a)\\n-&gt; ello Wo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou can substitute variables for the integers used in this example.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EstartLoc = 2\\nendLoc = 8\\nmessage9b = message9[startLoc: endLoc]\\nprint(message9b)\\n-&gt; llo Wo\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis makes it much easier to use this method in conjunction with the\\n\u003Ccode\u003Efind\u003C\u002Fcode\u003E method as in the next example, which checks for the letter &quot;d&quot; in\\nthe first six characters of &quot;Hello World&quot; and correctly tells us it is\\nnot there (-1). This technique is much more useful in longer strings –\\nentire documents for example. Note that the absence of an integer before\\nthe colon signifies we want to start at the beginning of the string. We\\ncould use the same technique to tell the program to go all the way to\\nthe end by putting no integer after the colon. And remember, index\\npositions start counting from 0 rather than 1.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage9 = &quot;Hello World&quot;\\nprint(message9[:5].find(&quot;d&quot;))\\n-&gt; -1\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThere are lots more, but the string methods above are a good start. Note\\nthat in this last example, we are using square brackets instead of\\nparentheses. This difference in \u003Cem\u003Esyntax\u003C\u002Fem\u003E signals an important distinction.\\nIn Python, parentheses are usually used to \u003Cem\u003Epass an argument\u003C\u002Fem\u003E to a\\nfunction. So when we see something like\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(len(message7))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003Eit means pass the string \u003Cem\u003Emessage7\u003C\u002Fem\u003E to the function \u003Ccode\u003Elen\u003C\u002Fcode\u003E then send the\\nreturned value of that function to the \u003Ccode\u003Eprint\u003C\u002Fcode\u003E statement to be printed. If\\na function can be called without an argument, you often have to include\\na pair of empty parentheses after the function name anyway. We saw an\\nexample of that, too:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Emessage7 = &quot;HELLO WORLD&quot;\\nmessage7a = message7.lower()\\nprint(message7a)\\n-&gt; hello world\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis statement tells Python to apply the \u003Ccode\u003Elower\u003C\u002Fcode\u003E function to the string\\n\u003Cem\u003Emessage7\u003C\u002Fem\u003E and store the returned value in the string \u003Cem\u003Emessage7a\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe square brackets serve a different purpose. If you think of a string\\nas a sequence of characters, and you want to be able to access the\\ncontents of the string by their location within the sequence, then you\\nneed some way of giving Python a location within a sequence. That is\\nwhat the square brackets do: indicate a beginning and ending location\\nwithin a sequence as we saw when using the \u003Ccode\u003Eslice\u003C\u002Fcode\u003E method.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"escape-sequences\\\"\u003EEscape Sequences\u003C\u002Fh2\u003E\\n\u003Cp\u003EWhat do you do when you need to include quotation marks within a string?\\nYou don’t want the Python interpreter to get the wrong idea and end the\\nstring when it comes across one of these characters. In Python, you can\\nput a backslash (\\\\) in front of a quotation mark so that it doesn&#39;t\\nterminate the string. These are known as escape sequences.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;\\\\&quot;&#39;)\\n-&gt; &quot;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;The program printed \\\\&quot;hello world\\\\&quot;&#39;)\\n-&gt; The program printed &quot;hello world&quot;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ETwo other escape sequences allow you to print tabs and newlines:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&#39;hello\\\\thello\\\\thello\\\\nworld&#39;)\\n-&gt;hello hello hello\\nworld\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"suggested-reading\\\"\u003ESuggested Reading\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELutz, \u003Cem\u003ELearning Python\u003C\u002Fem\u003E\u003Cul\u003E\\n\u003Cli\u003ECh. 7: Strings\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 8: Lists and Dictionaries\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 10: Introducing Python Statements\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 15: Function Basics\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch2 id=\\\"code-syncing\\\"\u003ECode Syncing\u003C\u002Fh2\u003E\\n\u003Cp\u003ETo follow along with future lessons it is important that you have the\\nright files and programs in your programming-historian directory. At the\\nend of each chapter you can download the programming-historian zip file\\nto make sure you have the correct code. Note we have removed unneeded\\nfiles from earlier lessons. Your directory may contain more files and\\nthat’s ok!\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eprogramming-historian-1 (\u003Ca href=\\\"\u002Fassets\u002Fpython-lessons1.zip\\\"\u003Ezip\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

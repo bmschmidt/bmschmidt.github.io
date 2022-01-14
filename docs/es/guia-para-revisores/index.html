@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/es/guia-para-revisores"),
+					params: {lang:"es",lessons:"guia-para-revisores"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en español</h2>
+	<a class="nav-link" href="/es/lecciones">Lecciones</a><a class="nav-link" href="/es/acerca-de">Acerca</a><a class="nav-link" href="/es/investigacion">Investigación</a><a class="nav-link" href="/es/apoyanos">Apóyanos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link active" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Guía para revisores</h1>
+<img src="/images/reviewer-sm.png" class="garnish rounded float-left" alt="{{ site.data.snippets.reviewer-image-alt[page.lang] }}"/>
+<p>Esta guía pretende responder preguntas frecuentes y ayudar a los revisores a comprender mejor su rol durante el proceso editorial.</p>
+<p>{% include toc.html %}</p>
+<h2>Nuestra filosofía</h2>
+<p>Para el equipo de <em>The Programming Historian en español</em> revisar una traducción o una lección nueva constituye una oportunidad para aprender una nueva habilidad (a cualquier nivel) y para contribuir en la comunidad de humanidades digitales al mismo tiempo. Por eso nos esforzarmos en que nuestros revisores reciban crédito y reconocimiento por su trabajo.</p>
+<h2>Política antiacoso</h2>
+<p>Queremos exponer los principios que rigen <em>The Programming Historian en español</em>, así como toda la correspondencia accesible en nuestros fórums entre los revisores, los autores, los editores y otros colaboradores.</p>
+<p><em>The Programming Historian en español</em> tiene como objetivo ofrecer, por un lado, un entorno abierto a la comunidad en el que reine la libertad para analizar ideas, hacer preguntas, sugerir cambios o pedir aclaraciones. Por el otro, quiere ser un espacio libre de acoso y violencia hacia cualquiera de los participantes con independencia de su género, identidad, orientación sexual, capacidades, físico, raza, edad, religión o nivel de conocimiento. No toleraremos ningún tipo de acoso, humillación o ataque personal por parte de los colaboradores. Quien, a discreción del equipo editorial, viole este principio será expulsado del proyecto. Si alguna de las partes es testigo o considera que ha sido víctima de un abuso, se recomienda contactar a uno de nuestros mediadores (<a href="/project-team">Antonio Rojas, Víctor Gayol o Maria José Afanador-Llach</a>).</p>
+<p>¡Gracias por ayudarnos a crear un espacio seguro para todos y todas!</p>
+<h2>Colaboración, no juicio</h2>
+<p>Nuestro proceso de revisión es un poco distinto del considerado &quot;tradicional&quot;. No solicitamos una revisión para juzgar si un tutorial es suficientemente &quot;bueno&quot;; por el contrario, creemos que los revisores juegan un papel fundamental para crear recursos de manera colaborativa, productiva y sostenible. Cuando una traducción o un tutorial entra en nuestro flujo de trabajo, nuestro objetivo es hacer todo lo posible para que los recursos sean útiles y se publiquen en un tiempo razonable.</p>
+<h2>Críticas constructivas</h2>
+<p>Revisar una traducción o una lección nueva no consiste únicamente en evaluar los méritos y defectos (aunque esto también es importante, claro), o en decidir si la propuesta es adecuada para <em>The Programming Historian en español</em>. Nuestro objetivo es mejorar el tutorial proponiendo ideas procedentes de un lector externo. Por eso queremos que nuestros revisores proporcionen comentarios tal y como lo harían con un artículo escrito por un colega, es decir, que proporcionen una crítica justa y constructiva que ayude al autor (o traductor) a mejorar su trabajo teniendo en cuenta una audiencia amplia. No solicitamos la revisión de material que no sea publicable de primeras; sin embargo, creemos que las contribuciones de los revisores mejoran de manera significativa las traducciones y lecciones nuevas.</p>
+<h2>Transparencia</h2>
+<p>Queremos que el proceso de producción y revisión sea transparente. Por eso tiene lugar en nuestro repositorio Github. En concreto, usamos Github para comentar, así como su <a href="https://es.wikipedia.org/wiki/Sistema_de_seguimiento_de_incidentes">sistema de seguimiento de incidentes</a>, ya que permite encontrar de manera precisa las sugerencias y debatir las ideas con los autores y revisores. Nos permite, además, evitar que nuestras conversaciones se pierdan en la bandeja del correo. Por último, los colaboradores y usuarios pueden recuperar conversaciones antiguas que han cobrado relevancia nuevamente.</p>
+<p>Tu trabajo como revisor --así como tu identidad-- será totalmente visible para el autor o traductor. En consecuencia, los comentarios deben dirigirse directamente al autor o traductor (y no al editor). Si en algún momento del proceso tienes dudas sobre cuál es tu rol o qué se espera de ti, por favor, publica tus dudas o preguntas en nuestro repositorio para que alguno de nuestros editores pueda ayudarte. En ocasiones podemos demorarnos un poco pero estamos convencidos de que, una vez se publique la traducción o lección, habrá valido la pena esperar unos días.</p>
+<p>A fin de mantener nuestro compromiso con una investigación pública, abierta y transparente, te animamos a mantener las conversaciones en Github, tal y como se expone en el apartado dedicado a nuestro flujo de trabajo. Sin embargo, también queremos que todo el mundo se sienta cómodo y por eso, pero de manera ocasional, también aceptamos tratar un asunto en privado. En tal caso puedes contactar a tu <a href="/project-team">editor asignado</a> o a alguno de nuestros <em>ombudsperson</em> <a href="/project-team">Maria José Afanador-Llach</a>.</p>
+<p>A menos que nos indiques lo contario, tu nombre aparecerá como revisor en la página de la lección en  <em>The Programming Historian en español</em> una vez se publique de manera oficial. Esto es solo un pequeño reconocimiento pero nos gustaría enfatizar que <em>The Programming Historian en español</em> se lleva a cabo gracias al trabajo de los voluntarios y por eso es obligado darles crédito.</p>
+<h2>¿Qué revisar?</h2>
+<p>El estilo informal de <em>The Programming Historian en español</em> puede dar la impresión de que las lecciones son fáciles de traducir o escribir. En realidad, traducir o escribir un buen tutorial exige un esfuerzo tan grande (o mayor) como el necesario para crear un artículo académico.</p>
+<p>A continuación, destacamos una serie de cuestiones que como revisor deberías tener en cuenta. Algunas serán más relevantes que otras en función del tema, el público objetivo o la dificultad del tutorial. No se trata de una lista exhaustiva y tampoco pedimos que los revisores respondan a cada una de las cuestiones sino que nos proporcionen una orientación general.</p>
+<h3>Destinatario</h3>
+<p>Si has ojeado algunos de los tutoriales de <em>The Programming Historian en español</em>, te habrás dado cuenta de que no tenemos un destinatario estándar para todas las lecciones. Algunos tutoriales son para principiantes, otros requieren conocimientos técnicos, e incluso algunos están dirigidos a usuarios experimentados que necesitan resolver un problema muy específico. ¡Nos gusta la variedad!</p>
+<p>Aunque cada lección mantenga el estilo de su autor (o traductor), queremos que todas las lecciones sean legibles y estén escritas en un registro homogéneo.</p>
+<h3>Traducciones</h3>
+<p>De manera más específica, en cuanto a las traducciones, apreciamos el rigor pero también somos conscientes de que la literalidad no se puede alcanzar si se persigue una lectura amena. Además, en ocasiones los traductores deben añadir aclaraciones culturales a través de notas o entre paréntesis. También hay que considerar que los traductores utilizan variantes regionales para referirse a ciertas cosas ('ordenador, 'computadora', 'computador'), que es conveniente respetar. He aquí, pues, algunas cuestiones a tener en cuenta:</p>
+<ul>
+<li>¿El lenguaje (léxico, sintaxis, ortografía) es adecuado?</li>
+<li>¿Se traducen todos los tecnicismos al español?</li>
+<li>¿Los tecnicismos dudosos van acompañados del original inglés entre paréntesis?</li>
+<li>Si no se traducen ciertos términos, ¿se marcan en cursiva?</li>
+<li>¿El traductor ha añadido notas aclaratorias?</li>
+<li>¿Las capturas de pantalla y trozos de código han sido adaptados?</li>
+<li>¿Se han añadido referencias bibliográficas en español?</li>
+</ul>
+<p>Puesto que muchos de lo tecnicismos son nuevos y/o todavía no están recogidos en los diccionarios, recomendamos el uso de la <a href="http://vocabularios.caicyt.gov.ar/portal/index.php?task=fetchLast&amp;v=42">Taxonomía sobre Actividades de investigación digital en humanidades</a> de TaDiRAH y el <a href="http://www.mecd.gob.es/planes-nacionales/dam/jcr:f20a4ba1-0ed2-445d-9be9-b8b0382562ea/mex-glosario-interpares-total0112.pdf">Glosario de Preservación Archivística Digital (Versión 4.0)</a> de Voutssas-M y Barnard Amozorrutia (UNAM).</p>
+<h3>Lecciones nuevas</h3>
+<p>Por lo que respecta a las lecciones nuevas, queremos que las explicaciones técnicas (y el nivel de dificultad) sea constante a lo largo del tutorial. En tanto que revisor, queremos que, en un tutorial dirigido a un usuario experimentado, seas capaz de detectar pasajes que explican en detalle un concepto demasiado simple. Y a la inversa: queremos evitar tutoriales dirigidos a principiantees que no explican de manera adecuada un concepto fundamental para entender la lección. Aspectos a tener en cuenta:</p>
+<ul>
+<li>¿El autor tiene en mente un destinatario ideal a lo largo de la lección?</li>
+<li>¿Hay pasos explicados en exceso? ¿Hay otros pasos, en cambio, que requieren mayor detalles?</li>
+<li>¿Existe otra lección en <em>The Programming Historian en español</em> que tenga un destinatario semejante? ¿En qué sentido la lección supone una novedad?</li>
+</ul>
+<h3>Preliminares</h3>
+<ul>
+<li>¿Qué programas o lenguajes son necesarios?</li>
+<li>¿Qué habilidades se necesita conocer previamente?</li>
+<li>¿Qué experiencia previa se necesita?</li>
+<li>¿Qué datos se necesitan? ¿Son accesibles?</li>
+</ul>
+<h3>Estructura</h3>
+<ul>
+<li>¿Los objetivos y las habilidades previas que se necesitan se exponen de manera clara al inicio del tutorial?</li>
+<li>¿Las habilidades derivadas del tutorial son útiles?</li>
+<li>¿Las capturas de pantalla y diagramas ilustran los pasos más importantes del tutorial?</li>
+<li>¿Las secciones y títulos de sección son claros y guían al lector?</li>
+</ul>
+<h3>Beneficios</h3>
+<ul>
+<li>¿Se explica de manera clara por qué la herramienta o los métodos son útiles para investigar?</li>
+<li>¿Se sugiere cómo los conceptos (o un paso concreto) se pueden aplicar a otros casos concretos?</li>
+</ul>
+<h3>Flujo de trabajo</h3>
+<ul>
+<li>Si la lección tiene una extensión larga, ¿debería dividirse en otras más breves?</li>
+<li>¿Hay recapitulaciones, resúmenes o paradas que marcan una transición a lo largo del tutorial?</li>
+<li>Si se requiere un <em>dataset</em>, ¿está disponible en internet para descargar?</li>
+</ul>
+<h3>Sostenibilidad</h3>
+<p>Para aumentar la vida útil de nuestras lecciones, los revisores deben tener en cuenta las siguientes preguntas acerca de la sostenibilidad. Cada propuesta es diferente, por lo que algunas de estas recomendaciones no son pertinentes. Teniendo en cuenta el nivel de dificultad de la lección y su público objetivo, los revisores deben utilizar estas preguntas como guía para asegurar que los tutoriales son lo más sostenibles posibles desde el momento en que se publican.</p>
+<ul>
+<li>¿Se listan las versiones y especificaciones de los programas utilizados? ¿Los recursos utilizados son los más recientes? Si la lección usa versiones más antiguas, ¿el autor lo justifica?</li>
+<li>¿La metodología o herramientas utilizadas en la lección están a la orden del día? ¿Están actualizadas?</li>
+<li>¿Qué fuentes o datos se utilizan? ¿Están incluidos de tal manera que no dependan de un alojamiento externo?</li>
+<li>¿Qué enlaces externos contiene la lección? ¿Estos recursos son actuales o existen otros, más recientes o apropiados, que se podrían vincular?</li>
+</ul>
+<h3>Integrando la lección a <em>The Programming Historian en español</em></h3>
+<ul>
+<li>¿La lección contribuye al desarrollo de otras lecciones ya publicadas?</li>
+<li>¿Existen enlaces adecuados que conectan la lección con otras semejantes o complementarias?</li>
+</ul>
+<h2>Cómo enviar tu revisión</h2>
+<p>Gestionamos todo el proceso de revisión, tanto de traducciones como de lecciones nuevas, a través de GitHub. Cuando una traducción o una lección nueva esté lista para ser revisada, un miembro del equipo editorial te facilitará un enlace para que puedas leerlo y un enlace al repositorio en donde podrás publicar tus comentarios. Las conversaciones tienen lugar en GitHub, un entorno gratuito y social, por lo que tendrás que registrate con una cuenta propia para publicar tus comentarios. Te animamos a mantener todas las conversaciones en Github pero ocasionalmente puedes enviar un correo electónico al editor si necesitas comunicarle algo en privado.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

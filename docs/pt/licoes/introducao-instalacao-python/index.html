@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/pt/licoes/introducao-instalacao-python"),
+					params: {lang:"pt",lessons:"licoes",slug:"introducao-instalacao-python"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Introdução e instalação do Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2>Objetivos da Lição</h2>
+<p>Essa primeira lição na nossa seção sobre Fontes Online é preparada para que você e o seu computador estejam preparados para se iniciarem na programação.
+Iremos focar na instalação do software necessário, livre e de boa reputação. Posteriormente, iremos auxiliar na experimentação com os primeiros passos na programação, para que você tenha resultados rápidos.</p>
+<p>Neste módulo de abertura, você irá instalar a <a href="http://www.python.org/">Linguagem de Programação Python</a>, o <a href="http://www.crummy.com/software/BeautifulSoup/">analisador de HTML/XML Beautiful Soup</a>, e um editor de texto.</p>
+<p>Os ecrãns de exemplo mostrados aqui correspondem ao <a href="http://www.activestate.com/komodo-edit">Komodo Edit</a>, mas você pode utilizar qualquer editor de texto apto a trabalhar com o Python. Aqui está uma lista de outras opções: <a href="http://wiki.python.org/moin/PythonEditors/">Editores Python</a>. Uma vez que tudo esteja instalado, você irá escrever os seus primeiros programas, &quot;Olá Mundo&quot; em Python e HTML.</p>
+<h2>A linguagem de programação Python</h2>
+<p>A linguagem de programação que usaremos nesta série de lições é Python, uma linguagem livre e de código aberto.<br>
+A menos que seja observado o contrário, usaremos a versão <strong>Python 3</strong> daqui em diante.
+A versão 2 não é mais suportada, mas ainda pode estar sendo usada em projetos ou lições mais antigas.</p>
+<p><a href="http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html">Python 3 tem algumas poucas diferenças na formatação</a> (pense em regras gramaticais). Assim, fique atento se você encontrar exemplos online que ainda utilizam o Python 2. Esses exemplos podem não funcionar nas versões atuais do Python.</p>
+<h2>Faça backups do seu trabalho!</h2>
+<p>Antes de fazer o download ou instalar qualquer novo software, é crucial que você faça backups do seu trabalho. Você deve fazer backup de todo o seu computador pelo menos uma vez por semana, e de preferência com uma frequência ainda menor. É também uma boa ideia fazer backups fora do seu ambiente local pois, dessa forma, fica salvaguardado caso algo aconteça com o seu computador, com a sua casa ou o seu escritório. Sites como o <a href="https://www.jungledisk.com/">Jungle Disk</a> ou o <a href="https://www.dropbox.com/home">Dropbox</a> fornecem opções de backup fáceis de usar e relativamente baratas.</p>
+<h3>Escolha o seu Sistema Operativo</h3>
+<h2>Passo 1 – Instale e configure o Software</h2>
+<p>Para que você consiga trabalhar nas técnicas aqui apresentadas, você precisará descarregar e instalar software disponível gratuitamente.
+Nós fornecemos instruções para o Mac, Windows e Linux. Uma vez que você tenha instalado o software no seu Sistema Operativo, siga para a lição '<a href="nocoes-basicas-paginas-web-html">Noções básicas de páginas web e HTML</a>'. Se você encontrar dificuldades com as nossas instruções ou achar que algo não funciona na sua plataforma, por favor nos informe.</p>
+<ul>
+<li><a href="instalacao-mac">Instalação do Python para Mac</a></li>
+<li><a href="instalacao-windows">Instalação do Python para Windows</a></li>
+<li><a href="instalacao-linux">Instalação do Python para Linux</a></li>
+</ul>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

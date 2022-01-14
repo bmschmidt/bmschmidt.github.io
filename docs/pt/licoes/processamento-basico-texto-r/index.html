@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/pt/licoes/processamento-basico-texto-r"),
+					params: {lang:"pt",lessons:"licoes",slug:"processamento-basico-texto-r"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Processamento Básico de Texto em R</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2>Objetivos</h2>
+<p>Hoje em dia há uma quantidade substancial de dados históricos disponíveis em forma de texto simples e digitalizado. Alguns exemplos comuns são cartas, artigos de jornal, notas pessoais, diários, documentos legais e transcrições de discursos. Enquanto algumas aplicações de softwares independentes têm ferramentas para analisar dados textuais, o uso de linguagens de programação apresenta uma maior flexibilidade para analisar um corpus de documentos de texto. Neste tutorial, guiaremos os usuários no básico da análise de texto na linguagem de programação R. A nossa abordagem envolve usar apenas a tokenização que produz uma análise sintática do texto, com elementos como palavras, frases e orações. No final da presente lição, os usuários poderão:</p>
+<ul>
+<li>utilizar análises exploratórias para verificar erros e detectar padrões gerais;</li>
+<li>aplicar métodos básicos de estilometria através do tempo e entre autores;</li>
+<li>conseguir resumir o conteúdo do documento para oferecer uma descrição geral do corpus.</li>
+</ul>
+<p>Para esta lição, será utilizado um conjunto de dados com os textos dos discursos presidenciais dos Estados Unidos da América sobre o <a href="https://pt.wikipedia.org/wiki/Discurso_sobre_o_Estado_da_Uni%C3%A3o">Estado da União</a>[^1].</p>
+<p>Assumimos que os usuários possuem um conhecimento básico da linguagem de programação R. A lição <a href="/en/lessons/r-basics-with-tabular-data">Noções básicas de R com dados tabulares</a>[^2] (em inglês) é um excelente guia que contém todos os conhecimentos em R necessários aqui, tais como instalar e abrir R, instalar e carregar pacotes e importar e trabalhar com dados básicos de R. Os usuários podem fazer o download do R indicado para os seus sistemas operativos em <a href="https://cran.r-project.org/">The Comprehensive R Archive Network</a>. Ainda que não seja um pré-requisito, recomendamos que os novos usuários façam o download do <a href="https://www.rstudio.com/products/rstudio/#Desktop">R Studio</a>, um ambiente de desenvolvimento de código aberto para escrever e executar programas em R.</p>
+<p>Todo o código desta lição foi testado em R na versão 4.0.2, mas esperamos que ele rode adequadamente em qualquer versão futura do programa.</p>
+<h1>Um pequeno exemplo</h1>
+<h2>Configuração de pacotes</h2>
+<p>É necessário instalar dois pacotes de R antes de começar com o tutorial: o <strong>tidyverse</strong>[^3] e o <strong>tokenizers</strong>[^4]. O primeiro proporciona ferramentas convenientes para ler e trabalhar com grupos de dados e o segundo contém funções para dividir os dados do texto em palavras e orações. Para instalá-los, abra o R no seu computador e execute essas duas linhas de código no console:</p>
+<pre><code class="language-{r}">
+install.packages(&quot;tidyverse&quot;)
+
+install.packages(&quot;tokenizers&quot;)
+
+</code></pre>
+<p>Dependendo da configuração do seu sistema, pode ser aberta uma caixa de diálogo solicitando a escolha de um lugar da internet para fazer o download. Caso apareça, escolha a opção mais perto de sua localização atual. O download e a instalação, provavelmente, irão ocorrer automaticamente.</p>
+<p>Agora que esses pacotes estão no seu computador, precisamos de avisar ao R que eles devem ser carregados para o uso. Isso é feito através do comando <code>library</code>. Pode ser que apareçam alguns avisos enquanto carregam outras dependências, mas eles podem ser ignorados sem nenhum problema. Execute essas duas linhas de código no console para habilitar o uso dos pacotes:</p>
+<pre><code class="language-{r}">
+library(tidyverse)
+
+library(tokenizers)
+
+</code></pre>
+<p>O comando <code>install.packages</code> (instalar pacotes) só é necessário executar na primeira vez em que iniciar este tutorial, o comando <code>library</code> deverá ser executado todas as vezes que se inicia o R[^5].</p>
+<h2>Segmentação de palavras</h2>
+<p>Nesta seção, vamos trabalhar com um único parágrafo. Este exemplo pertence ao início do último discurso de Barack Obama sobre o Estado da União, em 2016. Para facilitar a compreensão do tutorial nesta primeira etapa, estudamos este parágrafo traduzido para português[^6].</p>
+<p>Para carregar o texto, copie e cole o seguinte no console do R:</p>
+<pre><code>
+texto &lt;- paste(&quot;Também entendo que, pelo fato de estarmos em temporada eleitoral, as expectativas quanto ao que vamos realizar este ano são baixas. Mesmo assim, senhor presidente da Câmara, aprecio a atitude construtiva que o senhor e os outros líderes assumiram no final do ano passado para aprovar o orçamento e perpetuar a redução dos impostos sobre as famílias trabalhadoras. Desse modo, espero que possamos colaborar este ano sobre questões que são prioritárias para ambos os partidos, como a reforma da justiça criminal e a assistência às pessoas dependentes de drogas vendidas com receita médica. Quem sabe possamos surpreender os cínicos novamente.&quot;)
+
+</code></pre>
+<p>Depois de executar o comando (clicando em “Enter”), escreva a palavra <code>texto</code> no console e pressione Enter. O R irá mostrar o conteúdo do objeto texto, uma vez que ele contém parte do discurso proferido por Obama.</p>
+<p>O primeiro passo do processamento de texto envolve utilizar a função <code>tokenize_words</code> (segmentar palavras) do pacote <strong>tokenizers</strong> para dividir o texto en palavras individuais.</p>
+<pre><code class="language-{r}">
+palavras &lt;- tokenize_words(texto)
+
+</code></pre>
+<p>Para apresentar os resultados na janela do console do R, mostrando tanto o resultado tokenizado como a posição de cada elemento na margem esquerda, execute palavras no console:</p>
+<pre><code class="language-{r}">
+palavras
+
+</code></pre>
+<p>Isso produz o seguinte resultado:</p>
+<pre><code>
+&gt; [[1]]
+
+[1] &quot;também&quot; &quot;entendo&quot; &quot;que&quot; &quot;pelo&quot; &quot;fato&quot;
+
+[6] &quot;de&quot; &quot;estarmos&quot; &quot;em&quot; &quot;temporada&quot; &quot;eleitoral&quot;
+
+[11] &quot;as&quot; &quot;expectativas&quot; &quot;quanto&quot; &quot;ao&quot; &quot;que&quot;
+
+[16] &quot;vamos&quot; &quot;realizar&quot; &quot;este&quot; &quot;ano&quot; &quot;são&quot;
+
+[21] &quot;baixas&quot; &quot;mesmo&quot; &quot;assim&quot; &quot;senhor&quot; &quot;presidente&quot;
+
+[26] &quot;da&quot; &quot;câmara&quot; &quot;aprecio&quot; &quot;a&quot; &quot;atitude&quot;
+
+[31] &quot;construtiva&quot; &quot;que&quot; &quot;o&quot; &quot;senhor&quot; &quot;e&quot;
+
+[36] &quot;os&quot; &quot;outros&quot; &quot;líderes&quot; &quot;assumiram&quot; &quot;no&quot;
+
+[41] &quot;final&quot; &quot;do&quot; &quot;ano&quot; &quot;passado&quot; &quot;para&quot;
+
+[46] &quot;aprovar&quot; &quot;o&quot; &quot;orçamento&quot; &quot;e&quot; &quot;perpetuar&quot;
+
+[51] &quot;a&quot; &quot;redução&quot; &quot;dos&quot; &quot;impostos&quot; &quot;sobre&quot;
+
+[56] &quot;as&quot; &quot;famílias&quot; &quot;trabalhadoras&quot; &quot;desse&quot; &quot;modo&quot;
+
+[61] &quot;espero&quot; &quot;que&quot; &quot;possamos&quot; &quot;colaborar&quot; &quot;este&quot;
+
+[66] &quot;ano&quot; &quot;sobre&quot; &quot;questões&quot; &quot;que&quot; &quot;são&quot;
+
+[71] &quot;prioritárias&quot; &quot;para&quot; &quot;ambos&quot; &quot;os&quot; &quot;partidos&quot;
+
+[76] &quot;como&quot; &quot;a&quot; &quot;reforma&quot; &quot;da&quot; &quot;justiça&quot;
+
+[81] &quot;criminal&quot; &quot;e&quot; &quot;a&quot; &quot;assistência&quot; &quot;às&quot;
+
+[86] &quot;pessoas&quot; &quot;dependentes&quot; &quot;de&quot; &quot;drogas&quot; &quot;vendidas&quot;
+
+[91] &quot;com&quot; &quot;receita&quot; &quot;médica&quot; &quot;quem&quot; &quot;sabe&quot;
+
+[96] &quot;possamos&quot; &quot;surpreender&quot; &quot;os&quot; &quot;cínicos&quot; &quot;novamente&quot;
+
+</code></pre>
+<p>Como o texto carregado mudou depois de se executar essa função de R? Ela removeu toda a pontuação, dividiu o texto em palavras individuais e converteu tudo para minúsculas. Em breve, veremos porque todas essas intervenções são úteis para a nossa análise.</p>
+<p>Quantas palavras existem neste fragmento de texto? Se usamos a função <code>length</code> (comprimento) diretamente no objeto <code>palavras</code>, o resultado não é muito útil.</p>
+<pre><code class="language-{r}">
+length(palavras)
+
+</code></pre>
+<p>O resultado é igual a:</p>
+<pre><code class="language-{r}">
+[1] 1
+
+</code></pre>
+<p>O comprimento equivale a 1 porque a função <code>tokenize_words</code> retorna uma lista de objetos com uma entrada por documento carregado. O nosso carregamento possui apenas um documento, então a lista também possui apenas um elemento. Para ver as palavras dentro do primeiro documento, utilizamos o símbolo [], da seguinte forma: <code>[[1]]</code>. O objetivo é selecionar apenas o primeiro elemento da lista:</p>
+<pre><code class="language-{r}">
+length(palavras[[1]])
+
+</code></pre>
+<p>O resultado é <code>100</code>, indicando que existem 100 palavras neste parágrafo.</p>
+<p>A separação do documento em palavras individuais torna possível calcular quantas vezes cada palavra foi utilizada durante o texto. Para fazer isso, primeiro aplicamos a função <code>table</code> (tabela) nas palavras do primeiro (e, neste caso, único) documento e depois separamos os nomes e os valores da tabela num novo objeto chamado <em>data frame</em>. O uso de um quadro de dados em R é semelhante ao uso de uma tabela numa base de dados. Esses passos, em conjunto com a impressão do resultado, são obtidos com as seguintes linhas de código:</p>
+<pre><code class="language-{r}">
+tabela &lt;- table(palavras[[1]])
+
+tabela &lt;- data_frame(palavra = names(tabela), contagem = as.numeric(tabela))
+
+tabela
+
+</code></pre>
+<p>O resultado deste comando deve aparecer assim no seu console (<em>tibble</em> é um tipo específico de <em>data frame</em> criado no pacote <a href="https://en.wikipedia.org/wiki/Tidy_data">Tidy Data</a>):</p>
+<pre><code>
+# A tibble: 77 x 2
+
+palavra contagem
+
+&lt;chr&gt; &lt;dbl&gt;
+
+1 a 4.
+
+2 ambos 1.
+
+3 ano 3.
+
+4 ao 1.
+
+5 aprecio 1.
+
+6 aprovar 1.
+
+7 as 2.
+
+8 às 1.
+
+9 assim 1.
+
+10 assistência 1.
+
+# ... with 67 more rows
+
+</code></pre>
+<p>Há uma quantidade substancial de informação nesta amostra. Vemos que existem 77 palavras únicas, como indica a dimensão da tabela. As 10 primeiras fileiras do conjunto de dados são apresentadas, com a segunda coluna mostrando quantas vezes a palavra da primeira coluna foi utilizada. Por exemplo, “ano” foi usada três vezes, enquanto “aprovar”, apenas uma vez.</p>
+<p>Também podemos ordenar a tabela usando a função <code>arrange</code> (organizar). Esta função precisa do conjunto de dados a utilizar, aqui <code>tabela</code>, e depois o nome da coluna que serve de referência para ordená-lo. A função <code>desc</code> no segundo argumento indica que queremos ordenar em ordem decrescente.</p>
+<pre><code class="language-{r}">
+arrange(tabela, desc(contagem))
+
+</code></pre>
+<p>E agora o resultado será:</p>
+<pre><code class="language-{r}">
+# A tibble: 77 x 2
+
+palavra contagem
+
+&lt;chr&gt; &lt;dbl&gt;
+
+1 que 5.
+
+2 a  4.
+
+3 ano 3.
+
+4 e  3.
+
+5 os 3.
+
+6 as 2.
+
+7 da 2.
+
+8 de 2.
+
+9 este 2.
+
+10 o 2.
+
+# … with 67 more rows
+
+</code></pre>
+<p>As palavras mais comuns são pronomes e palavras funcionais tais como &quot;que&quot;, &quot;a&quot;, &quot;e&quot; e &quot;os&quot;. Observe como a análise é facilitada pelo uso da versão em minúsculas de cada palavra. Qualquer contagem prevê que a palavra possa estar no início ou no meio da frase.</p>
+<p>Uma técnica popular é carregar uma lista de palavras frequentemente usadas e eliminá-las antes da análise formal. As palavras em tal lista são chamadas &quot;<em>stopwords</em>&quot; ou &quot;palavras vazias&quot; e são geralmente pronomes, conjugações dos verbos mais comuns e conjunções. Neste tutorial, temos uma variação sutil desta técnica.</p>
+<h2>Detectar frases</h2>
+<p>O pacote <strong>tokenizer</strong> também contém a função <code>tokenize_sentences</code>, que detecta limites de frases, ao invés de palavras. Ele pode ser executado da seguinte maneira:</p>
+<pre><code class="language-{r}">
+frases &lt;- tokenize_sentences(texto)
+
+frases
+
+</code></pre>
+<p>Com o resultado:</p>
+<pre><code class="language-{r}">
+&gt; frases
+
+[[1]]
+
+[1] &quot;Também entendo que, pelo fato de estarmos em temporada eleitoral, as expectativas quanto ao que vamos realizar este ano são baixas.&quot;
+
+[2] &quot;Mesmo assim, senhor presidente da Câmara, aprecio a atitude construtiva que o senhor e os outros líderes assumiram no final do ano passado para aprovar o orçamento e perpetuar a redução dos impostos sobre as famílias trabalhadoras.&quot;
+
+[3] &quot;Desse modo, espero que possamos colaborar este ano sobre questões que são prioritárias para ambos os partidos, como a reforma da justiça criminal e a assistência às pessoas dependentes de drogas vendidas com receita médica.&quot;
+
+[4] &quot;Quem sabe possamos surpreender os cínicos novamente.&quot;
+
+</code></pre>
+<p>O resultado é um vetor de caracteres, um objeto unidimensional que consiste apenas em elementos representados como caracteres. Observe que o resultado marcou cada frase como um elemento separado.</p>
+<p>É possível conectar o resultado da divisão das frases com o resultado da divisão das palavras. Se executarmos a divisão de frases do parágrafo com a função <code>tokenize_words</code>, cada frase será tratada como um único documento. Execute isto usando a seguinte linha de código e veja se o resultado é o esperado, a segunda linha de comando serve para imprimir o resultado.</p>
+<pre><code class="language-{r}">
+frases_palavras &lt;- tokenize_words(frases[[1]])
+
+frases_palavras
+
+</code></pre>
+<p>Se olharmos para o tamanho do resultado diretamente, podemos ver que existem quatro “documentos” no objeto <code>frases_palavras</code>:</p>
+<pre><code class="language-{r}">
+length(frases_palavras)
+
+</code></pre>
+<p>Ao acessar cada uma delas diretamente, é possível saber quantas palavras há em cada frase do parágrafo:</p>
+<pre><code class="language-{r}">
+length(frases_palavras[[1]])
+
+length(frases_palavras[[2]])
+
+length(frases_palavras[[3]])
+
+length(frases_palavras[[4]])
+
+</code></pre>
+<p>Isto pode demandar um pouco de esforço, mas felizmente existe uma maneira mais simples de o fazer. A função <code>sapply</code> executa a função no segundo argumento para cada elemento do primeiro argumento. Como resultado, podemos calcular a extensão de cada frase do primeiro parágrafo com uma única linha de código:</p>
+<pre><code class="language-{r}">
+sapply(frases_palavras, length)
+
+</code></pre>
+<p>O resultado agora será assim:</p>
+<pre><code class="language-{r}">
+[1] 21 37 35 7
+
+</code></pre>
+<p>Podemos ver que existem quatro frases com um comprimento de 21, 37, 35 e 7 palavras. Utilizaremos esta função para trabalharmos com documentos maiores.</p>
+<h1>Analisar o discurso sobre o Estado da União de Barack Obama em 2016</h1>
+<h2>Análise exploratória</h2>
+<p>Vamos aplicar as técnicas da seção anterior a um discurso sobre o Estado da União completo, desta vez, usando o original em inglês. Por uma questão de coerência, vamos usar o mesmo discurso de 2016 de Barack Obama. Agora, vamos carregar os dados de um ficheiro, uma vez que a cópia direta é difícil em grande escala.</p>
+<p>Para tal, vamos combinar a função <code>readLines</code> (ler linhas) para carregar o texto em R e a função <code>paste</code> (colar) para combinar todas as linhas num único objeto. Vamos criar a URL do arquivo de texto usando a função <code>sprintf</code>, uma vez que este formato permitirá que ele seja facilmente aproveitado para outros recursos online[^7],[^8].</p>
+<pre><code class="language-{r}">
+base_url &lt;- &quot;/assets/basic-text-processing-in-r&quot;
+
+url &lt;- sprintf(&quot;%s/sotu_text/236.txt&quot;, base_url)
+
+texto &lt;- paste(readLines(url), collapse = &quot;\n&quot;)
+
+</code></pre>
+<p>Como antes, vamos segmentar o texto e ver o número de palavras no documento.</p>
+<pre><code class="language-{r}">
+palavras &lt;- tokenize_words(texto)
+
+length(palavras[[1]])
+
+</code></pre>
+<p>Vemos que este discurso contém um total de <code>6113</code> palavras. Ao combinar as funções <code>table</code> (tabela), <code>data_frame</code> e <code>arrange</code> (organizar), como fizemos no exemplo anterior, obtemos as palavras mais frequentes em todo o discurso. Ao fazer isso, observe como é fácil reutilizar o código anterior para repetir a análise num novo conjunto de dados. Este é um dos maiores benefícios de usar uma linguagem de programação para realizar uma análise baseada em dados [^9].</p>
+<pre><code class="language-{r}">
+tabela &lt;- table(palavras[[1]])
+
+tabela &lt;- data_frame(word = names(tabela), count = as.numeric(tabela))
+
+tabela &lt;- arrange(tabela, desc(count))
+
+tabela
+
+</code></pre>
+<p>O resultado deve ser:</p>
+<pre><code class="language-{r}">
+&gt;#A tibble: 1,590 x 2
+
+word count
+
+&lt;chr&gt; &lt;dbl&gt;
+
+1 the 281.
+
+2 to 209.
+
+3 and 189.
+
+4 of 148.
+
+5 that 125.
+
+6 we 124.
+
+7 a 120.
+
+8 in 105.
+
+9 our 96.
+
+10 is 72.
+
+&gt;#... with 1,580 more rows
+
+</code></pre>
+<p>Mais uma vez, palavras extremamente comuns como <em>the</em> (&quot;o&quot; ou &quot;a&quot;), <em>to</em> (&quot;para&quot;) e <em>and</em> (&quot;e&quot;) estão no topo da tabela. Estes termos não são particularmente esclarecedores se quisermos conhecer o assunto do discurso. Na realidade, queremos encontrar palavras que se destaquem mais neste texto do que num grande corpus externo em inglês. Para conseguir isso, precisamos de um conjunto de dados que forneça essas frequências. Aqui está o conjunto de dados de Peter Norviq usando o <em>Google Web Trillion Word Corpus</em> (Corpus de um trilhão de palavras da web do Google), coletado a partir dos dados compilados através do rastreamento de sites populares em inglês pelo Google [^10]:</p>
+<pre><code class="language-{r}">
+palavras_frequentes &lt;- read_csv(sprintf(&quot;%s/%s&quot;, base_url, &quot;word_frequency.csv&quot;))
+
+palavras_frequentes
+
+</code></pre>
+<p>A primeira coluna indica o idioma (sempre &quot;en&quot; para inglês neste caso), a segunda coluna - frequency - fornece a palavra em questão e a terceira coluna indica a percentagem com a qual ela aparece no <em>Corpus de um trilhão de palavras do Google</em>. Por exemplo, a palavra &quot;for&quot; aparece quase exatamente 1 vez a cada 100 palavras, pelo menos nos textos dos sites indexados pelo Google.</p>
+<p>Para combinar estas palavras frequentes com o conjunto de dados na <code>tabela</code> construída a partir do discurso do Estado da União, podemos usar a função <code>inner_join</code> (união interna). Esta função toma dois conjuntos de dados e combina-os em todas as colunas que têm o mesmo nome. Neste caso, a coluna comum é a chamada <em>word</em> (&quot;palavra&quot;).</p>
+<pre><code class="language-{r}">
+tabela &lt;- inner_join(tabela, palavras_frequentes)
+
+tabela
+
+</code></pre>
+<p>Note que agora o nosso conjunto de dados tem duas colunas extras que fornecem o idioma (aqui relativamente pouco útil já que é sempre &quot;en&quot;) e a frequência da palavra no corpus externo. Esta segunda nova coluna será muito útil, porque podemos filtrar linhas que têm uma frequência inferior a 0,1%, ou seja, que aparecem mais de uma vez em cada 1000 palavras:</p>
+<pre><code class="language-{r}">
+filter(tabela, frequency &lt; 0.1)
+
+</code></pre>
+<p>Isto produz:</p>
+<pre><code class="language-{r}">
+&gt;#A tibble: 1,457 x 4
+
+word count language frequency
+
+&lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+
+1 america 28. en 0.0232
+
+2 people 27. en 0.0817
+
+3 just 25. en 0.0787
+
+4 world 23. en 0.0734
+
+5 american 22. en 0.0387
+
+6 work 22. en 0.0713
+
+7 make 20. en 0.0689
+
+8 want 19. en 0.0440
+
+9 change 18. en 0.0358
+
+10 years 18. en 0.0574
+
+&gt;#... with 1,447 more rows
+
+</code></pre>
+<p>Esta lista está começando a se tornar mais interessante. Um termo como &quot;america&quot; aparece no topo da lista porque, podemos pensar, é muito usado nos discursos dos políticos e menos em outros campos. Ao estabelecer o limiar ainda mais baixo, em 0.002, obtemos um melhor resumo do discurso. Como seria útil ver mais do que as dez linhas padrão, vamos usar a função <code>print</code> (imprimir) junto com a opção <code>n</code> (de número) definida como 15 para que possamos ver mais linhas.</p>
+<pre><code class="language-{r}">
+print(filter(tabela, frequency &lt; 0.002), n = 15)
+
+</code></pre>
+<p>Isto agora nos mostra o seguinte resultado:</p>
+<pre><code class="language-{r}">
+&gt;#A tibble: 463 x 4
+
+word count language frequency
+
+&lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+
+1 laughter 11. en 0.000643
+
+2 voices 8. en 0.00189
+
+3 allies 4. en 0.000844
+
+4 harder 4. en 0.00152
+
+5 qaida 4. en 0.000183
+
+6 terrorists 4. en 0.00122
+
+7 bipartisan 3. en 0.000145
+
+8 generations 3. en 0.00123
+
+9 stamp 3. en 0.00166
+
+10 strongest 3. en 0.000591
+
+11 syria 3. en 0.00136
+
+12 terrorist 3. en 0.00181
+
+13 tougher 3. en 0.000247
+
+14 weaken 3. en 0.000181
+
+15 accelerate 2. en 0.000544
+
+&gt;#... with 448 more rows
+
+</code></pre>
+<p>Os resultados parecem sugerir alguns dos temas principais deste discurso, como “syria” (Síria), “terrorist” (terrorista) e “qaida” (Qaeda) (o nome al-qaida foi dividido em “al” e “qaida” pelo tokenizador).</p>
+<h2>Sumarizar o documento</h2>
+<p>Para fornecer informações contextuais para o conjunto de dados que estamos analisando, temos uma tabela com metadados sobre cada um dos discursos do Estado da União. Vamos carregá-la em R:</p>
+<pre><code class="language-{r}">
+metadados &lt;- read_csv(sprintf(&quot;%s/%s&quot;, base_url, &quot;metadata.csv&quot;))
+
+metadados
+
+</code></pre>
+<p>As primeiras dez linhas do grupo de dados aparecem assim:</p>
+<pre><code class="language-{r}">
+&gt;#A tibble: 236 x 4
+
+president year party sotu_type
+
+&lt;chr&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+
+1 George Washington 1790 Nonpartisan speech
+
+2 George Washington 1790 Nonpartisan speech
+
+3 George Washington 1791 Nonpartisan speech
+
+4 George Washington 1792 Nonpartisan speech
+
+5 George Washington 1793 Nonpartisan speech
+
+6 George Washington 1794 Nonpartisan speech
+
+7 George Washington 1795 Nonpartisan speech
+
+8 George Washington 1796 Nonpartisan speech
+
+9 John Adams 1797 Federalist speech
+
+10 John Adams 1798 Federalist speech
+
+&gt;#... with 226 more rows
+
+</code></pre>
+<p>Temos o nome do presidente, o ano, o partido político do presidente e o formato de discurso do Estado da União (oral ou escrito) para cada discurso no conjunto. O discurso de 2016 está na linha 236 dos metadados que, por acaso, é a última linha.</p>
+<p>Na próxima seção, pode ser útil resumir os dados para um discurso numa única linha de texto. Podemos fazer isto extraindo as cinco palavras mais frequentes com uma frequência inferior a 0,002% no <em>Corpus de um trilhão de palavras do Google</em> e combinando isso com dados sobre o presidente e o ano.</p>
+<pre><code class="language-{r}">
+tabela &lt;- filter(tabela, frequency &lt; 0.002)
+
+resultado &lt;- c(metadados$president[236], metadados$year[236], tabela$word[1:5])
+
+paste(resultado, collapse = &quot;; &quot;)
+
+</code></pre>
+<p>Isto deveria dar-nos o seguinte resultado:</p>
+<pre><code class="language-{r}">
+[1] &quot;Barack Obama; 2016; laughter; voices; allies; harder; qaida&quot;
+
+[1] “Barack Obama; 2016; risadas; vozes; aliados; mais duro; qaeda”
+
+</code></pre>
+<p>Esta linha capta tudo sobre o discurso? É evidente que não. O processamento de texto nunca substituirá a leitura atenta de um texto, mas ajuda a dar um resumo de alto nível das questões discutidas (&quot;risadas&quot; aparecem aqui porque as reações do público são anotadas no texto do discurso). Este resumo é útil de várias maneiras. Pode fornecer um título ad-hoc ou resumo para um documento que não tenha estas informações; pode servir para lembrar aos leitores que leram ou ouviram o discurso quais foram os principais temas discutidos; e compilar vários resumos com uma única ação pode mostrar padrões em grande escala que muitas vezes se perdem em grandes corpus. É a este último uso que recorremos agora ao aplicar as técnicas desta seção a um grupo maior de discursos do Estado da União.</p>
+<h1>Análise dos discursos do Estado da União de 1790 a 2016</h1>
+<h2>Carregar o corpus</h2>
+<p>A primeira coisa a fazer para analisar o corpus de discursos do Estado da União é carregá-los em R. Isto envolve as mesmas funções <code>paste</code> (colar) e <code>readLines</code> (ler linhas) como antes, mas temos que gerar um loop <code>for</code> (para) que executa as funções nos 236 ficheiros de texto. Estas são combinadas com a função <code>c</code>.</p>
+<pre><code class="language-{r}">
+ficheiros &lt;- sprintf(&quot;%s/sotu_text/%03d.txt&quot;, base_url, 1:236)
+
+texto &lt;- c()
+
+for (f in ficheiros) {
+
+texto &lt;- c(texto, paste(readLines(f), collapse = &quot;\n&quot;))
+
+}
+
+</code></pre>
+<p>Esta técnica carrega todos os ficheiros um a um do Github. Opcionalmente, é possível baixar um arquivo zip (comprimido) com o corpus completo e carregar os ficheiros manualmente. Esta técnica é descrita na próxima seção.</p>
+<h2>Forma alternativa de carregar o corpus (opcional)</h2>
+<p>Pode fazer o download do corpus aqui: <a href="/assets/basic-text-processing-in-r/sotu_text.zip">sotu_text.zip</a>. Descompacte o repositório em algum lugar no seu computador e defina a variável <code>input_loc</code> (local de upload) para o caminho do diretório onde o arquivo foi descompactado. Por exemplo, se os ficheiros estão na área de trabalho de um computador macOS e o usuário é o stevejobs, <code>input_loc</code> deve ser:</p>
+<pre><code class="language-{r}">
+input_loc &lt;- &quot;/Users/stevejobs/Desktop/sotu_text&quot;
+
+</code></pre>
+<p>Uma vez feito, pode usar o seguinte bloco de código para carregar todos os textos:</p>
+<pre><code class="language-{r}">
+ficheiros &lt;- dir(input_loc, full.names = TRUE)
+
+texto &lt;- c()
+
+for (f in ficheiros) {
+
+texto &lt;- c(texto, paste(readLines(f), collapse = &quot;\n&quot;))
+
+}
+
+</code></pre>
+<p>É possível usar esta mesma técnica para carregar seu próprio corpus de textos.</p>
+<h2>Análise exploratória</h2>
+<p>Uma vez mais, com a função <code>tokenize_words</code>, podemos calcular o comprimento de cada discurso em número de palavras.</p>
+<pre><code class="language-{r}">
+palavras &lt;- tokenize_words(texto)
+
+sapply(palavras, length)
+
+</code></pre>
+<p>Existe um padrão temporal na duração dos discursos? Como se compara a duração dos discursos de outros presidentes com os de Franklin D. Roosevelt, Abraham Lincoln e George Washington?</p>
+<p>A melhor maneira de descobrir é criando um gráfico de dispersão. É possível construir um usando a função <code>qplot</code> (gráfico), com o ano (year) no eixo x ou horizontal e o número de palavras (lenght) no eixo y ou vertical.</p>
+<pre><code class="language-{r}">
+qplot(metadados$year, sapply(palavras, length)) + labs(x = &quot;Ano&quot;, y = &quot;Número de palavras&quot;)
+
+</code></pre>
+<p>Isto cria um gráfico como este:</p>
+<p><img src="/images/basic-text-processing-in-r/sotu-number-of-words.jpg" alt="Number of words in each State of the Union Address plotted by year.">Número de palavras em cada discurso do Estado da União por ano.</p>
+<p>Parece que a maioria dos discursos aumentaram de 1790 a 1850 e depois aumentaram novamente no final do século XIX. A duração diminuiu drasticamente em torno da Primeira Guerra Mundial, com alguns pontos discrepantes espalhados ao longo do século XX.</p>
+<p>Existe alguma razão por trás dessas mudanças? Para explicar esta variação, podemos definir a cor dos pontos para denotar se são discursos que foram apresentados por escrito ou falados. O comando para fazer este gráfico envolve apenas uma pequena mudança no comando do gráfico:</p>
+<pre><code class="language-{r}">
+qplot(metadados$year, sapply(palavras, length), color = metadados$sotu_type) + labs(x = &quot;Ano&quot;, y = &quot;Número de palavras&quot;, color = &quot;Modalidade do discurso&quot;)
+
+</code></pre>
+<p>Isto produz o seguinte gráfico:</p>
+<p><img src="/images/basic-text-processing-in-r/sotu-number-of-words-and-type.jpg" alt="Number of words in each State of the Union Address plotted by year, with color denoting whether it was a written or oral message.">Número de palavras em cada discurso do Estado da União organizado por ano e com a cor denotando se se tratava de um discurso escrito ou oral.</p>
+<p>Vemos que o aumento no século XIX foi quando os discursos se tornaram documentos escritos e que a queda drástica foi quando Woodrow Wilson (28º Presidente dos Estados Unidos, entre 1913 e 1921) rompeu com a tradição e deu o seu discurso sobre o Estado da União oralmente no Congresso. Os pontos discrepantes que vimos anteriormente eram discursos proferidos por escrito após a Segunda Guerra Mundial.</p>
+<h2>Análise estilométrica</h2>
+<p>A estilometria, o estudo linguístico do estilo, faz uso extensivo de métodos computacionais para descrever o estilo de escrita de um autor. Com o nosso corpus, é possível detectar mudanças no estilo de escrita ao longo dos séculos XIX e XX. Um estudo estilométrico mais formal, geralmente, envolve o uso de código de análise sintática ou de reduções dimensionais algorítmicas complexas, tais como a análise dos principais componentes a serem estudados ao longo do tempo e entre autores. Neste tutorial, continuaremos a nos concentrar no estudo do comprimento das frases.</p>
+<p>O corpus pode ser dividido em frases usando a função <code>tokenize_sentences</code>. Neste caso, o resultado é uma lista com 236 objetos, cada um representando um documento específico.</p>
+<pre><code class="language-{r}">
+frases &lt;- tokenize_sentences(texto)
+
+</code></pre>
+<p>Em seguida, queremos dividir cada frase em palavras. A função <code>tokenize_words</code> pode ser utilizada, mas não diretamente sobre a lista de objetos <code>frases</code>. Poderíamos fazer isso com um loop <code>for</code> de novo, mas há uma forma mais simples de o fazer. A função <code>sapply</code> oferece uma aproximação mais direta. Aqui, queremos aplicar a segmentação de palavras individualmente a cada documento e, para isso, esta função é perfeita.</p>
+<pre><code class="language-{r}">
+frases_palavras &lt;- sapply(frases, tokenize_words)
+
+</code></pre>
+<p>Agora, temos uma lista (com cada elemento representando um documento) de listas (com cada elemento representando as palavras de uma dada frase). O resultado que precisamos é uma lista de objetos que forneça o comprimento de cada frase num dado documento. Para isto, combinamos o loop <code>for</code> com a função <code>sapply</code>.</p>
+<pre><code class="language-{r}">
+comprimento_frases &lt;- list()
+
+for (i in 1:nrow(metadados)) {
+
+comprimento_frases[[i]] &lt;- sapply(frases_palavras[[i]], length)
+
+}
+
+</code></pre>
+<p>O resultado de <code>comprimento_frases</code> pode ser visualizado numa linha temporal. Primeiro, precisamos de resumir o comprimento de todas as frases de um documento a um único número. A função <code>median</code> (mediana), que encontra o 50º percentil dos dados inseridos, é uma boa opção para resumir as frases, porque não será muito afectada por possíveis erros de segmentação que podem ter criado uma frase artificialmente longa [^11].</p>
+<pre><code class="language-{r}">
+mediana_comprimento_frases &lt;- sapply(comprimento_frases, median)
+
+</code></pre>
+<p>Agora, criamos um diagrama com essa variável junto com os anos dos discursos utilizando, mais uma vez, a função <code>qplot</code>.</p>
+<pre><code class="language-{r}">
+qplot(metadados$year, mediana_comprimento_frases) + labs(x = &quot;Ano&quot;, y = &quot;Mediana do comprimento das frases&quot;)
+
+</code></pre>
+<p><img src="/images/basic-text-processing-in-r/sotu-sentence-length.jpg" alt="Median sentence length for each State of the Union Address.">Duração mediana das frases por discurso do Estado da União.</p>
+<p>O gráfico mostra-nos uma forte tendência geral de frases mais curtas nos dois séculos do corpus. Lembre-se que alguns discursos no final da segunda metade do século XX eram longos e escritos, muito parecidos com os do século XIX. É particularmente interessante que estes não se destaquem em se tratando de mediana do comprimento das frases.</p>
+<p>Para tornar esse padrão ainda mais explícito, é possível adicionar uma linha de tendência no gráfico com a função <code>geom_smooth</code> (geometrização suave).</p>
+<pre><code class="language-{r}">
+qplot(metadados$year, mediana_comprimento_frases) + geom_smooth() + labs(x = &quot;Ano&quot;, y = &quot;Mediana do comprimento das frases&quot;)
+
+</code></pre>
+<p><img src="/images/basic-text-processing-in-r/sotu-sentence-length-smooth.jpg" alt="Median sentence length for each State of the Union Address, with a smoothing line.">Comprimento mediano de cada discurso do Estado da União com uma linha de tendência.</p>
+<p>As linhas de tendência são um ótimo complemento aos gráficos. Elas possuem a função dupla de mostrar a tendência geral dos dados no tempo, enquanto destacam pontos atípicos ou periféricos.</p>
+<h2>Resumo do documento</h2>
+<p>Como tarefa final, queremos aplicar a função de resumo simples que utilizamos na seção anterior a cada um dos documentos desse corpus mais amplo. Precisamos utilizar um loop outra vez, mas o código interno permanece quase o mesmo, com a exceção de que precisamos guardar os resultados como um elemento do vetor <code>description</code> (descrição).</p>
+<pre><code class="language-{r}">
+description &lt;- c()
+
+</code></pre>
+<pre><code class="language-{r}">
+for (i in 1:length(palavras)) {
+
+tabela &lt;- table(palavras[[i]])
+
+tabela &lt;- data_frame(word = names(tabela), count = as.numeric(tabela))
+
+tabela &lt;- arrange(tabela, desc(count))
+
+tabela &lt;- inner_join(tabela, palavras_frequentes)
+
+tabela &lt;- filter(tabela, frequency &lt; 0.002)
+
+resultado &lt;- c(metadados$president[i], metadados$year[i], tabela$word[1:5])
+
+description &lt;- c(description, paste(resultado, collapse = &quot;; &quot;))
+
+}
+
+</code></pre>
+<p>Enquanto se processa cada ficheiro como resultado da função <code>inner_join</code>, é possível ver uma linha que diz <strong>Joining, by = “word”</strong>. Como o loop pode demorar um ou mais minutos o processamento da função, esta linha serve para assegurar que o código está processando os ficheiros. Podemos ver o resultado do loop escrevendo <code>description</code> no console, mas, com a função <code>cat</code>, obtemos uma visão mais nítida dos resultados.</p>
+<pre><code class="language-{r}">
+cat(description, sep = &quot;\n&quot;)
+
+</code></pre>
+<p>Os resultados oferecem uma linha para cada discurso do Estado da União. Aqui, por exemplo, estão as linhas dos presidentes Bill Clinton, George W. Bush e Barack Obama:</p>
+<pre><code>
+&gt;William J. Clinton; 1993; deficit; propose; incomes; invest; decade
+
+William J. Clinton; 1994; deficit; renew; ought; brady; cannot
+
+William J. Clinton; 1995; ought; covenant; deficit; bureaucracy; voted
+
+William J. Clinton; 1996; bipartisan; gangs; medicare; deficit; harder
+
+William J. Clinton; 1997; bipartisan; cannot; balanced; nato; immigrants
+
+William J. Clinton; 1998; bipartisan; deficit; propose; bosnia; millennium
+
+William J. Clinton; 1999; medicare; propose; surplus; balanced; bipartisan
+
+William J. Clinton; 2000; propose; laughter; medicare; bipartisan; prosperity
+
+George W. Bush; 2001; medicare; courage; surplus; josefina; laughter
+
+George W. Bush; 2002; terrorist; terrorists; allies; camps; homeland
+
+George W. Bush; 2003; hussein; saddam; inspectors; qaida; terrorists
+
+George W. Bush; 2004; terrorists; propose; medicare; seniors; killers
+
+George W. Bush; 2005; terrorists; iraqis; reforms; decades; generations
+
+George W. Bush; 2006; hopeful; offensive; retreat; terrorists; terrorist
+
+George W. Bush; 2007; terrorists; qaida; extremists; struggle; baghdad
+
+George W. Bush; 2008; terrorists; empower; qaida; extremists; deny
+
+Barack Obama; 2009; deficit; afford; cannot; lending; invest
+
+Barack Obama; 2010; deficit; laughter; afford; decade; decades
+
+Barack Obama; 2011; deficit; republicans; democrats; laughter; afghan
+
+Barack Obama; 2012; afford; deficit; tuition; cannot; doubling
+
+Barack Obama; 2013; deficit; deserve; stronger; bipartisan; medicare
+
+Barack Obama; 2014; cory; laughter; decades; diplomacy; invest
+
+Barack Obama; 2015; laughter; childcare; democrats; rebekah; republicans
+
+Barack Obama; 2016; laughter; voices; allies; harder; qaida
+
+</code></pre>
+<p>Como já foi referido, estes resumos temáticos não são, de forma alguma, um substituto para uma leitura atenta de cada documento. Eles servem, no entanto, como um resumo geral e de alto nível de cada presidência. Vemos, por exemplo, o foco inicial no déficit durante os primeiros anos da presidência de Bill Clinton, sua mudança em direção ao bipartidarismo enquanto a Câmara e o Senado se inclinavam para os republicanos em meados dos anos 1990, e uma mudança em direção à reforma do Medicare no final de sua presidência. Os discursos de George W. Bush concentraram-se, principalmente, no terrorismo, com exceção do discurso de 2001 proferido antes dos ataques terroristas de 11 de setembro. Barack Obama voltou a preocupar-se com a economia sob a sombra da recessão de 2008. A palavra &quot;riso&quot; aparece frequentemente porque é adicionada às transcrições quando o riso do público faz com que o orador pare.</p>
+<h1>Próximos passos</h1>
+<p>Neste pequeno tutorial exploramos algumas maneiras básicas de analisar dados textuais com a linguagem de programação R. Há várias direções que se pode tomar para se aprofundar nas novas técnicas de análise de texto. Aqui estão três exemplos particularmente interessantes:</p>
+<ul>
+<li>
+<p>conduzir uma análise completa com base em processamento de linguagem natural (NLP) num texto para extrair características tais como nomes de entidades, categorias gramaticais e relações de dependência. Estes estão disponíveis em vários pacotes R, incluindo o <strong>cleanNLP</strong>[^12], e para vários idiomas.</p>
+</li>
+<li>
+<p>realizar uma modelagem por tópicos (<em>topic models</em>) para detectar discursos específicos no corpus usando pacotes como <strong>mallet</strong>[^13] e <strong>topicmodels</strong>[^14].</p>
+</li>
+<li>
+<p>aplicar técnicas de redução de dimensionalidade para traçar tendências estilísticas ao longo do tempo ou entre diferentes autores. Por exemplo, o pacote <strong>tsne</strong> [^15] realiza uma poderosa forma de redução de dimensionalidade particularmente favorável a gráficos detalhados.</p>
+</li>
+</ul>
+<p>Existem muitos tutoriais genéricos para estes três exemplos, assim como uma documentação detalhada dos pacotes[^16]. Esperamos oferecer tutoriais focados em aplicações históricas deles no futuro.</p>
+<h1>Notas</h1>
+<p>[^1]: O nosso corpus contém 236 discursos sobre o Estado da União. Dependendo do que for contado, este número pode ser ligeiramente superior ou inferior.</p>
+<p>[^2]: Taryn Dewar, “R Basics with Tabular Data,” Programming Historian (05 September 2016), <a href="/en/lessons/r-basics-with-tabular-data">/lessons/r-basics-with-tabular-data</a>.</p>
+<p>[^3]: Hadley Wickham. “tidyverse: Easily Install and Load ‘Tidyverse’ Packages”. R Package, Version 1.1.1. https://cran.r-project.org/web/packages/tidyverse/index.html</p>
+<p>[^4]: Lincoln Mullen and Dmitriy Selivanov. “tokenizers: A Consistent Interface to Tokenize Natural Language Text Convert”. R Package, Version 0.1.4. https://cran.r-project.org/web/packages/tokenizers/index.html</p>
+<p>[^5]: Tenha em mente que os nomes das funções, como <code>library</code> e <code>install.packages</code>, sempre estarão em inglês. Apesar disso, colocamos uma tradução do significado para facilitar a compreensão e traduzimos os nomes das variáveis [N. de T.].</p>
+<p>[^6]: Tradução publicada pela Folha em português (13 de janeiro de 2016) <a href="https://www1.folha.uol.com.br/mundo/2016/01/1729011-leia-a-integra-do-ultimo-discurso-do-estado-da-uniao-de-obama.shtml">https://www1.folha.uol.com.br/mundo/2016/01/1729011-leia-a-integra-do-ultimo-discurso-do-estado-da-uniao-de-obama.shtml</a> [N. de T.]</p>
+<p>[^7]: Foi feito o download de todos os discursos presidenciais do The American Presidency Project da University of California Santa Barbara (acesso em 11 de novembro de 2016) <a href="http://www.presidency.ucsb.edu/sou.php">http://www.presidency.ucsb.edu/sou.php</a></p>
+<p>[^8]: Aqui, voltamos para a versão original do discurso, em inglês, para dar prosseguimento à análise e, particularmente, para observarmos a lista de palavras mais utilizadas em inglês. Continuaremos a traduzir os nomes das variáveis e das funções para facilitar a compreensão em português [N. de T.].</p>
+<p>[^9]: Aqui, optamos por nomear as colunas da tabela em inglês, como <em>word</em> (palavra) e <em>count</em> (contagem), para facilitar a interação com o conjunto de dados que será introduzido depois com a função <code>inner_join</code> [N. de T.].</p>
+<p>[^10]: Peter Norvig. “Google Web Trillion Word Corpus”. (Accedido el 11 de noviembre de 2016) http://norvig.com/ngrams/.</p>
+<p>[^11]: Isto ocorre em alguns discursos escritos do Estado da União, quando uma lista com numeração é segmentada numa única frase longa.</p>
+<p>[^12]: Taylor Arnold. “cleanNLP: A Tidy Data Model for Natural Language Processing”. R Package, Version 0.24. https://cran.r-project.org/web/packages/cleanNLP/index.html</p>
+<p>[^13]: David Mimno. “mallet: A wrapper around the Java machine learning tool MALLET”. R Package, Version 1.0. https://cran.r-project.org/web/packages/mallet/index.html</p>
+<p>[^14]: Bettina Grün and Kurt Hornik. “https://cran.r-project.org/web/packages/topicmodels/index.html”. R Package, Version 0.2-4. https://cran.r-project.org/web/packages/topicmodels/index.html</p>
+<p>[^15]: Ver o artigo&quot; t-distributed stochastic neighbor embedding&quot; na Wikipedia (em inglês). https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding [N. de T.]</p>
+<p>[^16]: Ver, por exemplo, o livro dos autores Taylor Arnold and Lauren Tilton. <em>Humanities Data in R: Exploring Networks, Geospatial Data, Images, and Text.</em> Springer, 2015.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/working-with-web-pages"),
 					params: {lang:"en",lessons:"lessons",slug:"working-with-web-pages"}
@@ -48,18 +49,20 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Downloading Web Pages with Python</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="lesson-goals">Lesson Goals</h2>
+<h2>Lesson Goals</h2>
 <p>This lesson introduces <em>Uniform Resource Locators</em> (URLs) and explains how
 to use Python to download and save the contents of a web page to your
 local hard drive.</p>
-<h3 id="about-urls">About URLs</h3>
+<h3>About URLs</h3>
 <p>A <em>web page</em> is a file that is stored on another computer, a machine known
 as a <em>web server</em>. When you &quot;go to&quot; a web page, what is actually happening
 is that your computer, (the <em>client</em>) sends a request to the server (the
@@ -74,7 +77,7 @@ your browser will agree to use while exchanging information (like HTTP,
 the <em>Hypertext Transfer Protocol</em>). The basic structure of a URL is</p>
 <pre><code>protocol://host:port/path?query
 </code></pre>
-<p>Let&#39;s look at a few examples.</p>
+<p>Let's look at a few examples.</p>
 <pre><code class="language-xml">http://oldbaileyonline.org
 </code></pre>
 <p>The most basic kind of URL simply specifies the protocol and host. If
@@ -105,17 +108,17 @@ trials containing the word &quot;arsenic&quot;.</p>
 <p>The snippet after the &quot;?&quot; represents the query. You can learn more about
 building queries in <a href="/lessons/downloading-multiple-records-using-query-strings">Downloading Multiple Records Using Query
 Strings</a>.</p>
-<h2 id="opening-urls-with-python">Opening URLs with Python</h2>
+<h2>Opening URLs with Python</h2>
 <p>As a digital historian you will often find yourself wanting to use data
 held in scholarly databases online. To get this data you could open URLs
 one at a time and copy and paste their contents to a text file, or you
 can use Python to automatically harvest and process webpages. To do
-this, you&#39;re going to need to be able to open URLs with your own
+this, you're going to need to be able to open URLs with your own
 programs. The Python language includes a number of standard ways to do
 this.</p>
-<p>As an example, let&#39;s work with the kind of file that you might encounter
-while doing historical research. Say you&#39;re interested in race relations
-in eighteenth century Britain. &#39;The Old Bailey Online&#39; (OBO) is a rich resource that provides trial transcripts from
+<p>As an example, let's work with the kind of file that you might encounter
+while doing historical research. Say you're interested in race relations
+in eighteenth century Britain. 'The Old Bailey Online' (OBO) is a rich resource that provides trial transcripts from
 1674 to 1913 and is one good place to seek sources.</p>
 <p>{% include figure.html filename=&quot;old-bailey.png&quot; caption=&quot;The Old Bailey Online Homepage&quot; %}</p>
 <p>For this example, we will be using the trial transcript of Benjamin
@@ -139,7 +142,7 @@ the page has. Notice the <a href="http://www.oldbaileyonline.org/browse.jsp?foo=
 you to a heavily marked up version of the text which may be useful to
 certain types of research. You can also look at a <a href="http://www.oldbaileyonline.org/images.jsp?doc=178006280084">scan of the original
 document</a>, which was transcribed to make this resource.</p>
-<p>Now let&#39;s try opening the page using Python. Copy the following program
+<p>Now let's try opening the page using Python. Copy the following program
 into Komodo Edit and save it as <code>open-webpage.py</code>. When you execute the
 program, it will <code>open</code> the trial file, <code>read</code> its contents into a Python
 string called webContent and then <code>print</code> the first three hundred
@@ -154,10 +157,10 @@ Python library reference to learn more about <a href="https://docs.python.org/3/
 
 import urllib.request, urllib.error, urllib.parse
 
-url = &#39;http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;
+url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33'
 
 response = urllib.request.urlopen(url)
-webContent = response.read().decode(&#39;UTF-8&#39;)
+webContent = response.read().decode('UTF-8')
 
 print(webContent[0:300])
 </code></pre>
@@ -182,14 +185,14 @@ modules (1), the methods (2), and the parameters (1) before you move on.</p>
 <pre><code class="language-xml">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;
 &lt;head&gt;
-    &lt;title&gt;Browse - Central Criminal Court&lt;/title&gt;
-    &lt;meta http-equiv=&quot;content-type&quot; content=
+	&lt;title&gt;Browse - Central Criminal Court&lt;/title&gt;
+	&lt;meta http-equiv=&quot;content-type&quot; content=
 </code></pre>
 <p>The content of the trial itself is much further down the page. What we
 see here is the HTML code at the top of the document. This is not quite
-what we need for historical research, but don&#39;t worry; you
+what we need for historical research, but don't worry; you
 will soon learn how to remove that excess markup and get the content you are after.</p>
-<h2 id="saving-a-local-copy-of-a-web-page">Saving a Local Copy of a Web Page</h2>
+<h2>Saving a Local Copy of a Web Page</h2>
 <p>Given what you already know about writing to files, it is quite easy to
 modify the above program so that it writes the contents of the
 <em>webContent</em> string to a local file on our computer rather than to the
@@ -202,12 +205,12 @@ the online copy.</p>
 
 import urllib.request, urllib.error, urllib.parse
 
-url = &#39;http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;
+url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33'
 
 response = urllib.request.urlopen(url)
-webContent = response.read().decode(&#39;UTF-8&#39;)
+webContent = response.read().decode('UTF-8')
 
-f = open(&#39;obo-t17800628-33.html&#39;, &#39;w&#39;)
+f = open('obo-t17800628-33.html', 'w')
 f.write(webContent)
 f.close
 </code></pre>
@@ -216,12 +219,12 @@ to download a bunch of files? Could you step through trial IDs, for
 example, and make your own copies of a whole bunch of them? Yep. You can learn
 how to do that in <a href="/lessons/downloading-multiple-records-using-query-strings">Downloading Multiple Files using Query Strings</a>,
 which we recommend after you have completed the introductory lessons in this series.</p>
-<h2 id="suggested-readings">Suggested Readings</h2>
+<h2>Suggested Readings</h2>
 <ul>
 <li>Lutz, Mark. “Ch. 4: Introducing Python Object Types”, <em>Learning
 Python</em> (O’Reilly, 1999).</li>
 </ul>
-<h3 id="code-syncing">Code Syncing</h3>
+<h3>Code Syncing</h3>
 <p>To follow along with future lessons it is important that you have the
 right files and programs in your &quot;programming-historian&quot; directory. At
 the end of each lesson you can download the &quot;programming-historian&quot; zip
@@ -231,6 +234,6 @@ file to make sure you have the correct code.</p>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="working-with-web-pages/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Downloading Web Pages with Python\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\",\"Frederik Elwert\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"acquiring\",\"topics\":[\"python\"],\"abstract\":\"This lesson introduces Uniform Resource Locators (URLs) and explains how to use Python to download and save the contents of a web page to your local hard drive.\",\"next\":\"manipulating-strings-in-python\",\"previous\":\"code-reuse-and-modularity\",\"series_total\":\"15 lessons\",\"sequence\":5,\"categories\":[\"lessons\",\"python\",\"original-ph\"],\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Fworking-with-web-pages\",\"avatar_alt\":\"A tall man next to a short woman\",\"doi\":\"10.46430\u002Fphen0021\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EThis lesson introduces \u003Cem\u003EUniform Resource Locators\u003C\u002Fem\u003E (URLs) and explains how\\nto use Python to download and save the contents of a web page to your\\nlocal hard drive.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"about-urls\\\"\u003EAbout URLs\u003C\u002Fh3\u003E\\n\u003Cp\u003EA \u003Cem\u003Eweb page\u003C\u002Fem\u003E is a file that is stored on another computer, a machine known\\nas a \u003Cem\u003Eweb server\u003C\u002Fem\u003E. When you &quot;go to&quot; a web page, what is actually happening\\nis that your computer, (the \u003Cem\u003Eclient\u003C\u002Fem\u003E) sends a request to the server (the\\n\u003Cem\u003Ehost\u003C\u002Fem\u003E) out over the network, and the server replies by sending a copy of\\nthe page back to your machine. One way to get to a web page with your\\nbrowser is to follow a link from somewhere else. You also have the\\nability, of course, to paste or type a Uniform Resource Locator (URL)\\ndirectly into your browser. The URL tells your browser where to find an\\nonline resource by specifying the server, directory and name of the file\\nto be retrieved, as well as the kind of \u003Cem\u003Eprotocol\u003C\u002Fem\u003E that the server and\\nyour browser will agree to use while exchanging information (like HTTP,\\nthe \u003Cem\u003EHypertext Transfer Protocol\u003C\u002Fem\u003E). The basic structure of a URL is\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Eprotocol:\u002F\u002Fhost:port\u002Fpath?query\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELet&#39;s look at a few examples.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003Ehttp:\u002F\u002Foldbaileyonline.org\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe most basic kind of URL simply specifies the protocol and host. If\\nyou give this URL to your browser, it will return the main page of The\\n\u003Ca href=\\\"http:\u002F\u002Fwww.oldbaileyonline.org\u002F\\\"\u003EOld Bailey Online\u003C\u002Fa\u003E website. The default assumption is that the main\\npage in a given directory will be named index, usually \u003Ccode\u003Eindex.html\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe URL can also include an optional \u003Cem\u003Eport number\u003C\u002Fem\u003E. Without getting into\\ntoo much detail, the network protocol that underlies the\\nexchange of information on the Internet allows computers to connect in\\ndifferent ways. Port numbers are used to distinguish these different\\nkinds of connection. Since the default port for HTTP is 80, the\\nfollowing URL is equivalent to the previous one.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003Ehttp:\u002F\u002Foldbaileyonline.org:80\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAs you know, there are usually many web pages on a given website. These\\nare stored in directories on the server, and you can specify the path to\\na particular page. The &quot;About&quot; page for \u003Cem\u003EThe Old Bailey Online\u003C\u002Fem\u003E has the\\nfollowing URL.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003Ehttp:\u002F\u002Foldbaileyonline.org\u002Fstatic\u002FProject.jsp\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EFinally, some web pages allow you to enter queries. \u003Cem\u003EThe Old Bailey\\nOnline\u003C\u002Fem\u003E website, for example, is laid out in such a way that you can\\nrequest a particular page within it by using a \u003Cem\u003Equery string\u003C\u002Fem\u003E. The\\nfollowing URL will take you to a search results page for criminal record\\ntrials containing the word &quot;arsenic&quot;.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003Ehttps:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp?form=searchHomePage&amp;_divs_fulltext=arsenic&amp;kwparse=and&amp;_persNames_surname=&amp;_persNames_given=&amp;_persNames_alias=&amp;_offences_offenceCategory_offenceSubcategory=&amp;_verdicts_verdictCategory_verdictSubcategory=&amp;_punishments_punishmentCategory_punishmentSubcategory=&amp;_divs_div0Type_div1Type=&amp;fromMonth=&amp;fromYear=&amp;toMonth=&amp;toYear=&amp;ref=&amp;submit.x=0&amp;submit.y=0\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe snippet after the &quot;?&quot; represents the query. You can learn more about\\nbuilding queries in \u003Ca href=\\\"\u002Flessons\u002Fdownloading-multiple-records-using-query-strings\\\"\u003EDownloading Multiple Records Using Query\\nStrings\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"opening-urls-with-python\\\"\u003EOpening URLs with Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EAs a digital historian you will often find yourself wanting to use data\\nheld in scholarly databases online. To get this data you could open URLs\\none at a time and copy and paste their contents to a text file, or you\\ncan use Python to automatically harvest and process webpages. To do\\nthis, you&#39;re going to need to be able to open URLs with your own\\nprograms. The Python language includes a number of standard ways to do\\nthis.\u003C\u002Fp\u003E\\n\u003Cp\u003EAs an example, let&#39;s work with the kind of file that you might encounter\\nwhile doing historical research. Say you&#39;re interested in race relations\\nin eighteenth century Britain. &#39;The Old Bailey Online&#39; (OBO) is a rich resource that provides trial transcripts from\\n1674 to 1913 and is one good place to seek sources.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;old-bailey.png&quot; caption=&quot;The Old Bailey Online Homepage&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EFor this example, we will be using the trial transcript of Benjamin\\nBowsey, a “black moor” who was convicted of breaking the peace during\\nthe \u003Ca href=\\\"http:\u002F\u002Fen.wikipedia.org\u002Fwiki\u002FGordon_Riots\\\"\u003EGordon Riots\u003C\u002Fa\u003E of 1780. The URL for the entry is\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003Ehttp:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EBy studying the URL we can learn a few things. First, The OBO is written\\nin JSP (\u003Cem\u003EJavaServer Pages\u003C\u002Fem\u003E, a web programming language which outputs\\nHTML), and it’s possible to retrieve individual trial entries by making\\nuse of the query string. Each is apparently given a unique ID number\\n(\u003Cem\u003Eid=t\u003C\u002Fem\u003E in the URL), built from the date of the trial session in the\\nformat (\u003Cem\u003EYYYYMMDD\u003C\u002Fem\u003E) and the trial number from within that court session,\\nin this case: \u003Cem\u003E33\u003C\u002Fem\u003E. If you change the two instances of \u003Ccode\u003E33\u003C\u002Fcode\u003E to \u003Ccode\u003E34\u003C\u002Fcode\u003E in\\nyour browser and press Enter, you should be taken to the next trial.\\nUnfortunately, not all websites have such readable and reliable URLs.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;bowsey-trial-page.png&quot; caption=&quot;Trial Transcript Page of Benjamin Bowsey, 1780&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003ESpend a few minutes looking at Benjamin Bowsey’s trial page. Here we are\\nnot so much interested in what the transcript says, but what features\\nthe page has. Notice the \u003Ca href=\\\"http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?foo=bar&amp;path=sessionsPapers\u002F17800628.xml&amp;div=t17800628-33&amp;xml=yes\\\"\u003EView as XML\u003C\u002Fa\u003E link at the bottom that takes\\nyou to a heavily marked up version of the text which may be useful to\\ncertain types of research. You can also look at a \u003Ca href=\\\"http:\u002F\u002Fwww.oldbaileyonline.org\u002Fimages.jsp?doc=178006280084\\\"\u003Escan of the original\\ndocument\u003C\u002Fa\u003E, which was transcribed to make this resource.\u003C\u002Fp\u003E\\n\u003Cp\u003ENow let&#39;s try opening the page using Python. Copy the following program\\ninto Komodo Edit and save it as \u003Ccode\u003Eopen-webpage.py\u003C\u002Fcode\u003E. When you execute the\\nprogram, it will \u003Ccode\u003Eopen\u003C\u002Fcode\u003E the trial file, \u003Ccode\u003Eread\u003C\u002Fcode\u003E its contents into a Python\\nstring called webContent and then \u003Ccode\u003Eprint\u003C\u002Fcode\u003E the first three hundred\\ncharacters of the string to the &quot;Command Output&quot; pane. Use the\\n\u003Ccode\u003EView -&gt; Web Developer -&gt; View Page Source\u003C\u002Fcode\u003E command in Firefox to verify\\nthat the HTML source of the page is the same as the source that your\\nprogram retrieved. Each browser has a different shortcut key to open the\\npage source. In Firefox on PC it is \u003Ccode\u003ECTRL+u\u003C\u002Fcode\u003E. If you cannot find it on\\nyour browser, try using a search engine to find where it is. (See the\\nPython library reference to learn more about \u003Ca href=\\\"https:\u002F\u002Fdocs.python.org\u002F3\u002Flibrary\u002Furllib.html?highlight=urllib\\\"\u003Eurllib\u003C\u002Fa\u003E.)\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# open-webpage.py\\n\\nimport urllib.request, urllib.error, urllib.parse\\n\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;\\n\\nresponse = urllib.request.urlopen(url)\\nwebContent = response.read().decode(&#39;UTF-8&#39;)\\n\\nprint(webContent[0:300])\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThese five lines of code achieve an awful lot very quickly. Let us take\\na moment to make sure that everything is clear and that you can\\nrecognize the building blocks that allow us to make this program do what\\nwe want it to do.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cem\u003Eurl\u003C\u002Fem\u003E, \u003Cem\u003Eresponse\u003C\u002Fem\u003E, and \u003Cem\u003EwebContent\u003C\u002Fem\u003E are all variables that we have named\\nourselves.\u003C\u002Fp\u003E\\n\u003Cp\u003E\u003Cem\u003Eurl\u003C\u002Fem\u003E holds the URL of the web page that we want to download. In this\\ncase, it is the trial of Benjamin Bowsey.\u003C\u002Fp\u003E\\n\u003Cp\u003EOn the following line, we call the function \u003Ccode\u003Eurlopen\u003C\u002Fcode\u003E, which is stored in\\na Python module named \u003Ccode\u003Eurllib.py\u003C\u002Fcode\u003E, and we have asked that function to\\nopen the website found at the URL we just specified. We then saved the\\nresult of that process into a variable named \u003Cem\u003Eresponse\u003C\u002Fem\u003E. That variable now\\ncontains an open version of the requested website.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe then use the \u003Ccode\u003Eread\u003C\u002Fcode\u003E method, which we used earlier, to copy the contents\\nof that open webpage into a new variable named \u003Cem\u003EwebContent\u003C\u002Fem\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EMake sure you can pick out the variables (there are 3 of them), the\\nmodules (1), the methods (2), and the parameters (1) before you move on.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn the resulting output, you will notice a little bit of HTML markup:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-xml\\\"\u003E&lt;!DOCTYPE html PUBLIC &quot;-\u002F\u002FW3C\u002F\u002FDTD XHTML 1.0 Strict\u002F\u002FEN&quot; &quot;http:\u002F\u002Fwww.w3.org\u002FTR\u002Fxhtml1\u002FDTD\u002Fxhtml1-strict.dtd&quot;&gt;\\n&lt;html xmlns=&quot;http:\u002F\u002Fwww.w3.org\u002F1999\u002Fxhtml&quot; xml:lang=&quot;en&quot; lang=&quot;en&quot;&gt;\\n&lt;head&gt;\\n    &lt;title&gt;Browse - Central Criminal Court&lt;\u002Ftitle&gt;\\n    &lt;meta http-equiv=&quot;content-type&quot; content=\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe content of the trial itself is much further down the page. What we\\nsee here is the HTML code at the top of the document. This is not quite\\nwhat we need for historical research, but don&#39;t worry; you\\nwill soon learn how to remove that excess markup and get the content you are after.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"saving-a-local-copy-of-a-web-page\\\"\u003ESaving a Local Copy of a Web Page\u003C\u002Fh2\u003E\\n\u003Cp\u003EGiven what you already know about writing to files, it is quite easy to\\nmodify the above program so that it writes the contents of the\\n\u003Cem\u003EwebContent\u003C\u002Fem\u003E string to a local file on our computer rather than to the\\n&quot;Command Output&quot; pane. Copy the following program into Komodo Edit, save\\nit as \u003Ccode\u003Esave-webpage.py\u003C\u002Fcode\u003E and execute it. Using the \u003Ccode\u003EFile -&gt; Open File\u003C\u002Fcode\u003E\\ncommand in Firefox, open the file on your hard drive that it creates\\n(\u003Ccode\u003Eobo-t17800628-33.html\u003C\u002Fcode\u003E) to confirm that your saved copy is the same as\\nthe online copy.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# save-webpage.py\\n\\nimport urllib.request, urllib.error, urllib.parse\\n\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;\\n\\nresponse = urllib.request.urlopen(url)\\nwebContent = response.read().decode(&#39;UTF-8&#39;)\\n\\nf = open(&#39;obo-t17800628-33.html&#39;, &#39;w&#39;)\\nf.write(webContent)\\nf.close\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESo, if you can save a single file this easily, could you write a program\\nto download a bunch of files? Could you step through trial IDs, for\\nexample, and make your own copies of a whole bunch of them? Yep. You can learn\\nhow to do that in \u003Ca href=\\\"\u002Flessons\u002Fdownloading-multiple-records-using-query-strings\\\"\u003EDownloading Multiple Files using Query Strings\u003C\u002Fa\u003E,\\nwhich we recommend after you have completed the introductory lessons in this series.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"suggested-readings\\\"\u003ESuggested Readings\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ELutz, Mark. “Ch. 4: Introducing Python Object Types”, \u003Cem\u003ELearning\\nPython\u003C\u002Fem\u003E (O’Reilly, 1999).\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"code-syncing\\\"\u003ECode Syncing\u003C\u002Fh3\u003E\\n\u003Cp\u003ETo follow along with future lessons it is important that you have the\\nright files and programs in your &quot;programming-historian&quot; directory. At\\nthe end of each lesson you can download the &quot;programming-historian&quot; zip\\nfile to make sure you have the correct code.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eprogramming-historian-1 (\u003Ca href=\\\"\u002Fassets\u002Fpython-lessons1.zip\\\"\u003Ezip\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

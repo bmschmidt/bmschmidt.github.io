@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/downloading-multiple-records-using-query-strings"),
 					params: {lang:"en",lessons:"lessons",slug:"downloading-multiple-records-using-query-strings"}
@@ -48,14 +49,16 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Downloading Multiple Records Using Query Strings</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="module-goals">Module Goals</h2>
+<h2>Module Goals</h2>
 <p>Downloading a single record from a website is easy, but downloading many
 records at a time – an increasingly frequent need for a historian – is
 much more efficient using a programming language such as Python. In this
@@ -68,8 +71,7 @@ that were published in the <em>Old Bailey Proceedings</em> between 1700 and 1750
 <div class="alert alert-warning">
 The examples in this lesson include historic racialized language that readers may find offensive. The author does not condone the use of this language but has tried to use it in its historic context, recognizing that it is otherwise impossible to find the desired materials of the case study. Anyone teaching with this material is advised to take a sensitive approach towards the language and to apply best practices when teaching about race. The author recommends the many resources from Teaching Tolerance (https://www.tolerance.org); Peggy McIntosh, ‘White Privilege: Unpacking the Invisible Knapsack’ *Peace and Freedom Magazine*, (1989), 10-12; Binyavanga Wainaina, ‘How to Write About Africa’, *Granta* (92): 2006.
 </div>
-
-<h2 id="for-whom-is-this-useful">For Whom is this Useful?</h2>
+<h2>For Whom is this Useful?</h2>
 <p>Automating the process of downloading records from an online database
 will be useful for anyone who works with historical sources that are
 stored online in an orderly and accessible fashion and who wishes to
@@ -86,7 +88,7 @@ create visualizations or perform various data analysis methods, or
 simply reformat them to make browsing easier. Or, you may just want to
 keep a backup copy so you can access them without Internet access.</p>
 <p>This lesson is for intermediate Python users. If you have not already tried the <a href="/lessons/introduction-and-installation">Python Programming Basics</a> lessons, you may find that a useful starting point.</p>
-<h2 id="applying-our-historical-knowledge">Applying our Historical Knowledge</h2>
+<h2>Applying our Historical Knowledge</h2>
 <p>In this lesson, we are trying to create our own corpus of cases related
 to people of African descent. From <a href="http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33">Benjamin Bowsey’s case</a> at the Old Bailey in 1780, we might note that “black” can be a useful keyword for us to use for locating other
 cases involving defendants of African descent. However, when we search for “black” on the Old Bailey website, we
@@ -102,14 +104,14 @@ and are much more likely to be immediate references to people in our
 target demographic. If we try these two terms in separate simple
 searches on the Old Bailey website, we get results like in these
 screenshots:</p>
-<p>{% include figure.html filename=&quot;SearchResultsNegro.png&quot; caption=&quot;Search results for &#39;negro&#39; in the Old Bailey Online&quot; %}</p>
-<p>{% include figure.html filename=&quot;SearchResultsMulatto.png&quot; caption=&quot;Search results for &#39;mulatto&#39; in the Old Bailey Online&quot; %}</p>
+<p>{% include figure.html filename=&quot;SearchResultsNegro.png&quot; caption=&quot;Search results for 'negro' in the Old Bailey Online&quot; %}</p>
+<p>{% include figure.html filename=&quot;SearchResultsMulatto.png&quot; caption=&quot;Search results for 'mulatto' in the Old Bailey Online&quot; %}</p>
 <p>After glancing through these search results, it seems clear that these
 are references to people, rather than horses or cloth or other things
 that may be black. We want to download them all to use in our analysis.
 We could, of course, download them one at a time, manually. But let’s
 find a programmatic way to automate this task.</p>
-<h2 id="the-advanced-search-on-obo">The Advanced Search on OBO</h2>
+<h2>The Advanced Search on OBO</h2>
 <p>Every website’s search features work differently. While searches work
 similarly, the intricacies of database searches may not be entirely
 obvious. Therefore it’s important to think critically about database
@@ -142,7 +144,7 @@ becomes impractical and an understanding of how to automate the process
 becomes that much more valuable. To automate the download process, we
 need to step back and learn how the search URLs are created on the Old
 Bailey website, a method common to many online databases and websites.</p>
-<h2 id="understanding-url-queries">Understanding URL Queries</h2>
+<h2>Understanding URL Queries</h2>
 <p>Take a look at the URL produced with the last search results page. It
 should look like this:</p>
 <pre><code>https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=mulatto*+negro*&amp;kwparse=advanced&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&amp;fromYear=1700&amp;fromMonth=00&amp;toYear=1750&amp;toMonth=99&amp;start=0&amp;count=0
@@ -205,7 +207,7 @@ should now have results 11-13. The “start” variable tells the website
 which entry should be shown at the top of the search results list. We
 should be able to use this knowledge to create a series of URLs that
 will allow us to download all 13 files. Let’s turn to that now.</p>
-<h2 id="systematically-downloading-files">Systematically Downloading Files</h2>
+<h2>Systematically Downloading Files</h2>
 <p>In <a href="/lessons/working-with-web-pages">Working with Webpages</a> we learned that Python can download a
 webpage as long as we have the URL. In that lesson we used the URL to
 download the trial transcript of Benjamin Bowsey. In this case, we’re
@@ -240,7 +242,7 @@ and save it to a directory on our computer</li>
 <a href="/lessons/working-with-web-pages">Working with Webpages</a> and <a href="/lessons/from-html-to-list-of-words-2">From HTML to a List of Words 2</a>. First
 we download, then we parse out the information we’re after. And in this
 case, we download some more.</p>
-<h3 id="downloading-the-search-results-pages">Downloading the search results pages</h3>
+<h3>Downloading the search results pages</h3>
 <p>First we need to generate the URLs for downloading each search results
 page. We have already got the first one by using the form on the
 website:</p>
@@ -260,22 +262,22 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth):
     startValue = 0
 
     #each part of the URL. Split up to be easier to read.
-    url = &#39;https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;
+    url = 'https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext='
     url += query
-    url += &#39;&amp;kwparse=&#39; + kwparse
-    url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;
-    url += &#39;&amp;fromYear=&#39; + fromYear
-    url += &#39;&amp;fromMonth=&#39; + fromMonth
-    url += &#39;&amp;toYear=&#39; + toYear
-    url += &#39;&amp;toMonth=&#39; + toMonth
-    url += &#39;&amp;start=&#39; + str(startValue)
-    url += &#39;&amp;count=0&#39;
+    url += '&amp;kwparse=' + kwparse
+    url += '&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount'
+    url += '&amp;fromYear=' + fromYear
+    url += '&amp;fromMonth=' + fromMonth
+    url += '&amp;toYear=' + toYear
+    url += '&amp;toMonth=' + toMonth
+    url += '&amp;start=' + str(startValue)
+    url += '&amp;count=0'
 
     #download the page and save the result.
     response = urllib.request.urlopen(url)
-    webContent = response.read().decode(&#39;UTF-8&#39;)
-    filename = &#39;search-result&#39;
-    f = open(filename + &quot;.html&quot;, &#39;w&#39;)
+    webContent = response.read().decode('UTF-8')
+    filename = 'search-result'
+    f = open(filename + &quot;.html&quot;, 'w')
     f.write(webContent)
     f.close
 </code></pre>
@@ -291,7 +293,7 @@ with these to get different results or see how they work.</p>
 <pre><code class="language-python">#download-searches.py
 import obo
 
-query = &#39;mulatto*+negro*&#39;
+query = 'mulatto*+negro*'
 
 obo.getSearchResults(query, &quot;advanced&quot;, &quot;1700&quot;, &quot;00&quot;, &quot;1750&quot;, &quot;99&quot;)
 </code></pre>
@@ -385,7 +387,7 @@ page, it gets a different name. Since <code>startValue</code> is an integer, we 
 have to convert it to a string before we can add it to the filename
 variable. Adjust the line in your program that pertains to the <code>filename</code>
 variable to looks like this:</p>
-<pre><code class="language-python">filename = &#39;search-result&#39; + str(startValue)
+<pre><code class="language-python">filename = 'search-result' + str(startValue)
 </code></pre>
 <p>You should now be able to add these new lines of code to your
 getSearchResults function. Recall we have made the following additions:</p>
@@ -418,22 +420,22 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
     for pages in range(1, pageCount +1):
 
         #each part of the URL. Split up to be easier to read.
-        url = &#39;https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;
+        url = 'https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext='
         url += query
-        url += &#39;&amp;kwparse=&#39; + kwparse
-        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;
-        url += &#39;&amp;fromYear=&#39; + fromYear
-        url += &#39;&amp;fromMonth=&#39; + fromMonth
-        url += &#39;&amp;toYear=&#39; + toYear
-        url += &#39;&amp;toMonth=&#39; + toMonth
-        url += &#39;&amp;start=&#39; + str(startValue)
-        url += &#39;&amp;count=0&#39;
+        url += '&amp;kwparse=' + kwparse
+        url += '&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount'
+        url += '&amp;fromYear=' + fromYear
+        url += '&amp;fromMonth=' + fromMonth
+        url += '&amp;toYear=' + toYear
+        url += '&amp;toMonth=' + toMonth
+        url += '&amp;start=' + str(startValue)
+        url += '&amp;count=0'
 
         #download the page and save the result.
         response = urllib.request.urlopen(url)
-        webContent = response.read().decode(&#39;UTF-8&#39;)
-        filename = &#39;search-result&#39; + str(startValue)
-        f = open(filename + &quot;.html&quot;, &#39;w&#39;)
+        webContent = response.read().decode('UTF-8')
+        filename = 'search-result' + str(startValue)
+        f = open(filename + &quot;.html&quot;, 'w')
         f.write(webContent)
         f.close
 
@@ -445,7 +447,7 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
 <pre><code class="language-python">#download-searches.py
 import obo
 
-query = &#39;mulatto*+negro*&#39;
+query = 'mulatto*+negro*'
 
 obo.getSearchResults(query, &quot;advanced&quot;, &quot;1700&quot;, &quot;00&quot;, &quot;1750&quot;, &quot;99&quot;, 13)
 </code></pre>
@@ -500,25 +502,25 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
     for pages in range(1, pageCount +1):
 
         #each part of the URL. Split up to be easier to read.
-        url = &#39;https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;
+        url = 'https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext='
         url += query
-        url += &#39;&amp;kwparse=&#39; + kwparse
-        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;
-        url += &#39;&amp;fromYear=&#39; + fromYear
-        url += &#39;&amp;fromMonth=&#39; + fromMonth
-        url += &#39;&amp;toYear=&#39; + toYear
-        url += &#39;&amp;toMonth=&#39; + toMonth
-        url += &#39;&amp;start=&#39; + str(startValue)
-        url += &#39;&amp;count=0&#39;
+        url += '&amp;kwparse=' + kwparse
+        url += '&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount'
+        url += '&amp;fromYear=' + fromYear
+        url += '&amp;fromMonth=' + fromMonth
+        url += '&amp;toYear=' + toYear
+        url += '&amp;toMonth=' + toMonth
+        url += '&amp;start=' + str(startValue)
+        url += '&amp;count=0'
 
         #download the page and save the result.
         response = urllib.request.urlopen(url)
-        webContent = response.read().decode(&#39;UTF-8&#39;)
+        webContent = response.read().decode('UTF-8')
 
         #save the result to the new directory
-        filename = &#39;search-result&#39; + str(startValue)
+        filename = 'search-result' + str(startValue)
 
-        f = open(filename + &quot;.html&quot;, &#39;w&#39;)
+        f = open(filename + &quot;.html&quot;, 'w')
         f.write(webContent)
         f.close
 
@@ -530,7 +532,7 @@ can make a minor adjustment to the filename variable so that the file
 ends up in the right place. There are many ways we can do this, the
 easiest of which is just to append the new directory name plus a slash
 to the name of the file:</p>
-<pre><code class="language-python">filename = query + &#39;/&#39; + &#39;search-result&#39; + str(startValue)
+<pre><code class="language-python">filename = query + '/' + 'search-result' + str(startValue)
 </code></pre>
 <p>If your computer is running Windows you will need to use a backslash
 instead of a forward slash in the above example. Add the above line to
@@ -547,13 +549,13 @@ to create a new string named <code>cleanQuery</code> that contains only alphanum
 characters. You will then have to substitute <code>cleanQuery</code> as the variable
 used in the <code>os.path.exists()</code>, <code>os.makedirs()</code>, and <code>filename</code> declarations.</p>
 <pre><code class="language-python">import urllib.request, math, os, re
-cleanQuery = re.sub(r&#39;\W+&#39;, &#39;&#39;, query)
+cleanQuery = re.sub(r'\W+', '', query)
 if not os.path.exists(cleanQuery):
     os.makedirs(cleanQuery)
 
 ...
 
-filename = cleanQuery + &#39;/&#39; + &#39;search-result&#39; + str(startValue)
+filename = cleanQuery + '/' + 'search-result' + str(startValue)
 </code></pre>
 <p>The final version of your function should look like this:</p>
 <pre><code class="language-python">#create URLs for search results pages and save the files
@@ -561,7 +563,7 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
 
     import urllib.request, math, os, re
 
-    cleanQuery = re.sub(r&#39;\W+&#39;, &#39;&#39;, query)
+    cleanQuery = re.sub(r'\W+', '', query)
     if not os.path.exists(cleanQuery):
         os.makedirs(cleanQuery)
 
@@ -574,22 +576,22 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
     for pages in range(1, pageCount +1):
 
         #each part of the URL. Split up to be easier to read.
-        url = &#39;https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;
+        url = 'https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext='
         url += query
-        url += &#39;&amp;kwparse=&#39; + kwparse
-        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;
-        url += &#39;&amp;fromYear=&#39; + fromYear
-        url += &#39;&amp;fromMonth=&#39; + fromMonth
-        url += &#39;&amp;toYear=&#39; + toYear
-        url += &#39;&amp;toMonth=&#39; + toMonth
-        url += &#39;&amp;start=&#39; + str(startValue)
-        url += &#39;&amp;count=0&#39;
+        url += '&amp;kwparse=' + kwparse
+        url += '&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount'
+        url += '&amp;fromYear=' + fromYear
+        url += '&amp;fromMonth=' + fromMonth
+        url += '&amp;toYear=' + toYear
+        url += '&amp;toMonth=' + toMonth
+        url += '&amp;start=' + str(startValue)
+        url += '&amp;count=0'
 
         #download the page and save the result.
         response = urllib.request.urlopen(url)
-        webContent = response.read().decode(&#39;UTF-8&#39;)
-        filename = cleanQuery + &#39;/&#39; + &#39;search-result&#39; + str(startValue)
-        f = open(filename + &quot;.html&quot;, &#39;w&#39;)
+        webContent = response.read().decode('UTF-8')
+        filename = cleanQuery + '/' + 'search-result' + str(startValue)
+        f = open(filename + &quot;.html&quot;, 'w')
         f.write(webContent)
         f.close
 
@@ -599,7 +601,7 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
 new directory rather than our <code>programming-historian</code> directory. Run
 <code>download-searches.py</code> once more to ensure this worked and you
 understand how to save files to a particular directory using Python.</p>
-<h3 id="downloading-the-individual-trial-entries">Downloading the individual trial entries</h3>
+<h3>Downloading the individual trial entries</h3>
 <p>At this stage we have created a function that can download all of the
 search results HTML files from the Old Bailey Online website for an
 advanced search that we have defined, and have done so programmatically.
@@ -648,7 +650,7 @@ least familiarize yourself with.</p>
 <pre><code class="language-python">def getIndivTrials(query):
     import os, re
 
-    cleanQuery = re.sub(r&#39;\W+&#39;, &#39;&#39;, query)
+    cleanQuery = re.sub(r'\W+', '', query)
     searchResults = os.listdir(cleanQuery)
 
     print(searchResults)
@@ -682,7 +684,7 @@ that will download the desired trials.</p>
 <pre><code class="language-python">def getIndivTrials(query):
     import os, re
 
-    cleanQuery = re.sub(r&#39;\W+&#39;, &#39;&#39;, query)
+    cleanQuery = re.sub(r'\W+', '', query)
     searchResults = os.listdir(cleanQuery)
 
     urls = []
@@ -690,7 +692,7 @@ that will download the desired trials.</p>
     #find search-results pages
     for files in searchResults:
         if files.find(&quot;search-result&quot;) != -1:
-            f = open(cleanQuery + &quot;/&quot; + files, &#39;r&#39;)
+            f = open(cleanQuery + &quot;/&quot; + files, 'r')
             text = f.read().split(&quot; &quot;)
             f.close()
 
@@ -744,14 +746,14 @@ run once for every trial in your url list.</p>
 
         #download the page
         response = urllib.request.urlopen(url)
-        webContent = response.read().decode(&#39;UTF-8&#39;)
+        webContent = response.read().decode('UTF-8')
 
         #create the filename and place it in the new directory
-        filename = items + &#39;.html&#39;
+        filename = items + '.html'
         filePath = pjoin(cleanQuery, filename)
 
         #save the file
-        f = open(filePath, &#39;w&#39;)
+        f = open(filePath, 'w')
         f.write(webContent)
         f.close
 
@@ -767,7 +769,7 @@ to keep things cleaner).</p>
     #import built-in python functions for building file paths
     from os.path import join as pjoin
 
-    cleanQuery = re.sub(r&#39;\W+&#39;, &#39;&#39;, query)
+    cleanQuery = re.sub(r'\W+', '', query)
     searchResults = os.listdir(cleanQuery)
 
     urls = []
@@ -775,7 +777,7 @@ to keep things cleaner).</p>
     #find search-results pages
     for files in searchResults:
         if files.find(&quot;search-result&quot;) != -1:
-            f = open(cleanQuery + &quot;/&quot; + files, &#39;r&#39;)
+            f = open(cleanQuery + &quot;/&quot; + files, 'r')
             text = f.read().split(&quot; &quot;)
             f.close()
 
@@ -792,14 +794,14 @@ to keep things cleaner).</p>
 
         #download the page
         response = urllib.request.urlopen(url)
-        webContent = response.read().decode(&#39;UTF-8&#39;)
+        webContent = response.read().decode('UTF-8')
 
         #create the filename and place it in the new directory
-        filename = items + &#39;.html&#39;
+        filename = items + '.html'
         filePath = pjoin(cleanQuery, filename)
 
         #save the file
-        f = open(filePath, &#39;w&#39;)
+        f = open(filePath, 'w')
         f.write(webContent)
         f.close
 
@@ -813,7 +815,7 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
 
     import urllib.request, math, os, re, time
 
-    cleanQuery = re.sub(r&#39;\W+&#39;, &#39;&#39;, query)
+    cleanQuery = re.sub(r'\W+', '', query)
     if not os.path.exists(cleanQuery):
         os.makedirs(cleanQuery)
 
@@ -826,22 +828,22 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
     for pages in range(1, pageCount +1):
 
         #each part of the URL. Split up to be easier to read.
-        url = &#39;https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;
+        url = 'https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext='
         url += query
-        url += &#39;&amp;kwparse=&#39; + kwparse
-        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;
-        url += &#39;&amp;fromYear=&#39; + fromYear
-        url += &#39;&amp;fromMonth=&#39; + fromMonth
-        url += &#39;&amp;toYear=&#39; + toYear
-        url += &#39;&amp;toMonth=&#39; + toMonth
-        url += &#39;&amp;start=&#39; + str(startValue)
-        url += &#39;&amp;count=0&#39;
+        url += '&amp;kwparse=' + kwparse
+        url += '&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount'
+        url += '&amp;fromYear=' + fromYear
+        url += '&amp;fromMonth=' + fromMonth
+        url += '&amp;toYear=' + toYear
+        url += '&amp;toMonth=' + toMonth
+        url += '&amp;start=' + str(startValue)
+        url += '&amp;count=0'
 
         #download the page and save the result.
         response = urllib.request.urlopen(url)
-        webContent = response.read().decode(&#39;UTF-8&#39;)
-        filename = cleanQuery + &#39;/&#39; + &#39;search-result&#39; + str(startValue)
-        f = open(filename + &quot;.html&quot;, &#39;w&#39;)
+        webContent = response.read().decode('UTF-8')
+        filename = cleanQuery + '/' + 'search-result' + str(startValue)
+        f = open(filename + &quot;.html&quot;, 'w')
         f.write(webContent)
         f.close
 
@@ -854,7 +856,7 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
 <pre><code class="language-python">#download-searches.py
 import obo
 
-query = &#39;mulatto*+negro*&#39;
+query = 'mulatto*+negro*'
 
 obo.getSearchResults(query, &quot;advanced&quot;, &quot;1700&quot;, &quot;00&quot;, &quot;1750&quot;, &quot;99&quot;, 13)
 
@@ -863,7 +865,7 @@ obo.getIndivTrials(query)
 <p>Now, you’ve created a program that can request and download files from
 the Old Bailey website based on search parameters you define, all
 without visiting the site!</p>
-<h3 id="in-case-a-file-does-not-download">In case a file does not download</h3>
+<h3>In case a file does not download</h3>
 <p>Check to make all thirteen files have downloaded properly. If that’s the
 case for you, that’s great! However, there’s a possibility that this
 program stalled along the way. That’s because our program, though
@@ -923,14 +925,14 @@ failed to download to our new list, <code>failedAttempts</code></p>
 
         try:
             response = urllib2.urlopen(url)
-            webContent = response.read().decode(&#39;UTF-8&#39;)
+            webContent = response.read().decode('UTF-8')
 
             #create the filename and place it in the new &quot;trials&quot; directory
-            filename = items + &#39;.html&#39;
+            filename = items + '.html'
             filePath = pjoin(newDir, filename)
 
             #save the file
-            f = open(filePath, &#39;w&#39;)
+            f = open(filePath, 'w')
             f.write(webContent)
             f.close
         except urllib.error.URLError:
@@ -955,7 +957,7 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
 
     import urllib.request, math, os, re, time
 
-    cleanQuery = re.sub(r&#39;\W+&#39;, &#39;&#39;, query)
+    cleanQuery = re.sub(r'\W+', '', query)
     if not os.path.exists(cleanQuery):
         os.makedirs(cleanQuery)
 
@@ -968,22 +970,22 @@ def getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entri
     for pages in range(1, pageCount +1):
 
         #each part of the URL. Split up to be easier to read.
-        url = &#39;https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;
+        url = 'https://www.oldbaileyonline.org/search.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext='
         url += query
-        url += &#39;&amp;kwparse=&#39; + kwparse
-        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;
-        url += &#39;&amp;fromYear=&#39; + fromYear
-        url += &#39;&amp;fromMonth=&#39; + fromMonth
-        url += &#39;&amp;toYear=&#39; + toYear
-        url += &#39;&amp;toMonth=&#39; + toMonth
-        url += &#39;&amp;start=&#39; + str(startValue)
-        url += &#39;&amp;count=0&#39;
+        url += '&amp;kwparse=' + kwparse
+        url += '&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount'
+        url += '&amp;fromYear=' + fromYear
+        url += '&amp;fromMonth=' + fromMonth
+        url += '&amp;toYear=' + toYear
+        url += '&amp;toMonth=' + toMonth
+        url += '&amp;start=' + str(startValue)
+        url += '&amp;count=0'
 
         #download the page and save the result.
         response = urllib.request.urlopen(url)
-        webContent = response.read().decode(&#39;UTF-8&#39;)
-        filename = cleanQuery + &#39;/&#39; + &#39;search-result&#39; + str(startValue)
-        f = open(filename + &quot;.html&quot;, &#39;w&#39;)
+        webContent = response.read().decode('UTF-8')
+        filename = cleanQuery + '/' + 'search-result' + str(startValue)
+        f = open(filename + &quot;.html&quot;, 'w')
         f.write(webContent)
         f.close
 
@@ -1000,7 +1002,7 @@ def getIndivTrials(query):
     #import built-in python functions for building file paths
     from os.path import join as pjoin
 
-    cleanQuery = re.sub(r&#39;\W+&#39;, &#39;&#39;, query)
+    cleanQuery = re.sub(r'\W+', '', query)
     searchResults = os.listdir(cleanQuery)
 
     urls = []
@@ -1008,7 +1010,7 @@ def getIndivTrials(query):
     #find search-results pages
     for files in searchResults:
         if files.find(&quot;search-result&quot;) != -1:
-            f = open(cleanQuery + &quot;/&quot; + files, &#39;r&#39;)
+            f = open(cleanQuery + &quot;/&quot; + files, 'r')
             text = f.read().split(&quot; &quot;)
             f.close()
 
@@ -1026,14 +1028,14 @@ def getIndivTrials(query):
         socket.setdefaulttimeout(10)
         try:
             response = urllib.request.urlopen(url)
-            webContent = response.read().decode(&#39;UTF-8&#39;)
+            webContent = response.read().decode('UTF-8')
 
             #create the filename and place it in the new directory
-            filename = items + &#39;.html&#39;
+            filename = items + '.html'
             filePath = pjoin(cleanQuery, filename)
 
             #save the file
-            f = open(filePath, &#39;w&#39;)
+            f = open(filePath, 'w')
             f.write(webContent)
             f.close
         except urllib.error.URLError:
@@ -1044,7 +1046,7 @@ def getIndivTrials(query):
 
     print(&quot;failed to download: &quot; + str(failedAttempts))
 </code></pre>
-<h2 id="further-reading">Further Reading</h2>
+<h2>Further Reading</h2>
 <p>For more advanced users, or to become a more advanced user, you may find
 it worthwhile to read about achieving this same process using
 Application Programming Interfaces (API). A website with an API will
@@ -1061,6 +1063,6 @@ helpful:</p>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="downloading-multiple-records-using-query-strings/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Downloading Multiple Records Using Query Strings\",\"layout\":\"lesson\",\"date\":\"2012-11-11T00:00:00.000Z\",\"authors\":[\"Adam Crymble\"],\"reviewers\":[\"Luke Bergmann\",\"Sharon Howard\",\"Frederik Elwert\"],\"editors\":[\"Fred Gibbs\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"acquiring\",\"topics\":[\"web-scraping\"],\"abstract\":\"Downloading a single record from a website is easy, but downloading many records at a time – an increasingly frequent need for a historian – is much more efficient using a programming language such as Python. In this lesson, we will write a program that will download a series of records from the Old Bailey Online using custom search criteria, and save them to a directory on our computer.\",\"previous\":\"output-keywords-in-context-in-html-file\",\"series_total\":\"15 lessons\",\"sequence\":15,\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Fdownloading-multiple-records-using-query-strings\",\"avatar_alt\":\"Figures working in a mine, pushing carts\",\"doi\":\"10.46430\u002Fphen0005\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"module-goals\\\"\u003EModule Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EDownloading a single record from a website is easy, but downloading many\\nrecords at a time – an increasingly frequent need for a historian – is\\nmuch more efficient using a programming language such as Python. In this\\nlesson, we will write a program that will download a series of records\\nfrom the \u003Ca href=\\\"http:\u002F\u002Fwww.oldbaileyonline.org\u002F\\\"\u003EOld Bailey Online\u003C\u002Fa\u003E using custom search criteria, and save\\nthem to a directory on our computer. This process involves interpreting\\nand manipulating URL \u003Cem\u003EQuery Strings\u003C\u002Fem\u003E. In this case, the tutorial will seek\\nto download sources that contain references to people of African descent\\nthat were published in the \u003Cem\u003EOld Bailey Proceedings\u003C\u002Fem\u003E between 1700 and 1750.\u003C\u002Fp\u003E\\n\u003Cdiv class=\\\"alert alert-warning\\\"\u003E\\nThe examples in this lesson include historic racialized language that readers may find offensive. The author does not condone the use of this language but has tried to use it in its historic context, recognizing that it is otherwise impossible to find the desired materials of the case study. Anyone teaching with this material is advised to take a sensitive approach towards the language and to apply best practices when teaching about race. The author recommends the many resources from Teaching Tolerance (https:\u002F\u002Fwww.tolerance.org); Peggy McIntosh, ‘White Privilege: Unpacking the Invisible Knapsack’ *Peace and Freedom Magazine*, (1989), 10-12; Binyavanga Wainaina, ‘How to Write About Africa’, *Granta* (92): 2006.\\n\u003C\u002Fdiv\u003E\\n\\n\u003Ch2 id=\\\"for-whom-is-this-useful\\\"\u003EFor Whom is this Useful?\u003C\u002Fh2\u003E\\n\u003Cp\u003EAutomating the process of downloading records from an online database\\nwill be useful for anyone who works with historical sources that are\\nstored online in an orderly and accessible fashion and who wishes to\\nsave copies of those sources on their own computer. It is particularly\\nuseful for someone who wants to download many specific records, rather\\nthan just a handful. If you want to download \u003Cem\u003Eall\u003C\u002Fem\u003E or \u003Cem\u003Emost\u003C\u002Fem\u003E of the\\nrecords in a particular database, you may find Ian Milligan’s tutorial\\non \u003Ca href=\\\"\u002Flessons\u002Fautomated-downloading-with-wget\\\"\u003EAutomated Downloading with WGET\u003C\u002Fa\u003E more suitable.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe present tutorial will allow you to download discriminately,\\nisolating specific records that meet your needs. Downloading multiple\\nsources automatically saves considerable time. What you do with the\\ndownloaded sources depends on your research goals. You may wish to\\ncreate visualizations or perform various data analysis methods, or\\nsimply reformat them to make browsing easier. Or, you may just want to\\nkeep a backup copy so you can access them without Internet access.\u003C\u002Fp\u003E\\n\u003Cp\u003EThis lesson is for intermediate Python users. If you have not already tried the \u003Ca href=\\\"\u002Flessons\u002Fintroduction-and-installation\\\"\u003EPython Programming Basics\u003C\u002Fa\u003E lessons, you may find that a useful starting point.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"applying-our-historical-knowledge\\\"\u003EApplying our Historical Knowledge\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn this lesson, we are trying to create our own corpus of cases related\\nto people of African descent. From \u003Ca href=\\\"http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33\\\"\u003EBenjamin Bowsey’s case\u003C\u002Fa\u003E at the Old Bailey in 1780, we might note that “black” can be a useful keyword for us to use for locating other\\ncases involving defendants of African descent. However, when we search for “black” on the Old Bailey website, we\\nfind it often refers to other uses of the word: black horses, or black\\ncloth. The task of disambiguating this use of language will have to wait\\nfor another lesson. For now, let’s turn to easier cases. As historians,\\nwe can probably think of keywords of historic racialised terms related to African descendants that\\nwould be worth pursuing. The infamous “n-word” of course is not useful,\\nas this term did not come into regular usage until the mid-nineteenth\\ncentury. Other racialised language such as “negro” and “mulatto” are however, much more relevant to the\\nearly eighteenth century. These keywords are less ambiguous than “black”\\nand are much more likely to be immediate references to people in our\\ntarget demographic. If we try these two terms in separate simple\\nsearches on the Old Bailey website, we get results like in these\\nscreenshots:\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;SearchResultsNegro.png&quot; caption=&quot;Search results for &#39;negro&#39; in the Old Bailey Online&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;SearchResultsMulatto.png&quot; caption=&quot;Search results for &#39;mulatto&#39; in the Old Bailey Online&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EAfter glancing through these search results, it seems clear that these\\nare references to people, rather than horses or cloth or other things\\nthat may be black. We want to download them all to use in our analysis.\\nWe could, of course, download them one at a time, manually. But let’s\\nfind a programmatic way to automate this task.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"the-advanced-search-on-obo\\\"\u003EThe Advanced Search on OBO\u003C\u002Fh2\u003E\\n\u003Cp\u003EEvery website’s search features work differently. While searches work\\nsimilarly, the intricacies of database searches may not be entirely\\nobvious. Therefore it’s important to think critically about database\\nsearch options and, when available, read the documentation provided on\\nthe website. Prudent historical researchers always interrogate their\\nsources; the procedures behind your search boxes should receive the same\\nattention. The Old Bailey Online’s \u003Ca href=\\\"http:\u002F\u002Fwww.oldbaileyonline.org\u002Fforms\u002FformMain.jsp\\\"\u003Eadvanced search form\u003C\u002Fa\u003E lets you\\nrefine your searches based on ten different fields including simple\\nkeywords, a date range, and a crime type. As each website’s search\\nfeature is different it always pays to take a moment or two to play with\\nand read about the search options available. Since\\nwe have already done the simple searches for “negro” and “mulatto”, we\\nknow there will be results. However, let’s use the advanced search to\\nlimit our results to records published in the Old Bailey Proceedings\\ntrial accounts from 1700 to 1750 only. You can of course change this to\\nwhatever you like, but this will make the example easier to follow.\\nPerform the search shown in the image below. Make sure you tick the\\n“Advanced” radio button and include the \u003Ccode\u003E*\u003C\u002Fcode\u003E wildcards to include\\npluralized entries or those with an extra “e” on the end.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;AdvancedSearchExample.png&quot; caption=&quot;Old Bailey Advanced Search Example&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EExecute the search and then click on the “Calculate Total” link to\\nsee how many entries there are. We now have 13 results (if you have a\\ndifferent number go back and make sure you copied the example above\\nexactly). What we want to do at this point is download all of these\\ntrial documents and analyze them further. Again, for only 13 records,\\nyou might as well download each record manually. But as more and more\\ndata comes online, it becomes more common to need to download 1,300 or\\neven 130,000 records, in which case downloading individual records\\nbecomes impractical and an understanding of how to automate the process\\nbecomes that much more valuable. To automate the download process, we\\nneed to step back and learn how the search URLs are created on the Old\\nBailey website, a method common to many online databases and websites.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"understanding-url-queries\\\"\u003EUnderstanding URL Queries\u003C\u002Fh2\u003E\\n\u003Cp\u003ETake a look at the URL produced with the last search results page. It\\nshould look like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ehttps:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=mulatto*+negro*&amp;kwparse=advanced&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&amp;fromYear=1700&amp;fromMonth=00&amp;toYear=1750&amp;toMonth=99&amp;start=0&amp;count=0\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWe had a look at URLs in \u003Ca href=\\\"\u002Flessons\u002Fviewing-html-files\\\"\u003EViewing HTML Files\u003C\u002Fa\u003E, but this looks a lot\\nmore complex. Although longer, it is actually \u003Cem\u003Enot\u003C\u002Fem\u003E that much more\\ncomplex. But it is easier to understand by noticing how our search\\ncriteria get represented in the URL.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ehttps:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp\\n?gen=1\\n&amp;form=searchHomePage\\n&amp;_divs_fulltext=mulatto*+negro*\\n&amp;kwparse=advanced\\n&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount\\n&amp;fromYear=1700\\n&amp;fromMonth=00\\n&amp;toYear=1750\\n&amp;toMonth=99\\n&amp;start=0\\n&amp;count=0\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIn this view, we see more clearly our 12 important pieces of information\\nthat we need to perform our search (one per line). On the first is the\\nOld Bailey’s base website URL, followed by a query: “?” (don’t worry\\nabout the \u003Ccode\u003Egen=1\u003C\u002Fcode\u003E bit; the developers of the Old Bailey Online say that\\nit does not do anything.) and a series of 10 \u003Cem\u003Ename\u002Fvalue pairs\u003C\u002Fem\u003E put\\ntogether with &amp; characters. Together these 10 name\u002Fvalue pairs comprise\\nthe query string, which tells the search engine what variables to use in\\nspecific stages of the search. Notice that each name\u002Fvalue pair contains\\nboth a variable name: toYear, and then assigns that variable a value: 1750.\\nThis works in exactly the same way as \u003Cem\u003EFunction Arguments\u003C\u002Fem\u003E by\\npassing certain information to specific variables. In this case, the\\nmost important variable is \u003Ccode\u003E_divs_fulltext=\u003C\u002Fcode\u003E which has been given the\\nvalue:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Emulatto*+negro*\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis holds the search term we have typed into the search box. The\\nprogram has automatically added a + sign in place of a blank space (URLs\\ncannot contain spaces); otherwise that’s exactly what we’ve asked the\\nOld Bailey site to find for us. The other variables hold values that we\\ndefined as well. \u003Cem\u003EfromYear\u003C\u002Fem\u003E and \u003Cem\u003EtoYear\u003C\u002Fem\u003E contain our date range. Since no\\nyear has 99 months as suggested in the \u003Cem\u003EtoMonth\u003C\u002Fem\u003E variable, we can assume\\nthis is how the search algorithm ensures all records from that year are\\nincluded. There are no hard and fast rules for figuring out what each\\nvariable does because the person who built the site gets to name them.\\nOften you can make an educated guess. All of the possible search fields\\non the Advanced Search page have their own name\u002Fvalue pair. If you’d\\nlike to find out the name of the variable so you can use it, do a new\\nsearch and make sure you put a value in the field in which you are\\ninterested. After you submit your search, you’ll see your value and the\\nname associated with it as part of the URL of the search results page.\\nWith the Old Bailey Online, as with many other websites, the search form\\n(advanced or not) essentially helps you to construct URLs that tell the\\ndatabase what to search for. If you can understand how the search fields\\nare represented in the URL – which is often quite straightforward – then\\nit becomes relatively simple to programmatically construct these URLs\\nand thus to automate the process of downloading records.\u003C\u002Fp\u003E\\n\u003Cp\u003ENow try changing the “\u003Cstrong\u003Estart=0\u003C\u002Fstrong\u003E” to “\u003Cstrong\u003Estart=10\u003C\u002Fstrong\u003E” and hit enter. You\\nshould now have results 11-13. The “start” variable tells the website\\nwhich entry should be shown at the top of the search results list. We\\nshould be able to use this knowledge to create a series of URLs that\\nwill allow us to download all 13 files. Let’s turn to that now.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"systematically-downloading-files\\\"\u003ESystematically Downloading Files\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn \u003Ca href=\\\"\u002Flessons\u002Fworking-with-web-pages\\\"\u003EWorking with Webpages\u003C\u002Fa\u003E we learned that Python can download a\\nwebpage as long as we have the URL. In that lesson we used the URL to\\ndownload the trial transcript of Benjamin Bowsey. In this case, we’re\\ntrying to download multiple trial transcripts that meet the search\\ncriteria we outlined above without having to repeatedly re-run the\\nprogram. Instead, we want a program that will download everything we\\nneed in one go. At this point we have a URL to a search results page\\nthat contains the first ten entries of our search. We also know that by\\nchanging the “start” value in the URL we can sequentially call each\\nsearch results page, and ultimately retrieve all of the trial documents\\nfrom them. Of course the research results don’t give us the trial\\ndocuments themselves, but only links to them. So we need to extract the\\nlink to the underlying records from the search results. On the Old\\nBailey Online website, the URLs for the individual records (the trial\\ntranscript files) can be found as links on the search results pages. We\\nknow that all trial transcript URLs contain a trial id that takes the\\nform: “t” followed by at least 8 numbers (e.g. t17800628-33). By looking\\nfor links that contain that pattern, we can identify trial transcript\\nURLs. As in previous lessons, let’s develop an algorithm so that we can\\nbegin tackling this problem in a manner that a computer can handle. It\\nseems this task can be achieved in four steps. We will need to:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EGenerate the URLs for each search results page by incrementing the\\n“start” variable by a fixed amount an appropriate number of times.\u003C\u002Fli\u003E\\n\u003Cli\u003EDownload each search results page as an HTML file.\u003C\u002Fli\u003E\\n\u003Cli\u003EExtract the URLs of each trial transcript (using the trial ID as\\ndescribed above) from the search results HTML files.\u003C\u002Fli\u003E\\n\u003Cli\u003ECycle through those extracted URLs to download each trial transcript\\nand save it to a directory on our computer\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EYou’ll recall that this is fairly similar to the tasks we achieved in\\n\u003Ca href=\\\"\u002Flessons\u002Fworking-with-web-pages\\\"\u003EWorking with Webpages\u003C\u002Fa\u003E and \u003Ca href=\\\"\u002Flessons\u002Ffrom-html-to-list-of-words-2\\\"\u003EFrom HTML to a List of Words 2\u003C\u002Fa\u003E. First\\nwe download, then we parse out the information we’re after. And in this\\ncase, we download some more.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"downloading-the-search-results-pages\\\"\u003EDownloading the search results pages\u003C\u002Fh3\u003E\\n\u003Cp\u003EFirst we need to generate the URLs for downloading each search results\\npage. We have already got the first one by using the form on the\\nwebsite:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ehttps:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=mulatto*+negro*&amp;kwparse=advanced&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&amp;fromYear=1700&amp;fromMonth=00&amp;toYear=1750&amp;toMonth=99&amp;start=0&amp;count=0\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWe could type this URL out twice and alter the ‘\u003Cem\u003Estart\u003C\u002Fem\u003E’ variable to get\\nus all 13 entries, but let’s write a program that would work no matter\\nhow many search results pages or records we had to download, and no\\nmatter what we decide to search for. Study this code and then add this\\nfunction to a module named \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E (create a file with that name and save it to the directory where you want to do your work). The comments in the code are meant to\\nhelp you decipher the various parts.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# obo.py\\ndef getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth):\\n\\n    import urllib.request\\n\\n    startValue = 0\\n\\n    #each part of the URL. Split up to be easier to read.\\n    url = &#39;https:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;\\n    url += query\\n    url += &#39;&amp;kwparse=&#39; + kwparse\\n    url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;\\n    url += &#39;&amp;fromYear=&#39; + fromYear\\n    url += &#39;&amp;fromMonth=&#39; + fromMonth\\n    url += &#39;&amp;toYear=&#39; + toYear\\n    url += &#39;&amp;toMonth=&#39; + toMonth\\n    url += &#39;&amp;start=&#39; + str(startValue)\\n    url += &#39;&amp;count=0&#39;\\n\\n    #download the page and save the result.\\n    response = urllib.request.urlopen(url)\\n    webContent = response.read().decode(&#39;UTF-8&#39;)\\n    filename = &#39;search-result&#39;\\n    f = open(filename + &quot;.html&quot;, &#39;w&#39;)\\n    f.write(webContent)\\n    f.close\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIn this function we have split up the various Query String components\\nand used Function Arguments so that this function can be reused beyond\\nour specific needs right now. When we call this function we will replace\\nthe arguments with the values we want to search for. We then download\\nthe search results page in a similar manner as done in \u003Ca href=\\\"\u002Flessons\u002Fworking-with-web-pages\\\"\u003EWorking with\\nWebpages\u003C\u002Fa\u003E. Now, make a new file: \u003Ccode\u003Edownload-searches.py\u003C\u002Fcode\u003E and copy into\\nit the following code. Note, the values we have passed as arguments are\\nexactly the same as those used in the example above. Feel free to play\\nwith these to get different results or see how they work.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#download-searches.py\\nimport obo\\n\\nquery = &#39;mulatto*+negro*&#39;\\n\\nobo.getSearchResults(query, &quot;advanced&quot;, &quot;1700&quot;, &quot;00&quot;, &quot;1750&quot;, &quot;99&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWhen you run this code you should find a new file:\\n“\u003Ccode\u003Esearch-results.html\u003C\u002Fcode\u003E” in your \u003Ccode\u003Eprogramming-historian directory\u003C\u002Fcode\u003E\\ncontaining the first search results page for your search. Check that\\nthis downloaded properly and then delete the file. We’re going to adapt\\nour program to download the other page containing the other 3 entries at\\nthe same time so we want to make sure we get both. Let’s refine our\\n\u003Ccode\u003EgetSearchResults\u003C\u002Fcode\u003E function by adding another function argument called\\n“entries” so we can tell the program how many pages of search results we\\nneed to download. We will use the value of entries and some simple math\\nto determine how many search results pages there are. This is fairly\\nstraightforward since we know there are ten trial transcripts listed per\\npage. We can calculate the number of search results pages by dividing\\nthe value of entries by 10. We will save this result to a\\nvariable named \u003Ccode\u003EpageCount\u003C\u002Fcode\u003E. It looks like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#determine how many files need to be downloaded.\\npageCount = entries \u002F 10\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EHowever, in cases where the number of entries is not a multiple of 10,\\nthis will result in a decimal number. You can test this by\\nrunning this code in your Terminal (Mac &amp; Linux) \u002F Python Command Line\\n(Windows) and printing out the value held in \u003Ccode\u003EpageCount\u003C\u002Fcode\u003E. (Note, from here\\non, we will use the word Terminal to refer to this program).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eentries = 13\\npageCount = entries \u002F 10\\nprint(pageCount)\\n-&gt; 1.3\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWe know the page count should be 2 (one page containing entries 1-10, and one\\npage containing entries 11-13). Since we always want the next higher integer,\\nwe can round up the result of the division.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#determine how many files need to be downloaded.\\nimport math\\npageCount = entries \u002F 10\\npageCount = math.ceil(pageCount)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf we add this to our \u003Ccode\u003EgetSearchResults\u003C\u002Fcode\u003E function just under the\\n\u003Cem\u003EstartValue = 0\u003C\u002Fem\u003E line, our program, the code can now calculate the number\\nof pages that need to be downloaded. However, at this stage it will\\nstill only download the first page since we have only told the\\ndownloading section of the function to run once. To correct this, we can\\nadd that downloading code to a for loop which will download once for\\nevery number in the \u003Ccode\u003EpageCount\u003C\u002Fcode\u003E variable. If it reads 1, then it will\\ndownload once; if it reads 5 it will download five times, and so on.\\nImmediately after the if statement you have just written, add the\\nfollowing line and indent everything down to \u003Ccode\u003Ef.close\u003C\u002Fcode\u003E one additional\\ntab so that it is all enclosed in the for loop:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Efor pages in range(1, pageCount+1):\\n    print(pages)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESince this is a for loop, all of the code we want to run repeatedly\\nneeds to be intended as well. You can see if you have done this\\ncorrectly by looking at the finished code example below. This loop takes\\nadvantage of Python’s \u003Ca href=\\\"https:\u002F\u002Fdocs.python.org\u002F3\u002Ftutorial\u002Fcontrolflow.html#the-range-function\\\"\u003Erange\u003C\u002Fa\u003E funciton. To understand this for loop it\\nis probably best to think of \u003Ccode\u003EpageCount\u003C\u002Fcode\u003E as equal to 2 as it is in the\\nexample. This two lines of code then means: start running with an\\ninitial loop value of 1, and each time you run, add 1 more to that\\nvalue. When the loop value is the same as \u003Ccode\u003EpageCount\u003C\u002Fcode\u003E, run once more and\\nthen stop. This is particularly valuable for us because it means we can\\ntell our program to run exactly once for each search results page and\\nprovides a flexible new skill for controlling how many times a for loop\\nruns. If you would like to practice with this new and powerful way of\\nwriting for loops, you can open your Terminal and play around.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EpageCount = 2\\nfor pages in range(1, pageCount+1):\\n    print(pages)\\n\\n-&gt; 1\\n-&gt; 2\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EBefore we add all of this code together to our \u003Ccode\u003EgetSearchResults\u003C\u002Fcode\u003E\\nfunction, we have to make two final adjustments. At the end of the for\\nloop (but still inside the loop), and after our downloading code has run\\nwe will need to change the \u003Ccode\u003EstartValue\u003C\u002Fcode\u003E variable, which is used in\\nbuilding the URL of the page we want to download. If we forget to do\\nthis, our program will repeatedly download the first search results page\\nsince we are not actually changing anything in the initial URL. The\\n\u003Ccode\u003EstartValue\u003C\u002Fcode\u003E variable, as discussed above, is what controls which search\\nresults page we want to download. Therefore, we can request the next\\nsearch results page by increasing the value of \u003Ccode\u003EstartValue\u003C\u002Fcode\u003E by 10 after\\nthe initial download has completed. If you are not sure where to put\\nthis line you can peek ahead to the finished code example below.\u003C\u002Fp\u003E\\n\u003Cp\u003EFinally, we want to ensure that the name of the file we have downloaded\\nis different for each file. Otherwise, each download will save over the\\nprevious download, leaving us with only a single file of search results.\\nTo solve this, we can adjust the contents of the \u003Ccode\u003Efilename\u003C\u002Fcode\u003E variable to\\ninclude the value held in \u003Ccode\u003EstartValue\u003C\u002Fcode\u003E so that each time we download a new\\npage, it gets a different name. Since \u003Ccode\u003EstartValue\u003C\u002Fcode\u003E is an integer, we will\\nhave to convert it to a string before we can add it to the filename\\nvariable. Adjust the line in your program that pertains to the \u003Ccode\u003Efilename\u003C\u002Fcode\u003E\\nvariable to looks like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Efilename = &#39;search-result&#39; + str(startValue)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou should now be able to add these new lines of code to your\\ngetSearchResults function. Recall we have made the following additions:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EAdd entries as an additional function argument right after toMonth\u003C\u002Fli\u003E\\n\u003Cli\u003ECalculate the number of search results pages and add this\\nimmediately after the line that begins with startValue = 0 (before\\nwe build the URL and start downloading)\u003C\u002Fli\u003E\\n\u003Cli\u003EFollow this immediately with a for loop that will tell the program\\nto run once for each search results page, and indent the rest of the\\ncode in the function so that it is inside the new loop.\u003C\u002Fli\u003E\\n\u003Cli\u003EThe last line in the for loop should now increase the value of the\\nstartValue variable each time the loop runs.\u003C\u002Fli\u003E\\n\u003Cli\u003EAdjust the existing filename variable so that each time a search\\nresults page is downloaded it gives the file a unique name.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EThe finished function code in your \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E file should look like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#create URLs for search results pages and save the files\\ndef getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entries):\\n\\n    import urllib.request, math\\n\\n    startValue = 0\\n\\n    #this is new! Determine how many files need to be downloaded.\\n    pageCount = entries \u002F 10\\n    pageCount = math.ceil(pageCount)\\n\\n    #this line is new!\\n    for pages in range(1, pageCount +1):\\n\\n        #each part of the URL. Split up to be easier to read.\\n        url = &#39;https:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;\\n        url += query\\n        url += &#39;&amp;kwparse=&#39; + kwparse\\n        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;\\n        url += &#39;&amp;fromYear=&#39; + fromYear\\n        url += &#39;&amp;fromMonth=&#39; + fromMonth\\n        url += &#39;&amp;toYear=&#39; + toYear\\n        url += &#39;&amp;toMonth=&#39; + toMonth\\n        url += &#39;&amp;start=&#39; + str(startValue)\\n        url += &#39;&amp;count=0&#39;\\n\\n        #download the page and save the result.\\n        response = urllib.request.urlopen(url)\\n        webContent = response.read().decode(&#39;UTF-8&#39;)\\n        filename = &#39;search-result&#39; + str(startValue)\\n        f = open(filename + &quot;.html&quot;, &#39;w&#39;)\\n        f.write(webContent)\\n        f.close\\n\\n        #this lines is new!\\n        startValue = startValue + 10\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ETo run this new function, add the extra argument to\\n\u003Ccode\u003Edownload-searches.py\u003C\u002Fcode\u003E and run the program again:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#download-searches.py\\nimport obo\\n\\nquery = &#39;mulatto*+negro*&#39;\\n\\nobo.getSearchResults(query, &quot;advanced&quot;, &quot;1700&quot;, &quot;00&quot;, &quot;1750&quot;, &quot;99&quot;, 13)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EGreat! Now we have both search results pages, called\\n\u003Ccode\u003Esearch-result0.html\u003C\u002Fcode\u003E and \u003Ccode\u003Esearch-result10.html\u003C\u002Fcode\u003E. But before we move\\nonto the next step in the algorithm, let’s take care of some\\nhousekeeping. Our \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E directory will quickly become\\nunwieldy if we download multiple search results pages and trial\\ntranscripts. Let’s have Python make a new directory named after our\\nsearch terms.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe want to add this new functionality in \u003Ccode\u003EgetSearchResults\u003C\u002Fcode\u003E, so that our\\nsearch results pages are downloaded to a directory with the same name as\\nour search query. This will keep our \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E directory\\nmore organized. To do this we will create a new directory using the \u003Ccode\u003Eos\u003C\u002Fcode\u003E\\nlibrary, short for “operating system”. That library contains a function\\ncalled \u003Ccode\u003Emakedirs\u003C\u002Fcode\u003E, which, unsurprisingly, makes a new directory. You can\\ntry this out using the Terminal.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eimport os\\n\\nquery = &quot;myNewDirectory&quot;\\nif not os.path.exists(query):\\n    os.makedirs(query)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis program will check to see if your computer already has a directory\\nwith this name. If not, you should now have a directory called\\n\u003Ccode\u003EmyNewDirectory\u003C\u002Fcode\u003E on your computer. On a Mac this is probably located in\\nyour \u003Ccode\u003E\u002FUsers\u002Fusername\u002F\u003C\u002Fcode\u003E directory, and on Windows you should be able to\\nfind it in the \u003Ccode\u003EPython\u003C\u002Fcode\u003E directory on your computer, the same in which\\nyou opened your command line program. If this worked you can delete the\\ndirectory from your hard drive, since it was just for practice. Since we\\nwant to create a new directory named after the query that we input into\\nthe Old Bailey Online website, we will make direct use of the query\\nfunction argument from the getSearchResults function. To do this, import\\nthe \u003Ccode\u003Eos\u003C\u002Fcode\u003E library after the others and then add the\\ncode you have just written immediately below. Your \u003Ccode\u003EgetSearchResults\u003C\u002Fcode\u003E\\nfunction should now look like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#create URLs for search results pages and save the files\\ndef getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entries):\\n\\n    import urllib.request, math, os\\n\\n    #This line is new! Create a new directory\\n    if not os.path.exists(query):\\n        os.makedirs(query)\\n\\n    startValue = 0\\n\\n    #Determine how many files need to be downloaded.\\n    pageCount = entries \u002F 10\\n    pageCount = math.ceil(pageCount)\\n\\n    for pages in range(1, pageCount +1):\\n\\n        #each part of the URL. Split up to be easier to read.\\n        url = &#39;https:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;\\n        url += query\\n        url += &#39;&amp;kwparse=&#39; + kwparse\\n        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;\\n        url += &#39;&amp;fromYear=&#39; + fromYear\\n        url += &#39;&amp;fromMonth=&#39; + fromMonth\\n        url += &#39;&amp;toYear=&#39; + toYear\\n        url += &#39;&amp;toMonth=&#39; + toMonth\\n        url += &#39;&amp;start=&#39; + str(startValue)\\n        url += &#39;&amp;count=0&#39;\\n\\n        #download the page and save the result.\\n        response = urllib.request.urlopen(url)\\n        webContent = response.read().decode(&#39;UTF-8&#39;)\\n\\n        #save the result to the new directory\\n        filename = &#39;search-result&#39; + str(startValue)\\n\\n        f = open(filename + &quot;.html&quot;, &#39;w&#39;)\\n        f.write(webContent)\\n        f.close\\n\\n        startValue = startValue + 10\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe last step for this function is to make sure that when we save our\\nsearch results pages, we save them in this new directory. To do this we\\ncan make a minor adjustment to the filename variable so that the file\\nends up in the right place. There are many ways we can do this, the\\neasiest of which is just to append the new directory name plus a slash\\nto the name of the file:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Efilename = query + &#39;\u002F&#39; + &#39;search-result&#39; + str(startValue)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf your computer is running Windows you will need to use a backslash\\ninstead of a forward slash in the above example. Add the above line to\\nyour \u003Ccode\u003EgetSearchResults\u003C\u002Fcode\u003E page in lieu of the current \u003Ccode\u003Efilename\u003C\u002Fcode\u003E description.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you are running Windows, chances are your \u003Ccode\u003EdownloadSearches.py\u003C\u002Fcode\u003E\\nprogram will now crash when you run it because you are trying to create\\na directory with a * in it. Windows does not like this. To get around\\nthis problem we can use \u003Ca href=\\\"https:\u002F\u002Fdocs.python.org\u002F3\u002Flibrary\u002Fre.html\\\"\u003Eregular expressions\u003C\u002Fa\u003E to remove any\\nnon-Windows-friendly characters. We used regular expressions previously\\nin \u003Ca href=\\\"\u002Flessons\u002Fcounting-frequencies\\\"\u003ECounting Frequencies\u003C\u002Fa\u003E. To remove non-alpha-numeric characters from\\nthe query, first import the regular expressions library immediately\\nafter you have imported the \u003Ccode\u003Eos\u003C\u002Fcode\u003E library, then use the \u003Ccode\u003Ere.sub()\u003C\u002Fcode\u003E function\\nto create a new string named \u003Ccode\u003EcleanQuery\u003C\u002Fcode\u003E that contains only alphanumeric\\ncharacters. You will then have to substitute \u003Ccode\u003EcleanQuery\u003C\u002Fcode\u003E as the variable\\nused in the \u003Ccode\u003Eos.path.exists()\u003C\u002Fcode\u003E, \u003Ccode\u003Eos.makedirs()\u003C\u002Fcode\u003E, and \u003Ccode\u003Efilename\u003C\u002Fcode\u003E declarations.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eimport urllib.request, math, os, re\\ncleanQuery = re.sub(r&#39;\\\\W+&#39;, &#39;&#39;, query)\\nif not os.path.exists(cleanQuery):\\n    os.makedirs(cleanQuery)\\n\\n...\\n\\nfilename = cleanQuery + &#39;\u002F&#39; + &#39;search-result&#39; + str(startValue)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe final version of your function should look like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#create URLs for search results pages and save the files\\ndef getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entries):\\n\\n    import urllib.request, math, os, re\\n\\n    cleanQuery = re.sub(r&#39;\\\\W+&#39;, &#39;&#39;, query)\\n    if not os.path.exists(cleanQuery):\\n        os.makedirs(cleanQuery)\\n\\n    startValue = 0\\n\\n    # Determine how many files need to be downloaded.\\n    pageCount = entries \u002F 10\\n    pageCount = math.ceil(pageCount)\\n\\n    for pages in range(1, pageCount +1):\\n\\n        #each part of the URL. Split up to be easier to read.\\n        url = &#39;https:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;\\n        url += query\\n        url += &#39;&amp;kwparse=&#39; + kwparse\\n        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;\\n        url += &#39;&amp;fromYear=&#39; + fromYear\\n        url += &#39;&amp;fromMonth=&#39; + fromMonth\\n        url += &#39;&amp;toYear=&#39; + toYear\\n        url += &#39;&amp;toMonth=&#39; + toMonth\\n        url += &#39;&amp;start=&#39; + str(startValue)\\n        url += &#39;&amp;count=0&#39;\\n\\n        #download the page and save the result.\\n        response = urllib.request.urlopen(url)\\n        webContent = response.read().decode(&#39;UTF-8&#39;)\\n        filename = cleanQuery + &#39;\u002F&#39; + &#39;search-result&#39; + str(startValue)\\n        f = open(filename + &quot;.html&quot;, &#39;w&#39;)\\n        f.write(webContent)\\n        f.close\\n\\n        startValue = startValue + 10\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis time we tell the program to download the trials and put them in the\\nnew directory rather than our \u003Ccode\u003Eprogramming-historian\u003C\u002Fcode\u003E directory. Run\\n\u003Ccode\u003Edownload-searches.py\u003C\u002Fcode\u003E once more to ensure this worked and you\\nunderstand how to save files to a particular directory using Python.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"downloading-the-individual-trial-entries\\\"\u003EDownloading the individual trial entries\u003C\u002Fh3\u003E\\n\u003Cp\u003EAt this stage we have created a function that can download all of the\\nsearch results HTML files from the Old Bailey Online website for an\\nadvanced search that we have defined, and have done so programmatically.\\nNow for the next step in the algorithm: Extract the URLs of each trial\\ntranscript from the search results HTML files. In the lessons that\\nprecede this one (eg, \u003Ca href=\\\"\u002Flessons\u002Fworking-with-web-pages\\\"\u003EWorking with Webpages\u003C\u002Fa\u003E), we have worked with the printer friendly versions of\\nthe trial transcripts, so we will continue to do so. We know that the\\nprinter friendly version of Benjamin Bowsey’s trial is located at the\\nURL:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ehttp:\u002F\u002Fwww.oldbaileyonline.org\u002Fprint.jsp?div=t17800628-33\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIn the same way that changing query strings in the URLs yields different\\nsearch results, changing the URL for trial records – namely substituting\\none trial ID for another – we will get the transcript for that new\\ntrial. This means that to find and download the 13 matching files, all\\nwe need are these trial IDs. Since we know that search results pages on\\nwebsites generally contain a link to the pages described, there is a\\ngood chance that we can find these links embedded in the HTML code. If\\nwe can scrape this information from the downloaded search results pages,\\nwe can then use that information to generate a URL that will allow us to\\ndownload each trial transcript. This is a technique that you can use for\\nmost search result pages, not just Old Bailey Online! To do this, we\\nmust first find where the trial IDs are amidst the HTML code in the\\ndownloaded files, and then determine a way to consistently isolate them\\nusing code so that no matter which search results page we download from\\nthe site we are able to find the trial transcripts. First, open\\n\u003Ccode\u003Esearch-results0.html\u003C\u002Fcode\u003E in Komodo Edit and have a look for the list of\\nthe trials. The first entry starts with “Anne Smith” so you can use the\\n“find” feature in Komodo Edit to jump immediately to the right spot.\\nNotice Anne’s name is part of a link:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003Ebrowse.jsp?id=t17160113-18&amp;amp;div=t17160113-18&amp;amp;terms=mulatto*_negro*#highlight\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EPerfect, the link contains the trial ID! Scroll through the remaining\\nentries and you’ll find the same is true. Lucky for us, the site is well\\nformatted and it looks like each link starts with “browse.jsp?id=”\\nfollowed by the trial ID and finished with an &amp;, in Anne’s case:\\n“browse.jsp?id=t17160113-18&amp;”. We can write a few lines of code that can\\nisolate those IDs. Take a look at the following function. This function\\nalso uses the \u003Ccode\u003Eos\u003C\u002Fcode\u003E library, in this case to list all of the files\\nlocated in the directory created in the previous section. The \u003Ccode\u003Eos\u003C\u002Fcode\u003E\\nlibrary contains a range of useful functions that mirror the types of\\ntasks you would expect to be able to do with your mouse in the Mac\\nFinder or Windows such as opening, closing, creating, deleting, and\\nmoving files and directories, and is a great library to master – or at\\nleast familiarize yourself with.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Edef getIndivTrials(query):\\n    import os, re\\n\\n    cleanQuery = re.sub(r&#39;\\\\W+&#39;, &#39;&#39;, query)\\n    searchResults = os.listdir(cleanQuery)\\n\\n    print(searchResults)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ECreate and run a new program called \u003Ccode\u003Eextract-trial-ids.py\u003C\u002Fcode\u003E with the\\nfollowing code. Make sure you input the same value into the query\\nargument as you did in the previous example:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eimport obo\\n\\nobo.getIndivTrials(&quot;mulatto*+negro*&quot;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf everything went right, you should see a list containing the names of\\nall the files in your new “mulatto*+negro*” directory, which at this\\npoint should be the two search results pages. Ensure this worked before\\nmoving forward. Since we saved all of the search results pages with a\\nfilename that includes “search-results”, we now want to open each file\\nwith a name containing “search-results”, and extract all trial IDs found\\ntherein. In this case we know we have 2, but we want our code to be as\\nreusable as possible (with reason, of course!) Restricting this action\\nto files named “search-results” will mean that this program will work as\\nintended even if the directory contains many other unrelated files\\nbecause the program will skip over anything with a different name. Add\\nthe following to your getIndivTrials() function, which will check if\\neach file contains “search-results” in its name. If it does, the file\\nwill be opened and the contents saved to a variable named text. That\\ntext variable will then be parsed looking for the trial ID, which we\\nknow always follows “browse.jsp?id=”. If and when that trial ID is found\\nit will be saved to a list and printed to the command output, which\\nleaves us with all of the information we need to then write a program\\nthat will download the desired trials.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Edef getIndivTrials(query):\\n    import os, re\\n\\n    cleanQuery = re.sub(r&#39;\\\\W+&#39;, &#39;&#39;, query)\\n    searchResults = os.listdir(cleanQuery)\\n\\n    urls = []\\n\\n    #find search-results pages\\n    for files in searchResults:\\n        if files.find(&quot;search-result&quot;) != -1:\\n            f = open(cleanQuery + &quot;\u002F&quot; + files, &#39;r&#39;)\\n            text = f.read().split(&quot; &quot;)\\n            f.close()\\n\\n            #look for trial IDs\\n            for words in text:\\n                if words.find(&quot;browse.jsp?id=&quot;) != -1:\\n                    #isolate the id\\n                    urls.append(words[words.find(&quot;id=&quot;) +3: words.find(&quot;&amp;&quot;)])\\n\\n    print(urls)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThat last line of the for loop may look tricky, but make sure you\\nunderstand it before moving on. The words variable is checked to see if\\nit contains the characters “id=” (without the quotes), which of course\\nrefers to a specific trial transcript ID. If it does, we use the slice\\nstring method to capture only the chunk between \u003Cem\u003Eid=\u003C\u002Fem\u003E and \u003Cem\u003E&amp;\u003C\u002Fem\u003E and append it\\nto the url list. If we knew the exact index positions of this substring\\nwe could have used those numerical values instead. However, by using the\\n\u003Cem\u003Efind()\u003C\u002Fem\u003E string method we have created a much more flexible program. The\\nfollowing code does exactly the same thing as that last line in a less\\ncondensed manner.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EidStart = words.find(&quot;id=&quot;) + 3\\nidEnd = words.find(&quot;&amp;&quot;)\\ntrialID = words[idStart: idEnd]\\n\\nurls.append(trialID)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWhen you re-run \u003Ccode\u003Eextract-trial-ids.py\u003C\u002Fcode\u003E, you should now see a list of all\\nthe trial IDs. We can add a couple extra lines to turn these into proper\\nURLs and download the whole list to our new directory. We’ll also use\\nthe \u003Ccode\u003Etime\u003C\u002Fcode\u003E library to pause our program for three seconds between\\ndownloads– a technique called throttling. It’s considered good form not\\nto pound someone’s server with many requests per second; and the slight\\ndelay makes it more likely that all the files will actually download\\nrather than \u003Ca href=\\\"http:\u002F\u002Fwww.checkupdown.com\u002Fstatus\u002FE408.html\\\"\u003Etime out\u003C\u002Fa\u003E. Add the following code to the end of your\\n\u003Ccode\u003EgetIndivTrials()\u003C\u002Fcode\u003E function. This code will generate the URL of each\\nindividual page, download the page to your computer, place it in your\\nnew directory, save the file, and pause for 3 seconds before moving on\\nto the next trial. This work is all contained in a for loop, and will\\nrun once for every trial in your url list.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Edef getIndivTrials(query):\\n    #...\\n    import urllib.request, time\\n\\n    #import built-in python functions for building file paths\\n    from os.path import join as pjoin\\n\\n    for items in urls:\\n        #generate the URL\\n        url = &quot;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fprint.jsp?div=&quot; + items\\n\\n        #download the page\\n        response = urllib.request.urlopen(url)\\n        webContent = response.read().decode(&#39;UTF-8&#39;)\\n\\n        #create the filename and place it in the new directory\\n        filename = items + &#39;.html&#39;\\n        filePath = pjoin(cleanQuery, filename)\\n\\n        #save the file\\n        f = open(filePath, &#39;w&#39;)\\n        f.write(webContent)\\n        f.close\\n\\n        #pause for 3 second\\n        time.sleep(3)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf we put this all together into a single function it should look\\nsomething like this. (Note, we’ve put all the “import” calls at the top\\nto keep things cleaner).\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Edef getIndivTrials(query):\\n    import os, re, urllib.request, time\\n\\n    #import built-in python functions for building file paths\\n    from os.path import join as pjoin\\n\\n    cleanQuery = re.sub(r&#39;\\\\W+&#39;, &#39;&#39;, query)\\n    searchResults = os.listdir(cleanQuery)\\n\\n    urls = []\\n\\n    #find search-results pages\\n    for files in searchResults:\\n        if files.find(&quot;search-result&quot;) != -1:\\n            f = open(cleanQuery + &quot;\u002F&quot; + files, &#39;r&#39;)\\n            text = f.read().split(&quot; &quot;)\\n            f.close()\\n\\n            #look for trial IDs\\n            for words in text:\\n                if words.find(&quot;browse.jsp?id=&quot;) != -1:\\n                    #isolate the id\\n                    urls.append(words[words.find(&quot;id=&quot;) +3: words.find(&quot;&amp;&quot;)])\\n\\n    #new from here down!\\n    for items in urls:\\n        #generate the URL\\n        url = &quot;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fprint.jsp?div=&quot; + items\\n\\n        #download the page\\n        response = urllib.request.urlopen(url)\\n        webContent = response.read().decode(&#39;UTF-8&#39;)\\n\\n        #create the filename and place it in the new directory\\n        filename = items + &#39;.html&#39;\\n        filePath = pjoin(cleanQuery, filename)\\n\\n        #save the file\\n        f = open(filePath, &#39;w&#39;)\\n        f.write(webContent)\\n        f.close\\n\\n        #pause for 3 seconds\\n        time.sleep(3)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ELet’s add the same three-second pause to our \u003Ccode\u003EgetSearchResults\u003C\u002Fcode\u003E function\\nto be kind to the Old Bailey Online servers:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#create URLs for search results pages and save the files\\ndef getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entries):\\n\\n    import urllib.request, math, os, re, time\\n\\n    cleanQuery = re.sub(r&#39;\\\\W+&#39;, &#39;&#39;, query)\\n    if not os.path.exists(cleanQuery):\\n        os.makedirs(cleanQuery)\\n\\n    startValue = 0\\n\\n    #Determine how many files need to be downloaded.\\n    pageCount = entries \u002F 10\\n    pageCount = math.ceil(pageCount)\\n\\n    for pages in range(1, pageCount +1):\\n\\n        #each part of the URL. Split up to be easier to read.\\n        url = &#39;https:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;\\n        url += query\\n        url += &#39;&amp;kwparse=&#39; + kwparse\\n        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;\\n        url += &#39;&amp;fromYear=&#39; + fromYear\\n        url += &#39;&amp;fromMonth=&#39; + fromMonth\\n        url += &#39;&amp;toYear=&#39; + toYear\\n        url += &#39;&amp;toMonth=&#39; + toMonth\\n        url += &#39;&amp;start=&#39; + str(startValue)\\n        url += &#39;&amp;count=0&#39;\\n\\n        #download the page and save the result.\\n        response = urllib.request.urlopen(url)\\n        webContent = response.read().decode(&#39;UTF-8&#39;)\\n        filename = cleanQuery + &#39;\u002F&#39; + &#39;search-result&#39; + str(startValue)\\n        f = open(filename + &quot;.html&quot;, &#39;w&#39;)\\n        f.write(webContent)\\n        f.close\\n\\n        startValue = startValue + 10\\n\\n        #pause for 3 seconds\\n        time.sleep(3)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EFinally, call the function in the \u003Ccode\u003Edownload-searches.py\u003C\u002Fcode\u003E program.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#download-searches.py\\nimport obo\\n\\nquery = &#39;mulatto*+negro*&#39;\\n\\nobo.getSearchResults(query, &quot;advanced&quot;, &quot;1700&quot;, &quot;00&quot;, &quot;1750&quot;, &quot;99&quot;, 13)\\n\\nobo.getIndivTrials(query)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow, you’ve created a program that can request and download files from\\nthe Old Bailey website based on search parameters you define, all\\nwithout visiting the site!\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"in-case-a-file-does-not-download\\\"\u003EIn case a file does not download\u003C\u002Fh3\u003E\\n\u003Cp\u003ECheck to make all thirteen files have downloaded properly. If that’s the\\ncase for you, that’s great! However, there’s a possibility that this\\nprogram stalled along the way. That’s because our program, though\\nrunning on your own machine, relies on two factors outside of our\\nimmediate control: the speed of the Internet, and the response time of\\nthe Old Bailey Online server at that moment. It’s one thing to ask\\nPython to download a single file, but when we start asking for a file\\nevery 3 seconds there’s a greater chance the server will either time out\\nor fail to send us the file we are after.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf we were using a web browser to make these requests, we’d eventually\\nget a message that the “connection had timed out” or something of the\\nsort. We all see this from time to time. However, our program isn’t\\nbuilt to handle or relay such error messages, so instead you’ll realize\\nit when you discover that the program has not returned the expected\\nnumber of files or just seemingly does nothing. To prevent frustration\\nand uncertainty, we want a fail-safe in our program that will attempt to\\ndownload each trial. If for whatever reason it fails, we’ll make a note\\nof it and move on to the next trial.\u003C\u002Fp\u003E\\n\u003Cp\u003ETo do this, we will make use of the Python \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002Ftutorial\u002Ferrors.html\\\"\u003Etry \u002F except\u003C\u002Fa\u003E error\\nhandling mechanism, as well as a new library: socket. Try and Except are\\na lot like an \u003Cem\u003Eif \u002F else\u003C\u002Fem\u003E statement. When you ask Python to \u003Cem\u003Etry\u003C\u002Fem\u003E something,\\nit will attempt to run the code; if the code fails to achieve what you\\nhave defined, it will run the \u003Cem\u003Eexcept\u003C\u002Fem\u003E code. This is often used when\\ndealing with errors, known as \u003Cem\u003Eerror handling\u003C\u002Fem\u003E. We can use this to our\\nadvantage by telling our program to attempt downloading a page. If it\\nfails, we’ll ask it to let us know which file failed and then move on.\\nTo do this we need to use the \u003Ccode\u003Esocket\u003C\u002Fcode\u003E library, which will allow us to put\\na time limit on a download attempt before moving on. This involves\\naltering the \u003Ccode\u003EgetIndivTrials\u003C\u002Fcode\u003E function.\u003C\u002Fp\u003E\\n\u003Cp\u003EFirst, we need to load the \u003Ccode\u003Esocket\u003C\u002Fcode\u003E library, which should be done in the\\nsame way as all of our previous library imports. Then, we need to import\\nthe \u003Ccode\u003Eurllib.error\u003C\u002Fcode\u003E library, which allows us to handle download errors.\\nWe will also need to\\nset the default socket timeout length – how long do we want to try to\\ndownload a page before we give up. This should go immediately after the\\ncomment that begins with \u003Ccode\u003E#download the page\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E    import os, re, urllib.request, urllib.error, time, socket\\n\\n    #...\\n        #download the page\\n        socket.setdefaulttimeout(10)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThen, we need a new python list that will hold all of the urls that\\nfailed to download. We will call this \u003Ccode\u003EfailedAttempts\u003C\u002Fcode\u003E and you can insert\\nit immediately after the \u003Ccode\u003Eimport\u003C\u002Fcode\u003E instructions:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EfailedAttempts = []\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EFinally, we can add the \u003Cem\u003Etry \u002F except\u003C\u002Fem\u003E statement, which is added in much\\nthe same way as an \u003Cem\u003Eif \u002F else\u003C\u002Fem\u003E statement would be. In this case, we will\\nput all of the code designed to download and save the trials in the try\\nstatement, and in the except statement we will tell the program what we\\nwant it to do if that should fail. Here, we will append the url that\\nfailed to download to our new list, \u003Ccode\u003EfailedAttempts\u003C\u002Fcode\u003E\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#...\\n\\n        socket.setdefaulttimeout(10)\\n\\n        try:\\n            response = urllib2.urlopen(url)\\n            webContent = response.read().decode(&#39;UTF-8&#39;)\\n\\n            #create the filename and place it in the new &quot;trials&quot; directory\\n            filename = items + &#39;.html&#39;\\n            filePath = pjoin(newDir, filename)\\n\\n            #save the file\\n            f = open(filePath, &#39;w&#39;)\\n            f.write(webContent)\\n            f.close\\n        except urllib.error.URLError:\\n            failedAttempts.append(url)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EFinally, we will tell the program to print the contents of the list to\\nthe command output so we know which files failed to download. This\\nshould be added as the last line in the function.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eprint(&quot;failed to download: &quot; + str(failedAttempts))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow when you run the program, should there be a problem downloading a\\nparticular file, you will receive a message in the Command Output window\\nof Komodo Edit. This message will contain any URLs of files that failed\\nto download. If there are only one or two, it’s probably fastest just to\\nvisit the pages manually and use the “Save As” feature of your browser.\\nIf you are feeling adventurous, you could modify the program to\\nautomatically download the remaining files. The final version of your\\n\u003Ccode\u003EgetSearchResults()\u003C\u002Fcode\u003E and \u003Ccode\u003EgetIndivTrials()\u003C\u002Fcode\u003E functions should now\\nlook like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#create URLs for search results pages and save the files\\ndef getSearchResults(query, kwparse, fromYear, fromMonth, toYear, toMonth, entries):\\n\\n    import urllib.request, math, os, re, time\\n\\n    cleanQuery = re.sub(r&#39;\\\\W+&#39;, &#39;&#39;, query)\\n    if not os.path.exists(cleanQuery):\\n        os.makedirs(cleanQuery)\\n\\n    startValue = 0\\n\\n    #Determine how many files need to be downloaded.\\n    pageCount = entries \u002F 10\\n    pageCount = math.ceil(pageCount)\\n\\n    for pages in range(1, pageCount +1):\\n\\n        #each part of the URL. Split up to be easier to read.\\n        url = &#39;https:\u002F\u002Fwww.oldbaileyonline.org\u002Fsearch.jsp?gen=1&amp;form=searchHomePage&amp;_divs_fulltext=&#39;\\n        url += query\\n        url += &#39;&amp;kwparse=&#39; + kwparse\\n        url += &#39;&amp;_divs_div0Type_div1Type=sessionsPaper_trialAccount&#39;\\n        url += &#39;&amp;fromYear=&#39; + fromYear\\n        url += &#39;&amp;fromMonth=&#39; + fromMonth\\n        url += &#39;&amp;toYear=&#39; + toYear\\n        url += &#39;&amp;toMonth=&#39; + toMonth\\n        url += &#39;&amp;start=&#39; + str(startValue)\\n        url += &#39;&amp;count=0&#39;\\n\\n        #download the page and save the result.\\n        response = urllib.request.urlopen(url)\\n        webContent = response.read().decode(&#39;UTF-8&#39;)\\n        filename = cleanQuery + &#39;\u002F&#39; + &#39;search-result&#39; + str(startValue)\\n        f = open(filename + &quot;.html&quot;, &#39;w&#39;)\\n        f.write(webContent)\\n        f.close\\n\\n        startValue = startValue + 10\\n\\n        #pause for 3 seconds\\n        time.sleep(3)\\n\\ndef getIndivTrials(query):\\n    import os, re, urllib.request, urllib.error, time, socket\\n\\n    failedAttempts = []\\n\\n    #import built-in python functions for building file paths\\n    from os.path import join as pjoin\\n\\n    cleanQuery = re.sub(r&#39;\\\\W+&#39;, &#39;&#39;, query)\\n    searchResults = os.listdir(cleanQuery)\\n\\n    urls = []\\n\\n    #find search-results pages\\n    for files in searchResults:\\n        if files.find(&quot;search-result&quot;) != -1:\\n            f = open(cleanQuery + &quot;\u002F&quot; + files, &#39;r&#39;)\\n            text = f.read().split(&quot; &quot;)\\n            f.close()\\n\\n            #look for trial IDs\\n            for words in text:\\n                if words.find(&quot;browse.jsp?id=&quot;) != -1:\\n                    #isolate the id\\n                    urls.append(words[words.find(&quot;id=&quot;) +3: words.find(&quot;&amp;&quot;)])\\n\\n    for items in urls:\\n        #generate the URL\\n        url = &quot;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fprint.jsp?div=&quot; + items\\n\\n        #download the page\\n        socket.setdefaulttimeout(10)\\n        try:\\n            response = urllib.request.urlopen(url)\\n            webContent = response.read().decode(&#39;UTF-8&#39;)\\n\\n            #create the filename and place it in the new directory\\n            filename = items + &#39;.html&#39;\\n            filePath = pjoin(cleanQuery, filename)\\n\\n            #save the file\\n            f = open(filePath, &#39;w&#39;)\\n            f.write(webContent)\\n            f.close\\n        except urllib.error.URLError:\\n            failedAttempts.append(url)\\n\\n        #pause for 3 seconds\\n        time.sleep(3)\\n\\n    print(&quot;failed to download: &quot; + str(failedAttempts))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"further-reading\\\"\u003EFurther Reading\u003C\u002Fh2\u003E\\n\u003Cp\u003EFor more advanced users, or to become a more advanced user, you may find\\nit worthwhile to read about achieving this same process using\\nApplication Programming Interfaces (API). A website with an API will\\ngenerally provide instructions on how to request certain documents. It’s\\na very similar process to what we just did by interpreting the URL Query\\nStrings, but without the added detective work required to decipher what\\neach variable does. If you are interested in the Old Bailey Online, they\\nhave recently released an API and the documentation can be quite\\nhelpful:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EOld Bailey Online API\\n(\u003Ca href=\\\"http:\u002F\u002Fwww.oldbaileyonline.org\u002Fstatic\u002FDocAPI.jsp\\\"\u003Ehttp:\u002F\u002Fwww.oldbaileyonline.org\u002Fstatic\u002FDocAPI.jsp\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003Cli\u003EPython Best way to create directory if it doesn’t exist for file write? (\u003Ca href=\\\"http:\u002F\u002Fstackoverflow.com\u002Fquestions\u002F273192\u002Fpython-best-way-to-create-directory-if-it-doesnt-exist-for-file-write\\\"\u003Ehttp:\u002F\u002Fstackoverflow.com\u002Fquestions\u002F273192\u002Fpython-best-way-to-create-directory-if-it-doesnt-exist-for-file-write\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

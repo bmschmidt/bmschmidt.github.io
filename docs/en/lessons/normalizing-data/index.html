@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/normalizing-data"),
 					params: {lang:"en",lessons:"lessons",slug:"normalizing-data"}
@@ -48,27 +49,29 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Normalizing Textual Data with Python</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="lesson-goals">Lesson Goals</h2>
+<h2>Lesson Goals</h2>
 <p>The list that we created in the <a href="/lessons/from-html-to-list-of-words-2">From HTML to a List of Words (2)</a>
 needs some <em>normalizing</em> before it can be used further. We are going to do
 this by applying additional string methods, as well as by using <em>regular</em>
 <em>expressions</em>. Once normalized, we will be able to more easily analyze our
 data.</p>
-<h2 id="files-needed-for-this-lesson">Files Needed For This Lesson</h2>
+<h2>Files Needed For This Lesson</h2>
 <ul>
 <li><em>html-to-list-1.py</em></li>
 <li><em>obo.py</em></li>
 </ul>
 <p>If you do not have these files from the previous lesson, you can
 download a <a href="/assets/python-lessons3.zip">zip</a></p>
-<h2 id="cleaning-up-the-list">Cleaning up the List</h2>
+<h2>Cleaning up the List</h2>
 <p>In <a href="/lessons/from-html-to-list-of-words-2">From HTML to a List of Words (2)</a>, we wrote a Python program
 called <em>html-to-list-1.py</em> which downloaded a <a href="http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33">web page</a>, stripped
 out the HTML formatting and metadata and returned a list of “words” like
@@ -81,21 +84,21 @@ analyzed by linguists as two words: “Akerman” plus a possessive marker.
 Is “o’clock” one word or two? And so on.</p>
 <p>Turn back to your program <em>html-to-list-1.py</em> and make sure that your
 results look something like this:</p>
-<pre><code class="language-python">[&#39;324.&#39;, &#39;\xc2\xa0&#39;, &#39;BENJAMIN&#39;, &#39;BOWSEY&#39;, &#39;(a&#39;, &#39;blackmoor&#39;, &#39;)&#39;, &#39;was&#39;,
-&#39;indicted&#39;, &#39;for&#39;, &#39;that&#39;, &#39;he&#39;, &#39;together&#39;, &#39;with&#39;, &#39;five&#39;, &#39;hundred&#39;,
-&#39;other&#39;, &#39;persons&#39;, &#39;and&#39;, &#39;more,&#39;, &#39;did,&#39;, &#39;unlawfully,&#39;, &#39;riotously,&#39;,
-&#39;and&#39;, &#39;tumultuously&#39;, &#39;assemble&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;to&#39;,
-&#39;the&#39;, &#39;disturbance&#39;, &#39;of&#39;, &#39;the&#39;, &#39;public&#39;, &#39;peace&#39;, &#39;and&#39;, &#39;did&#39;, &#39;begin&#39;,
-&#39;to&#39;, &#39;demolish&#39;, &#39;and&#39;, &#39;pull&#39;, &#39;down&#39;, &#39;the&#39;, &#39;dwelling&#39;, &#39;house&#39;, &#39;of&#39;,
-&#39;\xc2\xa0&#39;, &#39;Richard&#39;, &#39;Akerman&#39;, &#39;,&#39;, &#39;against&#39;, &#39;the&#39;, &#39;form&#39;, &#39;of&#39;,
-&#39;the&#39;, &#39;statute,&#39;, &#39;&amp;amp;c.&#39;, &#39;\xc2\xa0&#39;, &#39;ROSE&#39;, &#39;JENNINGS&#39;, &#39;,&#39;, &#39;Esq.&#39;,
-&#39;sworn.&#39;, &#39;Had&#39;, &#39;you&#39;, &#39;any&#39;, &#39;occasion&#39;, &#39;to&#39;, &#39;be&#39;, &#39;in&#39;, &#39;this&#39;, &#39;part&#39;,
-&#39;of&#39;, &#39;the&#39;, &#39;town,&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;in&#39;, &#39;the&#39;,
-&#39;evening?&#39;, &#39;-&#39;, &#39;I&#39;, &#39;dined&#39;, &#39;with&#39;, &#39;my&#39;, &#39;brother&#39;, &#39;who&#39;, &#39;lives&#39;,
-&#39;opposite&#39;, &#39;Mr.&#39;, &quot;Akerman&#39;s&quot;, &#39;house.&#39;, &#39;They&#39;, &#39;attacked&#39;, &#39;Mr.&#39;,
-&quot;Akerman&#39;s&quot;, &#39;house&#39;, &#39;precisely&#39;, &#39;at&#39;, &#39;seven&#39;, &quot;o&#39;clock;&quot;, &#39;they&#39;,
-&#39;were&#39;, &#39;preceded&#39;, &#39;by&#39;, &#39;a&#39;, &#39;man&#39;, &#39;better&#39;, &#39;dressed&#39;, &#39;than&#39;, &#39;the&#39;,
-&#39;rest,&#39;, &#39;who&#39;]
+<pre><code class="language-python">['324.', '\xc2\xa0', 'BENJAMIN', 'BOWSEY', '(a', 'blackmoor', ')', 'was',
+'indicted', 'for', 'that', 'he', 'together', 'with', 'five', 'hundred',
+'other', 'persons', 'and', 'more,', 'did,', 'unlawfully,', 'riotously,',
+'and', 'tumultuously', 'assemble', 'on', 'the', '6th', 'of', 'June', 'to',
+'the', 'disturbance', 'of', 'the', 'public', 'peace', 'and', 'did', 'begin',
+'to', 'demolish', 'and', 'pull', 'down', 'the', 'dwelling', 'house', 'of',
+'\xc2\xa0', 'Richard', 'Akerman', ',', 'against', 'the', 'form', 'of',
+'the', 'statute,', '&amp;amp;c.', '\xc2\xa0', 'ROSE', 'JENNINGS', ',', 'Esq.',
+'sworn.', 'Had', 'you', 'any', 'occasion', 'to', 'be', 'in', 'this', 'part',
+'of', 'the', 'town,', 'on', 'the', '6th', 'of', 'June', 'in', 'the',
+'evening?', '-', 'I', 'dined', 'with', 'my', 'brother', 'who', 'lives',
+'opposite', 'Mr.', &quot;Akerman's&quot;, 'house.', 'They', 'attacked', 'Mr.',
+&quot;Akerman's&quot;, 'house', 'precisely', 'at', 'seven', &quot;o'clock;&quot;, 'they',
+'were', 'preceded', 'by', 'a', 'man', 'better', 'dressed', 'than', 'the',
+'rest,', 'who']
 </code></pre>
 <p>By itself, this ability to separate the document into words doesn’t buy
 us much because we already know how to read. We can use the text,
@@ -115,7 +118,7 @@ are counted as the same word</li>
 <li>Count the number of times each word appears</li>
 <li>Remove overly common words such as “it”, “the”, “and”, etc.</li>
 </ul>
-<h2 id="convert-to-lower-case">Convert to Lower Case</h2>
+<h2>Convert to Lower Case</h2>
 <p>Typically tokens are <em>folded</em> to lower case when counting frequencies, so
 we’ll do that using the string method lower which was introduced in
 <a href="/lessons/manipulating-strings-in-python">Manipulating Strings in Python</a>. Since this is a string method we
@@ -125,10 +128,10 @@ the the end of the <em>text</em> string.</p>
 <pre><code class="language-python">#html-to-list1.py
 import urllib.request, urllib.error, urllib.parse, obo
 
-url = &#39;http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;
+url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33'
 
 response = urllib.request.urlopen(url)
-html = str(response.read().decode(&#39;UTF-8&#39;))
+html = str(response.read().decode('UTF-8'))
 text = obo.stripTags(html).lower() #add the string method here.
 wordlist = text.split()
 
@@ -159,16 +162,16 @@ or an Arabic numeral. Programming is typically a process of “stepwise
 refinement”. You start with a problem and part of a solution, and then
 you keep refining your solution until you have something that works
 better.</p>
-<h2 id="python-regular-expressions">Python Regular Expressions</h2>
+<h2>Python Regular Expressions</h2>
 <p>We’ve eliminated upper case letters. That just leaves all the
 punctuation to get rid of. Punctuation will throw off our frequency
 counts if we leave them in. We want “evening?” to be counted as
 “evening” and “1780.” as “1780”, of course.</p>
 <p>It is possible to use the replace string method to remove each type of
 punctuation:</p>
-<pre><code class="language-python">text = text.replace(&#39;[&#39;, &#39;&#39;)
-text = text.replace(&#39;]&#39;, &#39;&#39;)
-text = text.replace(&#39;,&#39;, &#39;&#39;)
+<pre><code class="language-python">text = text.replace('[', '')
+text = text.replace(']', '')
+text = text.replace(',', '')
 #etc...
 </code></pre>
 <p>But that’s not very efficient. In keeping with our goal of creating
@@ -198,7 +201,7 @@ continue to use those.</p>
 
 def stripNonAlphaNum(text):
     import re
-    return re.compile(r&#39;\W+&#39;, re.UNICODE).split(text)
+    return re.compile(r'\W+', re.UNICODE).split(text)
 </code></pre>
 <p>The regular expression in the above code is the material inside the
 string, in other words <code>W+</code>. The <code>W</code> is shorthand for the class of
@@ -214,10 +217,10 @@ right now.</p>
 <pre><code class="language-python">#html-to-list1.py
 import urllib.request, urllib.error, urllib.parse, obo
 
-url = &#39;http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;
+url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33'
 
 response = urllib.request.urlopen(url)
-html = response.read().decode(&#39;UTF-8&#39;)
+html = response.read().decode('UTF-8')
 text = obo.stripTags(html).lower()
 wordlist = obo.stripNonAlphaNum(text)
 
@@ -232,10 +235,10 @@ we should move on to counting frequencies before attempting to make it
 better. (If you work with sources in more than one language, you need to
 learn more about the <a href="http://unicode.org/">Unicode</a> standard and about <a href="https://web.archive.org/web/20180502053841/http://www.diveintopython.net/xml_processing/unicode.html">Python support</a>
 for it.)</p>
-<h2 id="suggested-reading">Suggested Reading</h2>
+<h2>Suggested Reading</h2>
 <p>For extra practice with Regular Expressions, you may find Chapter 7 of
 Mark Pilgrim’s “<a href="https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html">Dive into Python</a>” a useful tutorial.</p>
-<h3 id="code-syncing">Code Syncing</h3>
+<h3>Code Syncing</h3>
 <p>To follow along with future lessons it is important that you have the
 right files and programs in your programming-historian directory. At the
 end of each chapter in this series you can download the programming-historian zip file
@@ -245,6 +248,6 @@ to make sure you have the correct code.</p>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="normalizing-data/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Normalizing Textual Data with Python\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\",\"Francesca Benatti\",\"Frederik Elwert\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"transforming\",\"topics\":[\"python\"],\"abstract\":\"In this lesson, we will make the list we created in the 'From HTML to a List of Words' lesson easier to analyze by normalizing this data.\",\"next\":\"counting-frequencies\",\"previous\":\"from-html-to-list-of-words-2\",\"series_total\":\"15 lessons\",\"sequence\":9,\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Fnormalizing-data\",\"avatar_alt\":\"Tall woman dragging a short young man\",\"doi\":\"10.46430\u002Fphen0014\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EThe list that we created in the \u003Ca href=\\\"\u002Flessons\u002Ffrom-html-to-list-of-words-2\\\"\u003EFrom HTML to a List of Words (2)\u003C\u002Fa\u003E\\nneeds some \u003Cem\u003Enormalizing\u003C\u002Fem\u003E before it can be used further. We are going to do\\nthis by applying additional string methods, as well as by using \u003Cem\u003Eregular\u003C\u002Fem\u003E\\n\u003Cem\u003Eexpressions\u003C\u002Fem\u003E. Once normalized, we will be able to more easily analyze our\\ndata.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"files-needed-for-this-lesson\\\"\u003EFiles Needed For This Lesson\u003C\u002Fh2\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Cem\u003Ehtml-to-list-1.py\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003Cli\u003E\u003Cem\u003Eobo.py\u003C\u002Fem\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EIf you do not have these files from the previous lesson, you can\\ndownload a \u003Ca href=\\\"\u002Fassets\u002Fpython-lessons3.zip\\\"\u003Ezip\u003C\u002Fa\u003E\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"cleaning-up-the-list\\\"\u003ECleaning up the List\u003C\u002Fh2\u003E\\n\u003Cp\u003EIn \u003Ca href=\\\"\u002Flessons\u002Ffrom-html-to-list-of-words-2\\\"\u003EFrom HTML to a List of Words (2)\u003C\u002Fa\u003E, we wrote a Python program\\ncalled \u003Cem\u003Ehtml-to-list-1.py\u003C\u002Fem\u003E which downloaded a \u003Ca href=\\\"http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33\\\"\u003Eweb page\u003C\u002Fa\u003E, stripped\\nout the HTML formatting and metadata and returned a list of “words” like\\nthe one shown below. Technically, these entities are called “\u003Cem\u003Etokens\u003C\u002Fem\u003E”\\nrather than “words”. They include some things that are, strictly\\nspeaking, not words at all (like the abbreviation &amp;c. for “etcetera”).\\nThey also include some things that may be considered composites of more\\nthan one word. The possessive “Akerman’s,” for example, is sometimes\\nanalyzed by linguists as two words: “Akerman” plus a possessive marker.\\nIs “o’clock” one word or two? And so on.\u003C\u002Fp\u003E\\n\u003Cp\u003ETurn back to your program \u003Cem\u003Ehtml-to-list-1.py\u003C\u002Fem\u003E and make sure that your\\nresults look something like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E[&#39;324.&#39;, &#39;\\\\xc2\\\\xa0&#39;, &#39;BENJAMIN&#39;, &#39;BOWSEY&#39;, &#39;(a&#39;, &#39;blackmoor&#39;, &#39;)&#39;, &#39;was&#39;,\\n&#39;indicted&#39;, &#39;for&#39;, &#39;that&#39;, &#39;he&#39;, &#39;together&#39;, &#39;with&#39;, &#39;five&#39;, &#39;hundred&#39;,\\n&#39;other&#39;, &#39;persons&#39;, &#39;and&#39;, &#39;more,&#39;, &#39;did,&#39;, &#39;unlawfully,&#39;, &#39;riotously,&#39;,\\n&#39;and&#39;, &#39;tumultuously&#39;, &#39;assemble&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;to&#39;,\\n&#39;the&#39;, &#39;disturbance&#39;, &#39;of&#39;, &#39;the&#39;, &#39;public&#39;, &#39;peace&#39;, &#39;and&#39;, &#39;did&#39;, &#39;begin&#39;,\\n&#39;to&#39;, &#39;demolish&#39;, &#39;and&#39;, &#39;pull&#39;, &#39;down&#39;, &#39;the&#39;, &#39;dwelling&#39;, &#39;house&#39;, &#39;of&#39;,\\n&#39;\\\\xc2\\\\xa0&#39;, &#39;Richard&#39;, &#39;Akerman&#39;, &#39;,&#39;, &#39;against&#39;, &#39;the&#39;, &#39;form&#39;, &#39;of&#39;,\\n&#39;the&#39;, &#39;statute,&#39;, &#39;&amp;amp;c.&#39;, &#39;\\\\xc2\\\\xa0&#39;, &#39;ROSE&#39;, &#39;JENNINGS&#39;, &#39;,&#39;, &#39;Esq.&#39;,\\n&#39;sworn.&#39;, &#39;Had&#39;, &#39;you&#39;, &#39;any&#39;, &#39;occasion&#39;, &#39;to&#39;, &#39;be&#39;, &#39;in&#39;, &#39;this&#39;, &#39;part&#39;,\\n&#39;of&#39;, &#39;the&#39;, &#39;town,&#39;, &#39;on&#39;, &#39;the&#39;, &#39;6th&#39;, &#39;of&#39;, &#39;June&#39;, &#39;in&#39;, &#39;the&#39;,\\n&#39;evening?&#39;, &#39;-&#39;, &#39;I&#39;, &#39;dined&#39;, &#39;with&#39;, &#39;my&#39;, &#39;brother&#39;, &#39;who&#39;, &#39;lives&#39;,\\n&#39;opposite&#39;, &#39;Mr.&#39;, &quot;Akerman&#39;s&quot;, &#39;house.&#39;, &#39;They&#39;, &#39;attacked&#39;, &#39;Mr.&#39;,\\n&quot;Akerman&#39;s&quot;, &#39;house&#39;, &#39;precisely&#39;, &#39;at&#39;, &#39;seven&#39;, &quot;o&#39;clock;&quot;, &#39;they&#39;,\\n&#39;were&#39;, &#39;preceded&#39;, &#39;by&#39;, &#39;a&#39;, &#39;man&#39;, &#39;better&#39;, &#39;dressed&#39;, &#39;than&#39;, &#39;the&#39;,\\n&#39;rest,&#39;, &#39;who&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EBy itself, this ability to separate the document into words doesn’t buy\\nus much because we already know how to read. We can use the text,\\nhowever, to do things that aren’t usually possible without special\\nsoftware. We’re going to start by computing the frequencies of tokens\\nand other linguistic units, a classic measure of a text.\u003C\u002Fp\u003E\\n\u003Cp\u003EIt is clear that our list is going to need some cleaning up before we\\ncan use it to count frequencies. In keeping with the practices\\nestablished in \u003Ca href=\\\"\u002Flessons\u002Ffrom-html-to-list-of-words-1\\\"\u003EFrom HTML to a List of Words (1)\u003C\u002Fa\u003E, let’s try to\\ndescribe our algorithm in plain English first. We want to know the\\nfrequency of each meaningful word that appears in the trial transcript.\\nSo, the steps involved might look like this:\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003EConvert all words to lower case so that “BENJAMIN” and “benjamin”\\nare counted as the same word\u003C\u002Fli\u003E\\n\u003Cli\u003ERemove any strange or unusual characters\u003C\u002Fli\u003E\\n\u003Cli\u003ECount the number of times each word appears\u003C\u002Fli\u003E\\n\u003Cli\u003ERemove overly common words such as “it”, “the”, “and”, etc.\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch2 id=\\\"convert-to-lower-case\\\"\u003EConvert to Lower Case\u003C\u002Fh2\u003E\\n\u003Cp\u003ETypically tokens are \u003Cem\u003Efolded\u003C\u002Fem\u003E to lower case when counting frequencies, so\\nwe’ll do that using the string method lower which was introduced in\\n\u003Ca href=\\\"\u002Flessons\u002Fmanipulating-strings-in-python\\\"\u003EManipulating Strings in Python\u003C\u002Fa\u003E. Since this is a string method we\\nwill have to apply it to the string: \u003Cem\u003Etext\u003C\u002Fem\u003E in the \u003Cem\u003Ehtml-to-list1.py\u003C\u002Fem\u003E\\nprogram. Amend \u003Cem\u003Ehtml-to-list1.py\u003C\u002Fem\u003E by adding the string tag \u003Ccode\u003Elower()\u003C\u002Fcode\u003E to\\nthe the end of the \u003Cem\u003Etext\u003C\u002Fem\u003E string.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#html-to-list1.py\\nimport urllib.request, urllib.error, urllib.parse, obo\\n\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;\\n\\nresponse = urllib.request.urlopen(url)\\nhtml = str(response.read().decode(&#39;UTF-8&#39;))\\ntext = obo.stripTags(html).lower() #add the string method here.\\nwordlist = text.split()\\n\\nprint(wordlist)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou should now see the same list of words as before, but with all\\ncharacters changed to lower case.\u003C\u002Fp\u003E\\n\u003Cp\u003EBy calling methods one after another like this, we can keep our code\\nshort and make some pretty significant changes to our program.\u003C\u002Fp\u003E\\n\u003Cp\u003ELike we said before, Python makes it easy to do a lot with very little\\ncode!\u003C\u002Fp\u003E\\n\u003Cp\u003EAt this point, we might look through a number of other \u003Cem\u003EOld Bailey Online\u003C\u002Fem\u003E\\nentries and a wide range of other potential sources to make sure that\\nthere aren’t other special characters that are going to cause problems\\nlater. We might also try to anticipate situations where we don’t want to\\nget rid of punctuation (e.g., distinguishing monetary amounts like\\n“$1629” or “£1295” from dates, or recognizing that “1629-40” has a\\ndifferent meaning than “1629 40”.) This is what professional programmers\\nget paid to do: try to think of everything that might go wrong and deal\\nwith it in advance.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe’re going to take a different approach. Our main goal is to develop\\ntechniques that a working historian can use during the research process.\\nThis means that we will almost always prefer approximately correct\\nsolutions that can be developed quickly. So rather than taking the time\\nnow to make our program robust in the face of exceptions, we’re simply\\ngoing to get rid of anything that isn’t an accented or unaccented letter\\nor an Arabic numeral. Programming is typically a process of “stepwise\\nrefinement”. You start with a problem and part of a solution, and then\\nyou keep refining your solution until you have something that works\\nbetter.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"python-regular-expressions\\\"\u003EPython Regular Expressions\u003C\u002Fh2\u003E\\n\u003Cp\u003EWe’ve eliminated upper case letters. That just leaves all the\\npunctuation to get rid of. Punctuation will throw off our frequency\\ncounts if we leave them in. We want “evening?” to be counted as\\n“evening” and “1780.” as “1780”, of course.\u003C\u002Fp\u003E\\n\u003Cp\u003EIt is possible to use the replace string method to remove each type of\\npunctuation:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Etext = text.replace(&#39;[&#39;, &#39;&#39;)\\ntext = text.replace(&#39;]&#39;, &#39;&#39;)\\ntext = text.replace(&#39;,&#39;, &#39;&#39;)\\n#etc...\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EBut that’s not very efficient. In keeping with our goal of creating\\nshort, powerful programs, we’re going to use a mechanism called \u003Cem\u003Eregular\u003C\u002Fem\u003E\\n\u003Cem\u003Eexpressions\u003C\u002Fem\u003E. Regular expressions are provided by many programming\\nlanguages in a range of different forms.\u003C\u002Fp\u003E\\n\u003Cp\u003ERegular expressions allow you to search for well defined patterns and\\ncan drastically shorten the length of your code. For instance, if you\\nwanted to know if a substring matched a letter of the alphabet, rather\\nthan use an if\u002Felse statement to check if it matched the letter “a” then\\n“b” then “c”, and so on, you could use a regular expression to see if\\nthe substring matched a letter between “a” and “z”. Or, you could check\\nfor the presence of a digit, or a capital letter, or any alphanumeric\\ncharacter, or a carriage return, or any combination of the above, and\\nmore.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn Python, regular expressions are available as a Python module. To\\nspeed up processing it is not loaded automatically because not all\\nprograms require it. So, you will have to \u003Ccode\u003Eimport\u003C\u002Fcode\u003E the module (called\\n\u003Cem\u003Ere\u003C\u002Fem\u003E) in the same way that you imported your \u003Cem\u003Eobo.py\u003C\u002Fem\u003E module.\u003C\u002Fp\u003E\\n\u003Cp\u003ESince we’re interested in only alphanumeric characters, we’ll create a\\nregular expression that will isolate only these and remove the rest.\\nCopy the following function and paste it into the \u003Cem\u003Eobo.py\u003C\u002Fem\u003E module at\\nthe end. You can leave the other functions in the module alone, as we’ll\\ncontinue to use those.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Given a text string, remove all non-alphanumeric\\n# characters (using Unicode definition of alphanumeric).\\n\\ndef stripNonAlphaNum(text):\\n    import re\\n    return re.compile(r&#39;\\\\W+&#39;, re.UNICODE).split(text)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe regular expression in the above code is the material inside the\\nstring, in other words \u003Ccode\u003EW+\u003C\u002Fcode\u003E. The \u003Ccode\u003EW\u003C\u002Fcode\u003E is shorthand for the class of\\n\u003Cem\u003Enon-alphanumeric characters\u003C\u002Fem\u003E. In a Python regular expression, the plus\\nsign (+) matches one or more copies of a given character. The \u003Ccode\u003Ere.UNICODE\u003C\u002Fcode\u003E\\ntells the interpreter that we want to include characters from the\\nworld’s other languages in our definition of “alphanumeric”, as well as\\nthe A to Z, a to z and 0-9 of English. Regular expressions have to be\\n\u003Cem\u003Ecompiled\u003C\u002Fem\u003E before they can be used, which is what the rest of the\\nstatement does. Don’t worry about understanding the compilation part\\nright now.\u003C\u002Fp\u003E\\n\u003Cp\u003EWhen we refine our \u003Cem\u003Ehtml-to-list1.py\u003C\u002Fem\u003E program, it now looks like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#html-to-list1.py\\nimport urllib.request, urllib.error, urllib.parse, obo\\n\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;\\n\\nresponse = urllib.request.urlopen(url)\\nhtml = response.read().decode(&#39;UTF-8&#39;)\\ntext = obo.stripTags(html).lower()\\nwordlist = obo.stripNonAlphaNum(text)\\n\\nprint(wordlist)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWhen you execute the program and look through its output in the “Command\\nOutput” pane, you’ll see that it has done a pretty good job. This code\\nwill split hyphenated forms like “coach-wheels” into two words and turn\\nthe possessive “s” or “o’clock” into separate words by losing the\\napostrophe. But it is a good enough approximation to what we want that\\nwe should move on to counting frequencies before attempting to make it\\nbetter. (If you work with sources in more than one language, you need to\\nlearn more about the \u003Ca href=\\\"http:\u002F\u002Funicode.org\u002F\\\"\u003EUnicode\u003C\u002Fa\u003E standard and about \u003Ca href=\\\"https:\u002F\u002Fweb.archive.org\u002Fweb\u002F20180502053841\u002Fhttp:\u002F\u002Fwww.diveintopython.net\u002Fxml_processing\u002Funicode.html\\\"\u003EPython support\u003C\u002Fa\u003E\\nfor it.)\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"suggested-reading\\\"\u003ESuggested Reading\u003C\u002Fh2\u003E\\n\u003Cp\u003EFor extra practice with Regular Expressions, you may find Chapter 7 of\\nMark Pilgrim’s “\u003Ca href=\\\"https:\u002F\u002Fweb.archive.org\u002Fweb\u002F20180416143856\u002Fhttp:\u002F\u002Fwww.diveintopython.net\u002Fregular_expressions\u002Findex.html\\\"\u003EDive into Python\u003C\u002Fa\u003E” a useful tutorial.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"code-syncing\\\"\u003ECode Syncing\u003C\u002Fh3\u003E\\n\u003Cp\u003ETo follow along with future lessons it is important that you have the\\nright files and programs in your programming-historian directory. At the\\nend of each chapter in this series you can download the programming-historian zip file\\nto make sure you have the correct code.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Epython-lessons4.zip (\u003Ca href=\\\"\u002Fassets\u002Fpython-lessons4.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

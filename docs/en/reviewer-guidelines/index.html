@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/en/reviewer-guidelines"),
+					params: {lang:"en",lessons:"reviewer-guidelines"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Reviewer Guidelines</h1>
+<img src="/images/reviewer-sm.png" class="garnish rounded float-left" alt="{{ site.data.snippets.reviewer-image-alt[page.lang] }}" />
+<p>Reviewing for the <em>Programming Historian</em> is a great way to learn new technical skills and engage with the digital humanities community. We go out of our way to make sure our reviewers get credit and recognition for their work. Because reviewers directly contribute to significantly improving lessons, you can take pride in that your work helps thousands of readers.</p>
+<p>These guidelines are to help reviewers understand their role in the editorial process and to answer common questions about how to be most efficient and effective with your reviews.</p>
+<p>{% include toc.html %}</p>
+<h2>Review Philosophy</h2>
+<p>We consider the review process an integral component of a collaborative, productive, and sustainable effort for scholars to create useful technical resources for each other. Once a tutorial enters our editorial workflow, we work closely with the author and reviewers to maximize its potential and publish it within a reasonable amount of time.</p>
+<h3>Constructive Criticism</h3>
+<p>To review a tutorial is not simply to assess its merits and flaws (though it is important to do these as well), but to help improve the tutorial by virtue of an outside perspective. We ask that reviewers provide fair and constructive criticism (and of course praise) that will improve the tutorial for a wide range of readers.</p>
+<h3>Transparency</h3>
+<p>We highly value transparency in our lesson production and review process. Our review process happens on Github, where our lessons are hosted. Namely, we use Github's commenting and <a href="https://en.wikipedia.org/wiki/Issue_tracking_system">issue tracking</a> capabilities to keep track of suggestions and how they are handled and discussed by the authors and reviewers. This helps avoid important conversations becoming buried and lost in email threads.</p>
+<p>Therefore, your work as a reviewer--and your identity--will be fully visible to the author. Comments should engage with the author and lesson directly, rather than the review editor. If at any point you are unsure of your role or what to do next, feel free to post a question to clarify and an editor will respond as soon as they can.</p>
+<p>In keeping with the ideas of public scholarship and open peer review, we generally encourage discussions to stay on GitHub as outlined in our editorial workflow. However, we also want everyone to feel comfortable. In some cases a private word may be more appropriate. If you feel the need to discuss a matter related to a tutorial or a matter related to the review, please feel free to <a href="/project-team">email the assigned editor directly</a>, or to contact one of our dedicated ombudsperson (Dr Ian Milligan - i2milligan@uwaterloo.ca).</p>
+<p>Unless you instruct us otherwise, your name will be indicated as a reviewer on the lesson's page when it is officially published; you'll also be listed on our contributors page.</p>
+<h3>Openness and Inclusivity</h3>
+<p>The <em>Programming Historian</em> is dedicated to providing an open scholarly environment that offers community participants the freedom to thoroughly scrutinize ideas, to ask questions, make suggestions, or to requests for clarification. We insist on a harassment-free space for all contributors to the project, regardless of gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age or religion, or technical experience. We do not tolerate harassment or ad hominem attacks of community participants in any form. Participants violating these rules may be expelled from the community at the discretion of the editorial board. If anyone witnesses or feels they have been the victim of the above described activity, please contact our ombudsperson (Dr Ian Milligan - i2milligan@uwaterloo.ca). Thank you for helping us to create a safe space.</p>
+<h2>What To Comment On</h2>
+<p>The informal style of <em>Programming Historian</em> lessons can make the lessons appear deceptively simple to write. In fact, writing a good tutorial is every bit as demanding, if not more so, than any other kind of scholarly writing. Below are a few common questions to keep in mind as you review a lesson. Some will be more relevant than others, depending on the topic, intended audience, and the difficulty of the tutorial. Needless to say, this is neither a restrictive or comprehensive list; we do not ask that reviewers respond to each and every question, but hopefully they can provide some general guidance.</p>
+<h3>Audience</h3>
+<p>The <em>Programming Historian</em> speaks to a variety of audiences and reader skill levels. Some lessons are for complete beginners, others are for those considerably more comfortable with technical concepts and methods, and yet others are directed toward experienced digital historians looking to solve difficult technical challenges. We welcome such variety!</p>
+<p>While we like each of our lessons to take the unique voice of its author, we also want each individual lesson to remain clear and consistent in its tone. More specifically, we want the technical explanations (and difficulty) to remain as constant as possible throughout the lesson. As a reviewer, it is quite useful to note any sections of a tutorial directed at more technically advanced users that seem to over-explain relatively simple concepts; the converse is true, too: we want to avoid sections of tutorials aimed at beginners that don't adequately explain fundamental concepts central to the tutorial. Some questions to keep in mind:</p>
+<ul>
+<li>Does the author address a consistent model reader throughout the lesson?</li>
+<li>Are some concepts or steps over-explained while other are under-explained?</li>
+<li>Does the audience seem to match at least vaguely with other <em>Programming Historian</em> lessons? How is it new?</li>
+</ul>
+<h3>Getting Ready</h3>
+<ul>
+<li>What software / programming languages are required?</li>
+<li>What prerequisite skills are needed?</li>
+<li>What familiarity or experience is needed?</li>
+<li>What data are needed? Is the dataset readily available?</li>
+</ul>
+<h3>Skimmability</h3>
+<ul>
+<li>Are there clearly defined learning objectives or sets of skills to be learned listed near the top of the lesson?</li>
+<li>Are there useful secondary skills to be gained / practiced from the lesson?</li>
+<li>Do screenshots and other diagrams illustrate crucial steps / points of the lesson?</li>
+<li>Do sections and section headings provide clear signage to the reader?</li>
+</ul>
+<h3>Payoff</h3>
+<ul>
+<li>Does the tutorial suggest why the explained tools or techniques are useful in a general way?</li>
+<li>Does the tutorial suggest how a reader could apply the concepts (if not concrete steps) of the lesson to their own work?</li>
+</ul>
+<h3>Workflow</h3>
+<ul>
+<li>Should a long lesson be divided into smaller lessons?</li>
+<li>Are there logical stopping points throughout the lesson?</li>
+<li>If datasets are required, are they available to download at various points throughout the lesson (or different versions of them as the tutorial may require)?</li>
+</ul>
+<h3>Sustainability</h3>
+<p>To increase the lifespan of our lessons, <em>Programming Historian</em> reviewers should keep in mind the following questions about sustainability. Every submission is different and some of these areas may not be applicable to all submissions. Keeping in mind the difficulty level of each lesson and its intended audience, reviewers should use these questions as guidelines to ensure that lessons are as sustainable as possible from the date of publication.</p>
+<ul>
+<li>Are all software versions and dependencies listed in the submission? Are these assets the most recent versions? If the lesson uses older software versions, does the author note why?</li>
+<li>If you have expertise in the specific methodology or tool(s) for the lesson, is the methodology generally up-to-date?</li>
+<li>What are the data sources for the submission? Are they included in a way that does not heavily on third-party hosting?</li>
+<li>What kinds of other external links does the submission use? Are these current or are there other, more recent or appropriate, resources that could be linked to?</li>
+</ul>
+<h3>Integrating with the <em>Programming Historian</em></h3>
+<ul>
+<li>Does the lesson build upon an existing lesson and explain how?</li>
+<li>Does the lesson tie into existing lessons and have appropriate links?</li>
+</ul>
+<h2>Submitting your review</h2>
+<p>We manage all of our peer review comments through GitHub. When a new lesson is ready for review, editor will provide you with a link where you can read the lesson, and a link to a discussion board where you can submit your constructive feedback. This discussion is held on Github, a free social coding environment. You will need to sign up for a free GitHub account to post your review. We encourage discussion to stay on Github but you are free to email the editor privately or to contact one of our ombudsperson (Dr Ian Milligan - i2milligan@uwaterloo.ca) if you would like a private word.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

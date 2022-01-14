@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/counting-frequencies"),
 					params: {lang:"en",lessons:"lessons",slug:"counting-frequencies"}
@@ -48,35 +49,37 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Counting Word Frequencies with Python</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="lesson-goals">Lesson Goals</h2>
+<h2>Lesson Goals</h2>
 <p>Your list is now clean enough that you can begin analyzing its contents
 in meaningful ways. Counting the frequency of specific words in the list
 can provide illustrative data. Python has an easy way to count
 frequencies, but it requires the use of a new type of variable: the
 <em>dictionary</em>. Before you begin working with a dictionary, consider the
 processes used to calculate frequencies in a list.</p>
-<h3 id="files-needed-for-this-lesson">Files Needed For This Lesson</h3>
+<h3>Files Needed For This Lesson</h3>
 <ul>
 <li><code>obo.py</code></li>
 </ul>
 <p>If you do not have these files, you can
 download a (<a href="/assets/python-lessons4.zip">zip</a>) file containing all of the code from the previous lessons in this series.</p>
-<h2 id="frequencies">Frequencies</h2>
+<h2>Frequencies</h2>
 <p>Now we want to count the frequency of each word in our list. You’ve
 already seen that it is easy to process a list by using a <code>for</code> loop. Try
 saving and executing the following example. Recall that <code>+=</code> tells the
 program to append something to the end of an existing variable.</p>
 <pre><code class="language-python"># count-list-items-1.py
 
-wordstring = &#39;it was the best of times it was the worst of times &#39;
-wordstring += &#39;it was the age of wisdom it was the age of foolishness&#39;
+wordstring = 'it was the best of times it was the worst of times '
+wordstring += 'it was the age of wisdom it was the age of foolishness'
 
 wordlist = wordstring.split()
 
@@ -92,7 +95,7 @@ print(&quot;Pairs\n&quot; + str(list(zip(wordlist, wordfreq))))
 <p>Here, we start with a string and split it into a list, as we’ve done
 before. We then create an (initially empty) list called <em>wordfreq</em>, go
 through each word in the <em>wordlist</em>, and count the number of times that
-word appears in the whole list. We then add each word&#39;s count to our
+word appears in the whole list. We then add each word's count to our
 <em>wordfreq</em> list. Using the <code>zip</code> operation, we are able to match the first
 word of the word list with the first number in the frequency list, the
 second word and second frequency, and so on. We end up with a list of
@@ -103,22 +106,22 @@ string so that it can be printed.</p>
 it was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness
 
 List
-[&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;,
-&#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;,
-&#39;of&#39;, &#39;wisdom&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;,
-&#39;foolishness&#39;]
+['it', 'was', 'the', 'best', 'of', 'times', 'it', 'was',
+'the', 'worst', 'of', 'times', 'it', 'was', 'the', 'age',
+'of', 'wisdom', 'it', 'was', 'the', 'age', 'of',
+'foolishness']
 
 Frequencies
 [4, 4, 4, 1, 4, 2, 4, 4, 4, 1, 4, 2, 4, 4, 4, 2, 4, 1, 4,
 4, 4, 2, 4, 1]
 
 Pairs
-[(&#39;it&#39;, 4), (&#39;was&#39;, 4), (&#39;the&#39;, 4), (&#39;best&#39;, 1), (&#39;of&#39;, 4),
-(&#39;times&#39;, 2), (&#39;it&#39;, 4), (&#39;was&#39;, 4), (&#39;the&#39;, 4),
-(&#39;worst&#39;, 1), (&#39;of&#39;, 4), (&#39;times&#39;, 2), (&#39;it&#39;, 4),
-(&#39;was&#39;, 4), (&#39;the&#39;, 4), (&#39;age&#39;, 2), (&#39;of&#39;, 4),
-(&#39;wisdom&#39;, 1), (&#39;it&#39;, 4), (&#39;was&#39;, 4), (&#39;the&#39;, 4),
-(&#39;age&#39;, 2), (&#39;of&#39;, 4), (&#39;foolishness&#39;, 1)]
+[('it', 4), ('was', 4), ('the', 4), ('best', 1), ('of', 4),
+('times', 2), ('it', 4), ('was', 4), ('the', 4),
+('worst', 1), ('of', 4), ('times', 2), ('it', 4),
+('was', 4), ('the', 4), ('age', 2), ('of', 4),
+('wisdom', 1), ('it', 4), ('was', 4), ('the', 4),
+('age', 2), ('of', 4), ('foolishness', 1)]
 </code></pre>
 <p>It will pay to study the above code until you understand it before
 moving on.</p>
@@ -127,8 +130,8 @@ comprehension</a>, which can be used to do the same thing as the <code>for</code
 more economically.</p>
 <pre><code class="language-python"># count-list-items-1.py
 
-wordstring = &#39;it was the best of times it was the worst of times &#39;
-wordstring += &#39;it was the age of wisdom it was the age of foolishness&#39;
+wordstring = 'it was the best of times it was the worst of times '
+wordstring += 'it was the age of wisdom it was the age of foolishness'
 wordlist = wordstring.split()
 
 wordfreq = [wordlist.count(w) for w in wordlist] # a list comprehension
@@ -144,28 +147,28 @@ but in a condensed manner. Either method will work fine, so use the
 version that you are most comfortable with.</p>
 <p>Generally it is wise to use code you understand rather than code that runs quickest.</p>
 <p>At this point we have a list of pairs, where each pair contains a word
-and its frequency. This list is a bit redundant. If &#39;the&#39; occurs 500
-times, then this list contains five hundred copies of the pair (&#39;the&#39;,
+and its frequency. This list is a bit redundant. If 'the' occurs 500
+times, then this list contains five hundred copies of the pair ('the',
 500). The list is also ordered by the words in the original text, rather
 than listing the words in order from most to least frequent. We can
 solve both problems by converting it into a dictionary, then printing
 out the dictionary in order from the most to the least commonly
 occurring item.</p>
-<h2 id="python-dictionaries">Python Dictionaries</h2>
+<h2>Python Dictionaries</h2>
 <p>Both strings and lists are sequentially ordered, which means that you
 can access their contents by using an index, a number that starts at 0.
 If you have a list containing strings, you can use a pair of indexes to
 access first a particular string in the list, and then a particular
 character within that string. Study the examples below.</p>
 <pre><code class="language-python">
-s = &#39;hello world&#39;
+s = 'hello world'
 print(s[0])
 -&gt; h
 
 print(s[1])
 -&gt; e
 
-m = [&#39;hello&#39;, &#39;world&#39;]
+m = ['hello', 'world']
 print(m[0])
 -&gt; hello
 
@@ -180,32 +183,32 @@ print(m[1][0])
 </code></pre>
 <p>To keep track of frequencies, we’re going to use another type of Python
 object, a dictionary. The dictionary is an <em>unordered</em> collection of
-objects. That means that you can&#39;t use an index to retrieve elements
+objects. That means that you can't use an index to retrieve elements
 from it. You can, however, look them up by using a key (hence the name
 &quot;dictionary&quot;). Study the following example.</p>
 <pre><code class="language-python">
-d = {&#39;world&#39;: 1, &#39;hello&#39;: 0}
-print(d[&#39;hello&#39;])
+d = {'world': 1, 'hello': 0}
+print(d['hello'])
 -&gt; 0
 
-print(d[&#39;world&#39;])
+print(d['world'])
 -&gt; 1
 
 print(d.keys())
--&gt; [&#39;world&#39;, &#39;hello&#39;]
+-&gt; ['world', 'hello']
 </code></pre>
 <p>Dictionaries might be a bit confusing to a new programmer. Try to think
 of it like a language dictionary. If you don’t know (or remember)
 exactly how &quot;bijection&quot; differs from &quot;surjection&quot; you can look the two
 terms up in the <em>Oxford English Dictionary</em>. The same principle applies
-when you <code>print(d[&#39;hello&#39;]);</code> except, rather than print a literary
-definition it prints the value associated with the keyword &#39;hello&#39;, as
+when you <code>print(d['hello']);</code> except, rather than print a literary
+definition it prints the value associated with the keyword 'hello', as
 defined by you when you created the dictionary named <em>d</em>. In this case,
 that value is &quot;0&quot;.</p>
 <p>Note that you use curly braces to define a dictionary, but square
 brackets to access things within it. The <code>keys</code> operation returns a list
 of keys that are defined in the dictionary.</p>
-<h2 id="word-frequency-pairs">Word-Frequency Pairs</h2>
+<h2>Word-Frequency Pairs</h2>
 <p>Building on what we have so far, we want a function that can convert a
 list of words into a dictionary of word-frequency pairs. The only new
 command that we will need is <code>dict</code>, which makes a dictionary from a list
@@ -238,10 +241,10 @@ continuing.</p>
 
 import urllib.request, urllib.error, urllib.parse, obo
 
-url = &#39;http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;
+url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33'
 
 response = urllib.request.urlopen(url)
-html = response.read().decode(&#39;UTF-8&#39;)
+html = response.read().decode('UTF-8')
 text = obo.stripTags(html).lower()
 wordlist = obo.stripNonAlphaNum(text)
 dictionary = obo.wordListToFreqDict(wordlist)
@@ -249,84 +252,84 @@ sorteddict = obo.sortFreqDict(dictionary)
 
 for s in sorteddict: print(str(s))
 </code></pre>
-<h2 id="removing-stop-words">Removing Stop Words</h2>
+<h2>Removing Stop Words</h2>
 <p>When we look at the output of our <code>html-to-freq.py</code> program, we see that
 a lot of the most frequent words in the text are function words like
 &quot;the&quot;, &quot;of&quot;, &quot;to&quot; and &quot;and&quot;.</p>
-<pre><code class="language-python">(192, &#39;the&#39;)
-(105, &#39;i&#39;)
-(74, &#39;to&#39;)
-(71, &#39;was&#39;)
-(67, &#39;of&#39;)
-(62, &#39;in&#39;)
-(53, &#39;a&#39;)
-(52, &#39;and&#39;)
-(50, &#39;you&#39;)
-(50, &#39;he&#39;)
-(40, &#39;that&#39;)
-(39, &#39;his&#39;)
-(36, &#39;it&#39;)
+<pre><code class="language-python">(192, 'the')
+(105, 'i')
+(74, 'to')
+(71, 'was')
+(67, 'of')
+(62, 'in')
+(53, 'a')
+(52, 'and')
+(50, 'you')
+(50, 'he')
+(40, 'that')
+(39, 'his')
+(36, 'it')
 </code></pre>
 <p>These words are usually the most common in any English language text, so
-they don&#39;t tell us much that is distinctive about Bowsey&#39;s trial. In
+they don't tell us much that is distinctive about Bowsey's trial. In
 general, we are more interested in finding the words that will help us
 differentiate this text from texts that are about different subjects. So
-we&#39;re going to filter out the common function words. Words that are
+we're going to filter out the common function words. Words that are
 ignored like this are known as stop words. We’re going to use the
 following list, adapted from one posted online by <a href="http://ir.dcs.gla.ac.uk/resources/linguistic_utils/stop_words">computer scientists
 at Glasgow</a>. Copy it and put it at the beginning of the <code>obo.py</code>
 library that you are building.</p>
-<pre><code class="language-python">stopwords = [&#39;a&#39;, &#39;about&#39;, &#39;above&#39;, &#39;across&#39;, &#39;after&#39;, &#39;afterwards&#39;]
-stopwords += [&#39;again&#39;, &#39;against&#39;, &#39;all&#39;, &#39;almost&#39;, &#39;alone&#39;, &#39;along&#39;]
-stopwords += [&#39;already&#39;, &#39;also&#39;, &#39;although&#39;, &#39;always&#39;, &#39;am&#39;, &#39;among&#39;]
-stopwords += [&#39;amongst&#39;, &#39;amoungst&#39;, &#39;amount&#39;, &#39;an&#39;, &#39;and&#39;, &#39;another&#39;]
-stopwords += [&#39;any&#39;, &#39;anyhow&#39;, &#39;anyone&#39;, &#39;anything&#39;, &#39;anyway&#39;, &#39;anywhere&#39;]
-stopwords += [&#39;are&#39;, &#39;around&#39;, &#39;as&#39;, &#39;at&#39;, &#39;back&#39;, &#39;be&#39;, &#39;became&#39;]
-stopwords += [&#39;because&#39;, &#39;become&#39;, &#39;becomes&#39;, &#39;becoming&#39;, &#39;been&#39;]
-stopwords += [&#39;before&#39;, &#39;beforehand&#39;, &#39;behind&#39;, &#39;being&#39;, &#39;below&#39;]
-stopwords += [&#39;beside&#39;, &#39;besides&#39;, &#39;between&#39;, &#39;beyond&#39;, &#39;bill&#39;, &#39;both&#39;]
-stopwords += [&#39;bottom&#39;, &#39;but&#39;, &#39;by&#39;, &#39;call&#39;, &#39;can&#39;, &#39;cannot&#39;, &#39;cant&#39;]
-stopwords += [&#39;co&#39;, &#39;computer&#39;, &#39;con&#39;, &#39;could&#39;, &#39;couldnt&#39;, &#39;cry&#39;, &#39;de&#39;]
-stopwords += [&#39;describe&#39;, &#39;detail&#39;, &#39;did&#39;, &#39;do&#39;, &#39;done&#39;, &#39;down&#39;, &#39;due&#39;]
-stopwords += [&#39;during&#39;, &#39;each&#39;, &#39;eg&#39;, &#39;eight&#39;, &#39;either&#39;, &#39;eleven&#39;, &#39;else&#39;]
-stopwords += [&#39;elsewhere&#39;, &#39;empty&#39;, &#39;enough&#39;, &#39;etc&#39;, &#39;even&#39;, &#39;ever&#39;]
-stopwords += [&#39;every&#39;, &#39;everyone&#39;, &#39;everything&#39;, &#39;everywhere&#39;, &#39;except&#39;]
-stopwords += [&#39;few&#39;, &#39;fifteen&#39;, &#39;fifty&#39;, &#39;fill&#39;, &#39;find&#39;, &#39;fire&#39;, &#39;first&#39;]
-stopwords += [&#39;five&#39;, &#39;for&#39;, &#39;former&#39;, &#39;formerly&#39;, &#39;forty&#39;, &#39;found&#39;]
-stopwords += [&#39;four&#39;, &#39;from&#39;, &#39;front&#39;, &#39;full&#39;, &#39;further&#39;, &#39;get&#39;, &#39;give&#39;]
-stopwords += [&#39;go&#39;, &#39;had&#39;, &#39;has&#39;, &#39;hasnt&#39;, &#39;have&#39;, &#39;he&#39;, &#39;hence&#39;, &#39;her&#39;]
-stopwords += [&#39;here&#39;, &#39;hereafter&#39;, &#39;hereby&#39;, &#39;herein&#39;, &#39;hereupon&#39;, &#39;hers&#39;]
-stopwords += [&#39;herself&#39;, &#39;him&#39;, &#39;himself&#39;, &#39;his&#39;, &#39;how&#39;, &#39;however&#39;]
-stopwords += [&#39;hundred&#39;, &#39;i&#39;, &#39;ie&#39;, &#39;if&#39;, &#39;in&#39;, &#39;inc&#39;, &#39;indeed&#39;]
-stopwords += [&#39;interest&#39;, &#39;into&#39;, &#39;is&#39;, &#39;it&#39;, &#39;its&#39;, &#39;itself&#39;, &#39;keep&#39;]
-stopwords += [&#39;last&#39;, &#39;latter&#39;, &#39;latterly&#39;, &#39;least&#39;, &#39;less&#39;, &#39;ltd&#39;, &#39;made&#39;]
-stopwords += [&#39;many&#39;, &#39;may&#39;, &#39;me&#39;, &#39;meanwhile&#39;, &#39;might&#39;, &#39;mill&#39;, &#39;mine&#39;]
-stopwords += [&#39;more&#39;, &#39;moreover&#39;, &#39;most&#39;, &#39;mostly&#39;, &#39;move&#39;, &#39;much&#39;]
-stopwords += [&#39;must&#39;, &#39;my&#39;, &#39;myself&#39;, &#39;name&#39;, &#39;namely&#39;, &#39;neither&#39;, &#39;never&#39;]
-stopwords += [&#39;nevertheless&#39;, &#39;next&#39;, &#39;nine&#39;, &#39;no&#39;, &#39;nobody&#39;, &#39;none&#39;]
-stopwords += [&#39;noone&#39;, &#39;nor&#39;, &#39;not&#39;, &#39;nothing&#39;, &#39;now&#39;, &#39;nowhere&#39;, &#39;of&#39;]
-stopwords += [&#39;off&#39;, &#39;often&#39;, &#39;on&#39;,&#39;once&#39;, &#39;one&#39;, &#39;only&#39;, &#39;onto&#39;, &#39;or&#39;]
-stopwords += [&#39;other&#39;, &#39;others&#39;, &#39;otherwise&#39;, &#39;our&#39;, &#39;ours&#39;, &#39;ourselves&#39;]
-stopwords += [&#39;out&#39;, &#39;over&#39;, &#39;own&#39;, &#39;part&#39;, &#39;per&#39;, &#39;perhaps&#39;, &#39;please&#39;]
-stopwords += [&#39;put&#39;, &#39;rather&#39;, &#39;re&#39;, &#39;s&#39;, &#39;same&#39;, &#39;see&#39;, &#39;seem&#39;, &#39;seemed&#39;]
-stopwords += [&#39;seeming&#39;, &#39;seems&#39;, &#39;serious&#39;, &#39;several&#39;, &#39;she&#39;, &#39;should&#39;]
-stopwords += [&#39;show&#39;, &#39;side&#39;, &#39;since&#39;, &#39;sincere&#39;, &#39;six&#39;, &#39;sixty&#39;, &#39;so&#39;]
-stopwords += [&#39;some&#39;, &#39;somehow&#39;, &#39;someone&#39;, &#39;something&#39;, &#39;sometime&#39;]
-stopwords += [&#39;sometimes&#39;, &#39;somewhere&#39;, &#39;still&#39;, &#39;such&#39;, &#39;system&#39;, &#39;take&#39;]
-stopwords += [&#39;ten&#39;, &#39;than&#39;, &#39;that&#39;, &#39;the&#39;, &#39;their&#39;, &#39;them&#39;, &#39;themselves&#39;]
-stopwords += [&#39;then&#39;, &#39;thence&#39;, &#39;there&#39;, &#39;thereafter&#39;, &#39;thereby&#39;]
-stopwords += [&#39;therefore&#39;, &#39;therein&#39;, &#39;thereupon&#39;, &#39;these&#39;, &#39;they&#39;]
-stopwords += [&#39;thick&#39;, &#39;thin&#39;, &#39;third&#39;, &#39;this&#39;, &#39;those&#39;, &#39;though&#39;, &#39;three&#39;]
-stopwords += [&#39;three&#39;, &#39;through&#39;, &#39;throughout&#39;, &#39;thru&#39;, &#39;thus&#39;, &#39;to&#39;]
-stopwords += [&#39;together&#39;, &#39;too&#39;, &#39;top&#39;, &#39;toward&#39;, &#39;towards&#39;, &#39;twelve&#39;]
-stopwords += [&#39;twenty&#39;, &#39;two&#39;, &#39;un&#39;, &#39;under&#39;, &#39;until&#39;, &#39;up&#39;, &#39;upon&#39;]
-stopwords += [&#39;us&#39;, &#39;very&#39;, &#39;via&#39;, &#39;was&#39;, &#39;we&#39;, &#39;well&#39;, &#39;were&#39;, &#39;what&#39;]
-stopwords += [&#39;whatever&#39;, &#39;when&#39;, &#39;whence&#39;, &#39;whenever&#39;, &#39;where&#39;]
-stopwords += [&#39;whereafter&#39;, &#39;whereas&#39;, &#39;whereby&#39;, &#39;wherein&#39;, &#39;whereupon&#39;]
-stopwords += [&#39;wherever&#39;, &#39;whether&#39;, &#39;which&#39;, &#39;while&#39;, &#39;whither&#39;, &#39;who&#39;]
-stopwords += [&#39;whoever&#39;, &#39;whole&#39;, &#39;whom&#39;, &#39;whose&#39;, &#39;why&#39;, &#39;will&#39;, &#39;with&#39;]
-stopwords += [&#39;within&#39;, &#39;without&#39;, &#39;would&#39;, &#39;yet&#39;, &#39;you&#39;, &#39;your&#39;]
-stopwords += [&#39;yours&#39;, &#39;yourself&#39;, &#39;yourselves&#39;]
+<pre><code class="language-python">stopwords = ['a', 'about', 'above', 'across', 'after', 'afterwards']
+stopwords += ['again', 'against', 'all', 'almost', 'alone', 'along']
+stopwords += ['already', 'also', 'although', 'always', 'am', 'among']
+stopwords += ['amongst', 'amoungst', 'amount', 'an', 'and', 'another']
+stopwords += ['any', 'anyhow', 'anyone', 'anything', 'anyway', 'anywhere']
+stopwords += ['are', 'around', 'as', 'at', 'back', 'be', 'became']
+stopwords += ['because', 'become', 'becomes', 'becoming', 'been']
+stopwords += ['before', 'beforehand', 'behind', 'being', 'below']
+stopwords += ['beside', 'besides', 'between', 'beyond', 'bill', 'both']
+stopwords += ['bottom', 'but', 'by', 'call', 'can', 'cannot', 'cant']
+stopwords += ['co', 'computer', 'con', 'could', 'couldnt', 'cry', 'de']
+stopwords += ['describe', 'detail', 'did', 'do', 'done', 'down', 'due']
+stopwords += ['during', 'each', 'eg', 'eight', 'either', 'eleven', 'else']
+stopwords += ['elsewhere', 'empty', 'enough', 'etc', 'even', 'ever']
+stopwords += ['every', 'everyone', 'everything', 'everywhere', 'except']
+stopwords += ['few', 'fifteen', 'fifty', 'fill', 'find', 'fire', 'first']
+stopwords += ['five', 'for', 'former', 'formerly', 'forty', 'found']
+stopwords += ['four', 'from', 'front', 'full', 'further', 'get', 'give']
+stopwords += ['go', 'had', 'has', 'hasnt', 'have', 'he', 'hence', 'her']
+stopwords += ['here', 'hereafter', 'hereby', 'herein', 'hereupon', 'hers']
+stopwords += ['herself', 'him', 'himself', 'his', 'how', 'however']
+stopwords += ['hundred', 'i', 'ie', 'if', 'in', 'inc', 'indeed']
+stopwords += ['interest', 'into', 'is', 'it', 'its', 'itself', 'keep']
+stopwords += ['last', 'latter', 'latterly', 'least', 'less', 'ltd', 'made']
+stopwords += ['many', 'may', 'me', 'meanwhile', 'might', 'mill', 'mine']
+stopwords += ['more', 'moreover', 'most', 'mostly', 'move', 'much']
+stopwords += ['must', 'my', 'myself', 'name', 'namely', 'neither', 'never']
+stopwords += ['nevertheless', 'next', 'nine', 'no', 'nobody', 'none']
+stopwords += ['noone', 'nor', 'not', 'nothing', 'now', 'nowhere', 'of']
+stopwords += ['off', 'often', 'on','once', 'one', 'only', 'onto', 'or']
+stopwords += ['other', 'others', 'otherwise', 'our', 'ours', 'ourselves']
+stopwords += ['out', 'over', 'own', 'part', 'per', 'perhaps', 'please']
+stopwords += ['put', 'rather', 're', 's', 'same', 'see', 'seem', 'seemed']
+stopwords += ['seeming', 'seems', 'serious', 'several', 'she', 'should']
+stopwords += ['show', 'side', 'since', 'sincere', 'six', 'sixty', 'so']
+stopwords += ['some', 'somehow', 'someone', 'something', 'sometime']
+stopwords += ['sometimes', 'somewhere', 'still', 'such', 'system', 'take']
+stopwords += ['ten', 'than', 'that', 'the', 'their', 'them', 'themselves']
+stopwords += ['then', 'thence', 'there', 'thereafter', 'thereby']
+stopwords += ['therefore', 'therein', 'thereupon', 'these', 'they']
+stopwords += ['thick', 'thin', 'third', 'this', 'those', 'though', 'three']
+stopwords += ['three', 'through', 'throughout', 'thru', 'thus', 'to']
+stopwords += ['together', 'too', 'top', 'toward', 'towards', 'twelve']
+stopwords += ['twenty', 'two', 'un', 'under', 'until', 'up', 'upon']
+stopwords += ['us', 'very', 'via', 'was', 'we', 'well', 'were', 'what']
+stopwords += ['whatever', 'when', 'whence', 'whenever', 'where']
+stopwords += ['whereafter', 'whereas', 'whereby', 'wherein', 'whereupon']
+stopwords += ['wherever', 'whether', 'which', 'while', 'whither', 'who']
+stopwords += ['whoever', 'whole', 'whom', 'whose', 'why', 'will', 'with']
+stopwords += ['within', 'without', 'would', 'yet', 'you', 'your']
+stopwords += ['yours', 'yourself', 'yourselves']
 </code></pre>
 <p>Now getting rid of the stop words in a list is as easy as using another
 list comprehension. Add this function to the <code>obo.py</code> module, too.</p>
@@ -336,7 +339,7 @@ list comprehension. Add this function to the <code>obo.py</code> module, too.</p
 def removeStopwords(wordlist, stopwords):
     return [w for w in wordlist if w not in stopwords]
 </code></pre>
-<h2 id="putting-it-all-together">Putting it All Together</h2>
+<h2>Putting it All Together</h2>
 <p>Now we have everything we need to determine word frequencies for web
 pages. Copy the following to Komodo Edit, save it as <code>html-to-freq-2.py</code>
 and execute it.</p>
@@ -345,10 +348,10 @@ and execute it.</p>
 import urllib.request, urllib.error, urllib.parse
 import obo
 
-url = &#39;http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;
+url = 'http://www.oldbaileyonline.org/browse.jsp?id=t17800628-33&amp;div=t17800628-33'
 
 response = urllib.request.urlopen(url)
-html = response.read().decode(&#39;UTF-8&#39;)
+html = response.read().decode('UTF-8')
 text = obo.stripTags(html).lower()
 fullwordlist = obo.stripNonAlphaNum(text)
 wordlist = obo.removeStopwords(fullwordlist, obo.stopwords)
@@ -358,29 +361,29 @@ sorteddict = obo.sortFreqDict(dictionary)
 for s in sorteddict: print(str(s))
 </code></pre>
 <p>If all went well, your output should look like this:</p>
-<pre><code class="language-python">(25, &#39;house&#39;)
-(20, &#39;yes&#39;)
-(20, &#39;prisoner&#39;)
-(19, &#39;mr&#39;)
-(17, &#39;man&#39;)
-(15, &#39;akerman&#39;)
-(14, &#39;mob&#39;)
-(13, &#39;black&#39;)
-(12, &#39;night&#39;)
-(11, &#39;saw&#39;)
-(9, &#39;went&#39;)
-(9, &#39;sworn&#39;)
-(9, &#39;room&#39;)
-(9, &#39;pair&#39;)
-(9, &#39;know&#39;)
-(9, &#39;face&#39;)
-(8, &#39;time&#39;)
-(8, &#39;thing&#39;)
-(8, &#39;june&#39;)
-(8, &#39;believe&#39;)
+<pre><code class="language-python">(25, 'house')
+(20, 'yes')
+(20, 'prisoner')
+(19, 'mr')
+(17, 'man')
+(15, 'akerman')
+(14, 'mob')
+(13, 'black')
+(12, 'night')
+(11, 'saw')
+(9, 'went')
+(9, 'sworn')
+(9, 'room')
+(9, 'pair')
+(9, 'know')
+(9, 'face')
+(8, 'time')
+(8, 'thing')
+(8, 'june')
+(8, 'believe')
 ...
 </code></pre>
-<h2 id="suggested-readings">Suggested Readings</h2>
+<h2>Suggested Readings</h2>
 <p>Lutz, Learning Python</p>
 <ul>
 <li>Ch. 9: Tuples, Files, and Everything Else</li>
@@ -392,7 +395,7 @@ for s in sorteddict: print(str(s))
 <ul>
 <li>Ch. 7: <a href="https://web.archive.org/web/20180416143856/http://www.diveintopython.net/regular_expressions/index.html">Regular Expressions</a></li>
 </ul>
-<h3 id="code-syncing">Code Syncing</h3>
+<h3>Code Syncing</h3>
 <p>To follow along with future lessons it is important that you have the
 right files and programs in your &quot;programming-historian&quot; directory. At
 the end of each lesson in this series you can download the &quot;programming-historian&quot; zip
@@ -402,6 +405,6 @@ file to make sure you have the correct code.</p>
 </ul>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="counting-frequencies/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Counting Word Frequencies with Python\",\"layout\":\"lesson\",\"date\":\"2012-07-17T00:00:00.000Z\",\"authors\":[\"William J. Turkel\",\"Adam Crymble\"],\"reviewers\":[\"Jim Clifford\",\"Frederik Elwert\"],\"editors\":[\"Miriam Posner\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"analyzing\",\"topics\":[\"python\"],\"abstract\":\"Counting the frequency of specific words in a list can provide illustrative data. This lesson will teach you Python's easy way to count such frequencies.\",\"next\":\"creating-and-viewing-html-files-with-python\",\"previous\":\"normalizing-data\",\"series_total\":\"15 lessons\",\"sequence\":10,\"python_warning\":false,\"redirect_from\":\"\u002Flessons\u002Fcounting-frequencies\",\"avatar_alt\":\"Disgruntled man sitting on a log surrounded by birds\",\"doi\":\"10.46430\u002Fphen0003\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EYour list is now clean enough that you can begin analyzing its contents\\nin meaningful ways. Counting the frequency of specific words in the list\\ncan provide illustrative data. Python has an easy way to count\\nfrequencies, but it requires the use of a new type of variable: the\\n\u003Cem\u003Edictionary\u003C\u002Fem\u003E. Before you begin working with a dictionary, consider the\\nprocesses used to calculate frequencies in a list.\u003C\u002Fp\u003E\\n\u003Ch3 id=\\\"files-needed-for-this-lesson\\\"\u003EFiles Needed For This Lesson\u003C\u002Fh3\u003E\\n\u003Cul\u003E\\n\u003Cli\u003E\u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EIf you do not have these files, you can\\ndownload a (\u003Ca href=\\\"\u002Fassets\u002Fpython-lessons4.zip\\\"\u003Ezip\u003C\u002Fa\u003E) file containing all of the code from the previous lessons in this series.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"frequencies\\\"\u003EFrequencies\u003C\u002Fh2\u003E\\n\u003Cp\u003ENow we want to count the frequency of each word in our list. You’ve\\nalready seen that it is easy to process a list by using a \u003Ccode\u003Efor\u003C\u002Fcode\u003E loop. Try\\nsaving and executing the following example. Recall that \u003Ccode\u003E+=\u003C\u002Fcode\u003E tells the\\nprogram to append something to the end of an existing variable.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# count-list-items-1.py\\n\\nwordstring = &#39;it was the best of times it was the worst of times &#39;\\nwordstring += &#39;it was the age of wisdom it was the age of foolishness&#39;\\n\\nwordlist = wordstring.split()\\n\\nwordfreq = []\\nfor w in wordlist:\\n    wordfreq.append(wordlist.count(w))\\n\\nprint(&quot;String\\\\n&quot; + wordstring +&quot;\\\\n&quot;)\\nprint(&quot;List\\\\n&quot; + str(wordlist) + &quot;\\\\n&quot;)\\nprint(&quot;Frequencies\\\\n&quot; + str(wordfreq) + &quot;\\\\n&quot;)\\nprint(&quot;Pairs\\\\n&quot; + str(list(zip(wordlist, wordfreq))))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EHere, we start with a string and split it into a list, as we’ve done\\nbefore. We then create an (initially empty) list called \u003Cem\u003Ewordfreq\u003C\u002Fem\u003E, go\\nthrough each word in the \u003Cem\u003Ewordlist\u003C\u002Fem\u003E, and count the number of times that\\nword appears in the whole list. We then add each word&#39;s count to our\\n\u003Cem\u003Ewordfreq\u003C\u002Fem\u003E list. Using the \u003Ccode\u003Ezip\u003C\u002Fcode\u003E operation, we are able to match the first\\nword of the word list with the first number in the frequency list, the\\nsecond word and second frequency, and so on. We end up with a list of\\nword and frequency pairs. The \u003Ccode\u003Estr\u003C\u002Fcode\u003E function converts any object to a\\nstring so that it can be printed.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou should get something like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EString\\nit was the best of times it was the worst of times it was the age of wisdom it was the age of foolishness\\n\\nList\\n[&#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;best&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;,\\n&#39;the&#39;, &#39;worst&#39;, &#39;of&#39;, &#39;times&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;,\\n&#39;of&#39;, &#39;wisdom&#39;, &#39;it&#39;, &#39;was&#39;, &#39;the&#39;, &#39;age&#39;, &#39;of&#39;,\\n&#39;foolishness&#39;]\\n\\nFrequencies\\n[4, 4, 4, 1, 4, 2, 4, 4, 4, 1, 4, 2, 4, 4, 4, 2, 4, 1, 4,\\n4, 4, 2, 4, 1]\\n\\nPairs\\n[(&#39;it&#39;, 4), (&#39;was&#39;, 4), (&#39;the&#39;, 4), (&#39;best&#39;, 1), (&#39;of&#39;, 4),\\n(&#39;times&#39;, 2), (&#39;it&#39;, 4), (&#39;was&#39;, 4), (&#39;the&#39;, 4),\\n(&#39;worst&#39;, 1), (&#39;of&#39;, 4), (&#39;times&#39;, 2), (&#39;it&#39;, 4),\\n(&#39;was&#39;, 4), (&#39;the&#39;, 4), (&#39;age&#39;, 2), (&#39;of&#39;, 4),\\n(&#39;wisdom&#39;, 1), (&#39;it&#39;, 4), (&#39;was&#39;, 4), (&#39;the&#39;, 4),\\n(&#39;age&#39;, 2), (&#39;of&#39;, 4), (&#39;foolishness&#39;, 1)]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIt will pay to study the above code until you understand it before\\nmoving on.\u003C\u002Fp\u003E\\n\u003Cp\u003EPython also includes a very convenient tool called a \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002Ftutorial\u002Fdatastructures.html#list-comprehensions\\\"\u003Elist\\ncomprehension\u003C\u002Fa\u003E, which can be used to do the same thing as the \u003Ccode\u003Efor\u003C\u002Fcode\u003E loop\\nmore economically.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# count-list-items-1.py\\n\\nwordstring = &#39;it was the best of times it was the worst of times &#39;\\nwordstring += &#39;it was the age of wisdom it was the age of foolishness&#39;\\nwordlist = wordstring.split()\\n\\nwordfreq = [wordlist.count(w) for w in wordlist] # a list comprehension\\n\\nprint(&quot;String\\\\n&quot; + wordstring +&quot;\\\\n&quot;)\\nprint(&quot;List\\\\n&quot; + str(wordlist) + &quot;\\\\n&quot;)\\nprint(&quot;Frequencies\\\\n&quot; + str(wordfreq) + &quot;\\\\n&quot;)\\nprint(&quot;Pairs\\\\n&quot; + str(list(zip(wordlist, wordfreq))))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf you study this list comprehension carefully, you will discover that\\nit does exactly the same thing as the \u003Ccode\u003Efor\u003C\u002Fcode\u003E loop in the previous example,\\nbut in a condensed manner. Either method will work fine, so use the\\nversion that you are most comfortable with.\u003C\u002Fp\u003E\\n\u003Cp\u003EGenerally it is wise to use code you understand rather than code that runs quickest.\u003C\u002Fp\u003E\\n\u003Cp\u003EAt this point we have a list of pairs, where each pair contains a word\\nand its frequency. This list is a bit redundant. If &#39;the&#39; occurs 500\\ntimes, then this list contains five hundred copies of the pair (&#39;the&#39;,\\n500). The list is also ordered by the words in the original text, rather\\nthan listing the words in order from most to least frequent. We can\\nsolve both problems by converting it into a dictionary, then printing\\nout the dictionary in order from the most to the least commonly\\noccurring item.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"python-dictionaries\\\"\u003EPython Dictionaries\u003C\u002Fh2\u003E\\n\u003Cp\u003EBoth strings and lists are sequentially ordered, which means that you\\ncan access their contents by using an index, a number that starts at 0.\\nIf you have a list containing strings, you can use a pair of indexes to\\naccess first a particular string in the list, and then a particular\\ncharacter within that string. Study the examples below.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E\\ns = &#39;hello world&#39;\\nprint(s[0])\\n-&gt; h\\n\\nprint(s[1])\\n-&gt; e\\n\\nm = [&#39;hello&#39;, &#39;world&#39;]\\nprint(m[0])\\n-&gt; hello\\n\\nprint(m[1])\\n-&gt; world\\n\\nprint(m[0][1])\\n-&gt; e\\n\\nprint(m[1][0])\\n-&gt; w\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ETo keep track of frequencies, we’re going to use another type of Python\\nobject, a dictionary. The dictionary is an \u003Cem\u003Eunordered\u003C\u002Fem\u003E collection of\\nobjects. That means that you can&#39;t use an index to retrieve elements\\nfrom it. You can, however, look them up by using a key (hence the name\\n&quot;dictionary&quot;). Study the following example.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E\\nd = {&#39;world&#39;: 1, &#39;hello&#39;: 0}\\nprint(d[&#39;hello&#39;])\\n-&gt; 0\\n\\nprint(d[&#39;world&#39;])\\n-&gt; 1\\n\\nprint(d.keys())\\n-&gt; [&#39;world&#39;, &#39;hello&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EDictionaries might be a bit confusing to a new programmer. Try to think\\nof it like a language dictionary. If you don’t know (or remember)\\nexactly how &quot;bijection&quot; differs from &quot;surjection&quot; you can look the two\\nterms up in the \u003Cem\u003EOxford English Dictionary\u003C\u002Fem\u003E. The same principle applies\\nwhen you \u003Ccode\u003Eprint(d[&#39;hello&#39;]);\u003C\u002Fcode\u003E except, rather than print a literary\\ndefinition it prints the value associated with the keyword &#39;hello&#39;, as\\ndefined by you when you created the dictionary named \u003Cem\u003Ed\u003C\u002Fem\u003E. In this case,\\nthat value is &quot;0&quot;.\u003C\u002Fp\u003E\\n\u003Cp\u003ENote that you use curly braces to define a dictionary, but square\\nbrackets to access things within it. The \u003Ccode\u003Ekeys\u003C\u002Fcode\u003E operation returns a list\\nof keys that are defined in the dictionary.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"word-frequency-pairs\\\"\u003EWord-Frequency Pairs\u003C\u002Fh2\u003E\\n\u003Cp\u003EBuilding on what we have so far, we want a function that can convert a\\nlist of words into a dictionary of word-frequency pairs. The only new\\ncommand that we will need is \u003Ccode\u003Edict\u003C\u002Fcode\u003E, which makes a dictionary from a list\\nof pairs. Copy the following and add it to the \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E module.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Given a list of words, return a dictionary of\\n# word-frequency pairs.\\n\\ndef wordListToFreqDict(wordlist):\\n    wordfreq = [wordlist.count(p) for p in wordlist]\\n    return dict(list(zip(wordlist,wordfreq)))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWe are also going to want a function that can sort a dictionary of\\nword-frequency pairs by descending frequency. Copy this and add it to\\nthe \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E module, too.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Sort a dictionary of word-frequency pairs in\\n# order of descending frequency.\\n\\ndef sortFreqDict(freqdict):\\n    aux = [(freqdict[key], key) for key in freqdict]\\n    aux.sort()\\n    aux.reverse()\\n    return aux\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EWe can now write a program which takes a URL and returns word-frequency\\npairs for the web page, sorted in order of descending frequency. Copy\\nthe following program into Komodo Edit, save it as \u003Ccode\u003Ehtml-to-freq.py\u003C\u002Fcode\u003E and\\nexecute it. Study the program and its output carefully before\\ncontinuing.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#html-to-freq.py\\n\\nimport urllib.request, urllib.error, urllib.parse, obo\\n\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;\\n\\nresponse = urllib.request.urlopen(url)\\nhtml = response.read().decode(&#39;UTF-8&#39;)\\ntext = obo.stripTags(html).lower()\\nwordlist = obo.stripNonAlphaNum(text)\\ndictionary = obo.wordListToFreqDict(wordlist)\\nsorteddict = obo.sortFreqDict(dictionary)\\n\\nfor s in sorteddict: print(str(s))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"removing-stop-words\\\"\u003ERemoving Stop Words\u003C\u002Fh2\u003E\\n\u003Cp\u003EWhen we look at the output of our \u003Ccode\u003Ehtml-to-freq.py\u003C\u002Fcode\u003E program, we see that\\na lot of the most frequent words in the text are function words like\\n&quot;the&quot;, &quot;of&quot;, &quot;to&quot; and &quot;and&quot;.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E(192, &#39;the&#39;)\\n(105, &#39;i&#39;)\\n(74, &#39;to&#39;)\\n(71, &#39;was&#39;)\\n(67, &#39;of&#39;)\\n(62, &#39;in&#39;)\\n(53, &#39;a&#39;)\\n(52, &#39;and&#39;)\\n(50, &#39;you&#39;)\\n(50, &#39;he&#39;)\\n(40, &#39;that&#39;)\\n(39, &#39;his&#39;)\\n(36, &#39;it&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThese words are usually the most common in any English language text, so\\nthey don&#39;t tell us much that is distinctive about Bowsey&#39;s trial. In\\ngeneral, we are more interested in finding the words that will help us\\ndifferentiate this text from texts that are about different subjects. So\\nwe&#39;re going to filter out the common function words. Words that are\\nignored like this are known as stop words. We’re going to use the\\nfollowing list, adapted from one posted online by \u003Ca href=\\\"http:\u002F\u002Fir.dcs.gla.ac.uk\u002Fresources\u002Flinguistic_utils\u002Fstop_words\\\"\u003Ecomputer scientists\\nat Glasgow\u003C\u002Fa\u003E. Copy it and put it at the beginning of the \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E\\nlibrary that you are building.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Estopwords = [&#39;a&#39;, &#39;about&#39;, &#39;above&#39;, &#39;across&#39;, &#39;after&#39;, &#39;afterwards&#39;]\\nstopwords += [&#39;again&#39;, &#39;against&#39;, &#39;all&#39;, &#39;almost&#39;, &#39;alone&#39;, &#39;along&#39;]\\nstopwords += [&#39;already&#39;, &#39;also&#39;, &#39;although&#39;, &#39;always&#39;, &#39;am&#39;, &#39;among&#39;]\\nstopwords += [&#39;amongst&#39;, &#39;amoungst&#39;, &#39;amount&#39;, &#39;an&#39;, &#39;and&#39;, &#39;another&#39;]\\nstopwords += [&#39;any&#39;, &#39;anyhow&#39;, &#39;anyone&#39;, &#39;anything&#39;, &#39;anyway&#39;, &#39;anywhere&#39;]\\nstopwords += [&#39;are&#39;, &#39;around&#39;, &#39;as&#39;, &#39;at&#39;, &#39;back&#39;, &#39;be&#39;, &#39;became&#39;]\\nstopwords += [&#39;because&#39;, &#39;become&#39;, &#39;becomes&#39;, &#39;becoming&#39;, &#39;been&#39;]\\nstopwords += [&#39;before&#39;, &#39;beforehand&#39;, &#39;behind&#39;, &#39;being&#39;, &#39;below&#39;]\\nstopwords += [&#39;beside&#39;, &#39;besides&#39;, &#39;between&#39;, &#39;beyond&#39;, &#39;bill&#39;, &#39;both&#39;]\\nstopwords += [&#39;bottom&#39;, &#39;but&#39;, &#39;by&#39;, &#39;call&#39;, &#39;can&#39;, &#39;cannot&#39;, &#39;cant&#39;]\\nstopwords += [&#39;co&#39;, &#39;computer&#39;, &#39;con&#39;, &#39;could&#39;, &#39;couldnt&#39;, &#39;cry&#39;, &#39;de&#39;]\\nstopwords += [&#39;describe&#39;, &#39;detail&#39;, &#39;did&#39;, &#39;do&#39;, &#39;done&#39;, &#39;down&#39;, &#39;due&#39;]\\nstopwords += [&#39;during&#39;, &#39;each&#39;, &#39;eg&#39;, &#39;eight&#39;, &#39;either&#39;, &#39;eleven&#39;, &#39;else&#39;]\\nstopwords += [&#39;elsewhere&#39;, &#39;empty&#39;, &#39;enough&#39;, &#39;etc&#39;, &#39;even&#39;, &#39;ever&#39;]\\nstopwords += [&#39;every&#39;, &#39;everyone&#39;, &#39;everything&#39;, &#39;everywhere&#39;, &#39;except&#39;]\\nstopwords += [&#39;few&#39;, &#39;fifteen&#39;, &#39;fifty&#39;, &#39;fill&#39;, &#39;find&#39;, &#39;fire&#39;, &#39;first&#39;]\\nstopwords += [&#39;five&#39;, &#39;for&#39;, &#39;former&#39;, &#39;formerly&#39;, &#39;forty&#39;, &#39;found&#39;]\\nstopwords += [&#39;four&#39;, &#39;from&#39;, &#39;front&#39;, &#39;full&#39;, &#39;further&#39;, &#39;get&#39;, &#39;give&#39;]\\nstopwords += [&#39;go&#39;, &#39;had&#39;, &#39;has&#39;, &#39;hasnt&#39;, &#39;have&#39;, &#39;he&#39;, &#39;hence&#39;, &#39;her&#39;]\\nstopwords += [&#39;here&#39;, &#39;hereafter&#39;, &#39;hereby&#39;, &#39;herein&#39;, &#39;hereupon&#39;, &#39;hers&#39;]\\nstopwords += [&#39;herself&#39;, &#39;him&#39;, &#39;himself&#39;, &#39;his&#39;, &#39;how&#39;, &#39;however&#39;]\\nstopwords += [&#39;hundred&#39;, &#39;i&#39;, &#39;ie&#39;, &#39;if&#39;, &#39;in&#39;, &#39;inc&#39;, &#39;indeed&#39;]\\nstopwords += [&#39;interest&#39;, &#39;into&#39;, &#39;is&#39;, &#39;it&#39;, &#39;its&#39;, &#39;itself&#39;, &#39;keep&#39;]\\nstopwords += [&#39;last&#39;, &#39;latter&#39;, &#39;latterly&#39;, &#39;least&#39;, &#39;less&#39;, &#39;ltd&#39;, &#39;made&#39;]\\nstopwords += [&#39;many&#39;, &#39;may&#39;, &#39;me&#39;, &#39;meanwhile&#39;, &#39;might&#39;, &#39;mill&#39;, &#39;mine&#39;]\\nstopwords += [&#39;more&#39;, &#39;moreover&#39;, &#39;most&#39;, &#39;mostly&#39;, &#39;move&#39;, &#39;much&#39;]\\nstopwords += [&#39;must&#39;, &#39;my&#39;, &#39;myself&#39;, &#39;name&#39;, &#39;namely&#39;, &#39;neither&#39;, &#39;never&#39;]\\nstopwords += [&#39;nevertheless&#39;, &#39;next&#39;, &#39;nine&#39;, &#39;no&#39;, &#39;nobody&#39;, &#39;none&#39;]\\nstopwords += [&#39;noone&#39;, &#39;nor&#39;, &#39;not&#39;, &#39;nothing&#39;, &#39;now&#39;, &#39;nowhere&#39;, &#39;of&#39;]\\nstopwords += [&#39;off&#39;, &#39;often&#39;, &#39;on&#39;,&#39;once&#39;, &#39;one&#39;, &#39;only&#39;, &#39;onto&#39;, &#39;or&#39;]\\nstopwords += [&#39;other&#39;, &#39;others&#39;, &#39;otherwise&#39;, &#39;our&#39;, &#39;ours&#39;, &#39;ourselves&#39;]\\nstopwords += [&#39;out&#39;, &#39;over&#39;, &#39;own&#39;, &#39;part&#39;, &#39;per&#39;, &#39;perhaps&#39;, &#39;please&#39;]\\nstopwords += [&#39;put&#39;, &#39;rather&#39;, &#39;re&#39;, &#39;s&#39;, &#39;same&#39;, &#39;see&#39;, &#39;seem&#39;, &#39;seemed&#39;]\\nstopwords += [&#39;seeming&#39;, &#39;seems&#39;, &#39;serious&#39;, &#39;several&#39;, &#39;she&#39;, &#39;should&#39;]\\nstopwords += [&#39;show&#39;, &#39;side&#39;, &#39;since&#39;, &#39;sincere&#39;, &#39;six&#39;, &#39;sixty&#39;, &#39;so&#39;]\\nstopwords += [&#39;some&#39;, &#39;somehow&#39;, &#39;someone&#39;, &#39;something&#39;, &#39;sometime&#39;]\\nstopwords += [&#39;sometimes&#39;, &#39;somewhere&#39;, &#39;still&#39;, &#39;such&#39;, &#39;system&#39;, &#39;take&#39;]\\nstopwords += [&#39;ten&#39;, &#39;than&#39;, &#39;that&#39;, &#39;the&#39;, &#39;their&#39;, &#39;them&#39;, &#39;themselves&#39;]\\nstopwords += [&#39;then&#39;, &#39;thence&#39;, &#39;there&#39;, &#39;thereafter&#39;, &#39;thereby&#39;]\\nstopwords += [&#39;therefore&#39;, &#39;therein&#39;, &#39;thereupon&#39;, &#39;these&#39;, &#39;they&#39;]\\nstopwords += [&#39;thick&#39;, &#39;thin&#39;, &#39;third&#39;, &#39;this&#39;, &#39;those&#39;, &#39;though&#39;, &#39;three&#39;]\\nstopwords += [&#39;three&#39;, &#39;through&#39;, &#39;throughout&#39;, &#39;thru&#39;, &#39;thus&#39;, &#39;to&#39;]\\nstopwords += [&#39;together&#39;, &#39;too&#39;, &#39;top&#39;, &#39;toward&#39;, &#39;towards&#39;, &#39;twelve&#39;]\\nstopwords += [&#39;twenty&#39;, &#39;two&#39;, &#39;un&#39;, &#39;under&#39;, &#39;until&#39;, &#39;up&#39;, &#39;upon&#39;]\\nstopwords += [&#39;us&#39;, &#39;very&#39;, &#39;via&#39;, &#39;was&#39;, &#39;we&#39;, &#39;well&#39;, &#39;were&#39;, &#39;what&#39;]\\nstopwords += [&#39;whatever&#39;, &#39;when&#39;, &#39;whence&#39;, &#39;whenever&#39;, &#39;where&#39;]\\nstopwords += [&#39;whereafter&#39;, &#39;whereas&#39;, &#39;whereby&#39;, &#39;wherein&#39;, &#39;whereupon&#39;]\\nstopwords += [&#39;wherever&#39;, &#39;whether&#39;, &#39;which&#39;, &#39;while&#39;, &#39;whither&#39;, &#39;who&#39;]\\nstopwords += [&#39;whoever&#39;, &#39;whole&#39;, &#39;whom&#39;, &#39;whose&#39;, &#39;why&#39;, &#39;will&#39;, &#39;with&#39;]\\nstopwords += [&#39;within&#39;, &#39;without&#39;, &#39;would&#39;, &#39;yet&#39;, &#39;you&#39;, &#39;your&#39;]\\nstopwords += [&#39;yours&#39;, &#39;yourself&#39;, &#39;yourselves&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow getting rid of the stop words in a list is as easy as using another\\nlist comprehension. Add this function to the \u003Ccode\u003Eobo.py\u003C\u002Fcode\u003E module, too.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# Given a list of words, remove any that are\\n# in a list of stop words.\\n\\ndef removeStopwords(wordlist, stopwords):\\n    return [w for w in wordlist if w not in stopwords]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"putting-it-all-together\\\"\u003EPutting it All Together\u003C\u002Fh2\u003E\\n\u003Cp\u003ENow we have everything we need to determine word frequencies for web\\npages. Copy the following to Komodo Edit, save it as \u003Ccode\u003Ehtml-to-freq-2.py\u003C\u002Fcode\u003E\\nand execute it.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E# html-to-freq-2.py\\n\\nimport urllib.request, urllib.error, urllib.parse\\nimport obo\\n\\nurl = &#39;http:\u002F\u002Fwww.oldbaileyonline.org\u002Fbrowse.jsp?id=t17800628-33&amp;div=t17800628-33&#39;\\n\\nresponse = urllib.request.urlopen(url)\\nhtml = response.read().decode(&#39;UTF-8&#39;)\\ntext = obo.stripTags(html).lower()\\nfullwordlist = obo.stripNonAlphaNum(text)\\nwordlist = obo.removeStopwords(fullwordlist, obo.stopwords)\\ndictionary = obo.wordListToFreqDict(wordlist)\\nsorteddict = obo.sortFreqDict(dictionary)\\n\\nfor s in sorteddict: print(str(s))\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EIf all went well, your output should look like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E(25, &#39;house&#39;)\\n(20, &#39;yes&#39;)\\n(20, &#39;prisoner&#39;)\\n(19, &#39;mr&#39;)\\n(17, &#39;man&#39;)\\n(15, &#39;akerman&#39;)\\n(14, &#39;mob&#39;)\\n(13, &#39;black&#39;)\\n(12, &#39;night&#39;)\\n(11, &#39;saw&#39;)\\n(9, &#39;went&#39;)\\n(9, &#39;sworn&#39;)\\n(9, &#39;room&#39;)\\n(9, &#39;pair&#39;)\\n(9, &#39;know&#39;)\\n(9, &#39;face&#39;)\\n(8, &#39;time&#39;)\\n(8, &#39;thing&#39;)\\n(8, &#39;june&#39;)\\n(8, &#39;believe&#39;)\\n...\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Ch2 id=\\\"suggested-readings\\\"\u003ESuggested Readings\u003C\u002Fh2\u003E\\n\u003Cp\u003ELutz, Learning Python\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ECh. 9: Tuples, Files, and Everything Else\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 11: Assignment, Expressions, and print\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 12: if Tests\u003C\u002Fli\u003E\\n\u003Cli\u003ECh. 13: while and for Loops\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Cp\u003EPilgrim, Diving into Python\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003ECh. 7: \u003Ca href=\\\"https:\u002F\u002Fweb.archive.org\u002Fweb\u002F20180416143856\u002Fhttp:\u002F\u002Fwww.diveintopython.net\u002Fregular_expressions\u002Findex.html\\\"\u003ERegular Expressions\u003C\u002Fa\u003E\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\u003Ch3 id=\\\"code-syncing\\\"\u003ECode Syncing\u003C\u002Fh3\u003E\\n\u003Cp\u003ETo follow along with future lessons it is important that you have the\\nright files and programs in your &quot;programming-historian&quot; directory. At\\nthe end of each lesson in this series you can download the &quot;programming-historian&quot; zip\\nfile to make sure you have the correct code.\u003C\u002Fp\u003E\\n\u003Cul\u003E\\n\u003Cli\u003Eprogramming-historian-5 (\u003Ca href=\\\"\u002Fassets\u002Fpython-lessons5.zip\\\"\u003Ezip sync\u003C\u002Fa\u003E)\u003C\u002Fli\u003E\\n\u003C\u002Ful\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

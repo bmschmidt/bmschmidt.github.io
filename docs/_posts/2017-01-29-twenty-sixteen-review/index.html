@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/_posts/2017-01-29-twenty-sixteen-review"),
+					params: {lang:"_posts",lessons:"2017-01-29-twenty-sixteen-review"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><p><figure><a href="/images/twenty-sixteen-review/twenty-sixteen-review.jpg">
+        <img src="/images/twenty-sixteen-review/twenty-sixteen-review.jpg" alt=""/></a><figcaption>
+    A toast to our authors! Eleven new tutorials published in 2016.</figcaption></figure></p>
+<p>Twenty-sixteen was a big year for the <em>Programming Historian</em>. In addition to our ongoing maintenance of our existing lessons (no small feat), we're pleased to announce that we added eleven new tutorials to our mix.</p>
+<ol>
+<li>
+<p>We added four new tutorials that help readers take advantage of existing software that is increasingly becoming popular with historians working collaboratively, or seeking to build online collections and web-based projects. Firstly, Jonathan Reeve introduces readers to the practice of <a href="/lessons/installing-omeka">Installing Omeka</a> on one's own web server, so that anyone can take advantage of the customisable options not available through the free web version of Omeka. This is a big step towards making Omeka more widely accessible. Secondly, Amanda Visconti provided a suscinct tutorial on how to use <a href="/lessons/building-static-sites-with-jekyll-github-pages">markdown, Jekyll, and Github Pages</a> to produce a sustainable database-free website. This is precisely the setup used by the <em>Programming Historian</em>, and it's an important new development in no-frills, sustainable web development. Thirdly, Daniel van Strien, one of our summer fellows from a few years ago, published a lesson to make GitHub more accessible, by <a href="/lessons/getting-started-with-github-desktop">explaining version control and GitHub Desktop</a>. Version control is a tricky area for the uninitiated, and it was something our readers highlighted as a problem area in our <a href="/posts/PH-commitment-to-diversity">Gender Neutrality survey</a> last year, so we're pleased with this important addition. Finally, Ted Dawson provides an <a href="/lessons/intro-to-powershell">Introduciton to PowerShell</a> - a Windows-near-equivalent of the <a href="/lessons/intro-to-bash">Intro to the Bash Command Line</a> tutorial published in 2014.</p>
+</li>
+<li>
+<p>It has become increasingly important for scholars to be well equipped to transform data, particularly when the data has to be sent into a tool for further analysis. We added two valuable new transformation lessons in 2016. M. H. Beals has provided a fantastic introduction to <a href="/lessons/transforming-xml-with-xsl">Extensible Stylesheet Language (XSL)</a>, a powerful tool for transforming textual resources from one format to another - for example, for Hypertext Markup Language (HTML) to Text-Encoding Innitiative (TEI)-Compliant Extensible Markup Language (XML) or any combination of custom formats. Matthew Lincoln picks up on the theme of transformations, offering a <a href="/lessons/json-and-jq">clear introduction to JavaScript Object Notation (JSON) transformations</a> using a tool called jq, which allows users to parse JSON files and convert them into Comma Separated Values (CSV) files. Peter Organisciak and Boris Capitanu add further to our collective skillset with a new lesson on <a href="/lessons/text-mining-with-extracted-features">text mining the HathiTrust collection of 15 million digitised volumes</a>, encouraging us to consider 'extracted features' (sometimes called metadata - various bits of data that can be extracted from the collection that aren't the text themselves) as a valuable new research object in their own right. This is particularly exciting for us, because the approach has already been used in <a href="https://figshare.com/articles/Page_Level_Genre_Metadata_for_English_Language_Volumes_in_HathiTrust_1700_1922/1279201">scholarly research by Ted Underwood</a>, as he sought to identify genres of literature in the collection. As we noted in our recent <a href="/posts/call-to-action">call to action</a>, tutorials that take us closer to answering real research questions are an important future priority for our team.</p>
+</li>
+<li>
+<p>We're also pleased to be branching into new exciting areas. Taryn Dewar (another of our former summer fellows) has provided our first forays into 'R' with an <a href="/lessons/r-basics-with-tabular-data">introduction to working with Tabular Data in R</a>. We've also taken our first steps into sonification - the practice of representing data with sounds - with a great new lesson from Shawn Graham on <a href="/lessons/sonification">'The Sound of Data'</a>. Along the same tune (pardon the pun), we're really excited about Brandon Walsh's introduction to <a href="/lessons/editing-audio-with-audacity">'Editing Audio with Audacity'</a>. We think it's about time we saw more work that takes us beyond text, so we're very pleased with these future-focused additions. And speaking of the future, Jacob W. Green's <a href="/lessons/intro-to-augmented-reality-with-unity">'Introduction to Mobile Augmented Reality with Unity'</a> is another first for us, taking digital public history well into the twenty-first century.</p>
+</li>
+</ol>
+<p>Thanks to our wonderful authors and generous peer reviewers for helping us to bring these eleven new lessons to the public. We look forward to an even more productive and exciting 2017! If you have an idea for a lesson, please consider taking a look at our <a href="/contribute">author's guidelines</a>, and get in touch.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

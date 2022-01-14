@@ -10,15 +10,17 @@
 		
 
 		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
-		<link rel="modulepreload" href="/_app/start-a80c730b.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-9b9d6288.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-de46afb2.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/__layout.svelte-e75718c6.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-191d1505.js">
-		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
 
 		<script type="module">
-			import { start } from "/_app/start-a80c730b.js";
+			import { start } from "/_app/start-95fbef14.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -30,9 +32,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-de46afb2.js"),
-						import("/_app/pages/_lang_/__layout.svelte-e75718c6.js"),
-						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-efe77d76.js")
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
 					],
 					url: new URL("sveltekit://prerender/en/lessons/data-mining-the-internet-archive"),
 					params: {lang:"en",lessons:"lessons",slug:"data-mining-the-internet-archive"}
@@ -48,20 +49,22 @@
 		<div id="svelte">
 
 
-The Programming Historian <a href="/en">English</a> <a href="/es">Spanish</a>
-<br>
-This is the en edition.
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian</h2>
+	<a class="nav-link" href="/en/lessons">Lessons</a><a class="nav-link" href="/en/about">About PH</a><a class="nav-link" href="/en/research">Research</a><a class="nav-link" href="/en/support-us">Support Us</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link active" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
 
+
+<br>
 <h1>Data Mining the Internet Archive Collection</h1>
 
 <!-- HTML_TAG_START --><p>{% include toc.html %}</p>
-<h2 id="lesson-goals">Lesson Goals</h2>
+<h2>Lesson Goals</h2>
 <p>The collections of the <a href="http://archive.org/">Internet Archive</a> (IA) include many digitized
 sources of interest to historians, including <a href="https://archive.org/details/jstor_ejc">early JSTOR journal
-content</a>, <a href="https://archive.org/details/johnadamsBPL">John Adams&#39;s personal library</a>, and the <a href="https://archive.org/details/jcbhaiti">Haiti
+content</a>, <a href="https://archive.org/details/johnadamsBPL">John Adams's personal library</a>, and the <a href="https://archive.org/details/jcbhaiti">Haiti
 collection</a> at the John Carter Brown Library. In short, to quote
 Programming Historian <a href="http://activehistory.ca/2013/09/the-internet-archive-rocks-or-two-million-plus-free-sources-to-explore/">Ian Milligan</a>, &quot;The Internet Archive rocks.&quot;</p>
-<p>In this lesson, you&#39;ll learn how to download files from such collections
+<p>In this lesson, you'll learn how to download files from such collections
 using a Python module specifically designed for the Internet Archive.
 You will also learn how to use another Python module designed for
 parsing MARC XML records, a widely used standard for formatting
@@ -75,24 +78,24 @@ collection. For example, by the end of this lesson, you will be able to
 create a list of every named place from which a letter in the
 antislavery collection was written, which you could then use for a
 mapping project or some other kind of analysis.</p>
-<h2 id="for-whom-is-this-useful">For Whom Is This Useful?</h2>
+<h2>For Whom Is This Useful?</h2>
 <p>This intermediate lesson is good for users of the Programming Historian
 who have completed general lessons on downloading files and performing
 text analysis on them, but would like an applied example of these
 principles. It will also be of interest to historians or archivists who
 work with the MARC format or the Internet Archive on a regular basis.</p>
-<h2 id="before-you-begin">Before You Begin</h2>
+<h2>Before You Begin</h2>
 <p>To write scripts that interact with the Internet Archive, you will
 first need to <a href="https://archive.org/account/login.createaccount.php">create an IA account</a>.
 Follow the steps to confirm your account and carefully note down
 your email address and password.</p>
 <p>We will be working with two Python modules that are not included in
-Python&#39;s standard library.</p>
+Python's standard library.</p>
 <p>The first, <a href="https://pypi.python.org/pypi/internetarchive">internetarchive</a>, provides programmatic access to the
 Internet Archive. The second, <a href="https://pypi.python.org/pypi/pymarc/">pymarc</a>, makes it easier to parse MARC
 records.</p>
 <p>The easiest way to download both is to use pip, the python package
-manager. Begin by installing <code>pip</code> using Fred Gibbs&#39; <a href="/lessons/installing-python-modules-pip">Installing Python Modules with pip</a>. Then issue these commands at the command line: To install
+manager. Begin by installing <code>pip</code> using Fred Gibbs' <a href="/lessons/installing-python-modules-pip">Installing Python Modules with pip</a>. Then issue these commands at the command line: To install
 <code>internetarchive</code>:</p>
 <pre><code class="language-bash">sudo pip install internetarchive
 </code></pre>
@@ -104,12 +107,12 @@ account.</p>
 <pre><code class="language-bash">sudo pip install pymarc
 </code></pre>
 <p>Now you are ready to go to work!</p>
-<h2 id="the-antislavery-collection-at-the-internet-archive">The Antislavery Collection at the Internet Archive</h2>
-<p>The Boston Public Library&#39;s anti-slavery collection at Copley Square
+<h2>The Antislavery Collection at the Internet Archive</h2>
+<p>The Boston Public Library's anti-slavery collection at Copley Square
 contains not only the letters of William Lloyd Garrison, one of the
 icons of the American abolitionist movement, but also large collections
 of letters by and to reformers somehow connected to him. And by &quot;large
-collection,&quot; I mean large. According to the library&#39;s estimates, there
+collection,&quot; I mean large. According to the library's estimates, there
 are over 16,000 items at Copley.</p>
 <p>As of this writing, approximately 7,000 of those items have been
 digitized and uploaded to the <a href="http://archive.org/">Internet Archive</a>. This is good news,
@@ -122,20 +125,20 @@ making the trip to Boston, and that alone may be enough to revolutionize
 and democratize future abolitionist historiography. But you can also
 download <a href="http://archive.org/download/lettertowilliaml00doug">multiple files</a> related to the letter that are rich in
 metadata, like a <a href="http://archive.org/download/lettertowilliaml00doug/lettertowilliaml00doug_dc.xml">Dublin Core</a> record and a fuller <a href="http://archive.org/download/lettertowilliaml00doug/lettertowilliaml00doug_marc.xml">MARCXML</a> record
-that uses the <a href="http://www.loc.gov/marc/bibliographic/">Library of Congress&#39;s MARC 21 Format for Bibliographic
+that uses the <a href="http://www.loc.gov/marc/bibliographic/">Library of Congress's MARC 21 Format for Bibliographic
 Data</a>.</p>
 <p>Stop and think about that for a moment: every item uploaded from the
 Collection contains these things. Right now, that means historians have
 access to rich metadata, full images, and partial descriptions for
 <a href="http://archive.org/search.php?query=collection%3Abplscas&amp;sort=-publicdate">thousands of antislavery letters, manuscripts, and publications</a>.</p>
-<h2 id="accessing-an-ia-collection-in-python">Accessing an IA Collection in Python</h2>
+<h2>Accessing an IA Collection in Python</h2>
 <p>Internet Archive (IA) collections and items all have a unique
 identifier, and URLs to collections and items all look like this:</p>
 <pre><code>
 http://archive.org/details/[IDENTIFIER]
 </code></pre>
 <p>So, for example, here is a URL to the Archive item discussed above,
-Douglass&#39;s letter to Garrison:</p>
+Douglass's letter to Garrison:</p>
 <pre><code>
 http://archive.org/details/lettertowilliaml00doug
 </code></pre>
@@ -153,54 +156,54 @@ accessing other file formats. A collection page will probably have a
 different collections through the <a href="https://archive.org/details/texts">eBook and Texts</a> portal, and you
 may also want to read a little bit about <a href="http://blog.archive.org/2011/03/31/how-archive-org-items-are-structured/">the way that items and item
 URLs are structured</a>.</p>
-<p>Once you have a collection&#39;s identifier—in this case, <code>bplscas</code>—seeing
+<p>Once you have a collection's identifier—in this case, <code>bplscas</code>—seeing
 all of the items in the collection is as easy as navigating to the
-Archive&#39;s <a href="https://archive.org/advancedsearch.php">advanced search</a> page, selecting the id from the drop down
+Archive's <a href="https://archive.org/advancedsearch.php">advanced search</a> page, selecting the id from the drop down
 menu next to &quot;Collection,&quot; and hitting the search button. Performing
 that search with <code>bplscas</code> selected returns <a href="https://archive.org/search.php?query=collection%3A%28bplscas%29">this page</a>, which as of
 this writing showed 7,029 results.</p>
 <p>We can also <a href="http://internetarchive.readthedocs.io/en/latest/quickstart.html#searching">search the Archive using the Python module that we
 installed</a>, and doing so makes it easier to iterate over all the items
 in the collection for purposes of further inspection and downloading.</p>
-<p>For example, let&#39;s modify the sample code from the module&#39;s
+<p>For example, let's modify the sample code from the module's
 documentation to see if we can tell, with Python, how many items are in
 the digital Antislavery Collection. The sample code looks something like
 what you see below. The only difference is that instead of importing
 only the <code>search_items</code> module from <code>internetarchive</code>, we are going to
 import the whole library.</p>
 <pre><code class="language-python">import internetarchive
-search = internetarchive.search_items(&#39;collection:nasa&#39;)
+search = internetarchive.search_items('collection:nasa')
 print search.num_found
 </code></pre>
 <p>All we should need to modify is the collection identifier, from <code>nasa</code>
-to <code>bplscas</code>. After starting your computer&#39;s Python interpreter, try
+to <code>bplscas</code>. After starting your computer's Python interpreter, try
 entering each of the above lines, followed by enter, but modify the
 collection id in the second command:</p>
-<pre><code class="language-python">search = internetarchive.search_items(&#39;collection:bplscas&#39;)
+<pre><code class="language-python">search = internetarchive.search_items('collection:bplscas')
 </code></pre>
 <p>After hitting enter on the print command, you should see a number that
 matches the number of results you saw when doing <a href="http://archive.org/search.php?query=collection%3Abplscas">the advanced search
 for the collection</a> in the browser.</p>
-<h2 id="accessing-an-ia-item-in-python">Accessing an IA Item in Python</h2>
+<h2>Accessing an IA Item in Python</h2>
 <p>The <code>internetarchive</code> module also allows you to access individual items
-using their identifiers. Let&#39;s try that using the <a href="http://internetarchive.readthedocs.io/en/latest/quickstart.html#downloading">documentation&#39;s
+using their identifiers. Let's try that using the <a href="http://internetarchive.readthedocs.io/en/latest/quickstart.html#downloading">documentation's
 sample code</a>, modifying it in order to get the
 Douglass letter we discussed earlier.</p>
-<p>If you are still at your Python interpreter&#39;s command prompt, you don&#39;t
+<p>If you are still at your Python interpreter's command prompt, you don't
 need to <code>import internetarchive</code> again. Since we imported the whole
 module, we also need to modify the sample code so that our interpreter
 will know that <code>get_item</code> is from the <code>internetarchive</code> module. We also
 need to change the sample identifier <code>stairs</code> to our item identifier,
 <em>lettertowilliaml00doug</em> (note that the character before the two zeroes
 is a lowercase L, not the number 1):</p>
-<pre><code class="language-python">item = internetarchive.get_item(&#39;lettertowilliaml00doug&#39;)
+<pre><code class="language-python">item = internetarchive.get_item('lettertowilliaml00doug')
 item.download()
 </code></pre>
 <p>Enter each of those lines in your interpreter, followed by enter.
 Depending on your Internet connection speed, it will now probably take a
 minute or two for the command prompt to return, because your computer is
 downloading all of the files associated with that item, including some
-pretty large images. But when it&#39;s done downloading, you should be see a
+pretty large images. But when it's done downloading, you should be see a
 new directory on your computer whose name is the item identifier. To
 check, first exit your Python interpreter:</p>
 <pre><code class="language-python">exit()
@@ -230,52 +233,52 @@ lettertowilliaml00doug_metasource.xml
 <code>internetarchive</code> module, we can turn to thinking about how to make this
 process more effective for downloading lots of information from the
 collection for further analysis.</p>
-<h2 id="downloading-marc-records-from-a-collection">Downloading MARC Records from a Collection</h2>
+<h2>Downloading MARC Records from a Collection</h2>
 <p>Downloading one item is nice, but what if we want to look at thousands
-of items in a collection? We&#39;re in luck, because the <code>internetarchive</code>
-module&#39;s Search function allows us to iterate over all the results in a
+of items in a collection? We're in luck, because the <code>internetarchive</code>
+module's Search function allows us to iterate over all the results in a
 search.</p>
-<p>To see how, let&#39;s first start our Python interpreter again. We&#39;ll need
+<p>To see how, let's first start our Python interpreter again. We'll need
 to import our module again, and perform our search again:</p>
 <pre><code class="language-python">import internetarchive
-search = internetarchive.search_items(&#39;collection:bplscas&#39;)
+search = internetarchive.search_items('collection:bplscas')
 </code></pre>
-<p>Now let&#39;s enter the documentation&#39;s sample code for printing out the
+<p>Now let's enter the documentation's sample code for printing out the
 item identifier of every item returned by our search:</p>
 <pre><code class="language-python">for result in search:
-   print result[&#39;identifier&#39;]
+   print result['identifier']
 </code></pre>
 <p>Note that after entering the first line, your Python interpreter will
 automatically print an ellipsis on line two. This is because you have
 started a <em>for loop,</em> and Python is expecting there to be more. It wants
-to know what you want to do for each result in the search. That&#39;s also
-why, once you hit enter on the second line, you&#39;ll see a third line with
-another ellipsis, because Python doesn&#39;t know whether you are finished
+to know what you want to do for each result in the search. That's also
+why, once you hit enter on the second line, you'll see a third line with
+another ellipsis, because Python doesn't know whether you are finished
 telling it what to do with each result. Hit enter again to end the for
 loop and execute the command.</p>
 <p>You should now see your terminal begin to print out the identifiers for
 each result returned by our <em>bplscas search</em>---in this case, all 7,029 of
 them! You can interrupt the print out by hitting <code>Ctrl-C</code> on your
 keyboard, which will return you to the prompt.</p>
-<p>If you didn&#39;t see identifiers printing out to your screen, but instead
+<p>If you didn't see identifiers printing out to your screen, but instead
 saw an error like this, you may have forgotten to enter a few spaces
 before your print command:</p>
 <pre><code class="language-python">for result in search:
-   print result[&#39;identifier&#39;]
+   print result['identifier']
 File &quot;&quot;, line 2
-   print result[&#39;identifier&#39;]
+   print result['identifier']
       ^
 IndentationError: expected an indented block
 </code></pre>
 <p>Remember that whitespace matters in Python, and you need to indent the
 lines in a for loop so that Python can tell which command(s) to perform
 on each item in the loop.</p>
-<h2 id="understanding-the-for-loop">Understanding the for loop</h2>
+<h2>Understanding the for loop</h2>
 <p>The <em>for loop,</em> expressed in plain English, tells Python to do something
 to each thing in a collection of things. In the above case, we printed
 the identifier for each result in the results of our collection search.
 Two additional points about the <em>for loop:</em></p>
-<p>First, the word we used after <code>for</code> is what&#39;s called a <em>local variable</em> in
+<p>First, the word we used after <code>for</code> is what's called a <em>local variable</em> in
 Python. It serves as a placeholder for whatever instance or item we are
 going to be working with inside the loop. Usually it makes sense to pick
 a name that describes what kind of thing we are working with—in this
@@ -283,33 +286,33 @@ case, a search result—but we could have used other names in place of
 that one. For example, try running the above for loop again, but
 substitute a different name for the local variable, such as:</p>
 <pre><code class="language-python">for item in search:
-   print item[&#39;identifier&#39;]
+   print item['identifier']
 </code></pre>
 <p>You should get the same results.</p>
 <p>The second thing to note about the <em>for loop</em> is that the indented block
 could could have contained other commands. In this case, we printed each
-individual search result&#39;s identifier. But we could have chosen to do,
+individual search result's identifier. But we could have chosen to do,
 for each result, anything that we could do to an individual Internet
 Archive item.</p>
 <p>For example, earlier we downloaded all the files associated with the
 item <em>lettertowilliaml00doug.</em> We could have done that to each item
-returned by our search by changing the line <code>print result[&#39;identifier&#39;]</code>
+returned by our search by changing the line <code>print result['identifier']</code>
 in our <em>for loop</em> to <code>result.download()</code>.</p>
 <p>We probably want to think twice before doing that, though—downloading
 all the files for each of the 7,029 items in the bplscas collection is a
 lot of files. Fortunately, the download function in the
 <code>internetarchive</code> module also allows you to <a href="http://internetarchive.readthedocs.io/en/latest/quickstart.html#downloading">download specific files
 associated with an item</a>. If we had only wanted to download the MARC XML record associated with a particular item, we could have instead done this:</p>
-<pre><code class="language-python">item = internetarchive.get_item(&#39;lettertowilliaml00doug&#39;)
-marc = item.get_file(&#39;lettertowilliaml00doug_marc.xml&#39;)
+<pre><code class="language-python">item = internetarchive.get_item('lettertowilliaml00doug')
+marc = item.get_file('lettertowilliaml00doug_marc.xml')
 marc.download()
 </code></pre>
 <p>Because Internet Archive <a href="https://archive.org/about/faqs.php#140">item files are named according to specific
 rules</a>, we can also figure out the name of the MARC file we want just
-by knowing the item&#39;s unique identifier. And armed with that knowledge,
+by knowing the item's unique identifier. And armed with that knowledge,
 we can proceed to …</p>
-<h2 id="download-all-the-marc-xml-files-from-a-collection">Download All the MARC XML Files from a Collection</h2>
-<p>For the next section, we&#39;re going to move from using the Python shell to
+<h2>Download All the MARC XML Files from a Collection</h2>
+<p>For the next section, we're going to move from using the Python shell to
 writing a Python script that downloads the MARC record from each item in
 the BPL Antislavery Collection. Try putting this script into Komodo or
 your preferred text editor:</p>
@@ -317,12 +320,12 @@ your preferred text editor:</p>
 
 import internetarchive
 
-search = internetarchive.search_items(&#39;collection:bplscas&#39;)
+search = internetarchive.search_items('collection:bplscas')
 
 for result in search:
-    itemid = result[&#39;identifier&#39;]
+    itemid = result['identifier']
     item = internetarchive.get_item(itemid)
-    marc = item.get_file(itemid + &#39;_marc.xml&#39;)
+    marc = item.get_file(itemid + '_marc.xml')
     marc.download()
     print &quot;Downloading &quot; + itemid + &quot; ...&quot;
 </code></pre>
@@ -342,15 +345,15 @@ then try running the script again.)</p>
 <p>If all goes well, when you run your script, you should see the program
 begin to print out status updates telling you that it is downloading
 MARC records. But allowing the script to run its full course will
-probably take a couple of hours, so let&#39;s stop the script and look a
+probably take a couple of hours, so let's stop the script and look a
 little more closely at ways to improve it. Pressing <code>Ctrl-C</code> while in
 your terminal window should make the script stop.</p>
-<h2 id="building-error-reporting-into-the-script">Building Error Reporting into the Script</h2>
+<h2>Building Error Reporting into the Script</h2>
 <p>Since downloading all of these records will take some time, we are
 probably going to want to walk away from our computer for a while. But
 the chances are high that during those two hours, something could go
 wrong that would prevent our script from working.</p>
-<p>Let&#39;s say, for example, that we had forgotten that we already downloaded
+<p>Let's say, for example, that we had forgotten that we already downloaded
 an individual file into this directory. Or maybe your computer briefly
 loses its Internet connection, or some sort of outage happens on the
 Internet Archive server that prevents the script from getting the file
@@ -358,39 +361,39 @@ it wants.</p>
 <p>In those and other error cases, Python will raise an &quot;exception&quot; telling
 you what the problem is. Unfortunately, an exception will also crash
 your script instead of continuing on to the next item.</p>
-<p>To prevent this, we can use what&#39;s called a <em>try statement</em> in Python,
+<p>To prevent this, we can use what's called a <em>try statement</em> in Python,
 which does exactly what it sounds like. The statement will try to
 execute a certain snippet of code until it hits an exception, in which
 case you can give it some other code to execute instead. You can read
 more about <a href="http://docs.python.org/2/tutorial/errors.html#handling-exceptions">handling exceptions</a> in the Python documentation, but for
-now let&#39;s just update our above script so that it looks like this:</p>
+now let's just update our above script so that it looks like this:</p>
 <pre><code class="language-python">#!/usr/bin/python
 
 import internetarchive
 import time
 
-error_log = open(&#39;bpl-marcs-errors.log&#39;, &#39;a&#39;)
+error_log = open('bpl-marcs-errors.log', 'a')
 
-search = internetarchive.search_items(&#39;collection:bplscas&#39;)
+search = internetarchive.search_items('collection:bplscas')
 
 for result in search:
-    itemid = result[&#39;identifier&#39;]
+    itemid = result['identifier']
     item = internetarchive.get_item(itemid)
-    marc = item.get_file(itemid + &#39;_marc.xml&#39;)
+    marc = item.get_file(itemid + '_marc.xml')
     try:
         marc.download()
     except Exception as e:
-        error_log.write(&#39;Could not download &#39; + itemid + &#39; because of error: %s\n&#39; % e)
+        error_log.write('Could not download ' + itemid + ' because of error: %s\n' % e)
         print &quot;There was an error; writing to log.&quot;
     else:
         print &quot;Downloading &quot; + itemid + &quot; ...&quot;
         time.sleep(1)
 </code></pre>
-<p>The main thing we&#39;ve added here, after our module import statements, is
+<p>The main thing we've added here, after our module import statements, is
 a line that opens a text file called <code>bpl-marcs-errors.log</code> and prepares
 it to have text appended to it. We are going to use this file to log
 exceptions that the script raises. The <em>try statement</em> that we have added
-to our <em>for loop</em> will attempt to download the MARC record. If it can&#39;t,
+to our <em>for loop</em> will attempt to download the MARC record. If it can't,
 it will write a descriptive statement about what went wrong to our log
 file. That way we can go back to the file later and identify which items
 we will need to try to download again. If the try clause succeeds and
@@ -401,21 +404,21 @@ can download the record, then the script will execute the code in the
 </code></pre>
 <p>This line uses the <code>time</code> module that we are now importing at the
 beginning to tell our script to pause for one second before proceeding,
-which is basically just a way for us to be nice to Internet Archive&#39;s
+which is basically just a way for us to be nice to Internet Archive's
 servers by not clobbering them every millisecond or so with a request.</p>
 <p>Try updating your script to look like the above lines, and run it again
-in the directory where you want to store your MARC files. Don&#39;t be
+in the directory where you want to store your MARC files. Don't be
 surprised if you immediately encounter a string of error messages; that
-means the script is doing what it&#39;s supposed to do! Calmly go into your
+means the script is doing what it's supposed to do! Calmly go into your
 text editor, while leaving the script running, and open the
 <code>bpl-marcs-errors.log</code> to see what exceptions have been recorded there.
-You&#39;ll probably see that the script raised the exception &quot;File already
+You'll probably see that the script raised the exception &quot;File already
 exists&quot; for each of the files that you had already downloaded when
 running our earlier, shorter program.</p>
 <p>If you leave the program running for a little while, the script will
 eventually get to items that you have not already downloaded and resume
 collecting your MARCs!</p>
-<h2 id="scraping-information-from-a-marc-record">Scraping Information from a MARC Record</h2>
+<h2>Scraping Information from a MARC Record</h2>
 <p>Once your download script has completed, you should find yourself in the
 possession of nearly 7,000 detailed MARC XML records about items in the
 Anti-Slavery Collection (or whichever other collection you may have
@@ -435,13 +438,13 @@ record knew to put place information in that specific field because of
 MARC records we have downloaded, grab the information inside of
 datafield <em>260,</em> subfield <em>a,</em> and make a list of every place name where
 items in the collection were published.</p>
-<p>To do this, we&#39;ll use the other helpful Python module that we downloaded
+<p>To do this, we'll use the other helpful Python module that we downloaded
 with <code>pip</code> at the beginning: <a href="https://github.com/edsu/pymarc">pymarc</a>.</p>
 <p>That module makes it easy to get information out of subfields. Assuming
 that we have a MARC record prepared for parsing by the module assigned
 to the variable record, we could get the information about publication
 place names this way:</p>
-<pre><code class="language-python">place_of_pub = record[&#39;260&#39;][&#39;a&#39;]
+<pre><code class="language-python">place_of_pub = record['260']['a']
 </code></pre>
 <p>The documentation for <code>pymarc</code> is a little less complete than that for
 the Internet Archive, especially when it comes to parsing XML records.
@@ -456,7 +459,7 @@ One of these, called <code>map_xml()</code> is described this way:</p>
     def do_it(r):
     print r
 
-    map_xml(do_it, &#39;marc.xml&#39;)
+    map_xml(do_it, 'marc.xml')
     &quot;&quot;&quot;
 </code></pre>
 <p>Translated into plain English, this function means that we can take an
@@ -468,10 +471,10 @@ outline, our code will look something like this:</p>
 <pre><code class="language-python">import pymarc
 
 def get_place_of_pub(record):
-    place_of_pub = record[&#39;260&#39;][&#39;a&#39;]
+    place_of_pub = record['260']['a']
     print place_of_pub
 
-pymarc.map_xml(get_place_of_pub, &#39;lettertowilliaml00doug_marc.xml&#39;)
+pymarc.map_xml(get_place_of_pub, 'lettertowilliaml00doug_marc.xml')
 </code></pre>
 <p>Try saving that code to a script and running it from a directory where
 you already have the Douglass letter XML saved. If all goes well, the
@@ -480,24 +483,24 @@ script should spit out this:</p>
 </code></pre>
 <p>Voila! Of course, this script would be much more useful if we scraped
 the place of publication from every letter in our collection of MARC
-records. Putting together what we&#39;ve learned from earlier in the lesson,
+records. Putting together what we've learned from earlier in the lesson,
 we can do that with a script that looks like this:</p>
 <pre><code class="language-python">#!/usr/bin/python
 
 import os
 import pymarc
 
-path = &#39;/path/to/dir/with/xmlfiles/&#39;
+path = '/path/to/dir/with/xmlfiles/'
 
 def get_place_of_pub(record):
     try:
-        place_of_pub = record[&#39;260&#39;][&#39;a&#39;]
+        place_of_pub = record['260']['a']
         print place_of_pub
     except Exception as e:
         print e
 
 for file in os.listdir(path):
-    if file.endswith(&#39;.xml&#39;):
+    if file.endswith('.xml'):
         pymarc.map_xml(get_place_of_pub, path + file)
 </code></pre>
 <p>This script modifies our above code in several ways. First, it uses a
@@ -526,7 +529,7 @@ common in the collection. You could work with the place names to find
 coordinates that could be placed on a map using the <a href="/lessons/googlemaps-googleearth">Google Maps
 lesson</a>.</p>
 <p>Or, to get a very rough visual sense of the places where letters were
-written, you could do what I&#39;ve done below and simply make a <a href="https://web.archive.org/web/20201202151557/http://www.wordle.net/">Wordle
+written, you could do what I've done below and simply make a <a href="https://web.archive.org/web/20201202151557/http://www.wordle.net/">Wordle
 word cloud</a> of the text file.</p>
 <p>{% include figure.html filename=&quot;bpl-wordle.png&quot; caption=&quot;Wordle wordcloud of places of publication for abolitionist letters&quot; %}</p>
 <p>Of course, to make such techniques useful would require more <a href="/lessons/cleaning-ocrd-text-with-regular-expressions">cleaning
@@ -538,6 +541,6 @@ the MARC records downloaded and can use <code>pymarc</code> to extract informati
 from the fields, the possibilities can multiply rapidly!</p>
 <!-- HTML_TAG_END -->
 
-<script type="application/json" data-type="svelte-data" data-url="data-mining-the-internet-archive/raw.json">{"status":200,"statusText":"","headers":{"content-type":"application/json; charset=utf-8"},"body":"{\"metadata\":{\"title\":\"Data Mining the Internet Archive Collection\",\"layout\":\"lesson\",\"date\":\"2014-03-03T00:00:00.000Z\",\"authors\":[\"Caleb McDaniel\"],\"reviewers\":[\"Adam Crymble\"],\"editors\":[\"William J. Turkel\",\"Adam Crymble\"],\"difficulty\":2,\"exclude_from_check\":[\"review-ticket\"],\"activity\":\"acquiring\",\"topics\":[\"web-scraping\"],\"abstract\":\"The collections of the Internet Archive include many digitized historical sources. Many contain rich bibliographic data in a format called MARC. In this lesson, you'll learn how to use Python to automate the downloading of large numbers of MARC files from the Internet Archive and the parsing of MARC records for specific information such as authors, places of publication, and dates. The lesson can be applied more generally to other Internet Archive files and to MARC records found elsewhere.\",\"redirect_from\":\"\u002Flessons\u002Fdata-mining-the-internet-archive\",\"avatar_alt\":\"Group of of men working in a mine\",\"doi\":\"10.46430\u002Fphen0035\"},\"html_body\":\"\u003Cp\u003E{% include toc.html %}\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"lesson-goals\\\"\u003ELesson Goals\u003C\u002Fh2\u003E\\n\u003Cp\u003EThe collections of the \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002F\\\"\u003EInternet Archive\u003C\u002Fa\u003E (IA) include many digitized\\nsources of interest to historians, including \u003Ca href=\\\"https:\u002F\u002Farchive.org\u002Fdetails\u002Fjstor_ejc\\\"\u003Eearly JSTOR journal\\ncontent\u003C\u002Fa\u003E, \u003Ca href=\\\"https:\u002F\u002Farchive.org\u002Fdetails\u002FjohnadamsBPL\\\"\u003EJohn Adams&#39;s personal library\u003C\u002Fa\u003E, and the \u003Ca href=\\\"https:\u002F\u002Farchive.org\u002Fdetails\u002Fjcbhaiti\\\"\u003EHaiti\\ncollection\u003C\u002Fa\u003E at the John Carter Brown Library. In short, to quote\\nProgramming Historian \u003Ca href=\\\"http:\u002F\u002Factivehistory.ca\u002F2013\u002F09\u002Fthe-internet-archive-rocks-or-two-million-plus-free-sources-to-explore\u002F\\\"\u003EIan Milligan\u003C\u002Fa\u003E, &quot;The Internet Archive rocks.&quot;\u003C\u002Fp\u003E\\n\u003Cp\u003EIn this lesson, you&#39;ll learn how to download files from such collections\\nusing a Python module specifically designed for the Internet Archive.\\nYou will also learn how to use another Python module designed for\\nparsing MARC XML records, a widely used standard for formatting\\nbibliographic metadata.\u003C\u002Fp\u003E\\n\u003Cp\u003EFor demonstration purposes, this lesson will focus on working with the\\ndigitized version of the \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002Fdetails\u002Fbplscas\\\"\u003EAnti-Slavery Collection\u003C\u002Fa\u003E at the Boston\\nPublic Library in Copley Square. We will first download a large\\ncollection of MARC records from this collection, and then use Python to\\nretrieve and analyze bibliographic information about items in the\\ncollection. For example, by the end of this lesson, you will be able to\\ncreate a list of every named place from which a letter in the\\nantislavery collection was written, which you could then use for a\\nmapping project or some other kind of analysis.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"for-whom-is-this-useful\\\"\u003EFor Whom Is This Useful?\u003C\u002Fh2\u003E\\n\u003Cp\u003EThis intermediate lesson is good for users of the Programming Historian\\nwho have completed general lessons on downloading files and performing\\ntext analysis on them, but would like an applied example of these\\nprinciples. It will also be of interest to historians or archivists who\\nwork with the MARC format or the Internet Archive on a regular basis.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"before-you-begin\\\"\u003EBefore You Begin\u003C\u002Fh2\u003E\\n\u003Cp\u003ETo write scripts that interact with the Internet Archive, you will\\nfirst need to \u003Ca href=\\\"https:\u002F\u002Farchive.org\u002Faccount\u002Flogin.createaccount.php\\\"\u003Ecreate an IA account\u003C\u002Fa\u003E.\\nFollow the steps to confirm your account and carefully note down\\nyour email address and password.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe will be working with two Python modules that are not included in\\nPython&#39;s standard library.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe first, \u003Ca href=\\\"https:\u002F\u002Fpypi.python.org\u002Fpypi\u002Finternetarchive\\\"\u003Einternetarchive\u003C\u002Fa\u003E, provides programmatic access to the\\nInternet Archive. The second, \u003Ca href=\\\"https:\u002F\u002Fpypi.python.org\u002Fpypi\u002Fpymarc\u002F\\\"\u003Epymarc\u003C\u002Fa\u003E, makes it easier to parse MARC\\nrecords.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe easiest way to download both is to use pip, the python package\\nmanager. Begin by installing \u003Ccode\u003Epip\u003C\u002Fcode\u003E using Fred Gibbs&#39; \u003Ca href=\\\"\u002Flessons\u002Finstalling-python-modules-pip\\\"\u003EInstalling Python Modules with pip\u003C\u002Fa\u003E. Then issue these commands at the command line: To install\\n\u003Ccode\u003Einternetarchive\u003C\u002Fcode\u003E:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003Esudo pip install internetarchive\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow you will need to configure your computer so that the new package\\nwill work. Type \u003Ccode\u003Eia configure\u003C\u002Fcode\u003E at the command line, and then enter in\\nthe email address and password you used above to create your Internet Archive\\naccount.\u003C\u002Fp\u003E\\n\u003Cp\u003ETo install \u003Ccode\u003Epymarc\u003C\u002Fcode\u003E:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-bash\\\"\u003Esudo pip install pymarc\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow you are ready to go to work!\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"the-antislavery-collection-at-the-internet-archive\\\"\u003EThe Antislavery Collection at the Internet Archive\u003C\u002Fh2\u003E\\n\u003Cp\u003EThe Boston Public Library&#39;s anti-slavery collection at Copley Square\\ncontains not only the letters of William Lloyd Garrison, one of the\\nicons of the American abolitionist movement, but also large collections\\nof letters by and to reformers somehow connected to him. And by &quot;large\\ncollection,&quot; I mean large. According to the library&#39;s estimates, there\\nare over 16,000 items at Copley.\u003C\u002Fp\u003E\\n\u003Cp\u003EAs of this writing, approximately 7,000 of those items have been\\ndigitized and uploaded to the \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002F\\\"\u003EInternet Archive\u003C\u002Fa\u003E. This is good news,\\nnot only because the Archive is committed to making its considerable\\ncultural resources free for download, but also because each uploaded\\nitem is paired with a wealth of metadata suitable for machine-reading.\u003C\u002Fp\u003E\\n\u003Cp\u003ETake \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002Fdetails\u002Flettertowilliaml00doug\\\"\u003Ethis letter\u003C\u002Fa\u003E sent by Frederick Douglass to William Lloyd\\nGarrison. Anyone can read the \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002Fstream\u002Flettertowilliaml00doug\u002F39999066767938#page\u002Fn0\u002Fmode\u002F2up\\\"\u003Eoriginal manuscript\u003C\u002Fa\u003E online, without\\nmaking the trip to Boston, and that alone may be enough to revolutionize\\nand democratize future abolitionist historiography. But you can also\\ndownload \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002Fdownload\u002Flettertowilliaml00doug\\\"\u003Emultiple files\u003C\u002Fa\u003E related to the letter that are rich in\\nmetadata, like a \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002Fdownload\u002Flettertowilliaml00doug\u002Flettertowilliaml00doug_dc.xml\\\"\u003EDublin Core\u003C\u002Fa\u003E record and a fuller \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002Fdownload\u002Flettertowilliaml00doug\u002Flettertowilliaml00doug_marc.xml\\\"\u003EMARCXML\u003C\u002Fa\u003E record\\nthat uses the \u003Ca href=\\\"http:\u002F\u002Fwww.loc.gov\u002Fmarc\u002Fbibliographic\u002F\\\"\u003ELibrary of Congress&#39;s MARC 21 Format for Bibliographic\\nData\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EStop and think about that for a moment: every item uploaded from the\\nCollection contains these things. Right now, that means historians have\\naccess to rich metadata, full images, and partial descriptions for\\n\u003Ca href=\\\"http:\u002F\u002Farchive.org\u002Fsearch.php?query=collection%3Abplscas&amp;sort=-publicdate\\\"\u003Ethousands of antislavery letters, manuscripts, and publications\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"accessing-an-ia-collection-in-python\\\"\u003EAccessing an IA Collection in Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EInternet Archive (IA) collections and items all have a unique\\nidentifier, and URLs to collections and items all look like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E\\nhttp:\u002F\u002Farchive.org\u002Fdetails\u002F[IDENTIFIER]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ESo, for example, here is a URL to the Archive item discussed above,\\nDouglass&#39;s letter to Garrison:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E\\nhttp:\u002F\u002Farchive.org\u002Fdetails\u002Flettertowilliaml00doug\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAnd here is a URL to the entire antislavery collection at the Boston\\nPublic Library:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E\\nhttp:\u002F\u002Farchive.org\u002Fdetails\u002Fbplscas\u002F\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EBecause the URLs are so similar, the only way to tell that you are\\nlooking at a collection page, instead of an individual item page, is to\\nexamine the page layout. An item page usually has a lefthand sidebar\\nthat says &quot;View the Book&quot; and lists links for reading the item online or\\naccessing other file formats. A collection page will probably have a\\n&quot;Spotlight Item&quot; in the lefthand sidebar instead. You can browse to\\ndifferent collections through the \u003Ca href=\\\"https:\u002F\u002Farchive.org\u002Fdetails\u002Ftexts\\\"\u003EeBook and Texts\u003C\u002Fa\u003E portal, and you\\nmay also want to read a little bit about \u003Ca href=\\\"http:\u002F\u002Fblog.archive.org\u002F2011\u002F03\u002F31\u002Fhow-archive-org-items-are-structured\u002F\\\"\u003Ethe way that items and item\\nURLs are structured\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EOnce you have a collection&#39;s identifier—in this case, \u003Ccode\u003Ebplscas\u003C\u002Fcode\u003E—seeing\\nall of the items in the collection is as easy as navigating to the\\nArchive&#39;s \u003Ca href=\\\"https:\u002F\u002Farchive.org\u002Fadvancedsearch.php\\\"\u003Eadvanced search\u003C\u002Fa\u003E page, selecting the id from the drop down\\nmenu next to &quot;Collection,&quot; and hitting the search button. Performing\\nthat search with \u003Ccode\u003Ebplscas\u003C\u002Fcode\u003E selected returns \u003Ca href=\\\"https:\u002F\u002Farchive.org\u002Fsearch.php?query=collection%3A%28bplscas%29\\\"\u003Ethis page\u003C\u002Fa\u003E, which as of\\nthis writing showed 7,029 results.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe can also \u003Ca href=\\\"http:\u002F\u002Finternetarchive.readthedocs.io\u002Fen\u002Flatest\u002Fquickstart.html#searching\\\"\u003Esearch the Archive using the Python module that we\\ninstalled\u003C\u002Fa\u003E, and doing so makes it easier to iterate over all the items\\nin the collection for purposes of further inspection and downloading.\u003C\u002Fp\u003E\\n\u003Cp\u003EFor example, let&#39;s modify the sample code from the module&#39;s\\ndocumentation to see if we can tell, with Python, how many items are in\\nthe digital Antislavery Collection. The sample code looks something like\\nwhat you see below. The only difference is that instead of importing\\nonly the \u003Ccode\u003Esearch_items\u003C\u002Fcode\u003E module from \u003Ccode\u003Einternetarchive\u003C\u002Fcode\u003E, we are going to\\nimport the whole library.\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eimport internetarchive\\nsearch = internetarchive.search_items(&#39;collection:nasa&#39;)\\nprint search.num_found\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAll we should need to modify is the collection identifier, from \u003Ccode\u003Enasa\u003C\u002Fcode\u003E\\nto \u003Ccode\u003Ebplscas\u003C\u002Fcode\u003E. After starting your computer&#39;s Python interpreter, try\\nentering each of the above lines, followed by enter, but modify the\\ncollection id in the second command:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Esearch = internetarchive.search_items(&#39;collection:bplscas&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EAfter hitting enter on the print command, you should see a number that\\nmatches the number of results you saw when doing \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002Fsearch.php?query=collection%3Abplscas\\\"\u003Ethe advanced search\\nfor the collection\u003C\u002Fa\u003E in the browser.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"accessing-an-ia-item-in-python\\\"\u003EAccessing an IA Item in Python\u003C\u002Fh2\u003E\\n\u003Cp\u003EThe \u003Ccode\u003Einternetarchive\u003C\u002Fcode\u003E module also allows you to access individual items\\nusing their identifiers. Let&#39;s try that using the \u003Ca href=\\\"http:\u002F\u002Finternetarchive.readthedocs.io\u002Fen\u002Flatest\u002Fquickstart.html#downloading\\\"\u003Edocumentation&#39;s\\nsample code\u003C\u002Fa\u003E, modifying it in order to get the\\nDouglass letter we discussed earlier.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you are still at your Python interpreter&#39;s command prompt, you don&#39;t\\nneed to \u003Ccode\u003Eimport internetarchive\u003C\u002Fcode\u003E again. Since we imported the whole\\nmodule, we also need to modify the sample code so that our interpreter\\nwill know that \u003Ccode\u003Eget_item\u003C\u002Fcode\u003E is from the \u003Ccode\u003Einternetarchive\u003C\u002Fcode\u003E module. We also\\nneed to change the sample identifier \u003Ccode\u003Estairs\u003C\u002Fcode\u003E to our item identifier,\\n\u003Cem\u003Elettertowilliaml00doug\u003C\u002Fem\u003E (note that the character before the two zeroes\\nis a lowercase L, not the number 1):\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eitem = internetarchive.get_item(&#39;lettertowilliaml00doug&#39;)\\nitem.download()\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EEnter each of those lines in your interpreter, followed by enter.\\nDepending on your Internet connection speed, it will now probably take a\\nminute or two for the command prompt to return, because your computer is\\ndownloading all of the files associated with that item, including some\\npretty large images. But when it&#39;s done downloading, you should be see a\\nnew directory on your computer whose name is the item identifier. To\\ncheck, first exit your Python interpreter:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eexit()\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThen list the contents of the current directory to see if a folder now\\nappears named \u003Ccode\u003Elettertowilliaml00doug\u003C\u002Fcode\u003E. If you list the contents of that\\nfolder, you should see a list of files similar to this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode\u003E39999066767938.djvu\\n39999066767938.epub\\n39999066767938.gif\\n39999066767938.pdf\\n39999066767938_abbyy.gz\\n39999066767938_djvu.txt\\n39999066767938_djvu.xml\\n39999066767938_images.zip\\n39999066767938_jp2.zip\\n39999066767938_scandata.xml\\nlettertowilliaml00doug_archive.torrent\\nlettertowilliaml00doug_dc.xml\\nlettertowilliaml00doug_files.xml\\nlettertowilliaml00doug_marc.xml\\nlettertowilliaml00doug_meta.mrc\\nlettertowilliaml00doug_meta.xml\\nlettertowilliaml00doug_metasource.xml\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow that we know how to use the Search and Item functions in the\\n\u003Ccode\u003Einternetarchive\u003C\u002Fcode\u003E module, we can turn to thinking about how to make this\\nprocess more effective for downloading lots of information from the\\ncollection for further analysis.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"downloading-marc-records-from-a-collection\\\"\u003EDownloading MARC Records from a Collection\u003C\u002Fh2\u003E\\n\u003Cp\u003EDownloading one item is nice, but what if we want to look at thousands\\nof items in a collection? We&#39;re in luck, because the \u003Ccode\u003Einternetarchive\u003C\u002Fcode\u003E\\nmodule&#39;s Search function allows us to iterate over all the results in a\\nsearch.\u003C\u002Fp\u003E\\n\u003Cp\u003ETo see how, let&#39;s first start our Python interpreter again. We&#39;ll need\\nto import our module again, and perform our search again:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eimport internetarchive\\nsearch = internetarchive.search_items(&#39;collection:bplscas&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENow let&#39;s enter the documentation&#39;s sample code for printing out the\\nitem identifier of every item returned by our search:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Efor result in search:\\n   print result[&#39;identifier&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ENote that after entering the first line, your Python interpreter will\\nautomatically print an ellipsis on line two. This is because you have\\nstarted a \u003Cem\u003Efor loop,\u003C\u002Fem\u003E and Python is expecting there to be more. It wants\\nto know what you want to do for each result in the search. That&#39;s also\\nwhy, once you hit enter on the second line, you&#39;ll see a third line with\\nanother ellipsis, because Python doesn&#39;t know whether you are finished\\ntelling it what to do with each result. Hit enter again to end the for\\nloop and execute the command.\u003C\u002Fp\u003E\\n\u003Cp\u003EYou should now see your terminal begin to print out the identifiers for\\neach result returned by our \u003Cem\u003Ebplscas search\u003C\u002Fem\u003E---in this case, all 7,029 of\\nthem! You can interrupt the print out by hitting \u003Ccode\u003ECtrl-C\u003C\u002Fcode\u003E on your\\nkeyboard, which will return you to the prompt.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you didn&#39;t see identifiers printing out to your screen, but instead\\nsaw an error like this, you may have forgotten to enter a few spaces\\nbefore your print command:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Efor result in search:\\n   print result[&#39;identifier&#39;]\\nFile &quot;&quot;, line 2\\n   print result[&#39;identifier&#39;]\\n      ^\\nIndentationError: expected an indented block\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ERemember that whitespace matters in Python, and you need to indent the\\nlines in a for loop so that Python can tell which command(s) to perform\\non each item in the loop.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"understanding-the-for-loop\\\"\u003EUnderstanding the for loop\u003C\u002Fh2\u003E\\n\u003Cp\u003EThe \u003Cem\u003Efor loop,\u003C\u002Fem\u003E expressed in plain English, tells Python to do something\\nto each thing in a collection of things. In the above case, we printed\\nthe identifier for each result in the results of our collection search.\\nTwo additional points about the \u003Cem\u003Efor loop:\u003C\u002Fem\u003E\u003C\u002Fp\u003E\\n\u003Cp\u003EFirst, the word we used after \u003Ccode\u003Efor\u003C\u002Fcode\u003E is what&#39;s called a \u003Cem\u003Elocal variable\u003C\u002Fem\u003E in\\nPython. It serves as a placeholder for whatever instance or item we are\\ngoing to be working with inside the loop. Usually it makes sense to pick\\na name that describes what kind of thing we are working with—in this\\ncase, a search result—but we could have used other names in place of\\nthat one. For example, try running the above for loop again, but\\nsubstitute a different name for the local variable, such as:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Efor item in search:\\n   print item[&#39;identifier&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EYou should get the same results.\u003C\u002Fp\u003E\\n\u003Cp\u003EThe second thing to note about the \u003Cem\u003Efor loop\u003C\u002Fem\u003E is that the indented block\\ncould could have contained other commands. In this case, we printed each\\nindividual search result&#39;s identifier. But we could have chosen to do,\\nfor each result, anything that we could do to an individual Internet\\nArchive item.\u003C\u002Fp\u003E\\n\u003Cp\u003EFor example, earlier we downloaded all the files associated with the\\nitem \u003Cem\u003Elettertowilliaml00doug.\u003C\u002Fem\u003E We could have done that to each item\\nreturned by our search by changing the line \u003Ccode\u003Eprint result[&#39;identifier&#39;]\u003C\u002Fcode\u003E\\nin our \u003Cem\u003Efor loop\u003C\u002Fem\u003E to \u003Ccode\u003Eresult.download()\u003C\u002Fcode\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe probably want to think twice before doing that, though—downloading\\nall the files for each of the 7,029 items in the bplscas collection is a\\nlot of files. Fortunately, the download function in the\\n\u003Ccode\u003Einternetarchive\u003C\u002Fcode\u003E module also allows you to \u003Ca href=\\\"http:\u002F\u002Finternetarchive.readthedocs.io\u002Fen\u002Flatest\u002Fquickstart.html#downloading\\\"\u003Edownload specific files\\nassociated with an item\u003C\u002Fa\u003E. If we had only wanted to download the MARC XML record associated with a particular item, we could have instead done this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eitem = internetarchive.get_item(&#39;lettertowilliaml00doug&#39;)\\nmarc = item.get_file(&#39;lettertowilliaml00doug_marc.xml&#39;)\\nmarc.download()\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EBecause Internet Archive \u003Ca href=\\\"https:\u002F\u002Farchive.org\u002Fabout\u002Ffaqs.php#140\\\"\u003Eitem files are named according to specific\\nrules\u003C\u002Fa\u003E, we can also figure out the name of the MARC file we want just\\nby knowing the item&#39;s unique identifier. And armed with that knowledge,\\nwe can proceed to …\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"download-all-the-marc-xml-files-from-a-collection\\\"\u003EDownload All the MARC XML Files from a Collection\u003C\u002Fh2\u003E\\n\u003Cp\u003EFor the next section, we&#39;re going to move from using the Python shell to\\nwriting a Python script that downloads the MARC record from each item in\\nthe BPL Antislavery Collection. Try putting this script into Komodo or\\nyour preferred text editor:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#!\u002Fusr\u002Fbin\u002Fpython\\n\\nimport internetarchive\\n\\nsearch = internetarchive.search_items(&#39;collection:bplscas&#39;)\\n\\nfor result in search:\\n    itemid = result[&#39;identifier&#39;]\\n    item = internetarchive.get_item(itemid)\\n    marc = item.get_file(itemid + &#39;_marc.xml&#39;)\\n    marc.download()\\n    print &quot;Downloading &quot; + itemid + &quot; ...&quot;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis script looks a lot like the experiments we have done above with the\\nFrederick Douglass letter, but since we want to download the MARC record\\nfor each item returned by our collection search, we are using an itemid\\nvariable to account for the fact that the identifier and filename will\\nbe different for each result.\u003C\u002Fp\u003E\\n\u003Cp\u003EBefore running this script (which, I should note, is going to download\\nthousands of small XML files to your computer), make a directory where\\nyou want those MARC records to be stored and place the above script in\\nthat directory. Then run the script from within the directory so that\\nthe files will be downloaded in an easy-to-find place.\u003C\u002Fp\u003E\\n\u003Cp\u003E(Note that if you receive what looks like a \u003Ccode\u003EConnectionError\u003C\u002Fcode\u003E on your\\nfirst attempt, check your Internet connection, wait a few minutes, and\\nthen try running the script again.)\u003C\u002Fp\u003E\\n\u003Cp\u003EIf all goes well, when you run your script, you should see the program\\nbegin to print out status updates telling you that it is downloading\\nMARC records. But allowing the script to run its full course will\\nprobably take a couple of hours, so let&#39;s stop the script and look a\\nlittle more closely at ways to improve it. Pressing \u003Ccode\u003ECtrl-C\u003C\u002Fcode\u003E while in\\nyour terminal window should make the script stop.\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"building-error-reporting-into-the-script\\\"\u003EBuilding Error Reporting into the Script\u003C\u002Fh2\u003E\\n\u003Cp\u003ESince downloading all of these records will take some time, we are\\nprobably going to want to walk away from our computer for a while. But\\nthe chances are high that during those two hours, something could go\\nwrong that would prevent our script from working.\u003C\u002Fp\u003E\\n\u003Cp\u003ELet&#39;s say, for example, that we had forgotten that we already downloaded\\nan individual file into this directory. Or maybe your computer briefly\\nloses its Internet connection, or some sort of outage happens on the\\nInternet Archive server that prevents the script from getting the file\\nit wants.\u003C\u002Fp\u003E\\n\u003Cp\u003EIn those and other error cases, Python will raise an &quot;exception&quot; telling\\nyou what the problem is. Unfortunately, an exception will also crash\\nyour script instead of continuing on to the next item.\u003C\u002Fp\u003E\\n\u003Cp\u003ETo prevent this, we can use what&#39;s called a \u003Cem\u003Etry statement\u003C\u002Fem\u003E in Python,\\nwhich does exactly what it sounds like. The statement will try to\\nexecute a certain snippet of code until it hits an exception, in which\\ncase you can give it some other code to execute instead. You can read\\nmore about \u003Ca href=\\\"http:\u002F\u002Fdocs.python.org\u002F2\u002Ftutorial\u002Ferrors.html#handling-exceptions\\\"\u003Ehandling exceptions\u003C\u002Fa\u003E in the Python documentation, but for\\nnow let&#39;s just update our above script so that it looks like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#!\u002Fusr\u002Fbin\u002Fpython\\n\\nimport internetarchive\\nimport time\\n\\nerror_log = open(&#39;bpl-marcs-errors.log&#39;, &#39;a&#39;)\\n\\nsearch = internetarchive.search_items(&#39;collection:bplscas&#39;)\\n\\nfor result in search:\\n    itemid = result[&#39;identifier&#39;]\\n    item = internetarchive.get_item(itemid)\\n    marc = item.get_file(itemid + &#39;_marc.xml&#39;)\\n    try:\\n        marc.download()\\n    except Exception as e:\\n        error_log.write(&#39;Could not download &#39; + itemid + &#39; because of error: %s\\\\n&#39; % e)\\n        print &quot;There was an error; writing to log.&quot;\\n    else:\\n        print &quot;Downloading &quot; + itemid + &quot; ...&quot;\\n        time.sleep(1)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe main thing we&#39;ve added here, after our module import statements, is\\na line that opens a text file called \u003Ccode\u003Ebpl-marcs-errors.log\u003C\u002Fcode\u003E and prepares\\nit to have text appended to it. We are going to use this file to log\\nexceptions that the script raises. The \u003Cem\u003Etry statement\u003C\u002Fem\u003E that we have added\\nto our \u003Cem\u003Efor loop\u003C\u002Fem\u003E will attempt to download the MARC record. If it can&#39;t,\\nit will write a descriptive statement about what went wrong to our log\\nfile. That way we can go back to the file later and identify which items\\nwe will need to try to download again. If the try clause succeeds and\\ncan download the record, then the script will execute the code in the\\n\u003Cem\u003Eelse\u003C\u002Fem\u003E clause.\u003C\u002Fp\u003E\\n\u003Cp\u003EOne other thing we have added, upon successful download, is this line:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Etime.sleep(1)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis line uses the \u003Ccode\u003Etime\u003C\u002Fcode\u003E module that we are now importing at the\\nbeginning to tell our script to pause for one second before proceeding,\\nwhich is basically just a way for us to be nice to Internet Archive&#39;s\\nservers by not clobbering them every millisecond or so with a request.\u003C\u002Fp\u003E\\n\u003Cp\u003ETry updating your script to look like the above lines, and run it again\\nin the directory where you want to store your MARC files. Don&#39;t be\\nsurprised if you immediately encounter a string of error messages; that\\nmeans the script is doing what it&#39;s supposed to do! Calmly go into your\\ntext editor, while leaving the script running, and open the\\n\u003Ccode\u003Ebpl-marcs-errors.log\u003C\u002Fcode\u003E to see what exceptions have been recorded there.\\nYou&#39;ll probably see that the script raised the exception &quot;File already\\nexists&quot; for each of the files that you had already downloaded when\\nrunning our earlier, shorter program.\u003C\u002Fp\u003E\\n\u003Cp\u003EIf you leave the program running for a little while, the script will\\neventually get to items that you have not already downloaded and resume\\ncollecting your MARCs!\u003C\u002Fp\u003E\\n\u003Ch2 id=\\\"scraping-information-from-a-marc-record\\\"\u003EScraping Information from a MARC Record\u003C\u002Fh2\u003E\\n\u003Cp\u003EOnce your download script has completed, you should find yourself in the\\npossession of nearly 7,000 detailed MARC XML records about items in the\\nAnti-Slavery Collection (or whichever other collection you may have\\ndownloaded instead; the methods above should work on any collection\\nwhose items have MARC files attached to them).\u003C\u002Fp\u003E\\n\u003Cp\u003ENow what?\u003C\u002Fp\u003E\\n\u003Cp\u003EThe next step depends on what sort of questions about the collection you\\nwant to answer. The MARC formatting language captures a wealth of data\\nabout an item, as you can see if you return to \u003Ca href=\\\"http:\u002F\u002Farchive.org\u002Fdownload\u002Flettertowilliaml00doug\u002Flettertowilliaml00doug_marc.xml\\\"\u003Ethe MARC XML record for\\nthe Frederick Douglass letter\u003C\u002Fa\u003E mentioned at the outset.\u003C\u002Fp\u003E\\n\u003Cp\u003ENotice, for example, that the Douglass letter contains information about\\nthe place where the letter was written in the \u003Cem\u003Edatafield\u003C\u002Fem\u003E that is tagged\\n\u003Cem\u003E260,\u003C\u002Fem\u003E inside the subfield coded \u003Cem\u003Ea.\u003C\u002Fem\u003E The person who prepared this MARC\\nrecord knew to put place information in that specific field because of\\n\u003Ca href=\\\"http:\u002F\u002Fwww.loc.gov\u002Fmarc\u002Fbibliographic\u002Fbd260.html\\\"\u003Erules specified for the 260 datafield\u003C\u002Fa\u003E by the \u003Ca href=\\\"http:\u002F\u002Fwww.loc.gov\u002Fmarc\u002F\\\"\u003EMARC standards\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EThat means that it should be possible for us to look inside all of the\\nMARC records we have downloaded, grab the information inside of\\ndatafield \u003Cem\u003E260,\u003C\u002Fem\u003E subfield \u003Cem\u003Ea,\u003C\u002Fem\u003E and make a list of every place name where\\nitems in the collection were published.\u003C\u002Fp\u003E\\n\u003Cp\u003ETo do this, we&#39;ll use the other helpful Python module that we downloaded\\nwith \u003Ccode\u003Epip\u003C\u002Fcode\u003E at the beginning: \u003Ca href=\\\"https:\u002F\u002Fgithub.com\u002Fedsu\u002Fpymarc\\\"\u003Epymarc\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EThat module makes it easy to get information out of subfields. Assuming\\nthat we have a MARC record prepared for parsing by the module assigned\\nto the variable record, we could get the information about publication\\nplace names this way:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eplace_of_pub = record[&#39;260&#39;][&#39;a&#39;]\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThe documentation for \u003Ccode\u003Epymarc\u003C\u002Fcode\u003E is a little less complete than that for\\nthe Internet Archive, especially when it comes to parsing XML records.\\nBut a little rooting around in the source code for the module reveals\\nsome \u003Ca href=\\\"https:\u002F\u002Fgithub.com\u002Fedsu\u002Fpymarc\u002Fblob\u002Fmaster\u002Fpymarc\u002Fmarcxml.py\\\"\u003Efunctions that it provides for working with MARC XML records\u003C\u002Fa\u003E.\\nOne of these, called \u003Ccode\u003Emap_xml()\u003C\u002Fcode\u003E is described this way:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Edef map_xml(function, *files):\\n    &quot;&quot;&quot;\\n    map a function onto the file, so that for each record that is\\n    parsed the function will get called with the extracted record\\n\\n    def do_it(r):\\n    print r\\n\\n    map_xml(do_it, &#39;marc.xml&#39;)\\n    &quot;&quot;&quot;\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ETranslated into plain English, this function means that we can take an\\nXML file containing MARC data (like the nearly 7,000 we now have on our\\ncomputer), pass it to the \u003Ccode\u003Emap_xml\u003C\u002Fcode\u003E function in the \u003Ccode\u003Epymarc\u003C\u002Fcode\u003E module, and\\nthen specify another function (that we will write) telling our program\\nwhat to do with the MARC data retrieved from the XML file. In rough\\noutline, our code will look something like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003Eimport pymarc\\n\\ndef get_place_of_pub(record):\\n    place_of_pub = record[&#39;260&#39;][&#39;a&#39;]\\n    print place_of_pub\\n\\npymarc.map_xml(get_place_of_pub, &#39;lettertowilliaml00doug_marc.xml&#39;)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003ETry saving that code to a script and running it from a directory where\\nyou already have the Douglass letter XML saved. If all goes well, the\\nscript should spit out this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003EBelfast, [Northern Ireland],\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EVoila! Of course, this script would be much more useful if we scraped\\nthe place of publication from every letter in our collection of MARC\\nrecords. Putting together what we&#39;ve learned from earlier in the lesson,\\nwe can do that with a script that looks like this:\u003C\u002Fp\u003E\\n\u003Cpre\u003E\u003Ccode class=\\\"language-python\\\"\u003E#!\u002Fusr\u002Fbin\u002Fpython\\n\\nimport os\\nimport pymarc\\n\\npath = &#39;\u002Fpath\u002Fto\u002Fdir\u002Fwith\u002Fxmlfiles\u002F&#39;\\n\\ndef get_place_of_pub(record):\\n    try:\\n        place_of_pub = record[&#39;260&#39;][&#39;a&#39;]\\n        print place_of_pub\\n    except Exception as e:\\n        print e\\n\\nfor file in os.listdir(path):\\n    if file.endswith(&#39;.xml&#39;):\\n        pymarc.map_xml(get_place_of_pub, path + file)\\n\u003C\u002Fcode\u003E\u003C\u002Fpre\u003E\\n\u003Cp\u003EThis script modifies our above code in several ways. First, it uses a\\n\u003Cem\u003Efor loop\u003C\u002Fem\u003E to iterate over each file in our directory. In place of the\\n\u003Ccode\u003Einternetarchive\u003C\u002Fcode\u003E search results that we iterated over in our first part\\nof this lesson, we iterate over the files returned by \u003Ccode\u003Eos.listdir(path)\u003C\u002Fcode\u003E\\nwhich uses the built-in Python module \u003Ccode\u003Eos\u003C\u002Fcode\u003E to list the contents of the\\ndirectory specified in the path variable, which you will need to modify\\nso that it matches the directory where you have downloaded all of your\\nMARC files.\u003C\u002Fp\u003E\\n\u003Cp\u003EWe have also added some error handling to our \u003Ccode\u003Eget_place_of_pub()\u003C\u002Fcode\u003E\\nfunction to account for the fact that some records may (for whatever\\nreason) not contain the information we are looking for. The function\\nwill try to print the place of publication, but if this raises an\\nException, it will print out the information returned by the Exception\\ninstead. In this case, if the try statement failed, the exception will\\nprobably print \u003Ccode\u003ENone\u003C\u002Fcode\u003E. Understanding why is a subject for another lesson\\non Python Type errors, but for now the None printout is descriptive\\nenough of what happened, so it could be useful to us.\u003C\u002Fp\u003E\\n\u003Cp\u003ETry running this script. If all goes well, your screen should fill with\\na list of the places where these letters were written. If that works,\\ntry modifying your script so that it saves the place names to a text\\nfile instead of printing them to your screen. You could then use the\\n\u003Ca href=\\\"\u002Flessons\u002Fcounting-frequencies\\\"\u003ECounting Frequencies\u003C\u002Fa\u003E lesson to figure out which place names are most\\ncommon in the collection. You could work with the place names to find\\ncoordinates that could be placed on a map using the \u003Ca href=\\\"\u002Flessons\u002Fgooglemaps-googleearth\\\"\u003EGoogle Maps\\nlesson\u003C\u002Fa\u003E.\u003C\u002Fp\u003E\\n\u003Cp\u003EOr, to get a very rough visual sense of the places where letters were\\nwritten, you could do what I&#39;ve done below and simply make a \u003Ca href=\\\"https:\u002F\u002Fweb.archive.org\u002Fweb\u002F20201202151557\u002Fhttp:\u002F\u002Fwww.wordle.net\u002F\\\"\u003EWordle\\nword cloud\u003C\u002Fa\u003E of the text file.\u003C\u002Fp\u003E\\n\u003Cp\u003E{% include figure.html filename=&quot;bpl-wordle.png&quot; caption=&quot;Wordle wordcloud of places of publication for abolitionist letters&quot; %}\u003C\u002Fp\u003E\\n\u003Cp\u003EOf course, to make such techniques useful would require more \u003Ca href=\\\"\u002Flessons\u002Fcleaning-ocrd-text-with-regular-expressions\\\"\u003Ecleaning\\nof your data\u003C\u002Fa\u003E. And other applications of this lesson may prove more\\nuseful. For example, working with the MARC data fields for personal\\nnames, you could create a network of correspondents. Or you could\\nanalyze which subjects are common in the MARC records. Now that you have\\nthe MARC records downloaded and can use \u003Ccode\u003Epymarc\u003C\u002Fcode\u003E to extract information\\nfrom the fields, the possibilities can multiply rapidly!\u003C\u002Fp\u003E\\n\"}"}</script></div>
+</div>
 	</body>
 </html>

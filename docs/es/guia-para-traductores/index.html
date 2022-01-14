@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="stylesheet" href="/_app/assets/pages/_lang_/_lessons_/index.svelte-101c72ea.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/index.svelte-5832da1b.js")
+					],
+					url: new URL("sveltekit://prerender/es/guia-para-traductores"),
+					params: {lang:"es",lessons:"guia-para-traductores"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian en español</h2>
+	<a class="nav-link" href="/es/lecciones">Lecciones</a><a class="nav-link" href="/es/acerca-de">Acerca</a><a class="nav-link" href="/es/investigacion">Investigación</a><a class="nav-link" href="/es/apoyanos">Apóyanos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link active" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<!-- HTML_TAG_START --><h1>Guía para traductores</h1>
+<img src="/images/author-sm.png" class="garnish rounded float-left" alt="{{ site.data.snippets.write-a-lesson-image-alt[page.lang] }}"/>
+<h2 class="noclear">Paso 1: <a href="#paso-1-proponer-una-nueva-traduccion">Proponer una nueva traducción </a></h2>
+<h2 class="noclear">Paso 2: <a href="#paso-2-escribir-y-dar-formato-a-una-nueva-traduccion">Escribir y dar formato a una nueva traducción</a></h2>
+<h2 class="noclear">Paso 3: <a href="#paso-3-enviar-una-nueva-traduccion">Enviar una nueva traducción</a></h2>
+<p>Estas directrices han sido desarrolladas para ayudarte a entender el proceso de traducción de un tutorial para <em>Programming Historian</em> en Español. Incluyen detalles prácticos sobre el proceso de traducción de un tutorial, así como indicaciones sobre el flujo de trabajo y el proceso de revisión entre pares. Si en algún momento hay algo que no te queda claro, por favor envía un correo electrónico a {% include managing-editor.html lang=page.lang %}.</p>
+<h2>Paso 1: Proponer una nueva traducción</h2>
+<p>Si quieres traducir una lección, por favor, revisa la lista de <a href="https://github.com/programminghistorian/ph-submissions/blob/gh-pages/es/lista-de-traducciones.md">traducciones pendientes</a> y ponte en contacto con {% include managing-editor.html lang=page.lang %}. Buscamos traducciones rigurosas, de lectura amena y que, además, tengan en cuenta el contexto de América Latina y España, así como los recursos que se encuentra disponibles actualmente en lengua española.</p>
+<p>Una vez aceptada tu propuesta y para asegurar la publicación oportuna, te pedimos que entregues tu traducción al cabo de 90 días tras la aprobación. Durante este período de 90 días, tu punto de contacto será la jefa de redacción o el editor o editora que haya sido asignada para acompañarte durante el proceso.</p>
+<h2>Paso 2: Escribir y formatear el tutorial</h2>
+<p>Esta guía de estilo define un conjunto de normas para ser utilizadas al traducir lecciones al español para <em>Programming Historian</em>. Al seguir estos lineamientos nos ayudas a asegurar que el contenido sea consistente y accesible.</p>
+<p>La guía contempla tres secciones, que deben ser leídas antes y después de la escritura:</p>
+<ul>
+<li>A. Estilo y audiencia</li>
+<li>B. Pautas específicas de escritura</li>
+<li>C. Guía de formato</li>
+</ul>
+<h2>A. Estilo y audiencia</h2>
+<p>Esta primera sección se ocupa de cuestiones de estilo generales que te ayudarán a tomar decisiones que satisfagan las necesidades de nuestra audiencia y editores. Incluimos información básica sobre el estilo y el tono, el acceso abierto y los valores del código abierto, información sobre la escritura para una audiencia global, la escritura sostenible y la toma de decisiones inteligentes sobre los datos utilizados en las lecciones. Lee esta sección antes de traducir la lección. Vuelve a leerla antes de enviarla para asegurarte de que el tutorial cumple con estos requisitos.</p>
+<h3>Lenguaje y estilo</h3>
+<ul>
+<li>Mantén un tono formal, pero accesible.</li>
+<li>Habla con tu lector en segunda persona singular (tú).</li>
+<li>Procura escribir de un modo comprensible y adecuado para hablantes de español de distintas zonas geográficas.</li>
+<li>Refiérete a tu escrito como &quot;tutorial&quot; o &quot;lección&quot;, no como &quot;artículo&quot;.</li>
+</ul>
+<h3>Escribe para una audiencia global</h3>
+<p><em>Programming Historian</em> es leído por personas que viven en todo el mundo. Es por ello que debes tomar medidas para que tu traducción sea accesible para el mayor número de personas posible. Las siguientes directrices te ayudarán a enfrentar una audiencia global:</p>
+<ul>
+<li>Escribe teniendo en cuenta que la lección será leída por hispanoablantes de distintas regiones y culturas.</li>
+<li><strong>Datos:</strong> si es posible deben ser traducidos. En algunos casos, quienes traducen la lección han decidido modificarlos para adaptar la lección al español. Un caso de esto es la lección <a href="/es/lecciones/topic-modeling-y-mallet">Introducción a Topic Modeling y MALLET</a>, en que se cambió el corpus utilizado en la lección original por uno en español. Esto fue posible ya que no afectaba mayormente el texto del tutorial. En otros casos, se ha preferido traducir los datos (por ejemplo, traducir los nombres de variables y observaciones de un dataframe).</li>
+<li><strong>Términos técnicos:</strong> siempre deben estar vinculados a <a href="https://es.wikipedia.org/">Wikipedia</a>, a un diccionario fiable o a un sitio web sostenible, en primera instancia. Un término técnico es cualquier palabra que una persona en la calle puede no conocer o entender. Si la lección original tiene vínculos en inglés, busca un equivalente en español para incluir en la traducción.</li>
+<li><strong>Referencias culturales</strong>: es probable que la lección contenga enlaces para dar contexto a las referencias culturales. Busca versiones en español para incluir en la lección traducida. Si hay referencias que consideres que necesitan una explicación adicional para el público hispanoparlante, inclúyela como nota.</li>
+<li><strong>Lenguaje racial y étnico</strong>: use la terminología racial cuidadosamente y con especificidad. Los términos históricos que ya no se utilizan deben usarse solo en su contexto histórico y solo cuando sea necesario. Usa los términos raciales como adjetivos y no como sustantivos: personas blancas en lugar de &quot;blancos&quot;, una mujer asiática en lugar de &quot;una asiática&quot;. Ten en cuenta que los términos pueden entenderse de manera diferente en distintos países y que lo que has aprendido como un uso correcto o sensible puede ser culturalmente específico de tu país (por ejemplo, no todas las personas de ascendencia africana son &quot;afroamericanos&quot;. Algunos de ellos son africanos, o negros británicos, o caribeños, etc.). Asimismo, las personas del Reino Unido entenderán el término &quot;asiático&quot; (India, Pakistán, Bangladesh) de manera diferente a las de América del Norte (por ejemplo, China, Japón, Vietnam, Tailandia).</li>
+<li><strong>Expresiones idiomáticas</strong>: muchas expresiones no son traducibles de manera literal. En esos casos, propón una traducción que permita entender el sentido de la expresión original. Por ejemplo: <em>it’s raining cats and dogs</em> &gt; <em>está lloviendo a cántaros</em>.</li>
+<li><strong>Repetición léxica en traducciones desde el inglés</strong>: en español tenemos la flexibilidad de poder omitir el sujeto, ya que por contexto (marcas de persona, género y número) se suele entender a qué nos estamos refiriendo. Es importar tener esto en cuenta en traducciones desde el inglés para evitar que el texto sea repetitivo. Por ejemplo, <em>The first argument is the name of the data frame. The second and subsequent arguments are the expressions that filter the data frame.</em> &gt; <em>El primer argumento es el nombre del data frame. El segundo y los subsiguientes son las expresiones para filtrarlo</em>.</li>
+<li><strong>Modos y tiempos verbales en traducciones desde el inglés</strong>: el español tiene mayor variedad de conjugaciones verbales que el inglés. Al traducir, por lo tanto, se debe priorizar la forma verbal que sea mejor para expresar el sentido del fragmento en español, no la que parezca ser literal del inglés. Es importante tener en cuenta esto en particular con el subjuntivo en español. Por ejemplo: <em>This doesn't imply that you have a good model and it certainly doesn't imply that the model is &quot;true&quot;</em> &gt; <em>Esto no implica que</em> tengas <em>un buen modelo y, ciertamente, no implica que el modelo</em> sea <em>&quot;verdadero&quot;</em>.</li>
+</ul>
+<h2>B. Pautas específicas de escritura</h2>
+<p>En esta segunda sección se abordan cuestiones más específicas del estilo de escritura, como qué palabras utilizar, cómo usar la puntuación o qué formato utilizar para fechas y números. Lee esta sección antes de hacer la traducción, ya que este tipo de lineamientos no son iguales en todos los idiomas, por eso es importante que los tengas en cuenta. Vuelve a leerlos al terminar para chequear que tu texto se ajusta a ellos.</p>
+<h3>Fechas y hora</h3>
+<ul>
+<li>Para siglos, utiliza números romanos. Evita frases centradas en lo nacional, como &quot;el largo siglo XVIII&quot;, que tienen un significado específico para los especialistas británicos del siglo XVIII, pero para nadie más.</li>
+<li>Para décadas escribe &quot;los años cincuenta&quot; o &quot;los cincuenta&quot; (no &quot;los años 50's&quot; o &quot;la década de los 50s&quot;).</li>
+<li>Comprime las secuencias de fecha así: 1816-17, 1856-9, 1854-64.</li>
+<li>Para fechas escritas en forma numérica utiliza el formato AAAA-MM-DD, conforme al estándar ISO 8601:2004. Esto evita la ambigüedad.</li>
+<li>Utiliza a. C. (‘antes de Cristo’) o d. C. (‘después de Cristo’): 211 a. C., 123 d. C.</li>
+<li>Para horas: 1 a.m., 6:30 p.m. Es preferible diez de la noche o 10 p.m. antes que 10 de la noche.</li>
+</ul>
+<h3>Números</h3>
+<ul>
+<li>Se escriben con palabras los números:</li>
+</ul>
+<ul>
+<li>que pueden expresarse en una sola palabra (del cero al veintinueve, las decenas como treinta, cuarenta, etc.) y las centenas (cien, doscientos, etc.)</li>
+<li>los números redondos que pueden expresarse en dos palabras (quinientos mil, etc)</li>
+<li>los números que se expresan en dos palabras unidas por una conjunción y hasta noventa y nueve.
+En caso de que tengas dos referencias numéricas que supongan distintos formatos, elige uno solo para ser consistente (cinco manzanas y cien naranjas; 5 manzanas y 110 naranjas).</li>
+</ul>
+<ul>
+<li>Al escribir números de más de cuatro cifras sepáralas en grupos de tres dígitos desde la derecha dejando un espacio (no puntos ni comas). Por ejemplo, 32 904, no 32904, 32.904 o 32.904. Excepciones: años, páginas, versos, portales de vías urbanas, apartados de correos, números de artículos legales, decretos o leyes.</li>
+<li>Para separar la parte entera de la decimal debe usarse la coma (1,5). Esto no aplica para código escrito en algún lenguaje de programación, ya que muchas veces estos se rigen por el criterio para la lengua inglesa (que usa punto como separador de coma).</li>
+<li>Usa numerales para hacer referencia a versiones (versión 5 o v.5).</li>
+<li>Al referirte a porcentajes, utiliza el símbolo % con numerales y la expresión <em>por ciento</em> cuando escribes el cifra con palabras (por ejemplo, <em>5%</em> o <em>cinco por ciento</em>. No <em>5 porciento</em> o <em>cinco %</em>). En porcentajes inferiores a 1, agrega un cero antes de la coma decimal (0,05%)</li>
+<li>Utiliza el <a href="https://davidhamann.de/2017/06/12/latex-cheat-sheet/">formato LaTeX para fórmulas matemáticas</a>.</li>
+<li>Para unidades de medida utiliza el sistema métrico.</li>
+</ul>
+<h3>Listas</h3>
+<p>Típicamente, usamos listas numeradas y listas con viñetas. Los elementos de la lista comienzan con mayúscula. Los elementos de la lista deben ser tratados como elementos separados y no deben ser encadenados con puntuación o conjunciones.</p>
+<p>Sin estilo apropiado:</p>
+<ul>
+<li>Acá hay un ítem y</li>
+<li>acá hay otro ítem; y</li>
+<li>acá hay un ítem final.</li>
+</ul>
+<p>Con estilo:</p>
+<ul>
+<li>Acá hay un ítem</li>
+<li>Acá hay otro ítem</li>
+<li>Acá está el último ítem</li>
+</ul>
+<h3>Puntuación</h3>
+<ul>
+<li><strong>Abreviaturas, acrónimos y siglas</strong>: escribe la palabra completa la primera vez que la utilizas, por ejemplo, «Humanidades Digitales (HD)». Las siglas son invariables cuando se enunician en plural («las ONG») y adoptan el género de la palabra que constituye el núcleo de la expresión abreviada, que normalmente ocupa el primer lugar en la denominación: el FMI, por el «Fondo» Monetario Internacional; la OEA, por la «Organización» de Estados Americanos. Las siglas se escriben sin puntos o espacios en blanco como separación: RAE, OEA, etc. (no R.A.E. u O E A). Normalmente se escriben en mayúscula todas las letras que componen una sigla (OCDE, APA, ISO) y, en ese caso, no llevan nunca tilde, incluso en casos en que la norma ortográfica indicaría su uso (como en CIA).</li>
+<li><strong>Paréntesis</strong>: se usa para insertar en un enunciado una información complementaria o aclaratoria, ej: El dijo: «Cuando lo acaben (el túnel) revolucionará la forma de viajar» or «Ella dijo goodbye (adios)». Ubica el punto fuera del paréntesis de cierre si lo que está dentro de él no es una oración completa (como este caso). (Una oración independiente, en cambio, lleva el punto final antes del paréntesis de cierre.)</li>
+<li><strong>Dos puntos</strong>: se utilizan para introducir listas, ejemplificaciones, aclaraciones, citas textuales, etc., como en estos ejemplos:
+<ul>
+<li>El comité recomienda: ampliar las horas de licencia hasta la medianoche; permitir a los niños en los locales con licencia; relajar los controles de planificación en los nuevos establecimientos públicos.</li>
+<li>Después de dos puntos va minúscula: así es como lo hacemos.</li>
+</ul>
+</li>
+<li><strong>Raya</strong>: para encerrar aclaraciones o incisos.</li>
+<li><strong>Guión</strong>: se usa como signo de unión entre palabras y como signo de división de palabras a final de línea.</li>
+<li><strong>Puntos suspensivos</strong>: van pegados a la palabra que los precede y separados de la que los sigue. Cuando se utilizan para condensar una cita directa, van entre paréntesis o corchetes.</li>
+<li><strong>Signos de exclamación</strong>: se utilizan al comienzo y al final de la exclamación.</li>
+<li><strong>Punto</strong>: se escribe punto después de las abreviaturas, pero no de las siglas o acrónimos.</li>
+<li><strong>Comillas angulares</strong>: en los textos impresos, se recomienda utilizar en primera instancia las comillas angulares « », (ejemplo: «Antonio me dijo: “Vaya ‘cacharro’ que se ha comprado Julián”»). Se reservan los otros tipos para cuando se debe entrecomiilar un texto ya entrecomillado.</li>
+</ul>
+<h3>Mayúsculas</h3>
+<p>La pauta es usarlas con moderación en la prosa corriente. Reglas específicas:</p>
+<ul>
+<li><strong>Títulos</strong>: los encabezados y títulos de libros llevan mayúscula en la primera letra del título: »Preparando los datos para el análisis»; <em>El orgullo y la pasión</em>.</li>
+<li><strong>Siempre con mayúscula inicial</strong>:
+<ul>
+<li><strong>Nombre propios</strong>: William J. Turkel – a menos que la persona elija deletrear su nombre de otra manera (por ejemplo &quot;bell hooks&quot;).</li>
+<li><strong>Organizaciones, organismos, entidades, partidos políticos, etc</strong>: Museo de Arte Moderno, Casa de Cervantes, Biblioteca Nacional, Agencia Nacional de Tierras, Naciones Unidades. Las palabras de función dentro del nombre no llevan mayúsculas en estos casos.</li>
+<li><strong>Días festivos y festivales</strong>: Diwali, Hanukkah, Eid-Ul-Adha, Día de los Muertos.</li>
+</ul>
+</li>
+<li><strong>A veces o solo parcialmente en mayúsculas</strong>:
+<ul>
+<li><strong>Lugares</strong>: capitales de países, regiones, zonas reconocibles (por ejemplo, el Oriente Medio, Senegal). Minúsculas para los puntos cardinales, a excepción de cuando son utilizados como parte del nombre de un lugar (para llegar al Polo Norte, dirigirse al norte). Otros ejemplos son: el noreste de Kenya, el sur del Brasil, el oeste, el oeste del Canadá, el extremo oriental, el Asia sudoriental, América Central, América Latina.</li>
+<li><strong>Eventos históricos</strong>: mayúscula inicial, como en Primera Guerra Mundial, Segunda Guerra Mundial; Guerra de Crimea/Boer/Vietnam/del Golfo; Guerra de los Cien Años.</li>
+<li><strong>Religión</strong>: minúscula, como en anglicano/a, bautista, budista, católico/a, cristiano/a, hindú, metodista, musulmán/a, protestante, católico/a romano/a, sikh, y también para evangélicos/as, carismáticos/as, ateos/as.</li>
+<li><strong>Disciplinas</strong>: Se escriben con minúscula, salvo cuando hacen referencia a nombres de asignaturas, carreras, departamentos, etc.</li>
+<li><strong>Libros sagrados (selección)</strong>:
+<ul>
+<li><strong>Biblia</strong>: mayúscula si se refiere al Antiguo o al Nuevo testamento.</li>
+<li><strong>Budismo</strong>: sutras (sermones) y abhidhamma (análisis e interpretación). Para el budismo tibetano tambien hay libros tántricos y Libro tibetano de los muertos.</li>
+<li><strong>Hinduismo</strong>: los Śruti: Vedas, Samhitas, Brahmanas, Aranyakas, Upanishads; los Vedāngas, épica Hindú, sutras, shastras, textos filosóficos, los Puranas, literatura kāvya, los Bhasyas, muchos nibandhas.</li>
+<li><strong>Judaismo</strong>: el Tanakh (Torá, Nevi'im, Ketuvim), el Talmud (Mishná, Guemará)</li>
+<li><strong>Corán</strong>: textos que incluyen los hadiz, el Tawrat (Torá), Zabur (posiblemente salmos), Injil (1.2 billones).</li>
+<li><strong>Sikh</strong>: Adi Granth (comúnmente llamado el Sri Guru Granth Sahib Ji), el Dasam Granth, los Varan Bhai Gurdas, los textos del Bhai Nand Lal.</li>
+</ul>
+</li>
+<li><strong>Trabajos</strong>: en minúscula – presidente Macron, Emmanuel Macron, presidente de Francia. El ministro de Hacienda. El Papa se escribe con mayúscula y la reina en minúscula.</li>
+<li><strong>Organizaciones e instituciones</strong>: el gobierno (en minúscula en toda referencia), el gabinete (minúscula en toda referencia), la Iglesia de Jesucristo de los Santos de los Últimos Días (&quot;la iglesia&quot;), Ministerio de Educación (&quot;el ministerio&quot;), Universidad Católica (&quot;la universidad&quot;), el Tribunal de Apelación (&quot;tribunal de apelación&quot; o &quot;el tribunal&quot;).</li>
+<li><strong>Universidades e institutos</strong>: mayúsculas para la institución y para departamentos (&quot;Universidad Autónoma de México&quot;, &quot;Departamento de Historia&quot;).</li>
+</ul>
+</li>
+<li><strong>Siempre en minúscula</strong>:
+<ul>
+<li><strong>Días de la semana y meses</strong>: martes, diciembre.</li>
+<li><strong>Estaciones</strong>: primavera, verano, otoño, invierno.</li>
+<li><strong>Tipos de cambio</strong>: peso, sol, euro, franco, marco, dong, etc.</li>
+</ul>
+</li>
+</ul>
+<h3>Casos especiales y otros elementos a tener en cuenta</h3>
+<ul>
+<li>La palabra <em>solo</em> y los demostrativos no se tildan.</li>
+<li>Las voces latinas terminadas en <em>t</em> o <em>m</em> forman el plural en español agregando una ese. Se desaconseja usar, como sucede por influjo del inglés, el plural latino: el plural de <em>currículum</em> es <em>currículums</em>, no <em>currícula</em>). En la misma línea, la palabra <em>corpus</em> es invariable en plural, por lo que no debe utilizarse <em>corpora</em> como plural.</li>
+<li>La expresión correcta es <em>en relación con</em> o <em>con relación a</em>, no <em>en relación a</em>.</li>
+<li>La conjunción es <em>sobre la base de</em> o <em>con base en</em>, no <em>en base a</em>.</li>
+</ul>
+<h3>Referencias</h3>
+<ul>
+<li>Si existe una versión en español de alguna de las referencias utilizadas en la lección, incluye esa.</li>
+<li>Asegúrate de que las frases vinculadas tengan un significado definido. No enlaces términos que son significativos solo para usuarios videntes como &quot;haz clic aquí&quot;.</li>
+<li>Toda la literatura tradicional y académica debe incluirse como nota al final, en lugar de como enlace.</li>
+<li>Los superíndices de las notas finales deben ir dentro de la puntuación final: así². No afuera: así.²</li>
+<li>Utiliza el sistema de &quot;Notas y Bibliografía&quot; que se encuentra en el <a href="https://uc3m.libguides.com/guias_tematicas/citas_bibliograficas/chicago">Manual Chicago Manual 17a edición</a> para las notas al final.</li>
+<li>Cuando se mencione por primera vez una obra publicada, incluye el nombre del autor (incluyendo el primer nombre). Por ejemplo, «Puedes encontrar más información en <em>The Elements of Typographic Style</em> de Robert Bringhurst» o «Para más información, consulta <em>The Elements of Typographic Style</em> de Robert Bringhurt». En las referencias posteriores, usa solo el título del libro. Los nombres de los autores pueden ser acortados a apellidos solo a partir de su segunda mención.</li>
+<li>Las notas finales no pueden contener solo una URL.
+<ul>
+<li>(Correcto): Grove, John. &quot;Calhoun and Conservative Reform.&quot; <em>American Political Thought</em> 4, no. 2 (2015): 203–27. https://doi.org/10.1086/680389.</li>
+<li>(Incorrecto): https://doi.org/10.1086/680389.</li>
+</ul>
+</li>
+</ul>
+<h3>Lenguaje inclusivo y no discriminatorio</h3>
+<p>En Programming Historian nos comprometemos a publicar tutoriales que no reproduzcan lenguaje sexista y discriminador. Te pedimos que tengas en cuenta las siguientes recomendaciones:</p>
+<ul>
+<li>Al referirte a personas o grupos de personas que presentan algún tipo de discapacidad, evita los binarismos normal/anormal, capaz/incapaz y términos como &quot;capacidades diferentes&quot; e &quot;incapacidad&quot;.</li>
+<li>No te refieras a pueblos y comunidades indígenas con términos que son considerados despectivos o que no son los que sus miembros prefieren utilizar. Por ejemplo, prefiere inuit frente a &quot;esquimal&quot;, o mapuche frente a &quot;araucano&quot;.</li>
+<li>Cuando sea posible, sustituye el masculino genérico por un sustantivo que denomine sin una carga de género al colectivo de personas, a la profesión, a la institución o al lugar.
+Por ejemplo, &quot;la audiencia&quot;, en vez de &quot;los lectores&quot;; &quot;el parlamento&quot; en vez de &quot; los parlamentarios&quot;.</li>
+<li>Haz cambios en la redacción que eviten tener que utilizar un sustantivo o adjetivo con flexión de género. Por ejemplo, &quot;este punto ha sido muy importante para los historiadores&quot; podría reescribirse como &quot;este punto ha sido muy importante en una disciplina como la historia&quot;.</li>
+<li>Utiliza la forma femenina cuando el referente es una mujer: la presidenta, no la presidente; la jueza, no la juez.</li>
+<li>Utiliza la palabra persona o personal más un adjetivo para referirte a un grupo y evitar así la forma masculina. Por ejemplo, en ciertos contextos &quot;los docentes&quot; puede remplazarse por &quot;el personal docente&quot;.</li>
+<li>También es posible desdoblar los sustantivos y adjetivos en en femenino y masculino (por ejemplo, &quot;los autores y autoras&quot;). Sin embargo, recomendamos utilizar este recurso con moderación, ya que en ocasiones su uso excesivo hace la lectura de un texto menos fluida.</li>
+</ul>
+<h2>C. Guía de formato</h2>
+<p>Esta última sección abarca cuestiones de formato para el envío de tu traducción. Lee esta sección antes y después de escribir tu borrador. Si te equivocas en alguno de estos elementos, podrás corregirlo cuando publiquemos un avance en línea de tu lección al comienzo del proceso de revisión de pares.</p>
+<h3>Escribe en Markdown</h3>
+<p>Todas las lecciones deben ser escritas en <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a>. Tu editor/a te indicará dónde puedes encontrar el archivo de la lección original para que trabajes sobre él.</p>
+<p>Markdown es un lenguaje de marcado que se crea mejor con un editor de texto. MS Word y Open Office NO son editores de texto y deben ser evitados. Recomendamos <a href="https://atom.io/">Atom</a>, <a href="https://www.barebones.com/products/textwrangler/">TextWrangler</a>, <a href="https://en.wikipedia.org/wiki/TextEdit">TextEdit</a>, <a href="https://macdown.uranusjr.com/">MacDown</a>,  <a href="https://notepad-plus-plus.org/download">Notepad++</a> o <a href="https://www.sublimetext.com/">Sublime Text</a>.
+Para una introducción sencilla a Markdown puedes ver la lección <a href="/es/lecciones/introduccion-a-markdown">Introducción a Markdown</a> o la referencia concisa <a href="https://help.github.com/es/github/writing-on-github/basic-writing-and-formatting-syntax">GitHub Guide to Markdown</a>.</p>
+<p>Tu lección debe ser guardada en formato .md. El nombre del archivo de tu lección se convierte en parte de la URL de la lección, por lo tanto, debe ser nombrado de acuerdo a las siguientes reglas:</p>
+<ul>
+<li>Un nombre corto, en minúsculas, descriptivo y que dé una clara indicación del contenido de la lección (por ejemplo, introduccion-a-markdown.md).</li>
+<li>No utilices espacios ni guiones bajos en el nombre del archivo; utiliza guiones.</li>
+<li>Utiliza un nombre de archivo rico en palabras clave que incluyan las tecnologías o métodos usados en la lección (por ejemplo, Python o Análisis de Sentimientos).</li>
+<li>No utilices caracteres especiales, como tildes o ñ.</li>
+</ul>
+<h3>Negrita, cursiva y subrayado</h3>
+<p>Para asegurar la consistencia de las lecciones, sigue las siguientes directrices de formato de texto:</p>
+<h4>Negrita</h4>
+<ul>
+<li>La negrita no se usa excepto en circunstancias excepcionales.</li>
+<li>La negrita se formatea utilizando <strong>**doble asterisco**</strong>.</li>
+</ul>
+<h4>Cursiva</h4>
+<ul>
+<li>Usa la cursiva para los títulos de libros, películas, programas de TV, pinturas, canciones, álbumes y sitios web.</li>
+<li>Nunca uses la cursiva para nombres de empresas (el sitio web <em>Facebook</em> es propiedad de Facebook).</li>
+<li>No uses la cursiva en los títulos de secciones, incluso si te estás refiriendo título de un libro.</li>
+<li>La cursiva se formatea utilizando <em>*un asterisco*</em>.</li>
+</ul>
+<h4>Subrayado</h4>
+<ul>
+<li>No se utiliza.</li>
+</ul>
+<h3>Alertas y advertencias</h3>
+<p>Si quieres incluir un aparte o una advertencia, puedes hacerlo con el siguiente código:</p>
+<pre><code>&lt;div class=&quot;alert alert-warning&quot;&gt;
+¡Asegúrate se seguir cuidadosamente las instrucciones!
+&lt;/div&gt;
+</code></pre>
+<p>Este tipo de recurso puede ser útil para advertir a la audiencia sobre posibles dificultades o resultados diferentes producto de usar un sistema operativo, herramienta o datos en español.</p>
+<h3>Figuras e imágenes</h3>
+<p>Las imágenes pueden ayudar a tu audiencia a entender los pasos de la lección, pero no deben ser usadas como decoración. Si la lección que vas a traducir tiene imágenes, verás que estas están etiquetadas secuencialmente siguiendo el patrón <code>nombre-leccion1.jpg</code>, <code>nombre-leccion2.jpg</code>, etc., y que en el texto son referidas como &quot;Figura 1&quot;, &quot;Figura 2&quot;, y así sucesivamente. Si decides incluir versiones en español de esas mismas imágenes (por ejemplo, porque tradujiste los datos o existe versión en español de la interfaz de la herramienta utilizada), estas deben seguir su propia numeración correlativa, es decir, <code>nombre-traduccion1.jpg</code>, <code>nombre-traduccion2.jpg</code>. Todas las figuras deben venir con una leyenda concisa y notas finales cuando sea apropiado. Debes tener el derecho legal para publicar cualquier imagen que incluyas.</p>
+<p>Utiliza formatos de archivos amigables para la web, como .png o .jpg, y reduce las imágenes grandes a un máximo de 840 px en el lado más largo. Esto es importante para lectores en países con velocidades de Internet más lentas.</p>
+<p>Las imágenes deben guardarse en una carpeta con el mismo nombre que el archivo .md de la lección. El editor o editora asignada a tu lección te ayudará a subir las imágenes cuando las envíes.</p>
+<p>Para insertar una imagen en tu texto, se utiliza el siguiente formato. Salvo que agregues una imagen adicional, solo correspondería traducir el pie de foto. Si agregas versiones traducidas de las imágenes existentes, no olvides cambiar el nombre del archivo con la imagen.</p>
+<p>{% raw %}</p>
+<pre><code class="language-markdown">{% include figure.html filename=&quot;NOMBRE-ARCHIVO-IMAGEN&quot; caption=&quot;PIE DE FOTO UTILIZANDO COMILLAS \&quot;ESCAPADAS\&quot;&quot; %}
+</code></pre>
+<p>{% endraw %}</p>
+<p>Ten en cuenta que las comillas internas en el pie de foto deben escaparse con una barra invertida, como en el ejemplo anterior. Es posible que las imágenes no aparezcan en las vistas previas de la lección, pero tu editor/a se asegurará de que se reproduzcan correctamente cuando esta se  publique.</p>
+<h3>Ejemplos de código</h3>
+<p>Las líneas de código deben tener un formato que las distinga claramente de la prosa:</p>
+<ul>
+<li>Las líneas de código deben tener un máximo de 80 caracteres</li>
+<li>Los bloques de código de varias líneas deben estar encerrados en tres ```comillas invertidas```</li>
+<li>El código dentro del texto (raramente usado) puede ser encerrado en una sola `comilla invertida`</li>
+</ul>
+<pre><code>El bloque de código se verá así
+</code></pre>
+<p><code> y así</code> el código dentro del texto.</p>
+<p>Sigue las mejores prácticas para escribir tu código:</p>
+<ul>
+<li><strong>Nombres de variables y funciones</strong>: los nombres de variables deben ser sustantivos (por ejemplo, &quot;nombre_coleccion&quot;) y los nombres de funciones verbos (por ejemplo, &quot;crear_archivo&quot;). Elije nombres concisos y significativos. Puedes usar el formato <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> o <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>; lo importante es que seas consistente a lo largo de la sección.</li>
+<li><strong>Comandos a editar</strong>: cuando hagas referencia a texto que quieres que el usuario remplace con su propia información, utiliza MAYÚSCULAS rodeadas de <code>tildes graves</code> (por ejemplo, `NOMBRE USUARIO ACÁ`).</li>
+<li><strong>Nombres de archivos</strong>: los nombres de archivos que solicites crear en tu lección deben estar rodeados de tildes graves cuando se mencionan en el texto y deben incluir la extensión del archivo. Elije nombres concisos y significativos. Puedes usar <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> o  <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>; lo importante es que seas consistente (por ejemplos, <code>datos.txt</code>, <code>datosLimpios.py</code>, <code>grafico_autores.png</code> etc).</li>
+<li><strong>Palabras reservadas</strong>: los términos que son parte de un lenguaje de programación deben estar formateados como <code>código</code> usando tildes graves cuando los menciones en el texto. A continuación encontrarás una lista de nombres reservados de algunos lenguajes de programación comunes:</li>
+</ul>
+<h4>JavaScript:</h4>
+<p><code>abstract</code>, <code>arguments</code>, <code>await</code>, <code>Boolean</code>, <code>break</code>, <code>byte</code>, <code>case</code>, <code>catch</code>, <code>char</code>, <code>class</code>, <code>const</code>, <code>continue</code>, <code>debugger</code>, <code>default</code>, <code>delete</code>, <code>do</code>, <code>double</code>, <code>else</code>, <code>enum</code>, <code>eval</code>, <code>export</code>, <code>extends</code>, <code>false</code>, <code>final</code>, <code>finally</code>, <code>float</code>, <code>for</code>, <code>function</code>, <code>goto</code>, <code>if</code>, <code>implements</code>, <code>import</code>, <code>in</code>, <code>instanceof</code>, <code>int</code>, <code>interface</code>, <code>let</code>, <code>long</code>, <code>native</code>, <code>new</code>, <code>null</code>, <code>package</code>, <code>private</code>, <code>protected</code>, <code>public</code>, <code>return</code>, <code>short</code>, <code>static</code>, <code>super</code>, <code>switch</code>, <code>synchronized</code>, <code>this</code>, <code>throw</code>, <code>throws</code>, <code>transient</code>, <code>true</code>, <code>try</code>, <code>typeof</code>, <code>var</code>, <code>void</code>, <code>volatile</code>, <code>while</code>, <code>with</code>, <code>yield</code>.</p>
+<h4>Python 3:</h4>
+<p><code>and</code>, <code>as</code>, <code>assert</code>, <code>break</code>, <code>class</code>, <code>continue</code>, <code>def</code>, <code>del</code>, <code>elif</code>, <code>else</code>, <code>except</code>, <code>False</code>, <code>finally</code>, <code>for</code>, <code>from</code>, <code>global</code>, <code>if</code>, <code>import</code>, <code>in</code>, <code>is</code>, <code>lambda</code>, <code>nonlocal</code>, <code>None</code>, <code>not</code>, <code>or</code>, <code>pass</code>, <code>raise</code>, <code>return</code>, <code>True</code>, <code>try</code>, <code>while</code>, <code>with</code>, <code>yield</code>.</p>
+<h4>R:</h4>
+<p><code>break</code>, <code>else</code>, <code>for</code>, <code>FALSE</code>, <code>function</code>, <code>if</code>, <code>in</code>, <code>Inf</code>, <code>NA</code>, <code>NA_character_</code>, <code>NA_complex_</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NaN</code>, <code>next</code>, <code>NULL</code>, <code>repeat</code>, <code>TRUE</code>, <code>while</code>, <code>...</code> y <code>..1</code>, <code>..2</code>, etc.</p>
+<h2>Paso 3: Enviando una nueva traducción</h2>
+<p>Una vez que tu archivo ha sido preparado de acuerdo con las especificaciones anteriores, ¡ya puedes enviárnoslo! Te sugerimos, de todos modos, que pidas a un par de personas que lean tu traducción y te den su opinión.</p>
+<p>En el GitHub de <a href="https://github.com/programminghistorian">Programming Historian</a> en GitHub mantenemos dos repositorios (es decir, dos sitios en donde almacenar archivos y carpetas). Por un lado, el repositorio <a href="https://github.com/programminghistorian/jekyll">jekyll</a>, que contiene los archivos a los que se accede a través del navegador <a href="/es">web</a>. Por el otro, el repositorio <a href="https://github.com/programminghistorian/ph-submissions">ph-submissions</a>, que es donde se realiza el proceso de edición de las lecciones originales y traducciones.</p>
+<p>Debes enviar tu traducción a través de una correo electrónico a tu editor/a, quien se encargará de subir todos los materiales al repositorio correspondiente en <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/es/traducciones">GitHub</a>.</p>
+<ol>
+<li><strong>Obtener acceso</strong>: crea una <a href="https://github.com/join">cuenta gratuita en GitHub</a>. Envía tu nombre de usuario de GitHub a tu editor/a, quien te dará acceso al sitio de envíos. Si bien no serás tú quien haga la carga inicial, necesitarás acceso para el proceso de revisión.</li>
+<li><strong>Prepara los materiales</strong>: si tu traducción incluye imágenes adicionales a las que tenía originalmente la lección, asegúrate que todos los archivos están nombrados según las convenciones explicadas más arriba. Las imágenes debes enviarlas en una sola carpeta comprimida. Si tu lección incluye archivos de datos traducidos, estos deben ser enviados en otra carpeta comprimida.</li>
+<li><strong>Envía un correo electrónico a tu editor/a</strong>: hazle saber a tu editor/a que tienes todo listo para el envío de tu lección. Este correo electrónico debe incluir el archivo .md de la lección y las carpetas comprimidas con las imágenes y datos, si corresponde.</li>
+<li><strong>Únete a la conversación</strong>: tu editor/a subirá los archivos a nuestro <a href="https://github.com/programminghistorian/ph-submissions">repositorio de envíos</a> y hará algunos cambios iniciales para asegurarse de que todo funciona bien. Además, abrirá un &quot;ticket de revisión&quot; para tu lección en la sección de <em><a href="https://github.com/programminghistorian/ph-submissions/issues">issues</a></em> de ese repositorio.</li>
+<li><strong>Realiza las revisiones</strong>: si bien la carga inicial de tu lección en el repositorio <code>ph-submissions</code> será realizada por tu editor/a, el proceso editorial requerirá que hagas modificaciones. Todas las ediciones posteriores deben ser hechas directamente por ti en ese repositorio para asegurarnos de que estás trabajando en la última versión del archivo.</li>
+</ol>
+<h2>El proceso de revisión de pares</h2>
+<p>Tu editor comprobará que tus archivos se hayan cargado y formateado correctamente. En esta etapa se te enviará un enlace de vista previa donde se evidenciará cualquier error de formato para que puedas corregirlo. Las modificaciones debes hacerla en el archivo .md de tu traducción, que se encuentra en el <a href="https://github.com/programminghistorian/ph-submissions/tree/gh-pages/es/traducciones">repositorio de propuesta de lecciones</a>.</p>
+<p>La revisión de pares se registrará en un <a href="https://github.com/programminghistorian/ph-submissions/issues">&quot;ticket&quot;</a> que actúa como una discusión abierta en el tablero de mensajes. Ten en cuenta que nuestra revisión de pares se realiza en público y se mantiene a disposición del público como un registro permanente. Si tienes alguna preocupación o deseas solicitar una revisión cerrada, ponte en contacto con tu editor/a.</p>
+<p>El proceso de revisión por pares normalmente se realiza en tres etapas:</p>
+<ol>
+<li>
+<p>Tu editor/a leerá y probará cuidadosamente tu traducción, proporcionando una primera ronda de retroalimentación a la que se te pedirá que respondas. El propósito de esta primera ronda de retroalimentación es asegurarse de que tu lección responde a las necesidades de la audiencia de <em>Programming Historian</em> y de que los revisores externos reciban una traducción que funcione. Normalmente se te dará un mes para responder a esta primera revisión.</p>
+</li>
+<li>
+<p>Tu editor/a abrirá la traducción para una revisión formal de pares. Esto incluirá al menos dos revisores que serán contactados por tu editor/a. La revisión también puede incluir comentarios de la comunidad más amplia, que son bienvenidos para contribuir con sus puntos de vista. Por lo general, tratamos de pedir a los revisores que aporten sus comentarios en el plazo de un mes, pero a veces circunstancias imprevistas hacen que esto no sea posible. Tu editor/a debe dejarte claro que no debes responder a las sugerencias de cambios hasta después de que se hayan publicado ambas revisiones y que el editor haya resumido y dado instrucciones claras para seguir adelante. En algunos casos esto puede ser una sugerencia para revisar sustancialmente o repensar la lección. En otros casos será cuestión de hacer algunos cambios menores. En función de los comentarios de la revisión de pares y de la naturaleza de las cuestiones planteadas, puede ser necesario revisar el tutorial más de una vez. En todo momento tu editor/a se esforzará porque tengas claros los pasos necesarios para que la lección sea publicable. Siempre tendrás la opción de retirarte del proceso de revisión si así lo deseas.</p>
+</li>
+<li>
+<p>Una vez que tu editor/a y revisores aprueben el texto, el editor recomendará la publicación a la jefa de redacción, quien leerá el tutorial para asegurarse de que cumpla con los lineamientos y estándares de esta Guía. En algunos casos, esta etapa puede considerar revisiones adicionales o edición de estilo para que el artículo se ajuste a nuestras normas de publicación. Si la jefa de redacción está satisfecha con tu lección, esta será trasladada al repositorio donde se aloja el sitio web de Programming Historian para su publicación. Tu editor/a te informará de cualquier información adicional que se requiera en esta etapa.</p>
+</li>
+</ol>
+<p>Puede resultarte útil leer nuestra <a href="/es/guia-editor">Guía para editores</a>, donde se detalla nuestro proceso editorial.</p>
+<p>Si en algún momento tienes dudas de tu papel o de lo que debes hacer a continuación, publica una pregunta en el ticket de revisión de tu traducción. Nuestro equipo editorial responderá lo antes posible. Nos esforzamos por responder a todas las preguntas en unos pocos días.</p>
+<h3>Haznos responsables</h3>
+<p>Nuestro equipo voluntario trabaja duro para proporcionar a traductores y traductoras una revisión entre pares rigurosa, colegiada y eficiente. Sin embargo, reconocemos que hay momentos en que las expectativas pueden no cumplirse. Queremos que quienes participan del proceso se sientan con el poder de exigirnos altos estándares. Si, por cualquier razón, sientes que recibiste un trato injusto, que el proceso se volvió confuso, que la revisión se ha retrasado innecesariamente, que recibiste un trato grosero por parte de los revisores, que tu editor/a no ha sido lo suficientemente receptivo/a o tienes cualquier otra inquietud, por favor, háznoslo saber para que podamos abordarlo de manera proactiva.</p>
+<p>Plantear una preocupación NO afectará negativamente el resultado de tu revisión de pares, incluso si se trata de una revisión de pares en curso.</p>
+<p>Para plantear una preocupación, por favor contacta a una de las siguientes personas, según te resulte más cómodo:</p>
+<ul>
+<li>El/la editor/a de tu lección</li>
+<li>La <a href="/es/equipo-de-proyecto">jefa de redacción</a></li>
+<li>Nuestra ombudsperson independiente, <a href="/es/equipo-de-proyecto">Silvia Gutiérrez de la Torre</a></li>
+</ul>
+<p>Esperamos que no te encuentres en una situación incómoda, pero si esto sucede, te agradecemos que nos ayudes a mejorar.</p>
+<hr>
+<p>La versión en inglés de esta guía de estilo fue creada con el apoyo de la Escuela de Humanidades de la Universidad de Hertfordshire. Esta traducción y adaptación al español es producto del trabajo conjunto del Equipo Editorial de Programming Historian en español.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

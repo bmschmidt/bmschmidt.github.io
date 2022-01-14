@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/pt/licoes/introducao-omeka-net"),
+					params: {lang:"pt",lessons:"licoes",slug:"introducao-omeka-net"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Introdução ao Omeka.net</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<p>O <a href="http://www.omeka.net">Omeka.net</a> facilita a criação de websites para mostrar coleções de itens.</p>
+<h2>Cadastre-se numa conta do Omeka</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-1.png&quot; caption=&quot;Cadastre-se na conta de teste&quot; %}</p>
+<p>Entre em www.omeka.net e clique em <strong>Sign Up</strong> (Cadastre-se). Escolha o Plano de Teste. Preencha o formulário de cadastro. Verifique o seu e-mail pelo link de ativação da conta.</p>
+<h2>Crie um novo site do Omeka</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-2.png&quot; caption=&quot;Página da conta do Omeka.net&quot; %}</p>
+<p>Depois de clicar no link no seu e-mail, clique em <strong>Add a Site</strong> (Adicionar um site).</p>
+<p>Preencha a informação sobre o URL do seu site, o título que quer usar e a descrição que preferir. Clique em <strong>Add Your New Site</strong> (Adicione o seu novo site).</p>
+<h2>Você tem um novo site do Omeka!</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-3.png&quot; caption=&quot;Veja o seu site&quot; %}</p>
+<p>Para ver o seu site, clique em <strong>View Site</strong> (Ver Site).</p>
+<h2>Um site vazio no Omeka</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-4.png&quot; caption=&quot;Vista pública do site&quot; %}</p>
+<p>Esse é o seu site vazio do Omeka esperando para ser preenchido. Para retornar ao painel de controle (<em>dashboard</em>) clique no botão <strong>Back</strong> (Retornar) ou escreva <code>http://www.omeka.net/dashboard</code>. Agora, clique em <strong>Manage Site</strong> (Administre o site).</p>
+<h2>Instale alguns plugins</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-5.png&quot; caption=&quot;Página dos Plugins&quot; %}</p>
+<p>O seu site do Omeka vem com plugins que oferecem funções adicionais. Precisamos ativá-los. Para fazer isso, clique no item <strong>Plugins</strong> no menu, no canto superior direito. Na página seguinte, clique no botão <strong>Install</strong> (Instalar) em <strong>Exhibit Builder</strong> (construtor de exposições) (deixe as opções como estão na página seguinte) e em <strong>Simple Pages</strong> (Páginas simples).</p>
+<h2>Configurar o seu site para  português (nota da tradução)</h2>
+<p>A configuração padrão do Omeka é em inglês. Porém, podemos mudar a língua do seu site para português (pt-BR e pt-PT) através de um Plugin. Para realizar essa configuração, siga os passos a seguir:</p>
+<ol>
+<li>
+<p>Clique em <strong>Manage Site</strong> (Administrar Site) no Menu Principal.</p>
+</li>
+<li>
+<p>Clique em Plugins no menu superior ou acesse os Plugins através do link <code>https://nome_do_seu_site.omeka.net/admin/plugins</code>, sendo <code>nome_do_seu_site</code> o nome escolhido para o seu site.</p>
+</li>
+<li>
+<p>Encontre o  Plugin <strong>Locale</strong> e clique no botão <strong>Install</strong> (Instalar). Ao clicar, a sua tela ficará parecida com a imagem abaixo.</p>
+</li>
+<li>
+<p>Ao clicar em instalar, aparecerá uma página com as opções de tradução. Escolha <strong>Português - Brasil (pt_BR)</strong> ou <strong>Português - Portugal (pt_PT)</strong>.</p>
+</li>
+<li>
+<p>Clique em <strong>Save Changes</strong> (Salvar Mudanças)</p>
+</li>
+</ol>
+<p>{% include figure.html filename=&quot;intro-omeka-net-6.png&quot; caption=&quot;A sua tela ficará parecida com a imagem acima. Nela, o Plugin Locale está indicado.&quot; %}</p>
+<p>Agora, o seu site e o painel de controle estarão em português.</p>
+<h2>Trocar temas</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-7.png&quot; caption=&quot;Página de Configuração dos Temas&quot; %}</p>
+<p>O Omeka permite que a aparência do site público seja alterada por meio dos temas. Para fazer isso, clique em <strong>Aparência</strong> (Appearence, à direita do canto superior do seu painel de controle). Mude os temas selecionando uma das opções disponíveis na página. Clique o botão verde <strong>Utilizar este tema</strong>  (Use this theme) para atualizar o seu novo tema. Visite, então, o seu site público clicando no nome do seu site, no canto superior esquerdo da página.</p>
+<h2>Temos um novo tema!</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-8.png&quot; caption=&quot;Vista pública com o novo tema&quot; %}</p>
+<p>Confira o seu novo tema e volte para o seu painel de controle. É possível retornar para o seu antigo tema, continuar com esse ou selecionar uma das outras opções.</p>
+<h2>Adicione um item</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-9.png&quot; caption=&quot;Adicione um item&quot; %}</p>
+<p>Clique em <strong>Itens</strong> no lado esquerdo do menu e depois (naturalmente!) <strong>Adicione um item</strong> (Add an item).</p>
+<h2>Descreva o seu novo item</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-10.png&quot; caption=&quot;Torne o seu item público usando a caixa de seleção assinalada&quot; %}</p>
+<p>Lembre, <strong>Dublin Core</strong> refere-se às informações descritivas (metadados) que você insere sobre um item. Todas essas informações são opcionais e não há como inseri-las incorretamente. Tente, porém, ser consistente.</p>
+<p>Não se esqueça de clicar na caixa de seleção <strong>Público</strong> (Public) para que o seu item fique visível para o público em geral. Se você não clicar nessa caixa, apenas pessoas cadastradas no seu site poderão ver o item.</p>
+<p>Para adicionar múltiplos campos - por exemplo, se você quiser adicionar vários assuntos ao seu item - use o botão verde <strong>Adicionar informação</strong> (Add input) à esquerda das caixas de texto.</p>
+<h2>Uma questão complexa</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-11.png&quot; caption=&quot;O que é isto?&quot; %}</p>
+<p>Eu estou a criar um registo de item para o meu cachorro, Boris. Mas eu estou a descrever o Boris <em>ele mesmo</em> ou uma <em>fotografia</em> do Boris? No caso da primeira opção, o <strong>Criador</strong> seria... bem, suponho que isso dependa das suas crenças religiosas. Se é o segundo caso, o criador seria Brad Wallace, quem tirou a foto.</p>
+<p>A decisão sobre descrever um objeto ou a representação de um objeto é sua. Uma vez que tenha decidido, seja consistente.</p>
+<h2>Anexe um ficheiro ao registo do seu item</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-12.png&quot; caption=&quot;Adicionando ficheiros a um item&quot; %}</p>
+<p>Uma vez que terminamos de adicionar os metadados do Dublin Core, podemos anexar um ficheiro ao registo do seu item clicando em <strong>Arquivos</strong> (Ficheiros em PT_PT / Files), no topo do formulário de Dublin Core. (Não é necessário clicar em <strong>Adicionar Item</strong> antes de fazer isso; o Omeka irá salvar automaticamente essa informação). Podemos adicionar múltiplos ficheiros, mas saiba que o plano Básico apenas vem com 500 MB de espaço de armazenamento.</p>
+<p>Tendo adicionado o ficheiro ou os ficheiros, podemos adicionar <strong>Tags</strong> (Etiquetas em PT_PT) clicando no botão. Também podemos clicar em <strong>Metadados</strong> (Meta-dados do Tipo de Item em PT_PT / Item Type Metadata) para escolher a tipologia - pessoa, lugar, animal, vegetal, mineral - do seu item. Se não encontrar um tipo de item apropriado para o seu item, não se preocupe. Nós podemos adicionar um novo tipo de item depois.</p>
+<p>Quando tudo estiver pronto, clique no botão verde <strong>Adicionar item</strong>.</p>
+<h2>Você tem um item!</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-13.png&quot; caption=&quot;Explorar itens, vista de administrador&quot; %}</p>
+<p>Esta lista contém todos os itens que foram adicionados. Se o item não fosse público, estaria escrito <em>Privado</em> depois do título. Para ver como a página do seu novo item se parece, clique no nome do item.</p>
+<h2>Esta não é a página pública para o seu item</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-14.png&quot; caption=&quot;Página de Item, vista de administrador&quot; %}</p>
+<p>Pode parecer, mas essa página não é o que um usuário não-cadastrado irá ver quando navegar para a página do seu item. Para ver o que um usuário veria, clique no botão azul <strong>Ver a Página Pública</strong>, à direita. (Ou você pode editar o item clicando em <strong>Editar</strong> na direita).</p>
+<h2>Esta é a página pública para o seu item</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-15.png&quot; caption=&quot;Página do item, vista pública&quot; %}</p>
+<p>Isso é o que o usuário geral verá se ele navegar pela sua página.</p>
+<h2>Crie uma coleção</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-16.png&quot; caption=&quot;Criar uma coleção&quot; %}</p>
+<p>É possível começar a ordenar a sua lista de itens agrupando-os em coleções. Para fazer isso, retorne para o painel de controle (Dashboard), clique na aba de <strong>Coleções</strong> (Collections) e clique em <strong>Adicionar uma coleção</strong>.</p>
+<h2>Insira informações sobre a sua coleção</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-17.png&quot; caption=&quot;Adicionar metadados da coleção&quot; %}</p>
+<p>No Omeka, os metadados são fundamentais! Insira alguma informação sobre a sua nova coleção e lembre-se de clicar no botão <strong>Público</strong> perto do fim da página. Então salve a coleção.</p>
+<h2>Adicione itens à sua coleção</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-18.png&quot; caption=&quot;Clique na caixa seleção de cada item para editar&quot; %}</p>
+<p>Para preencher a coleção que acabou de criar, clique na aba de <em>Itens</em>. Da sua lista <strong>Ver Itens</strong> (Explorar Itens em PT_PT), clique nas caixas de verificação dos itens que pertencem à sua nova coleção. Então clique no botão <strong>Editar</strong>.</p>
+<h2>Escolha a coleção</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-19.png&quot; caption=&quot;Escolha uma coleção do menu suspenso&quot; %}</p>
+<p>Na página Editar Itens (Editar Itens em Lote em PT_PT), selecione a Coleção à qual gostaria de adicionar os seus itens. (Além disso, tenha atenção a todas as outras coisas que podem ser feitas nessa página).</p>
+<h2>Veja a sua nova coleção</h2>
+<p>{% include figure.html filename=&quot;intro-omeka-net-20.png&quot; caption=&quot;Ver coleção, vista pública&quot; %}</p>
+<p>Retorne para o seu site público. Se clicarmos na aba de <strong>Ver Coleções</strong> (Explorar as Colecções em PT_PT) na face pública do seu site, deverá  haver agora uma nova coleção contendo os itens que foram identificados.</p>
+<p>Agora que alguns itens foram adicionados e agrupados numa coleção, dedique algum tempo para editar ainda mais o seu site. Ele está a começar a tomar forma agora que há tanto itens individuais como unidades temáticas, mas o Omeka pode fazer ainda mais. Iremos falar sobre isso numa próxima lição.</p>
+<h2>Recursos Adicionais</h2>
+<p>A equipe do Omeka compilou ótimos recursos nas <a href="http://info.omeka.net/">páginas de ajuda</a>(em inglês) do software.</p>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>

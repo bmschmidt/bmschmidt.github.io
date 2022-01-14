@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-61d1577b.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-18e41d87.css">
+		<link rel="modulepreload" href="/_app/start-95fbef14.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-8de6a194.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-a3da538f.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-55c0c2f0.js">
+		<link rel="modulepreload" href="/_app/chunks/translate-48f5a27b.js">
+		<link rel="modulepreload" href="/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js">
+		<link rel="modulepreload" href="/_app/chunks/markdown-a73b7c4d.js">
+
+		<script type="module">
+			import { start } from "/_app/start-95fbef14.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-a3da538f.js"),
+						import("/_app/pages/_lang_/_lessons_/_slug_/index.svelte-f85508fc.js")
+					],
+					url: new URL("sveltekit://prerender/pt/licoes/manipular-strings-python"),
+					params: {lang:"pt",lessons:"licoes",slug:"manipular-strings-python"}
+				}
+			});
+		</script><script>
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
+		</script>
+	</head>
+	<body>
+		<div id="svelte">
+
+
+<div class="collapse navbar-collapse" style="display:flex" id="navbarNavDropdown"><h2>Programming Historian em português</h2>
+	<a class="nav-link" href="/pt/licoes">Lições</a><a class="nav-link" href="/pt/sobre">Sobre</a><a class="nav-link" href="/pt/pesquisa">Pesquisa</a><a class="nav-link" href="/pt/apoie-nos">Apoie-nos</a>
+<div class="btn-group" role="menuitem" aria-label="Language selector"><a class="btn btn-secondary nav-link" role="button" href="/en">en</a><a class="btn btn-secondary nav-link" role="button" href="/es">es</a><a class="btn btn-secondary nav-link" role="button" href="/fr">fr</a><a class="btn btn-secondary nav-link active" role="button" href="/pt">pt</a></div></div>
+
+
+<br>
+<h1>Manipular strings com Python</h1>
+
+<!-- HTML_TAG_START --><p>{% include toc.html %}</p>
+<h2>Objetivos da lição</h2>
+<p>Esta lição é uma breve introdução às técnicas de manipulação de <a href="https://pt.wikipedia.org/wiki/Cadeia_de_caracteres">strings</a> (cadeia de caracteres) com
+Python. É essencial saber manipular strings para desenvolver a maioria das tarefas de processamento de textos. Se quiser experimentar as lições a seguir, você pode escrever e executar programas curtos, como fizemos nas lições anteriores da série, ou pode abrir um shell (terminal) Python para testá-los na linha de comandos.</p>
+<h2>Manipulação de Strings com Python</h2>
+<p>Se já foi exposto a outra linguagem de programação antes, pode ter aprendido que precisa <em>declarar</em> ou <em>especificar os tipos das variáveis</em> antes de armazenar qualquer coisa nelas. Isso não é necessário ao trabalhar com strings no Python. Podemos criar uma string simplesmente colocando o conteúdo entre aspas com um sinal de igual (=):</p>
+<pre><code class="language-python">message = &quot;Olá mundo&quot;
+</code></pre>
+<h2>Operadores de string: somar e multiplicar</h2>
+<p>String é um tipo de objeto que consiste numa série de caracteres. O Python já sabe como lidar com várias representações de uso geral e poderosas, incluindo strings. Uma maneira de manipular strings é usar <em>operadores de string</em>.
+Esses operadores são representados por símbolos que você, provavelmente, associa à matemática, como +, -, *, / e =. Quando usados com strings, eles executam ações semelhantes, mas não iguais, às suas contrapartes matemáticas.</p>
+<h3>Concatenar</h3>
+<p>Este termo significa unir strings. O processo é conhecido como <em>concatenação</em> de strings e isso é feito usando o operador mais (+).
+Observe que você deve explicitar onde deseja que os espaços em branco ocorram, colocando-os também entre aspas simples.</p>
+<p>Nesse exemplo, a variável &quot;message1&quot; recebe o conteúdo &quot;olá mundo&quot;.</p>
+<pre><code class="language-python">message1 = 'olá' + ' ' + 'mundo'
+print(message1)
+-&gt; olá mundo
+</code></pre>
+<h3>Multiplicar</h3>
+<p>Se quiser uma concatenação repetida de uma mesma string, use o operador de multiplicação (*). Nesse exemplo, a string <em>message2a</em> receberá o conteúdo &quot;olá&quot; três vezes; a string <em>message2b</em> receberá o conteúdo &quot;mundo&quot;; a seguir imprimimos ambas as strings.</p>
+<pre><code class="language-python">message2a = 'olá ' * 3
+message2b = 'mundo'
+print(message2a + message2b)
+-&gt; olá olá olá mundo
+</code></pre>
+<h3>Apêndice</h3>
+<p>E se quiser adicionar material no final de uma string sucessivamente?
+Existe um operador especial para isso (+=).</p>
+<pre><code class="language-python">message3 = 'olá'
+message3 += ' '
+message3 += 'mundo'
+print(message3)
+-&gt; olá mundo
+</code></pre>
+<h2>Métodos de String: Encontrar, Modificar</h2>
+<p>Além dos operadores, dezenas de métodos de string permitem manipular as strings no Python. Usados sozinhos ou em combinação, esses métodos podem fazer praticamente qualquer coisa que possa imaginar com elas.
+A boa notícia é que pode consultar uma lista de Métodos de String no site do Python, <a href="https://docs.python.org/2/library/stdtypes.html#string-methods">Python website</a>, incluindo informações sobre como usar cada um de maneira adequada. Para garantir que tenha uma compreensão básica dos métodos de string, segue um panorama acerca de alguns dos mais comumente usados:</p>
+<h3>Comprimento (Length)</h3>
+<p>Pode determinar o número de caracteres numa string usando <code>len</code>. Observe que o espaço em branco conta como um caractere separado.
+Nota da tradutora: 'len' não é um método de string, como indicado na lição original, mas uma função built-in do Python que se aplica a qualquer tipo de objeto que possua comprimento.</p>
+<pre><code class="language-python">message4 = 'olá' + ' ' + 'mundo'
+print(len(message4))
+-&gt; 9
+</code></pre>
+<h3>Encontrar</h3>
+<p>Pode procurar uma string para uma <em>substring</em> e o seu programa retornará a posição de índice inicial dessa substring. Isso é útil para o processamento posterior. Observe que os índices são numerados da esquerda para a direita e que a contagem começa com a posição 0, não 1.</p>
+<pre><code class="language-python">message5 = &quot;olá mundo&quot;
+message5a = message5.find(&quot;mu&quot;)
+print(message5a)
+-&gt; 4
+</code></pre>
+<p>Se a substring não estiver presente, o programa retornará o valor -1.</p>
+<pre><code class="language-python">message6 = &quot;Olá mundo&quot;
+message6b = message6.find(&quot;esquilo&quot;)
+print(message6b)
+-&gt; -1
+</code></pre>
+<h3>Minúscula</h3>
+<p>Às vezes, é útil converter uma string em minúsculas. Por exemplo, se padronizarmos a caixa, será mais fácil para o computador reconhecer que &quot;Ocasionalmente&quot; e &quot;ocasionalmente&quot; são a mesma palavra.</p>
+<pre><code class="language-python">message7 = &quot;OLÁ MUNDO&quot;
+message7a = message7.lower()
+print(message7a)
+-&gt; olá mundo
+</code></pre>
+<p>O efeito oposto, elevando os caracteres para maiúsculas, pode ser obtido alterando <code>.lower()</code> para <code>.upper()</code>.</p>
+<h3>Substituir</h3>
+<p>Se precisar substituir uma substring em toda a string, pode fazê-lo com o método <code>replace</code>.</p>
+<pre><code class="language-python">message8 = &quot;OLÁ MUNDO&quot;
+message8a = message8.replace(&quot;OLÁ&quot;, &quot;pizza&quot;)
+print(message8a)
+-&gt; pizza MUNDO
+</code></pre>
+<h3>Recortar</h3>
+<p>Se deseja recortar (<code>slice</code>) partes indesejadas do início ou do fim de uma string, pode fazê-lo criando uma substring. O mesmo tipo de técnica também permite dividir uma string longa em componentes mais gerenciáveis.</p>
+<pre><code class="language-python">message9 = &quot;Olá Mundo&quot;
+message9a = message9[1:8]
+print(message9a)
+-&gt; lá Mund
+</code></pre>
+<p>Pode substituir as variáveis pelos números inteiros usados neste exemplo.</p>
+<pre><code class="language-python">startLoc = 2
+endLoc = 8
+message9 = &quot;Olá Mundo&quot;
+message9b = message9[startLoc: endLoc]
+print(message9b)
+-&gt; á Mund
+</code></pre>
+<p>Isto torna muito mais fácil usar este método em conjunto com o método <code>find</code> (encontrar) como no próximo exemplo, que verifica a letra &quot;d&quot; nos primeiros seis caracteres de &quot;Olá Mundo&quot; e nos diz corretamente que não está lá (-1). Essa técnica é muito mais útil em strings mais longas - documentos completos, por exemplo. Observe que a ausência de um número inteiro antes dos dois pontos significa que queremos começar no início da string. Poderíamos usar a mesma técnica para dizer ao programa para ir até ao fim, não colocando nenhum número inteiro após os dois pontos. E lembre-se, as posições do índice começam a contar a partir de 0 em vez de 1.</p>
+<pre><code class="language-python">message9 = &quot;Olá Mundo&quot;
+print(message9[:5].find(&quot;d&quot;))
+-&gt; -1
+</code></pre>
+<p>Existem muitos mais métodos de string, mas os supracitados são um bom começo. Observe que, neste último exemplo, usamos aspas em vez de parênteses. Essa diferença na <em>sintaxe</em> sinaliza uma distinção importante.
+No Python, os parênteses são geralmente usados para <em>passar um argumento</em> para uma função. Então, quando vemos algo como</p>
+<pre><code class="language-python">print(len(message7))
+</code></pre>
+<p>significa passar a string <em>message7</em>  para a função <code>len</code> e, então, enviar o valor retornado dessa função para a instrução <code>print</code> a ser impressa. Se uma função pode ser chamada sem um argumento, geralmente precisa de incluir um par de parênteses vazios após o nome da função de qualquer maneira. Vimos, também, um exemplo disso:</p>
+<pre><code class="language-python">message7 = &quot;OLÁ MUNDO&quot;
+message7a = message7.lower()
+print(message7a)
+-&gt; olá mundo
+</code></pre>
+<p>Esta instrução diz ao Python para aplicar a função caixa baixa, <code>lower</code>, à string <em>message7</em> e armazenar o valor retornado na string <em>message7a</em>.</p>
+<p>As aspas têm um propósito diferente. Se pensa numa string como uma sequência de caracteres e deseja acessar o conteúdo da string por sua localização dentro da sequência, então precisa de alguma forma de dar ao Python uma localização dentro de uma sequência. Isso é o que as aspas fazem: indicam uma localização inicial e final dentro de uma sequência, como vimos ao usar o método <code>slice</code>.</p>
+<h2>Sequências de Escape</h2>
+<p>O que faz quando precisa de incluir aspas dentro de uma string?
+Não quer que o interpretador Python entenda errado e termine a string quando encontrar um desses caracteres. Para evitar o problema, pode colocar uma barra invertida (\) antes das aspas para que ela não termine a string. Estas são conhecidas como sequências de escape.</p>
+<pre><code class="language-python">print('\&quot;')
+-&gt; &quot;
+</code></pre>
+<pre><code class="language-python">print('O programa imprimiu \&quot;olá mundo\&quot;')
+-&gt; O programa imprimiu &quot;olá mundo&quot;
+</code></pre>
+<p>Duas outras sequências de escape permitem imprimir tabulações e novas linhas:</p>
+<pre><code class="language-python">print('olá\tolá\tolá\nmundo')
+-&gt;olá olá olá
+mundo
+</code></pre>
+<h2>Leitura Sugerida</h2>
+<ul>
+<li>Lutz, <em>Learning Python</em>
+<ul>
+<li>Ch. 7: Strings</li>
+<li>Ch. 8: Lists and Dictionaries</li>
+<li>Ch. 10: Introducing Python Statements</li>
+<li>Ch. 15: Function Basics</li>
+</ul>
+</li>
+</ul>
+<h2>Sincronização do Código</h2>
+<p>Para acompanhar lições futuras, é importante ter os ficheiros e programas corretos no seu diretório “programming-historian”. No final de cada lição, é possível fazer o download do ficheiro zip “programming-historian” para ter a certeza de que o ficheiro correto está a ser utilizado. Observe que removemos os ficheiros desnecessários das lições anteriores. Seu diretório pode conter mais ficheiros e não há problema!</p>
+<ul>
+<li>programming-historian-1 (<a href="/assets/python-lessons1.zip">zip</a>)</li>
+</ul>
+<!-- HTML_TAG_END -->
+
+</div>
+	</body>
+</html>
