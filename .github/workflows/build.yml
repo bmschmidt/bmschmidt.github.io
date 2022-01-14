@@ -1,29 +1,20 @@
 # This is the name of the workflow that will show up in Github Actions Tab
-name: build_programming_historian
-
+name: build_svelte
 # This is where we specify when to automatically run our action. In this case we want to run it on pull_requests and specific triggers. You can read more about these event triggers in the Github Docs https://docs.github.com/en/actions/reference/events-that-trigger-workflows
 on:
   pull_request:
     types: [ assigned, opened, synchronize, reopened, closed ]
-
 # This is where we list all of our jobs that will run in the build sequence
 jobs:
   build-and-deploy:
     name: Build and deploy
     runs-on: ubuntu-latest
-
     steps:
-    
     - name: Check out the code from GitHub
       uses: actions/checkout@v2
-
     - name: Install Node.js
       uses: actions/setup-node@v2
-
     - name: Build website
       run: |
         npm install
         npm run build
-
-
-
