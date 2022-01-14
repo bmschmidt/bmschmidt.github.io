@@ -2,8 +2,7 @@
 name: build_svelte
 # This is where we specify when to automatically run our action. In this case we want to run it on pull_requests and specific triggers. You can read more about these event triggers in the Github Docs https://docs.github.com/en/actions/reference/events-that-trigger-workflows
 on:
-  pull_request:
-    types: [ assigned, opened, synchronize, reopened, closed ]
+  push
 # This is where we list all of our jobs that will run in the build sequence
 jobs:
   build-and-deploy:
